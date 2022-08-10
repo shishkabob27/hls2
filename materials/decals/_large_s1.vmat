@@ -2,23 +2,13 @@
 
 Layer0
 {
-	shader "complex.vfx"
-
-	//---- Translucent ----
-	F_ALPHA_TEST 1
+	shader "projected_decals.vfx"
 
 	//---- Ambient Occlusion ----
-	g_flAmbientOcclusionDirectDiffuse "0.000"
-	g_flAmbientOcclusionDirectSpecular "0.000"
 	TextureAmbientOcclusion "materials/default/default_ao.tga"
 
 	//---- Color ----
-	g_flModelTintAmount "1.000"
-	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
 	TextureColor "materials/decals/_large_s1.tga"
-
-	//---- Fade ----
-	g_flFadeExponent "1.000"
 
 	//---- Fog ----
 	g_bFogEnabled "1"
@@ -26,25 +16,11 @@ Layer0
 	//---- Lighting ----
 	g_flDirectionalLightmapMinZ "0.050"
 	g_flDirectionalLightmapStrength "1.000"
+	g_flGlossiness "0.500"
 
 	//---- Metalness ----
-	g_flMetalness "0.000"
-
-	//---- Normal ----
-	TextureNormal "materials/default/default_normal.tga"
-
-	//---- Roughness ----
-	TextureRoughness "materials/default/default_rough.tga"
-
-	//---- Texture Coordinates ----
-	g_nScaleTexCoordUByModelScaleAxis "0"
-	g_nScaleTexCoordVByModelScaleAxis "0"
-	g_vTexCoordOffset "[0.000 0.000]"
-	g_vTexCoordScale "[1.000 1.000]"
-	g_vTexCoordScrollSpeed "[0.000 0.000]"
+	TextureMetalness "materials/default/default_metal.tga"
 
 	//---- Translucent ----
-	g_flAlphaTestReference "0.500"
-	g_flAntiAliasedEdgeStrength "1.000"
 	TextureTranslucency "materials/decals/_large_s1_a_trans.tga"
 }
