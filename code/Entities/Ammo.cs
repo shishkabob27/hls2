@@ -1,4 +1,4 @@
-﻿partial class BaseAmmo : ModelEntity, IRespawnableEntity
+﻿partial class BaseAmmo : ModelEntity
 {
 	//public static Model WorldModel = Model.Load( "models/dm_battery.vmdl" );
 
@@ -37,7 +37,6 @@
 		Sound.FromWorld( "dm.pickup_ammo", Position );
 		PickupFeed.OnPickup( To.Single( player ), $"+{ammoTaken} {AmmoType}" );
 
-		ItemRespawn.Taken( this );
 		Delete();
 	}
 }

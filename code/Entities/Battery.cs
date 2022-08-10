@@ -4,7 +4,7 @@
 [Library( "hl_battery" ), HammerEntity]
 [EditorModel( "models/hl1/gameplay/battery.vmdl" )]
 [Title(  "Battery" )]
-partial class Battery : ModelEntity, IRespawnableEntity
+partial class Battery : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/gameplay/battery.vmdl" );
 
@@ -37,7 +37,6 @@ partial class Battery : ModelEntity, IRespawnableEntity
 		Sound.FromWorld( "dm_item_battery", Position );
 		PickupFeed.OnPickup( To.Single( player ), $"+25 Armour" );
 
-		ItemRespawn.Taken( this );
 		Delete();
 	}
 }

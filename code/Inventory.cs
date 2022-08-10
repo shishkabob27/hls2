@@ -37,7 +37,6 @@
 				}
 			}
 
-			ItemRespawn.Taken( ent );
 
 			// Despawn it
 			ent.Delete();
@@ -54,8 +53,6 @@
 			Sound.FromWorld( "dm.pickup_weapon", ent.Position );
 			PickupFeed.OnPickupWeapon( To.Single( player ), display.Name );
 		}
-
-		ItemRespawn.Taken( ent );
 
 		return true;
 	}

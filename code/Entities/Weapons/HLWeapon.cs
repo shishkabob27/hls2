@@ -1,4 +1,4 @@
-﻿partial class HLWeapon : BaseWeapon, IRespawnableEntity
+﻿partial class HLWeapon : BaseWeapon
 {
 	public virtual AmmoType AmmoType => AmmoType.Pistol;
 	public virtual AmmoType AltAmmoType => AmmoType.SMGGrenade;

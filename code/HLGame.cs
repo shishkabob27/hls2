@@ -39,8 +39,6 @@ partial class HLGame : Game
 	public override void PostLevelLoaded()
 	{
 		base.PostLevelLoaded();
-
-		ItemRespawn.Init();
 	}
 
 	public override void ClientJoined( Client cl )
