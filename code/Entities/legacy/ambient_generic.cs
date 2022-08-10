@@ -76,7 +76,7 @@
 				PlayingSound = default;
 			}
 	
-			PlayingSound = Sound.FromEntity( SoundName, source );
+			PlayingSound = Sound.FromEntity( message, source );
 		}
 
 		[ClientRpc]
