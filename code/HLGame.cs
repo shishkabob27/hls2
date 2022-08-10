@@ -106,14 +106,14 @@ partial class HLGame : Game
 	{
 		base.FrameSimulate( cl );
 
-		postProcess.Sharpen.Enabled = true;
+		postProcess.Sharpen.Enabled = false;
 		postProcess.Sharpen.Strength = 0.5f;
 
 		postProcess.FilmGrain.Enabled = false;
 		postProcess.FilmGrain.Intensity = 0;
 		postProcess.FilmGrain.Response = 1;
 
-		postProcess.Vignette.Enabled = true;
+		postProcess.Vignette.Enabled = false;
 		postProcess.Vignette.Intensity = 1.0f;
 		postProcess.Vignette.Roundness = 1.5f;
 		postProcess.Vignette.Smoothness = 0.5f;
