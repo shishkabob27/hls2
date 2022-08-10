@@ -96,7 +96,6 @@ public class LaserTrigger : ModelEntity
 	{
 		SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, new Capsule( Vector3.Zero, Rotation.Forward * length, 0.2f ) );
 		CollisionGroup = CollisionGroup.Trigger;
-		//this.Tags.Add("trigger");
 	}
 
 	public override void StartTouch( Entity other )

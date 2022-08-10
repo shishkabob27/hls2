@@ -36,8 +36,6 @@
         "trigger": "Ignore",
         "ladder": "Ignore",
         "water": "Trigger",
-        "weapon": "Trigger",
-        "debris": "Unset",
         "player": "Unset"
       },
       "Pairs": [
@@ -66,11 +64,6 @@
           "b": "trigger"
         },
         {
-          "a": "debris",
-          "b": "player",
-          "r": "Ignore"
-        },
-        {
           "a": "trigger",
           "b": "player",
           "r": "Trigger"
@@ -78,14 +71,14 @@
       ]
     },
     "Physics": {
-      "SubSteps": 20,
+      "SubSteps": 4,
       "TimeScale": 1,
       "Gravity": "0,0,-800",
       "AirDensity": 1.2,
       "SleepingEnabled": true,
       "SimulationMode": "Continuous",
-      "PositionIterations": 2,
-      "VelocityIterations": 8,
+      "PositionIterations": 8,
+      "VelocityIterations": 32,
       "SoftBodyIterations": 1,
       "SoftBodySubsteps": 1
     },
