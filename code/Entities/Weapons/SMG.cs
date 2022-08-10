@@ -12,6 +12,7 @@ partial class SMG : HLWeapon
 	public override float ReloadTime => 4.0f;
 	public override int Bucket => 2;
 	public override int BucketWeight => 1;
+	public override bool HasAltAmmo => true;
 
 	public override void Spawn()
 	{
@@ -19,12 +20,12 @@ partial class SMG : HLWeapon
 
 		Model = WorldModel;
 		AmmoClip = 20;
+		AltAmmoClip = 1;
 	}
 
 	public override void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;
-		TimeSinceSecondaryAttack = 0;
 
 		if ( !TakeAmmo( 1 ) )
 		{
@@ -56,16 +57,22 @@ partial class SMG : HLWeapon
 	{
 		// Screw this for now
 		//return;
-
-		TimeSincePrimaryAttack = 0;
+		AltReload();
+        
 		TimeSinceSecondaryAttack = 0;
 
 		if ( Owner is not HLPlayer player ) return;
 
-		if ( !TakeAmmo( 10 ) )//Using SMG ammo for now.
+
+		if (!TakeAltAmmo(1))
 		{
-			Reload();
-			return;
+
+			AltReload();
+			if (!TakeAltAmmo(1))
+			{
+				DryFire();
+				return;
+			}
 		}
 
 		// woosh sound
@@ -90,11 +97,6 @@ partial class SMG : HLWeapon
 			grenade.SetInteractsAs( CollisionLayer.Debris );
 		}
 
-		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Grenade ) == 0 )
-		{
-			Delete();
-			player.SwitchToBestWeapon();
-		}
 	}
 
 	[ClientRpc]
@@ -117,6 +119,8 @@ partial class SMG : HLWeapon
 
 	public override void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
 	{
+
+		
 		var draw = Render.Draw2D;
 
 		var color = Color.Lerp( Color.Red, Color.Yellow, lastReload.LerpInverse( 0.0f, 0.4f ) );

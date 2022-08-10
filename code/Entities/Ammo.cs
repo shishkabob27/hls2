@@ -99,3 +99,14 @@ partial class AmmoCrossbow : BaseAmmo
 
 	public override Model WorldModel => Model.Load( "models/dm_ammo_crossbow.vmdl" );
 }
+
+[Library("hl_ammosmggrenade"), HammerEntity]
+[EditorModel("models/dm_ammo_crossbow.vmdl")]
+[Title("SMG Grenade"), Category("Ammo")]
+partial class AmmoSMGGrenade : BaseAmmo
+{
+	public override AmmoType AmmoType => AmmoType.SMGGrenade;
+	public override int AmmoAmount => 3;
+
+	public override Model WorldModel => Model.Load("models/dm_ammo_crossbow.vmdl");
+}
