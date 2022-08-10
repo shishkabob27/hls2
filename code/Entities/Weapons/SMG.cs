@@ -20,7 +20,7 @@ partial class SMG : HLWeapon
 
 		Model = WorldModel;
 		AmmoClip = 20;
-		AltAmmoClip = 1;
+		AltAmmoClip = 0;
 	}
 
 	public override void AttackPrimary()
