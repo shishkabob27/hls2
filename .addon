@@ -19,7 +19,9 @@
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Unrestricted",
-    "MapList": [],
+    "MapList": [
+      "shishkabob.hls2_t0"
+    ],
     "RankType": "None",
     "PerMapRanking": false,
     "LeaderboardType": "None",
