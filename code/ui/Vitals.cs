@@ -5,11 +5,13 @@ public class HealthHud : Panel
 {
 	public IconPanel Icon;
 	public Label Value;
+	public IconPanel Seperator;
 
 	public HealthHud()
 	{
 		Icon = Add.Icon( string.Empty, "icon" );
 		Value = Add.Label( "0", "label" );
+		Seperator = Add.Icon( string.Empty, "seperator" );
 	}
 
 	public override void Tick()
@@ -26,6 +28,7 @@ public class HealthHud : Panel
 
 public class ArmourHud : Panel
 {
+	//public IconPanel ArmourBar;
 	public IconPanel Icon;
 	public Label Value;
 
