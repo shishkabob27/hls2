@@ -1,21 +1,33 @@
 ﻿partial class HLWeapon : BaseWeapon, IRespawnableEntity
 {
 	public virtual AmmoType AmmoType => AmmoType.Pistol;
+	public virtual AmmoType AltAmmoType => AmmoType.SMGGrenade;
 	public virtual int ClipSize => 16;
+	public virtual int AltClipSize => 1; // 1 because all hl1 alts don't have reloadable clips but i'm adding it just in case, yknow for modding and why not.
 	public virtual float ReloadTime => 3.0f;
+	public virtual float AltReloadTime => 0.0f;
+
 	public virtual int Bucket => 1;
 	public virtual int BucketWeight => 100;
 
+	public virtual bool HasAltAmmo => false;
 	public virtual int Order => (Bucket * 10000) + BucketWeight;
 
 	[Net, Predicted]
 	public int AmmoClip { get; set; }
 
 	[Net, Predicted]
+	public int AltAmmoClip { get; set; }
+
+	[Net, Predicted]
 	public TimeSince TimeSinceReload { get; set; }
+	[Net, Predicted]
+	public TimeSince TimeSinceAltReload { get; set; }
 
 	[Net, Predicted]
 	public bool IsReloading { get; set; }
+	[Net, Predicted]
+	public bool IsReloadingAlt { get; set; }
 
 	[Net, Predicted]
 	public TimeSince TimeSinceDeployed { get; set; }
@@ -32,7 +44,12 @@
 		if ( owner == null ) return 0;
 		return owner.AmmoCount( AmmoType );
 	}
-
+	public int AvailableAltAmmo()
+	{
+		var owner = Owner as HLPlayer;
+		if (owner == null) return 0;
+		return owner.AmmoCount(AltAmmoType);
+	}
 	public override void ActiveStart( Entity ent )
 	{
 		base.ActiveStart( ent );
@@ -78,8 +95,42 @@
 		StartReloadEffects();
 	}
 
+	public void AltReload()
+	{
+		if (IsReloadingAlt)
+			return;
+
+		if (AltAmmoClip >= AltClipSize)
+			return;
+
+		if (Owner is HLPlayer player)
+		{
+			if (player.AmmoCount(AltAmmoType) <= 0)
+				return;
+		}
+
+		if ( AltReloadTime == 0.0f) // if it's zero just skip the extra stuff and go straight to a reload
+		{
+			OnAltReloadFinish();
+		}
+        else 
+        {
+			TimeSinceAltReload = 0;
+			IsReloadingAlt = true;
+		}
+		// Todo, set this somewhere to be used if blah blah is enabled? maybe?
+		//(Owner as AnimatedEntity).SetAnimParameter("b_reload", true);
+
+		//StartReloadEffects();
+	}
+
 	public override void Simulate( Client owner )
 	{
+		if (IsReloadingAlt && TimeSinceAltReload > AltReloadTime)
+		{
+			OnAltReloadFinish();
+		}        
+        
 		if ( TimeSinceDeployed < 0.6f )
 			return;
 
@@ -92,6 +143,8 @@
 		{
 			OnReloadFinish();
 		}
+
+		
 	}
 
 	public virtual void OnReloadFinish()
@@ -105,6 +158,20 @@
 				return;
 
 			AmmoClip += ammo;
+		}
+	}
+
+	public virtual void OnAltReloadFinish()
+	{
+		IsReloadingAlt = false;
+
+		if (Owner is HLPlayer player)
+		{
+			var ammo = player.TakeAmmo(AltAmmoType, AltClipSize - AltAmmoClip);
+			if (ammo == 0)
+				return;
+
+			AltAmmoClip += ammo;
 		}
 	}
 
@@ -193,6 +260,16 @@
 			return false;
 
 		AmmoClip -= amount;
+		return true;
+	}
+
+	public bool TakeAltAmmo(int amount)
+	{
+		if (AltAmmoClip < amount)
+			return false;
+
+		AltAmmoClip -= amount;
+
 		return true;
 	}
 

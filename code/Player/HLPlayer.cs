@@ -82,6 +82,7 @@
 		ply.GiveAmmo( AmmoType.Buckshot, 1000 );
 		ply.GiveAmmo( AmmoType.Crossbow, 1000 );
 		ply.GiveAmmo( AmmoType.Grenade, 1000 );
+		ply.GiveAmmo( AmmoType.SMGGrenade, 1000 );
 		ply.GiveAmmo( AmmoType.Tripmine, 1000 );
 
 		ply.Inventory.Add( new Crowbar());
