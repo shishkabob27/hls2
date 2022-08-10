@@ -54,9 +54,6 @@ partial class SMG : HLWeapon
 
 	public override void AttackSecondary()
 	{
-		// Screw this for now
-		//return;
-
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
@@ -70,7 +67,8 @@ partial class SMG : HLWeapon
 
 		// woosh sound
 		// screen shake
-
+		PlaySound( "glauncher" );
+		
 		Rand.SetSeed( Time.Tick );
 
 		if ( IsServer )
@@ -80,7 +78,7 @@ partial class SMG : HLWeapon
 				Position = Owner.EyePosition + Owner.EyeRotation.Forward * 3.0f,
 				Owner = Owner
 			};
-
+			
 			grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 1000.0f;
 			grenade.PhysicsBody.Rotation = Owner.EyeRotation;
 
