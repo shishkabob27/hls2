@@ -172,7 +172,7 @@ partial class HLGame : Game
 	{
 		// Effects
 		Sound.FromWorld( "explode", position );
-		Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position );
+		Particles.Create( "particles/explosion.vpcf", position );
 
 		// Damage, etc
 		var overlaps = Entity.FindInSphere( position, radius );
