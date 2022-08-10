@@ -13,8 +13,6 @@
 
 	private void AddCameraEffects( ref CameraSetup camSetup )
 	{
-		//Rotation = Local.Pawn.EyeRotation;
-
 		if ( Local.Pawn.LifeState == LifeState.Dead )
 			return;
 
@@ -26,7 +24,6 @@
 		// Bob up and down based on our walk movement
 		//
 		var speed = Owner.Velocity.Length.LerpInverse( 0, 800 );
-		var left = camSetup.Rotation.Left;
 		var forward = camSetup.Rotation.Forward;
 
 		if ( Owner.GroundEntity != null )
@@ -35,12 +32,5 @@
 		}
 
 		Position += forward * MathF.Sin( walkBob ) * speed * -1;
-		//Position += left * MathF.Sin( walkBob * 0.5f ) * speed * -0.5f;
-
-		//var uitx = new Sandbox.UI.PanelTransform();
-		//uitx.AddTranslateY( MathF.Sin( walkBob * 1.0f ) * speed * -4.0f );
-		//uitx.AddTranslateX( MathF.Sin( walkBob * 0.5f ) * speed * -3.0f );
-
-		//HudRootPanel.Current.Style.Transform = uitx;
 	}
 }

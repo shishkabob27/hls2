@@ -255,8 +255,6 @@
 	private void AddCameraEffects( ref CameraSetup setup )
 	{
 		var speed = Velocity.Length.LerpInverse( 0, 16 );
-		var forwardspeed = Velocity.Normal.Dot( setup.Rotation.Forward );
-
 		var up = setup.Rotation.Up;
 
 		if ( GroundEntity != null )
@@ -357,8 +355,6 @@
 	[ClientRpc]
 	public void TookDamage( Vector3 pos )
 	{
-		//DebugOverlay.Sphere( pos, 10.0f, Color.Red, true, 10.0f );
-
 		TimeSinceDamage = 0;
 		DamageIndicator.Current?.OnHit( pos );
 	}
