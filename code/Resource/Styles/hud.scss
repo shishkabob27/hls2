@@ -88,6 +88,13 @@ vitals
     }
 }
 
+iconpanel
+{
+    width: 32px;
+    mix-blend-mode: lighten;
+    background-color: $orange;
+}
+
 .bottom-right
 {
     ammo
@@ -98,56 +105,6 @@ vitals
         width: 100%;
         height: 100%;
 
-        .ammobar
-        {
-            flex-direction: row-reverse;
-            flex-shrink: 0;
-            align-items: center;
-
-
-            .bullet
-            {
-                width: 8px;
-                flex-shrink: 0;
-                flex-grow: 0;
-                height: 30px;
-                background-color: $orange;
-                border-radius: 3px 3px 0px 0px;
-                margin-left: 2px;
-                transition: all 0.1s ease-out;
-                box-shadow: 0px 0px 20px $orange;
-
-                &.empty
-                {
-                    background-color: $orange;
-                    opacity: 0.1;
-                    box-shadow: none;
-                }
-            }
-
-            &.is-shotgun .bullet
-            {
-                width: 12px;
-                height: 35px;
-                margin-left: 10px;
-                border-radius: 1px 1px 1px 1px;
-            }
-
-            &.is-crossbow .bullet
-            {
-                width: 3px;
-                height: 35px;
-                margin-left: 5px;
-                border-radius: 1px 1px 1px 1px;
-            }
-
-            &.is-smg .bullet
-            {
-                width: 4px;
-                margin-left: 2px;
-                border-radius: 2px 2px 1px 1px;
-            }
-        }
 
         label
         {
@@ -159,10 +116,20 @@ vitals
                 color: #f00;
             }
         }
+
+        .seperator{
+            opacity: 1;
+            height: 32px;
+            width: 32px;
+            background-image: url("/ui/seperator.png");
+        }
+
+        
+
     }
 }
 
-.inventory, .ammobar, healthhud, armourhud, gamehud
+.ammocount, .inventory, .ammobar, healthhud, armourhud, gamehud
 {
     
     font-family: "Trebuchet MS";
@@ -175,12 +142,21 @@ vitals
     opacity: 1;
 }
 
-iconpanel
-{
+.seperator{
+    opacity: 1;
+    height: 32px;
     width: 32px;
-    mix-blend-mode: lighten;
-    background-color: $orange;
+    background-image: url("/ui/seperator.png");
 }
+
+.seperator2{
+    opacity: 1;
+    height: 32px;
+    width: 32px;
+    background-image: url("/ui/seperator.png");
+}
+
+
 
 healthhud, armourhud
 {
@@ -218,13 +194,7 @@ healthhud{
         opacity: 1;
         background-image: url("/ui/health.png");
     }
-
-    .seperator{
-        opacity: 1;
-        height: 32px;
-        width: 32px;
-        background-image: url("/ui/seperator.png");
-    }
+ 
 
 }
 

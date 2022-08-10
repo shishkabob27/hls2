@@ -3,15 +3,19 @@ using Sandbox.UI.Construct;
 
 public class Ammo : Panel
 {
+	public Label AmmoCount;
+	public IconPanel Seperator;
 	public Label Inventory;
-	public Panel AmmoBar;
-
-	List<Panel> BulletPanels = new List<Panel>();
+	public Label AltAmmoInventory;
+ 
 
 	public Ammo()
 	{
-		AmmoBar = Add.Panel( "ammobar" );
+		AmmoCount = Add.Label("100", "ammocount");
+
+		Seperator = Add.Icon(string.Empty, "seperator2");
 		Inventory = Add.Label( "100", "inventory" );
+
 	}
 
 	int weaponHash;
@@ -30,37 +34,14 @@ public class Ammo : Panel
 		Inventory.Text = $"{inv}";
 		Inventory.SetClass( "active", inv >= 0 );
 
-		var hash = HashCode.Combine( player, weapon );
-		if ( weaponHash != hash )
-		{
-			weaponHash = hash;
-			RebuildAmmoBar( weapon );
-		}
+		var clip = weapon.AmmoClip;
+		AmmoCount.Text = $"{clip}";
+		AmmoCount.SetClass("active", clip >= 0);
+        if (weapon.ClipSize == 1)
+			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine
 
-		UpdateAmmoBar( weapon );
+
 	}
 
-	void RebuildAmmoBar(HLWeapon weapon )
-	{
-		AmmoBar.DeleteChildren( true );
-		BulletPanels.Clear();
 
-		//AmmoBar.SetClass( "is-crossbow", weapon is Crossbow );
-		//AmmoBar.SetClass( "is-shotgun", weapon is Shotgun );
-		//AmmoBar.SetClass( "is-smg", weapon is SMG );
-
-		for ( int i = 0; i < weapon.ClipSize; i++ )
-		{
-			var bullet = AmmoBar.Add.Panel( "bullet" );
-			BulletPanels.Add( bullet );
-		}
-	}
-
-	void UpdateAmmoBar(HLWeapon weapon )
-	{
-		for ( int i = 0; i < BulletPanels.Count; i++ )
-		{
-			BulletPanels[i].SetClass( "empty", i >= weapon.AmmoClip );
-		}
-	}
 }

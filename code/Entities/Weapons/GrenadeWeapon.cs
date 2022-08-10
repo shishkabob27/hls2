@@ -8,7 +8,7 @@ partial class GrenadeWeapon : HLWeapon
 
 	public override float PrimaryRate => 1.0f;
 	public override float SecondaryRate => 1.0f;
-	public override float ReloadTime => 1.0f;
+	public override float ReloadTime => 0.0f;
 	public override AmmoType AmmoType => AmmoType.Grenade;
 	public override int ClipSize => 1;
 	public override int Bucket => 4;
