@@ -13,8 +13,11 @@ public class Ammo : Panel
 	{
 		AmmoCount = Add.Label("100", "ammocount");
 
-		Seperator = Add.Icon(string.Empty, "seperator2");
+		Seperator = Add.Icon(string.Empty, "seperator");
 		Inventory = Add.Label( "100", "inventory" );
+		//TODO - AMMO ICON HERE
+		AltAmmoInventory = Add.Label("100", "altammocount");
+		//TODO - ALT AMMO ICON HERE
 
 	}
 
@@ -32,13 +35,30 @@ public class Ammo : Panel
 
 		var inv = weapon.AvailableAmmo();
 		Inventory.Text = $"{inv}";
-		Inventory.SetClass( "active", inv >= 0 );
+		Inventory.SetClass( "invisible", inv <= 0 );
 
 		var clip = weapon.AmmoClip;
 		AmmoCount.Text = $"{clip}";
 		AmmoCount.SetClass("active", clip >= 0);
-        if (weapon.ClipSize == 1)
-			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine
+
+		Seperator.SetClass("invisible", weapon.ClipSize <= 1);
+		if (weapon.ClipSize <= 1)
+			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine TODO - Better way to do this? add a ShowClip bool in HLWeapon maybe?	            
+		
+			
+
+		if (weapon.HasAltAmmo)
+		{
+			AltAmmoInventory.SetClass("invisible", false);
+			var altinv = weapon.AvailableAltAmmo();
+			AltAmmoInventory.Text = $"{altinv}";
+			AltAmmoInventory.SetClass("active", altinv >= 0);
+		} 
+		else
+        {
+			AltAmmoInventory.Text = $" ";
+			AltAmmoInventory.SetClass("invisible", true);
+		}
 
 
 	}
