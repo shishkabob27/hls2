@@ -143,6 +143,20 @@ iconpanel
     }
 }
 
+.altammocount
+{
+    color: #f00;
+    text-shadow: 0px 0px 1px #f00;
+    position: absolute;
+    bottom: 48px;
+    right: 0px;
+    text-align: right;
+    &.invisible
+    {
+        opacity: 0;
+    }
+}
+
 .altammocount, .ammocount, .inventory, .ammobar, healthhud, armourhud, gamehud
 {
     
@@ -151,28 +165,16 @@ iconpanel
     color: $orange;
     text-shadow: 0px 0px 1px $orange;
     min-width: 64px;
+    
     text-align: center;
     align-items: center;
     opacity: 1;
     &.invisible
     {
-        min-width: 0px;
-        width: 0px;
+        opacity: 0;
     }
 }
-.altammocount
-{
-    
-    position: absolute;
-    bottom: 48px;
-    right: 0px;
-    text-align: right;
-    &.invisible
-    {
-        min-width: 0px;
-        width: 0px;
-    }
-}
+
 
 .inventory
 {
@@ -201,7 +203,7 @@ healthhud, armourhud
     label
     {
         text-align: right;
-        width: 65px;
+        width: 64px;
     }
 }
 

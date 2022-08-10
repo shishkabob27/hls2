@@ -186,7 +186,7 @@
 	public override void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;
-		TimeSinceSecondaryAttack = 0;
+		TimeSinceSecondaryAttack = 0; // what???? why is secondary reset?
 	}
 
 	[ClientRpc]
