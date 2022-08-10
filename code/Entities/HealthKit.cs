@@ -2,11 +2,11 @@
 /// Gives 25 health points.
 /// </summary>
 [Library("hl_healthkit"), HammerEntity]
-[EditorModel( "models/gameplay/healthkit/healthkit.vmdl" )]
+[EditorModel( "models/hl1/gameplay/medkit.vmdl" )]
 [Title(  "Health Kit" )]
 partial class HealthKit : ModelEntity, IRespawnableEntity
 {
-	public static readonly Model WorldModel = Model.Load( "models/gameplay/healthkit/healthkit.vmdl" );
+	public static readonly Model WorldModel = Model.Load( "models/hl1/gameplay/medkit.vmdl" );
 
 	public override void Spawn()
 	{
