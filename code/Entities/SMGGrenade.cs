@@ -1,9 +1,11 @@
 ﻿partial class SMGGrenade : BasePhysics
 {
-	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade_mp5.vmdl" );
+public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade_mp5.vmdl" );
 
-	public SMGGrenade()
+	public override void Spawn()
 	{
+		base.Spawn();
+
 		Model = WorldModel;
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 	}
