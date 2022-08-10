@@ -78,6 +78,8 @@ partial class SMG : HLWeapon
 		// woosh sound
 		// screen shake
 
+		PlaySound( "glauncher" );
+
 		Rand.SetSeed( Time.Tick );
 
 		if ( IsServer )
