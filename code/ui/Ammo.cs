@@ -11,12 +11,12 @@ public class Ammo : Panel
 
 	public Ammo()
 	{
-		AmmoCount = Add.Label("100", "ammocount");
+		AmmoCount = Add.Label("0", "ammocount");
 
 		Seperator = Add.Icon(string.Empty, "seperator");
-		Inventory = Add.Label( "100", "inventory" );
+		Inventory = Add.Label( "0", "inventory" );
 		//TODO - AMMO ICON HERE
-		AltAmmoInventory = Add.Label("100", "altammocount");
+		AltAmmoInventory = Add.Label("0", "altammocount");
 		//TODO - ALT AMMO ICON HERE
 
 	}
@@ -25,6 +25,13 @@ public class Ammo : Panel
 
 	public override void Tick()
 	{
+		Inventory.Text = "";
+
+		AmmoCount.Text = "";
+		AltAmmoInventory.Text = "";
+
+		Seperator.SetClass("invisible", true);
+        
 		var player = Local.Pawn as Player;
 		if ( player == null ) return;
 
@@ -34,21 +41,21 @@ public class Ammo : Panel
 		if ( weapon == null ) return;
 
 		var inv = weapon.AvailableAmmo();
+		Inventory.SetClass("invisible", weapon.ClipSize <= 0 || Inventory.Text == "0");
 		Inventory.Text = $"{inv}";
-		Inventory.SetClass( "invisible", weapon.ClipSize <= 0);
 
 		var clip = weapon.AmmoClip;
 		AmmoCount.Text = $"{clip}";
 		AmmoCount.SetClass("active", clip >= 0);
 
-		Seperator.SetClass("invisible", weapon.ClipSize <= 1);
+		Seperator.SetClass("invisible", weapon.ClipSize <= 1 || Inventory.Text == "0");
 		if (weapon.ClipSize <= 1)
 			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine TODO - Better way to do this? add a ShowClip bool in HLWeapon maybe?	            
 
 
 
 		AltAmmoInventory.SetClass("invisible", !weapon.HasAltAmmo);
-		AltAmmoInventory.Text = $"";
+		
 
 		if (weapon.HasAltAmmo)
 		{
