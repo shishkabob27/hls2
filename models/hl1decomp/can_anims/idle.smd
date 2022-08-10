@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "Cylinder01" -1
+end
+skeleton
+  time 0
+    0 -0.399902 6.355469 3.587891 1.711269 1.554067 0.133567
+end

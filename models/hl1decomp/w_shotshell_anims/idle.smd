@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "shell01" -1
+end
+skeleton
+  time 0
+    0 -1.113281 1.983398 7.753906 3.132198 0.008704 -0.000041
+end

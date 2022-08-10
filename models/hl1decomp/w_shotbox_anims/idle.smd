@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "SHELL01" -1
+end
+skeleton
+  time 0
+    0 3.041016 0.006092 5.167969 0.000000 0.000000 -0.000041
+end

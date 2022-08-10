@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "filecabinet" -1
+end
+skeleton
+  time 0
+    0 9.679688 15.000000 0.089905 1.570674 0.000061 -0.000061
+end

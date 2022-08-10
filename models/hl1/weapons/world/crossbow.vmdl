@@ -1,0 +1,148 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "Skeleton"
+				children = 
+				[
+					{
+						_class = "Bone"
+						name = "hold_R"
+						origin = [ 0.0, 0.0, 0.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						do_not_discard = true
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "bowchrome.vmat"
+								to = "materials/hl1/weapons/world/crossbow/bowchrome.vmat"
+							},
+							{
+								from = "clip_side.vmat"
+								to = "materials/hl1/weapons/world/crossbow/clip_side.vmat"
+							},
+							{
+								from = "mechanismside.vmat"
+								to = "materials/hl1/weapons/world/crossbow/mechanismside.vmat"
+							},
+							{
+								from = "receiverside.vmat"
+								to = "materials/hl1/weapons/world/crossbow/receiverside.vmat"
+							},
+							{
+								from = "sightcyl.vmat"
+								to = "materials/hl1/weapons/world/crossbow/sightcyl.vmat"
+							},
+							{
+								from = "stock.vmat"
+								to = "materials/hl1/weapons/world/crossbow/stock.vmat"
+							},
+							{
+								from = "string.vmat"
+								to = "materials/hl1/weapons/world/crossbow/string.vmat"
+							},
+							{
+								from = "world_grip.vmat"
+								to = "materials/hl1/weapons/world/crossbow/world_grip.vmat"
+							},
+							{
+								from = "world_shoulder.vmat"
+								to = "materials/hl1/weapons/world/crossbow/world_shoulder.vmat"
+							},
+							{
+								from = "world_slide.vmat"
+								to = "materials/hl1/weapons/world/crossbow/world_slide.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeCylinder"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.203498
+						point0 = [ -6.561722, -0.17001, 1.505627 ]
+						point1 = [ 16.139021, -0.10755, 1.641748 ]
+					},
+					{
+						_class = "PhysicsShapeCylinder"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.269182
+						point0 = [ -22.947718, 0.415537, -0.163249 ]
+						point1 = [ -6.487861, 0.266136, 0.264313 ]
+					},
+					{
+						_class = "PhysicsShapeCylinder"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 1.627204
+						point0 = [ 6.483297, -0.069189, -0.799426 ]
+						point1 = [ 9.757689, -0.093285, -8.644125 ]
+					},
+					{
+						_class = "PhysicsShapeCylinder"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.203498
+						point0 = [ 13.772336, -10.017127, 1.809067 ]
+						point1 = [ 13.690002, 10.886774, 2.079557 ]
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/w_crossbow.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 180.0, 0.0 ]
+						import_scale = 0.5
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"w_crossbow",
+							]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

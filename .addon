@@ -1,0 +1,97 @@
+{
+  "Title": "Half-Life: Source 2",
+  "Type": "game",
+  "Org": "shishkabob",
+  "Ident": "hls2",
+  "Schema": 1,
+  "HasAssets": true,
+  "AssetsPath": "",
+  "ResourcePaths": [
+    "/resource/*",
+    "/ui/*",
+    "/font/*"
+  ],
+  "HasCode": true,
+  "CodePath": "/code/",
+  "RootNamespace": null,
+  "Metadata": {
+    "MaxPlayers": 8,
+    "MinPlayers": 1,
+    "GameNetworkType": "Multiplayer",
+    "MapSelect": "Unrestricted",
+    "MapList": [],
+    "RankType": "None",
+    "PerMapRanking": false,
+    "LeaderboardType": "None",
+    "ProjectTemplate": null,
+    "GameCategory": "Shooter",
+    "Compiler": {
+      "RootNamespace": "hls2",
+      "DefineConstants": "SANDBOX;ADDON;DEBUG",
+      "NoWarn": "1701;1702;1591;"
+    },
+    "Collision": {
+      "Defaults": {
+        "solid": "Collide",
+        "trigger": "Ignore",
+        "ladder": "Ignore",
+        "water": "Trigger",
+        "weapon": "Trigger",
+        "debris": "Unset",
+        "player": "Unset"
+      },
+      "Pairs": [
+        {
+          "a": "solid",
+          "b": "solid",
+          "r": "Collide"
+        },
+        {
+          "a": "trigger",
+          "b": "playerclip",
+          "r": "Ignore"
+        },
+        {
+          "a": "solid",
+          "b": "trigger",
+          "r": "Trigger"
+        },
+        {
+          "a": "playerclip",
+          "b": "solid",
+          "r": "Collide"
+        },
+        {
+          "a": "trigger",
+          "b": "trigger"
+        },
+        {
+          "a": "debris",
+          "b": "player",
+          "r": "Ignore"
+        },
+        {
+          "a": "trigger",
+          "b": "player",
+          "r": "Trigger"
+        }
+      ]
+    },
+    "Physics": {
+      "SubSteps": 20,
+      "TimeScale": 1,
+      "Gravity": "0,0,-800",
+      "AirDensity": 1.2,
+      "SleepingEnabled": true,
+      "SimulationMode": "Continuous",
+      "PositionIterations": 2,
+      "VelocityIterations": 8,
+      "SoftBodyIterations": 1,
+      "SoftBodySubsteps": 1
+    },
+    "ControlModes": {
+      "Keyboard": true,
+      "Gamepad": true
+    }
+  }
+}

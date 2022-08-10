@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "Sphere01" -1
+end
+skeleton
+  time 0
+    0 1.281250 0.000000 8.601563 1.570796 0.000122 -0.000122
+end

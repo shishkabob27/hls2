@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "sides01" -1
+end
+skeleton
+  time 0
+    0 0.241943 -1.063477 1.248047 -1.570755 -0.009055 1.561741
+end

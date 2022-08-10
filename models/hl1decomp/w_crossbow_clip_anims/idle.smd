@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "Crossbow08" -1
+end
+skeleton
+  time 0
+    0 -16.187500 -19.593750 0.874023 0.000000 -1.570410 -1.570796
+end

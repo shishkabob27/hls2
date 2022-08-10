@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "Box01" -1
+end
+skeleton
+  time 0
+    0 2.353516 2.185547 1.725586 0.000000 0.000000 1.548699
+end

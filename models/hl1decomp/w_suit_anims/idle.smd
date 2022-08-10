@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "Player_Mesh" -1
+end
+skeleton
+  time 0
+    0 -4.429688 -1.883789 51.343750 1.569942 0.000061 -0.000061
+end

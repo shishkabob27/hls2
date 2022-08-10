@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "Dummy01" -1
+end
+skeleton
+  time 0
+    0 0.035980 -0.017715 0.000000 0.000000 0.000000 -0.000041
+end

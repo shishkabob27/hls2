@@ -1,0 +1,13 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "GeoSphere01" -1
+  1 "Box01" -1
+end
+skeleton
+  time 0
+    0 -0.376485 -0.346834 4.461716 0.000000 0.000000 0.000000
+    1 1.010411 -0.364808 6.594609 -0.016782 0.353087 -0.901823
+end
+triangles
+end

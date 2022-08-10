@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "NGON02" -1
+end
+skeleton
+  time 0
+    0 2.515625 -2.740234 2.132813 1.420282 -1.570578 -0.547775
+end
