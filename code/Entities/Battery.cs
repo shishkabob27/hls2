@@ -2,11 +2,11 @@
 /// Gives 25 Armour
 /// </summary>
 [Library( "hl_battery" ), HammerEntity]
-[EditorModel( "models/dm_battery.vmdl" )]
+[EditorModel( "models/hl1/gameplay/battery.vmdl" )]
 [Title(  "Battery" )]
 partial class Battery : ModelEntity, IRespawnableEntity
 {
-	public static readonly Model WorldModel = Model.Load( "models/dm_battery.vmdl" );
+	public static readonly Model WorldModel = Model.Load( "models/hl1/gameplay/battery.vmdl" );
 
 	public override void Spawn()
 	{
