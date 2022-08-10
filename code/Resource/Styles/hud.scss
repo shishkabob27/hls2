@@ -185,10 +185,10 @@ iconpanel
 healthhud, armourhud
 {
 
-    margin-right:64px;
+    margin-right:95px;
     iconpanel
     {
-        margin-right:8px;
+        margin-right:0px;
         text-align: left;
         height: 48px;
         width: 48px;
@@ -198,6 +198,11 @@ healthhud, armourhud
         background-position-y: center;
         background-image-tint: #fb0;
 
+    }
+    label
+    {
+        text-align: right;
+        width: 65px;
     }
 }
 
@@ -234,7 +239,6 @@ armourhud
     
     .icon
     {
-        padding-right: 100px;
         opacity: 1;
         background-image: url("/ui/armour_empty.png");
         
