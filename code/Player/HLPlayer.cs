@@ -51,11 +51,14 @@
 		Health = 100;
 		Armour = 0;
 
+		//give player all weapons and ammo on spawn for testing
+
 		GiveAmmo( AmmoType.Pistol, 1000 );
 		GiveAmmo( AmmoType.Python, 1000 );
 		GiveAmmo( AmmoType.Buckshot, 1000 );
 		GiveAmmo( AmmoType.Crossbow, 1000 );
 		GiveAmmo( AmmoType.Grenade, 1000 );
+		GiveAmmo( AmmoType.SMGGrenade, 1000 );
 		GiveAmmo( AmmoType.Tripmine, 1000 );
 
 		Inventory.Add( new Crowbar());
