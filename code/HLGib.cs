@@ -83,9 +83,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		maxs = new Vector3( +bGirth, +bGirth, bHeight );
 		MoveHelper mover = new MoveHelper( Position, Velocity );
 		mover.Trace = mover.Trace.Size( mins, maxs ).Ignore( this );
-		mover.GroundBounce = 0.5f;
+		mover.GroundBounce = 0.55f;
 		mover.MaxStandableAngle = 10;
-		mover.WallBounce = 0.5f;
+		mover.WallBounce = 0.55f;
 
 		mover.TryMove( Time.Delta );
 		//mover.TryUnstuck();
