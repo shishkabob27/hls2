@@ -111,25 +111,29 @@
 
 		Inventory.DeleteContents();
 
-		/*
+		
 
-		Disable Gibbing
+		
 
 		if ( LastDamage.Flags.HasFlag( DamageFlags.Blast ) )
 		{
 			using ( Prediction.Off() )
 			{
-				var particles = Particles.Create( "particles/gib.vpcf" );
-				if ( particles != null )
-				{
-					particles.SetPosition( 0, Position + Vector3.Up * 40 );
+                for (int i = 0; i < 10; i++)
+                {
+					var gib = new HLGib();
+					gib.AngularVelocity = new Vector3(Rand.Float(-100, 100), 0, Rand.Float(-100, 100)).EulerAngles;
+					gib.Velocity = new Vector3(Rand.Int(-100, 100), Rand.Int(-100, 100), Rand.Int(-100, 100));
+					gib.Position = EyePosition + EyeRotation.Forward * 40;
+					gib.Rotation = Rotation.LookAt(Vector3.Random.Normal);
+					gib.Spawn();
 				}
-			}
+
+            }
 		}
 		else
 		{
 		}
-		*/
 
 		//BecomeRagdollOnClient(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
 
