@@ -102,18 +102,7 @@
 	{
 		base.OnKilled();
 
-		var coffin = new Coffin();
-		coffin.Position = Position + Vector3.Up * 30;
-		coffin.Rotation = Rotation;
-		coffin.PhysicsBody.Velocity = Velocity + Rotation.Forward * 100;
-
-		coffin.Populate( this );
-
 		Inventory.DeleteContents();
-
-		
-
-		
 
 		if ( LastDamage.Flags.HasFlag( DamageFlags.Blast ) )
 		{
