@@ -4,6 +4,9 @@ Layer0
 {
 	shader "projected_decals.vfx"
 
+	//---- Decal ----
+	F_TRIPLANAR_MAPPING 1
+
 	//---- Ambient Occlusion ----
 	TextureAmbientOcclusion "materials/default/default_ao.tga"
 

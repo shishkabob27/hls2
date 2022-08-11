@@ -8,49 +8,49 @@
 				Material = resource:"materials/decals/_blood1.vmat"
 				Width = "32.00,0.00,0"
 				Height = "32.00,0.00,0"
-				Depth = "8.00,0.00,0"
+				Depth = "32.00,0.00,0"
 			},
 			{
 				Material = resource:"materials/decals/_blood2.vmat"
 				Width = "32.00,0.00,0"
 				Height = "32.00,0.00,0"
-				Depth = "8.00,0.00,0"
+				Depth = "32.00,0.00,0"
 			},
 			{
 				Material = resource:"materials/decals/_blood3.vmat"
 				Width = "32.00,0.00,0"
 				Height = "32.00,0.00,0"
-				Depth = "8.00,0.00,0"
+				Depth = "32.00,0.00,0"
 			},
 			{
 				Material = resource:"materials/decals/_blood4.vmat"
 				Width = "32.00,0.00,0"
 				Height = "32.00,0.00,0"
-				Depth = "8.00,0.00,0"
+				Depth = "32.00,0.00,0"
 			},
 			{
 				Material = resource:"materials/decals/_blood5.vmat"
 				Width = "32.00,0.00,0"
 				Height = "32.00,0.00,0"
-				Depth = "8.00,0.00,0"
+				Depth = "32.00,0.00,0"
 			},
 			{
 				Material = resource:"materials/decals/_blood6.vmat"
 				Width = "32.00,0.00,0"
 				Height = "32.00,0.00,0"
-				Depth = "8.00,0.00,0"
+				Depth = "32.00,0.00,0"
 			},
 			{
 				Material = resource:"materials/decals/_blood7.vmat"
 				Width = "32.00,0.00,0"
 				Height = "32.00,0.00,0"
-				Depth = "8.00,0.00,0"
+				Depth = "32.00,0.00,0"
 			},
 			{
 				Material = resource:"materials/decals/_blood8.vmat"
 				Width = "32.00,0.00,0"
 				Height = "32.00,0.00,0"
-				Depth = "8.00,0.00,0"
+				Depth = "32.00,0.00,0"
 			},
 		]
 	}
