@@ -85,11 +85,28 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		mover.Trace = mover.Trace.Size( mins, maxs ).Ignore( this );
 		mover.GroundBounce = 0.5f;
 		mover.MaxStandableAngle = 10;
+		mover.WallBounce = 0.5f;
+		var ok = mover.Trace.Run();
+      
 		
 
 		mover.TryMove( Time.Delta );
 		//mover.TryUnstuck();
+		if (mover.HitWall)
+		{
+			Log.Info("splot!");
+			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+			{
+				//Log.Info( "Splat!" );
+				var vecSpot = Position + new Vector3(0, 0, 8);
+				var tr = Trace.Ray(vecSpot, vecSpot + new Vector3(0, 0, -24)) //, MASK_SOLID_BRUSHONLY, this, COLLISION_GROUP_NONE, &tr);
+					.WithAnyTags("solid")
+					.Ignore(this)
+					.Run();
 
+                DecalSystem.PlaceUsingTrace(decal, tr);
+            }
+		}
 		prevTickPos = Position;
 		Position = mover.Position;
 		Velocity = mover.Velocity;
