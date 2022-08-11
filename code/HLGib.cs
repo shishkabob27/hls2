@@ -86,15 +86,12 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		mover.GroundBounce = 0.5f;
 		mover.MaxStandableAngle = 10;
 		mover.WallBounce = 0.5f;
-		var ok = mover.Trace.Run();
-      
-		
 
 		mover.TryMove( Time.Delta );
 		//mover.TryUnstuck();
 		if (mover.HitWall)
 		{
-			Log.Info("splot!");
+			//Log.Info("splot!");
 			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
 			{
 				//Log.Info( "Splat!" );
