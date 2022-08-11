@@ -38,7 +38,8 @@
         "trigger": "Ignore",
         "ladder": "Ignore",
         "water": "Trigger",
-        "player": "Unset"
+        "player": "Unset",
+        "debris": "Ignore"
       },
       "Pairs": [
         {
@@ -69,6 +70,15 @@
           "a": "trigger",
           "b": "player",
           "r": "Trigger"
+        },
+        {
+          "a": "trigger",
+          "b": "debris"
+        },
+        {
+          "a": "solid",
+          "b": "debris",
+          "r": "Collide"
         }
       ]
     },
