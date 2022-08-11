@@ -90,7 +90,7 @@ partial class SMG : HLWeapon
 				Owner = Owner
 			};
 
-			grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 1000.0f;
+			grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 600.0f;
 			grenade.PhysicsBody.Rotation = Owner.EyeRotation;
 
 			// This is fucked in the head, lets sort this this year
