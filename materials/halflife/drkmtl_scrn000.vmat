@@ -47,5 +47,5 @@ Layer0
 	g_nScaleTexCoordUByModelScaleAxis "0"
 	g_nScaleTexCoordVByModelScaleAxis "0"
 	g_vTexCoordOffset "[0.000 0.000]"
-	g_vTexCoordScale "[0.250 0.250]"
+	g_vTexCoordScale "[1.000 1.000]"
 }
