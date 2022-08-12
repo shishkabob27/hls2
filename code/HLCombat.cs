@@ -2,7 +2,7 @@
 
 public partial class HLCombat
 {
-    public static void CreateGibs(Vector3 Position, Vector3 DMGPos, float Health)
+    public static void CreateGibs(Vector3 Position, Vector3 DMGPos, float Health, BBox bbox)
     {
         Sound.FromWorld("bodysplat", Position);
         
@@ -31,7 +31,7 @@ public partial class HLCombat
                 gib.Velocity = gib.Velocity * 4;
             }
             
-            gib.Position = Position;
+            gib.Position = bbox.RandomPointInside + Position -bbox.Mins;
             gib.Rotation = Rotation.LookAt(Vector3.Random.Normal);
             gib.Spawn();
         }
@@ -45,9 +45,7 @@ public partial class HLCombat
         skullGib.Position = Position;
         skullGib.Rotation = Rotation.LookAt(Vector3.Random.Normal);
 
-        var players = Entity.FindInBox(new BBox(new Vector3(-2048, -2048, -2048), new Vector3(2048, 2048, 2048)));
-        var player = players.OfType<HLPlayer>().First();
-        Log.Info(player);
+        var player = HLUtils.FindPlayerInBox(Position, 2048);
         
         // 5% chance head will be thrown at player's face.
         if (player is HLPlayer && Rand.Float(0, 100) <= 5)

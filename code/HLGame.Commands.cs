@@ -51,7 +51,7 @@
 		[ConCmd.Server("Gib")]
 		public static void Gib()
         {
-            HLCombat.CreateGibs(ConsoleSystem.Caller.Pawn.Position, ConsoleSystem.Caller.Pawn.Position, 0);
+            HLCombat.CreateGibs(ConsoleSystem.Caller.Pawn.Position, ConsoleSystem.Caller.Pawn.Position, 0, new BBox(new Vector3(-16, -16, 0), new Vector3(16, 16, 72)));
         }
 	}
 }

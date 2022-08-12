@@ -57,7 +57,7 @@ internal class Scientist : AnimatedEntity
         {
             using (Prediction.Off())
             {
-                HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, LastDamage.Position, Health);
+                HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, LastDamage.Position, Health, this.CollisionBounds);
 
             }
         }
