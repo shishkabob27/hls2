@@ -13,7 +13,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	Entity SleepGroundEntity;
 	Vector3 prevTickPos;
 	PhysicsGroup phys;
-
+	int LifeTime = 0;
 	float bGirth = 1 * 0.8f;
 	float bHeight = 1;
 
@@ -128,7 +128,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	[Event.Tick.Server]
 	public void Think()
 	{
-		
+		LifeTime += 1;
 		if (RotAngles != SleepAngles)
 			RotAngles += AngularVelocity * Time.Delta;
 		Rotation = RotAngles.ToRotation();
@@ -160,6 +160,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			//DebugOverlay.ScreenText( $" SurfaceFriction: {SurfaceFriction}", lineOffset + 6 );
 			//DebugOverlay.ScreenText( $"    WishVelocity: {WishVelocity}", lineOffset + 7 );
 		}
+		if (LifeTime > 1000)
+			this.Delete();
+        
 		CalcGroundEnt();
 		Velocity -= new Vector3( 0, 0, gGravity * 0.5f ) * Time.Delta;
 		Velocity += new Vector3( 0, 0, BaseVelocity.z ) * Time.Delta;
