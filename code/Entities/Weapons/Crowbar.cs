@@ -33,7 +33,7 @@ partial class Crowbar : HLWeapon
 
 		// woosh sound
 		// screen shake
-		PlaySound( "cbar" );
+		
 
 		Rand.SetSeed( Time.Tick );
 
@@ -41,10 +41,20 @@ partial class Crowbar : HLWeapon
 		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.1f;
 		forward = forward.Normal;
 
+        
 		bool didHit = false;
-		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 70, 15 ) )
+		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 70, 1 ) )
 		{
-			tr.Surface.DoBulletImpact( tr );
+
+			tr.Surface.DoHLBulletImpact(tr, false);
+			if (tr.Hit)
+			{
+				didHit = true;
+			}
+			else
+			{
+				didHit = false;
+			}
 
 			if ( !IsServer ) continue;
 			if ( !tr.Entity.IsValid() ) continue;
@@ -55,18 +65,23 @@ partial class Crowbar : HLWeapon
 				.WithWeapon( this );
 
 			tr.Entity.TakeDamage( damageInfo );
-            if (tr.Hit)
-            {
-				didHit = true;
-            }
+
         }
 		ViewModelEntity?.SetAnimParameter("attack_has_hit", false);
         
-		if (didHit)
-        {
-            TimeSincePrimaryAttack = 0.3f;
+
+		if (!didHit)
+		{
+			PlaySound("sounds/hl1/weapons/cbar_miss.sound");
+		}
+		else
+		{
+			TimeSincePrimaryAttack = 0.26f;
             ViewModelEntity?.SetAnimParameter("attack_has_hit", true);
-        }
+
+			PlaySound("sounds/hl1/weapons/cbar_hit.sound");
+		}
+        
 
 		ViewModelEntity?.SetAnimParameter( "attack", true );
 		ViewModelEntity?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );

@@ -8,7 +8,7 @@
 		/// <summary>
 		/// Create a particle effect and play an impact sound for this surface being hit by a bullet
 		/// </summary>
-		public static Particles DoHLBulletImpact( this Surface self, TraceResult tr )
+		public static Particles DoHLBulletImpact( this Surface self, TraceResult tr, bool Particle = true)
 		{
 			//
 			// No effects on resimulate
@@ -24,7 +24,7 @@
 			var surf = self.GetBaseSurface();
 			while ( string.IsNullOrWhiteSpace( decalPath ) && surf != null )
 			{
-				decalPath = Rand.FromArray( surf.ImpactEffects.BulletDecal );
+				//decalPath = Rand.FromArray( surf.ImpactEffects.BulletDecal );
 				surf = surf.GetBaseSurface();
 			}
 
@@ -56,7 +56,9 @@
 			//
 			// Get us a particle effect
 			//
-
+			if (Particle == false)
+				return default;
+            
 			string particleName = "particles/hlimpact.vpcf";
 			//if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( self.ImpactEffects.Regular );
 
