@@ -1,4 +1,4 @@
-﻿[Library( "hl_grenade" ), HammerEntity]
+﻿[Library("weapon_handgrenade"), HammerEntity]
 [EditorModel("models/hl1/weapons/world/grenade.vmdl")]
 [Title( "Grenade" ), Category( "Weapons" )]
 partial class GrenadeWeapon : HLWeapon

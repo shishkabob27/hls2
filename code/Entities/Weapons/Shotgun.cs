@@ -1,4 +1,4 @@
-﻿[Library( "hl_shotgun" ), HammerEntity]
+﻿[Library( "weapon_shotgun" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/shotgun.vmdl" )]
 [Title( "Shotgun" ), Category( "Weapons" )]
 partial class Shotgun : HLWeapon

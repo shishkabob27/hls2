@@ -1,4 +1,4 @@
-﻿[Library( "hl_smg" ), HammerEntity]
+﻿[Library( "weapon_mp5" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/mp5.vmdl" )]
 [Title( "SMG" ), Category( "Weapons" )]
 partial class SMG : HLWeapon

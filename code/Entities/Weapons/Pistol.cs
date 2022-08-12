@@ -1,4 +1,4 @@
-﻿[Library( "hl_pistol" ), HammerEntity]
+﻿[Library("weapon_9mmhandgun"), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/glock.vmdl" )]
 [Title( "Pistol" ), Category( "Weapons" )]
 partial class Pistol : HLWeapon

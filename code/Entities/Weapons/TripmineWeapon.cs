@@ -1,4 +1,4 @@
-﻿[Library( "hl_tripmine" ), HammerEntity]
+﻿[Library( "weapon_tripmine" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/tripmine.vmdl" )]
 [Title(  "Tripmine" ), Category( "Weapons" )]
 partial class TripmineWeapon : HLWeapon

@@ -1,4 +1,4 @@
-﻿[Library( "hl_crossbow" ), HammerEntity]
+﻿[Library("weapon_crossbow"), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/crossbow.vmdl" )]
 [Title( "Crossbow" ), Category( "Weapons" )]
 partial class Crossbow : HLWeapon

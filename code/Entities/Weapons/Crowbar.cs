@@ -1,4 +1,4 @@
-﻿[Library( "hl_crowbar" ), HammerEntity]
+﻿[Library( "weapon_crowbar" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/crowbar.vmdl" )]
 [Title(  "Crowbar" ), Category( "Weapons" )]
 partial class Crowbar : HLWeapon
