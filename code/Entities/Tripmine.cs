@@ -96,7 +96,8 @@ public class LaserTrigger : ModelEntity
 	{
 		SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, new Capsule( Vector3.Zero, Rotation.Forward * length, 0.2f ) );
 		CollisionGroup = CollisionGroup.Trigger;
-	}
+        Tags.Add("trigger");
+    }
 
 	public override void StartTouch( Entity other )
 	{
@@ -104,6 +105,7 @@ public class LaserTrigger : ModelEntity
 
 		if ( other is WorldEntity ) return;
 		if ( other is BaseTrigger ) return;
+		if (other is Tripmine) return;
 
 		OnTriggered?.Invoke( other );
 	}

@@ -104,6 +104,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		//mover.TryUnstuck();
 		if (mover.HitWall)
 		{
+			this.StartTouch(this);
 			//Sound.FromWorld("flesh", Position);
 			//Log.Info("splot!");
 			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
@@ -237,7 +238,6 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		var tr = Trace.Ray(start + TraceOffset, end + TraceOffset)
 					.Size(mins, maxs)
 					.WithAnyTags("solid")
-					.WorldOnly()
 					.Ignore( this )
 					.Run();
 
@@ -338,9 +338,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		base.StartTouch( other );
 		//Log.Info( "boing!" );
 		FL_FLY = false;
-		FL_ONGROUND = true;
-		if (Velocity.IsNearlyZero())
-			RotAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
+		FL_ONGROUND = true; // touch != on the ground why is this here, this var isn't even used!
+		//if (Velocity.IsNearlyZero())
+			//RotAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
 		// set angle
 
 		// set anglular velocity
