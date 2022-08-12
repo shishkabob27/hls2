@@ -41,6 +41,7 @@ partial class Crowbar : HLWeapon
 		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.1f;
 		forward = forward.Normal;
 
+		bool didHit = false;
 		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 70, 15 ) )
 		{
 			tr.Surface.DoBulletImpact( tr );
@@ -54,8 +55,19 @@ partial class Crowbar : HLWeapon
 				.WithWeapon( this );
 
 			tr.Entity.TakeDamage( damageInfo );
-		}
-		ViewModelEntity?.SetAnimParameter( "attack_has_hit", true );
+            if (tr.Hit)
+            {
+				didHit = true;
+            }
+        }
+		ViewModelEntity?.SetAnimParameter("attack_has_hit", false);
+        
+		if (didHit)
+        {
+            TimeSincePrimaryAttack = 0.3f;
+            ViewModelEntity?.SetAnimParameter("attack_has_hit", true);
+        }
+
 		ViewModelEntity?.SetAnimParameter( "attack", true );
 		ViewModelEntity?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );
 		if ( Owner is HLPlayer player )
