@@ -1,4 +1,4 @@
-﻿[Library("monster_Gman"), HammerEntity]
+﻿[Library("monster_gman"), HammerEntity]
 [EditorModel("models/hl1/monster/gman.vmdl")]
 [Title("Gman"), Category("Monsters")]
 internal class Gman : AnimatedEntity
@@ -12,7 +12,7 @@ internal class Gman : AnimatedEntity
     public override void Spawn()
     {
         base.Spawn();
-        SetAnimGraph("animgraphs/scientist.vanmgrph");
+        //SetAnimGraph("animgraphs/scientist.vanmgrph");
         Health = 20;
 
         SetModel("models/hl1/monster/gman.vmdl");
