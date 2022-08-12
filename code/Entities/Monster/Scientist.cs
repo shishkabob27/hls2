@@ -10,12 +10,16 @@ internal class Scientist : AnimatedEntity
         "models/hl1/monster/scientist/scientist_04.vmdl",
     };
 
+    [Property]
+	public float Body { get; set; } = -1;
+
     public override void Spawn()
     {
         base.Spawn();
         SetAnimGraph("animgraphs/scientist.vanmgrph");
         Health = 20;
-        SetModel(Rand.FromList<string>(ScientistMDLList));
+
+        SetModel(SetScientistModel());
         SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
         EnableHitboxes = true; 
         PhysicsEnabled = true;
@@ -24,6 +28,29 @@ internal class Scientist : AnimatedEntity
         Tags.Add("player"); // add player for now until a monster tag is added (can't do that now cause editing addon cfg is a pain for me (xenthio btw)
     
     }
+
+    // probably not the best way to do it but it works
+    public string SetScientistModel(){
+        switch (Body)
+        {
+            case 0:
+                return "models/hl1/monster/scientist/scientist_01.vmdl";
+                break;
+            case 1:
+                return "models/hl1/monster/scientist/scientist_02.vmdl";
+                break;
+            case 2:
+                return "models/hl1/monster/scientist/scientist_03.vmdl";
+                break;
+            case 3:
+                return "models/hl1/monster/scientist/scientist_04.vmdl";
+                break;
+            default:
+                return Rand.FromList<string>(ScientistMDLList);
+                break;
+        }
+    }
+
     // Stub, this does nothing yet
     DamageInfo LastDamage;
     
