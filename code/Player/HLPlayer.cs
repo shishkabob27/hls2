@@ -108,7 +108,7 @@
 		{
 			using ( Prediction.Off() )
 			{
-				HLCombat.CreateGibs(Position, LastDamage);
+				HLCombat.CreateGibs(CollisionWorldSpaceCenter, LastDamage);
 
             }
 		}
