@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 	/// Sounds to be used by ent_door if it does not override sounds.
 	/// </summary>
 	[ModelDoc.GameData( "door_sounds" )]
-	public class ModelDoorSounds
+	public class ModelDoorRotatingSounds
 	{
 		/// <summary>
 		/// Sound to play when the door reaches it's fully open position.
@@ -49,13 +49,13 @@ using System.Text.Json.Serialization;
 	/// A basic door entity that can move or rotate. It can be a model or a mesh entity.
 	/// The door will rotate around the model's origin. For Hammer meshes the mesh origin can be set via the Pivot Tool.
 	/// </summary>
-	[Library( "func_door" )]
+	[Library( "func_door_rotating" )]
 	[HammerEntity, SupportsSolid]
 	[Model( Archetypes = ModelArchetype.animated_model )]
 	[DoorHelper( "movedir", "movedir_islocal", "movedir_type", "distance" )]
 	[RenderFields, VisGroup( VisGroup.Dynamic )]
 	[Title( "Door" ), Category( "Legacy" ), Icon( "door_front" )]
-	public partial class DoorEntity : KeyframeEntity, IUse
+	public partial class DoorRotatingEntity : KeyframeEntity, IUse
 	{
 		[Flags]
 		public enum Flags
@@ -64,7 +64,7 @@ using System.Text.Json.Serialization;
 			StartLocked = 2,
 			//SpawnOpen = 4,
 			//OneWay = 8,
-			Touch = 16,
+			//Touch = 16,
 
 			//StartUnbreakable = 524288,
 		}
@@ -98,7 +98,7 @@ using System.Text.Json.Serialization;
 		/// Movement type of the door.
 		/// </summary>
 		[Property( "movedir_type", Title = "Movement Type" )]
-		public DoorMoveType MoveDirType { get; set; } = DoorMoveType.Moving;
+		public DoorMoveType MoveDirType { get; set; } = DoorMoveType.Rotating;
 
 		/// <summary>
 		/// Moving door: The amount, in inches, of the door to leave sticking out of the wall it recedes into when pressed. Negative values make the door recede even further into the wall.
