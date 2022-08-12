@@ -13,7 +13,7 @@ internal class Scientist : AnimatedEntity
     public override void Spawn()
     {
         base.Spawn();
-
+        SetAnimGraph("animgraphs/scientist.vanmgrph");
         Health = 20;
         SetModel(Rand.FromList<string>(ScientistMDLList));
         SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
