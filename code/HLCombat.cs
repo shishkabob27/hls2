@@ -1,10 +1,12 @@
 ﻿// https://github.com/ValveSoftware/halflife/blob/master/dlls/combat.cpp
 
-public static class HLCombat
+public partial class HLCombat
 {
-    public static void CreateGibs(Vector3 Position, DamageInfo dmgInfo)
+    public static void CreateGibs(Vector3 Position, Vector3 DMGPos)
     {
-        Vector3 attackDir = (dmgInfo.Position - new Vector3(0, 0, 10) - Position).Normal;
+        Sound.FromWorld("bodysplat", Position);
+        
+        Vector3 attackDir = (DMGPos - new Vector3(0, 0, 10) - Position).Normal;
         
         var skullGib = new HLGib();
         skullGib.AngularVelocity = new Angles(Rand.Float(100, 300), 0, Rand.Float(100, 200));

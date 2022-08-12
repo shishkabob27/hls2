@@ -7,13 +7,13 @@
 		VolumeRandom = 0
 		Pitch = 1
 		PitchRandom = 0
-		Decibels = 70
+		Decibels = 155
 		Sounds = 
 		[
 			resource:"sounds/hl1/common/bodysplat.vsnd",
 		]
 		SelectionMode = "Random"
-		MaximumDistance = 1143.9335
-		MinimumDistance = 57.196674
+		MaximumDistance = 5483.878
+		MinimumDistance = 274.1939
 	}
 }

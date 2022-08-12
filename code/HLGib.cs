@@ -101,6 +101,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		//mover.TryUnstuck();
 		if (mover.HitWall)
 		{
+			//Sound.FromWorld("flesh", Position);
 			//Log.Info("splot!");
 			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
 			{
@@ -271,6 +272,8 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		}
 		if ( wasOffGround )
 		{
+
+			//Sound.FromWorld("flesh", Position);
 			this.StartTouch( this );
 			if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
 			{

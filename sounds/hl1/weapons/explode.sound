@@ -7,7 +7,7 @@
 		VolumeRandom = 0
 		Pitch = 1
 		PitchRandom = 0
-		Decibels = 180
+		Decibels = 165
 		Sounds = 
 		[
 			resource:"sounds/hl1/weapons/explode3.vsnd",
@@ -15,7 +15,7 @@
 			resource:"sounds/hl1/weapons/explode5.vsnd",
 		]
 		SelectionMode = "Random"
-		MaximumDistance = 7384.377
-		MinimumDistance = 369.21884
+		MaximumDistance = 6210.039
+		MinimumDistance = 310.50195
 	}
 }
