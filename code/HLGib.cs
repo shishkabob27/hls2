@@ -92,7 +92,10 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		mins = new Vector3( -bGirth, -bGirth, 0 );
 		maxs = new Vector3( +bGirth, +bGirth, bHeight );
 		MoveHelper mover = new MoveHelper( Position, Velocity );
-		mover.Trace = mover.Trace.Size( mins, maxs ).Ignore( this );
+		mover.Trace = mover.Trace
+			.Size(mins, maxs)
+			.Ignore(this)
+			.WithoutTags("player");
 		mover.GroundBounce = 0.55f;
 		mover.MaxStandableAngle = 10;
 		mover.WallBounce = 0.55f;
@@ -128,7 +131,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		if (RotAngles != SleepAngles)
 			RotAngles += AngularVelocity * Time.Delta;
 		Rotation = RotAngles.ToRotation();
-		if ( ( Position == prevTickPos ) || (Velocity.WithZ(0).IsNearlyZero(6) && Position.AlmostEqual(prevTickPos, 1f) && GroundEntity != null))
+		if ( ( Position == prevTickPos ) || (Velocity.WithZ(0).IsNearlyZero(6) && Position.AlmostEqual(prevTickPos, 1f) && GroundEntity != null && (GroundEntity is not HLPlayer)))
 		{
 			RotAngles = SleepAngles;
 			// Clear rotation if not moving (even if on a conveyor)
@@ -231,9 +234,10 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			maxs = maxs.WithZ( maxs.z - liftFeet );
 		}
 
-		var tr = Trace.Ray( start + TraceOffset, end + TraceOffset )
-					.Size( mins, maxs )
-					.WithAnyTags( "solid" )
+		var tr = Trace.Ray(start + TraceOffset, end + TraceOffset)
+					.Size(mins, maxs)
+					.WithAnyTags("solid")
+					.WorldOnly()
 					.Ignore( this )
 					.Run();
 
