@@ -50,7 +50,7 @@ public partial class HLCombat
         // 5% chance head will be thrown at player's face.
         if (player is HLPlayer && Rand.Float(0, 100) <= 5)
         {
-            skullGib.Velocity = (((player as HLPlayer).CollisionWorldSpaceCenter + new Vector3(0, 0, 72)) - skullGib.CollisionWorldSpaceCenter).Normal * 300;
+            skullGib.Velocity = (((player as HLPlayer).CollisionWorldSpaceCenter + new Vector3(0, 0, 72)) - skullGib.CollisionWorldSpaceCenter).Normal * 500;
             skullGib.Velocity = skullGib.Velocity.WithZ(skullGib.Velocity.z + 100);
         }
         else
