@@ -2,6 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
+	m_nMaxParticles = 5
 	m_controlPointConfigurations = 
 	[
 		{
@@ -222,6 +223,9 @@
 			_class = "C_OP_FadeOut"
 			m_flFadeOutTimeMin = 2.0
 			m_flFadeOutTimeMax = 4.0
+		},
+		{
+			_class = "C_OP_Decay"
 		},
 	]
 	m_Renderers = 

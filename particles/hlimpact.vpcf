@@ -2,6 +2,13 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
+	m_nMaxParticles = 20
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+		},
+	]
 	m_PreEmissionOperators = 
 	[
 		{
@@ -211,6 +218,14 @@
 		{
 			_class = "C_OP_BasicMovement"
 			m_Gravity = [ 0.0, 0.0, -600.0 ]
+		},
+		{
+			_class = "C_OP_Decay"
+		},
+		{
+			_class = "C_OP_FadeOut"
+			m_flFadeOutTimeMin = 0.1
+			m_flFadeOutTimeMax = 0.5
 		},
 	]
 	m_Renderers = 
@@ -468,12 +483,6 @@
 	[
 		{
 			m_ChildRef = resource:"particles/hlimpact_spark.vpcf"
-		},
-	]
-	m_controlPointConfigurations = 
-	[
-		{
-			m_name = "preview"
 		},
 	]
 }
