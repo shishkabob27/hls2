@@ -236,12 +236,11 @@
 	}
 
 	float walkBob = 0;
-	float lean = 0;
 	float fov = 0;
 
 	private void AddCameraEffects( ref CameraSetup setup )
 	{
-		var speed = Velocity.Length.LerpInverse( 0, 16 );
+		var speed = Velocity.Length.LerpInverse( 0, 2 );
 		var up = setup.Rotation.Up;
 
 		if ( GroundEntity != null )
