@@ -160,7 +160,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			//DebugOverlay.ScreenText( $" SurfaceFriction: {SurfaceFriction}", lineOffset + 6 );
 			//DebugOverlay.ScreenText( $"    WishVelocity: {WishVelocity}", lineOffset + 7 );
 		}
-		if (LifeTime > 1000)
+		if (LifeTime > 300)
 			this.Delete();
         
 		CalcGroundEnt();
