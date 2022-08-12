@@ -15,6 +15,7 @@ partial class HLGame : Game
 	HLHud Hud { get; set; }
 
 	StandardPostProcess postProcess;
+    
 
 	public HLGame()
 	{
@@ -166,7 +167,8 @@ partial class HLGame : Game
 		}
 	}
 
-	public static void Explosion( Entity weapon, Entity owner, Vector3 position, float radius, float damage, float forceScale )
+    // TODO - maybe move into it's own entity? maybe a HLExplosion.cs?
+    public static void Explosion( Entity weapon, Entity owner, Vector3 position, float radius, float damage, float forceScale )
 	{
 		// Effects
 		Sound.FromWorld( "explode", position );

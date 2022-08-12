@@ -18,7 +18,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	float bHeight = 1;
 
 	List<string> HGibList = new List<string>{
-		"models/hl1/gib/hgib/hgib_skull1.vmdl",
+		//"models/hl1/gib/hgib/hgib_skull1.vmdl", spawn manually please!
 		"models/hl1/gib/hgib/hgib_lung1.vmdl",
 		"models/hl1/gib/hgib/hgib_legbone1.vmdl",
 		"models/hl1/gib/hgib/hgib_hmeat1.vmdl",
@@ -39,20 +39,32 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		EnableTouch = true;
 	}
 
+	public void Spawn(string ModelName)
+	{
+		SetModel(ModelName);        
+		Initialise();
+	}
 	public override void Spawn()
 	{
 		
-		Velocity += new Vector3( Rand.Int( -1, 1 ), Rand.Int( -1, 1 ), Rand.Int( -1, 1 ) );
+		
+		SetModel( Rand.FromList<string>( HGibList ) );
+		Initialise();
+
+
+	}
+    void Initialise()
+    {
+		Velocity += new Vector3(Rand.Int(-1, 1), Rand.Int(-1, 1), Rand.Int(-1, 1));
 		//base.Spawn();
 		Predictable = true;
-		SetModel( Rand.FromList<string>( HGibList ) );
-		phys = SetupPhysicsFromModel( PhysicsMotionType.Keyframed, false );
+		phys = SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
 		//phys = SetupPhysicsFromOBB(PhysicsMotionType.Dynamic, new Vector3( -0.5f, -0.5f, -0.5f ), new Vector3(0.5f, 0.5f, 0.5f));
 		//phys.GetBody( 0 ).RemoveShadowController();
 		EnableHitboxes = true;
 
 		Transmit = TransmitType.Always;
-		this.Tags.Add( "debris" );
+		this.Tags.Add("debris");
 		CollisionGroup = CollisionGroup.Debris;
 
 		Predictable = true;
@@ -61,8 +73,6 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		//base.Spawn();
 
 		Predictable = true;
-
-
 	}
 
 	public virtual void StepMove()
@@ -115,7 +125,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	{
 		
 		if (RotAngles != SleepAngles)
-			RotAngles += AngularVelocity * 0.05f;
+			RotAngles += AngularVelocity * Time.Delta;
 		Rotation = RotAngles.ToRotation();
 		if ( ( Position == prevTickPos ) || (Velocity.WithZ(0).IsNearlyZero(6) && Position.AlmostEqual(prevTickPos, 1f) && GroundEntity != null))
 		{

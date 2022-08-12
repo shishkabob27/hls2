@@ -108,15 +108,7 @@
 		{
 			using ( Prediction.Off() )
 			{
-                for (int i = 0; i < 10; i++)
-                {
-					var gib = new HLGib();
-					gib.AngularVelocity = new Vector3(Rand.Float(-16, 16), 0, Rand.Float(-16, 16)).EulerAngles;
-					gib.Velocity = new Vector3(Rand.Int(-400, 400), Rand.Int(-400, 400), Rand.Int(-400, 400));
-					gib.Position = EyePosition + EyeRotation.Forward * 40;
-					gib.Rotation = Rotation.LookAt(Vector3.Random.Normal);
-					gib.Spawn();
-				}
+				HLCombat.CreateGibs(Position, LastDamage);
 
             }
 		}
