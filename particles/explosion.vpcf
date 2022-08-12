@@ -130,14 +130,12 @@
 					m_vDomainMaxs = [ 0.0, 0.0 ]
 				}
 			}
-			m_nColorBlendType = "PARTICLE_COLOR_BLEND_MAX"
-			m_bParticleShadows = true
 			m_flAnimationRate = 1.0
 			m_flSelfIllumAmount = 
 			{
 				m_nType = "PF_TYPE_LITERAL"
 				m_nMapType = "PF_MAP_TYPE_DIRECT"
-				m_flLiteralValue = 10.0
+				m_flLiteralValue = 5.0
 				m_nControlPoint = 0
 				m_nScalarAttribute = 3
 				m_nVectorAttribute = 6
