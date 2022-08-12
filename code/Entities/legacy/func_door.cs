@@ -195,7 +195,7 @@ using System.Text.Json.Serialization;
 		/// The easing function for both movement and rotation
 		/// TODO: Expose to hammer in a nice way
 		/// </summary>
-		public Easing.Function Ease { get; set; } = Easing.EaseOut;
+		public Easing.Function Ease { get; set; } = null; //Easing.EaseOut; half-life doors don't ease.
 
 		Vector3 PositionA;
 		Vector3 PositionB;
