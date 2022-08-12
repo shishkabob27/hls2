@@ -1,0 +1,27 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		Decals = 
+		[
+			{
+				Material = resource:"materials/decals/_shot1.vmat"
+				Width = "16.00,0.00,0"
+				Height = "16.00,0.00,0"
+				Depth = "4.00,0.00,0"
+			},
+			{
+				Material = resource:"materials/decals/_shot2.vmat"
+				Width = "16.00,0.00,0"
+				Height = "16.00,0.00,0"
+				Depth = "4.00,0.00,0"
+			},
+			{
+				Material = resource:"materials/decals/_shot3.vmat"
+				Width = "16.00,0.00,0"
+				Height = "16.00,0.00,0"
+				Depth = "4.00,0.00,0"
+			},
+		]
+	}
+}

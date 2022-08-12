@@ -223,7 +223,8 @@
 			//
 			foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 5000, bulletSize ) )
 			{
-				tr.Surface.DoBulletImpact( tr );
+				tr.Surface.DoHLBulletImpact( tr );
+				
 
 				if ( tr.Distance > 200 )
 				{
