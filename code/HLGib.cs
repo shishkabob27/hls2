@@ -1,4 +1,4 @@
-﻿
+﻿// This was over 12 hours of work lol if you wanna take my half-life 1 gibs for your own usage in your own game, atleast credit me (Xenthio)
 public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim cus gmod brain.
 {
 	//[Net] public float MaxVelocity { get; set; } = 800;
