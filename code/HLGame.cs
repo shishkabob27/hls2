@@ -69,6 +69,7 @@ partial class HLGame : Game
 		}
 
 		pawn.Transform = spawnpoint.Transform;
+		pawn.Rotation = spawnpoint.Rotation;
 	}
 
 	/// <summary>
