@@ -26,10 +26,6 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		"models/hl1/gib/hgib/hgib_b_gib1.vmdl",
 		"models/hl1/gib/hgib/hgib_b_bone1.vmdl"
 	};
-
-	bool FL_FLY = true;
-
-	bool FL_ONGROUND = false;
 	Vector3 mins;
 	Vector3 maxs;
 
@@ -340,8 +336,6 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		//AngularVelocity = Angles.Zero;
 		base.StartTouch( other );
 		//Log.Info( "boing!" );
-		FL_FLY = false;
-		FL_ONGROUND = true; // touch != on the ground why is this here, this var isn't even used!
 		//if (Velocity.IsNearlyZero())
 			//RotAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
 		// set angle
@@ -359,8 +353,6 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 
 		//RotAngles = (Vector3.Random * 10).EulerAngles;
 		//AngularVelocity = new Vector3( Rand.Float( -100, 100 ), 0, Rand.Float( -100, 100 ) ).EulerAngles;
-		FL_FLY = true;
-		FL_ONGROUND = false;
 	}
 }
 /**

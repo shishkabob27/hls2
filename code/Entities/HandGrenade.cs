@@ -3,9 +3,6 @@
 partial class HandGrenade : BasePhysics
 {
 	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/grenade.vmdl");
-
-	Particles GrenadeParticles;
-
 	public override void Spawn()
 	{
 		base.Spawn();
