@@ -1,10 +1,9 @@
 ﻿/// <summary>
-/// A wall-mounted device that gives a limited amount of health and armour.
+/// A wall-mounted device that gives a limited amount of health
 /// </summary>
-[Library( "hl_chargerstation" ), HammerEntity]
+[Library( "func_healthcharger" ), HammerEntity]
 [SupportsSolid]
-[EditorModel( "models/gameplay/charger/charger_station.vmdl" )]
-[Title( "Charger Station" )]
+[Title( "Health Charger" )]
 partial class ChargerStation : KeyframeEntity, IUse
 {
 	/// <summary>
@@ -30,9 +29,6 @@ partial class ChargerStation : KeyframeEntity, IUse
 	[Net]
 	[Property( "armourcharger", Title = "Is Armour Charger" )]
 	public bool IsArmourCharger { get; set; } = false;
-
-	public static readonly Model HealthChargerModel = Model.Load( "models/gameplay/charger/charger_station.vmdl" );
-	public static readonly Model ArmourChargerModel = Model.Load( "models/gameplay/charger/armour_charger_station.vmdl" );
 
 	private TimeSince TimeSinceUsed;
 
@@ -60,6 +56,7 @@ partial class ChargerStation : KeyframeEntity, IUse
 		trigger.Transmit = TransmitType.Always;
 		trigger.EnableTouchPersists = true;
 
+		/*
 		if ( !IsArmourCharger )
 		{
 			Model = HealthChargerModel;
@@ -68,6 +65,7 @@ partial class ChargerStation : KeyframeEntity, IUse
 		{
 			Model = ArmourChargerModel;
 		}
+		*/
 	}
 
 	public bool IsUsable( Entity user )
