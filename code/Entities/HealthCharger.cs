@@ -4,7 +4,7 @@
 [Library( "func_healthcharger" ), HammerEntity]
 [SupportsSolid]
 [Title( "Health Charger" )]
-partial class ChargerStation : KeyframeEntity, IUse
+partial class HealthCharger : KeyframeEntity, IUse
 {
 	/// <summary>
 	/// This controls the amount of charge in the station, Default Value is 50.
@@ -140,7 +140,7 @@ partial class ChargerStation : KeyframeEntity, IUse
 		else
 		{
 			//Empty
-			PlaySound( "dm.item_charger_empty" );
+			PlaySound( "medshotno1" );
 		}
 	}
 
