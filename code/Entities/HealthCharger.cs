@@ -2,7 +2,7 @@
 /// A wall-mounted device that gives a limited amount of health
 /// </summary>
 [Library( "func_healthcharger" ), HammerEntity]
-[SupportsSolid]
+[Solid]
 [Title( "Health Charger" )]
 partial class HealthCharger : KeyframeEntity, IUse
 {
