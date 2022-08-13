@@ -38,19 +38,14 @@ internal class Scientist : AnimatedEntity
         {
             case 0:
                 return "models/hl1/monster/scientist/scientist_01.vmdl";
-                break;
             case 1:
                 return "models/hl1/monster/scientist/scientist_02.vmdl";
-                break;
             case 2:
                 return "models/hl1/monster/scientist/scientist_03.vmdl";
-                break;
             case 3:
                 return "models/hl1/monster/scientist/scientist_04.vmdl";
-                break;
             default:
                 return Rand.FromList<string>(ScientistMDLList);
-                break;
         }
     }
     DamageInfo LastDamage;
