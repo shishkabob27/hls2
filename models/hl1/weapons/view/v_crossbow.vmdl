@@ -26,44 +26,72 @@
 								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
 							},
 							{
-								from = "mechanismside.vmat"
-								to = "materials/hl1/weapons/world/crossbow/mechanismside.vmat"
-							},
-							{
-								from = "receiverside.vmat"
-								to = "materials/hl1/weapons/world/crossbow/receiverside.vmat"
-							},
-							{
-								from = "sightcyl.vmat"
-								to = "materials/hl1/weapons/world/crossbow/sightcyl.vmat"
-							},
-							{
 								from = "stock.vmat"
 								to = "materials/hl1/weapons/world/crossbow/stock.vmat"
 							},
 							{
-								from = "bowchrome.vmat"
-								to = "materials/hl1/weapons/world/crossbow/bowchrome.vmat"
-							},
-							{
-								from = "clip_side.vmat"
-								to = "materials/hl1/weapons/world/crossbow/clip_side.vmat"
-							},
-							{
-								from = "world_grip.vmat"
-								to = "materials/hl1/weapons/world/crossbow/world_grip.vmat"
-							},
-							{
-								from = "world_shoulder.vmat"
-								to = "materials/hl1/weapons/world/crossbow/world_shoulder.vmat"
-							},
-							{
-								from = "world_slide.vmat"
-								to = "materials/hl1/weapons/world/crossbow/world_slide.vmat"
-							},
-							{
 								from = "xbow_sleeve.vmat"
 								to = "materials/hl1/weapons/view/crossbow/xbow_sleeve.vmat"
+							},
+							{
+								from = "receivertop.vmat"
+								to = "materials/hl1/weapons/world/crossbow/receiverside.vmat"
+							},
+							{
+								from = "recevierside.vmat"
+								to = "materials/hl1/weapons/world/crossbow/receiverside.vmat"
+							},
+							{
+								from = "bowtip.vmat"
+								to = "materials/hl1/weapons/view/crossbow/bowtip.vmat"
+							},
+							{
+								from = "cliprear.vmat"
+								to = "materials/hl1/weapons/view/crossbow/cliprear.vmat"
+							},
+							{
+								from = "clipside.vmat"
+								to = "materials/hl1/weapons/view/crossbow/clipside.vmat"
+							},
+							{
+								from = "grip.vmat"
+								to = "materials/hl1/weapons/view/crossbow/grip.vmat"
+							},
+							{
+								from = "ladder.vmat"
+								to = "materials/hl1/weapons/view/crossbow/ladder.vmat"
+							},
+							{
+								from = "lenschrome.vmat"
+								to = "materials/hl1/weapons/view/crossbow/lenschrome.vmat"
+							},
+							{
+								from = "lensring.vmat"
+								to = "materials/hl1/weapons/view/crossbow/lensring.vmat"
+							},
+							{
+								from = "mechside.vmat"
+								to = "materials/hl1/weapons/view/crossbow/mechside.vmat"
+							},
+							{
+								from = "mechtop.vmat"
+								to = "materials/hl1/weapons/view/crossbow/mechtop.vmat"
+							},
+							{
+								from = "shoulders.vmat"
+								to = "materials/hl1/weapons/view/crossbow/shoulders.vmat"
+							},
+							{
+								from = "slide_rear.vmat"
+								to = "materials/hl1/weapons/view/crossbow/slide_rear.vmat"
+							},
+							{
+								from = "slide_side.vmat"
+								to = "materials/hl1/weapons/view/crossbow/slide_side.vmat"
+							},
+							{
+								from = "slide_top.vmat"
+								to = "materials/hl1/weapons/view/crossbow/slide_top.vmat"
 							},
 						]
 						use_global_default = false
@@ -92,6 +120,27 @@
 							[
 								"reference_crossbow",
 								"crossbow_hand",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/compound_scope.smd"
+						import_translation = [ 0.0, 12.0, -66.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"reference_crossbow",
+								"crossbow_hand",
+								"compound_scope",
 							]
 						}
 					},
