@@ -26,16 +26,20 @@
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 							{
-								from = "grenade_side.vmat"
-								to = "materials/hl1/weapons/world/grenade_hand/grenade_side.vmat"
-							},
-							{
-								from = "grenade_skin.vmat"
-								to = "materials/hl1/weapons/world/grenade_hand/grenade_skin.vmat"
-							},
-							{
 								from = "xbow_sleeve.vmat"
 								to = "materials/hl1/weapons/view/crossbow/xbow_sleeve.vmat"
+							},
+							{
+								from = "grenade3.vmat"
+								to = "materials/hl1/weapons/view/grenade_hand/grenade3.vmat"
+							},
+							{
+								from = "grenchrome.vmat"
+								to = "materials/hl1/weapons/view/grenade_hand/grenchrome.vmat"
+							},
+							{
+								from = "spoont.vmat"
+								to = "materials/hl1/weapons/view/grenade_hand/spoont.vmat"
 							},
 						]
 						use_global_default = false
@@ -63,6 +67,26 @@
 							exception_list = 
 							[
 								"grenade_hand",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/grenade.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"grenade_hand",
+								"grenade",
 							]
 						}
 					},
