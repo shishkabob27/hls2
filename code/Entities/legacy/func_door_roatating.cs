@@ -89,7 +89,6 @@ using System.Text.Json.Serialization;
 
 		public enum DoorMoveType
 		{
-			Moving,
 			Rotating,
 			AnimatingOnly
 		}
@@ -298,8 +297,7 @@ using System.Text.Json.Serialization;
 		[Input]
 		void SetPosition( float progress )
 		{
-			if ( MoveDirType == DoorMoveType.Moving ) { LocalPosition = PositionA.LerpTo( PositionB, progress ); }
-			else if ( MoveDirType == DoorMoveType.Rotating ) { LocalRotation = Rotation.Lerp( RotationA, RotationB, progress ); }
+			if ( MoveDirType == DoorMoveType.Rotating ) { LocalRotation = Rotation.Lerp( RotationA, RotationB, progress ); }
 			else if ( MoveDirType == DoorMoveType.AnimatingOnly )
 			{
 				SetAnimParameter( "initial_position", progress );
@@ -618,17 +616,7 @@ using System.Text.Json.Serialization;
 			{
 				_ = OnClose.Fire( this );
 			}
-
-			if ( MoveDirType == DoorMoveType.Moving )
-			{
-				var position = state ? PositionB : PositionA;
-				var distance = Vector3.DistanceBetween( LocalPosition, position );
-				var timeToTake = distance / Math.Max( Speed, 0.1f );
-
-				var success = await LocalKeyframeTo( position, timeToTake, Ease );
-				if ( !success )
-					return;
-			}
+			
 			else if ( MoveDirType == DoorMoveType.Rotating )
 			{
 				var target = state ? RotationB : RotationA;
