@@ -5,14 +5,9 @@ internal class Barney : AnimatedEntity
 {
     // Stub NPC, this does nothing yet
 
-    
-    [Property]
-	public float Body { get; set; } = -1;
-
     public override void Spawn()
     {
         base.Spawn();
-        SetAnimGraph("animgraphs/scientist.vanmgrph");
         Health = 20;
 
         SetModel("models/hl1/monster/barney.vmdl");

@@ -4,11 +4,7 @@
 internal class Gman : AnimatedEntity
 {
     // Stub NPC, this does nothing yet
-
     
-    [Property]
-	public float Body { get; set; } = -1;
-
     public override void Spawn()
     {
         base.Spawn();
