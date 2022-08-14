@@ -32,5 +32,7 @@ public partial class ChangeLevelTrigger : BaseTrigger
 	public virtual void OnTriggered( Entity other )
 	{
 		OnTrigger.Fire( other );
+
+		ConsoleSystem.Run("changelevel "+ Map);
 	}
 }
