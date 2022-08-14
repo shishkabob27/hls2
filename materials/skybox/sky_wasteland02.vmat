@@ -7,5 +7,5 @@ Layer0
 	//---- Texture ----
 	g_flBrightnessExposureBias "0.000"
 	g_flRenderOnlyExposureBias "0.000"
-	SkyTexture "materials/hl1/skybox/sky_wasteland02.tga"
+	SkyTexture "materials/skybox/sky_wasteland02.tga"
 }
