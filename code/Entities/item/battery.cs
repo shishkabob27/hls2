@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// Gives 25 Armour
 /// </summary>
-[Library( "hl_battery" ), HammerEntity]
+[Library( "item_battery" ), HammerEntity]
 [EditorModel( "models/hl1/gameplay/battery.vmdl" )]
 [Title(  "Battery" )]
 partial class Battery : ModelEntity
