@@ -219,10 +219,17 @@
 									m_conditions = 
 									[
 										{
-											_class = "CPathStatusCondition"
-											m_comparisonOp = 0
-											m_optionToCheck = "PathStatus_HasPath"
-											m_bComparisonValue = true
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 2
+											m_paramID = 
+											{
+												m_id = 1787578650
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 4
+												m_data = 0.0
+											}
 										},
 									]
 									m_blendDuration = 0.2
@@ -246,10 +253,17 @@
 									m_conditions = 
 									[
 										{
-											_class = "CPathStatusCondition"
-											m_comparisonOp = 0
-											m_optionToCheck = "PathStatus_HasPath"
-											m_bComparisonValue = true
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 2
+											m_paramID = 
+											{
+												m_id = 1787578650
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 4
+												m_data = 120.0
+											}
 										},
 									]
 									m_blendDuration = 0.2
@@ -379,7 +393,7 @@
 											m_comparisonValue = 
 											{
 												m_nType = 4
-												m_data = 100.0
+												m_data = 121.0
 											}
 										},
 									]
@@ -404,10 +418,17 @@
 									m_conditions = 
 									[
 										{
-											_class = "CPathStatusCondition"
+											_class = "CParameterAnimCondition"
 											m_comparisonOp = 0
-											m_optionToCheck = "PathStatus_HasPath"
-											m_bComparisonValue = false
+											m_paramID = 
+											{
+												m_id = 1787578650
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 4
+												m_data = 0.0
+											}
 										},
 									]
 									m_blendDuration = 0.2
@@ -467,7 +488,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1172540671
+									m_id = 1698220565
 								}
 								m_outputID = 
 								{
@@ -529,7 +550,7 @@
 									[
 										{
 											_class = "CParameterAnimCondition"
-											m_comparisonOp = 4
+											m_comparisonOp = 5
 											m_paramID = 
 											{
 												m_id = 1787578650
@@ -1206,41 +1227,6 @@
 			{
 				key = 
 				{
-					m_id = 405998254
-				}
-				value = 
-				{
-					_class = "CTurnHelperAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 656.0, -128.0 ]
-					m_nNodeID = 
-					{
-						m_id = 405998254
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_inputConnection = 
-					{
-						m_nodeID = 
-						{
-							m_id = 254143332
-						}
-						m_outputID = 
-						{
-							m_id = 4294967295
-						}
-					}
-					m_facingTarget = "MoveHeading"
-					m_turnStartTime = 0.0
-					m_turnDuration = 2.0
-					m_bMatchChildDuration = false
-					m_bUseManualTurnOffset = false
-					m_manualTurnOffset = 0.0
-				}
-			},
-			{
-				key = 
-				{
 					m_id = 406038026
 				}
 				value = 
@@ -1421,82 +1407,6 @@
 			{
 				key = 
 				{
-					m_id = 1172540671
-				}
-				value = 
-				{
-					_class = "CSpeedScaleAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 256.0, -176.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1172540671
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_inputConnection = 
-					{
-						m_nodeID = 
-						{
-							m_id = 1698220565
-						}
-						m_outputID = 
-						{
-							m_id = 4294967295
-						}
-					}
-					m_param = 
-					{
-						m_id = 1787578650
-					}
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1330583304
-				}
-				value = 
-				{
-					_class = "CMoverAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 800.0, -144.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1330583304
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_inputConnection = 
-					{
-						m_nodeID = 
-						{
-							m_id = 405998254
-						}
-						m_outputID = 
-						{
-							m_id = 4294967295
-						}
-					}
-					m_bApplyMovement = true
-					m_bOrientMovement = false
-					m_bAdditive = true
-					m_bTurnToFace = false
-					m_flTurnToFaceOffset = 0.0
-					m_facingTarget = "FacingHeading"
-					m_damping = 
-					{
-						_class = "CAnimInputDamping"
-						m_speedFunction = "NoDamping"
-						m_fSpeedScale = 1.0
-						m_fMinSpeed = 10.0
-						m_fMaxTension = 1000.0
-					}
-				}
-			},
-			{
-				key = 
-				{
 					m_id = 1420390808
 				}
 				value = 
@@ -1514,7 +1424,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 1330583304
+							m_id = 254143332
 						}
 						m_outputID = 
 						{
@@ -1651,7 +1561,7 @@
 			},
 			{
 				_class = "CFloatAnimParameter"
-				m_name = "MoveSpeed"
+				m_name = "move_speed"
 				m_id = 
 				{
 					m_id = 1787578650
@@ -1661,9 +1571,9 @@
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bPredicted = false
-				m_fDefaultValue = 0.8
+				m_fDefaultValue = 0.0
 				m_fMinValue = 0.0
-				m_fMaxValue = 2.0
+				m_fMaxValue = 3000.0
 				m_bInterpolate = false
 			},
 		]

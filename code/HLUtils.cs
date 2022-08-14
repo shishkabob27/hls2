@@ -6,4 +6,11 @@
         
         return Entity.FindInBox(bbox).OfType<HLPlayer>().First();
     }
+
+    static public bool IsPlayerInBox(Vector3 Position, int AreaSize)
+    {
+        BBox bbox = new BBox(new Vector3(-AreaSize, -AreaSize, -AreaSize) + Position, new Vector3(AreaSize, AreaSize, AreaSize) + Position);
+        
+        return Entity.FindInBox(bbox).OfType<HLPlayer>().Count() > 0;
+    }
 }
