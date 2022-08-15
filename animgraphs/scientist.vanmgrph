@@ -295,7 +295,7 @@
 											m_comparisonValue = 
 											{
 												m_nType = 4
-												m_data = 120.0
+												m_data = 86.0
 											}
 										},
 									]
@@ -426,7 +426,7 @@
 											m_comparisonValue = 
 											{
 												m_nType = 4
-												m_data = 121.0
+												m_data = 86.0
 											}
 										},
 									]
@@ -591,7 +591,7 @@
 											m_comparisonValue = 
 											{
 												m_nType = 4
-												m_data = 100.0
+												m_data = 86.0
 											}
 										},
 									]

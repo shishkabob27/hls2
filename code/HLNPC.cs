@@ -98,14 +98,16 @@ public class NPC : AnimatedEntity
 		animHelper.WithVelocity(Velocity);
 		animHelper.WithWishVelocity(InputVelocity);
 
+		Think();
 		
-		
-		var ply = HLUtils.FindPlayerInBox(Position, 8096);
-		if ( ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 100) == false)
-			Steer.Target = ply?.Position ?? Vector3.Zero;
+
         
     }
 
+    public virtual void Think()
+    {
+		
+	}
 	protected virtual void Move(float timeDelta)
 	{
 		var bbox = BBox.FromHeightAndRadius(64, 4);

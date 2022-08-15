@@ -50,6 +50,12 @@ internal class ScientistTEST : NPC
     }
     DamageInfo LastDamage;
     
+    public override void Think()
+    {
+        var ply = HLUtils.FindPlayerInBox(Position, 8096);
+        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 100) == false)
+            Steer.Target = ply?.Position ?? Vector3.Zero;
+    }
     public override void TakeDamage(DamageInfo info)
     {
         LastDamage = info;        
