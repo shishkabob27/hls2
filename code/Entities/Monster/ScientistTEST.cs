@@ -54,7 +54,7 @@ internal class ScientistTEST : NPC
     {
         
         var ply = HLUtils.FindPlayerInBox(Position, 8096);
-        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 64) == false)
+        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 70) == false)
         {
             Steer.Target = ply?.Position ?? Vector3.Zero;
         }
