@@ -64,7 +64,7 @@ using System.Text.Json.Serialization;
 			StartLocked = 2,
 			//SpawnOpen = 4,
 			//OneWay = 8,
-			//Touch = 16,
+			Touch = 16,
 
 			//StartUnbreakable = 524288,
 		}
@@ -90,6 +90,7 @@ using System.Text.Json.Serialization;
 		public enum DoorMoveType
 		{
 			Moving,
+			Rotating,
 			AnimatingOnly
 		}
 
@@ -298,6 +299,7 @@ using System.Text.Json.Serialization;
 		void SetPosition( float progress )
 		{
 			if ( MoveDirType == DoorMoveType.Moving ) { LocalPosition = PositionA.LerpTo( PositionB, progress ); }
+			else if ( MoveDirType == DoorMoveType.Rotating ) { LocalRotation = Rotation.Lerp( RotationA, RotationB, progress ); }
 			else if ( MoveDirType == DoorMoveType.AnimatingOnly )
 			{
 				SetAnimParameter( "initial_position", progress );
@@ -465,6 +467,29 @@ using System.Text.Json.Serialization;
 
 			if ( State == DoorState.Closed || State == DoorState.Closing ) State = DoorState.Opening;
 
+			if ( activator != null && MoveDirType == DoorMoveType.Rotating && OpenAwayFromPlayer && State != DoorState.Open )
+			{
+				// TODO: In this case the door could be moving faster than given speed if we are trying to open the door while it is closing from the opposite side
+				var axis = Rotation.From( MoveDir ).Up;
+				if ( !MoveDirIsLocal ) axis = Transform.NormalToLocal( axis );
+
+				// Generate the correct "inward" direction for the door since we can't assume RotationA.Forward is it
+				// TODO: This does not handle non UP axis doors!
+				var Dir = (WorldSpaceBounds.Center.WithZ( Position.z ) - Position).Normal;
+				var Pos1 = Position + Rotation.FromAxis( Dir, 0 ).RotateAroundAxis( axis, Distance ) * Dir * 24.0f;
+				var Pos2 = Position + Rotation.FromAxis( Dir, 0 ).RotateAroundAxis( axis, -Distance ) * Dir * 24.0f;
+
+				var PlyPos = activator.Position;
+				if ( PlyPos.Distance( Pos2 ) < PlyPos.Distance( Pos1 ) )
+				{
+					RotationB = RotationB_Normal;
+				}
+				else
+				{
+					RotationB = RotationB_Opposite;
+				}
+			}
+
 			UpdateAnimGraph( true );
 
 			UpdateState();
@@ -601,6 +626,17 @@ using System.Text.Json.Serialization;
 				var timeToTake = distance / Math.Max( Speed, 0.1f );
 
 				var success = await LocalKeyframeTo( position, timeToTake, Ease );
+				if ( !success )
+					return;
+			}
+			else if ( MoveDirType == DoorMoveType.Rotating )
+			{
+				var target = state ? RotationB : RotationA;
+
+				Rotation diff = LocalRotation * target.Inverse;
+				var timeToTake = diff.Angle() / Math.Max( Speed, 0.1f );
+
+				var success = await LocalRotateKeyframeTo( target, timeToTake, Ease );
 				if ( !success )
 					return;
 			}
