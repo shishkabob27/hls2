@@ -1,5 +1,5 @@
 ﻿[Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
-public class NPC : AnimatedEntity
+public class NPC : AnimatedEntity, IUse
 {
 	[ConVar.Replicated]
 	public static bool nav_drawpath { get; set; }
@@ -97,7 +97,7 @@ public class NPC : AnimatedEntity
 		animHelper.WithLookAt(EyePosition + LookDir);
 		animHelper.WithVelocity(Velocity);
 		animHelper.WithWishVelocity(InputVelocity);
-
+        
 		Think();
 		
 
@@ -108,6 +108,12 @@ public class NPC : AnimatedEntity
     {
 		
 	}
+   
+	public virtual bool OnUse(Entity user)
+	{
+		return true;
+	}
+    
 	protected virtual void Move(float timeDelta)
 	{
 		var bbox = BBox.FromHeightAndRadius(64, 4);
@@ -211,4 +217,14 @@ public class NPC : AnimatedEntity
 			//BecomeRagdollOnClient(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
 		}
 	}
+
+    bool IUse.OnUse(Entity user)
+    {
+        return OnUse(user);
+    }
+
+    bool IUse.IsUsable(Entity user)
+    {
+		return true;
+    }
 }

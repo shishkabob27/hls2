@@ -48,34 +48,40 @@ internal class ScientistTEST : NPC
                 return Rand.FromList<string>(ScientistMDLList);
         }
     }
-
+    string MODE = "MODE_IDLE";
     bool wasInBound = false;
     public override void Think()
     {
-        
         var ply = HLUtils.FindPlayerInBox(Position, 8096);
-        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 80) == false)
+        if (MODE == "MODE_FOLLOW") 
         {
-            Steer.Target = ply?.Position ?? Vector3.Zero;
-            wasInBound = true;
-        }      
-        else if (ply != null && ply.IsValid && wasInBound == true)
-        {
-            Steer.Target = Position;
-            wasInBound = false;
-        }
+            if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 80) == false)
+            {
+                Steer.Target = ply?.Position ?? Vector3.Zero;
+                wasInBound = true;
+            }
+            else if (ply != null && ply.IsValid && wasInBound == true)
+            {
+                Steer.Target = Position;
+                wasInBound = false;
+            }
+
+            if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 190))
+            {
+                Speed = 80;
+            }
+            else if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 200) == false)
+            {
+                Speed = 200;
+            }
+            else
+            {
+                Speed = 80;
+            }
+        }   
+       
+       
         
-        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 190))
-        {
-            Speed = 80;
-        }
-        else if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 200) == false)
-        {
-            Speed = 200;
-        } else
-        {
-            Speed = 80;
-        }
         // we've been pushed!
         if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 10))
         {
@@ -84,6 +90,35 @@ internal class ScientistTEST : NPC
         }
 
     }
+    int ticker = 1;
+    public override bool OnUse(Entity user)
+    {
+        if (ticker == 1)
+        {
+            ticker = 0;
 
-    
+
+
+
+            if (MODE == "MODE_IDLE")
+            {
+                MODE = "MODE_FOLLOW";
+            } else if (MODE == "MODE_FOLLOW")
+            {
+                MODE = "MODE_IDLE";
+                
+            }
+            return true;
+        }
+        else
+        {
+            ticker = 1;
+            return false;
+        }
+
+
+        return base.OnUse(user);
+    }
+
+
 }
