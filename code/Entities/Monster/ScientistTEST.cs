@@ -21,7 +21,7 @@ internal class ScientistTEST : NPC
         base.Spawn();
         SetAnimGraph("animgraphs/scientist.vanmgrph");
         Health = 20;
-        Speed = 100;
+        Speed = 80;
         SetModel(SetScientistModel());
         //SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
         EnableHitboxes = true; 

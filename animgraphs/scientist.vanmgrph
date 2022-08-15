@@ -62,6 +62,39 @@
 			{
 				key = 
 				{
+					m_id = 181282783
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 256.0, -176.0 ]
+					m_nNodeID = 
+					{
+						m_id = 181282783
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 1698220565
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 1787578650
+					}
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 185016126
 				}
 				value = 
@@ -488,7 +521,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1698220565
+									m_id = 181282783
 								}
 								m_outputID = 
 								{
@@ -1451,7 +1484,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "walk"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 0.01
 					m_bLoop = true
 				}
 			},
