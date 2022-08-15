@@ -1,0 +1,26 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		UI = false
+		Volume = 1
+		VolumeRandom = 0
+		Pitch = 1
+		PitchRandom = 0
+		Decibels = 50
+		Sounds = 
+		[
+			resource:"sounds/hl1/scientist/alright.vsnd",
+			resource:"sounds/hl1/scientist/excellentteam.vsnd",
+			resource:"sounds/hl1/scientist/fine.vsnd",
+			resource:"sounds/hl1/scientist/hopeyouknow.vsnd",
+			resource:"sounds/hl1/scientist/leadtheway.vsnd",
+			resource:"sounds/hl1/scientist/letsgo.vsnd",
+			resource:"sounds/hl1/scientist/yes3.vsnd",
+			resource:"sounds/hl1/scientist/yesletsgo.vsnd",
+		]
+		SelectionMode = "Random"
+		MaximumDistance = 599.31305
+		MinimumDistance = 29.965652
+	}
+}

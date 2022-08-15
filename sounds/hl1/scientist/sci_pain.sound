@@ -1,0 +1,28 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		UI = false
+		Volume = 1
+		VolumeRandom = 0
+		Pitch = 1
+		PitchRandom = 0
+		Decibels = 70
+		Sounds = 
+		[
+			resource:"sounds/hl1/scientist/sci_pain1.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain10.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain2.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain3.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain4.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain5.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain6.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain7.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain8.vsnd",
+			resource:"sounds/hl1/scientist/sci_pain9.vsnd",
+		]
+		SelectionMode = "Random"
+		MaximumDistance = 1143.9335
+		MinimumDistance = 57.196674
+	}
+}
