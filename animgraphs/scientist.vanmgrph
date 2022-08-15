@@ -185,7 +185,7 @@
 									[
 										{
 											_class = "CParameterAnimCondition"
-											m_comparisonOp = 0
+											m_comparisonOp = 5
 											m_paramID = 
 											{
 												m_id = 633295247
@@ -193,7 +193,7 @@
 											m_comparisonValue = 
 											{
 												m_nType = 4
-												m_data = 0.0
+												m_data = 4.0
 											}
 										},
 									]
@@ -261,7 +261,7 @@
 											m_comparisonValue = 
 											{
 												m_nType = 4
-												m_data = 0.0
+												m_data = 4.0
 											}
 										},
 									]
