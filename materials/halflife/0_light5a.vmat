@@ -41,8 +41,8 @@ Layer0
 	g_flSelfIllumBrightness "0.000"
 	g_flSelfIllumScale "8.000"
 	g_vSelfIllumScrollSpeed "[0.000 0.000]"
-	g_vSelfIllumTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureSelfIllumMask "materials/default/default_selfillum.tga"
+	g_vSelfIllumTint "[0.850980 0.937255 0.933333 1.000000]"
+	TextureSelfIllumMask "[1.000000 1.000000 1.000000 0.000000]"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
