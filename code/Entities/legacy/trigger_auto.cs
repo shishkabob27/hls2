@@ -4,12 +4,12 @@ using SandboxEditor;
 	/// <br/>
 	/// TODO: This is a stop-gap solution and may be removed in the future in favor of "map blueprints" or node based Map I/O.
 	/// </summary>
-	[Library( "logic_auto" )]
+	[Library( "trigger_auto" )]
 	[HammerEntity]
 	[VisGroup( VisGroup.Logic )]
 	[EditorSprite( "editor/ent_logic.vmat" )]
-	[Title( "Logic Auto" ), Category( "Legacy" ), Icon( "calculate" )]
-	public partial class LogicAuto : Entity
+	[Title( "Trigger Auto" ), Category( "Legacy" ), Icon( "calculate" )]
+	public partial class TriggerAuto : Entity
 	{
 		/// <summary>
 		/// The (initial) enabled state of the logic entity.
@@ -52,7 +52,7 @@ using SandboxEditor;
 		/// <summary>
 		///
 		/// </summary>
-		protected Output OnMapSpawn { get; set; }
+		protected Output OnTrigger { get; set; }
 
 		/// <summary>
 		/// Fired after all map entities have spawned, even if it is disabled.
@@ -61,7 +61,7 @@ using SandboxEditor;
 		public void OnMapSpawnEvent()
 		{
 			//Log.Info("Activating logic auto by " + activator);
-			OnMapSpawn.Fire( this );
+			OnTrigger.Fire( this );
 		}
 
 		

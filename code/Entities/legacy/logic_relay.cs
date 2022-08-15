@@ -59,14 +59,14 @@ using SandboxEditor;
 		/// Trigger the "OnTrigger" output.
 		/// </summary>
 		[Input]
-		public void Trigger(Entity activator = null)
+		public void Trigger()
 		{
 			if ( !Enabled ) return;
 
             //if (activator is not LogicRelay) //prevent dumb crash
 			//{
             //Log.Info("Activating logic relay by " + activator);
-				OnTrigger.Fire( this );
+			OnTrigger.Fire( this );
 			//}
 		}
 

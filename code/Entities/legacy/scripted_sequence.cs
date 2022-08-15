@@ -9,29 +9,39 @@ public partial class scripted_sequence : Entity
     [Property("m_iszEntity"), FGDType("target_destination")]
     public string TargetEntity { get; set; }
 
+    [Property("m_iszPlay")]
+    public string ActionAnimation { get; set; }
+
+    public NPC TargetNPC;
     public scripted_sequence()
     {
     }
 
+    
+    protected Output OnEndSequence { get; set; }
+    
     [Input]
     void BeginSequence()
     {
         if (FindByName(TargetEntity) is NPC)
         {
-            var ent = FindByName(TargetEntity) as NPC;
-            ent.Steer.Target = this.Position;
+            TargetNPC = FindByName(TargetEntity) as NPC;
+            Log.Info(TargetNPC.CurrentSequence.Name);
+            TargetNPC.Steer.Target = this.Position;
+            TargetNPC.CurrentSequence.Name = ActionAnimation;
+            
             Log.Info("script sequence target set to " + TargetEntity);
             //TargetEntity.Position = this.Position; //TODO make this do something lol
         }
     }
-
+    
     [Input]
     void MoveToPosition()
     {
         if (FindByName(TargetEntity) is NPC && FindByName(TargetEntity).IsValid())
         {
-            var ent = FindByName(TargetEntity) as NPC;
-            ent.Steer.Target = this.Position;
+            TargetNPC = FindByName(TargetEntity) as NPC;
+            TargetNPC.Steer.Target = this.Position;
             Log.Info("script sequence target set to " + TargetEntity);
             //TargetEntity.Position = this.Position; //TODO make this do something lol
         }
@@ -40,5 +50,14 @@ public partial class scripted_sequence : Entity
     {
 
         
+    }
+    
+    [Event.Tick.Server]
+    public void Tick()
+    {
+        if (TargetNPC != null && TargetNPC.CurrentSequence.IsFinished == true && TargetNPC.Position == this.Position)
+        {
+            OnEndSequence.Fire(this);
+        }
     }
 }

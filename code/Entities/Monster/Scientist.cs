@@ -1,6 +1,6 @@
 ﻿[Library("monster_scientist"), HammerEntity]
 [EditorModel("models/hl1/monster/scientist/scientist_01.vmdl")]
-[Title("ScientistTEST"), Category("Monsters")]
+[Title("Scientist"), Category("Monsters")]
 internal class Scientist : NPC
 {
     // Stub NPC, this does nothing yet

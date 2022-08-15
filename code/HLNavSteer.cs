@@ -27,7 +27,7 @@
 			Output.Direction = Path.GetDirection(currentPosition);
 		}
 
-		var avoid = GetAvoidance(currentPosition, 500);
+		var avoid = GetAvoidance(currentPosition, 1);
 		if (!avoid.IsNearlyZero())
 		{
 			Output.Direction = (Output.Direction + avoid).Normal;
