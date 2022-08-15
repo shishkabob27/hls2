@@ -48,66 +48,42 @@ internal class ScientistTEST : NPC
                 return Rand.FromList<string>(ScientistMDLList);
         }
     }
-    DamageInfo LastDamage;
-    
+
+    bool wasInBound = false;
     public override void Think()
     {
         
         var ply = HLUtils.FindPlayerInBox(Position, 8096);
-        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 70) == false)
+        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 80) == false)
         {
             Steer.Target = ply?.Position ?? Vector3.Zero;
-        }
-        else if (ply != null && ply.IsValid)
+            wasInBound = true;
+        }      
+        else if (ply != null && ply.IsValid && wasInBound == true)
         {
             Steer.Target = Position;
+            wasInBound = false;
         }
-        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 256) == false)
+        
+        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 190))
+        {
+            Speed = 80;
+        }
+        else if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 200) == false)
         {
             Speed = 200;
         } else
         {
             Speed = 80;
         }
-    }
-    public override void TakeDamage(DamageInfo info)
-    {
-        LastDamage = info;        
-        if (LifeState == LifeState.Dead)
-            return;
-
-        base.TakeDamage(info);
-
-        this.ProceduralHitReaction(info);
-
-        //
-        // Add a score to the killer
-        //
-        if (LifeState == LifeState.Dead && info.Attacker != null)
+        // we've been pushed!
+        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 10))
         {
-            if (info.Attacker.Client != null && info.Attacker != this)
-            {
-                info.Attacker.Client.AddInt("kills");
-            }
+            Steer.Target = Position + (ply.Position - Position).Normal * -78;
+            Speed = 80;
         }
+
     }
 
-    public override void OnKilled()
-    {
-        base.OnKilled();
-
-        if (LastDamage.Flags.HasFlag(DamageFlags.Blast))
-        {
-            using (Prediction.Off())
-            {
-                HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, LastDamage.Position, Health, this.CollisionBounds);
-
-            }
-        }
-        else
-        {
-            //BecomeRagdollOnClient(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
-        }
-    } 
     
 }
