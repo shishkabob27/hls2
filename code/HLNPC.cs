@@ -99,6 +99,8 @@ public class NPC : AnimatedEntity, IUse
 		animHelper.WithLookAt(EyePosition + LookDir);
 		animHelper.WithVelocity(Velocity);
 		animHelper.WithWishVelocity(InputVelocity);
+
+		animHelper.VoiceLevel = Rand.Float();
         
 		Think();
 		
