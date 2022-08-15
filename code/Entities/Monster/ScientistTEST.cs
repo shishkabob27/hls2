@@ -91,6 +91,9 @@ internal class ScientistTEST : NPC
 
     }
     int ticker = 1;
+
+    static SoundEvent soundevent = new SoundEvent("sounds/hl1/scientist/alright.vsnd");
+    
     public override bool OnUse(Entity user)
     {
         if (ticker == 1)
@@ -102,6 +105,16 @@ internal class ScientistTEST : NPC
             //targetRotation.w = Rotation.w;
             //this.LookDir = 
             //lookAt = user.Position.WithZ(Position.z);
+
+            CurrentSound.Stop();
+
+            
+            //if ( ResourceLibrary.TryGet<SoundEvent>("sounds/hl1/scientist/sci_follow.sound", out var soundevent) ) //PlaySound("sci_follow");
+            //{
+            CurrentSound = PlaySound("sounds/hl1/scientist/sci_follow.sound");
+
+            //}
+
 
             if (MODE == "MODE_IDLE")
             {

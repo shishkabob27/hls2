@@ -53,6 +53,7 @@ public class NPC : AnimatedEntity, IUse
 
 	Vector3 LookDir;
 	public Rotation targetRotation;
+	public Sound CurrentSound;
 
 	[Event.Tick.Server]
 	public void Tick()
@@ -100,19 +101,38 @@ public class NPC : AnimatedEntity, IUse
 		animHelper.WithVelocity(Velocity);
 		animHelper.WithWishVelocity(InputVelocity);
 
-		animHelper.VoiceLevel = Rand.Float();
-        
-		Think();
-		
+        //animHelper.VoiceLevel = CurrentSound.Index / 100;
 
-        
-    }
+
+        //Log.Info();//SoundFile.Load("sounds/hl1/scientist/alright.wav"));
+        if (CurrentSound.Finished != true)
+        {
+			animHelper.VoiceLevel = Rand.Float();
+			// It's not possible to get the sound volume for animating the mouths so i'll just randomise a float for now,.
+		}
+		else
+        {
+            animHelper.VoiceLevel = 0;
+        }
+
+        Think();
+		SoundProcess();
+		//SoundStream test;
+		//test.
+
+
+	}
 
     public virtual void Think()
     {
 		
 	}
-   
+
+	public virtual void SoundProcess()
+	{
+
+	}
+
 	public virtual bool OnUse(Entity user)
 	{
 		return true;
