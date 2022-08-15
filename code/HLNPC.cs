@@ -100,8 +100,8 @@ public class NPC : AnimatedEntity
 
 		
 		
-		var ply = HLUtils.FindPlayerInBox(Position, 2048);
-		if (HLUtils.IsPlayerInBox(Position, 100) == false)
+		var ply = HLUtils.FindPlayerInBox(Position, 8096);
+		if ( ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 100) == false)
 			Steer.Target = ply?.Position ?? Vector3.Zero;
         
     }
