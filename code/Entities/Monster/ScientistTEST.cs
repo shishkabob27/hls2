@@ -97,11 +97,15 @@ internal class ScientistTEST : NPC
         {
             ticker = 0;
 
-
-
+            //Steer.Target = Position + (user.Position - Position).Normal * 10; // Turn to face the user.
+            targetRotation = Rotation.LookAt(user.Position.WithZ(0) - Position.WithZ(0), Vector3.Up);
+            //targetRotation.w = Rotation.w;
+            //this.LookDir = 
+            //lookAt = user.Position.WithZ(Position.z);
 
             if (MODE == "MODE_IDLE")
             {
+                
                 MODE = "MODE_FOLLOW";
             } else if (MODE == "MODE_FOLLOW")
             {

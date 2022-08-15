@@ -52,6 +52,7 @@ public class NPC : AnimatedEntity, IUse
 	Vector3 InputVelocity;
 
 	Vector3 LookDir;
+	public Rotation targetRotation;
 
 	[Event.Tick.Server]
 	public void Tick()
@@ -84,13 +85,14 @@ public class NPC : AnimatedEntity, IUse
 		}
 
 		var walkVelocity = Velocity.WithZ(0);
+		var turnSpeed = 1.0f;
 		if (walkVelocity.Length > 0.5f)
 		{
-			var turnSpeed = walkVelocity.Length.LerpInverse(0, 100, true);
-			var targetRotation = Rotation.LookAt(walkVelocity.Normal, Vector3.Up);
-			Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
+			turnSpeed = walkVelocity.Length.LerpInverse(0, 100, true);
+			targetRotation = Rotation.LookAt(walkVelocity.Normal, Vector3.Up);
 		}
 
+		Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
 		var animHelper = new HLAnimationHelper(this);
 
 		LookDir = Vector3.Lerp(LookDir, InputVelocity.WithZ(0) * 1000, Time.Delta * 100.0f);
