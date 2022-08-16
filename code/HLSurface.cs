@@ -126,7 +126,6 @@
 				self = surfNew;
 			}
 
-			Log.Info(self);
 			var sound = foot == 0 ? self.Sounds.FootLeft : self.Sounds.FootRight;
 
 			if ( !string.IsNullOrWhiteSpace( sound ) )

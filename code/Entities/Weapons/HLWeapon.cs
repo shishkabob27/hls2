@@ -240,6 +240,19 @@
 					.WithWeapon( this );
 
 				tr.Entity.TakeDamage( damageInfo );
+                if (tr.Entity is NPC)
+                {
+					var trace = Trace.Ray(Owner.EyePosition, Owner.EyePosition + forward * 256)
+					.WorldOnly()
+					.Ignore(this)
+					.Size(1.0f)
+					.Run();
+					if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+					{
+						//Log.Info( "Splat!" );
+						DecalSystem.PlaceUsingTrace(decal, trace);
+					}
+				}
 			}
 		}
 	}

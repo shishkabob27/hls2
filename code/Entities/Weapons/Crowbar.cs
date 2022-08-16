@@ -88,7 +88,6 @@ partial class Crowbar : HLWeapon
 		else
 		{
 			PlaySound("sounds/hl1/weapons/cbar_miss.sound");
-			Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
 			TimeSincePrimaryAttack = 0.26f;
             ViewModelEntity?.SetAnimParameter("attack_has_hit", true);
 			
@@ -97,7 +96,7 @@ partial class Crowbar : HLWeapon
 				// recreate that funny glitch :)
 				if (hitEntity.LifeState == LifeState.Dead)
 					TimeSincePrimaryAttack = 5f;
-				Log.Info("sheet");
+				
 				Log.Info(hitEntity);
 				
                 var trace = Trace.Ray(Owner.EyePosition, Owner.EyePosition + forward * 70 * 2)
@@ -121,7 +120,6 @@ partial class Crowbar : HLWeapon
 			}
             else if (hitEntity is not NPC && IsServer)
             {
-				Log.Info("yeet");
 				using (Prediction.Off())
 					PlaySound("sounds/hl1/weapons/cbar_hit.sound");
 			}
