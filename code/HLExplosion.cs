@@ -7,7 +7,7 @@ public static void Explosion( Entity weapon, Entity owner, Vector3 position, flo
 		switch (type)
 		{
 			case "grenade": Particles.Create( "particles/explosion.vpcf", position ); break;
-			case "tripmine": Particles.Create( "particles/explosion.vpcf", position ); break;
+			case "tripmine": Particles.Create( "particles/explosion_tripmine.vpcf", position ); break;
 			default: Particles.Create( "particles/explosion.vpcf", position ); break;
 		}
 		
