@@ -16,7 +16,7 @@ partial class HandGrenade : BasePhysics
 	{
 		await Task.DelaySeconds( seconds );
 
-		HLGame.Explosion( this, Owner, Position, 256, 100, 1.0f );
+		HLExplosion.Explosion( this, Owner, Position, 256, 100, 1.0f, "grenade");
 		Delete();
 	}
 }

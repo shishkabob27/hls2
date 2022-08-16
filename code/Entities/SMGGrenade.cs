@@ -30,7 +30,7 @@ public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/
 
 	public void BlowUp()
 	{
-		HLGame.Explosion( this, Owner, Position, 250, 100, 1.0f );
+		HLExplosion.Explosion( this, Owner, Position, 250, 100, 1.0f, "grenade");
 		Delete();
 	}
 }

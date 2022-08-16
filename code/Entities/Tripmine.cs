@@ -75,7 +75,7 @@ partial class Tripmine : ModelEntity
 		exploding = true;
 		await Task.DelaySeconds( delay );
 
-		HLGame.Explosion( this, Owner, Position, 400, 150, 1.0f );
+		HLExplosion.Explosion( this, Owner, Position, 400, 150, 1.0f, "tripmine");
 		Delete();
 	}
 }
