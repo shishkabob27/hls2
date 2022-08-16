@@ -127,7 +127,7 @@ public partial class Scientist : NPC
         {
             SpeakSound("sounds/hl1/scientist/sci_pain.sound", VoicePitch / 100);
         }
-        //animHelper.IsScared = true;
+        animHelper.IsScared = true;
         //CurrentSound.Stop();
         //CurrentSound.Stop();
         //CurrentSound = PlaySound("sounds/hl1/scientist/sci_pain.sound").SetPitch(VoicePitch / 100);
