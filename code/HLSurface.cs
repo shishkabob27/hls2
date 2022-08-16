@@ -111,6 +111,22 @@
 		/// </summary>
 		public static void DoHLFootstep( this Surface self, Entity ent, TraceResult tr, int foot, float volume )
 		{
+			var newName = tr.Surface.ResourceName;
+			switch (self.ResourceName)
+			{
+				case "flesh":
+					newName = "surface/hlflesh.surface";
+					break;
+				default:
+					newName = "surface/hldefault.surface";
+					break;
+			}
+			if (ResourceLibrary.TryGet<Surface>(newName, out var surfNew))
+			{
+				self = surfNew;
+			}
+
+			Log.Info(self);
 			var sound = foot == 0 ? self.Sounds.FootLeft : self.Sounds.FootRight;
 
 			if ( !string.IsNullOrWhiteSpace( sound ) )

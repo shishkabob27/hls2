@@ -368,7 +368,7 @@
 		if ( !IsServer )
 			return;
 
-		if ( timeSinceLastFootstep < 0.2f )
+		if ( timeSinceLastFootstep < 0.20f )
 			return;
 
 		volume *= FootstepVolume();
@@ -385,7 +385,7 @@
 
 		if ( !tr.Hit ) return;
 
-		tr.Surface.DoFootstep( this, tr, foot, volume * 10 );
+		tr.Surface.DoHLFootstep( this, tr, foot, volume * 5 );
 	}
 
 	public void RenderHud( Vector2 screenSize )

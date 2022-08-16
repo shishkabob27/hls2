@@ -25,6 +25,9 @@
 		}
 		Sounds = 
 		{
+			FootLeft = resource:"sounds/hl1/player/pl_tile.sound"
+			FootRight = resource:"sounds/hl1/player/pl_tile.sound"
+			FootLaunch = resource:"sounds/hl1/player/pl_tile.sound"
 		}
 		Breakables = 
 		{
