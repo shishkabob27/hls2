@@ -26,6 +26,7 @@ partial class Crowbar : HLWeapon
 		return base.CanPrimaryAttack();
 	}
 
+	Entity hitEntity;
 	public override void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;
@@ -41,7 +42,7 @@ partial class Crowbar : HLWeapon
 		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.1f;
 		forward = forward.Normal;
 
-        
+		hitEntity = this;
 		bool didHit = false;
 		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 70, 1 ) )
 		{
@@ -59,15 +60,17 @@ partial class Crowbar : HLWeapon
 			if ( !IsServer ) continue;
 			if ( !tr.Entity.IsValid() ) continue;
 
-			var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 32, 25 )
+			var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 32, 5 )
 				.UsingTraceResult( tr )
 				.WithAttacker( Owner )
-				.WithWeapon( this );
+				.WithWeapon( this);
 
-			tr.Entity.TakeDamage( damageInfo );
+            tr.Entity.TakeDamage(damageInfo);
+
+            hitEntity = tr.Entity;
 
         }
-		ViewModelEntity?.SetAnimParameter("attack_has_hit", false);
+        ViewModelEntity?.SetAnimParameter("attack_has_hit", false);
         
 
 		if (!didHit)
@@ -76,10 +79,27 @@ partial class Crowbar : HLWeapon
 		}
 		else
 		{
+			PlaySound("sounds/hl1/weapons/cbar_miss.sound");
+			Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
 			TimeSincePrimaryAttack = 0.26f;
             ViewModelEntity?.SetAnimParameter("attack_has_hit", true);
-
-			PlaySound("sounds/hl1/weapons/cbar_hit.sound");
+			
+			if (hitEntity != this && hitEntity is NPC && IsServer)
+            {
+				// recreate that funny glitch :)
+				if (hitEntity.LifeState == LifeState.Dead)
+					TimeSincePrimaryAttack = 5f;
+				Log.Info("sheet");
+				Log.Info(hitEntity);
+				using (Prediction.Off())
+					PlaySound("sounds/hl1/weapons/cbar_hitbod.sound");
+            }
+            else if (hitEntity is not NPC && IsServer)
+            {
+				Log.Info("yeet");
+				using (Prediction.Off())
+					PlaySound("sounds/hl1/weapons/cbar_hit.sound");
+			}
 		}
         
 

@@ -109,6 +109,16 @@ namespace Sandbox
 			set => Owner.SetAnimParameter( "voice", value );
 		}
 
+		public float HealthLevel
+		{
+			get => Owner.GetAnimParameterFloat("health");
+			set => Owner.SetAnimParameter("health", value);
+		}
+		public bool IsScared
+		{
+			get => Owner.GetAnimParameterBool("scared");
+			set => Owner.SetAnimParameter("scared", value);
+		}
 		public bool IsSitting
 		{
 			get => Owner.GetAnimParameterBool( "b_sit" );

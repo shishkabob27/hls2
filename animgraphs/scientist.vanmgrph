@@ -68,7 +68,7 @@
 				{
 					_class = "CSpeedScaleAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 256.0, -176.0 ]
+					m_vecPosition = [ 96.0, -176.0 ]
 					m_nNodeID = 
 					{
 						m_id = 181282783
@@ -144,7 +144,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -320.0, 48.0 ]
+					m_vecPosition = [ -352.0, -64.0 ]
 					m_nNodeID = 
 					{
 						m_id = 188056294
@@ -680,15 +680,16 @@
 									m_conditions = 
 									[
 										{
-											_class = "CControlValueCondition"
+											_class = "CParameterAnimCondition"
 											m_comparisonOp = 2
-											m_sourceControlValue = "ControlValue_MoveSpeed"
-											m_comparisonValueType = 0
-											m_comparisonFixedValue = 0.0
-											m_comparisonControlValue = "ControlValue_MoveHeading"
-											m_comparisonParamID = 
+											m_paramID = 
 											{
-												m_id = 4294967295
+												m_id = 1787578650
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 4
+												m_data = 4.0
 											}
 										},
 									]
@@ -713,15 +714,16 @@
 									m_conditions = 
 									[
 										{
-											_class = "CControlValueCondition"
+											_class = "CParameterAnimCondition"
 											m_comparisonOp = 2
-											m_sourceControlValue = "ControlValue_MoveSpeed"
-											m_comparisonValueType = 0
-											m_comparisonFixedValue = 40.0
-											m_comparisonControlValue = "ControlValue_MoveHeading"
-											m_comparisonParamID = 
+											m_paramID = 
 											{
-												m_id = 4294967295
+												m_id = 1787578650
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 4
+												m_data = 86.0
 											}
 										},
 									]
@@ -841,7 +843,22 @@
 								},
 								{
 									_class = "CAnimStateTransition"
-									m_conditions = [  ]
+									m_conditions = 
+									[
+										{
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 2
+											m_paramID = 
+											{
+												m_id = 1787578650
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 4
+												m_data = 86.0
+											}
+										},
+									]
 									m_blendDuration = 0.2
 									m_destState = 
 									{
@@ -860,7 +877,22 @@
 								},
 								{
 									_class = "CAnimStateTransition"
-									m_conditions = [  ]
+									m_conditions = 
+									[
+										{
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 0
+											m_paramID = 
+											{
+												m_id = 1787578650
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 4
+												m_data = 0.0
+											}
+										},
+									]
 									m_blendDuration = 0.2
 									m_destState = 
 									{
@@ -885,7 +917,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 500671895
+									m_id = 689398965
 								}
 								m_outputID = 
 								{
@@ -943,7 +975,22 @@
 								},
 								{
 									_class = "CAnimStateTransition"
-									m_conditions = [  ]
+									m_conditions = 
+									[
+										{
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 5
+											m_paramID = 
+											{
+												m_id = 1787578650
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 4
+												m_data = 86.0
+											}
+										},
+									]
 									m_blendDuration = 0.2
 									m_destState = 
 									{
@@ -1113,7 +1160,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -320.0, -16.0 ]
+					m_vecPosition = [ -352.0, -128.0 ]
 					m_nNodeID = 
 					{
 						m_id = 292736003
@@ -1157,7 +1204,7 @@
 				{
 					_class = "CChoiceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -80.0, -128.0 ]
+					m_vecPosition = [ -144.0, -352.0 ]
 					m_nNodeID = 
 					{
 						m_id = 342892092
@@ -1339,7 +1386,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -320.0, -80.0 ]
+					m_vecPosition = [ -352.0, -192.0 ]
 					m_nNodeID = 
 					{
 						m_id = 418483718
@@ -1422,7 +1469,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, -32.0 ]
+					m_vecPosition = [ -96.0, -32.0 ]
 					m_nNodeID = 
 					{
 						m_id = 500671895
@@ -1431,7 +1478,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "walk_scared"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 0.01
 					m_bLoop = true
 				}
 			},
@@ -1484,13 +1531,46 @@
 			{
 				key = 
 				{
+					m_id = 689398965
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 96.0, -32.0 ]
+					m_nNodeID = 
+					{
+						m_id = 689398965
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 500671895
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 1787578650
+					}
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 906921045
 				}
 				value = 
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -320.0, 112.0 ]
+					m_vecPosition = [ -352.0, 0.0 ]
 					m_nNodeID = 
 					{
 						m_id = 906921045
@@ -1709,7 +1789,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, -176.0 ]
+					m_vecPosition = [ -96.0, -176.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1698220565
@@ -1731,7 +1811,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -320.0, -240.0 ]
+					m_vecPosition = [ 16.0, -368.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1784961398
@@ -1843,7 +1923,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -320.0, 176.0 ]
+					m_vecPosition = [ -352.0, 64.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1966435670
@@ -1919,7 +1999,7 @@
 		[
 			{
 				_class = "CFloatAnimParameter"
-				m_name = "Health"
+				m_name = "health"
 				m_id = 
 				{
 					m_id = 633295247
@@ -1936,7 +2016,7 @@
 			},
 			{
 				_class = "CBoolAnimParameter"
-				m_name = "Scared"
+				m_name = "scared"
 				m_id = 
 				{
 					m_id = 1117586247

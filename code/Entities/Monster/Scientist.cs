@@ -1,7 +1,7 @@
 ﻿[Library("monster_scientist"), HammerEntity]
 [EditorModel("models/hl1/monster/scientist/scientist_01.vmdl")]
 [Title("Scientist"), Category("Monsters")]
-internal class Scientist : NPC
+public partial class Scientist : NPC
 {
     // Stub NPC, this does nothing yet
 
@@ -33,9 +33,7 @@ internal class Scientist : NPC
         VoicePitch = SetPitch();
         SetModel(SetScientistModel());
         //SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
-        EnableHitboxes = true; 
-        //PhysicsEnabled = true;
-        UsePhysicsCollision = true;
+        EnableHitboxes = true;
 
         Tags.Add("player"); // add player for now until a monster tag is added (can't do that now cause editing addon cfg is a pain for me (xenthio btw)
     
@@ -79,7 +77,7 @@ internal class Scientist : NPC
     bool wasInBound = false;
     public override void Think()
     {
-        VoicePitch = SetPitch();
+        //VoicePitch = SetPitch();
         var ply = HLUtils.FindPlayerInBox(Position, 8096);
         if (MODE == "MODE_FOLLOW") 
         {
@@ -121,9 +119,29 @@ internal class Scientist : NPC
     int ticker = 1;
 
     static SoundEvent soundevent = new SoundEvent("sounds/hl1/scientist/alright.vsnd");
-    
+    public override void TakeDamage(DamageInfo info)
+    {
+        base.TakeDamage(info);
+
+        if (LifeState == LifeState.Alive)
+        {
+            SpeakSound("sounds/hl1/scientist/sci_pain.sound", VoicePitch / 100);
+        }
+        //animHelper.IsScared = true;
+        //CurrentSound.Stop();
+        //CurrentSound.Stop();
+        //CurrentSound = PlaySound("sounds/hl1/scientist/sci_pain.sound").SetPitch(VoicePitch / 100);
+
+    }
+  
     public override bool OnUse(Entity user)
     {
+
+        Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
+        if (!(base.OnUse(user)))
+        {
+            return false;
+        }
         if (ticker == 1)
         {
             ticker = 0;
@@ -146,13 +164,15 @@ internal class Scientist : NPC
 
             if (MODE == "MODE_IDLE")
             {
-                CurrentSound.Stop();
-                CurrentSound = PlaySound("sounds/hl1/scientist/sci_follow.sound").SetPitch(VoicePitch / 100);
+                //CurrentSound.Stop();
+                //CurrentSound = PlaySound("sounds/hl1/scientist/sci_follow.sound").SetPitch(VoicePitch / 100);
+                SpeakSound("sounds/hl1/scientist/sci_follow.sound", VoicePitch / 100);
                 MODE = "MODE_FOLLOW";
             } else if (MODE == "MODE_FOLLOW")
             {
-                CurrentSound.Stop();
-                CurrentSound = PlaySound("sounds/hl1/scientist/sci_stopfollow.sound").SetPitch(VoicePitch / 100);
+                //CurrentSound.Stop();
+                //CurrentSound = PlaySound("sounds/hl1/scientist/sci_stopfollow.sound").SetPitch(VoicePitch / 100);
+                SpeakSound("sounds/hl1/scientist/sci_stopfollow.sound", VoicePitch / 100);
                 MODE = "MODE_IDLE";
                 
             }
@@ -163,9 +183,6 @@ internal class Scientist : NPC
             ticker = 1;
             return false;
         }
-
-
-        return base.OnUse(user);
     }
 
 

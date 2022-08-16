@@ -4,17 +4,15 @@
 	{
 		UI = false
 		Volume = 1
-		VolumeRandom = 0
+		VolumeRandom = 0.05
 		Pitch = 1
 		PitchRandom = 0
 		Decibels = 70
 		Sounds = 
 		[
-			resource:"sounds/hl1/scientist/sci_pain1.vsnd",
-			resource:"sounds/hl1/scientist/sci_pain2.vsnd",
-			resource:"sounds/hl1/scientist/sci_pain3.vsnd",
-			resource:"sounds/hl1/scientist/sci_pain4.vsnd",
-			resource:"sounds/hl1/scientist/sci_pain5.vsnd",
+			resource:"sounds/hl1/weapons/cbar_hitbod2.vsnd",
+			resource:"sounds/hl1/weapons/cbar_hitbod1.vsnd",
+			resource:"sounds/hl1/weapons/cbar_hitbod3.vsnd",
 		]
 		SelectionMode = "Random"
 		MaximumDistance = 1143.9335

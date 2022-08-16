@@ -1,5 +1,5 @@
 ﻿[Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
-public class NPC : AnimatedEntity, IUse
+public partial class NPC : AnimatedEntity, IUse
 {
 	public bool InScriptedSequence = false;
 	public bool InPriorityScriptedSequence = false;
@@ -20,8 +20,9 @@ public class NPC : AnimatedEntity, IUse
 	public NavSteer Steer;
 
 	public override void Spawn()
-	{
-		base.Spawn();
+    {
+        base.Spawn();
+		animHelper = new HLAnimationHelper(this);
 		Steer = new NavSteer();
 		SetModel("models/citizen/citizen.vmdl");
 		EyePosition = Position + Vector3.Up * 64;
@@ -57,10 +58,11 @@ public class NPC : AnimatedEntity, IUse
 	Vector3 LookDir;
 	public Rotation targetRotation;
 	public Sound CurrentSound;
-
+	public HLAnimationHelper animHelper;
 	[Event.Tick.Server]
 	public void Tick()
 	{
+		
 		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
 
 		InputVelocity = 0;
@@ -97,18 +99,19 @@ public class NPC : AnimatedEntity, IUse
 		}
 
 		Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
-		var animHelper = new HLAnimationHelper(this);
+		//var animHelper = new HLAnimationHelper(this);
 
 		LookDir = Vector3.Lerp(LookDir, InputVelocity.WithZ(0) * 1000, Time.Delta * 100.0f);
 		animHelper.WithLookAt(EyePosition + LookDir);
 		animHelper.WithVelocity(Velocity);
 		animHelper.WithWishVelocity(InputVelocity);
+		animHelper.HealthLevel = Health;
 
-        //animHelper.VoiceLevel = CurrentSound.Index / 100;
+		//animHelper.VoiceLevel = CurrentSound.Index / 100;
 
 
-        //Log.Info();//SoundFile.Load("sounds/hl1/scientist/alright.wav"));
-        if (CurrentSound.Finished != true)
+		//Log.Info();//SoundFile.Load("sounds/hl1/scientist/alright.wav"));
+		if (CurrentSound.Finished != true)
         {
 			animHelper.VoiceLevel = Rand.Float();
 			// It's not possible to get the sound volume for animating the mouths so i'll just randomise a float for now,.
@@ -117,8 +120,9 @@ public class NPC : AnimatedEntity, IUse
         {
             animHelper.VoiceLevel = 0;
         }
-
-        Think();
+		if (LifeState == LifeState.Dead)
+			return;
+		Think();
 		SoundProcess();
 		//SoundStream test;
 		//test.
@@ -138,11 +142,15 @@ public class NPC : AnimatedEntity, IUse
 
 	public virtual bool OnUse(Entity user)
 	{
+		if (LifeState == LifeState.Dead)
+			return false;
 		return true;
 	}
     
 	protected virtual void Move(float timeDelta)
 	{
+		if (LifeState == LifeState.Dead)
+			return;
 		var bbox = BBox.FromHeightAndRadius(64, 4);
 		//DebugOverlay.Box( Position, bbox.Mins, bbox.Maxs, Color.Green );
 
@@ -207,14 +215,40 @@ public class NPC : AnimatedEntity, IUse
     
 	public override void TakeDamage(DamageInfo info)
 	{
+		
+
+		LastAttacker = info.Attacker;
+		LastAttackerWeapon = info.Weapon;
+		if (IsServer)
+		{
+			Health -= info.Damage;
+			if (Health <= 0f)
+			{
+				if (LifeState == LifeState.Alive)
+				{
+                    OnKilled();
+					LifeState = LifeState.Dead;
+					//Delete();
+				}
+			}
+		}
 		LastDamage = info;
-		if (LifeState == LifeState.Dead)
-			return;
 
-		base.TakeDamage(info);
-
+		if (Health <= 0f)
+		{
+			if (LifeState == LifeState.Alive)
+			{
+				LifeState = LifeState.Dead;
+				//Delete();
+			}
+		}
+		Log.Info(Health);
+        if (Health < -20)
+        {
+			HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds);
+			Delete();
+		}
 		this.ProceduralHitReaction(info);
-
 		//
 		// Add a score to the killer
 		//
@@ -225,19 +259,46 @@ public class NPC : AnimatedEntity, IUse
 				info.Attacker.Client.AddInt("kills");
 			}
 		}
+        
 	}
 
+	public void SpeakSound(string sound, float pitch = 100)
+	{
+        if (IsServer)
+        {
+			Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
+			using (Prediction.Off())
+			{
+				CurrentSound.Stop();
+				CurrentSound = PlaySound(sound).SetPitch(pitch);
+			}
+			//SpeakSoundcl(sound, pitch);
+		}
+        
+	}
+    
+	[ClientRpc]
+	public void SpeakSoundcl(string sound, float pitch = 100)
+	{
+		//CurrentSound.Stop();
+		CurrentSound = PlaySound(sound).SetPitch(pitch);
+		Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
+	}
+    
 	public override void OnKilled()
 	{
-		base.OnKilled();
+		Tags.Add("debris");
+
+		SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(1, 8));
+		if (LifeState == LifeState.Alive)
+		{
+			LifeState = LifeState.Dead;
+			//Delete();
+		}
 
 		if (LastDamage.Flags.HasFlag(DamageFlags.Blast))
 		{
-			using (Prediction.Off())
-			{
-				HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, LastDamage.Position, Health, this.CollisionBounds);
-
-			}
+			
 		}
 		else
 		{
