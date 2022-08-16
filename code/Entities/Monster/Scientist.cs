@@ -17,7 +17,11 @@ public partial class Scientist : NPC
     public float Body { get; set; } = 5;
     public float VoicePitch = 100;
     public Scientist() {
-        NPCAnimGraph = "animgraphs/scientist.vanmgrph";   
+        NPCAnimGraph = "animgraphs/scientist.vanmgrph";
+        SetAnimGraph(NPCAnimGraph);
+        Health = 20;
+        Speed = 80;
+        VoicePitch = SetPitch();
     }
 
     public override void Spawn()
