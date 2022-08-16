@@ -1,7 +1,5 @@
 ﻿partial class BaseAmmo : ModelEntity
 {
-	//public static Model WorldModel = Model.Load( "models/dm_battery.vmdl" );
-
 	public virtual AmmoType AmmoType => AmmoType.None;
 	public virtual int AmmoAmount => 17;
 	public virtual Model WorldModel => Model.Load( "models/dm_battery.vmdl" );
@@ -42,7 +40,7 @@
 }
 
 
-[Library( "hl_ammo9mmclip" ), HammerEntity]
+[Library( "ammo_9mmclip" ), HammerEntity]
 [EditorModel( "models/dm_ammo_9mmclip.vmdl" )]
 [Title( "9mm Clip" ), Category( "Ammo" )]
 partial class Ammo9mmClip : BaseAmmo
@@ -53,7 +51,7 @@ partial class Ammo9mmClip : BaseAmmo
 
 }
 
-[Library( "hl_ammo9mmbox" ), HammerEntity]
+[Library( "ammo_9mmbox" ), HammerEntity]
 [EditorModel( "models/dm_ammo_9mmbox.vmdl" )]
 [Title( "9mm Box" ), Category( "Ammo" )]
 partial class Ammo9mmBox : BaseAmmo
@@ -66,7 +64,7 @@ partial class Ammo9mmBox : BaseAmmo
 
 
 
-[Library( "hl_ammobuckshot" ), HammerEntity]
+[Library( "ammo_buckshot" ), HammerEntity]
 [EditorModel( "models/dm_ammo_buckshot.vmdl" )]
 [Title( "Buckshot" ), Category( "Ammo" )]
 partial class AmmoBuckshot : BaseAmmo
@@ -77,7 +75,7 @@ partial class AmmoBuckshot : BaseAmmo
 	public override Model WorldModel => Model.Load( "models/dm_ammo_buckshot.vmdl" );
 }
 
-[Library( "hl_ammo357" ), HammerEntity]
+[Library( "ammo_357" ), HammerEntity]
 [EditorModel( "models/dm_ammo_357.vmdl" )]
 [Title( "357 Ammo" ), Category( "Ammo" )]
 partial class Ammo357 : BaseAmmo
@@ -88,7 +86,7 @@ partial class Ammo357 : BaseAmmo
 	public override Model WorldModel => Model.Load( "models/dm_ammo_357.vmdl" );
 }
 
-[Library( "hl_ammocrossbow" ), HammerEntity]
+[Library( "ammo_crossbow" ), HammerEntity]
 [EditorModel( "models/dm_ammo_crossbow.vmdl" )]
 [Title( "Crossbow Bolts" ), Category( "Ammo" )]
 partial class AmmoCrossbow : BaseAmmo
@@ -99,7 +97,7 @@ partial class AmmoCrossbow : BaseAmmo
 	public override Model WorldModel => Model.Load( "models/dm_ammo_crossbow.vmdl" );
 }
 
-[Library("hl_ammosmggrenade"), HammerEntity]
+[Library("ammo_ARgrenades"), HammerEntity]
 [EditorModel("models/dm_ammo_crossbow.vmdl")]
 [Title("SMG Grenade"), Category("Ammo")]
 partial class AmmoSMGGrenade : BaseAmmo
