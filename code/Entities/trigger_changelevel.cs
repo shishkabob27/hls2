@@ -33,6 +33,6 @@ public partial class ChangeLevelTrigger : BaseTrigger
 	{
 		OnTrigger.Fire( other );
 
-		ConsoleSystem.Run("changelevel "+ Map);
+		Global.ChangeLevel(Map);
 	}
 }
