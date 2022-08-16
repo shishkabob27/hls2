@@ -4,12 +4,12 @@ using SandboxEditor;
 	/// <br/>
 	/// TODO: This is a stop-gap solution and may be removed in the future in favor of "map blueprints" or node based Map I/O.
 	/// </summary>
-	[Library( "trigger_relay" )]
+	[Library( "logic_relay" )]
 	[HammerEntity]
 	[VisGroup( VisGroup.Logic )]
 	[EditorSprite( "editor/ent_logic.vmat" )]
-	[Title( "Trigger Relay" ), Category( "Legacy" ), Icon( "calculate" )]
-	public partial class TriggerRelay : Entity
+	[Title( "Logic Relay" ), Category( "Legacy" ), Icon( "calculate" )]
+	public partial class LogicRelay : Entity
 	{
 		/// <summary>
 		/// The (initial) enabled state of the logic entity.

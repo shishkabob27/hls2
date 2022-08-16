@@ -5,7 +5,7 @@ internal class Scientist : NPC
 {
     // Stub NPC, this does nothing yet
 
-    
+
     List<string> ScientistMDLList = new List<string>{
         "models/hl1/monster/scientist/scientist_01.vmdl",
         "models/hl1/monster/scientist/scientist_02.vmdl",
@@ -14,16 +14,20 @@ internal class Scientist : NPC
     };
 
     [Property]
-	public float Body { get; set; } = 5;
+    public float Body { get; set; } = 5;
     public float VoicePitch = 100;
+    public Scientist() {
+        NPCAnimGraph = "animgraphs/scientist.vanmgrph";   
+    }
 
     public override void Spawn()
     {
+        //NPCAnimGraph = "animgraphs/scientist.vanmgrph";
         base.Spawn();
         if (Body > 3) {
             Body = Rand.Int(0, 3);
         }
-        SetAnimGraph("animgraphs/scientist.vanmgrph");
+        SetAnimGraph(NPCAnimGraph);
         Health = 20;
         Speed = 80;
         VoicePitch = SetPitch();

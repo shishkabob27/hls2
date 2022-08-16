@@ -35,6 +35,24 @@ using SandboxEditor;
 			Enabled = false;
 		}
 
+			/// <summary>
+		/// Enables the entity.
+		/// </summary>
+		[Input]
+		public void TurnOn()
+		{
+			Enabled = true;
+		}
+
+		/// <summary>
+		/// Disables the entity, so that it would not fire any outputs.
+		/// </summary>
+		[Input]
+		public void TurnOff()
+		{
+			Enabled = false;
+		}
+
 		/// <summary>
 		/// Toggles the enabled state of the entity.
 		/// </summary>

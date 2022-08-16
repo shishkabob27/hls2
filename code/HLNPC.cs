@@ -1,6 +1,8 @@
 ﻿[Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
 public class NPC : AnimatedEntity, IUse
 {
+	public bool InScriptedSequence = false;
+	public bool InPriorityScriptedSequence = false;
 	[ConVar.Replicated]
 	public static bool nav_drawpath { get; set; }
 
@@ -13,6 +15,7 @@ public class NPC : AnimatedEntity, IUse
 
 	public float Speed;
 
+	public string NPCAnimGraph = "";
 	NavPath Path = new NavPath();
 	public NavSteer Steer;
 

@@ -61,7 +61,7 @@ using SandboxEditor;
 		public void OnMapSpawnEvent()
 		{
 			//Log.Info("Activating logic auto by " + activator);
-			OnMapSpawn.Fire( this );
+			//OnMapSpawn.Fire( this );
 		}
 
 		
