@@ -16,15 +16,35 @@
 			if ( !Prediction.FirstTime )
 				return null;
 
+			
+            
 			//
 			// Drop a decal
 			//
 			var decalPath = "decals/bullet_hole.decal";
+			
+			var surf = tr.Surface;
 
-			var surf = self.GetBaseSurface();
+
+			var newName = tr.Surface.ResourceName;
+			switch (surf.ResourceName)
+			{
+				case "flesh":
+					newName = "surface/hlflesh.surface";
+					break;
+				default:
+					newName = "surface/hldefault.surface";
+					break;
+			}
+			if (ResourceLibrary.TryGet<Surface>(newName, out var surfNew))
+			{
+				surf = surfNew;
+			}
+            
+            
 			while ( string.IsNullOrWhiteSpace( decalPath ) && surf != null )
 			{
-				//decalPath = Rand.FromArray( surf.ImpactEffects.BulletDecal );
+				decalPath = Rand.FromArray( surf.ImpactEffects.BulletDecal );
 				surf = surf.GetBaseSurface();
 			}
 
@@ -41,7 +61,7 @@
 			//
 			var sound = self.Sounds.Bullet;
 
-			surf = self.GetBaseSurface();
+			//surf = self.GetBaseSurface();
 			while ( string.IsNullOrWhiteSpace( sound ) && surf != null )
 			{
 				sound = surf.Sounds.Bullet;
@@ -56,17 +76,21 @@
 			//
 			// Get us a particle effect
 			//
+
+			//surf = tr.Surface;
+
+            
 			if (Particle == false)
 				return default;
-            
-			string particleName = "particles/hlimpact.vpcf";
+
+			string particleName = Rand.FromArray(surf.ImpactEffects.Bullet);
 			//if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( self.ImpactEffects.Regular );
 
-			surf = self.GetBaseSurface();
+			
 			while ( string.IsNullOrWhiteSpace( particleName ) && surf != null )
 			{
-				//particleName = Rand.FromArray( surf.ImpactEffects.Bullet );
-				//if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( surf.ImpactEffects.Regular );
+				particleName = Rand.FromArray( surf.ImpactEffects.Bullet );
+				if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( surf.ImpactEffects.Regular );
 
 				surf = surf.GetBaseSurface();
 			}

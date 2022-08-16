@@ -28,9 +28,10 @@ public partial class NPC : AnimatedEntity, IUse
 		EyePosition = Position + Vector3.Up * 64;
 		CollisionGroup = CollisionGroup.Player;
 		SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(72, 8));
-
+		
 		EnableHitboxes = true;
-
+		PhysicsBody.SetSurface("surface/hlflesh.surface");
+        
 		this.SetMaterialGroup(Rand.Int(0, 3));
 
 		//new ModelEntity("models/citizen_clothes/trousers/trousers.smart.vmdl", this);

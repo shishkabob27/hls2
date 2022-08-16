@@ -44,6 +44,8 @@ partial class Crowbar : HLWeapon
 
 		hitEntity = this;
 		bool didHit = false;
+        var endPos = Vector3.Zero;
+		var trNormal = Vector3.Zero;
 		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 70, 1 ) )
 		{
 
@@ -68,9 +70,15 @@ partial class Crowbar : HLWeapon
             tr.Entity.TakeDamage(damageInfo);
 
             hitEntity = tr.Entity;
+			endPos = tr.EndPosition;
+			trNormal = tr.Normal;
 
-        }
-        ViewModelEntity?.SetAnimParameter("attack_has_hit", false);
+		}
+        
+        
+        
+        
+		ViewModelEntity?.SetAnimParameter("attack_has_hit", false);
         
 
 		if (!didHit)
@@ -91,9 +99,26 @@ partial class Crowbar : HLWeapon
 					TimeSincePrimaryAttack = 5f;
 				Log.Info("sheet");
 				Log.Info(hitEntity);
+				
+                var trace = Trace.Ray(Owner.EyePosition, Owner.EyePosition + forward * 70 * 2)
+					.WorldOnly()
+					.Ignore(this)
+					.Size(1.0f)
+					.Run();
+				if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+				{
+					//Log.Info( "Splat!" );
+					DecalSystem.PlaceUsingTrace(decal, trace);
+				}
+                
 				using (Prediction.Off())
+				{
 					PlaySound("sounds/hl1/weapons/cbar_hitbod.sound");
-            }
+					var ps = Particles.Create("particles/hlimpact_blood.vpcf", endPos);
+					//ps.SetForward(0, trNormal);
+					//ps.SetPosition(0, endPos);
+				}
+			}
             else if (hitEntity is not NPC && IsServer)
             {
 				Log.Info("yeet");
