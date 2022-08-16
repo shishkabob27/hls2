@@ -52,7 +52,7 @@ using System.Text.Json.Serialization;
 	[Library( "func_door" )]
 	[HammerEntity, SupportsSolid]
 	[Model( Archetypes = ModelArchetype.animated_model )]
-	[DoorHelper( "movedir", "movedir_islocal", "movedir_type", "distance" )]
+	[DoorHelper( "movedir", "movedir_islocal", "movedir_type", "lip" )]
 	[RenderFields, VisGroup( VisGroup.Dynamic )]
 	[Title( "Door" ), Category( "Legacy" ), Icon( "door_front" )]
 	public partial class DoorEntity : KeyframeEntity, IUse
@@ -104,7 +104,7 @@ using System.Text.Json.Serialization;
 		/// Rotating door: The amount, in degrees, that the door should rotate when it's pressed.
 		/// </summary>
 		[Property]
-		public float Distance { get; set; } = 0;
+		public float lip { get; set; } = 0;
 
 		/// <summary>
 		/// How far the door should be open on spawn where 0% = closed and 100% = fully open.
@@ -233,12 +233,12 @@ using System.Text.Json.Serialization;
 				// Open position is the size of the bbox in the direction minus the lip size
 				var boundSize = CollisionBounds.Size;
 
-				PositionB = PositionA + dir * (MathF.Abs( boundSize.Dot( dir ) ) - Distance);
+				PositionB = PositionA + dir * (MathF.Abs( boundSize.Dot( dir ) ) - lip);
 
 				if ( MoveDirIsLocal )
 				{
 					var dir_world = Transform.NormalToWorld( dir );
-					PositionB = PositionA + dir_world * (MathF.Abs( boundSize.Dot( dir ) ) - Distance);
+					PositionB = PositionA + dir_world * (MathF.Abs( boundSize.Dot( dir ) ) - lip);
 				}
 			}
 
@@ -249,8 +249,8 @@ using System.Text.Json.Serialization;
 				var axis = Rotation.From( MoveDir ).Up;
 				if ( !MoveDirIsLocal ) axis = Transform.NormalToLocal( axis );
 
-				RotationB_Opposite = RotationA.RotateAroundAxis( axis, -Distance );
-				RotationB_Normal = RotationA.RotateAroundAxis( axis, Distance );
+				RotationB_Opposite = RotationA.RotateAroundAxis( axis, -lip );
+				RotationB_Normal = RotationA.RotateAroundAxis( axis, lip );
 				RotationB = RotationB_Normal;
 			}
 
