@@ -16,7 +16,7 @@ Layer0
 	g_vWaterFogDistanceFalloff "[250.000 0.100]"
 
 	//---- Material ----
-	TextureColor "materials/water/_c1a0a.tga"
+	TextureColor "materials/liquids/_c1a0a.tga"
 	TextureTintMask "materials/default/default.tga"
 
 	//---- Texture Coordinates ----
