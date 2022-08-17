@@ -2900,22 +2900,22 @@
 									[
 										{
 											_class = "CParameterAnimCondition"
-											m_comparisonOp = 2
+											m_comparisonOp = 0
 											m_paramID = 
 											{
-												m_id = 1078518820
+												m_id = 630705386
 											}
 											m_comparisonValue = 
 											{
-												m_nType = 4
-												m_data = 4.0
+												m_nType = 1
+												m_data = true
 											}
 										},
 									]
 									m_blendDuration = 0.2
 									m_destState = 
 									{
-										m_id = 675189216
+										m_id = 451721063
 									}
 									m_bReset = true
 									m_resetCycleOption = "Beginning"
@@ -2934,22 +2934,22 @@
 									[
 										{
 											_class = "CParameterAnimCondition"
-											m_comparisonOp = 0
+											m_comparisonOp = 2
 											m_paramID = 
 											{
-												m_id = 630705386
+												m_id = 1078518820
 											}
 											m_comparisonValue = 
 											{
-												m_nType = 1
-												m_data = true
+												m_nType = 4
+												m_data = 4.0
 											}
 										},
 									]
 									m_blendDuration = 0.2
 									m_destState = 
 									{
-										m_id = 451721063
+										m_id = 675189216
 									}
 									m_bReset = true
 									m_resetCycleOption = "Beginning"
