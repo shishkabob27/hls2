@@ -5,7 +5,8 @@ public partial class Scientist : NPC
 {
     // Stub NPC, this does nothing yet
 
-
+    Entity FollowTarget;
+    
     List<string> ScientistMDLList = new List<string>{
         "models/hl1/monster/scientist/scientist_01.vmdl",
         "models/hl1/monster/scientist/scientist_02.vmdl",
@@ -82,25 +83,25 @@ public partial class Scientist : NPC
     public override void Think()
     {
         //VoicePitch = SetPitch();
-        var ply = HLUtils.FindPlayerInBox(Position, 8096);
+        var ply = HLUtils.ClosestPlayerTo(Position);
         if (MODE == "MODE_FOLLOW") 
         {
-            if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 80) == false)
+            if (FollowTarget != null && FollowTarget.IsValid && FollowTarget.Position.Distance(Position) > 80)
             {
-                Steer.Target = ply?.Position ?? Vector3.Zero;
+                Steer.Target = FollowTarget?.Position ?? Vector3.Zero;
                 wasInBound = true;
             }
-            else if (ply != null && ply.IsValid && wasInBound == true)
+            else if (FollowTarget != null && FollowTarget.IsValid && wasInBound == true)
             {
                 Steer.Target = Position;
                 wasInBound = false;
             }
 
-            if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 190))
+            if (FollowTarget != null && FollowTarget.IsValid && FollowTarget.Position.Distance(Position) < 230)
             {
                 Speed = 80;
             }
-            else if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 200) == false)
+            else if (FollowTarget != null && FollowTarget.IsValid && FollowTarget.Position.Distance(Position) > 256)
             {
                 Speed = 200;
             }
@@ -140,8 +141,6 @@ public partial class Scientist : NPC
   
     public override bool OnUse(Entity user)
     {
-
-        Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
         if (!(base.OnUse(user)))
         {
             return false;
@@ -173,6 +172,7 @@ public partial class Scientist : NPC
                 SpeakSound("sounds/hl1/scientist/sci_follow.sound", VoicePitch / 100);
                 MODE = "MODE_FOLLOW";
                 DontSleep = true;
+                FollowTarget = HLUtils.ClosestPlayerTo(Position);
             } else if (MODE == "MODE_FOLLOW")
             {
                 //CurrentSound.Stop();
@@ -180,6 +180,7 @@ public partial class Scientist : NPC
                 SpeakSound("sounds/hl1/scientist/sci_stopfollow.sound", VoicePitch / 100);
                 MODE = "MODE_IDLE";
                 DontSleep = false;
+                FollowTarget = null;
             }
             return true;
         }

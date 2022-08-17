@@ -65,7 +65,7 @@ public partial class NPC : AnimatedEntity, IUse
 	[Event.Tick.Server]
 	public void Tick()
 	{
-		if (HLUtils.IsPlayerInBox(Position, 1024) == false && DontSleep == false)
+		if (HLUtils.PlayerInRangeOf(Position, 2048) == false && DontSleep == false)
 			return;
 		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
 

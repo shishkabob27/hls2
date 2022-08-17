@@ -15,4 +15,17 @@
         
         return Entity.FindInBox(bbox).OfType<HLPlayer>().Count() > 0;
     }
+    
+    static public HLPlayer ClosestPlayerTo(Vector3 pos)
+    {
+        var plys = Entity.All.OfType<HLPlayer>().ToList().OrderBy(o => (o.Position.Distance(pos)));
+        return plys.First();
+    }
+    
+    static public bool PlayerInRangeOf(Vector3 pos, float range = 1024)
+    {
+        var plys = Entity.All.OfType<HLPlayer>().ToList();
+        plys.RemoveAll(ply => ply.Position.Distance(pos) > range);
+        return plys.Count() > 0;
+    }
 }

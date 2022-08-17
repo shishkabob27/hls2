@@ -53,5 +53,13 @@
         {
             HLCombat.CreateGibs(ConsoleSystem.Caller.Pawn.Position, ConsoleSystem.Caller.Pawn.Position, 0, new BBox(new Vector3(-16, -16, 0), new Vector3(16, 16, 72)));
         }
+
+		[ConCmd.Server("ply_closestto")]
+		public static void Gib(Vector3 pos)
+		{
+			var ply = HLUtils.ClosestPlayerTo(pos);
+            
+			Log.Info($"Player: {ply} named {ply.Client.Name}");
+		}
 	}
 }
