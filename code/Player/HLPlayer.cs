@@ -12,7 +12,7 @@
 
 	public int ComboKillCount { get; set; } = 0;
 	public TimeSince TimeSinceLastKill { get; set; }
-
+    
 	public HLPlayer()
 	{
 		Inventory = new HLInventory( this );
@@ -20,8 +20,10 @@
 
 	public override void Respawn()
 	{
-		SetModel("models/citizen/citizen.vmdl");
-		//SetModel( "models/hl1/player/player.vmdl" );
+		//SetModel("models/citizen/citizen.vmdl");
+		SetModel( "models/hl1/player/player.vmdl" );
+
+		SetAnimGraph("animgraphs/player.vanmgrph");
 
 		Controller = new WalkController
 		{
@@ -32,7 +34,7 @@
 
 		};
 
-		Animator = new StandardPlayerAnimator();
+		Animator = new HLPlayerAnimator();
 
 		CameraMode = new FirstPersonCamera();
 

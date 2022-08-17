@@ -179,7 +179,10 @@
 	public virtual void StartReloadEffects()
 	{
 		ViewModelEntity?.SetAnimParameter( "reload", true );
-
+		if (Owner is HLPlayer player)
+		{
+			player.SetAnimParameter("reload", true);
+		}
 		// TODO - player third person model reload
 	}
 
@@ -199,6 +202,10 @@
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 		CrosshairLastShoot = 0;
 
+		if (Owner is HLPlayer player)
+		{
+			player.SetAnimParameter("attack", true);
+		}
 	}
 
 	/// <summary>
@@ -255,6 +262,7 @@
 				}
 			}
 		}
+        
 	}
 
 	[ClientRpc]
@@ -357,5 +365,6 @@
 	{
 		var draw = Render.Draw2D;
 	}
+
 
 }

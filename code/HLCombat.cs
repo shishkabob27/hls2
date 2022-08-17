@@ -2,6 +2,18 @@
 
 public partial class HLCombat
 {
+
+    public enum HoldTypes
+    {
+        None,
+        Pistol,
+        Rifle,
+        Shotgun,
+        HoldItem,
+        Punch,
+        Swing
+    }
+    
     public static void CreateGibs(Vector3 Position, Vector3 DMGPos, float Health, BBox bbox)
     {
         Sound.FromWorld("bodysplat", Position);

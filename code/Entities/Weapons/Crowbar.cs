@@ -136,7 +136,7 @@ partial class Crowbar : HLWeapon
 
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", 5 ); // TODO this is shit
+		anim.SetAnimParameter( "holdtype", 7 ); // TODO this is shit
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 
 		if ( Owner.IsValid() )

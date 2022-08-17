@@ -155,20 +155,10 @@ namespace Sandbox
 			set => Owner.SetAnimParameter( "b_weapon_lower", value );
 		}
 
-		public enum HoldTypes
+        
+		public HLCombat.HoldTypes HoldType
 		{
-			None,
-			Pistol,
-			Rifle,
-			Shotgun,
-			HoldItem,
-			Punch,
-			Swing
-		}
-
-		public HoldTypes HoldType
-		{
-			get => (HoldTypes)Owner.GetAnimParameterInt( "holdtype" );
+			get => (HLCombat.HoldTypes)Owner.GetAnimParameterInt( "holdtype" );
 			set => Owner.SetAnimParameter( "holdtype", (int)value );
 		}
 
