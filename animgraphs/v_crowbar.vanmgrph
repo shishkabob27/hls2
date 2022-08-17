@@ -456,7 +456,7 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 1.0
 							m_blendTime = 0.2
 						},
 						{
@@ -472,7 +472,7 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 1.0
 							m_blendTime = 0.2
 						},
 						{
@@ -488,13 +488,13 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 1.0
 							m_blendTime = 0.2
 						},
 					]
 					m_seed = 1536654819
-					m_choiceMethod = "Iterate"
-					m_choiceChangeMethod = "OnResetOrCycleEnd"
+					m_choiceMethod = "IterateRandom"
+					m_choiceChangeMethod = "OnReset"
 					m_blendMethod = "SingleBlendTime"
 					m_blendTime = 0.2
 					m_bCrossFade = false
@@ -613,8 +613,8 @@
 						},
 					]
 					m_seed = 1536654819
-					m_choiceMethod = "Iterate"
-					m_choiceChangeMethod = "OnResetOrCycleEnd"
+					m_choiceMethod = "IterateRandom"
+					m_choiceChangeMethod = "OnReset"
 					m_blendMethod = "SingleBlendTime"
 					m_blendTime = 0.2
 					m_bCrossFade = false
@@ -1042,7 +1042,7 @@
 				{
 					_class = "CChoiceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 272.0, 528.0 ]
+					m_vecPosition = [ 256.0, 528.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1093835603
@@ -1064,7 +1064,7 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 1.0
 							m_blendTime = 0.2
 						},
 						{
@@ -1080,7 +1080,7 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 1.0
 							m_blendTime = 0.2
 						},
 						{
@@ -1096,13 +1096,13 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 1.0
 							m_blendTime = 0.2
 						},
 					]
 					m_seed = 1536654819
-					m_choiceMethod = "Iterate"
-					m_choiceChangeMethod = "OnResetOrCycleEnd"
+					m_choiceMethod = "IterateRandom"
+					m_choiceChangeMethod = "OnReset"
 					m_blendMethod = "SingleBlendTime"
 					m_blendTime = 0.2
 					m_bCrossFade = false
