@@ -3758,6 +3758,10 @@
 							},
 							{
 								bone = "bip01_spine"
+								weight = 1.0
+							},
+							{
+								bone = "bip01_spine1"
 								weight = 0.0
 							},
 						]
@@ -3794,7 +3798,7 @@
 							bones = 
 							[
 								{
-									name = "bip01_spine"
+									name = "bip01_spine1"
 									weight = 1.0
 								},
 							]
