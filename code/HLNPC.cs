@@ -63,7 +63,8 @@ public partial class NPC : AnimatedEntity, IUse
 	[Event.Tick.Server]
 	public void Tick()
 	{
-		
+		if (HLUtils.IsPlayerInBox(Position, 800) == false)
+			return;
 		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
 
 		InputVelocity = 0;
