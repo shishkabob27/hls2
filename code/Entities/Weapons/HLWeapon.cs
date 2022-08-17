@@ -204,7 +204,7 @@
 
 		if (Owner is HLPlayer player)
 		{
-			player.SetAnimParameter("attack", true);
+			player.SetAnimParameter("b_attack", true);
 		}
 	}
 

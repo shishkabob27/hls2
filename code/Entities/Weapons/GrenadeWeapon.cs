@@ -69,12 +69,14 @@ partial class GrenadeWeapon : HLWeapon
 		player.SetAnimParameter( "b_attack", true );
 
 		Reload();
-
+		player.SetAnimParameter("attack", true);
+        
 		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Grenade ) == 0 )
 		{
 			Delete();
 			player.SwitchToBestWeapon();
 		}
+        
 	}
 
 	public override void SimulateAnimator( PawnAnimator anim )

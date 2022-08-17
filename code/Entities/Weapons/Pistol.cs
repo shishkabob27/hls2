@@ -54,6 +54,7 @@ partial class Pistol : HLWeapon
 		//
 		ShootBullet( 0.05f, 1, 8.0f, 2.0f );
 
+		(Owner as AnimatedEntity).SetAnimParameter("b_attack", true);
 	}
 
 	public override void AttackSecondary()
@@ -79,6 +80,8 @@ partial class Pistol : HLWeapon
 		// Shoot the bullets
 		//
 		ShootBullet( 0.4f, 1.5f, 8.0f, 3.0f );
+
+		(Owner as AnimatedEntity).SetAnimParameter("b_attack", true);
 	}
 
 	public override void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )

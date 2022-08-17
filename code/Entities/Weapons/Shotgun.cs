@@ -99,11 +99,6 @@ partial class Shotgun : HLWeapon
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 		CrosshairLastShoot = 0;
-
-		if (Owner is HLPlayer player)
-		{
-			player.SetAnimParameter("attack", true);
-		}
 	}
 
 	[ClientRpc]

@@ -5994,7 +5994,7 @@
 			},
 			{
 				_class = "CBoolAnimParameter"
-				m_name = "attack"
+				m_name = "b_attack"
 				m_id = 
 				{
 					m_id = 1522747060

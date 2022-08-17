@@ -3680,15 +3680,6 @@
 					},
 					{
 						_class = "Attachment"
-						name = "hold_R"
-						parent_bone = "bip01_r_hand"
-						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-					{
-						_class = "Attachment"
 						name = "hold_L"
 						parent_bone = "bip01_l_hand"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
@@ -3851,6 +3842,36 @@
 						sanitizetrajectories = true
 					},
 				]
+			},
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "RenameBone"
+						original_bone_name = "bip01_r_hand"
+						new_bone_name = "hold_R"
+					},
+					{
+						_class = "RenameBone"
+						original_bone_name = "bip01_L_hand"
+						new_bone_name = "hold_L"
+					},
+				]
+			},
+			{
+				_class = "BoneMarkupList"
+				children = 
+				[
+					{
+						_class = "BoneMarkup"
+						target_bone = "bip01_r_hand"
+						ignore_Translation = false
+						ignore_rotation = false
+						do_not_discard = false
+					},
+				]
+				bone_cull_type = "Aggressive"
 			},
 		]
 		model_archetype = ""

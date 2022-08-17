@@ -128,10 +128,8 @@ partial class Crowbar : HLWeapon
 
 		ViewModelEntity?.SetAnimParameter( "attack", true );
 		ViewModelEntity?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );
-		if ( Owner is HLPlayer player )
-		{
-			player.SetAnimParameter( "attack", true );
-		}
+
+		(Owner as AnimatedEntity).SetAnimParameter("b_attack", true);
 	}
 
 	public override void SimulateAnimator( PawnAnimator anim )
