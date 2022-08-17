@@ -3,6 +3,8 @@ public partial class NPC : AnimatedEntity, IUse
 {
 	public bool InScriptedSequence = false;
 	public bool InPriorityScriptedSequence = false;
+	public bool DontSleep = false;
+    
 	[ConVar.Replicated]
 	public static bool nav_drawpath { get; set; }
 
@@ -63,7 +65,7 @@ public partial class NPC : AnimatedEntity, IUse
 	[Event.Tick.Server]
 	public void Tick()
 	{
-		if (HLUtils.IsPlayerInBox(Position, 800) == false)
+		if (HLUtils.IsPlayerInBox(Position, 1024) == false && DontSleep == false)
 			return;
 		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
 

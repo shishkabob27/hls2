@@ -172,13 +172,14 @@ public partial class Scientist : NPC
                 //CurrentSound = PlaySound("sounds/hl1/scientist/sci_follow.sound").SetPitch(VoicePitch / 100);
                 SpeakSound("sounds/hl1/scientist/sci_follow.sound", VoicePitch / 100);
                 MODE = "MODE_FOLLOW";
+                DontSleep = true;
             } else if (MODE == "MODE_FOLLOW")
             {
                 //CurrentSound.Stop();
                 //CurrentSound = PlaySound("sounds/hl1/scientist/sci_stopfollow.sound").SetPitch(VoicePitch / 100);
                 SpeakSound("sounds/hl1/scientist/sci_stopfollow.sound", VoicePitch / 100);
                 MODE = "MODE_IDLE";
-                
+                DontSleep = false;
             }
             return true;
         }
