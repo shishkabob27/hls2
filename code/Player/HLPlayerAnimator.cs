@@ -137,10 +137,9 @@ namespace Sandbox
 			}
 		}
 
-		public override void OnEvent( string name )
+		public override void OnEvent(string name)
 		{
 			// DebugOverlay.Text( Pos + Vector3.Up * 100, name, 5.0f );
-			
 			if ( name == "jump" )
 			{
 				Trigger( "b_jump" );
