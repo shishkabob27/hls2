@@ -109,12 +109,10 @@ public partial class Scientist : NPC
             {
                 Speed = 80;
             }
-        }   
-       
-       
-        
+        }
+
         // we've been pushed!
-        if (ply != null && ply.IsValid && HLUtils.IsPlayerInBox(Position, 10))
+        if (ply != null && ply.IsValid && ply.Position.Distance(Position) < 32)
         {
             Steer.Target = Position + (ply.Position - Position).Normal * -78;
             Speed = 80;
