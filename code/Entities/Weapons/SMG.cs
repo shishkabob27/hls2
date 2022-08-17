@@ -9,7 +9,7 @@ partial class SMG : HLWeapon
 	public override float PrimaryRate => 10.0f;
 	public override float SecondaryRate => 1.0f;
 	public override int ClipSize => 50;
-	public override float ReloadTime => 4.0f;
+	public override float ReloadTime => 1.8f;
 	public override int Bucket => 2;
 	public override int BucketWeight => 1;
 	public override bool HasAltAmmo => true;
@@ -82,21 +82,22 @@ partial class SMG : HLWeapon
 
 		Rand.SetSeed( Time.Tick );
 
+		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
+		ViewModelEntity?.SetAnimParameter( "fire_grenade", true );
+
 		if ( IsServer )
 		{
 			var grenade = new SMGGrenade
 			{
-				Position = Owner.EyePosition + Owner.EyeRotation.Forward * 3.0f,
-				Owner = Owner
+				Owner = Owner,
+				Rotation = Rotation.LookAt( Owner.EyeRotation.Forward ),
+				Position = Owner.EyePosition + Owner.EyeRotation.Forward * 40
 			};
 
-			grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 600.0f;
-			grenade.PhysicsBody.Rotation = Owner.EyeRotation;
+			grenade.SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
+			grenade.PhysicsGroup.Velocity = Owner.EyeRotation.Forward * 1000;
 
-			// This is fucked in the head, lets sort this this year
-			grenade.CollisionGroup = CollisionGroup.Debris;
-			grenade.SetInteractsExclude( CollisionLayer.Player );
-			grenade.SetInteractsAs( CollisionLayer.Debris );
+			grenade.ApplyLocalAngularImpulse( new Vector3( 0, 300, 0 ) );
 		}
 
 	}

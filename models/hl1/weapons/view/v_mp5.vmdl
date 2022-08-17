@@ -137,7 +137,7 @@
 						source_filename = "models/hl1decomp/v_9mmar_anims/deploy.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -158,7 +158,7 @@
 						source_filename = "models/hl1decomp/v_9mmar_anims/grenade.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 60.0
 						take = 0
 						reverse = false
 					},
@@ -179,7 +179,7 @@
 						source_filename = "models/hl1decomp/v_9mmar_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 20.0
 						take = 0
 						reverse = false
 					},
@@ -200,7 +200,7 @@
 						source_filename = "models/hl1decomp/v_9mmar_anims/longidle.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -224,7 +224,7 @@
 							{
 								_class = "AnimEvent"
 								event_class = "AE_CL_PLAYSOUND"
-								event_frame = 40
+								event_frame = 30
 								event_keys = 
 								{
 									name = "clipinsert1"
@@ -248,7 +248,7 @@
 						source_filename = "models/hl1decomp/v_9mmar_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 60.0
 						take = 0
 						reverse = false
 					},
@@ -269,7 +269,7 @@
 						source_filename = "models/hl1decomp/v_9mmar_anims/shoot.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 10.0
 						take = 0
 						reverse = false
 					},
@@ -290,7 +290,7 @@
 						source_filename = "models/hl1decomp/v_9mmar_anims/shoot2.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 10.0
 						take = 0
 						reverse = false
 					},
@@ -311,7 +311,7 @@
 						source_filename = "models/hl1decomp/v_9mmar_anims/shoot3.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 10.0
 						take = 0
 						reverse = false
 					},
