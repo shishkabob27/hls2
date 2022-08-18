@@ -54,7 +54,7 @@ using System.Text.Json.Serialization;
 	[Model( Archetypes = ModelArchetype.animated_model )]
 	[DoorHelper( "movedir", "movedir_islocal", "movedir_type", "distance" )]
 	[RenderFields, VisGroup( VisGroup.Dynamic )]
-	[Title( "Door" ), Category( "Legacy" ), Icon( "door_front" )]
+	[Title( "Door" ), Category("Brush Entities"), Icon( "door_front" )]
 	public partial class DoorRotatingEntity : KeyframeEntity, IUse
 	{
 		[Flags]
