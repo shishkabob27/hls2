@@ -5,7 +5,7 @@
 	[HammerEntity]
 	[EditorSprite( "editor/snd_event.vmat" )]
 	[VisGroup( VisGroup.Sound )]
-	[Title( "ambient_generic" ), Category( "Legacy" ), Icon( "volume_up" )]
+	[Title( "ambient_generic" ), Category( "Sound" ), Icon( "volume_up" )]
 	public partial class SoundEventEntity : Entity
 	{
 		/// <summary>

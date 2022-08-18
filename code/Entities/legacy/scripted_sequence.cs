@@ -1,6 +1,6 @@
 ﻿[Library("scripted_sequence")]
 [HammerEntity]
-[Title("scripted_sequence"), Category("Legacy"), Icon("volume_up")]
+[Title("scripted_sequence"), Category("Choreo"), Icon("volume_up")]
 public partial class scripted_sequence : Entity
 {
     [Flags]

@@ -3,7 +3,7 @@
 /// closest. The entity needs to be within the PVS for it to be active.
 /// </summary>
 [HammerEntity]
-[ClassName( "env_sound" ), Title( "Soundscape Radius" ), Category( "Legacy" ), Icon( "spatial_tracking" )]
+[ClassName( "env_sound" ), Title( "Soundscape Radius" ), Category( "Sound" ), Icon( "spatial_tracking" )]
 [EditorSprite( "materials/editor/env_soundscape.vmat" )]
 [Sphere( "radius" )]
 public partial class SoundscapeRadiusEntity : Entity

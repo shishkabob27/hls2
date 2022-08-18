@@ -8,7 +8,7 @@ using SandboxEditor;
 	[HammerEntity]
 	[VisGroup( VisGroup.Logic )]
 	[EditorSprite( "editor/ent_logic.vmat" )]
-	[Title( "Logic Entity" ), Category( "Legacy" ), Icon( "calculate" )]
+	[Title( "Logic Entity" ), Category( "Logic" ), Icon( "calculate" )]
 	public partial class LogicEntity : Entity
 	{
 		/// <summary>
