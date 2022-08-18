@@ -41,7 +41,7 @@
 		/// Movement type of the button.
 		/// </summary>
 		[Property( "movedir_type", Title = "Movement Type" )]
-		public ButtonMoveType MoveDirType { get; set; } = ButtonMoveType.Moving;
+		public ButtonMoveType MoveDirType { get; set; } = ButtonMoveType.NotMoving;
 
 		/// <summary>
 		/// Moving button: The amount, in inches, of the button to leave sticking out of the wall it recedes into when pressed. Negative values make the button recede even further into the wall.
