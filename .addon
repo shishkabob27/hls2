@@ -39,7 +39,8 @@
         "ladder": "Ignore",
         "water": "Trigger",
         "player": "Unset",
-        "debris": "Ignore"
+        "debris": "Ignore",
+        "monster": "Unset"
       },
       "Pairs": [
         {

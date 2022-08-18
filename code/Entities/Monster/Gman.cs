@@ -17,7 +17,7 @@ internal class Gman : NPC
         PhysicsEnabled = true;
         UsePhysicsCollision = true;
 
-        Tags.Add("player"); // add player for now until a monster tag is added (can't do that now cause editing addon cfg is a pain for me (xenthio btw)
+        Tags.Add("monster");
     }
     
 }
