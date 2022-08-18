@@ -10,3 +10,4 @@ Properties/launchSettings.json
 *.csproj
 .vs
 *.generated.*
+*.vpcf_c
