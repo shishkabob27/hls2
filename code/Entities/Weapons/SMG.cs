@@ -9,7 +9,7 @@ partial class SMG : HLWeapon
 	public override float PrimaryRate => 10.0f;
 	public override float SecondaryRate => 1.0f;
 	public override int ClipSize => 50;
-	public override float ReloadTime => 1.8f;
+	public override float ReloadTime => 1.5f;
 	public override int Bucket => 2;
 	public override int BucketWeight => 1;
 	public override bool HasAltAmmo => true;

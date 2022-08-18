@@ -8,7 +8,7 @@ partial class Python : HLWeapon
 
 	public override float PrimaryRate => 1.5f;
 	public override float SecondaryRate => 1.0f;
-	public override float ReloadTime => 4.0f;
+	public override float ReloadTime => 2.0f;
 	public override int ClipSize => 6;
 	public override AmmoType AmmoType => AmmoType.Python;
 

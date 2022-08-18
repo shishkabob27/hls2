@@ -9,7 +9,7 @@ partial class Pistol : HLWeapon
 	public override int ClipSize => 17;	
 	public override float PrimaryRate => 3.3f;
 	public override float SecondaryRate => 5f;
-	public override float ReloadTime => 3.0f;
+	public override float ReloadTime => 1f;
 
 	public override int Bucket => 1;
 
