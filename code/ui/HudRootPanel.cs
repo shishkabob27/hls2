@@ -23,6 +23,8 @@ public class HudRootPanel : RootPanel
 		AddChild<KillFeed>();
 		Scoreboard = AddChild<Scoreboard>();
 		AddChild<VoiceList>();
+
+		AddChild<Menu>();
 	}
 
 	public override void Tick()
