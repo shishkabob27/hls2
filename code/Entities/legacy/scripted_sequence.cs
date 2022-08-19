@@ -244,6 +244,7 @@ public partial class scripted_sequence : Entity
                 ticker2 = true;
                 timetick = 0;
                 TargetNPC.CurrentSequence.Name = ActionAnimation;
+                TargetNPC.targetRotation = this.Rotation;
             }
             
             if (ticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
@@ -257,6 +258,7 @@ public partial class scripted_sequence : Entity
                 TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
                 TargetNPC.CurrentSequence.Name = ActionAnimation;
                 timeduration = TargetNPC.CurrentSequence.Duration;
+                TargetNPC.targetRotation = this.Rotation;
             }
 
             
