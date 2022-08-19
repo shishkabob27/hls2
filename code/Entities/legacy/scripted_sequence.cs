@@ -118,6 +118,8 @@ public partial class scripted_sequence : Entity
                     {
                         TargetNPC.SetAnimGraph("");
                         TargetNPC.UseAnimGraph = false;
+
+                        TargetNPC.targetRotation = this.Rotation;
                     }
                     break;
                 default:
@@ -129,12 +131,16 @@ public partial class scripted_sequence : Entity
                             TargetNPC.SetAnimGraph(TargetNPC.NPCAnimGraph);
                             TargetNPC.UseAnimGraph = true;
                             TargetNPC.CurrentSequence.Name = ActionAnimation;
+
+                            TargetNPC.targetRotation = this.Rotation;
                         }
                         else if (ActionAnimation != "null")
                         {
                             TargetNPC.SetAnimGraph("");
                             TargetNPC.UseAnimGraph = false;
                             TargetNPC.CurrentSequence.Name = ActionAnimation;
+
+                            TargetNPC.targetRotation = this.Rotation;
                             timeduration = TargetNPC.CurrentSequence.Duration;
                             timetick = 0;
                         }
@@ -142,6 +148,7 @@ public partial class scripted_sequence : Entity
                     break;
             }
 
+            TargetNPC.targetRotation = this.Rotation;
             //Log.Info("script sequence target set to " + TargetEntity);
             //TargetEntity.Position = this.Position; //TODO make this do something lol
         }
