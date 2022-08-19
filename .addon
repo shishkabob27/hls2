@@ -89,8 +89,7 @@
         },
         {
           "a": "player",
-          "b": "monster",
-          "r": "Collide"
+          "b": "monster"
         },
         {
           "a": "npc",
@@ -99,8 +98,7 @@
         },
         {
           "a": "player",
-          "b": "npc",
-          "r": "Collide"
+          "b": "npc"
         }
       ]
     },
