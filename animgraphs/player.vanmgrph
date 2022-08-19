@@ -310,6 +310,61 @@
 			{
 				key = 
 				{
+					m_id = 691870321
+				}
+				value = 
+				{
+					_class = "CLookAtAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -272.0, 128.0 ]
+					m_nNodeID = 
+					{
+						m_id = 691870321
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 441751198
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_target = "VectorParameter"
+					m_param = 
+					{
+						m_id = 409086072
+					}
+					m_weightParam = 
+					{
+						m_id = 4294967295
+					}
+					m_lookatChainName = "upper"
+					m_attachmentName = "up"
+					m_flYawLimit = 24.0
+					m_flPitchLimit = 0.0
+					m_bResetBase = true
+					m_bLockWhenWaning = true
+					m_bUseHysteresis = false
+					m_flHysteresisInnerAngle = 1.0
+					m_flHysteresisOuterAngle = 20.0
+					m_damping = 
+					{
+						_class = "CAnimInputDamping"
+						m_speedFunction = "Constant"
+						m_fSpeedScale = 1.0
+						m_fMinSpeed = 300.0
+						m_fMaxTension = 1000.0
+					}
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 825906600
 				}
 				value = 
@@ -7161,7 +7216,7 @@
 					m_id = 409086072
 				}
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
-				m_bNetwork = false
+				m_bNetwork = true
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bPredicted = false
