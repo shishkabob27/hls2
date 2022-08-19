@@ -21,7 +21,7 @@ public partial class scripted_sequence : Entity
     }
 
 
-    [Property("spawnsettings", Title = "Spawn Settings")]
+    [Property("spawnflags", Title = "Spawn Settings")]
     public Flags SpawnSettings { get; set; } = Flags.Repeatable;
     
     /// <summary>

@@ -8,6 +8,17 @@
 	[Title( "ambient_generic" ), Category( "Sound" ), Icon( "volume_up" )]
 	public partial class SoundEventEntity : Entity
 	{
+		public enum Flags
+		{
+			Playeverywhere = 1,
+			StartSilent = 16,
+			IsNOTLooped = 32,
+			//StartUnbreakable = 524288,
+		}
+
+
+		[Property("spawnflags", Title = "Spawn Settings")]
+		public Flags SpawnSettings { get; set; } = Flags.Playeverywhere;
 		/// <summary>
 		/// Name of the sound to play.
 		/// </summary>
@@ -33,12 +44,21 @@
 		[Net] public bool StopOnNew { get; set; }
 
 		public Sound PlayingSound { get; protected set; }
-
+		public SoundFile EventSound;
 		public SoundEventEntity()
 		{
 			Transmit = TransmitType.Always;
 		}
 
+		/// <summary>
+		/// Start the sound event. If an entity name is provided, the sound will originate from that entity
+		/// </summary>
+		[Input]
+		protected void PlaySound()
+		{
+			OnStartSound();
+		}
+    
 		/// <summary>
 		/// Start the sound event. If an entity name is provided, the sound will originate from that entity
 		/// </summary>
@@ -57,9 +77,14 @@
 			OnStopSound();
 		}
 
+		[Input]
+		protected void ToggleSound()
+		{
+			OnStartSound();
+		}
 		public override void ClientSpawn()
 		{
-			if ( StartOnSpawn )
+			if ( StartOnSpawn || SpawnSettings.HasFlag(Flags.StartSilent) == false )
 			{
 				StartSound();
 			}
@@ -68,6 +93,7 @@
 		[ClientRpc]
 		protected void OnStartSound()
 		{
+			
 			var source = FindByName( SourceEntityName, this );
 
 			if ( StopOnNew )
@@ -75,11 +101,22 @@
 				PlayingSound.Stop();
 				PlayingSound = default;
 			}
-	
-			PlayingSound = Sound.FromEntity( message, source );
-		}
+			var replacename = message;
+			replacename = replacename.Replace("sounds/", "sounds/hl1/");
+			replacename = replacename.Replace( ".vsnd", ".sound" );
+			Log.Info($"starting sound {replacename}");
+			Sound.FromScreen(message);
+			//PlayingSound = Sound.FromEntity( message, source );
+			EventSound = SoundFile.Load(replacename);
+			
+            using ( Prediction.Off() )
+			{
+				PlayingSound = Sound.FromWorld(EventSound.ResourceName, Position);
+            }
+       
+    }
 
-		[ClientRpc]
+		//[ClientRpc]
 		protected void OnStopSound()
 		{
 			PlayingSound.Stop();
