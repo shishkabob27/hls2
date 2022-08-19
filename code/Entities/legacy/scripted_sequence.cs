@@ -164,7 +164,15 @@ public partial class scripted_sequence : Entity
     {
         if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position)) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
-            OnBeginSequence.Fire(this);
+            if (ticker == false)
+            {
+                ticker = true;
+                Log.Info("script sequence target reached");
+                OnBeginSequence.Fire(this);
+
+                TargetNPC.CurrentSequence.Name = ActionAnimation;
+                timeduration = TargetNPC.CurrentSequence.Duration;
+            }
         }
         /**
         

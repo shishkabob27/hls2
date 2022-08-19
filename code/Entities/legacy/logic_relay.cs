@@ -82,7 +82,7 @@ using SandboxEditor;
             //if (activator is not LogicRelay) //prevent dumb crash
 			//{
             //Log.Info("Activating logic relay by " + activator);
-			//OnTrigger.Fire( this );
+			OnTrigger.Fire( this );
 			//}
 		}
 
