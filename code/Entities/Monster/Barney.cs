@@ -14,7 +14,7 @@ internal class Barney : NPC
         SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
         EnableHitboxes = true; 
 
-        Tags.Add("npc");
+        Tags.Add("npc", "playerclip");
     
     }
     

@@ -23,7 +23,8 @@ public partial class NPC : AnimatedEntity, IUse
 
 	public override void Spawn()
     {
-        base.Spawn();
+		Tags.Add("npc", "playerclip");
+		base.Spawn();
 		animHelper = new HLAnimationHelper(this);
 		Steer = new NavSteer();
 		SetModel("models/citizen/citizen.vmdl");
