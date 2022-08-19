@@ -167,7 +167,7 @@ public partial class scripted_sequence : Entity
     [Event.Tick.Server]
     public void Tick()
     {
-        
+        // this code fucking freezes my whole pc. what?
         if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position)) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
             timetick += 0.02f;
@@ -177,9 +177,9 @@ public partial class scripted_sequence : Entity
                 Log.Info("script sequence target reached");
                 OnBeginSequence.Fire(this);
 
-
-                TargetNPC.SetAnimGraph("");
-                TargetNPC.UseAnimGraph = false;
+                // this is ass, when is direct playback in animgraph coming in?
+                TargetNPC.SetAnimGraph(""); 
+                TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
                 TargetNPC.CurrentSequence.Name = ActionAnimation;
                 timeduration = TargetNPC.CurrentSequence.Duration;
             }
