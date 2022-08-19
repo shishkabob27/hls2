@@ -65,10 +65,11 @@ public partial class scripted_sequence : Entity
         await OnEndSequence.Fire(this);
     }
 
+    bool hasStarted = false;
     [Input]
     public void BeginSequence()
     {
-
+        hasStarted = true;
         ticker = false;
         ticker2 = false;
         timesince = -1;
@@ -167,6 +168,10 @@ public partial class scripted_sequence : Entity
     [Event.Tick.Server]
     public void Tick()
     {
+        if (hasStarted == false)
+        {
+            return;
+        }
         // this code fucking freezes my whole pc. what?
         if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position)) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
@@ -208,6 +213,7 @@ public partial class scripted_sequence : Entity
                     }
                 }
                 OnEndSequence.Fire(this);
+                hasStarted = false;
                 //if (TargetLegacy != "")
                 //GameTask.RunInThreadAsync(TriggerTask);
 
