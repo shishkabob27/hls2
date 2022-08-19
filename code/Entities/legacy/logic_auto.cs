@@ -60,7 +60,7 @@ using SandboxEditor;
 		[Event.Entity.PostSpawn]
 		public void OnMapSpawnEvent()
 		{
-			//Log.Info("Activating logic auto by " + activator);
+			Log.Info("Activating logic auto");
 			OnMapSpawn.Fire( this );
 		}
 

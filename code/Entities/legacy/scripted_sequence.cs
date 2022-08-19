@@ -71,6 +71,9 @@ public partial class scripted_sequence : Entity
 
         ticker = false;
         ticker2 = false;
+        timesince = -1;
+        timetick = 0;
+        timeduration = 0;
         // if (TargetLegacy != "" && DelayLegacy == 0)
         // GameTask.RunInThreadAsync(TriggerTask);
 
@@ -119,6 +122,8 @@ public partial class scripted_sequence : Entity
                             TargetNPC.SetAnimGraph("");
                             TargetNPC.UseAnimGraph = false;
                             TargetNPC.CurrentSequence.Name = ActionAnimation;
+                            timeduration = TargetNPC.CurrentSequence.Duration;
+                            timetick = 0;
                         }
                     }
                     break;
@@ -162,16 +167,52 @@ public partial class scripted_sequence : Entity
     [Event.Tick.Server]
     public void Tick()
     {
+        
         if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position)) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
+            timetick += 0.02f;
             if (ticker == false)
             {
                 ticker = true;
                 Log.Info("script sequence target reached");
                 OnBeginSequence.Fire(this);
 
+
+                TargetNPC.SetAnimGraph("");
+                TargetNPC.UseAnimGraph = false;
                 TargetNPC.CurrentSequence.Name = ActionAnimation;
                 timeduration = TargetNPC.CurrentSequence.Duration;
+            }
+
+            if (ticker == false && ticker2 == false)
+            {
+                ticker2 = true;
+                timetick = 0;
+                TargetNPC.CurrentSequence.Name = ActionAnimation;
+            }
+            if (timetick > timeduration)
+            {
+                timetick = 0;
+                if (LoopActionAnimation == 1 && ticker && ticker2)
+                {
+                    ticker = false;
+                    ticker2 = false;
+                }
+                else
+                {
+                    timesince = Time.Now + DelayLegacy;
+                    if (TargetNPC.NPCAnimGraph != "")
+                    {
+                        TargetNPC.SetAnimGraph(TargetNPC.NPCAnimGraph);
+                        TargetNPC.UseAnimGraph = true;
+                    }
+                }
+                OnEndSequence.Fire(this);
+                //if (TargetLegacy != "")
+                //GameTask.RunInThreadAsync(TriggerTask);
+
+
+
             }
         }
         /**
