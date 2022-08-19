@@ -21,6 +21,9 @@ public partial class scripted_sequence : Entity
     }
 
 
+    [Property("spawnsettings", Title = "Spawn Settings")]
+    public Flags SpawnSettings { get; set; } = Flags.Repeatable;
+    
     /// <summary>
     /// The target entity. legacy goldsrc stuff.
     /// </summary>
@@ -50,6 +53,7 @@ public partial class scripted_sequence : Entity
     public NPC TargetNPC;
     public scripted_sequence()
     {
+        TargetNPC = FindByName(TargetEntity) as NPC;
     }
 
     
@@ -64,27 +68,18 @@ public partial class scripted_sequence : Entity
         Log.Info("end delay");
         await OnEndSequence.Fire(this);
     }
-
-    bool hasStarted = false;
-    [Input]
-    public void BeginSequence()
+    void Move()
     {
-        hasStarted = true;
-        ticker = false;
-        ticker2 = false;
-        timesince = -1;
-        timetick = 0;
-        timeduration = 0;
-        // if (TargetLegacy != "" && DelayLegacy == 0)
-        // GameTask.RunInThreadAsync(TriggerTask);
-
-        if (FindByName(TargetEntity) is NPC)
+        if (TargetNPC is not NPC)
         {
             TargetNPC = FindByName(TargetEntity) as NPC;
-            Log.Info(TargetNPC.CurrentSequence.Name);
+        }
+        if (TargetNPC is NPC)
+        {
+
             switch (MoveToMode)
             {
-                case 1:
+                case 1: // Walk to target
                     TargetNPC.Steer.Target = this.Position;
                     if (TargetNPC.NPCAnimGraph != "")
                     {
@@ -92,7 +87,7 @@ public partial class scripted_sequence : Entity
                         {
                             TargetNPC.SetAnimGraph(TargetNPC.NPCAnimGraph);
                             TargetNPC.UseAnimGraph = true;
-                        } 
+                        }
                         else if (ActionAnimation != "null")
                         {
                             TargetNPC.SetAnimGraph("");
@@ -100,7 +95,24 @@ public partial class scripted_sequence : Entity
                         }
                     }
                     break;
-                case 4:
+                case 2: // Run to Target
+                    TargetNPC.Steer.Target = this.Position;
+                    if (TargetNPC.NPCAnimGraph != "")
+                    {
+                        if (!(TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position))
+                        {
+                            TargetNPC.SetAnimGraph(TargetNPC.NPCAnimGraph);
+                            TargetNPC.UseAnimGraph = true;
+                            TargetNPC.Speed = TargetNPC.RunSpeed;
+                        }
+                        else if (ActionAnimation != "null")
+                        {
+                            TargetNPC.SetAnimGraph("");
+                            TargetNPC.UseAnimGraph = false;
+                        }
+                    }
+                    break;
+                case 4: // Instantanious teleport to Target
                     TargetNPC.Position = this.Position;
                     if (ActionAnimation != "null")
                     {
@@ -111,7 +123,7 @@ public partial class scripted_sequence : Entity
                 default:
                     TargetNPC.Steer.Target = this.Position;
                     if (TargetNPC.NPCAnimGraph != "")
-                    { 
+                    {
                         if (!(TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position))
                         {
                             TargetNPC.SetAnimGraph(TargetNPC.NPCAnimGraph);
@@ -130,21 +142,71 @@ public partial class scripted_sequence : Entity
                     break;
             }
 
-            Log.Info("script sequence target set to " + TargetEntity);
+            //Log.Info("script sequence target set to " + TargetEntity);
             //TargetEntity.Position = this.Position; //TODO make this do something lol
         }
     }
-    
+    bool hasStarted = false;
+    bool readyToPlay = false;
+    [Input]
+    public void BeginSequence()
+    {
+        if (TargetNPC is not NPC)
+        {
+            TargetNPC = FindByName(TargetEntity) as NPC;
+        }
+        
+        if (SpawnSettings.HasFlag(Flags.PriorityScript))
+        {
+            TargetNPC.InPriorityScriptedSequence = true;
+        }
+        else if (TargetNPC.InPriorityScriptedSequence)
+        {
+            hasStarted = false;
+            return;
+        }
+        
+        if (IsClient) return;
+        hasStarted = true;
+        ticker = false;
+        ticker2 = false;
+        timesince = -1;
+        timetick = 0;
+        timeduration = 0;
+        // if (TargetLegacy != "" && DelayLegacy == 0)
+        // GameTask.RunInThreadAsync(TriggerTask);
+
+        
+        
+
+        Move();
+        readyToPlay = true;
+    }
+    [Input]
+    void CancelSequence()
+    {
+
+        if (TargetNPC is not NPC)
+        {
+            TargetNPC = FindByName(TargetEntity) as NPC;
+        }
+        //hasStarted = false;
+        ticker = false;
+        ticker2 = false;
+        timesince = -1;
+        timetick = 0;
+        timeduration = 0;
+        TargetNPC.Speed = TargetNPC.WalkSpeed;
+        if (SpawnSettings.HasFlag(Flags.PriorityScript))
+        {
+            TargetNPC.InPriorityScriptedSequence = false;
+        }
+        //hasStarted = false;
+    }
     [Input]
     void MoveToPosition()
     {
-        if (FindByName(TargetEntity) is NPC && FindByName(TargetEntity).IsValid())
-        {
-            TargetNPC = FindByName(TargetEntity) as NPC;
-            TargetNPC.Steer.Target = this.Position;
-            Log.Info("script sequence target set to " + TargetEntity);
-            //TargetEntity.Position = this.Position; //TODO make this do something lol
-        }
+        Move();
     }
     public override void Spawn()
     {
@@ -173,13 +235,21 @@ public partial class scripted_sequence : Entity
             return;
         }
         // this code fucking freezes my whole pc. what?
-        if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position)) //&& TargetNPC.CurrentSequence.IsFinished == true 
+        if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
             timetick += 0.02f;
-            if (ticker == false)
+            
+            if (ticker == true && ticker2 == false) // next tick has happened, play the animation
+            {
+                ticker2 = true;
+                timetick = 0;
+                TargetNPC.CurrentSequence.Name = ActionAnimation;
+            }
+            
+            if (ticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
             {
                 ticker = true;
-                Log.Info("script sequence target reached");
+                //Log.Info("script sequence target reached");
                 OnBeginSequence.Fire(this);
 
                 // this is ass, when is direct playback in animgraph coming in?
@@ -189,13 +259,11 @@ public partial class scripted_sequence : Entity
                 timeduration = TargetNPC.CurrentSequence.Duration;
             }
 
-            if (ticker == false && ticker2 == false)
-            {
-                ticker2 = true;
-                timetick = 0;
-                TargetNPC.CurrentSequence.Name = ActionAnimation;
-            }
-            if (timetick > timeduration)
+            
+           
+            
+            
+            if (timetick > timeduration) // the animation has finished playing
             {
                 timetick = 0;
                 if (LoopActionAnimation == 1 && ticker && ticker2)
@@ -212,8 +280,13 @@ public partial class scripted_sequence : Entity
                         TargetNPC.UseAnimGraph = true;
                     }
                 }
+                TargetNPC.Speed = TargetNPC.WalkSpeed;
                 OnEndSequence.Fire(this);
                 hasStarted = false;
+                if (SpawnSettings.HasFlag(Flags.PriorityScript))
+                {
+                    TargetNPC.InPriorityScriptedSequence = false;
+                }
                 //if (TargetLegacy != "")
                 //GameTask.RunInThreadAsync(TriggerTask);
 

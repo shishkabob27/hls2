@@ -17,11 +17,15 @@ public partial class Scientist : NPC
     [Property]
     public float Body { get; set; } = 5;
     public float VoicePitch = 100;
+    
+    
     public Scientist() {
         NPCAnimGraph = "animgraphs/scientist.vanmgrph";
         SetAnimGraph(NPCAnimGraph);
         Health = 20;
         Speed = 80;
+        WalkSpeed = 80;
+        RunSpeed = 200;
         VoicePitch = SetPitch();
     }
 
@@ -99,15 +103,15 @@ public partial class Scientist : NPC
 
             if (FollowTarget != null && FollowTarget.IsValid && FollowTarget.Position.Distance(Position) < 230)
             {
-                Speed = 80;
+                Speed = WalkSpeed;
             }
             else if (FollowTarget != null && FollowTarget.IsValid && FollowTarget.Position.Distance(Position) > 256)
             {
-                Speed = 200;
+                Speed = RunSpeed;
             }
             else
             {
-                Speed = 80;
+                Speed = WalkSpeed;
             }
         }
 

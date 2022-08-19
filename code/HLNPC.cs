@@ -16,6 +16,8 @@ public partial class NPC : AnimatedEntity, IUse
 	}
 
 	public float Speed;
+	public float WalkSpeed = 80;
+	public float RunSpeed = 200;
 
 	public string NPCAnimGraph = "";
 	NavPath Path = new NavPath();
