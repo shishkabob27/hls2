@@ -269,7 +269,7 @@ public partial class NPC : AnimatedEntity, IUse
         
 	}
 
-	public void SpeakSound(string sound, float pitch = 100)
+	public void SpeakSound(string sound, float pitch = 1)
 	{
         if (IsServer)
         {
@@ -285,7 +285,7 @@ public partial class NPC : AnimatedEntity, IUse
 	}
     
 	[ClientRpc]
-	public void SpeakSoundcl(string sound, float pitch = 100)
+	public void SpeakSoundcl(string sound, float pitch = 1)
 	{
 		//CurrentSound.Stop();
 		CurrentSound = PlaySound(sound).SetPitch(pitch);
