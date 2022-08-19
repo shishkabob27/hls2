@@ -17,7 +17,7 @@ internal class Gman : NPC
         PhysicsEnabled = true;
         UsePhysicsCollision = true;
 
-        Tags.Add("monster");
+        Tags.Add("npc");
     }
     
 }

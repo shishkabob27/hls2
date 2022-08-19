@@ -40,7 +40,8 @@
         "water": "Trigger",
         "player": "Unset",
         "debris": "Ignore",
-        "monster": "Unset"
+        "monster": "Unset",
+        "npc": "Unset"
       },
       "Pairs": [
         {
@@ -79,6 +80,26 @@
         {
           "a": "solid",
           "b": "debris",
+          "r": "Collide"
+        },
+        {
+          "a": "monster",
+          "b": "monster",
+          "r": "Collide"
+        },
+        {
+          "a": "player",
+          "b": "monster",
+          "r": "Collide"
+        },
+        {
+          "a": "npc",
+          "b": "npc",
+          "r": "Collide"
+        },
+        {
+          "a": "player",
+          "b": "npc",
           "r": "Collide"
         }
       ]

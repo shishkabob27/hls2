@@ -37,7 +37,7 @@ internal class ScientistSitting : AnimatedEntity
         EnableHitboxes = true;
         Position = Position - new Vector3(0, 0, 22);
 
-        Tags.Add("monster");
+        Tags.Add("npc");
 
     }
 
