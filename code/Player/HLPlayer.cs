@@ -98,6 +98,10 @@
 		ply.Inventory.Add( new Crossbow() );
 		ply.Inventory.Add( new GrenadeWeapon() );
 		ply.Inventory.Add( new TripmineWeapon() );
+
+		var battery = new Battery();
+        battery.Position = ConsoleSystem.Caller.Pawn.EyePosition;
+		battery.Spawn();
 	}
 
 	public override void OnKilled()
