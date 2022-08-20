@@ -6,8 +6,10 @@ public class Ammo : Panel
 	public Label AmmoCount;
 	public IconPanel Seperator;
 	public Label Inventory;
+	public IconPanel AmmoIcon1;
 	public Label AltAmmoInventory;
- 
+	public IconPanel AmmoIcon2;
+
 
 	public Ammo()
 	{
@@ -15,8 +17,11 @@ public class Ammo : Panel
 
 		Seperator = Add.Icon(string.Empty, "seperator");
 		Inventory = Add.Label( "0", "inventory" );
+		AmmoIcon1 = Add.Icon(string.Empty, "ammoicon1");
+
 		//TODO - AMMO ICON HERE
 		AltAmmoInventory = Add.Label("0", "altammocount");
+		AmmoIcon2 = Add.Icon(string.Empty, "ammoicon2");
 		//TODO - ALT AMMO ICON HERE
 
 	}
@@ -49,19 +54,22 @@ public class Ammo : Panel
 		AmmoCount.SetClass("active", clip >= 0);
 
 		Seperator.SetClass("invisible", weapon.ClipSize <= 1 || Inventory.Text == "0");
+
+		AmmoIcon1.SetClass("invisible", Inventory.Text == "0");
 		if (weapon.ClipSize <= 1)
 			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine TODO - Better way to do this? add a ShowClip bool in HLWeapon maybe?	            
-
-
+		AmmoIcon1.Style.BackgroundImage = Texture.Load(FileSystem.Mounted, weapon.AmmoIcon, true);
 
 		AltAmmoInventory.SetClass("invisible", !weapon.HasAltAmmo);
-		
+		AmmoIcon2.SetClass("invisible", !weapon.HasAltAmmo);
+
 
 		if (weapon.HasAltAmmo)
 		{
 			var altinv = weapon.AvailableAltAmmo() + weapon.AltAmmoClip;
 			AltAmmoInventory.Text = $"{altinv}";
 			AltAmmoInventory.SetClass("active", altinv >= 0);
+			AmmoIcon2.Style.BackgroundImage = Texture.Load(FileSystem.Mounted, weapon.AltAmmoIcon, true);
 		}
 
 

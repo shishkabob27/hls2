@@ -13,6 +13,9 @@
 	public virtual bool HasAltAmmo => false;
 	public virtual int Order => (Bucket * 10000) + BucketWeight;
 
+	public virtual string AmmoIcon => "ui/ammo1.png";
+	public virtual string AltAmmoIcon => "ui/ammo3.png";
+
 	[Net, Predicted]
 	public int AmmoClip { get; set; }
 
@@ -34,7 +37,6 @@
 
 
 	public PickupTrigger PickupTrigger { get; protected set; }
-
 
 
 

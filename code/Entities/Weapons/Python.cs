@@ -14,6 +14,7 @@ partial class Python : HLWeapon
 
 	public override int Bucket => 1;
 	public override int BucketWeight => 200;
+	public override string AmmoIcon => "ui/ammo2.png";
 
 	[Net, Predicted]
 	public bool Zoomed { get; set; }
