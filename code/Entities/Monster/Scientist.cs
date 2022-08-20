@@ -33,6 +33,7 @@ public partial class Scientist : NPC
     {
         //NPCAnimGraph = "animgraphs/scientist.vanmgrph";
         base.Spawn();
+        EnableTouch = true;
         if (Body > 3) {
             Body = Rand.Int(0, 3);
         }
@@ -121,8 +122,17 @@ public partial class Scientist : NPC
             Steer.Target = Position + (ply.Position - Position).Normal * -78;
             Speed = 80;
         }
-
+        
     }
+    public override void Touch(Entity other)
+    {
+        base.Touch(other);
+        if (other is DoorEntity)
+        {
+            (other as DoorEntity).Open();
+        }
+    }
+    
     int ticker = 1;
 
     static SoundEvent soundevent = new SoundEvent("sounds/hl1/scientist/alright.vsnd");

@@ -44,11 +44,11 @@
 		var delta = Points[1] - Points[0];
 		var deltaNormal = delta.Normal;
 
-		if (deltaToNext.WithZ(0).Length < 20 && Points.Count > 1)
+		if (deltaToNext.WithZ(0).Length < 20 && Points.Count > 2)
 		{
 			Points.RemoveAt(0);
 			return;
-		} else if (deltaToNext.WithZ(0).Length < 2 && Points.Count <= 1)
+		} else if (deltaToNext.WithZ(0).Length < 2 && Points.Count <= 2)
 		{
 			Points.RemoveAt(0);
 			return;
