@@ -87,6 +87,7 @@ public partial class scripted_sequence : Entity
         ticker2 = false;
         timesince = -1;
         timetick = 0;
+        timeout = 0;
         timeduration = 0;
         // if (TargetLegacy != "" && DelayLegacy == 0)
         // GameTask.RunInThreadAsync(TriggerTask);
@@ -208,6 +209,7 @@ public partial class scripted_sequence : Entity
         ticker2 = false;
         timesince = -1;
         timetick = 0;
+        timeout = 0;
         timeduration = 0;
         TargetNPC.Speed = TargetNPC.WalkSpeed;
         if (SpawnSettings.HasFlag(Flags.PriorityScript))
@@ -236,6 +238,7 @@ public partial class scripted_sequence : Entity
     }
 
     float timetick = 0;
+    float timeout = 0;
     float timeduration = 0;
     bool ticker = false;
     bool ticker2 = false;
@@ -243,13 +246,17 @@ public partial class scripted_sequence : Entity
     [Event.Tick.Server]
     public void Tick()
     {
+        if (TargetNPC is NPC && TargetNPC.Velocity.AlmostEqual(Vector3.Zero))
+        {
+            timeout += 1;
+        }
         if (hasStarted == false)
         {
             return;
         }
-        // this code fucking freezes my whole pc. what?
-        if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
+        if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 15 + (timeout / 10)) || TargetNPC.Position == this.Position) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
+            TargetNPC.Position = this.Position;
             timetick += 0.02f;
             
             if (ticker == true && ticker2 == false) // next tick has happened, play the animation
