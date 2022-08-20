@@ -29,6 +29,86 @@
 								from = "rubberglovechrome.vmat"
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
+							{
+								from = "join.vmat"
+								to = "materials/hl1/weapons/view/rpg/join.vmat"
+							},
+							{
+								from = "m10cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m10cl.vmat"
+							},
+							{
+								from = "m11cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m11cl.vmat"
+							},
+							{
+								from = "m12cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m12cl.vmat"
+							},
+							{
+								from = "m13cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m13cl.vmat"
+							},
+							{
+								from = "m16cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m16cl.vmat"
+							},
+							{
+								from = "m17cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m17cl.vmat"
+							},
+							{
+								from = "m18cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m18cl.vmat"
+							},
+							{
+								from = "m1cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m1cl.vmat"
+							},
+							{
+								from = "m2cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m2cl.vmat"
+							},
+							{
+								from = "m3cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m3cl.vmat"
+							},
+							{
+								from = "m4cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m4cl.vmat"
+							},
+							{
+								from = "m5cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m5cl.vmat"
+							},
+							{
+								from = "m6cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m6cl.vmat"
+							},
+							{
+								from = "m7cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m7cl.vmat"
+							},
+							{
+								from = "m8cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m8cl.vmat"
+							},
+							{
+								from = "m9cl.vmat"
+								to = "materials/hl1/weapons/view/rpg/m9cl.vmat"
+							},
+							{
+								from = "rocket.vmat"
+								to = "materials/hl1/weapons/view/rpg/rocket.vmat"
+							},
+							{
+								from = "rocketmotor.vmat"
+								to = "materials/hl1/weapons/view/rpg/rocketmotor.vmat"
+							},
+							{
+								from = "sboxback.vmat"
+								to = "materials/hl1/weapons/view/rpg/sboxback.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -81,7 +161,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/rpg_rocket.smd"
+						filename = "models/hl1decomp/blowpipe.smd"
 						import_translation = [ 0.0, 0.0, -60.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -97,6 +177,7 @@
 								"rpg_hand",
 								"reference_rpg",
 								"rpg_rocket",
+								"blowpipe",
 							]
 						}
 					},
@@ -322,7 +403,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "animgraphs/v_rpg.vanmgrph"
 		base_model_name = ""
 	}
 }
