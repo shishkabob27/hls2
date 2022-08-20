@@ -7,14 +7,25 @@ public class Menu : Panel
 	public bool MenuOpen;
 
 	public Panel MenuPanel;
+	public Panel MenuTabs;
+	public Panel MainContent;
+	public Label OptionsText;
 	public Label TestText;
-	
 
 	public Menu()
 	{
 		MenuPanel = Add.Panel("menupanel");
+		OptionsText = Add.Label("Options", "optionstext");
+		MenuTabs = Add.Panel("menutabs");
+		MainContent = Add.Panel("maincontent");
+
 		TestText = Add.Label("TODO: Playermodels, Sprays, Admin settings.");
-		MenuPanel.AddChild(TestText);
+
+		
+		MenuPanel.AddChild(OptionsText);
+		MenuPanel.AddChild(MenuTabs);
+		MenuPanel.AddChild(MainContent);
+		MainContent.AddChild(TestText);
 	}
 
 	public override void Tick()
