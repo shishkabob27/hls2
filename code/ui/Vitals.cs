@@ -16,6 +16,7 @@ public class HealthHud : Panel
 
 	public override void Tick()
 	{
+		this.Style.Width = 1050 + (Screen.Height / Screen.Width) * -1200 ;
 		var player = Local.Pawn as HLPlayer;
 		if ( player == null ) return;
 
