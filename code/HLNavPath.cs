@@ -44,7 +44,7 @@
 		var delta = Points[1] - Points[0];
 		var deltaNormal = delta.Normal;
 
-		if (deltaToNext.WithZ(0).Length < 8 && Points.Count > 1)
+		if (deltaToNext.WithZ(0).Length < 20 && Points.Count > 1)
 		{
 			Points.RemoveAt(0);
 			return;

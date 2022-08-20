@@ -38,7 +38,7 @@
 	{
 		var center = position + Output.Direction * radius * 0.5f;
 
-		var objectRadius = 180.0f;
+		var objectRadius = 200.0f;
 		Vector3 avoidance = default;
 
 		foreach (var ent in Entity.FindInSphere(center, radius))
