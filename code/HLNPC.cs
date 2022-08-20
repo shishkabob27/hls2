@@ -63,6 +63,8 @@ public partial class NPC : AnimatedEntity, IUse
 
 	Vector3 LookDir;
 	public Rotation targetRotation;
+
+	public Rotation targetRotationOVERRIDE = Vector3.Zero.EulerAngles.ToRotation();
 	public Sound CurrentSound;
 	public HLAnimationHelper animHelper;
 	[Event.Tick.Server]
@@ -71,6 +73,9 @@ public partial class NPC : AnimatedEntity, IUse
 		if (HLUtils.PlayerInRangeOf(Position, 2048) == false && DontSleep == false)
 			return;
 		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
+
+        
+
 
 		InputVelocity = 0;
 
@@ -104,8 +109,19 @@ public partial class NPC : AnimatedEntity, IUse
 			turnSpeed = walkVelocity.Length.LerpInverse(0, 100, true);
 			targetRotation = Rotation.LookAt(walkVelocity.Normal, Vector3.Up);
 		}
-
-		Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
+		if (targetRotationOVERRIDE != Vector3.Zero.EulerAngles.ToRotation())
+		{
+            targetRotation = targetRotationOVERRIDE;
+            Rotation = Rotation.Lerp(Rotation, targetRotationOVERRIDE, turnSpeed * Time.Delta * 20.0f);
+            if (this.Rotation == targetRotationOVERRIDE)
+            {
+                targetRotationOVERRIDE = Vector3.Zero.EulerAngles.ToRotation();
+            }
+        }
+		else
+		{
+			Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
+		}
 
 		//var animHelper = new HLAnimationHelper(this);
 

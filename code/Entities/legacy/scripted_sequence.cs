@@ -58,8 +58,45 @@ public partial class scripted_sequence : Entity
 
     
     protected Output OnEndSequence { get; set; }
-    protected Output OnBeginSequence { get; set; }
+    public void EndSequence()
+    {
 
+    }
+    protected Output OnBeginSequence { get; set; }
+    [Input]
+    public void BeginSequence()
+    {
+        if (TargetNPC is not NPC)
+        {
+            TargetNPC = FindByName(TargetEntity) as NPC;
+        }
+        //TargetNPC.targetRotation = this.Rotation;
+        if (SpawnSettings.HasFlag(Flags.PriorityScript))
+        {
+            TargetNPC.InPriorityScriptedSequence = true;
+        }
+        else if (TargetNPC.InPriorityScriptedSequence)
+        {
+            hasStarted = false;
+            return;
+        }
+
+        if (IsClient) return;
+        hasStarted = true;
+        ticker = false;
+        ticker2 = false;
+        timesince = -1;
+        timetick = 0;
+        timeduration = 0;
+        // if (TargetLegacy != "" && DelayLegacy == 0)
+        // GameTask.RunInThreadAsync(TriggerTask);
+
+
+
+
+        Move();
+        readyToPlay = true;
+    }
     private async Task TriggerTask()
     {
 
@@ -74,6 +111,7 @@ public partial class scripted_sequence : Entity
         {
             TargetNPC = FindByName(TargetEntity) as NPC;
         }
+        //TargetNPC.targetRotation = this.Rotation;
         if (TargetNPC is NPC)
         {
 
@@ -119,7 +157,7 @@ public partial class scripted_sequence : Entity
                         TargetNPC.SetAnimGraph("");
                         TargetNPC.UseAnimGraph = false;
 
-                        TargetNPC.targetRotation = this.Rotation;
+                        //TargetNPC.targetRotation = this.Rotation;
                     }
                     break;
                 default:
@@ -132,7 +170,7 @@ public partial class scripted_sequence : Entity
                             TargetNPC.UseAnimGraph = true;
                             TargetNPC.CurrentSequence.Name = ActionAnimation;
 
-                            TargetNPC.targetRotation = this.Rotation;
+                            //TargetNPC.targetRotation = this.Rotation;
                         }
                         else if (ActionAnimation != "null")
                         {
@@ -140,7 +178,7 @@ public partial class scripted_sequence : Entity
                             TargetNPC.UseAnimGraph = false;
                             TargetNPC.CurrentSequence.Name = ActionAnimation;
 
-                            TargetNPC.targetRotation = this.Rotation;
+                            //TargetNPC.targetRotation = this.Rotation;
                             timeduration = TargetNPC.CurrentSequence.Duration;
                             timetick = 0;
                         }
@@ -148,47 +186,14 @@ public partial class scripted_sequence : Entity
                     break;
             }
 
-            TargetNPC.targetRotation = this.Rotation;
+            //TargetNPC.targetRotation = this.Rotation;
             //Log.Info("script sequence target set to " + TargetEntity);
             //TargetEntity.Position = this.Position; //TODO make this do something lol
         }
     }
     bool hasStarted = false;
     bool readyToPlay = false;
-    [Input]
-    public void BeginSequence()
-    {
-        if (TargetNPC is not NPC)
-        {
-            TargetNPC = FindByName(TargetEntity) as NPC;
-        }
-        
-        if (SpawnSettings.HasFlag(Flags.PriorityScript))
-        {
-            TargetNPC.InPriorityScriptedSequence = true;
-        }
-        else if (TargetNPC.InPriorityScriptedSequence)
-        {
-            hasStarted = false;
-            return;
-        }
-        
-        if (IsClient) return;
-        hasStarted = true;
-        ticker = false;
-        ticker2 = false;
-        timesince = -1;
-        timetick = 0;
-        timeduration = 0;
-        // if (TargetLegacy != "" && DelayLegacy == 0)
-        // GameTask.RunInThreadAsync(TriggerTask);
-
-        
-        
-
-        Move();
-        readyToPlay = true;
-    }
+    
     [Input]
     void CancelSequence()
     {
@@ -251,7 +256,7 @@ public partial class scripted_sequence : Entity
                 ticker2 = true;
                 timetick = 0;
                 TargetNPC.CurrentSequence.Name = ActionAnimation;
-                TargetNPC.targetRotation = this.Rotation;
+                //TargetNPC.targetRotation = this.Rotation;
             }
             
             if (ticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
@@ -265,6 +270,8 @@ public partial class scripted_sequence : Entity
                 TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
                 TargetNPC.CurrentSequence.Name = ActionAnimation;
                 timeduration = TargetNPC.CurrentSequence.Duration;
+                TargetNPC.targetRotationOVERRIDE = this.Rotation;
+
                 TargetNPC.targetRotation = this.Rotation;
             }
 
@@ -272,36 +279,38 @@ public partial class scripted_sequence : Entity
            
             
             
-            if (timetick > timeduration) // the animation has finished playing
+            
+        }
+        if (timetick > timeduration) // the animation has finished playing
+        {
+            timetick = 0;
+            if (LoopActionAnimation == 1 && ticker && ticker2)
             {
-                timetick = 0;
-                if (LoopActionAnimation == 1 && ticker && ticker2)
-                {
-                    ticker = false;
-                    ticker2 = false;
-                }
-                else
-                {
-                    timesince = Time.Now + DelayLegacy;
-                    if (TargetNPC.NPCAnimGraph != "")
-                    {
-                        TargetNPC.SetAnimGraph(TargetNPC.NPCAnimGraph);
-                        TargetNPC.UseAnimGraph = true;
-                    }
-                }
-                TargetNPC.Speed = TargetNPC.WalkSpeed;
-                OnEndSequence.Fire(this);
-                hasStarted = false;
-                if (SpawnSettings.HasFlag(Flags.PriorityScript))
-                {
-                    TargetNPC.InPriorityScriptedSequence = false;
-                }
-                //if (TargetLegacy != "")
-                //GameTask.RunInThreadAsync(TriggerTask);
-
-
-
+                ticker = false;
+                ticker2 = false;
             }
+            else
+            {
+                timesince = Time.Now + DelayLegacy;
+                if (TargetNPC.NPCAnimGraph != "")
+                {
+                    TargetNPC.SetAnimGraph(TargetNPC.NPCAnimGraph);
+                    TargetNPC.UseAnimGraph = true;
+                }
+            }
+            TargetNPC.Speed = TargetNPC.WalkSpeed;
+            OnEndSequence.Fire(this);
+            //TargetNPC.targetRotation = this.Rotation;
+            hasStarted = false;
+            if (SpawnSettings.HasFlag(Flags.PriorityScript))
+            {
+                TargetNPC.InPriorityScriptedSequence = false;
+            }
+            //if (TargetLegacy != "")
+            //GameTask.RunInThreadAsync(TriggerTask);
+
+
+            
         }
         /**
         
