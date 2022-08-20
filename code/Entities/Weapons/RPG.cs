@@ -35,7 +35,7 @@ partial class RPG : HLWeapon
 		}
 
 		ShootEffects();
-		PlaySound( "crossbow_shot" );
+		PlaySound( "rocketfire1" );
 
 		// TODO - if zoomed in then instant hit, no travel, 120 damage
 
