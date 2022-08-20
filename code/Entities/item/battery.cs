@@ -35,7 +35,7 @@ partial class Battery : ModelEntity
 		player.Armour = newhealth;
 
 		Sound.FromWorld( "dm_item_battery", Position );
-		PickupFeed.OnPickup( To.Single( player ), $"+25 Armour" );
+		PickupFeed.OnPickup( To.Single( player ), $"+15 Armour" );
 
 		Delete();
 	}
