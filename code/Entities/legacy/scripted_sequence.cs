@@ -111,6 +111,7 @@ public partial class scripted_sequence : Entity
         {
             TargetNPC = FindByName(TargetEntity) as NPC;
         }
+        TargetNPC.targetRotationOVERRIDE = Vector3.Zero.EulerAngles.ToRotation();
         //TargetNPC.targetRotation = this.Rotation;
         if (TargetNPC is NPC)
         {
