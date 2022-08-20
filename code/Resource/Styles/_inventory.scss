@@ -5,13 +5,11 @@
 	top: 16px;
 	font-family: Trebuchet MS;
 	opacity: 0;
-	transition: all 0.2s ease-out;
 	mix-blend-mode: lighten;
 
 	&.active
 	{
 		top: 16px;
-		transition: all 0.01s ease-out;
 		opacity: 1;
 	}
 }
@@ -42,8 +40,6 @@ inventorycolumn
 		width: 40px;
 		height: 40px;
 		overflow: hidden;
-		transition: all 0.05s ease-out;
-
 		.icon
 		{
 			opacity: 0;
@@ -58,11 +54,10 @@ inventorycolumn
 
 		inventoryicon
 		{
-			transition: all 0.05s ease-out;
 			opacity: 0.2;
 			display: flex;
 			width: 200px;
-			height: 90px;
+			height: 52px;
 
 			.icon
 			{
@@ -92,8 +87,8 @@ inventoryicon
 	
 	.icon
 	{
-		width: 150px;
-		height: 150px;
+		width: 200px;
+		height: 52px;
 		background-size: 100%;
 		background-image-tint: #fa0;
 		position: absolute;
