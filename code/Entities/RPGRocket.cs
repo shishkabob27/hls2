@@ -4,8 +4,6 @@ partial class RPGRocket : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/rpg_rocket.vmdl" );
 
-	bool Stuck;
-
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -18,9 +16,6 @@ partial class RPGRocket : ModelEntity
 	public virtual void Tick()
 	{
 		if ( !IsServer )
-			return;
-
-		if ( Stuck )
 			return;
 
 		float Speed = 2000.0f;
