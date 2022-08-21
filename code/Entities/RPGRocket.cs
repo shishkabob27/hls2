@@ -1,4 +1,4 @@
-﻿[Library( "hl_crossbow_bolt" )]
+﻿[Library( "hl_rpg_rocket" )]
 [HideInEditor]
 partial class RPGRocket : ModelEntity
 {
@@ -26,7 +26,6 @@ partial class RPGRocket : ModelEntity
 
 		var tr = Trace.Ray( start, end )
 				.UseHitboxes()
-				//.HitLayer( CollisionLayer.Water, !InWater )
 				.Ignore( Owner )
 				.Ignore( this )
 				.Size( 1.0f )
