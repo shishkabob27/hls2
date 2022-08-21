@@ -73,6 +73,8 @@ public class InventoryBar : Panel
 		{
 			SelectedWeapon = localPlayer?.ActiveChild as HLWeapon;
 			IsOpen = true;
+
+			Sound.FromScreen("dm.ui_open");
 		}
 
 		// Not open fuck it off
@@ -87,6 +89,7 @@ public class InventoryBar : Panel
 			input.ActiveChild = SelectedWeapon;
 			IsOpen = false;
 			Sound.FromScreen( "dm.ui_select" );
+			Sound.FromScreen("dm.ui_close");
 			return;
 		}
 

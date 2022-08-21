@@ -2,15 +2,18 @@
 {
 	data = 
 	{
-		volume = 0.3
-		sounds = 
-		[
-			"sounds/electrical/computer_off.vsnd",
-		]
-		VolumeRandom = 0.0
-		Pitch = 1.7
-		PitchRandom = 0.0
-		DistanceMax = 1000.0
 		UI = true
+		Volume = 1
+		VolumeRandom = 0
+		Pitch = 1
+		PitchRandom = 0
+		Decibels = 70
+		Sounds = 
+		[
+			resource:"sounds/hl1/weapons/wpn_select.vsnd",
+		]
+		SelectionMode = "Random"
+		MaximumDistance = 1143.9335
+		MinimumDistance = 57.196674
 	}
 }
