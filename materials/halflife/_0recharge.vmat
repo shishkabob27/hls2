@@ -4,8 +4,9 @@ Layer0
 {
 	shader "complex.vfx"
 
-	//---- Translucent ----
-	F_ALPHA_TEST 1
+	//---- Animation ----
+	F_TEXTURE_ANIMATION 1
+	F_TEXTURE_ANIMATION_MODE 2 // Scripted
 
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"
@@ -15,7 +16,7 @@ Layer0
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "materials/halflife/c1a3yellow.tga"
+	TextureColor "materials/halflife/_0recharge.tga"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -36,15 +37,16 @@ Layer0
 	//---- Roughness ----
 	TextureRoughness "[1.000000 1.000000 1.000000 0.000000]"
 
+	//---- Texture Animation ----
+	g_flAnimationFrame "0.000"
+	g_flAnimationTimeOffset "0.000"
+	g_flAnimationTimePerFrame "0.100"
+	g_nNumAnimationCells "2"
+	g_vAnimationGrid "[2 1]"
+
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
 	g_nScaleTexCoordVByModelScaleAxis "0"
 	g_vTexCoordOffset "[0.000 0.000]"
 	g_vTexCoordScale "[1.000 1.000]"
-	g_vTexCoordScrollSpeed "[0.000 0.000]"
-
-	//---- Translucent ----
-	g_flAlphaTestReference "0.500"
-	g_flAntiAliasedEdgeStrength "1.000"
-	TextureTranslucency "materials/halflife/c1a3yellow_trans.tga"
 }
