@@ -25,7 +25,7 @@
 
 		SetAnimGraph("animgraphs/player.vanmgrph");
 
-		Controller = new WalkController
+		Controller = new HLWalkController
 		{
 			WalkSpeed = 320,
 			SprintSpeed = 150,
