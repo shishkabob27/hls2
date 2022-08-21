@@ -80,7 +80,12 @@ using SandboxEditor;
 		{
 			OnMapSpawn.Fire( this );
 		}
-
+		[Event.Entity.PostCleanup]
+        public void OnMapCleanupEvent()
+        {
+            //Log.Info("Deactivating logic auto by " + activator);
+            OnMapSpawn.Fire( this );
+        }
 		/*
 		 * logic_relay
 		 *
