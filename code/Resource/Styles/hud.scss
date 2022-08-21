@@ -218,7 +218,7 @@ iconpanel {
 healthhud, armourhud
 {
 
-    min-width: 150px;
+    //min-width: 150px;
     iconpanel
     {
         margin-right:0px;
@@ -226,7 +226,7 @@ healthhud, armourhud
         height: 48px;
         width: 48px;
         background-repeat: no-repeat;
-        background-size:contain;
+        background-size: contain;
         background-color: rgba(0, 0, 0, 0);
         background-position-x: center;
         background-position-y: center;
@@ -264,13 +264,33 @@ armourhud
     {
         opacity: 0.35;
     }
-    
-    .icon
-    {
-        opacity: 1;
-        background-image: url("/ui/armour_empty.png");
-        
+
+
+    .iconcontainer{
+
+        flex-direction: column;
+        max-height: 48px;
+        background-size: cover;
+
+        .iconempty{
+            opacity: 1;
+            background-image: url("/ui/armour_empty.png");
+            min-width: 45px;
+            background-size: cover top;
+            background-position-y: top;
+        }
+
+        .iconfull{
+            opacity: 1;
+            background-image: url("/ui/armour_full.png");
+            min-width: 45px;
+            background-size: cover bottom;
+            background-position-y: bottom;
+        }
+
     }
+    
+  
 }
 
 .game-end
@@ -305,21 +325,42 @@ Menu.active{
     pointer-events: all;
 }
 
-.menupanel{
-    //temp
-    padding: 24px;
 
-    color: white;
+.menupanel, .menutabs, .maincontent{
     font-family: "Trebuchet MS";
-
-    position: absolute;
-	z-index: 101;
-    width: 512px;
-    height: 406px;
 
     background-color: rgba(76,88,68,255);
     border-top: 1px solid #889180;
     border-left: 1px solid #889180;
     border-bottom: 1px solid #282e22;
     border-right: 1px solid #282e22;
+}
+
+.optionstext{
+    padding: 4px;
+}
+
+.menupanel{
+    padding: 4px;
+
+    color: white;
+
+    position: absolute;
+	z-index: 101;
+    width: 512px;
+    height: 406px;
+
+    flex-direction: column;
+}
+
+
+.menutabs{
+    height: 24px;
+    width: 64px;
+}
+
+.maincontent{
+    width: 502px;
+    height: 312px;
+    padding: 40px;
 }

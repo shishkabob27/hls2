@@ -61,6 +61,7 @@
 		GiveAmmo( AmmoType.Crossbow, 1000 );
 		GiveAmmo( AmmoType.Grenade, 1000 );
 		GiveAmmo( AmmoType.SMGGrenade, 1000 );
+		GiveAmmo( AmmoType.RPG, 1000 );
 		GiveAmmo( AmmoType.Tripmine, 1000 );
 
 		Inventory.Add( new Crowbar());
@@ -68,6 +69,7 @@
 		Inventory.Add( new Python() );
 		Inventory.Add( new Shotgun() );
 		Inventory.Add( new SMG() );
+		Inventory.Add( new RPG() );
 		Inventory.Add( new Crossbow() );
 		Inventory.Add( new GrenadeWeapon() );
 		Inventory.Add( new TripmineWeapon() );
@@ -88,6 +90,7 @@
 		ply.GiveAmmo( AmmoType.Crossbow, 1000 );
 		ply.GiveAmmo( AmmoType.Grenade, 1000 );
 		ply.GiveAmmo( AmmoType.SMGGrenade, 1000 );
+		ply.GiveAmmo( AmmoType.RPG, 1000 );
 		ply.GiveAmmo( AmmoType.Tripmine, 1000 );
 
 		ply.Inventory.Add( new Crowbar());
@@ -95,9 +98,14 @@
 		ply.Inventory.Add( new Python() );
 		ply.Inventory.Add( new Shotgun() );
 		ply.Inventory.Add( new SMG() );
+		ply.Inventory.Add( new RPG() );
 		ply.Inventory.Add( new Crossbow() );
 		ply.Inventory.Add( new GrenadeWeapon() );
 		ply.Inventory.Add( new TripmineWeapon() );
+
+		var battery = new Battery();
+        battery.Position = ConsoleSystem.Caller.Pawn.EyePosition;
+		battery.Spawn();
 	}
 
 	public override void OnKilled()
@@ -173,21 +181,6 @@
 			else
 			{
 				CameraMode = new ThirdPersonCamera();
-			}
-		}
-
-		if ( Input.Pressed( InputButton.Drop ) )
-		{
-			var dropped = Inventory.DropActive();
-			if ( dropped != null )
-			{
-				if ( dropped.PhysicsGroup != null )
-				{
-					dropped.PhysicsGroup.Velocity = Velocity + (EyeRotation.Forward + EyeRotation.Up) * 300;
-				}
-
-				timeSinceDropped = 0;
-				SwitchToBestWeapon();
 			}
 		}
 

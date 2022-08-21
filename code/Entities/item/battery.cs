@@ -28,14 +28,14 @@ partial class Battery : ModelEntity
 		if ( other is not HLPlayer player ) return;
 		if ( player.Armour >= 100 ) return;
 
-		var newhealth = player.Armour + 25;
+		var newhealth = player.Armour + 15;
 
 		newhealth = newhealth.Clamp( 0, 100 );
 
 		player.Armour = newhealth;
 
 		Sound.FromWorld( "dm_item_battery", Position );
-		PickupFeed.OnPickup( To.Single( player ), $"+25 Armour" );
+		PickupFeed.OnPickup( To.Single( player ), $"+15 Armour" );
 
 		Delete();
 	}

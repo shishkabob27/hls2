@@ -30,14 +30,24 @@ public class HealthHud : Panel
 public class ArmourHud : Panel
 {
 	//public IconPanel ArmourBar;
-	public IconPanel Icon;
+
+	public Panel IconContainer;
+	public IconPanel IconFull;
+	public IconPanel IconEmpty;
+
 	public Label Value;
 
 	public ArmourHud()
 	{
-		Icon = Add.Icon( string.Empty, "icon" );
+		IconContainer = Add.Panel("iconcontainer");
+		
+		IconEmpty = Add.Icon( string.Empty, "iconempty" );
+		IconFull = Add.Icon( string.Empty, "iconfull" );
+
 		Value = Add.Label( "0", "label" );
 
+		IconContainer.AddChild(IconEmpty);
+		IconContainer.AddChild(IconFull);
 	}
 
 	public override void Tick()
@@ -47,7 +57,7 @@ public class ArmourHud : Panel
 
 		Value.Text = $"{player.Armour.CeilToInt()}";
 
-		SetClass( "low", player.Armour < 40.0f );
-		SetClass( "empty", player.Armour <= 0.0f );
+		IconEmpty.Style.Height = 100 - player.Armour;
+		IconFull.Style.Height = player.Armour;
 	}
 }
