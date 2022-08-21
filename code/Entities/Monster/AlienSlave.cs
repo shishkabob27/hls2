@@ -1,4 +1,4 @@
-﻿[Library("monster_aslave"), HammerEntity]
+﻿[Library("monster_alien_slave"), HammerEntity]
 [EditorModel("models/hl1/monster/vortigaunt.vmdl")]
 [Title("Alien Slave"), Category("Monsters")]
 internal class AlienSlave : NPC
