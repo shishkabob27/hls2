@@ -123,6 +123,30 @@
     "ControlModes": {
       "Keyboard": true,
       "Gamepad": true
+    },
+    "GameSettings": {
+      "HLDifficulty": {
+        "DisplayType": "Choice",
+        "Choices": [
+          "Eazy",
+          "Medium",
+          "Hard"
+        ],
+        "ConVarName": "HLDifficulty",
+        "DisplayName": "Difficulty",
+        "DefaultValue": "Medium",
+        "Maximum": 1
+      },
+      "HLGamemode": {
+        "DisplayType": "Choice",
+        "Choices": [
+          "Campaign",
+          "Deathmatch"
+        ],
+        "ConVarName": "HLGamemode",
+        "DisplayName": "Gamemode",
+        "DefaultValue": "Campaign"
+      }
     }
   }
 }
