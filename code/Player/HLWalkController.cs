@@ -246,26 +246,26 @@ namespace Sandbox
             a.AngleVectors(out var forward, out var right, out var up);
             Vector3 wishvel = 0;
             var oldGround = GroundEntity;
-            var MaxSpeed = sv_defaultspeed; //0.0f;
+            var mvspeed = sv_defaultspeed; //0.0f;
             var ws = Duck.GetWishSpeed();
-            if (ws >= 0) MaxSpeed = ws;
+            if (ws >= 0) mvspeed = ws;
 
-            if (Input.Down(InputButton.Walk)) MaxSpeed = sv_sprintspeed;
-            if (Input.Down(InputButton.Run)) MaxSpeed = sv_walkspeed;
-            var ForwardMove = Input.Forward * MaxSpeed;
-            var SideMove = -Input.Left * MaxSpeed;
-            var UpMove = Input.Up * MaxSpeed;
+            if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
+            if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
+            var ForwardMove = Input.Forward * mvspeed;
+            var SideMove = -Input.Left * mvspeed;
+            var UpMove = Input.Up * mvspeed;
 
             float spd = (ForwardMove * ForwardMove) +
             (SideMove * SideMove) +
             (UpMove * UpMove);
 
-            if ((spd != 0) && (spd > MaxSpeed * MaxSpeed))
+            if ((spd != 0) && (spd > sv_maxspeed * sv_maxspeed))
             {
-                var ratio = MaxSpeed / MathF.Sqrt(spd);
-                ForwardMove *= ratio;
-                SideMove *= ratio;
-                UpMove *= ratio;
+                var ratio = sv_maxspeed / MathF.Sqrt(spd);
+                //ForwardMove *= ratio;
+                //SideMove *= ratio;
+                //UpMove *= ratio;
             }
             // if we are going upwards with this speed, we can't be standing on anything.
             if (Velocity.z > 250)
@@ -292,10 +292,10 @@ namespace Sandbox
             var wishdir = wishvel.Normal;
             var wishspeed = wishvel.Length;
 
-            if (wishspeed != 0 && wishspeed > MaxSpeed)
+            if (wishspeed != 0 && wishspeed > sv_maxspeed)
             {
-                wishvel *= MaxSpeed / wishspeed;
-                wishspeed = MaxSpeed;
+                wishvel *= sv_maxspeed / wishspeed;
+                wishspeed = sv_maxspeed;
             }
 
             WishVelocity = wishvel;
@@ -380,15 +380,15 @@ namespace Sandbox
             a.AngleVectors(out var forward, out var right, out var up);
             Vector3 wishvel = 0;
             var oldGround = GroundEntity;
-            var MaxSpeed = sv_defaultspeed; //0.0f;
+            var mvspeed = sv_defaultspeed; //0.0f;
             var ws = Duck.GetWishSpeed();
-            if (ws >= 0) MaxSpeed = ws;
+            if (ws >= 0) mvspeed = ws;
 
-            if (Input.Down(InputButton.Walk)) MaxSpeed = sv_sprintspeed;
-            if (Input.Down(InputButton.Run)) MaxSpeed = sv_walkspeed;
-            var ForwardMove = Input.Forward * MaxSpeed;
-            var SideMove = -Input.Left * MaxSpeed;
-            var UpMove = Input.Up * MaxSpeed;
+            if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
+            if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
+            var ForwardMove = Input.Forward * mvspeed;
+            var SideMove = -Input.Left * mvspeed;
+            var UpMove = Input.Up * mvspeed;
 
             var fmove = ForwardMove;
             var smove = SideMove;
@@ -412,10 +412,10 @@ namespace Sandbox
             var wishdir = wishvel.Normal;
             var wishspeed = wishvel.Length;
 
-            if (wishspeed != 0 && wishspeed > MaxSpeed)
+            if (wishspeed != 0 && wishspeed > sv_maxspeed)
             {
-                wishvel *= MaxSpeed / wishspeed;
-                wishspeed = MaxSpeed;
+                wishvel *= sv_maxspeed / wishspeed;
+                wishspeed = sv_maxspeed;
             }
             return wishspeed;
             /*
@@ -719,17 +719,31 @@ namespace Sandbox
                 //   flGroundFactor = g_pPhysicsQuery->GetGameSurfaceproperties( player->m_pSurfaceData )->m_flJumpFactor;
             }
 
+            //PreventBunnyJumping();
             float flMul = 268.3281572999747f * 1.2f;
-
+            float JumpImpulse = 268;
             float startz = Velocity.z;
-
+            if (Duck.IsActive)
+            {
+                var a = Velocity;
+                a.z = JumpImpulse;
+                Velocity = a;
+            }
+            else
+            {
+                var a = Velocity;
+                a.z += JumpImpulse;
+                Velocity = a;
+            }
+            FinishGravity();
+            /*
             if (Duck.IsActive)
                 flMul *= 0.8f;
 
             Velocity = Velocity.WithZ(startz + flMul * flGroundFactor);
 
             Velocity -= new Vector3(0, 0, sv_gravity * 0.5f) * Time.Delta;
-
+            */
             // mv->m_outJumpVel.z += mv->m_vecVelocity[2] - startz;
             // mv->m_outStepHeight += 0.15f;
 
@@ -739,7 +753,23 @@ namespace Sandbox
             AddEvent("jump");
 
         }
+        public virtual void PreventBunnyJumping()
+        {
+            // Speed at which bunny jumping is limited
+            float maxscaledspeed = sv_maxspeed;
+            if (maxscaledspeed <= 0.0f)
+                return;
 
+            // Current player speed
+            float spd = Velocity.Length;
+            if (spd <= maxscaledspeed)
+                return;
+
+            // Apply this cropping fraction to velocity
+            float fraction = (maxscaledspeed / spd);
+
+            Velocity *= fraction;
+        }
         public virtual void AirMove()
         {
             /*
@@ -793,19 +823,20 @@ namespace Sandbox
 
             wishvel[2] = 0;
             */
-            var MaxSpeed = sv_defaultspeed; //0.0f;
+            var mvspeed = sv_defaultspeed; //0.0f;
             var ws = Duck.GetWishSpeed();
-            if (ws >= 0) MaxSpeed = ws;
+            if (ws >= 0) mvspeed = ws;
 
-            if (Input.Down(InputButton.Walk)) MaxSpeed = sv_sprintspeed;
-            if (Input.Down(InputButton.Run)) MaxSpeed = sv_walkspeed;
+            if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
+            if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
+            
             var wishdir = WishVelocity.Normal;
             var wishspeed = WishVelocity.Length;
 
-            if (wishspeed != 0 && wishspeed > MaxSpeed)
+            if (wishspeed != 0 && wishspeed > sv_maxspeed)
             {
-                WishVelocity *= MaxSpeed / wishspeed;
-                wishspeed = MaxSpeed;
+                //WishVelocity *= sv_maxspeed / wishspeed;
+                //wishspeed = sv_maxspeed;
             }
             
             AirAccelerate(wishdir, wishspeed, sv_airaccelerate);
