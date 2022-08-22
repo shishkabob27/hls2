@@ -244,7 +244,7 @@ namespace Sandbox
             //
             QAngle a = Input.Rotation; //.AngleVectors(out var forward, out var right, out var up);
             a.AngleVectors(out var forward, out var right, out var up);
-
+            Vector3 wishvel = 0;
             var oldGround = GroundEntity;
             var MaxSpeed = sv_defaultspeed; //0.0f;
             var ws = Duck.GetWishSpeed();
@@ -373,12 +373,12 @@ namespace Sandbox
 
         }
 
-        Vector3 wishvel = 0;
+        
         public virtual float GetWishSpeed()
         {
             QAngle a = Input.Rotation; //.AngleVectors(out var forward, out var right, out var up);
             a.AngleVectors(out var forward, out var right, out var up);
-
+            Vector3 wishvel = 0;
             var oldGround = GroundEntity;
             var MaxSpeed = sv_defaultspeed; //0.0f;
             var ws = Duck.GetWishSpeed();
@@ -747,7 +747,7 @@ namespace Sandbox
 
             var fmove = ForwardMove;
             var smove = SideMove;
-
+            Vector3 wishvel = 0;
             forward[2] = 0;
             right[2] = 0;
             forward = forward.Normal;
@@ -757,7 +757,8 @@ namespace Sandbox
             for (var i = 0; i < 2; i++)
                 wishvel[i] = forward[i] * fmove + right[i] * smove;
             wishvel[2] = 0;
-            */
+            
+            
             QAngle a = Input.Rotation; //.AngleVectors(out var forward, out var right, out var up);
             a.AngleVectors(out var forward, out var right, out var up);
 
@@ -791,12 +792,19 @@ namespace Sandbox
                 wishvel[i] = forward[i] * fmove + right[i] * smove;
 
             wishvel[2] = 0;
-            var wishdir = wishvel.Normal;
-            var wishspeed = wishvel.Length;
+            */
+            var MaxSpeed = sv_defaultspeed; //0.0f;
+            var ws = Duck.GetWishSpeed();
+            if (ws >= 0) MaxSpeed = ws;
+
+            if (Input.Down(InputButton.Walk)) MaxSpeed = sv_sprintspeed;
+            if (Input.Down(InputButton.Run)) MaxSpeed = sv_walkspeed;
+            var wishdir = WishVelocity.Normal;
+            var wishspeed = WishVelocity.Length;
 
             if (wishspeed != 0 && wishspeed > MaxSpeed)
             {
-                wishvel *= MaxSpeed / wishspeed;
+                WishVelocity *= MaxSpeed / wishspeed;
                 wishspeed = MaxSpeed;
             }
             

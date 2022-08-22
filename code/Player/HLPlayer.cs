@@ -29,7 +29,7 @@
         
 		Animator = new HLPlayerAnimator();
 
-		CameraMode = new FirstPersonCamera();
+		CameraMode = new HLFirstPersonCamera();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
@@ -169,7 +169,7 @@
 		{
 			if ( CameraMode is ThirdPersonCamera )
 			{
-				CameraMode = new FirstPersonCamera();
+				CameraMode = new HLFirstPersonCamera();
 			}
 			else
 			{
@@ -226,7 +226,7 @@
 
 	private void AddCameraEffects( ref CameraSetup setup )
 	{
-		var speed = Velocity.Length.LerpInverse( 0, 2 );
+		var speed = Velocity.WithZ(0).Length.LerpInverse( 0, 2 );
 		var up = setup.Rotation.Up;
 
 		if ( GroundEntity != null )
