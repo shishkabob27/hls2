@@ -1,4 +1,4 @@
-﻿partial class BaseAmmo : ModelEntity
+﻿partial class BaseAmmo : ModelEntity, IRespawnableEntity
 {
 	public virtual AmmoType AmmoType => AmmoType.None;
 	public virtual int AmmoAmount => 17;
@@ -35,6 +35,7 @@
 		Sound.FromWorld( "dm.pickup_ammo", Position );
 		PickupFeed.OnPickup( To.Single( player ), $"+{ammoTaken} {AmmoType}" );
 
+		ItemRespawn.Taken( this );
 		Delete();
 	}
 }
