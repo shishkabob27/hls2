@@ -37,6 +37,7 @@ partial class Battery : ModelEntity, IRespawnableEntity
 		PickupFeed.OnPickup( To.Single( player ), $"+15 Armour" );
 
 		ItemRespawn.Taken( this );
-		Delete();
+		if (IsServer)
+			Delete();
 	}
 }
