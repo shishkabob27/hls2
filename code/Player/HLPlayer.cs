@@ -25,15 +25,8 @@
 
 		SetAnimGraph("animgraphs/player.vanmgrph");
 
-		Controller = new HLWalkController
-		{
-			WalkSpeed = 320,
-			SprintSpeed = 150,
-			DefaultSpeed = 320,
-			AirAcceleration = 10,
-
-		};
-
+		Controller = new HLWalkController();
+        
 		Animator = new HLPlayerAnimator();
 
 		CameraMode = new FirstPersonCamera();
