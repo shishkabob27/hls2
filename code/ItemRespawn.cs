@@ -4,11 +4,12 @@
 /// </summary>
 public interface IRespawnableEntity
 {
-
 }
 
 public class ItemRespawn
 {
+	[ConVar.Replicated] public static string HLGamemode { get; set; } = "Campaign";
+	
 	/// <summary>
 	/// A record of an entity and its position
 	/// </summary>
@@ -73,13 +74,16 @@ public class ItemRespawn
 	static async Task RespawnAsync( Record record )
 	{
 		await GameTask.Delay( 1000 * 30 );
+        
+		if (HLGamemode == "Deathmatch")
+		{
+			// TODO - find a sound that sounds like the echoey crazy truck horn sound that played in HL1 when items spawned
+			Sound.FromWorld( "dm.item_respawn", record.Transform.Position + Vector3.Up * 50 );
 
-		// TODO - find a sound that sounds like the echoey crazy truck horn sound that played in HL1 when items spawned
-		Sound.FromWorld( "dm.item_respawn", record.Transform.Position + Vector3.Up * 50 );
+			var ent = Entity.CreateByName( record.ClassName );
+			ent.Transform = record.Transform;
 
-		var ent = Entity.CreateByName( record.ClassName );
-		ent.Transform = record.Transform;
-
-		Records[ent] = record;
+			Records[ent] = record;
+		}
 	}
 }
