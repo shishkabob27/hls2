@@ -53,6 +53,8 @@
 		if (HLGamemode == "Deathmatch"){
 			Inventory.Add( new Crowbar());
 			Inventory.Add( new Pistol());
+
+			GiveAmmo( AmmoType.Pistol, 68 );
 		}
 		else{
 			//give player all weapons and ammo on spawn for testing
