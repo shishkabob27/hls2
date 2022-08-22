@@ -78,7 +78,7 @@ public class ItemRespawn
 		if (HLGamemode == "Deathmatch")
 		{
 			// TODO - find a sound that sounds like the echoey crazy truck horn sound that played in HL1 when items spawned
-			Sound.FromWorld( "dm.item_respawn", record.Transform.Position + Vector3.Up * 50 );
+			Sound.FromWorld( "itemrespawn", record.Transform.Position + Vector3.Up * 50 );
 
 			var ent = Entity.CreateByName( record.ClassName );
 			ent.Transform = record.Transform;

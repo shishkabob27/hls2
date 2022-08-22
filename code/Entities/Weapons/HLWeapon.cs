@@ -72,6 +72,8 @@
 		PickupTrigger = new PickupTrigger();
 		PickupTrigger.Parent = this;
 		PickupTrigger.Position = Position;
+
+		Tags.Add("weapon");
 	}
 
 	public override void Reload()

@@ -42,7 +42,8 @@
         "player": "Unset",
         "debris": "Ignore",
         "monster": "Unset",
-        "npc": "Unset"
+        "npc": "Unset",
+        "weapon": "Unset"
       },
       "Pairs": [
         {
@@ -105,6 +106,25 @@
           "a": "solid",
           "b": "npc",
           "r": "Trigger"
+        },
+        {
+          "a": "player",
+          "b": "weapon",
+          "r": "Trigger"
+        },
+        {
+          "a": "monster",
+          "b": "weapon",
+          "r": "Trigger"
+        },
+        {
+          "a": "npc",
+          "b": "weapon",
+          "r": "Trigger"
+        },
+        {
+          "a": "solid",
+          "b": "weapon"
         }
       ]
     },

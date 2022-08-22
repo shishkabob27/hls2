@@ -8,5 +8,7 @@ internal class Suit : ModelEntity
         base.Spawn();
 
         SetModel("models/hl1/items/suit.vmdl");
+
+        Tags.Add("weapon");
     }
 }

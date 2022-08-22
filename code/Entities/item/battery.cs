@@ -17,8 +17,7 @@ partial class Battery : ModelEntity, IRespawnableEntity
 		PhysicsEnabled = true;
 		UsePhysicsCollision = true;
 
-		CollisionGroup = CollisionGroup.Weapon;
-		SetInteractsAs( CollisionLayer.Debris );
+		Tags.Add("weapon");
 	}
 
 	public override void StartTouch( Entity other )
