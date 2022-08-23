@@ -4036,7 +4036,29 @@
 							bonename = "bip01_spine1"
 							radius = 5.0
 							point0 = [ -2.10204, 0.0, 0.0 ]
-							point1 = [ 10.0, 0.0, 0.0 ]
+							point1 = [ -0.341582, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_spine2"
+							radius = 5.0
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 0.01, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_spine3"
+							radius = 5.0
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 3.08826, 0.0, 0.0 ]
 						}
 					},
 				]
