@@ -16,3 +16,4 @@ Properties/launchSettings.json
 *.vsnd_c
 *.vpcf_c
 *.vmat_c
+*.sound_c
