@@ -104,6 +104,7 @@ public partial class SoundEventEntity : Entity
         var replacename = message;
         replacename = replacename.Replace("sounds/", "sounds/hl1/");
         replacename = replacename.Replace(".vsnd", ".sound");
+        replacename = replacename.Replace("!", "");
         Log.Info($"starting sound {replacename}");
         Sound.FromScreen(message);
         //PlayingSound = Sound.FromEntity( message, source );
