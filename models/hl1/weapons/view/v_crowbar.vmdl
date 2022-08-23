@@ -340,7 +340,7 @@
 							bonename = "bip01_r_hand"
 							radius = 0.476054
 							point0 = [ 4.72748, 1.54673, 19.5977 ]
-							point1 = [ 6.60658, 1.77281, 18.7336 ]
+							point1 = [ 6.26506, 1.73171, 18.8906 ]
 						}
 					},
 					{
@@ -348,21 +348,10 @@
 						game_class = "ao_proxy_box"
 						game_keys = 
 						{
-							bonename = "hands_biped"
-							dimensions = [ 0.444063, 0.360269, 0.33545 ]
-							offset_origin = [ 12.2343, -4.31623, 23.1323 ]
-							offset_angles = [ 0.0, 0.0, 0.0 ]
-						}
-					},
-					{
-						_class = "GenericGameData"
-						game_class = "ao_proxy_box"
-						game_keys = 
-						{
-							bonename = "hands_biped"
-							dimensions = [ 0.325222, 0.342831, 0.306834 ]
-							offset_origin = [ 12.6106, -5.99896, 23.4217 ]
-							offset_angles = [ 0.0, 0.0, 0.0 ]
+							bonename = "bip01_r_hand"
+							dimensions = [ 0.468993, 1.94677, 0.021817 ]
+							offset_origin = [ 7.37073, 1.83352, 18.4294 ]
+							offset_angles = [ 11.0, 9.0, 0.0 ]
 						}
 					},
 				]
