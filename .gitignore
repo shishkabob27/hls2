@@ -11,3 +11,7 @@ Properties/launchSettings.json
 .vs
 *.generated.*
 *.vpcf_c
+*.vtex_c
+*.vmdl_c
+*.vsnd_c
+*.vpcf_c
