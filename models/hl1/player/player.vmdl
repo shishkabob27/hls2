@@ -3665,7 +3665,7 @@
 						name = "hand_R"
 						parent_bone = "bip01_r_hand"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -3841,21 +3841,203 @@
 						heighttolerance = 2.0
 						sanitizetrajectories = true
 					},
-				]
-			},
-			{
-				_class = "ModelModifierList"
-				children = 
-				[
 					{
-						_class = "RenameBone"
-						original_bone_name = "bip01_r_hand"
-						new_bone_name = "hold_R"
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_head"
+							radius = 4.689228
+							point0 = [ -2.188201, 0.698996, -0.110126 ]
+							point1 = [ 4.651729, 0.698996, -0.110126 ]
+						}
 					},
 					{
-						_class = "RenameBone"
-						original_bone_name = "bip01_L_hand"
-						new_bone_name = "hold_L"
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_r_hand"
+							radius = 1.629976
+							point0 = [ 1.258735, 0.245402, 0.026749 ]
+							point1 = [ 5.028525, 0.520579, 0.042923 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_l_hand"
+							radius = 1.629976
+							point0 = [ 1.258735, 0.245402, 0.026749 ]
+							point1 = [ 5.839298, 0.579762, 0.046402 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_r_foot"
+							radius = 2.213644
+							point0 = [ 1.409126, -0.271854, 0.106556 ]
+							point1 = [ 3.049778, 6.022626, 0.223393 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_l_foot"
+							radius = 2.213644
+							point0 = [ 1.409126, -0.271854, 0.106556 ]
+							point1 = [ 3.031862, 6.034189, -0.1509 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_pelvis"
+							radius = 1.0
+							point0 = [ -0.049154, -0.285461, -3.139152 ]
+							point1 = [ -0.384941, -0.804377, 2.7029 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_neck"
+							radius = 4.541548
+							point0 = [ 0.174018, 1.24842, -0.061852 ]
+							point1 = [ 0.553912, 1.24842, -0.061852 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_l_arm"
+							radius = 2.690938
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 2.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_l_arm1"
+							radius = 2.690938
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 10.189176, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_l_arm2"
+							radius = 2.690938
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 8.476858, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_r_arm1"
+							radius = 2.690938
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 10.189176, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_r_arm2"
+							radius = 2.690938
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 8.476858, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_r_arm"
+							radius = 2.690938
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 2.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_l_leg"
+							radius = 4.380975
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 14.878017, 0.804171, -0.174793 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_l_leg1"
+							radius = 2.922393
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 15.639338, -0.647961, -0.141022 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_r_leg"
+							radius = 4.380975
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 14.878017, 0.804171, -0.174793 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_r_leg1"
+							radius = 2.922393
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 15.639338, -0.647961, -0.141022 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip01_spine1"
+							radius = 5.0
+							point0 = [ -2.10204, 0.0, 0.0 ]
+							point1 = [ 10.0, 0.0, 0.0 ]
+						}
 					},
 				]
 			},
@@ -3874,8 +4056,8 @@
 				bone_cull_type = "Aggressive"
 			},
 		]
-		model_archetype = ""
-		primary_associated_entity = ""
+		model_archetype = "jointed_physics_model"
+		primary_associated_entity = "prop_ragdoll"
 		anim_graph_name = "animgraphs/player.vanmgrph"
 		base_model_name = ""
 	}
