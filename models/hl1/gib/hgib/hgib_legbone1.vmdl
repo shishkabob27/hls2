@@ -81,6 +81,45 @@
 					},
 				]
 			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = ""
+							radius = 2.576567
+							point0 = [ -0.690331, -0.802769, -1.286933 ]
+							point1 = [ -0.520284, -0.234077, -14.004302 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = ""
+							radius = 1.625316
+							point0 = [ -0.920883, 0.210477, 16.461018 ]
+							point1 = [ -0.729408, -0.353858, 1.789207 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = ""
+							radius = 2.042154
+							point0 = [ -0.96389, -0.199759, 19.216118 ]
+							point1 = [ -0.976845, 5.042604, 19.440088 ]
+						}
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

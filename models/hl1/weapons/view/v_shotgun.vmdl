@@ -352,6 +352,23 @@
 				]
 				default_root_bone_name = ""
 			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bone01"
+							radius = 1.54252
+							point0 = [ -6.23355, 1.30347, 0.562382 ]
+							point1 = [ 12.9315, 0.567217, -0.106892 ]
+						}
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

@@ -94,6 +94,23 @@
 					},
 				]
 			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_box"
+						game_keys = 
+						{
+							bonename = ""
+							dimensions = [ 0.989917, 1.47611, 29.6451 ]
+							offset_origin = [ -1.13787, 0.254223, 5.45682 ]
+							offset_angles = [ 0.0, -30.0, 0.0 ]
+						}
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
