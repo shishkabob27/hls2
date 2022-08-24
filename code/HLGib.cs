@@ -354,7 +354,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		//AngularVelocity = new Vector3( Rand.Float( -100, 100 ), 0, Rand.Float( -100, 100 ) ).EulerAngles;
 	}
 }
-/**
+/*
 [Event.Tick.Server]
 public void Think()
 {
@@ -582,5 +582,5 @@ void PhysicsPushEntity( Vector3 push, TraceResult pTrace )
 	//	PhysicsImpact( pTrace->m_pEnt, *pTrace );
 //	}
 }
-**/
+*/
 
