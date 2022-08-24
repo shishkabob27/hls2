@@ -81,8 +81,8 @@ partial class Crossbow : HLWeapon
 		float lerpedFov = LastFov.Value.LerpTo(targetFov, Time.Delta * 24.0f);
 		float lerpedViewmodelFov = LastViewmodelFov.Value.LerpTo(targetViewmodelFov, Time.Delta * 24.0f);
 
-		camSetup.FieldOfView = lerpedFov;
-		camSetup.ViewModel.FieldOfView = lerpedViewmodelFov;
+		camSetup.FieldOfView = targetFov;
+		camSetup.ViewModel.FieldOfView = targetViewmodelFov;
 
 		LastFov = lerpedFov;
 		LastViewmodelFov = lerpedViewmodelFov;

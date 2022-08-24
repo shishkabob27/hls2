@@ -1,9 +1,9 @@
 ﻿[Library("weapon_rpg"), HammerEntity]
-[EditorModel( "models/hl1/weapons/world/crossbow.vmdl" )]
+[EditorModel( "models/hl1/weapons/world/rpg.vmdl" )]
 [Title( "RPG" ), Category( "Weapons" )]
 partial class RPG : HLWeapon
 {
-	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/crossbow.vmdl");
+	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/rpg.vmdl");
 	public override string ViewModelPath => "models/hl1/weapons/view/v_rpg.vmdl";
 
 	public override float PrimaryRate => 1.333f;
