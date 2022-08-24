@@ -54,6 +54,8 @@
 		
 
 		if (HLGamemode == "Deathmatch"){
+			HasHEV = true;
+
 			Inventory.Add( new Crowbar());
 			Inventory.Add( new Pistol());
 
