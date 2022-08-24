@@ -103,7 +103,7 @@ partial class HLGame : Game
 	{
 		base.OnKilled( client, pawn );
 
-		Hud.OnPlayerDied( pawn as HLPlayer);
+		Hud.OnPlayerDied( To.Everyone, pawn as HLPlayer);
 	}
 
 

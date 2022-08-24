@@ -297,7 +297,7 @@
 
 		if ( info.Flags.HasFlag( DamageFlags.Blast ) )
 		{
-			Deafen( info.Damage.LerpInverse( 0, 60 ) );
+			Deafen( To.Single( Client ), info.Damage.LerpInverse( 0, 60 ) );
 		}
 
 		if ( Health > 0 && info.Damage > 0 )
@@ -314,10 +314,10 @@
 		{
 			if ( attacker != this )
 			{
-				attacker.DidDamage( info.Position, info.Damage, Health.LerpInverse( 100, 0 ) );
+				attacker.DidDamage( To.Single( attacker ), info.Position, info.Damage, Health.LerpInverse( 100, 0 ) );
 			}
 
-			TookDamage( info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
+			TookDamage( To.Single( this ), info.Weapon.IsValid() ? info.Weapon.Position : info.Attacker.Position );
 		}
 
 		//
