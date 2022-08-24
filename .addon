@@ -145,27 +145,41 @@
       "Gamepad": true
     },
     "GameSettings": {
-      "HLDifficulty": {
-        "DisplayType": "Choice",
-        "Choices": [
-          "Eazy",
-          "Medium",
-          "Hard"
-        ],
-        "ConVarName": "HLDifficulty",
-        "DisplayName": "Difficulty",
-        "DefaultValue": "Medium",
-        "Maximum": 1
-      },
       "HLGamemode": {
         "DisplayType": "Choice",
         "Choices": [
-          "Campaign",
-          "Deathmatch"
+          {
+            "Value": "Campaign",
+            "Name": "Campaign"
+          },
+          {
+            "Value": "Deathmatch",
+            "Name": "Deathmatch"
+          }
         ],
         "ConVarName": "HLGamemode",
         "DisplayName": "Gamemode",
         "DefaultValue": "Campaign"
+      },
+      "HLDifficulty": {
+        "DisplayType": "Choice",
+        "Choices": [
+          {
+            "Value": "Easy",
+            "Name": "Easy"
+          },
+          {
+            "Value": "Medium",
+            "Name": "Medium"
+          },
+          {
+            "Value": "Hard",
+            "Name": "Hard"
+          }
+        ],
+        "ConVarName": "HLDifficulty",
+        "DisplayName": "Difficulty",
+        "DefaultValue": "Medium"
       }
     }
   }
