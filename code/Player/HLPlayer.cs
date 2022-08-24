@@ -6,6 +6,9 @@
 	public float Armour { get; set; } = 0;
 
 	[Net]
+	public bool HasHEV { get; set; } = false;
+
+	[Net]
 	public float MaxHealth { get; set; } = 100;
 
 	public bool SupressPickupNotices { get; private set; }
