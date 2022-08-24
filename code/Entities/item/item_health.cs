@@ -1,7 +1,7 @@
 ﻿/// <summary>
 /// Gives 25 health points.
 /// </summary>
-[Library("hl_healthkit"), HammerEntity]
+[Library("item_healthkit"), HammerEntity]
 [EditorModel( "models/hl1/gameplay/medkit.vmdl" )]
 [Title(  "Health Kit" )]
 partial class HealthKit : ModelEntity, IRespawnableEntity
