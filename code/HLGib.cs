@@ -97,7 +97,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 
 	public virtual void StepMove()
 	{
-		MoveHelper mover = new MoveHelper( Position, Velocity );
+		NewMoveHelper mover = new NewMoveHelper( Position, Velocity );
 		mover.Trace = mover.Trace.Size( 1, 2 ).Ignore( this );
 		mover.MaxStandableAngle = 10;
 
@@ -111,7 +111,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	{
 		mins = new Vector3( -bGirth, -bGirth, 0 );
 		maxs = new Vector3( +bGirth, +bGirth, bHeight );
-		MoveHelper mover = new MoveHelper( Position, Velocity );
+		NewMoveHelper mover = new NewMoveHelper( Position, Velocity );
 		mover.Trace = mover.Trace
 			.Size(mins, maxs)
 			.Ignore(this)
@@ -119,10 +119,8 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		mover.GroundBounce = 0.55f;
 		mover.MaxStandableAngle = 10;
 		mover.WallBounce = 0.55f;
-
 		mover.TryMove( Time.Delta );
-		//mover.TryUnstuck();
-		if (mover.HitWall)
+		if (mover.HitWall || mover.HitFloor)
 		{
 			this.StartTouch(this);
 			//Sound.FromWorld("flesh", Position);
@@ -131,23 +129,25 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			{
 				//Log.Info( "Splat!" );
 				var vecSpot = Position + new Vector3(0, 0, 8);
-				var tr = Trace.Ray(vecSpot, vecSpot + new Vector3(0, 0, -24)) //, MASK_SOLID_BRUSHONLY, this, COLLISION_GROUP_NONE, &tr);
-					.WithAnyTags("solid")
-					.Ignore(this)
-					.Run();
+				//var tr = Trace.Ray(vecSpot, vecSpot + new Vector3(0, 0, -24)) //, MASK_SOLID_BRUSHONLY, this, COLLISION_GROUP_NONE, &tr);
+					//.WithAnyTags("solid")
+					//.Ignore(this)
+					//.Run();
 
-                DecalSystem.PlaceUsingTrace(decal, tr);
+                DecalSystem.PlaceUsingTrace(decal, mover.TraceResult);
             }
-		}
+		} 
 		prevTickPos = Position;
 		Position = mover.Position;
 		Velocity = mover.Velocity;
 
 	}
-
+	int sleepytime = 0;
 	[Event.Tick.Server]
 	public void Think()
 	{
+		if (IsClient)
+			return;
 		if (HLCombat.GibCount < 0) {
 			HLCombat.GibCount = 0;
 		}
@@ -193,13 +193,17 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			HLCombat.GibFadingCount -= 1;
 			hasCountedFading = false;
         }
-        
+        if (sleepytime > 20)
+		{
+			return;
+		}
         LifeTime += 1;
 		if (RotAngles != SleepAngles)
 			RotAngles += AngularVelocity * Time.Delta;
 		Rotation = RotAngles.ToRotation();
 		if ( ( Position == prevTickPos ) || (Velocity.WithZ(0).IsNearlyZero(6) && Position.AlmostEqual(prevTickPos, 1f) && GroundEntity != null && (GroundEntity is not HLPlayer)))
 		{
+			sleepytime += 1;
 			RotAngles = SleepAngles;
 			// Clear rotation if not moving (even if on a conveyor)
 			//AngularVelocity = Angles.Zero;
@@ -211,7 +215,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
             
             return;
 		}
-		/*if ( false )
+		/*if ( true )
 		{
 			//DebugOverlay.Box( Position + TraceOffset, mins, maxs, Color.Red );
 			//DebugOverlay.Box( Position, mins, maxs, Color.Blue );
@@ -277,7 +281,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			//point.z -= 18;
 		//}
 
-
+		
 		var pm = TraceBBox( vBumpOrigin, point, mins, maxs, 4.0f );
 
 		if ( pm.Entity == null || Vector3.GetAngle( Vector3.Up, pm.Normal ) > gGroundAngle )
@@ -351,13 +355,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		if ( wasOffGround )
 		{
 
-			//Sound.FromWorld("flesh", Position);
 			this.StartTouch( this );
-			if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
-			{
-				//Log.Info( "Splat!" );
-				DecalSystem.PlaceUsingTrace( decal, tr );
-			}
 		}
 		
 	}
