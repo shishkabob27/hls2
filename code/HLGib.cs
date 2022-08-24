@@ -123,17 +123,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		if (mover.HitWall || mover.HitFloor)
 		{
 			this.StartTouch(this);
-			//Sound.FromWorld("flesh", Position);
-			//Log.Info("splot!");
 			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
 			{
-				//Log.Info( "Splat!" );
 				var vecSpot = Position + new Vector3(0, 0, 8);
-				//var tr = Trace.Ray(vecSpot, vecSpot + new Vector3(0, 0, -24)) //, MASK_SOLID_BRUSHONLY, this, COLLISION_GROUP_NONE, &tr);
-					//.WithAnyTags("solid")
-					//.Ignore(this)
-					//.Run();
-
                 DecalSystem.PlaceUsingTrace(decal, mover.TraceResult);
             }
 		} 
@@ -142,6 +134,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		Velocity = mover.Velocity;
 
 	}
+
 	int sleepytime = 0;
 	[Event.Tick.Server]
 	public void Think()
