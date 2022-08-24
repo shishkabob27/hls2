@@ -32,7 +32,7 @@
 			return;
 
 		Sound.FromWorld( "dm.pickup_ammo", Position );
-		PickupFeed.OnPickup( $"+{ammoTaken} {AmmoType}" );
+		PickupFeed.OnPickup( To.Single( player ), $"+{ammoTaken} {AmmoType}" );
 
 		ItemRespawn.Taken( this );
 		Delete();
