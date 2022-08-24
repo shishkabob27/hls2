@@ -320,7 +320,7 @@ public partial class scripted_sequence : Entity
 
             
         }
-        /**
+        /*
         
         if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position)) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
@@ -388,7 +388,7 @@ public partial class scripted_sequence : Entity
                 //(TargetLegacyEnt as scripted_sequence).BeginSequence();
             }
         }
-        **/
+        */
     }
 
 }
