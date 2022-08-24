@@ -51,7 +51,7 @@
 			int taken = player.GiveAmmo( (AmmoType)i, Ammos[i] );
 			if ( taken > 0 )
 			{
-				PickupFeed.OnPickup( To.Single( player ), $"+{taken} {((AmmoType)i)}" );
+				PickupFeed.OnPickup( $"+{taken} {((AmmoType)i)}" );
 			}
 		}
 
