@@ -28,4 +28,9 @@
         plys.RemoveAll(ply => ply.Position.Distance(pos) > range);
         return plys.Count() > 0;
     }
+    static public int AmountOf<T>()
+    {
+        var ent = Entity.All.OfType<T>().ToList();
+        return ent.Count();
+    }
 }

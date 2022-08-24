@@ -2,6 +2,9 @@
 
 public partial class HLCombat
 {
+    [ConVar.Replicated] public static float max_gibs { get; set; } = 100;
+    static public int GibCount = 0;
+    static public int GibFadingCount = 0;
 
     public enum HoldTypes
     {

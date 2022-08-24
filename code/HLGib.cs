@@ -1,4 +1,6 @@
 ﻿// This was over 12 hours of work lol if you wanna take my half-life 1 gibs for your own usage in your own game, atleast credit me (Xenthio)
+using static ItemRespawn;
+
 public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim cus gmod brain.
 {
 	//[Net] public float MaxVelocity { get; set; } = 800;
@@ -7,8 +9,14 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	public float gSurfaceFriction { get; set; } = 1.0f;
 	public float gStopSpeed { get; set; } = 50.0f;
 	public float gGroundAngle { get; set; } = 46.0f;
+	public bool toDelete = false;
+    public bool toDeletefromMax = false;
+    float alpha = 1.0f;
+	bool isInit = false;
 
-	public Angles RotAngles = Angles.Zero;
+    bool hasCountedFading = false;
+
+    public Angles RotAngles = Angles.Zero;
 	public Angles SleepAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
 	Entity SleepGroundEntity;
 	Vector3 prevTickPos;
@@ -32,26 +40,43 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	public HLGib()
 	{
 
-		EnableTouch = true;
+        alpha = Rand.Float(1.1f, 2.0f);
+        EnableTouch = true;
 	}
 
 	public void Spawn(string ModelName)
 	{
 		SetModel(ModelName);        
 		Initialise();
+		_ = FadeOut(30);
 	}
 	public override void Spawn()
 	{
-		
-		
-		SetModel( Rand.FromList<string>( HGibList ) );
+
+        SetModel( Rand.FromList<string>( HGibList ) );
 		Initialise();
+		_ = FadeOut(30);
 
+    }
 
-	}
+    public async Task FadeOut(float fTime)
+    {
+        await Task.DelaySeconds(fTime);
+		if (!toDelete)
+		{
+
+            this.toDelete = true;
+            HLCombat.GibFadingCount += 1;
+        }
+    }
+
     void Initialise()
     {
-		Velocity += new Vector3(Rand.Int(-1, 1), Rand.Int(-1, 1), Rand.Int(-1, 1));
+		if (isInit)
+			return;
+		isInit = true;
+        HLCombat.GibCount += 1;
+        Velocity += new Vector3(Rand.Int(-1, 1), Rand.Int(-1, 1), Rand.Int(-1, 1));
 		//base.Spawn();
 		Predictable = true;
 		phys = SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
@@ -123,7 +148,53 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	[Event.Tick.Server]
 	public void Think()
 	{
-		LifeTime += 1;
+		if (HLCombat.GibCount < 0) {
+			HLCombat.GibCount = 0;
+		}
+		if (HLCombat.GibFadingCount < 0)
+		{
+			HLCombat.GibFadingCount = 0;
+		}
+        if (HLCombat.GibFadingCount > HLCombat.GibCount)
+        {
+            HLCombat.GibFadingCount = 0;
+        }
+
+		if (((HLCombat.GibCount - HLCombat.GibFadingCount) > HLCombat.max_gibs ))
+		{
+			toDeletefromMax = true;
+		}
+		else
+		{
+			if (!hasCountedFading)
+				toDeletefromMax = false;
+
+        }
+
+		if (toDelete || toDeletefromMax)
+		{
+			alpha = alpha.LerpTo(0, (((HLCombat.GibCount - HLCombat.max_gibs).Clamp(0, HLCombat.max_gibs) * 0.1f)).Clamp(1, 100) * Time.Delta);
+			RenderColor = RenderColor.WithAlpha(alpha);
+			if (alpha.AlmostEqual(0, 0.2f))
+			{
+				HLCombat.GibCount -= 1;
+				HLCombat.GibFadingCount -= 1;
+				Delete();
+			}
+		}
+			
+        if (hasCountedFading == false && alpha < 1.0f)
+		{
+            HLCombat.GibFadingCount += 1;
+			hasCountedFading = true;
+        } 
+		else if (hasCountedFading && alpha >= 1)
+        {
+			HLCombat.GibFadingCount -= 1;
+			hasCountedFading = false;
+        }
+        
+        LifeTime += 1;
 		if (RotAngles != SleepAngles)
 			RotAngles += AngularVelocity * Time.Delta;
 		Rotation = RotAngles.ToRotation();
@@ -135,8 +206,10 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			if (Velocity != Vector3.Zero)
 				Velocity.LerpTo( Vector3.Zero, 0.1f * Time.Delta );
 
-			//Move();
-			return;
+            //Move();
+
+            
+            return;
 		}
 		/*if ( false )
 		{
@@ -155,9 +228,10 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			//DebugOverlay.ScreenText( $" SurfaceFriction: {SurfaceFriction}", lineOffset + 6 );
 			//DebugOverlay.ScreenText( $"    WishVelocity: {WishVelocity}", lineOffset + 7 );
 		}*/
-		if (LifeTime > 300)
-			this.Delete();
-        
+		if (LifeTime > 300 && !toDelete)
+        {
+            toDelete = true;
+        }
 		CalcGroundEnt();
 		Velocity -= new Vector3( 0, 0, gGravity * 0.5f ) * Time.Delta;
 		Velocity += new Vector3( 0, 0, BaseVelocity.z ) * Time.Delta;
@@ -186,7 +260,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		
 
 	}
-	public virtual void CalcGroundEnt()
+
+
+    public virtual void CalcGroundEnt()
 	{
 
 
