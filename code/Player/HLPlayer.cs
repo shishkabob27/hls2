@@ -94,6 +94,10 @@
 		var battery = new Battery();
         battery.Position = ConsoleSystem.Caller.Pawn.EyePosition;
 		battery.Spawn();
+
+		var suit = new Suit();
+        suit.Position = ConsoleSystem.Caller.Pawn.EyePosition;
+		suit.Spawn();
 	}
 
 	public override void OnKilled()
