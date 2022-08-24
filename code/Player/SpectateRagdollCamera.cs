@@ -29,7 +29,7 @@ public class SpectateRagdollCamera : CameraMode
 		{
 			if ( Local.Pawn is Player player && player.Corpse.IsValid() )
 			{
-				return player.Corpse.GetBoneTransform(player.Corpse.GetBoneIndex("bip_01_spine")).Position;
+				return player.Corpse.GetBoneTransform(player.Corpse.GetBoneIndex("bip_01_pelvis")).Position;
 			}
 
 			 return Local.Pawn.Position;
