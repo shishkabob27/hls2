@@ -6,6 +6,6 @@ public partial class func_breakable : Entity
     // stub
 
     [Property]
-    public float Health { get; set; } = 0;
+    public float StartingHealth { get; set; } = 0;
         
-}
+}   

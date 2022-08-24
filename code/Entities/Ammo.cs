@@ -14,7 +14,6 @@
 		UsePhysicsCollision = true;
 
 		Tags.Add("weapon");
-		SetInteractsAs( CollisionLayer.Debris );
 	}
 
 	public override void Touch( Entity other )

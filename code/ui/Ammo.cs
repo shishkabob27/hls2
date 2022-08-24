@@ -26,8 +26,6 @@ public class Ammo : Panel
 
 	}
 
-	int weaponHash;
-
 	public override void Tick()
 	{
 		Inventory.Text = "";

@@ -57,11 +57,13 @@ partial class GrenadeWeapon : HLWeapon
 				};
 
 				grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 600.0f + Owner.EyeRotation.Up * 200.0f + Owner.Velocity;
-		
+
 				// This is fucked in the head, lets sort this this year
-				grenade.CollisionGroup = CollisionGroup.Debris;
-				grenade.SetInteractsExclude( CollisionLayer.Player );
-				grenade.SetInteractsAs( CollisionLayer.Debris );
+				Tags.Add("debris");
+				
+				//grenade.CollisionGroup = CollisionGroup.Debris;
+				//grenade.SetInteractsExclude( CollisionLayer.Player );
+				//grenade.SetInteractsAs( CollisionLayer.Debris );
 
 				_ = grenade.BlowIn( 3.0f );
 			}

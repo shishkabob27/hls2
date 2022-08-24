@@ -10,9 +10,7 @@
 		base.Spawn();
 
 		Model = WorldModel;
-		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
-		CollisionGroup = CollisionGroup.Weapon;
-		SetInteractsAs( CollisionLayer.Debris );
+		Tags.Add("weapon");
 	}
 
 	public void Populate( HLPlayer player )

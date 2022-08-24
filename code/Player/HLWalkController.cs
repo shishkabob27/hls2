@@ -713,14 +713,13 @@ namespace Sandbox
 
             // MoveHelper()->PlayerSetAnimation( PLAYER_JUMP );
 
-            float flGroundFactor = 1.0f;
             //if ( player->m_pSurfaceData )
             {
                 //   flGroundFactor = g_pPhysicsQuery->GetGameSurfaceproperties( player->m_pSurfaceData )->m_flJumpFactor;
             }
 
             //PreventBunnyJumping();
-            float flMul = 268.3281572999747f * 1.2f;
+            //float flMul = 268.3281572999747f * 1.2f;
             float JumpImpulse = 268;
             float startz = Velocity.z;
             if (Duck.IsActive)

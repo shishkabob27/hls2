@@ -61,7 +61,6 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 
 		Transmit = TransmitType.Always;
 		this.Tags.Add("debris");
-		CollisionGroup = CollisionGroup.Debris;
 
 		Predictable = true;
 
@@ -139,7 +138,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			//Move();
 			return;
 		}
-		if ( false )
+		/*if ( false )
 		{
 			//DebugOverlay.Box( Position + TraceOffset, mins, maxs, Color.Red );
 			//DebugOverlay.Box( Position, mins, maxs, Color.Blue );
@@ -155,7 +154,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			DebugOverlay.ScreenText( $" SleepGroundEntity: {SleepGroundEntity} [{GroundEntity?.Velocity}]", lineOffset + 6 );
 			//DebugOverlay.ScreenText( $" SurfaceFriction: {SurfaceFriction}", lineOffset + 6 );
 			//DebugOverlay.ScreenText( $"    WishVelocity: {WishVelocity}", lineOffset + 7 );
-		}
+		}*/
 		if (LifeTime > 300)
 			this.Delete();
         

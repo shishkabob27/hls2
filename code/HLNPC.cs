@@ -31,7 +31,6 @@ public partial class NPC : AnimatedEntity, IUse
 		Steer = new NavSteer();
 		SetModel("models/citizen/citizen.vmdl");
 		EyePosition = Position + Vector3.Up * 64;
-		CollisionGroup = CollisionGroup.Player;
 		SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(72, 8));
 		
 		EnableHitboxes = true;

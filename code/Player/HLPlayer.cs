@@ -1,6 +1,6 @@
 ﻿public partial class HLPlayer : Player
 {
-	TimeSince timeSinceDropped;
+	TimeSince timeSinceDropped = 0;
 
 	[Net]
 	public float Armour { get; set; } = 0;
