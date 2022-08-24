@@ -370,7 +370,7 @@
 					{
 						_class = "PhysicsJointConical"
 						parent_body = "bip01_l_arm2"
-						child_body = "bip01_l_hand"
+						child_body = "hold_L"
 						anchor_origin = [ 10.314548, -0.000027, -0.000032 ]
 						anchor_angles = [ -89.954338, 176.002014, 0.0 ]
 						collision_enabled = false
@@ -415,7 +415,7 @@
 					{
 						_class = "PhysicsJointConical"
 						parent_body = "bip01_r_arm1"
-						child_body = "bip01_r_hand"
+						child_body = "hold_R"
 						anchor_origin = [ 21.51049, -2.011946, -0.00005 ]
 						anchor_angles = [ 89.940094, -105.454308, -89.996735 ]
 						collision_enabled = false
@@ -4076,6 +4076,22 @@
 					},
 				]
 				bone_cull_type = "Aggressive"
+			},
+			{
+				_class = "ModelModifierList"
+				children = 
+				[
+					{
+						_class = "RenameBone"
+						original_bone_name = "bip01_r_hand"
+						new_bone_name = "hold_R"
+					},
+					{
+						_class = "RenameBone"
+						original_bone_name = "bip01_l_hand"
+						new_bone_name = "hold_L"
+					},
+				]
 			},
 		]
 		model_archetype = "jointed_physics_model"
