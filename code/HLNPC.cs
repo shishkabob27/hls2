@@ -289,7 +289,6 @@ public partial class NPC : AnimatedEntity, IUse
 	{
         if (IsServer)
         {
-			Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
 			using (Prediction.Off())
 			{
 				CurrentSound.Stop();

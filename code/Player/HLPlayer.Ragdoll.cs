@@ -7,8 +7,8 @@
 	[ClientRpc]
 	private void BecomeRagdollOnClient(Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, int bone)
 	{
-		var ent = new ModelEntity();
-		ent.Tags.Add("ragdoll", "solid", "debris");
+		var ent = new AnimatedEntity();
+		ent.Tags.Add("solid", "debris");
 		ent.Position = Position;
 		ent.Rotation = Rotation;
 		ent.Scale = Scale;
@@ -24,8 +24,19 @@
 		ent.SurroundingBoundsMode = SurroundingBoundsType.Physics;
 		ent.RenderColor = RenderColor;
 		ent.PhysicsGroup.Velocity = velocity;
-		ent.PhysicsEnabled = true;
-
+		ent.UseAnimGraph = false;
+        List<string> DeathAnimList = new List<string>{
+        "headshot",
+        "gutshot",
+        "die_simple",
+        "die_forwards",
+        "die_backwards",
+        "die_backwards1",
+        "die_spin",
+        };
+        ent.CurrentSequence.Name = Rand.FromList<string>(DeathAnimList);
+		//ent.PhysicsEnabled = true;
+		/*
 		if (damageFlags.HasFlag(DamageFlags.Bullet) ||
 			 damageFlags.HasFlag(DamageFlags.PhysicsImpact))
 		{
@@ -50,6 +61,7 @@
 				ent.PhysicsGroup.AddAngularVelocity(angularDir * (force.Length * 0.02f));
 			}
 		}
+		*/
 
 		Corpse = ent;
 
