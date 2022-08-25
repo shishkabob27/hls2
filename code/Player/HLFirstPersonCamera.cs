@@ -22,6 +22,7 @@ namespace Sandbox
 			if ( pawn == null ) return;
 
 			var eyePos = pawn.EyePosition;
+
 			Position = eyePos;
 
 			Rotation = pawn.EyeRotation;

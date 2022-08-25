@@ -70,13 +70,13 @@ namespace Sandbox
         public bool Swimming { get; set; } = false;
         [Net] public bool AutoJump { get; set; } = false;
 
-        public Duck Duck;
+        public HLDuck Duck;
         public Unstuck Unstuck;
 
 
         public HLWalkController()
         {
-            Duck = new Duck(this);
+            Duck = new HLDuck(this);
             Unstuck = new Unstuck(this);
         }
 
