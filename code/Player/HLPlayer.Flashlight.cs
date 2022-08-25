@@ -54,8 +54,6 @@ public partial class HLPlayer
     {
         Light.Delete();
         Light = null;
-        Light.Delete();
-        Light = null;
     }
 
 }
