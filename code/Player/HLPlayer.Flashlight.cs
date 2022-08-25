@@ -5,23 +5,29 @@ public partial class HLPlayer
     [Net, Predicted]
     public bool FlashlightEnabled { get; private set; } = false;
 
-    private SpotLightEntity Light;
+    [Predicted]
+    public SpotLightEntity Light { get; private set; }
 
     public void SimulateFlashlight()
     {
 
         if (Light.IsValid())
         {
-            var transform = new Transform(EyePosition + EyeRotation.Forward * 15, EyeRotation);
-            transform.Rotation *= Rotation.From(new Angles(0, 0, 0));
-            Light.Transform = transform;
+            Light.Position = EyePosition + EyeRotation.Forward * 15;
+            Light.Rotation = EyeRotation;
         }
 
         if (Input.Pressed(InputButton.Flashlight))
         {
             FlashlightEnabled = !FlashlightEnabled;
-            if (Light.IsValid())
-                Light.Enabled = FlashlightEnabled;
+            if (Light.IsValid() == false && FlashlightEnabled)
+            {
+                NewFlashlight();
+            }
+            if (Light.IsValid() == true && !FlashlightEnabled)
+            {
+                RemoveFlashlight();
+            }
             PlaySound(FlashlightEnabled ? "flashlight.on" : "flashlight.off");
 
         }
@@ -30,10 +36,9 @@ public partial class HLPlayer
     protected void NewFlashlight()
     {
         Light = new SpotLightEntity();
+        Light.Predictable = true;
         Light.LightCookie = Texture.Load("materials/effects/lightcookie.vtex");
-
-        Light.Parent = this;
-
+        
         Light.DynamicShadows = true;
         Light.Range = 512;
         Light.Falloff = 1.0f;
@@ -44,10 +49,9 @@ public partial class HLPlayer
         Light.InnerConeAngle = 20;
         Light.OuterConeAngle = 40;
         Light.FogStrength = 1.0f;
+        
 
-
-        Light.Enabled = false;
-        FlashlightEnabled = false;
+        Light.Enabled = true;
     }
 
     protected void RemoveFlashlight()
@@ -55,5 +59,4 @@ public partial class HLPlayer
         Light.Delete();
         Light = null;
     }
-
 }

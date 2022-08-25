@@ -55,7 +55,6 @@
 
 		CameraMode = new HLFirstPersonCamera();
 
-		NewFlashlight();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
