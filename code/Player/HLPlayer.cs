@@ -20,7 +20,26 @@
 		Inventory = new HLInventory( this );
 	}
 
-	public override void Respawn()
+    public virtual void DoHLPlayerNoclip(Client player)
+    {
+        //if (!player.HasPermission("noclip"))
+            //return;
+
+            if (player.Pawn is HLPlayer basePlayer)
+            {
+                if (basePlayer.DevController is NoclipController)
+                {
+                    Log.Info("Noclip Mode Off");
+                    basePlayer.DevController = null;
+                }
+                else
+                {
+                    Log.Info("Noclip Mode On");
+                    basePlayer.DevController = new NoclipController();
+                }
+            }
+    }
+    public override void Respawn()
 	{
 		//SetModel("models/citizen/citizen.vmdl");
 		SetModel( "models/hl1/player/player.vmdl" );
@@ -32,6 +51,8 @@
 		Animator = new HLPlayerAnimator();
 
 		CameraMode = new HLFirstPersonCamera();
+
+		NewFlashlight();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
@@ -83,7 +104,7 @@
 		base.Respawn();
 	}
 
-	[ConCmd.Admin]
+	[ConCmd.Server]
 	public static void GiveAll()
 	{
 		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
@@ -120,7 +141,7 @@
 			var coffin = new Coffin();
 			coffin.Position = Position + Vector3.Up * 30;
 			coffin.Rotation = Rotation;
-			coffin.PhysicsBody.Velocity = Velocity + Rotation.Forward * 100;
+			coffin.Velocity = Velocity + Rotation.Forward * 100;
 			coffin.Populate( this );
 		}
 
@@ -170,7 +191,7 @@
 			return;
 
 		base.Simulate( cl );
-
+		SimulateFlashlight();
 		//
 		// Input requested a weapon switch
 		//

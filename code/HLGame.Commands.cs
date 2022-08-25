@@ -2,7 +2,15 @@
 {
 	public partial class HLGame : Game
 	{
-		[ConCmd.Server( "spawnScientist", Help = "Kills the calling player with generic damage" )]
+
+        [ConCmd.Server("noclip", Help = "Turns on noclip mode, which makes you non solid and lets you fly around")]
+        public static void HLNoclipCommand()
+        {
+            if (ConsoleSystem.Caller == null) return;
+
+            (ConsoleSystem.Caller.Pawn as HLPlayer).DoHLPlayerNoclip(ConsoleSystem.Caller);
+        }
+        [ConCmd.Server( "spawnScientist", Help = "Kills the calling player with generic damage" )]
 		public static void SpawnScientistCommand()
 		{
 			var sci = new ScientistSitting();
