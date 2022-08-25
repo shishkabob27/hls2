@@ -9,6 +9,23 @@ internal class Suit : ModelEntity
 
         SetModel("models/hl1/items/suit.vmdl");
 
+        PhysicsEnabled = true;
+		UsePhysicsCollision = true;
+
         Tags.Add("weapon");
     }
+
+    public override void StartTouch( Entity other )
+	{
+		base.StartTouch( other );
+
+		if ( other is not HLPlayer pl ) return;
+
+        Log.Info("hev");
+
+        pl.HasHEV = true;
+
+		if (IsServer)
+			Delete();
+	}
 }

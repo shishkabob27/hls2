@@ -6,6 +6,9 @@
 	public float Armour { get; set; } = 0;
 
 	[Net]
+	public bool HasHEV { get; set; } = false;
+
+	[Net]
 	public float MaxHealth { get; set; } = 100;
 
 	public bool SupressPickupNotices { get; private set; }
@@ -72,31 +75,12 @@
 		
 
 		if (HLGamemode == "Deathmatch"){
+			HasHEV = true;
+
 			Inventory.Add( new Crowbar());
 			Inventory.Add( new Pistol());
 
 			GiveAmmo( AmmoType.Pistol, 68 );
-		}
-		else{
-			//give player all weapons and ammo on spawn for testing
-			GiveAmmo( AmmoType.Pistol, 1000 );
-			GiveAmmo( AmmoType.Python, 1000 );
-			GiveAmmo( AmmoType.Buckshot, 1000 );
-			GiveAmmo( AmmoType.Crossbow, 1000 );
-			GiveAmmo( AmmoType.Grenade, 1000 );
-			GiveAmmo( AmmoType.SMGGrenade, 1000 );
-			GiveAmmo( AmmoType.RPG, 1000 );
-			GiveAmmo( AmmoType.Tripmine, 1000 );
-
-			Inventory.Add( new Crowbar());
-			Inventory.Add( new Pistol());
-			Inventory.Add( new Python() );
-			Inventory.Add( new Shotgun() );
-			Inventory.Add( new SMG() );
-			Inventory.Add( new RPG() );
-			Inventory.Add( new Crossbow() );
-			Inventory.Add( new GrenadeWeapon() );
-			Inventory.Add( new TripmineWeapon() );
 		}
 
 		Tags.Add("player");
@@ -131,6 +115,10 @@
 		var battery = new Battery();
         battery.Position = ConsoleSystem.Caller.Pawn.EyePosition;
 		battery.Spawn();
+
+		var suit = new Suit();
+        suit.Position = ConsoleSystem.Caller.Pawn.EyePosition;
+		suit.Spawn();
 	}
 
 	public override void OnKilled()
