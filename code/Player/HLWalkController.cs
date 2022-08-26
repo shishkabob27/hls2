@@ -22,8 +22,6 @@ namespace Sandbox
         [ConVar.Replicated] public static float sv_airspeedcap { get; set; } = 30;
         [ConVar.Replicated] public static float sv_wateraccelerate { get; set; } = 10;
         [ConVar.Replicated] public static float sv_waterfriction { get; set; } = 1;
-        [ConVar.Replicated] public static float sv_rollspeed { get; set; } = 200;
-        [ConVar.Replicated] public static float sv_rollangle { get; set; } = 0;
         [ConVar.Replicated] public static float sv_maxnonjumpvelocity { get; set; } = 250;
         [ConVar.Replicated] public static float sv_maxstandableangle { get; set; } = 50;
 
@@ -39,6 +37,14 @@ namespace Sandbox
         [ConVar.Replicated] public static float sv_sprintspeed { get; set; } = 320.0f;
         [ConVar.Replicated] public static float sv_walkspeed { get; set; } = 150.0f;
         [ConVar.Replicated] public static float sv_defaultspeed { get; set; } = 320.0f;
+
+        [ConVar.Client] public static float cl_rollspeed { get; set; } = 200.0f;
+
+        /// <summary>
+        /// set to 2 for the original WON half-life default. 0 is disabled (default)
+        /// </summary>
+        [ConVar.Client] public static float cl_rollangle { get; set; } = 0.0f; 
+
         [ConVar.Replicated] public static bool sv_use_sbox_movehelper { get; set; } = true;
         [ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
         [ConVar.Replicated, Net] public static bool sv_autojump { get; set; } = false;
@@ -132,8 +138,8 @@ namespace Sandbox
         public override void FrameSimulate()
         {
             base.FrameSimulate();
-
             EyeRotation = Input.Rotation;
+            EyeRotation = EyeRotation.Angles().WithRoll(CalculateRoll(EyeRotation, Velocity, cl_rollangle, cl_rollspeed)).ToRotation();
         }
         public virtual void StartGravity()
         {
@@ -309,7 +315,7 @@ namespace Sandbox
                 DebugOverlay.ScreenText($"    WishVelocity: {WishVelocity}", lineOffset + 5);
                 DebugOverlay.ScreenText($"    Speed: {Velocity.Length}", lineOffset + 6);
             }
-
+           
         }
 
 
@@ -435,7 +441,65 @@ namespace Sandbox
 
         public void fwishspd()
         {
+            QAngle a = Input.Rotation;
+            a.AngleVectors(out var forward, out var right, out var up);
+            var oldGround = GroundEntity;
+
+            var mvspeed = sv_defaultspeed; //0.0f;
+            var ws = Duck.GetWishSpeed();
+            if (ws >= 0) mvspeed = ws;
+            if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
+            if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
+            var ForwardMove = Input.Forward * mvspeed;
+            var SideMove = -Input.Left * mvspeed;
+            var UpMove = Input.Up * mvspeed;
+
+            var fmove = ForwardMove;
+            var smove = SideMove;
+
+            if (forward[2] != 0)
+            {
+                forward[2] = 0;
+                forward = forward.Normal;
+            }
+
+            if (right[2] != 0)
+            {
+                right[2] = 0;
+                right = right.Normal;
+            }
+
+            Vector3 wishvel = 0;
+            for (int i = 0; i < 2; i++)
+                wishvel[i] = forward[i] * fmove + right[i] * smove;
+
+            wishvel[2] = 0;
+
+            var wishspeed = wishvel.Length;
+            var wishdir = wishvel.Normal;
+
             //
+            // Clamp to server defined max speed
+            //
+            if (wishspeed != 0 && wishspeed > sv_maxspeed)
+            {
+                wishvel *= sv_maxspeed / wishspeed;
+                wishspeed = sv_maxspeed;
+            }
+
+            var acceleration = sv_accelerate;
+
+            // if our wish speed is too low, we must increase acceleration or we'll never overcome friction
+            // Reverse the basic friction calculation to find our required acceleration
+            var wishspeedThreshold = 100 * sv_friction / sv_accelerate;
+            if (wishspeed > 0 && wishspeed < wishspeedThreshold)
+            {
+                float speed = Velocity.Length;
+                float flControl = (speed < sv_stopspeed) ? sv_stopspeed : speed;
+                acceleration = (flControl * sv_friction) / wishspeed + 1;
+            }
+            WishVelocity = wishvel;
+            /*//
             // Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
             //
             QAngle a = Input.Rotation; //.AngleVectors(out var forward, out var right, out var up);
@@ -498,7 +562,7 @@ namespace Sandbox
             if (!Swimming && !IsTouchingLadder)
             {
                 WishVelocity = WishVelocity.WithZ(0);
-            }
+            }*/
         }
         public virtual void WalkMove()
         {
@@ -539,7 +603,7 @@ namespace Sandbox
                 if (pm.Fraction == 1)
                 {
                     Position = pm.EndPosition;
-                    StayOnGround();
+                    //StayOnGround();
                     return;
                 }
 
@@ -552,10 +616,40 @@ namespace Sandbox
                 Velocity -= BaseVelocity;
             }
 
-			StayOnGround();
+			//StayOnGround();
 
 			Velocity = Velocity.Normal * MathF.Min( Velocity.Length, GetWishSpeed() );
 		}
+        public virtual float CalculateRoll(Rotation angles, Vector3 velocity, float rollangle, float rollspeed)
+        {
+            float sign;
+            float side;
+            float value;
+            //QAngle a = angles; //.AngleVectors(out var forward, out var right, out var up);
+            //a.AngleVectors(out var forward, out var right, out var up);
+            var forward = angles.Forward;
+            var right = angles.Right;
+            var up = angles.Up;
+
+            side = velocity.Dot(right);
+
+            sign = side < 0 ? -1 : 1;
+
+            side = Math.Abs(side);
+
+            value = rollangle;
+
+            if (side < rollspeed)
+            {
+                side = side * value / rollspeed;
+            }
+            else
+            {
+                side = value;
+            }
+
+            return side * sign;
+        }
 
         public virtual void StepMove()
         {
@@ -688,10 +782,10 @@ namespace Sandbox
             if (accelspeed > addspeed)
                 accelspeed = addspeed;
 
-            //Velocity = Velocity.WithX(Velocity.x + accelspeed * wishdir.x);
-            //Velocity = Velocity.WithY(Velocity.y + accelspeed * wishdir.y);
-            //Velocity = Velocity.WithZ(Velocity.z + accelspeed * wishdir.z);
-            Velocity += accelspeed * wishdir;
+            Velocity = Velocity.WithX(Velocity.x + accelspeed * wishdir.x);
+            Velocity = Velocity.WithY(Velocity.y + accelspeed * wishdir.y);
+            Velocity = Velocity.WithZ(Velocity.z + accelspeed * wishdir.z);
+            //Velocity += accelspeed * wishdir;
         }
 
         /// <summary>
@@ -705,7 +799,7 @@ namespace Sandbox
 
             // Not on ground - no friction
 
-
+            /*
             // Calculate speed
             var speed = Velocity.Length;
             if (speed < 0.1f) return;
@@ -728,6 +822,34 @@ namespace Sandbox
             }
 
             // mv->m_outWishVel -= (1.f-newspeed) * mv->m_vecVelocity;
+            // If we are in water jump cycle, don't apply friction
+            // Calculate speed
+            */
+            var speed = Velocity.Length;
+            if (speed < 0.1f)
+                return;
+
+            var drop = 0f;
+
+            if (GroundEntity != null)
+            {
+                var friction = sv_friction * SurfaceFriction;
+                var control = (speed < sv_stopspeed) ? sv_stopspeed : speed;
+
+                // Add the amount to the drop amount.
+                drop += control * friction * Time.Delta;
+            }
+
+            // scale the velocity
+            float newspeed = speed - drop;
+            if (newspeed < 0)
+                newspeed = 0;
+
+            if (newspeed != speed)
+            {
+                newspeed /= speed;
+                Velocity *= newspeed;
+            }
         }
 
         public virtual void CheckJumpButton()
@@ -1007,7 +1129,7 @@ namespace Sandbox
         public virtual void CategorizePosition(bool bStayOnGround)
         {
             SurfaceFriction = 1.0f;
-
+            
             // Doing this before we move may introduce a potential latency in water detection, but
             // doing it after can get us stuck on the bottom in water if the amount we move up
             // is less than the 1 pixel 'threshold' we're about to snap to.	Also, we'll call
@@ -1033,8 +1155,8 @@ namespace Sandbox
             }
             else if (bStayOnGround)
             {
-                bMoveToEndPos = true;
-                point.z -= sv_stepsize;
+                //bMoveToEndPos = true;
+                //point.z -= sv_stepsize;
             }
 
             if (bMovingUpRapidly || Swimming) // or ladder and moving up
@@ -1049,9 +1171,8 @@ namespace Sandbox
             {
                 ClearGroundEntity();
                 bMoveToEndPos = false;
-
-                if (Velocity.z > 0)
-                    SurfaceFriction = 0.25f;
+                //if (Velocity.z > 0)
+                    //SurfaceFriction = 0.25f;
             }
             else
             {
@@ -1062,7 +1183,7 @@ namespace Sandbox
             {
                 Position = pm.EndPosition;
             }
-
+            
         }
 
         /// <summary>

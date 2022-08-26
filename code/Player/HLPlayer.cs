@@ -12,7 +12,7 @@
 	public float MaxHealth { get; set; } = 100;
 
 	public bool SupressPickupNotices { get; private set; }
-
+	public Rotation BaseRotation;
 	public int ComboKillCount { get; set; } = 0;
 	public TimeSince TimeSinceLastKill { get; set; }
 
@@ -260,7 +260,6 @@
 		{
 			walkBob += Time.Delta * 12f * speed;
 		}
-
 		setup.Position += up * MathF.Sin( walkBob ) * speed * 2;
 
 		setup.FieldOfView += fov;
