@@ -566,6 +566,7 @@ namespace Sandbox
         }
         public virtual void WalkMove()
         {
+            /*
             var wishdir = WishVelocity.Normal;
             var wishspeed = WishVelocity.Length;
 
@@ -619,7 +620,73 @@ namespace Sandbox
 			//StayOnGround();
 
 			Velocity = Velocity.Normal * MathF.Min( Velocity.Length, GetWishSpeed() );
-		}
+            */
+            // Set pmove velocity
+            var acceleration = sv_accelerate;
+
+            var wishdir = WishVelocity.Normal;
+            var wishspeed = WishVelocity.Length;
+
+            var wishspeedThreshold = 100 * sv_friction / sv_accelerate;
+            if (wishspeed > 0 && wishspeed < wishspeedThreshold)
+            {
+                float speed = Velocity.Length;
+                float flControl = (speed < sv_stopspeed) ? sv_stopspeed : speed;
+                acceleration = (flControl * sv_friction) / wishspeed + 1;
+            }
+
+            var temp = Velocity;
+            temp[2] = 0;
+            Velocity = temp;
+            Accelerate(wishdir, wishspeed, 0, acceleration);
+            temp = Velocity;
+            temp[2] = 0;
+            Velocity = temp;
+
+            // Clamp the players speed in x,y.
+            float newSpeed = Velocity.Length;
+            if (newSpeed > sv_maxspeed)
+            {
+                float flScale = sv_maxspeed / newSpeed;
+                temp = Velocity;
+                temp[0] *= flScale;
+                temp[1] *= flScale;
+                Velocity = temp;
+            }
+
+            Velocity += BaseVelocity;
+            var spd = Velocity.Length;
+
+            if (spd < 1)
+            {
+                Velocity = 0;
+                Velocity -= BaseVelocity;
+                return;
+            }
+
+            // first try just moving to the destination	
+            var dest = Vector3.Zero;
+            dest[0] = Position[0] + Velocity[0] * Time.Delta;
+            dest[1] = Position[1] + Velocity[1] * Time.Delta;
+            dest[2] = Position[2];
+
+            var trace = TraceBBox(Position, dest);
+            // didn't hit anything.
+            if (trace.Fraction == 1)
+            {
+                Position = trace.EndPosition;
+                Velocity -= BaseVelocity;
+
+                StayOnGround();
+                return;
+            }
+
+            
+
+            StepMove();
+            Velocity -= BaseVelocity;
+            StayOnGround();
+        }
         public virtual float CalculateRoll(Rotation angles, Vector3 velocity, float rollangle, float rollspeed)
         {
             float sign;
