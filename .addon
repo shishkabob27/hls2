@@ -180,6 +180,13 @@
         "ConVarName": "HLDifficulty",
         "DisplayName": "Difficulty",
         "DefaultValue": "Medium"
+      },
+      "sv_enablebunnyhopping": {
+        "DisplayType": "Boolean",
+        "Choices": [],
+        "ConVarName": "sv_enablebunnyhopping",
+        "DisplayName": "Enable Bunnyhopping",
+        "DefaultValue": "true"
       }
     }
   }

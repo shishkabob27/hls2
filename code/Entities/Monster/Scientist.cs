@@ -87,6 +87,8 @@ public partial class Scientist : NPC
     bool wasInBound = false;
     public override void Think()
     {
+        if (InScriptedSequence)
+            return;
         //VoicePitch = SetPitch();
         var ply = HLUtils.ClosestPlayerTo(Position);
         if (MODE == "MODE_FOLLOW") 
@@ -117,7 +119,7 @@ public partial class Scientist : NPC
         }
 
         // we've been pushed!
-        if (ply != null && ply.IsValid && ply.Position.Distance(Position) < 32)
+        if (ply != null && ply.IsValid && ply.Position.Distance(Position) < 32 && !InScriptedSequence)
         {
             Steer.Target = Position + (ply.Position - Position).Normal * -78;
             Speed = 80;

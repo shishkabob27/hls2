@@ -82,6 +82,7 @@ public partial class scripted_sequence : Entity
         }
 
         if (IsClient) return;
+        TargetNPC.InScriptedSequence = true;
         hasStarted = true;
         ticker = false;
         ticker2 = false;
@@ -112,6 +113,7 @@ public partial class scripted_sequence : Entity
         {
             TargetNPC = FindByName(TargetEntity) as NPC;
         }
+        TargetNPC.InScriptedSequence = true;
         TargetNPC.targetRotationOVERRIDE = Vector3.Zero.EulerAngles.ToRotation();
         //TargetNPC.targetRotation = this.Rotation;
         if (TargetNPC is NPC)
@@ -216,11 +218,15 @@ public partial class scripted_sequence : Entity
         {
             TargetNPC.InPriorityScriptedSequence = false;
         }
+
+        TargetNPC.InScriptedSequence = false;
         //hasStarted = false;
     }
     [Input]
     void MoveToPosition()
     {
+
+        TargetNPC.InScriptedSequence = true;
         Move();
     }
     public override void Spawn()
@@ -261,6 +267,8 @@ public partial class scripted_sequence : Entity
             
             if (ticker == true && ticker2 == false) // next tick has happened, play the animation
             {
+
+                TargetNPC.InScriptedSequence = true;
                 ticker2 = true;
                 timetick = 0;
                 TargetNPC.CurrentSequence.Name = ActionAnimation;
@@ -314,11 +322,12 @@ public partial class scripted_sequence : Entity
             {
                 TargetNPC.InPriorityScriptedSequence = false;
             }
+            TargetNPC.InScriptedSequence = false;
             //if (TargetLegacy != "")
             //GameTask.RunInThreadAsync(TriggerTask);
 
 
-            
+
         }
         /*
         
