@@ -40,6 +40,9 @@ namespace Sandbox
         [ConVar.Replicated] public static float sv_walkspeed { get; set; } = 150.0f;
         [ConVar.Replicated] public static float sv_defaultspeed { get; set; } = 320.0f;
         [ConVar.Replicated] public static bool sv_use_sbox_movehelper { get; set; } = true;
+        [ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
+        [ConVar.Replicated, Net] public static bool sv_autojump { get; set; } = false;
+
         /*
         [Net] public float SprintSpeed { get; set; } = 320.0f;
         [Net] public float WalkSpeed { get; set; } = 150.0f;
@@ -68,8 +71,6 @@ namespace Sandbox
         public Vector3 aPosition;
         
         public bool Swimming { get; set; } = false;
-
-        [ConVar.Replicated, Net] public static bool sv_autojump { get; set; } = true;
 
         public HLDuck Duck;
         public Unstuck Unstuck;
@@ -687,6 +688,9 @@ namespace Sandbox
             if (accelspeed > addspeed)
                 accelspeed = addspeed;
 
+            //Velocity = Velocity.WithX(Velocity.x + accelspeed * wishdir.x);
+            //Velocity = Velocity.WithY(Velocity.y + accelspeed * wishdir.y);
+            //Velocity = Velocity.WithZ(Velocity.z + accelspeed * wishdir.z);
             Velocity += accelspeed * wishdir;
         }
 
@@ -765,7 +769,8 @@ namespace Sandbox
 
             if (GroundEntity == null)
                 return;
-
+            if (!sv_enablebunnyhopping)
+                PreventBunnyJumping();
             /*
             if ( player->m_Local.m_bDucking && (player->GetFlags() & FL_DUCKING) )
                 return false;
@@ -904,8 +909,8 @@ namespace Sandbox
 
             if (wishspeed != 0 && wishspeed > sv_maxspeed)
             {
-                //WishVelocity *= sv_maxspeed / wishspeed;
-                //wishspeed = sv_maxspeed;
+                WishVelocity *= sv_maxspeed / wishspeed;
+                wishspeed = sv_maxspeed;
             }
             
             AirAccelerate(wishdir, wishspeed, sv_airaccelerate);
@@ -1097,7 +1102,7 @@ namespace Sandbox
 
             GroundEntity = null;
             GroundNormal = Vector3.Up;
-            //SurfaceFriction = 1.0f;
+            SurfaceFriction = 1.0f;
         }
 
         /// <summary>
