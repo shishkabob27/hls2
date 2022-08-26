@@ -320,7 +320,7 @@ public partial class scripted_sequence : Entity
             hasStarted = false;
             if (SpawnSettings.HasFlag(Flags.PriorityScript))
             {
-                TargetNPC.InPriorityScriptedSequence = false;
+                TargetNPC.InPriorityScriptedSequence = false; // does this even fucking work?????
             }
             TargetNPC.InScriptedSequence = false;
             //if (TargetLegacy != "")
