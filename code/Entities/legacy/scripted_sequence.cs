@@ -260,7 +260,7 @@ public partial class scripted_sequence : Entity
         {
             return;
         }
-        if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 2 + (timeout / 1000)) || TargetNPC.Position == this.Position) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
+        if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 3f + (timeout / 1000)) || TargetNPC.Position == this.Position) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
             TargetNPC.Position = this.Position;
             timetick += 0.02f;
