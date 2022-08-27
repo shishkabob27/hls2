@@ -52,7 +52,7 @@
 			{
 				if ( ResourceLibrary.TryGet<DecalDefinition>( decalPath, out var decal ) )
 				{
-					DecalSystem.PlaceUsingTrace( decal, tr );
+					Decal.Place( decal, tr );
 				}
 			}
 

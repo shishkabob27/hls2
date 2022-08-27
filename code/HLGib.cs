@@ -126,7 +126,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
 			{
 				var vecSpot = Position + new Vector3(0, 0, 8);
-                DecalSystem.PlaceUsingTrace(decal, mover.TraceResult);
+                Decal.Place(decal, mover.TraceResult);
             }
 		} 
 		prevTickPos = Position;

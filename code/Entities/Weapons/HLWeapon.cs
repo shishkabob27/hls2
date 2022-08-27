@@ -261,7 +261,7 @@
 					if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
 					{
 						//Log.Info( "Splat!" );
-						DecalSystem.PlaceUsingTrace(decal, trace);
+						Decal.Place(decal, trace);
 					}
 				}
 			}
