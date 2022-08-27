@@ -3,6 +3,11 @@
 [Title("HEV Suit"), Category("Items")]
 internal class Suit : ModelEntity
 {
+    [Flags]
+		public enum Flags
+		{
+			ShortLogon = 1,
+		}
     public override void Spawn()
     {
         base.Spawn();
@@ -21,9 +26,10 @@ internal class Suit : ModelEntity
 
 		if ( other is not HLPlayer pl ) return;
 
-        Log.Info("hev");
-
         pl.HasHEV = true;
+
+        Sound.FromScreen("bell");
+        Sound.FromScreen("hev_logon");
 
 		if (IsServer)
 			Delete();
