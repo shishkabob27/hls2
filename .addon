@@ -161,25 +161,25 @@
         "DisplayName": "Gamemode",
         "DefaultValue": "campaign"
       },
-      "HLDifficulty": {
+      "hl_difficulty": {
         "DisplayType": "Choice",
         "Choices": [
           {
-            "Value": "Easy",
+            "Value": "easy",
             "Name": "Easy"
           },
           {
-            "Value": "Medium",
+            "Value": "medium",
             "Name": "Medium"
           },
           {
-            "Value": "Hard",
+            "Value": "hard",
             "Name": "Hard"
           }
         ],
-        "ConVarName": "HLDifficulty",
+        "ConVarName": "hl_difficulty",
         "DisplayName": "Difficulty",
-        "DefaultValue": "Medium"
+        "DefaultValue": "easy"
       },
       "sv_enablebunnyhopping": {
         "DisplayType": "Boolean",

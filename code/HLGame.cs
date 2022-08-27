@@ -16,7 +16,7 @@ partial class HLGame : Game
 
 	StandardPostProcess postProcess;
 
-	[ConVar.Replicated] public static string HLDificulty { get; set; } = "Medium";
+	[ConVar.Replicated] public static string hl_difficulty { get; set; } = "medium";
 	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
 
 
