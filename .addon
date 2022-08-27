@@ -145,21 +145,21 @@
       "Gamepad": true
     },
     "GameSettings": {
-      "HLGamemode": {
+      "hl_gamemode": {
         "DisplayType": "Choice",
         "Choices": [
           {
-            "Value": "Campaign",
+            "Value": "campaign",
             "Name": "Campaign"
           },
           {
-            "Value": "Deathmatch",
+            "Value": "deathmatch",
             "Name": "Deathmatch"
           }
         ],
-        "ConVarName": "HLGamemode",
+        "ConVarName": "hl_gamemode",
         "DisplayName": "Gamemode",
-        "DefaultValue": "Campaign"
+        "DefaultValue": "campaign"
       },
       "HLDifficulty": {
         "DisplayType": "Choice",

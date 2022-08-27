@@ -1,30 +1,27 @@
 ﻿public partial class HLPlayer
 {
-	// TODO - make ragdolls one per entity
-	// TODO - make ragdolls dissapear after a load of seconds
+    // TODO - make ragdolls one per entity
+    // TODO - make ragdolls dissapear after a load of seconds
 
+    
 
 	[ClientRpc]
-	private void BecomeRagdollOnClient(Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, int bone)
+    private void CreateCorpse(Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, int bone)
 	{
-		var ent = new AnimatedEntity();
-		ent.Tags.Add("solid", "debris");
+		var ent = new HLMovement();
+        ent.UseAnimGraph = false;
+        ent.Tags.Add("debris");
 		ent.Position = Position;
 		ent.Rotation = Rotation;
 		ent.Scale = Scale;
-		ent.UsePhysicsCollision = true;
-		ent.EnableAllCollisions = true;
 		ent.SetModel(GetModelName());
 		ent.CopyBonesFrom(this);
 		ent.CopyBodyGroups(this);
 		ent.CopyMaterialGroup(this);
 		ent.CopyMaterialOverrides(this);
 		ent.TakeDecalsFrom(this);
-		ent.EnableAllCollisions = true;
-		ent.SurroundingBoundsMode = SurroundingBoundsType.Physics;
 		ent.RenderColor = RenderColor;
-		ent.PhysicsGroup.Velocity = velocity;
-		ent.UseAnimGraph = false;
+		ent.Velocity = velocity;
         List<string> DeathAnimList = new List<string>{
         "headshot",
         "gutshot",
@@ -33,10 +30,13 @@
         "die_backwards",
         "die_backwards1",
         "die_spin",
-        };
+		};
         ent.CurrentSequence.Name = Rand.FromList<string>(DeathAnimList);
-		//ent.PhysicsEnabled = true;
-		/*
+        ent.SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
+		ent.Friction = 3;
+        ent.Spawn();
+        //ent.PhysicsEnabled = true;
+        /*
 		if (damageFlags.HasFlag(DamageFlags.Bullet) ||
 			 damageFlags.HasFlag(DamageFlags.PhysicsImpact))
 		{
@@ -63,7 +63,7 @@
 		}
 		*/
 
-		Corpse = ent;
+        Corpse = ent;
 
 		ent.DeleteAsync(10.0f);
 	}

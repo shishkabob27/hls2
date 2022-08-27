@@ -16,7 +16,7 @@
 	public int ComboKillCount { get; set; } = 0;
 	public TimeSince TimeSinceLastKill { get; set; }
 
-	[ConVar.Replicated] public static string HLGamemode { get; set; } = "Campaign";
+	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
 
 	public HLPlayer()
 	{
@@ -73,7 +73,7 @@
 
 		
 
-		if (HLGamemode == "Deathmatch"){
+		if (hl_gamemode == "deathmatch"){
 			HasHEV = true;
 
 			Inventory.Add( new Crowbar());
@@ -124,7 +124,7 @@
 	{
 		base.OnKilled();
 
-		if (HLGamemode == "Deathmatch"){
+		if (hl_gamemode == "deathmatch"){
 			var coffin = new Coffin();
 			coffin.Position = Position + Vector3.Up * 30;
 			coffin.Rotation = Rotation;
@@ -144,7 +144,7 @@
 		}
 		else
 		{
-			BecomeRagdollOnClient(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
+			CreateCorpse(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
 		}
 
 		Controller = null;

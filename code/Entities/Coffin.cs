@@ -1,4 +1,4 @@
-﻿partial class Coffin : ModelEntity
+﻿partial class Coffin : HLMovement
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/gameplay/coffin.vmdl" );
 
@@ -7,7 +7,9 @@
 
 	public override void Spawn()
 	{
-		base.Spawn();
+
+        SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
+        base.Spawn();
 
 		Model = WorldModel;
 		Tags.Add("weapon");
@@ -26,7 +28,7 @@
 		}
 	}
 
-	public override void StartTouch( Entity other )
+    public override void StartTouch( Entity other )
 	{
 		base.StartTouch( other );
 
