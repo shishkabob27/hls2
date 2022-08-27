@@ -49,25 +49,6 @@ namespace Sandbox
         [ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
         [ConVar.Replicated, Net] public static bool sv_autojump { get; set; } = false;
 
-        /*
-        [Net] public float SprintSpeed { get; set; } = 320.0f;
-        [Net] public float WalkSpeed { get; set; } = 150.0f;
-        [Net] public float DefaultSpeed { get; set; } = 190.0f;
-        [Net] public float Acceleration { get; set; } = 10.0f;
-        [Net] public float AirAcceleration { get; set; } = 10.0f;
-        [Net] public float FallSoundZ { get; set; } = -30.0f;
-        [Net] public float GroundFriction { get; set; } = 4.0f;
-        [Net] public float StopSpeed { get; set; } = 100.0f;
-        [Net] public float Size { get; set; } = 20.0f;
-        [Net] public float DistEpsilon { get; set; } = 0.03125f;
-        [Net] public float GroundAngle { get; set; } = 46.0f;
-        [Net] public float Bounce { get; set; } = 0.0f;
-        [Net] public float MoveFriction { get; set; } = 1.0f;
-        [Net] public float StepSize { get; set; } = 18.0f;
-        [Net] public float MaxNonJumpVelocity { get; set; } = 250.0f;
-        [Net] public float Gravity { get; set; } = 800.0f;
-        [Net] public float AirControl { get; set; } = 100.0f;
-         */
         [Net] public float BodyGirth { get; set; } = 32.0f;
         [Net] public float BodyHeight { get; set; } = 72.0f;
         [Net] public float EyeHeight { get; set; } = 64.0f;
@@ -172,7 +153,7 @@ namespace Sandbox
         }
         public override void Simulate()
         {
-            fwishspd();
+            GetWishSpeed();
             EyeLocalPosition = Vector3.Up * (EyeHeight * Pawn.Scale);
             UpdateBBox();
 
@@ -318,128 +299,7 @@ namespace Sandbox
            
         }
 
-
-        public virtual float GetWishSpeed()
-        {
-            QAngle a = Input.Rotation; //.AngleVectors(out var forward, out var right, out var up);
-            a.AngleVectors(out var forward, out var right, out var up);
-            Vector3 wishvel = 0;
-            var oldGround = GroundEntity;
-            var mvspeed = sv_defaultspeed; //0.0f;
-            var ws = Duck.GetWishSpeed();
-            if (ws >= 0) mvspeed = ws;
-
-            if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
-            if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
-            var ForwardMove = Input.Forward * mvspeed;
-            var SideMove = -Input.Left * mvspeed;
-            var UpMove = Input.Up * mvspeed;
-
-            var fmove = ForwardMove;
-            var smove = SideMove;
-
-            if (forward[2] != 0)
-            {
-                forward[2] = 0;
-                forward = forward.Normal;
-            }
-
-            if (right[2] != 0)
-            {
-                right[2] = 0;
-                right = right.Normal;
-            }
-
-            for (int i = 0; i < 2; i++)
-                wishvel[i] = forward[i] * fmove + right[i] * smove;
-
-            wishvel[2] = 0;
-            var wishdir = wishvel.Normal;
-            var wishspeed = wishvel.Length;
-
-            if (wishspeed != 0 && wishspeed > sv_maxspeed)
-            {
-                wishvel *= sv_maxspeed / wishspeed;
-                wishspeed = sv_maxspeed;
-            }
-            return wishspeed;
-            /*
-            var ws = Duck.GetWishSpeed();
-            if (ws >= 0) return ws;
-
-            if (Input.Down(InputButton.Run)) return SprintSpeed;
-            if (Input.Down(InputButton.Walk)) return WalkSpeed;
-
-            return DefaultSpeed;
-
-            //
-            // Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
-            //
-            QAngle a = Input.Rotation; //.AngleVectors(out var forward, out var right, out var up);
-            a.AngleVectors(out var forward, out var right, out var up);
-            Vector3 wishvel = 0;
-            var oldGround = GroundEntity;
-            var mvspeed = sv_defaultspeed; //0.0f;
-            var ws = Duck.GetWishSpeed();
-            if (ws >= 0) mvspeed = ws;
-
-            if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
-            if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
-            var ForwardMove = Input.Forward * mvspeed;
-            var SideMove = -Input.Left * mvspeed;
-            var UpMove = Input.Up * mvspeed;
-
-            float spd = (ForwardMove * ForwardMove) +
-            (SideMove * SideMove) +
-            (UpMove * UpMove);
-
-            if ((spd != 0) && (spd > sv_maxspeed * sv_maxspeed))
-            {
-                var ratio = sv_maxspeed / MathF.Sqrt(spd);
-                //ForwardMove *= ratio;
-                //SideMove *= ratio;
-                //UpMove *= ratio;
-            }
-            // if we are going upwards with this speed, we can't be standing on anything.
-            if (Velocity.z > 250)
-                GroundEntity = null;
-            var fmove = ForwardMove;
-            var smove = SideMove;
-
-            if (forward[2] != 0)
-            {
-                forward[2] = 0;
-                forward = forward.Normal;
-            }
-
-            if (right[2] != 0)
-            {
-                right[2] = 0;
-                right = right.Normal;
-            }
-
-            for (int i = 0; i < 2; i++)
-                wishvel[i] = forward[i] * fmove + right[i] * smove;
-
-            wishvel[2] = 0;
-            var wishdir = wishvel.Normal;
-            var wishspeed = wishvel.Length;
-
-            if (wishspeed != 0 && wishspeed > sv_maxspeed)
-            {
-                wishvel *= sv_maxspeed / wishspeed;
-                wishspeed = sv_maxspeed;
-            }
-
-            WishVelocity = wishvel;
-            if (!Swimming && !IsTouchingLadder)
-            {
-                WishVelocity = WishVelocity.WithZ(0);
-            }
-            */
-        }
-
-        public void fwishspd()
+        public void GetWishSpeed()
         {
             QAngle a = Input.Rotation;
             a.AngleVectors(out var forward, out var right, out var up);
@@ -499,129 +359,10 @@ namespace Sandbox
                 acceleration = (flControl * sv_friction) / wishspeed + 1;
             }
             WishVelocity = wishvel;
-            /*//
-            // Work out wish velocity.. just take input, rotate it to view, clamp to -1, 1
-            //
-            QAngle a = Input.Rotation; //.AngleVectors(out var forward, out var right, out var up);
-            a.AngleVectors(out var forward, out var right, out var up);
-            Vector3 wishvel = 0;
-            var oldGround = GroundEntity;
-            var mvspeed = sv_defaultspeed; //0.0f;
-            var ws = Duck.GetWishSpeed();
-            if (ws >= 0) mvspeed = ws;
-
-            if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
-            if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
-            var ForwardMove = Input.Forward * mvspeed;
-            var SideMove = -Input.Left * mvspeed;
-            var UpMove = Input.Up * mvspeed;
-
-            float spd = (ForwardMove * ForwardMove) +
-            (SideMove * SideMove) +
-            (UpMove * UpMove);
-
-            if ((spd != 0) && (spd > sv_maxspeed * sv_maxspeed))
-            {
-                var ratio = sv_maxspeed / MathF.Sqrt(spd);
-                //ForwardMove *= ratio;
-                //SideMove *= ratio;
-                //UpMove *= ratio;
-            }
-            // if we are going upwards with this speed, we can't be standing on anything.
-            if (Velocity.z > 250)
-                GroundEntity = null;
-            var fmove = ForwardMove;
-            var smove = SideMove;
-
-            if (forward[2] != 0)
-            {
-                forward[2] = 0;
-                forward = forward.Normal;
-            }
-
-            if (right[2] != 0)
-            {
-                right[2] = 0;
-                right = right.Normal;
-            }
-
-            for (int i = 0; i < 2; i++)
-                wishvel[i] = forward[i] * fmove + right[i] * smove;
-
-            wishvel[2] = 0;
-            var wishdir = wishvel.Normal;
-            var wishspeed = wishvel.Length;
-
-            if (wishspeed != 0 && wishspeed > sv_maxspeed)
-            {
-                wishvel *= sv_maxspeed / wishspeed;
-                wishspeed = sv_maxspeed;
-            }
-
-            WishVelocity = wishvel;
-            if (!Swimming && !IsTouchingLadder)
-            {
-                WishVelocity = WishVelocity.WithZ(0);
-            }*/
         }
         public virtual void WalkMove()
         {
-            /*
-            var wishdir = WishVelocity.Normal;
-            var wishspeed = WishVelocity.Length;
-
-            WishVelocity = WishVelocity.WithZ(0);
-            WishVelocity = WishVelocity.Normal * wishspeed;
-
-            Velocity = Velocity.WithZ(0);
-            Accelerate(wishdir, wishspeed, 0, sv_accelerate);
-            Velocity = Velocity.WithZ(0);
-
-            //   Player.SetAnimParam( "forward", Input.Forward );
-            //   Player.SetAnimParam( "sideward", Input.Right );
-            //   Player.SetAnimParam( "wishspeed", wishspeed );
-            //    Player.SetAnimParam( "walkspeed_scale", 2.0f / 190.0f );
-            //   Player.SetAnimParam( "runspeed_scale", 2.0f / 320.0f );
-
-            //  DebugOverlay.Text( 0, Pos + Vector3.Up * 100, $"forward: {Input.Forward}\nsideward: {Input.Right}" );
-
-            // Add in any base velocity to the current velocity.
-            Velocity += BaseVelocity;
-
-            try
-            {
-                if (Velocity.Length < 1.0f)
-                {
-                    Velocity = Vector3.Zero;
-                    return;
-                }
-
-                // first try just moving to the destination
-                var dest = (Position + Velocity * Time.Delta).WithZ(Position.z);
-
-                var pm = TraceBBox(Position, dest);
-
-                if (pm.Fraction == 1)
-                {
-                    Position = pm.EndPosition;
-                    //StayOnGround();
-                    return;
-                }
-
-                StepMove();
-            }
-            finally
-            {
-
-                // Now pull the base velocity back out.   Base velocity is set if you are on a moving object, like a conveyor (or maybe another monster?)
-                Velocity -= BaseVelocity;
-            }
-
-			//StayOnGround();
-
-			Velocity = Velocity.Normal * MathF.Min( Velocity.Length, GetWishSpeed() );
-            */
-            // Set pmove velocity
+           
             var acceleration = sv_accelerate;
 
             var wishdir = WishVelocity.Normal;
@@ -860,38 +601,7 @@ namespace Sandbox
         /// </summary>
         public virtual void ApplyFriction(float frictionAmount = 1.0f)
         {
-            // If we are in water jump cycle, don't apply friction
-            //if ( player->m_flWaterJumpTime )
-            //   return;
-
-            // Not on ground - no friction
-
-            /*
-            // Calculate speed
-            var speed = Velocity.Length;
-            if (speed < 0.1f) return;
-
-            // Bleed off some speed, but if we have less than the bleed
-            //  threshold, bleed the threshold amount.
-            float control = (speed < sv_stopspeed) ? sv_stopspeed : speed;
-
-            // Add the amount to the drop amount.
-            var drop = control * Time.Delta * frictionAmount;
-
-            // scale the velocity
-            float newspeed = speed - drop;
-            if (newspeed < 0) newspeed = 0;
-
-            if (newspeed != speed)
-            {
-                newspeed /= speed;
-                Velocity *= newspeed;
-            }
-
-            // mv->m_outWishVel -= (1.f-newspeed) * mv->m_vecVelocity;
-            // If we are in water jump cycle, don't apply friction
-            // Calculate speed
-            */
+            
             var speed = Velocity.Length;
             if (speed < 0.1f)
                 return;
@@ -921,22 +631,6 @@ namespace Sandbox
 
         public virtual void CheckJumpButton()
         {
-            //if ( !player->CanJump() )
-            //    return false;
-
-
-            /*
-            if ( player->m_flWaterJumpTime )
-            {
-                player->m_flWaterJumpTime -= gpGlobals->frametime();
-                if ( player->m_flWaterJumpTime < 0 )
-                    player->m_flWaterJumpTime = 0;
-
-                return false;
-            }*/
-
-
-
             // If we are in the water most of the way...
             if (Swimming)
             {
@@ -1035,57 +729,7 @@ namespace Sandbox
         }
         public virtual void AirMove()
         {
-            /*
-            ViewAngles.AngleVectors(out var forward, out var right, out var up);
-
-            var fmove = ForwardMove;
-            var smove = SideMove;
-            Vector3 wishvel = 0;
-            forward[2] = 0;
-            right[2] = 0;
-            forward = forward.Normal;
-            right = right.Normal;
-
-            Vector3 wishvel = 0;
-            for (var i = 0; i < 2; i++)
-                wishvel[i] = forward[i] * fmove + right[i] * smove;
-            wishvel[2] = 0;
-            
-            
-            QAngle a = Input.Rotation; //.AngleVectors(out var forward, out var right, out var up);
-            a.AngleVectors(out var forward, out var right, out var up);
-
-            var oldGround = GroundEntity;
-            var MaxSpeed = sv_defaultspeed; //0.0f;
-            var ws = Duck.GetWishSpeed();
-            if (ws >= 0) MaxSpeed = ws;
-
-            if (Input.Down(InputButton.Walk)) MaxSpeed = sv_sprintspeed;
-            if (Input.Down(InputButton.Run)) MaxSpeed = sv_walkspeed;
-            var ForwardMove = Input.Forward * MaxSpeed;
-            var SideMove = -Input.Left * MaxSpeed;
-            var UpMove = Input.Up * MaxSpeed;
-
-            var fmove = ForwardMove;
-            var smove = SideMove;
-
-            if (forward[2] != 0)
-            {
-                forward[2] = 0;
-                forward = forward.Normal;
-            }
-
-            if (right[2] != 0)
-            {
-                right[2] = 0;
-                right = right.Normal;
-            }
-
-            for (int i = 0; i < 2; i++)
-                wishvel[i] = forward[i] * fmove + right[i] * smove;
-
-            wishvel[2] = 0;
-            */
+           
             var mvspeed = sv_defaultspeed; //0.0f;
             var ws = Duck.GetWishSpeed();
             if (ws >= 0) mvspeed = ws;
@@ -1107,17 +751,6 @@ namespace Sandbox
             Velocity += BaseVelocity;
             Move();
             Velocity -= BaseVelocity;
-            
-            //var wishdir = WishVelocity.Normal;
-            //var wishspeed = WishVelocity.Length;
-
-            //Accelerate(wishdir, wishspeed, AirControl, AirAcceleration);
-
-            //Velocity += BaseVelocity;
-
-            //Move();
-
-            //Velocity -= BaseVelocity;
         }
 
         public virtual void WaterMove()
