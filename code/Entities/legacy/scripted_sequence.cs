@@ -252,7 +252,7 @@ public partial class scripted_sequence : Entity
     [Event.Tick.Server]
     public void Tick()
     {
-        if (TargetNPC is NPC && TargetNPC.Velocity.AlmostEqual(Vector3.Zero))
+        if (TargetNPC is NPC && TargetNPC.IsValid() && TargetNPC.Velocity.AlmostEqual(this.Position))
         {
             timeout += 1;
         }

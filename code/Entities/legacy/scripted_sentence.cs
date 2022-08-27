@@ -21,10 +21,12 @@ public partial class scripted_sentence : Entity
     [Input]
     void BeginSentence()
     {
-        if (Speaker is not NPC)
+        if (Speaker is not NPC || !Speaker.IsValid)
         {
             Speaker = FindByName(SpeakerName) as NPC;
         }
+        if (Speaker is not NPC || !Speaker.IsValid)
+            return;
         // use sentences.txt? maybe?
         var name = SentenceName.Replace("!", "");
         OnBeginSentence.Fire(this);

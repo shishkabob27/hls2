@@ -2,6 +2,7 @@
 
 public partial class HLPlayer
 {
+    [ConVar.Replicated] public static float r_flashlightfarz { get; set; } = 1024;
     [Net, Predicted]
     public bool FlashlightEnabled { get; private set; } = false;
 
@@ -40,7 +41,7 @@ public partial class HLPlayer
         Light.LightCookie = Texture.Load("materials/effects/lightcookie.vtex");
         
         Light.DynamicShadows = true;
-        Light.Range = 1024;
+        Light.Range = r_flashlightfarz;
         Light.Falloff = 1.0f;
         Light.LinearAttenuation = 0.0f;
         Light.QuadraticAttenuation = 1.0f;

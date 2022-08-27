@@ -4,6 +4,7 @@ public partial class NPC : AnimatedEntity, IUse
 	public bool InScriptedSequence = false;
 	public bool InPriorityScriptedSequence = false;
 	public bool DontSleep = false;
+	public bool NoNav = false;
     
 	[ConVar.Replicated]
 	public static bool nav_drawpath { get; set; }
@@ -28,7 +29,8 @@ public partial class NPC : AnimatedEntity, IUse
 		Tags.Add("npc", "playerclip");
 		base.Spawn();
 		animHelper = new HLAnimationHelper(this);
-		Steer = new NavSteer();
+		if (!NoNav)
+			Steer = new NavSteer();
 		SetModel("models/citizen/citizen.vmdl");
 		EyePosition = Position + Vector3.Up * 64;
 		SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(72, 8));
@@ -78,7 +80,7 @@ public partial class NPC : AnimatedEntity, IUse
 
 		InputVelocity = 0;
 
-		if (Steer != null)
+		if (Steer != null && !NoNav)
 		{
 			using var _b = Sandbox.Debug.Profile.Scope("Steer");
 

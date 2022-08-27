@@ -1,7 +1,7 @@
 ﻿[Library("monster_sitting_scientist"), HammerEntity]
 [EditorModel("models/hl1/monster/scientist/scientist_01.vmdl")]
 [Title("Scientist"), Category("Monsters")]
-internal class ScientistSitting : AnimatedEntity
+internal class ScientistSitting : NPC
 {
     // Stub NPC, this does nothing yet
 
@@ -23,6 +23,7 @@ internal class ScientistSitting : AnimatedEntity
 
     public override void Spawn()
     {
+        NoNav = true;
         base.Spawn();
         //SetAnimGraph("animgraphs/scientist.vanmgrph");
         Health = 20;
@@ -33,7 +34,7 @@ internal class ScientistSitting : AnimatedEntity
         SetModel(SetScientistModel());
         CurrentSequence.Name = Rand.FromList<string>(SittingAnims);
         //UseAnimGraph = false;
-        SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
+        SetupPhysicsFromAABB(PhysicsMotionType.Static, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
         EnableHitboxes = true;
         Position = Position - new Vector3(0, 0, 22);
 
@@ -60,8 +61,7 @@ internal class ScientistSitting : AnimatedEntity
     DamageInfo LastDamage;
     
     float tick = 0;
-    [Event.Tick.Server]
-    public void Tick()
+    public override void Think()
     {
         tick += 0.01f;
         if (CurrentSequence.IsFinished == true || CurrentSequence.TimeNormalized == 1.0f || tick > CurrentSequence.Duration / 2)
@@ -70,45 +70,5 @@ internal class ScientistSitting : AnimatedEntity
             CurrentSequence.Name = Rand.FromList<string>(SittingAnims);
         }
     }
-    
-    public override void TakeDamage(DamageInfo info)
-    {
-        LastDamage = info;        
-        if (LifeState == LifeState.Dead)
-            return;
-
-        base.TakeDamage(info);
-
-        this.ProceduralHitReaction(info);
-
-        //
-        // Add a score to the killer
-        //
-        if (LifeState == LifeState.Dead && info.Attacker != null)
-        {
-            if (info.Attacker.Client != null && info.Attacker != this)
-            {
-                info.Attacker.Client.AddInt("kills");
-            }
-        }
-    }
-
-    public override void OnKilled()
-    {
-        base.OnKilled();
-
-        if (LastDamage.Flags.HasFlag(DamageFlags.Blast))
-        {
-            using (Prediction.Off())
-            {
-                HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, LastDamage.Position, Health, this.CollisionBounds);
-
-            }
-        }
-        else
-        {
-            //BecomeRagdollOnClient(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
-        }
-    } 
     
 }
