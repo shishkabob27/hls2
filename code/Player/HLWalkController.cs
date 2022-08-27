@@ -729,14 +729,6 @@ namespace Sandbox
         }
         public virtual void AirMove()
         {
-           
-            var mvspeed = sv_defaultspeed; //0.0f;
-            var ws = Duck.GetWishSpeed();
-            if (ws >= 0) mvspeed = ws;
-
-            if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
-            if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
-            
             var wishdir = WishVelocity.Normal;
             var wishspeed = WishVelocity.Length;
 
