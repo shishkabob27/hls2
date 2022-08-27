@@ -23,7 +23,7 @@
 		Inventory = new HLInventory( this );
 	}
 
-    public virtual void DoHLPlayerNoclip(Client player)
+    public void DoHLPlayerNoclip(Client player)
     {
         //if (!player.HasPermission("noclip"))
             //return;
