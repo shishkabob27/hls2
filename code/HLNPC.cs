@@ -55,7 +55,7 @@ public partial class NPC : AnimatedEntity, IUse
 
 		//SetBodyGroup(1, 0);
 
-		Speed = 80;
+		Speed = 50;
 	}
 
 	public Sandbox.Debug.Draw Draw => Sandbox.Debug.Draw.Once;
@@ -104,7 +104,7 @@ public partial class NPC : AnimatedEntity, IUse
 		}
 
 		var walkVelocity = Velocity.WithZ(0);
-		var turnSpeed = 1.0f;
+		var turnSpeed = 0.2f;
 		if (walkVelocity.Length > 0.5f)
 		{
 			turnSpeed = walkVelocity.Length.LerpInverse(0, 100, true);

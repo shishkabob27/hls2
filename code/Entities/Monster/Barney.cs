@@ -16,7 +16,7 @@ internal class Barney : NPC
 
         SetAnimGraph(NPCAnimGraph);
         SetModel("models/hl1/monster/barney.vmdl");
-        SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
+        SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-9, -9, 0), new Vector3(9, 9, 72));
         EnableHitboxes = true; 
 
         Tags.Add("npc", "playerclip");

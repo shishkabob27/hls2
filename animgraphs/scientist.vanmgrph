@@ -1147,7 +1147,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "run"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 2.0
 					m_bLoop = true
 				}
 			},
@@ -1212,7 +1212,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "panic1"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 2.0
 					m_bLoop = true
 				}
 			},
@@ -1499,7 +1499,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "walk_scared"
-					m_playbackSpeed = 0.01
+					m_playbackSpeed = 0.024
 					m_bLoop = true
 				}
 			},
@@ -1945,7 +1945,7 @@
 				{
 					_class = "CRootAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 1600.0, 160.0 ]
+					m_vecPosition = [ 1776.0, 160.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1420390808
@@ -1956,7 +1956,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 828034454
+							m_id = 2018726370
 						}
 						m_outputID = 
 						{
@@ -2074,7 +2074,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "walk"
-					m_playbackSpeed = 0.01
+					m_playbackSpeed = 0.024
 					m_bLoop = true
 				}
 			},
@@ -2343,6 +2343,39 @@
 			{
 				key = 
 				{
+					m_id = 2018726370
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 1600.0, 160.0 ]
+					m_nNodeID = 
+					{
+						m_id = 2018726370
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
+							m_id = 828034454
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+					m_param = 
+					{
+						m_id = 2063037448
+					}
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 2089942557
 				}
 				value = 
@@ -2480,6 +2513,23 @@
 				m_bPredicted = false
 				m_fDefaultValue = 0.0
 				m_fMinValue = -1.0
+				m_fMaxValue = 1.0
+				m_bInterpolate = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "constspeed"
+				m_id = 
+				{
+					m_id = 2063037448
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_fDefaultValue = 0.5
+				m_fMinValue = 0.0
 				m_fMaxValue = 1.0
 				m_bInterpolate = false
 			},

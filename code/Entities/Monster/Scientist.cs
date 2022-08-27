@@ -23,8 +23,8 @@ public partial class Scientist : NPC
         NPCAnimGraph = "animgraphs/scientist.vanmgrph";
         SetAnimGraph(NPCAnimGraph);
         Health = 20;
-        Speed = 80;
-        WalkSpeed = 80;
+        Speed = 60;
+        WalkSpeed = 60;
         RunSpeed = 200;
         VoicePitch = SetPitch();
     }
@@ -39,7 +39,7 @@ public partial class Scientist : NPC
         }
         SetAnimGraph(NPCAnimGraph);
         Health = 20;
-        Speed = 80;
+        Speed = 70;
         VoicePitch = SetPitch();
         SetModel(SetScientistModel());
         //SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));

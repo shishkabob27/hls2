@@ -260,14 +260,14 @@ public partial class scripted_sequence : Entity
         {
             return;
         }
-        if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 3f + (timeout / 1000)) || TargetNPC.Position == this.Position) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
+        if (TargetNPC is NPC && TargetNPC != null && ((TargetNPC.Position.AlmostEqual(this.Position, 3.0f + (timeout / 1000)) && TargetNPC.Steer.Output.Finished) || TargetNPC.Position == this.Position || (TargetNPC.Steer.Output.Finished && TargetNPC.Position.AlmostEqual(this.Position, 8.0f + (timeout / 1000)) )) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
-            TargetNPC.Position = this.Position;
-            timetick += 0.02f;
+            //TargetNPC.Position = this.Position;
+            timetick += 0.01f;
             
             if (ticker == true && ticker2 == false) // next tick has happened, play the animation
             {
-
+                TargetNPC.Position = this.Position;
                 TargetNPC.InScriptedSequence = true;
                 ticker2 = true;
                 timetick = 0;
@@ -285,6 +285,7 @@ public partial class scripted_sequence : Entity
                 TargetNPC.SetAnimGraph(""); 
                 TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
                 TargetNPC.CurrentSequence.Name = ActionAnimation;
+                TargetNPC.PlaybackRate = 0.5f;
                 timeduration = TargetNPC.CurrentSequence.Duration;
                 TargetNPC.targetRotationOVERRIDE = this.Rotation;
 
