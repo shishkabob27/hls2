@@ -65,7 +65,7 @@ public partial class NPC : AnimatedEntity, IUse
 	Vector3 LookDir;
 	public Rotation targetRotation;
 
-	public Rotation targetRotationOVERRIDE = Vector3.Zero.EulerAngles.ToRotation();
+	public Nullable<Rotation> targetRotationOVERRIDE;
 	public Sound CurrentSound;
 	public HLAnimationHelper animHelper;
 	[Event.Tick.Server]
@@ -104,26 +104,26 @@ public partial class NPC : AnimatedEntity, IUse
 		}
 
 		var walkVelocity = Velocity.WithZ(0);
-		var turnSpeed = 0.2f;
+		var turnSpeed = 0.32f;
 		if (walkVelocity.Length > 0.5f)
 		{
 			turnSpeed = walkVelocity.Length.LerpInverse(0, 100, true);
 			targetRotation = Rotation.LookAt(walkVelocity.Normal, Vector3.Up);
 		}
-		if (targetRotationOVERRIDE != Vector3.Zero.EulerAngles.ToRotation())
+		if (targetRotationOVERRIDE != null)
 		{
-            targetRotation = targetRotationOVERRIDE;
-            Rotation = Rotation.Lerp(Rotation, targetRotationOVERRIDE, turnSpeed * Time.Delta * 20.0f);
-            if (this.Rotation == targetRotationOVERRIDE)
+            targetRotation = (Rotation)targetRotationOVERRIDE;
+            Rotation = Rotation.Lerp(Rotation, (Rotation)targetRotationOVERRIDE, turnSpeed * Time.Delta * 20.0f);
+            if (Angles.AngleVector(Rotation.Angles()).AlmostEqual(Angles.AngleVector(targetRotation.Angles())))
             {
-                targetRotationOVERRIDE = Vector3.Zero.EulerAngles.ToRotation();
+                targetRotationOVERRIDE = null;
             }
         }
 		else
 		{
 			Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
 		}
-
+		
 		//var animHelper = new HLAnimationHelper(this);
 
 		LookDir = Vector3.Lerp(LookDir, InputVelocity.WithZ(0) * 1000, Time.Delta * 100.0f);
