@@ -122,14 +122,14 @@ public partial class Scientist : NPC
         if (ply != null && ply.IsValid && ply.Position.Distance(Position) < 32 && !InScriptedSequence)
         {
             Steer.Target = Position + (ply.Position - Position).Normal * -78;
-            Speed = 80;
+            Speed = WalkSpeed;
         }
         
     }
     public override void Touch(Entity other)
     {
         base.Touch(other);
-        if (other is DoorEntity)
+        if (other is DoorEntity && IsServer)
         {
             (other as DoorEntity).Open();
         }
