@@ -23,6 +23,8 @@ public class HudRootPanel : RootPanel
 		AddChild<KillFeed>();
 		Scoreboard = AddChild<Scoreboard>();
 		AddChild<VoiceList>();
+		AddChild<VoiceSpeaker>();
+
 
 		AddChild<Menu>();
 	}
