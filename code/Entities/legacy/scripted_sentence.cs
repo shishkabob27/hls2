@@ -39,7 +39,7 @@ public partial class scripted_sentence : Entity
         }
         else
         {
-            Log.Warning($"The sentence {name} cannot be found, perhaps it hasn't been added yet.");
+            Log.Error($"[HLS2] The sentence {name} cannot be found, perhaps it hasn't been added yet.");
         }
 
     }
