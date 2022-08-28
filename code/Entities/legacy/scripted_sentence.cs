@@ -29,10 +29,18 @@ public partial class scripted_sentence : Entity
             return;
         // use sentences.txt? maybe?
         var name = SentenceName.Replace("!", "");
-        OnBeginSentence.Fire(this);
-        Log.Info($"playing {name}");
-        Speaker.SpeakSound(name);
-        OnEndSentence.Fire(this);
+        
+        //Log.Info(soundas.ResourceName);
+        if (ResourceLibrary.TryGet<SoundEvent>("sounds/hl1/SENTENCES/" + name + ".sound", out var soundas))
+        {
+            OnBeginSentence.Fire(this);
+            Speaker.SpeakSound(name);
+            OnEndSentence.Fire(this);
+        }
+        else
+        {
+            Log.Warning($"The sentence {name} cannot be found, perhaps it hasn't been added yet.");
+        }
 
     }
 }
