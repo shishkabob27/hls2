@@ -1,4 +1,7 @@
-﻿public class HLMovementBrush: BrushEntity
+﻿using System.Net;
+using static Sandbox.Package;
+
+public class HLMovementBrush: BrushEntity
 {
 
     private Vector3 mins;
@@ -9,6 +12,7 @@
     public float bGirth = 1 * 0.8f;
     public float bHeight = 1;
 
+    Entity lastTouch;
 
     [ConVar.Replicated] public static float sv_gravity { get; set; } = 800;
     [ConVar.Replicated] public static float sv_friction { get; set; } = 4;
@@ -17,7 +21,14 @@
     public float GroundBounce { get; set; } = 0.1f;
     public float WallBounce { get; set; } = 0.1f;
     public float GroundAngle { get; set; } = 46.0f;
-
+    public override void Spawn()
+    {
+        EnableTouch = true;
+        base.Spawn();
+        EnableTouch = true;
+        //SetupPhysicsFromOBB(PhysicsMotionType.Keyframed, CollisionBounds.Mins, CollisionBounds.Maxs);
+        Tags.Add("funcpush", "solid", "playerclip");
+    }
     [Event.Tick]
      void Tick()
     {
@@ -29,6 +40,8 @@
         try { 
             CalcGroundEnt();
             ApplyGravity();
+
+            ApplyPush();
             ApplyFriction();
             Move();
         } catch
@@ -39,17 +52,20 @@
 
     public void Move()
     {
-        mins = new Vector3(-bGirth, -bGirth, 0);
-        maxs = new Vector3(+bGirth, +bGirth, bHeight);
+        
+        var mib = CollisionBounds.Mins;
+        var mab = CollisionBounds.Maxs;
+        mins = new Vector3(mib.x - 0.055f, mib.y - 0.055f, mib.z);
+        maxs = new Vector3(mab.x + 0.055f, mab.y + 0.055f, mab.z);
         NewMoveHelper mover = new NewMoveHelper(Position, Velocity);
-
         mover.Trace = mover.Trace
             .Size(mins, maxs)
-            .Ignore(this)
-            .WithoutTags("player");
+            .Ignore(this);
         mover.GroundBounce = GroundBounce;
         mover.WallBounce = WallBounce;
-        mover.TryMove(Time.Delta);
+        mover.TryMoveWithStep(Time.Delta, 18);
+
+        lastTouch = mover.HitEntity;
         Position = mover.Position;
         Velocity = mover.Velocity;
     }
@@ -58,14 +74,40 @@
         Velocity -= new Vector3(0, 0, sv_gravity * 0.5f) * Time.Delta;
         Velocity += new Vector3(0, 0, BaseVelocity.z) * Time.Delta;
 
+
         BaseVelocity = BaseVelocity.WithZ(0);
+    }
+    public void ApplyPush()
+    {
+
+        var temp = Velocity;
+        if (lastTouch is HLPlayer)
+        {
+            Log.Info("hi");
+
+            temp.x = temp.x + lastTouch.Velocity.x;
+            temp.y = temp.y + lastTouch.Velocity.y;
+
+            temp.z = temp.z + lastTouch.Velocity.z;
+
+            Velocity = temp;
+
+            float length = lastTouch.Velocity.Length; //magnitude
+            if (length > 320)
+            {
+                temp.x = (temp.x * 320) / length;
+                temp.y = (temp.y * 320) / length;
+
+                Velocity = temp;
+            }
+            
+        }
+        Velocity = temp;
     }
     public void CalcGroundEnt()
     {
-
-
-        mins = new Vector3(-bGirth, -bGirth, 0);
-        maxs = new Vector3(+bGirth, +bGirth, bHeight);
+        //mins = this.Model.Bounds.Mins;//new Vector3(this.PhysicsBody.GetBounds().Mins.x, this.PhysicsBody.GetBounds().Mins.y, this.PhysicsBody.GetBounds().Mins.z);
+        //mins = this.Model.Bounds.Maxs;
         SurfaceFriction = 1.0f;
         var point = Position - Vector3.Up * 2;
         var vBumpOrigin = Position;
@@ -121,6 +163,7 @@
     /// </summary>
     public void UpdateGroundEntity(TraceResult tr)
     {
+
         var GroundNormal = tr.Normal;
 
         // VALVE HACKHACK: Scale this to fudge the relationship between vphysics friction values and player friction values.
