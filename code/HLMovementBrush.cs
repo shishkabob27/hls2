@@ -1,4 +1,6 @@
-﻿using System.Net;
+﻿using Sandbox;
+using System;
+using System.Net;
 using static Sandbox.Package;
 
 public class HLMovementBrush: BrushEntity, IUse
@@ -7,12 +9,12 @@ public class HLMovementBrush: BrushEntity, IUse
     private Vector3 mins;
     private Vector3 maxs;
     protected float SurfaceFriction;
+    public float frictionmv = 200;
 
     // Config
     public float bGirth = 1 * 0.8f;
     public float bHeight = 1;
 
-    Entity lastTouch;
 
     [ConVar.Replicated] public static float sv_gravity { get; set; } = 800;
     [ConVar.Replicated] public static float sv_friction { get; set; } = 4;
@@ -23,13 +25,14 @@ public class HLMovementBrush: BrushEntity, IUse
     public float GroundAngle { get; set; } = 46.0f;
     public override void Spawn()
     {
-        SetupPhysicsFromOBB(PhysicsMotionType.Keyframed, CollisionBounds.Mins, CollisionBounds.Maxs);
-        EnableTouch = true;
+
         base.Spawn();
+        //SetupPhysicsFromOBB(PhysicsMotionType.Static, CollisionBounds.Mins, CollisionBounds.Maxs);
+        EnableAllCollisions = true;
         EnableTouch = true;
-        Tags.Add("funcpush", "solid", "playerclip");
+        Tags.Add("funcpush", "solid");
     }
-    [Event.Tick]
+    [Event.Tick.Server]
      void Tick()
     {
         Simulate();
@@ -37,17 +40,11 @@ public class HLMovementBrush: BrushEntity, IUse
 
     public void Simulate()
     {
-        try { 
+            FindTouching();
             CalcGroundEnt();
             ApplyGravity();
-
-            ApplyPush();
             ApplyFriction();
             Move();
-        } catch
-        {
-
-        }
     }
 
     public void Move()
@@ -55,8 +52,8 @@ public class HLMovementBrush: BrushEntity, IUse
         
         var mib = CollisionBounds.Mins;
         var mab = CollisionBounds.Maxs;
-        mins = new Vector3(mib.x - 0.055f, mib.y - 0.055f, mib.z);
-        maxs = new Vector3(mab.x + 0.055f, mab.y + 0.055f, mab.z);
+        mins = new Vector3(mib.x, mib.y, mib.z);
+        maxs = new Vector3(mab.x, mab.y, mab.z);
         NewMoveHelper mover = new NewMoveHelper(Position, Velocity);
         mover.Trace = mover.Trace
             .Size(mins, maxs)
@@ -64,8 +61,9 @@ public class HLMovementBrush: BrushEntity, IUse
         mover.GroundBounce = GroundBounce;
         mover.WallBounce = WallBounce;
         mover.TryMoveWithStep(Time.Delta, 18);
+        //mover.TryUnstuck();
 
-        lastTouch = mover.HitEntity;
+        //lastTouch = mover.HitEntity;
         Position = mover.Position;
         Velocity = mover.Velocity;
     }
@@ -77,32 +75,77 @@ public class HLMovementBrush: BrushEntity, IUse
 
         BaseVelocity = BaseVelocity.WithZ(0);
     }
-    public void ApplyPush()
+    public void FindTouching()
+    {
+
+        var mib = CollisionBounds.Mins;
+        var mab = CollisionBounds.Maxs;
+        float sizeAdd = 1f;
+        mins = new Vector3(mib.x - sizeAdd, mib.y - sizeAdd, mib.z - sizeAdd);
+        maxs = new Vector3(mab.x + sizeAdd, mab.y + sizeAdd, mab.z + sizeAdd);
+        var tr = Trace.Ray(Position, Position)
+                    .Size(mins, maxs)
+                    .EntitiesOnly()
+                    .Ignore(this)
+                    .Run();
+
+        if (tr.Entity is not null)
+        {
+            Touch(tr.Entity);
+
+        }
+    }
+    public void ApplyPush(Entity lastTouch, bool push)
     {
 
         var temp = Velocity;
-        if (lastTouch is HLPlayer)
+        var IN_USE = (lastTouch as HLPlayer).IN_USE;
+        var IN_FORWARD = (lastTouch as HLPlayer).IN_FORWARD;
+        var IN_LEFT = (lastTouch as HLPlayer).IN_LEFT;
+        var IN_RIGHT = (lastTouch as HLPlayer).IN_RIGHT;
+        bool playerTouch = false ;
+        if (lastTouch is HLPlayer && lastTouch.GroundEntity != this)
         {
+
+
+            var factor = 1.0f;
+            if (push && (((IN_LEFT||IN_RIGHT) & !(IN_FORWARD) || IN_USE)))
+            {
+                Log.Info("sheet");
+                return;
+            }
+            playerTouch = true;
             Log.Info("hi");
+            //if (push) factor = 0.25f;
+            temp.x = temp.x + (lastTouch as HLPlayer).WishVelocity.x * factor;
+            temp.y = temp.y + (lastTouch as HLPlayer).WishVelocity.y * factor;
 
-            temp.x = temp.x + lastTouch.Velocity.x;
-            temp.y = temp.y + lastTouch.Velocity.y;
 
-            temp.z = temp.z + lastTouch.Velocity.z;
+            float length = temp.Length;//(float)Math.Sqrt(temp.x * temp.x + temp.y * temp.y); //(lastTouch as HLPlayer).WishVelocity.Length; //magnitude
+            if (push && (length > (400 - frictionmv)))
+            {
+                temp.x = (temp.x * (400 - frictionmv) / length);
+                temp.y = (temp.y * (400 - frictionmv) / length);
+            }
+
+            if (playerTouch)
+            {
+                var temp2 = (lastTouch as HLPlayer).Velocity;
+                temp2.x = temp.x;
+                temp2.y = temp.y;
+                (lastTouch as HLPlayer).Velocity = temp2;
+            }
 
             Velocity = temp;
 
-            float length = lastTouch.Velocity.Length; //magnitude
-            if (length > 320)
-            {
-                temp.x = (temp.x * 320) / length;
-                temp.y = (temp.y * 320) / length;
-
-                Velocity = temp;
-            }
-            
         }
-        Velocity = temp;
+    }
+
+    public override void Touch(Entity other)
+    {
+        base.Touch(other);
+        Log.Info("toucg!");
+        ApplyPush(other, true);
     }
     public void CalcGroundEnt()
     {
@@ -154,7 +197,7 @@ public class HLMovementBrush: BrushEntity, IUse
                     .WithAnyTags("solid")
                     .Ignore(this)
                     .Run();
-
+        
         tr.EndPosition -= TraceOffset;
         return tr;
     }
@@ -243,7 +286,8 @@ public class HLMovementBrush: BrushEntity, IUse
 
     public bool OnUse(Entity user)
     {
-        lastTouch = user;
+        if(user.Velocity != Vector3.Zero)
+            ApplyPush(user, false);
         return true;
     }
 

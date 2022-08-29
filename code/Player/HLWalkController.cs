@@ -155,7 +155,9 @@ namespace Sandbox
         }
         public override void Simulate()
         {
+
             GetWishSpeed();
+            (Pawn as HLPlayer).WishVelocity = WishVelocity;
             EyeLocalPosition = Vector3.Up * (EyeHeight * Pawn.Scale);
             UpdateBBox();
 

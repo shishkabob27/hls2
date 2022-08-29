@@ -11,10 +11,27 @@
 	[Net]
 	public float MaxHealth { get; set; } = 100;
 
-	public bool SupressPickupNotices { get; private set; }
+    //[Net]
+    public bool IN_FORWARD { get; set; } = false;
+    //[Net]
+    public bool IN_LEFT { get; set; } = false;
+    //[Net]
+    public bool IN_RIGHT { get; set; } = false;
+	//[Net]
+    public bool IN_BACKWARD { get; set; } = false;
+
+    [Net]
+    public bool IN_USE { get; set; } = false;
+
+	public int button { get; set; } = 0;
+
+    public bool SupressPickupNotices { get; private set; }
 	public Rotation BaseRotation;
 	public int ComboKillCount { get; set; } = 0;
 	public TimeSince TimeSinceLastKill { get; set; }
+
+	[Net]
+	public Vector3 WishVelocity { get; set; }
 
 	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
 
@@ -177,8 +194,14 @@
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 			return;
 
-		base.Simulate( cl );
-		SimulateFlashlight();
+        base.Simulate( cl );
+        IN_USE = Input.Down(InputButton.Use);
+        IN_FORWARD = Input.Down(InputButton.Forward);
+		IN_LEFT = Input.Down(InputButton.Left);
+		IN_RIGHT = Input.Down(InputButton.Right);
+		IN_BACKWARD = Input.Down(InputButton.Back);
+
+        SimulateFlashlight();
 		//
 		// Input requested a weapon switch
 		//
