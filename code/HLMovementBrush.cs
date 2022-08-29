@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using static Sandbox.Package;
 
-public class HLMovementBrush: BrushEntity
+public class HLMovementBrush: BrushEntity, IUse
 {
 
     private Vector3 mins;
@@ -23,10 +23,10 @@ public class HLMovementBrush: BrushEntity
     public float GroundAngle { get; set; } = 46.0f;
     public override void Spawn()
     {
+        SetupPhysicsFromOBB(PhysicsMotionType.Keyframed, CollisionBounds.Mins, CollisionBounds.Maxs);
         EnableTouch = true;
         base.Spawn();
         EnableTouch = true;
-        //SetupPhysicsFromOBB(PhysicsMotionType.Keyframed, CollisionBounds.Mins, CollisionBounds.Maxs);
         Tags.Add("funcpush", "solid", "playerclip");
     }
     [Event.Tick]
@@ -239,5 +239,16 @@ public class HLMovementBrush: BrushEntity
         }
 
         // mv->m_outWishVel -= (1.f-newspeed) * mv->m_vecVelocity;
+    }
+
+    public bool OnUse(Entity user)
+    {
+        lastTouch = user;
+        return true;
+    }
+
+    public bool IsUsable(Entity user)
+    {
+        return true;
     }
 }
