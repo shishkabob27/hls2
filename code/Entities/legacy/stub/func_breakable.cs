@@ -1,11 +1,9 @@
-﻿[Library("func_breakable")]
+﻿[Library("func_pushable")]
 [HammerEntity, Solid]
-[Title("func_breakable"), Category("Brush Entities"), Icon("volume_up")]
-public partial class func_breakable : BrushEntity
+[Title("func_pushable"), Category("Brush Entities"), Icon("volume_up")]
+public partial class func_pushable : HLMovementBrush
 {
     // stub
 
-    [Property]
-    public float StartingHealth { get; set; } = 0;
         
 }   
