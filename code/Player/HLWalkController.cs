@@ -62,6 +62,8 @@ namespace Sandbox
         public HLDuck Duck;
         public Unstuck Unstuck;
 
+        // Magic Numbers and Consts 
+        static float PLAYER_DUCKING_MULTIPLIER = 0.333f;
 
         public HLWalkController()
         {
@@ -307,9 +309,12 @@ namespace Sandbox
 
             var mvspeed = sv_defaultspeed; //0.0f;
             var ws = Duck.GetWishSpeed();
-            if (ws >= 0) mvspeed = ws;
             if (Input.Down(InputButton.Walk)) mvspeed = sv_sprintspeed;
             if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
+
+            if (ws >= 0) mvspeed = mvspeed * PLAYER_DUCKING_MULTIPLIER;
+            if (GroundEntity != null && Input.Down(InputButton.Use)) mvspeed = mvspeed * 0.3f;
+
             var ForwardMove = Input.Forward * mvspeed;
             var SideMove = -Input.Left * mvspeed;
             var UpMove = Input.Up * mvspeed;
