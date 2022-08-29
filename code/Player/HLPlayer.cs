@@ -20,6 +20,10 @@
 	//[Net]
     public bool IN_BACKWARD { get; set; } = false;
 
+	public float Forward { get; set; }
+	public float Left { get; set; }
+	public float Up { get; set; }
+
     [Net]
     public bool IN_USE { get; set; } = false;
 
@@ -184,7 +188,6 @@
 			input.ViewAngles = input.OriginalViewAngles;
 			return;
 		};
-
 		base.BuildInput( input );
 	}
 
@@ -195,6 +198,9 @@
 			return;
 
         base.Simulate( cl );
+		Forward = Input.Forward;
+        Left = Input.Left;
+		Up = Input.Up;
         IN_USE = Input.Down(InputButton.Use);
         IN_FORWARD = Input.Down(InputButton.Forward);
 		IN_LEFT = Input.Down(InputButton.Left);
