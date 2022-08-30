@@ -1,7 +1,7 @@
 [Library("item_suit"), HammerEntity]
 [EditorModel("models/hl1/items/suit.vmdl")]
 [Title("HEV Suit"), Category("Items")]
-internal class Suit : ModelEntity
+public partial class Suit : ModelEntity
 {
     [Flags]
 		public enum Flags
@@ -20,6 +20,8 @@ internal class Suit : ModelEntity
         Tags.Add("weapon");
     }
 
+    protected Output OnPlayerTouch { get; set; }
+    
     public override void StartTouch( Entity other )
 	{
 		base.StartTouch( other );
@@ -30,6 +32,8 @@ internal class Suit : ModelEntity
 
         Sound.FromScreen("bell");
         Sound.FromScreen("hev_logon");
+
+        OnPlayerTouch.Fire( other );
 
 		if (IsServer)
 			Delete();

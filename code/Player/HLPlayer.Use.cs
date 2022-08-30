@@ -30,7 +30,7 @@
 					return;
 				}
 			}
-			if (Input.Down(InputButton.Use))
+			if (Input.Down(InputButton.Use) && Using is HLMovementBrush)
 			{
 				Using = FindUsable(false);
 			}

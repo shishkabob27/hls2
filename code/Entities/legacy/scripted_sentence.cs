@@ -43,4 +43,10 @@ public partial class scripted_sentence : Entity
         }
 
     }
+
+    [Input]
+    void Kill(){
+        if (IsServer)
+			Delete();
+    }
 }
