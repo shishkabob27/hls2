@@ -24,7 +24,7 @@ public class ScientistSitting : NPC
     {
 
         TraceResult beans = Trace.Ray(Position, Position - new Vector3(0, 0, 500)).Run();
-        Position = beans.EndPosition + new Vector3(0, 0, 18);
+        Position = beans.EndPosition + new Vector3(0, 0, 19);
         NoNav = true;
 
         SetupPhysicsFromOBB(PhysicsMotionType.Static, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
