@@ -47,22 +47,17 @@ public class ScientistSitting : NPC
 
     }
 
-    // probably not the best way to do it but it works
     public string SetScientistModel(){
         switch (Body)
         {
-            case 0:
-                return "models/hl1/monster/scientist/scientist_01.vmdl";
-            case 1:
-                return "models/hl1/monster/scientist/scientist_02.vmdl";
-            case 2:
-                return "models/hl1/monster/scientist/scientist_03.vmdl";
-            case 3:
-                return "models/hl1/monster/scientist/scientist_04.vmdl";
-            default:
-                return Rand.FromList<string>(ScientistMDLList);
+            case 0: return "models/hl1/monster/scientist/scientist_01.vmdl";
+            case 1: return "models/hl1/monster/scientist/scientist_02.vmdl";
+            case 2: return "models/hl1/monster/scientist/scientist_03.vmdl";
+            case 3: return "models/hl1/monster/scientist/scientist_04.vmdl";
+            default: return Rand.FromList<string>(ScientistMDLList);
         }
     }
+
     DamageInfo LastDamage;
     
     float tick = 0;

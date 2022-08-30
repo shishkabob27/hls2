@@ -49,20 +49,14 @@ public partial class Scientist : NPC
 
     }
 
-    // probably not the best way to do it but it works
     public string SetScientistModel(){
         switch (Body)
         {
-            case 0:
-                return "models/hl1/monster/scientist/scientist_01.vmdl";
-            case 1:
-                return "models/hl1/monster/scientist/scientist_02.vmdl";
-            case 2:
-                return "models/hl1/monster/scientist/scientist_03.vmdl";
-            case 3:
-                return "models/hl1/monster/scientist/scientist_04.vmdl";
-            default:
-                return Rand.FromList<string>(ScientistMDLList);
+            case 0: return "models/hl1/monster/scientist/scientist_01.vmdl";
+            case 1: return "models/hl1/monster/scientist/scientist_02.vmdl";
+            case 2: return "models/hl1/monster/scientist/scientist_03.vmdl";
+            case 3: return "models/hl1/monster/scientist/scientist_04.vmdl";
+            default: return Rand.FromList<string>(ScientistMDLList);
         }
     }
 
@@ -70,16 +64,11 @@ public partial class Scientist : NPC
     {
         switch (Body)
         {
-            case 0:
-                return 105;  // glasses
-            case 1:
-                return 100;  // einstein
-            case 2:
-                return 95;   // luther
-            case 3:
-                return 100;  // slick
-            default:
-                return 100;
+            case 0: return 105;  // glasses
+            case 1: return 100;  // einstein
+            case 2: return 95;   // luther
+            case 3: return 100;  // slick
+            default: return 100;
         }
     }
     
