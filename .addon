@@ -43,7 +43,8 @@
         "debris": "Ignore",
         "monster": "Unset",
         "npc": "Unset",
-        "weapon": "Unset"
+        "weapon": "Unset",
+        "funcpush": "Collide"
       },
       "Pairs": [
         {
@@ -125,6 +126,16 @@
         {
           "a": "solid",
           "b": "weapon"
+        },
+        {
+          "a": "solid",
+          "b": "funcpush",
+          "r": "Collide"
+        },
+        {
+          "a": "player",
+          "b": "funcpush",
+          "r": "Collide"
         }
       ]
     },

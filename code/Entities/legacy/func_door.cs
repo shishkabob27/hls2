@@ -2,10 +2,10 @@ using SandboxEditor;
 using System;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
-
-	/// Sounds to be used by ent_door if it does not override sounds.
-	/// </summary>
-	[ModelDoc.GameData( "door_sounds" )]
+/// <summary>
+/// Sounds to be used by ent_door if it does not override sounds.
+/// </summary>
+[ModelDoc.GameData( "door_sounds" )]
 	public class ModelDoorSounds
 	{
 		/// <summary>
