@@ -1,5 +1,6 @@
 ﻿[Library("scripted_sequence")]
 [HammerEntity]
+[EditorModel("models/editor/scripted_sequence.vmdl")]
 [Title("scripted_sequence"), Category("Choreo"), Icon("volume_up")]
 public partial class scripted_sequence : Entity
 {
@@ -20,7 +21,18 @@ public partial class scripted_sequence : Entity
         //StartUnbreakable = 524288,
     }
 
+    public enum moveToMode
+    {
+        No,
+        Walk,
+        Run,
+        Custom_movement,
+        Instantaneous,
+        No_turn_to_face
+    }
 
+
+    
     [Property("spawnflags", Title = "Spawn Settings")]
     public Flags SpawnSettings { get; set; } = Flags.Repeatable;
     
@@ -44,11 +56,17 @@ public partial class scripted_sequence : Entity
     [Property("m_iszPlay")]
     public string ActionAnimation { get; set; } = "null";
 
+    [Property("m_iszPostIdle")]
+    public string PostActionAnimation { get; set; } = "null";
+
     [Property("m_bLoopActionSequence")]
-    public int LoopActionAnimation { get; set; } = 0;
+    public bool LoopActionAnimation { get; set; } = false;
+
+
+
 
     [Property("m_fMoveTo")]
-    public int MoveToMode { get; set; }
+    public moveToMode MoveToMode { get; set; }
 
     public NPC TargetNPC;
     public scripted_sequence()
@@ -121,7 +139,7 @@ public partial class scripted_sequence : Entity
 
             switch (MoveToMode)
             {
-                case 1: // Walk to target
+                case moveToMode.Walk: // Walk to target
                     TargetNPC.Steer.Target = this.Position;
                     if (TargetNPC.NPCAnimGraph != "")
                     {
@@ -137,7 +155,7 @@ public partial class scripted_sequence : Entity
                         }
                     }
                     break;
-                case 2: // Run to Target
+                case moveToMode.Run: // Run to Target
                     TargetNPC.Steer.Target = this.Position;
                     if (TargetNPC.NPCAnimGraph != "")
                     {
@@ -154,7 +172,7 @@ public partial class scripted_sequence : Entity
                         }
                     }
                     break;
-                case 4: // Instantanious teleport to Target
+                case moveToMode.Instantaneous: // Instantanious teleport to Target
                     TargetNPC.Position = this.Position;
                     if (ActionAnimation != "null")
                     {
@@ -301,8 +319,15 @@ public partial class scripted_sequence : Entity
         if (timetick > timeduration) // the animation has finished playing
         {
             timetick = 0;
-            if (LoopActionAnimation == 1 && ticker && ticker2)
+            if (LoopActionAnimation == true && ticker && ticker2)
             {
+                ticker = false;
+                ticker2 = false;
+            }
+            else 
+            if (PostActionAnimation != "null" && ticker && ticker2)
+            {
+                TargetNPC.CurrentSequence.Name = PostActionAnimation;
                 ticker = false;
                 ticker2 = false;
             }
