@@ -165,9 +165,9 @@ partial class PhysGun : HLWeapon
             return;
 
         //
-        // Don't move keyframed, unless it's a player
+        // Don't move keyframed, unless it's a player, NPC or Door
         //
-        if (body.BodyType == PhysicsBodyType.Keyframed && rootEnt is not Player)
+        if (body.BodyType == PhysicsBodyType.Keyframed && rootEnt is not Player or NPC or DoorEntity)
             return;
 
         //
