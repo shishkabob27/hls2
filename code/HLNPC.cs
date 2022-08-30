@@ -21,7 +21,7 @@ public partial class NPC : AnimatedEntity, IUse
 	public float RunSpeed = 200;
 
 	public string NPCAnimGraph = "";
-	NavPath Path = new NavPath();
+	NavPath Path;
 	public NavSteer Steer;
 
 	public override void Spawn()
@@ -30,16 +30,19 @@ public partial class NPC : AnimatedEntity, IUse
 		base.Spawn();
 		animHelper = new HLAnimationHelper(this);
 		if (!NoNav)
-			Steer = new NavSteer();
+		{
+
+			Path = new NavPath();
+
+            Steer = new NavSteer();
+
+        }
 		SetModel("models/citizen/citizen.vmdl");
 		EyePosition = Position + Vector3.Up * 64;
-		SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(72, 8));
+		if (PhysicsBody == null) SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(72, 8));
 		
 		EnableHitboxes = true;
 		PhysicsBody.SetSurface("surface/hlflesh.surface");
-        
-		this.SetMaterialGroup(Rand.Int(0, 3));
-
 		Speed = 50;
 	}
 
@@ -56,7 +59,14 @@ public partial class NPC : AnimatedEntity, IUse
 	[Event.Tick.Server]
 	public void Tick()
 	{
-		if (HLUtils.PlayerInRangeOf(Position, 2048) == false && DontSleep == false)
+        if (NoNav)
+		{
+			Think();
+			SoundProcess();
+			return;
+		}
+
+        if (HLUtils.PlayerInRangeOf(Position, 2048) == false && DontSleep == false)
 			return;
 		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
 

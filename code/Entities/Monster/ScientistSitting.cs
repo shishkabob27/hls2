@@ -1,11 +1,10 @@
 ﻿[Library("monster_sitting_scientist"), HammerEntity]
 [EditorModel("models/hl1/monster/scientist/scientist_01.vmdl")]
 [Title("Scientist"), Category("Monsters")]
-internal class ScientistSitting : NPC
+public class ScientistSitting : NPC
 {
     // Stub NPC, this does nothing yet
 
-    
     List<string> ScientistMDLList = new List<string>{
         "models/hl1/monster/scientist/scientist_01.vmdl",
         "models/hl1/monster/scientist/scientist_02.vmdl",
@@ -23,7 +22,12 @@ internal class ScientistSitting : NPC
 
     public override void Spawn()
     {
+
+        TraceResult beans = Trace.Ray(Position, Position - new Vector3(0, 0, 500)).Run();
+        Position = beans.EndPosition + new Vector3(0, 0, 18);
         NoNav = true;
+
+        SetupPhysicsFromOBB(PhysicsMotionType.Static, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
         base.Spawn();
         //SetAnimGraph("animgraphs/scientist.vanmgrph");
         Health = 20;
@@ -34,9 +38,10 @@ internal class ScientistSitting : NPC
         SetModel(SetScientistModel());
         CurrentSequence.Name = Rand.FromList<string>(SittingAnims);
         //UseAnimGraph = false;
-        SetupPhysicsFromAABB(PhysicsMotionType.Static, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
+        //CollisionBounds.
+        PhysicsEnabled = false;
         EnableHitboxes = true;
-        Position = Position - new Vector3(0, 0, 22);
+        //Position = Position - new Vector3(0, 0, 22);
 
         Tags.Add("npc", "playerclip");
 
