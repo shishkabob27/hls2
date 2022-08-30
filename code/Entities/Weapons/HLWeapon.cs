@@ -35,9 +35,9 @@
 	[Net, Predicted]
 	public TimeSince TimeSinceDeployed { get; set; }
 
-
 	public PickupTrigger PickupTrigger { get; protected set; }
 
+	[ConVar.Replicated] public static bool cl_hdcontent { get; set; } = false;
 
 
 	public int AvailableAmmo()
