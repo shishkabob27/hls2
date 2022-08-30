@@ -8,8 +8,7 @@ public class HLMovementBrush: BrushEntity, IUse
 
     private Vector3 mins;
     private Vector3 maxs;
-    protected float SurfaceFriction;
-    public float frictionmv = 1;
+    public float frictionmv = 80;
 
     // Config
     public float bGirth = 1 * 0.8f;
@@ -23,6 +22,8 @@ public class HLMovementBrush: BrushEntity, IUse
     public float GroundBounce { get; set; } = 0.1f;
     public float WallBounce { get; set; } = 0.1f;
     public float GroundAngle { get; set; } = 46.0f;
+
+    public float SurfaceFriction;
     public override void Spawn()
     {
 
@@ -42,8 +43,8 @@ public class HLMovementBrush: BrushEntity, IUse
     {
             FindTouching();
             CalcGroundEnt();
-            ApplyGravity();
             ApplyFriction(sv_friction * SurfaceFriction);
+            ApplyGravity();
             Move();
     }
 
@@ -80,11 +81,11 @@ public class HLMovementBrush: BrushEntity, IUse
 
         var mib = CollisionBounds.Mins;
         var mab = CollisionBounds.Maxs;
-        float sizeAdd = 0.055f;
-        mins = new Vector3(mib.x - sizeAdd, mib.y - sizeAdd, mib.z - sizeAdd);
-        maxs = new Vector3(mab.x + sizeAdd, mab.y + sizeAdd, mab.z + sizeAdd);
+        float sizeAdd = 0.064f;
+        var emins = new Vector3(mib.x - sizeAdd, mib.y - sizeAdd, mib.z - sizeAdd);
+        var emaxs = new Vector3(mab.x + sizeAdd, mab.y + sizeAdd, mab.z + sizeAdd);
         var tr = Trace.Ray(Position, Position)
-                    .Size(mins, maxs)
+                    .Size(emins, emaxs)
                     .EntitiesOnly()
                     .Ignore(this)
                     .Run();
@@ -107,11 +108,9 @@ public class HLMovementBrush: BrushEntity, IUse
             var factor = 2.0f;
             if (push && !(IN_FORWARD|IN_USE))
             {
-                Log.Info("sheet");
                 return;
             }
             playerTouch = true;
-            Log.Info("hi");
             //if (push) factor = 0.25f;
             temp.x = temp.x + (lastTouch as HLPlayer).WishVelocity.x * factor;
             temp.y = temp.y + (lastTouch as HLPlayer).WishVelocity.y * factor;
@@ -126,14 +125,15 @@ public class HLMovementBrush: BrushEntity, IUse
 
             Velocity = temp;
 
-            var temp2 = (lastTouch as HLPlayer).Velocity;
             if (playerTouch)
             {
+
+                var temp2 = (lastTouch as HLPlayer).Velocity;
                 temp2.x = temp.x;
                 temp2.y = temp.y;
+                (lastTouch as HLPlayer).Velocity = temp2;
             }
 
-            (lastTouch as HLPlayer).Velocity = temp2;
 
         }
     }
@@ -141,7 +141,6 @@ public class HLMovementBrush: BrushEntity, IUse
     public override void Touch(Entity other)
     {
         base.Touch(other);
-        Log.Info("toucg!");
         ApplyPush(other, true);
     }
     public void CalcGroundEnt()
@@ -165,7 +164,7 @@ public class HLMovementBrush: BrushEntity, IUse
             ClearGroundEntity();
             if (Velocity.z > 0)
             {
-                SurfaceFriction = 0.25f;
+                //SurfaceFriction = 0.25f;
             }
         }
         else
@@ -245,8 +244,36 @@ public class HLMovementBrush: BrushEntity, IUse
         var GroundNormal = Vector3.Up;
         SurfaceFriction = 1.0f;
     }
+    public virtual void ApplyFriction(float frictionAmount = 1.0f)
+    {
 
-    public void ApplyFriction(float frictionAmount = 1.0f)
+        var speed = Velocity.Length;
+        if (speed < 0.1f)
+            return;
+
+        var drop = 0f;
+
+        if (GroundEntity != null)
+        {
+            var friction = sv_friction * SurfaceFriction;
+            var control = (speed < sv_stopspeed) ? sv_stopspeed : speed;
+
+            // Add the amount to the drop amount.
+            drop += control * friction * Time.Delta;
+        }
+
+        // scale the velocity
+        float newspeed = speed - drop;
+        if (newspeed < 0)
+            newspeed = 0;
+
+        if (newspeed != speed)
+        {
+            newspeed /= speed;
+            Velocity *= newspeed;
+        }
+    }
+    public void ApplyFrictionold(float frictionAmount = 1.0f)
     {
         // If we are in water jump cycle, don't apply friction
         //if ( player->m_flWaterJumpTime )

@@ -13,7 +13,14 @@
 		// Turn prediction off
 		using ( Prediction.Off() )
 		{
-			if ( Input.Pressed( InputButton.Use ) )
+
+			if ((!Input.Down(InputButton.Use) && !Input.Released(InputButton.Use)) || ((Using == null) && !Input.Down(InputButton.Use)))
+            {
+                StopUsing();
+                return;
+            }
+
+            if ( Input.Pressed( InputButton.Use ) )
 			{
 				Using = FindUsable();
 
@@ -25,14 +32,9 @@
 			}
 			if (Input.Down(InputButton.Use))
 			{
-				Using = FindUsable();
+				Using = FindUsable(false);
 			}
 
-			if ( !Input.Down( InputButton.Use ) )
-			{
-				StopUsing();
-				return;
-			}
 
 			if ( !Using.IsValid() )
 				return;
@@ -44,7 +46,6 @@
 			//
 			if ( Using is IUse use && use.OnUse( this ) )
 				return;
-
 			StopUsing();
 		}
 	}
@@ -81,7 +82,7 @@
 	/// <summary>
 	/// Find a usable entity for this player to use
 	/// </summary>
-	protected virtual Entity FindUsable()
+	protected virtual Entity FindUsable(bool largesearch = true)
 	{
 		// First try a direct 0 width line
 		var tr = Trace.Ray( EyePosition, EyePosition + EyeRotation.Forward * 85 )
@@ -96,7 +97,7 @@
 		}
 
 		// Nothing found, try a wider search
-		if ( !IsValidUseEntity( ent ) )
+		if ( !IsValidUseEntity( ent ) && largesearch)
 		{
 			tr = Trace.Ray( EyePosition, EyePosition + EyeRotation.Forward * 85 )
 			.Radius( 16 )

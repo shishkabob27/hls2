@@ -5,7 +5,7 @@ public partial class func_pushable : HLMovementBrush
 {
     // stub
     [Property]
-    public float friction { get; set; } = 0;
+    public float friction { get; set; } = 80;
     [Property]
     public float bounce { get; set; } = 0;
 
@@ -13,6 +13,8 @@ public partial class func_pushable : HLMovementBrush
     {
         base.Spawn();
         EnableTouch = true;
+
+        frictionmv = 80;
         GroundBounce = bounce;
         WallBounce = bounce;
     }
