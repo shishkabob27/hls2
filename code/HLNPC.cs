@@ -40,21 +40,6 @@ public partial class NPC : AnimatedEntity, IUse
         
 		this.SetMaterialGroup(Rand.Int(0, 3));
 
-		//new ModelEntity("models/citizen_clothes/trousers/trousers.smart.vmdl", this);
-		//new ModelEntity("models/citizen_clothes/jacket/labcoat.vmdl", this);
-		//new ModelEntity("models/citizen_clothes/shirt/shirt_longsleeve.scientist.vmdl", this);
-
-		//if (Rand.Int(3) == 1)
-		//{
-		//	new ModelEntity("models/citizen_clothes/hair/hair_femalebun.black.vmdl", this);
-		//}
-		//else if (Rand.Int(10) == 1)
-		//{
-		//	new ModelEntity("models/citizen_clothes/hat/hat_hardhat.vmdl", this);
-		//}
-
-		//SetBodyGroup(1, 0);
-
 		Speed = 50;
 	}
 
