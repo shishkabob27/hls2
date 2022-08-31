@@ -69,5 +69,41 @@
             
 			Log.Info($"Player: {ply} named {ply.Client.Name}");
 		}
+		
+		[ConCmd.Admin("impulse")]
+		public static void Impulse(int impulse)
+		{
+			var caller = ConsoleSystem.Caller.Pawn as HLPlayer;
+
+			if (caller == null)
+				return;
+
+			if (impulse == 101)
+			{
+				caller.Inventory.Add(new Crossbow());
+				caller.Inventory.Add(new Crowbar());
+				caller.Inventory.Add(new GrenadeWeapon());
+				caller.Inventory.Add(new Pistol());
+				caller.Inventory.Add(new Python());
+				caller.Inventory.Add(new RPG());
+				caller.Inventory.Add(new Shotgun());
+				caller.Inventory.Add(new SMG());
+				caller.Inventory.Add(new Tripmine());
+
+				caller.SetAmmo(AmmoType.Pistol, 150);
+				caller.SetAmmo(AmmoType.Python, 12);
+				caller.SetAmmo(AmmoType.Buckshot, 30);
+				caller.SetAmmo(AmmoType.Crossbow, 4);
+				caller.SetAmmo(AmmoType.RPG, 4);
+				caller.SetAmmo(AmmoType.Uranium, 300);
+
+				caller.SetAmmo(AmmoType.Grenade, 3);
+				caller.SetAmmo(AmmoType.SMGGrenade, 5);
+				caller.SetAmmo(AmmoType.Satchel, 5);
+
+				caller.SetAmmo(AmmoType.Tripmine, 95);
+				caller.SetAmmo(AmmoType.Snark, 95);
+			}
+		}
 	}
 }
