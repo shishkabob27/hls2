@@ -45,8 +45,6 @@ public class InventoryBar : Panel
 	[Event.BuildInput]
 	public void ProcessClientInput( InputBuilder input )
 	{
-		if ( HLGame.CurrentState != HLGame.GameStates.Live ) return;
-
 		bool wantOpen = IsOpen;
 		var localPlayer = Local.Pawn as Player;
 

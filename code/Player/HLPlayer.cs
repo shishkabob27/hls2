@@ -191,20 +191,12 @@
 
 	public override void BuildInput( InputBuilder input )
 	{
-		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
-		{
-			input.ViewAngles = input.OriginalViewAngles;
-			return;
-		};
 		base.BuildInput( input );
 	}
 
 
 	public override void Simulate( Client cl )
 	{
-		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
-			return;
-
         base.Simulate( cl );
 		Forward = Input.Forward;
         Left = Input.Left;
@@ -274,9 +266,6 @@
 
 	public override void PostCameraSetup( ref CameraSetup setup )
 	{
-		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
-			return;
-
 		base.PostCameraSetup( ref setup );
 
 		if ( setup.Viewer != null )

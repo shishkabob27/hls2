@@ -19,6 +19,8 @@ public class HudRootPanel : RootPanel
 		AddChild<InventoryBar>();
 		AddChild<PickupFeed>();
 
+		AddChild<FlashlightUI>();
+
 		AddChild<ChatBox>();
 		AddChild<KillFeed>();
 		Scoreboard = AddChild<Scoreboard>();
@@ -32,9 +34,6 @@ public class HudRootPanel : RootPanel
 	public override void Tick()
 	{
 		base.Tick();
-
-		SetClass( "game-end", HLGame.CurrentState == HLGame.GameStates.GameEnd );
-		SetClass( "game-warmup", HLGame.CurrentState == HLGame.GameStates.Warmup );
 	}
 
 	protected override void UpdateScale( Rect screenSize )

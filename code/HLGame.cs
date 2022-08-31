@@ -29,8 +29,6 @@ partial class HLGame : Game
 		if ( IsServer )
 		{
 			Hud = new HLHud();
-
-			_ = GameLoopAsync();
 		}
 
 		if ( IsClient )
