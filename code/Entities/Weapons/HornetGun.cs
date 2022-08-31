@@ -45,5 +45,8 @@ partial class HornetGun : HLWeapon
         if (owner.TakeAmmo(AmmoType.Hornet, 1) == 0) {
             return;
         }
+
+        ViewModelEntity?.SetAnimParameter("fire", true);
+
     }
 }
