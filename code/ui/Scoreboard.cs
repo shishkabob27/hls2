@@ -32,9 +32,6 @@ public class Scoreboard : Sandbox.UI.Scoreboard<ScoreboardEntry>
 
 	public override bool ShouldBeOpen()
 	{
-		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
-			return true;
-
 		return base.ShouldBeOpen();
 	}
 }
