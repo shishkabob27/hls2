@@ -1,4 +1,4 @@
-﻿using static Sandbox.Package;
+﻿using Sandbox;
 
 [Library("weapon_gauss"), HammerEntity]
 [EditorModel("models/hl1/weapons/world/gauss.vmdl")]
@@ -48,7 +48,9 @@ partial class Gauss : HLWeapon
         {
             return;
         }
-
+        var x = 85 + Rand.Float(0, 31);
+        Log.Info(x);
+        PlaySound("gauss").SetPitch(HLUtils.CorrectPitch(x));
 
         ShootEffects();
         ShootBullet(0, 1, 15, 2.0f);
@@ -116,7 +118,7 @@ partial class Gauss : HLWeapon
             if (owner.TakeAmmo(AmmoType, 1) == 0)
             {
                 return;
-            }
+            }  
         }
 
         spinning = true;
