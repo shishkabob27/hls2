@@ -179,7 +179,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1936750947
+									m_id = 4294967295
 								}
 								m_outputID = 
 								{
@@ -195,7 +195,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 577670065
+									m_id = 4294967295
 								}
 								m_outputID = 
 								{
@@ -325,7 +325,7 @@
 				{
 					_class = "CStateMachineAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -122.0, -269.0 ]
+					m_vecPosition = [ -128.0, -272.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1714022296
@@ -417,6 +417,40 @@
 									m_destState = 
 									{
 										m_id = 1361374698
+									}
+									m_bReset = true
+									m_resetCycleOption = "Beginning"
+									m_flFixedCycleValue = 0.0
+									m_blendCurve = 
+									{
+										m_vControlPoint1 = [ 0.5, 0.0 ]
+										m_vControlPoint2 = [ 0.5, 1.0 ]
+									}
+									m_bForceFootPlant = false
+									m_bDisabled = false
+								},
+								{
+									_class = "CAnimStateTransition"
+									m_conditions = 
+									[
+										{
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 0
+											m_paramID = 
+											{
+												m_id = 908790796
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 1
+												m_data = true
+											}
+										},
+									]
+									m_blendDuration = 0.2
+									m_destState = 
+									{
+										m_id = 1243514606
 									}
 									m_bReset = true
 									m_resetCycleOption = "Beginning"
@@ -538,6 +572,40 @@
 									m_destState = 
 									{
 										m_id = 1361374698
+									}
+									m_bReset = true
+									m_resetCycleOption = "Beginning"
+									m_flFixedCycleValue = 0.0
+									m_blendCurve = 
+									{
+										m_vControlPoint1 = [ 0.5, 0.0 ]
+										m_vControlPoint2 = [ 0.5, 1.0 ]
+									}
+									m_bForceFootPlant = false
+									m_bDisabled = false
+								},
+								{
+									_class = "CAnimStateTransition"
+									m_conditions = 
+									[
+										{
+											_class = "CParameterAnimCondition"
+											m_comparisonOp = 0
+											m_paramID = 
+											{
+												m_id = 908790796
+											}
+											m_comparisonValue = 
+											{
+												m_nType = 1
+												m_data = true
+											}
+										},
+									]
+									m_blendDuration = 0.2
+									m_destState = 
+									{
+										m_id = 1243514606
 									}
 									m_bReset = true
 									m_resetCycleOption = "Beginning"

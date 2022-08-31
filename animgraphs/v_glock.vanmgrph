@@ -48,12 +48,45 @@
 					{
 						m_nodeID = 
 						{
+							m_id = 269992873
+						}
+						m_outputID = 
+						{
+							m_id = 4294967295
+						}
+					}
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 269992873
+				}
+				value = 
+				{
+					_class = "CSpeedScaleAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ 80.0, -96.0 ]
+					m_nNodeID = 
+					{
+						m_id = 269992873
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_inputConnection = 
+					{
+						m_nodeID = 
+						{
 							m_id = 1714022296
 						}
 						m_outputID = 
 						{
 							m_id = 4294967295
 						}
+					}
+					m_param = 
+					{
+						m_id = 2100560790
 					}
 				}
 			},
@@ -174,7 +207,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "draw"
-					m_playbackSpeed = 2.0
+					m_playbackSpeed = 4.0
 					m_bLoop = false
 				}
 			},
@@ -646,6 +679,23 @@
 				m_bAutoReset = true
 				m_bPredicted = false
 				m_bDefaultValue = false
+			},
+			{
+				_class = "CFloatAnimParameter"
+				m_name = "constspeed"
+				m_id = 
+				{
+					m_id = 2100560790
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_fDefaultValue = 0.66
+				m_fMinValue = 0.0
+				m_fMaxValue = 1.0
+				m_bInterpolate = false
 			},
 		]
 	}
