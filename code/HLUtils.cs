@@ -34,8 +34,9 @@
         return ent.Count();
     }
 
-    static public float CorrectPitch(float pitch)
+    static public float CorrectPitch(float pitch, bool mult = true)
     {
-        return (float)Math.Sqrt(pitch / 100);
+        if (mult) return(float)Math.Sqrt(pitch / 100);
+        return (float)Math.Sqrt(pitch);
     }
 }
