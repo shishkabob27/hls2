@@ -7,6 +7,8 @@ partial class HornetGun : HLWeapon
 
     public override int Bucket => 3;
     public override int BucketWeight => 4;
-    public override AmmoType AmmoType => AmmoType.Hornet;
+    public override AmmoType AmmoType => AmmoType.None; // we do this so we can always select the weapon.
+	public override string AmmoIcon => "ui/ammo8.png";
+    public override int ClipSize => 1;
 
 }

@@ -8,5 +8,6 @@ partial class Gauss : HLWeapon
     public override int Bucket => 3;
     public override int BucketWeight => 2;
     public override AmmoType AmmoType => AmmoType.Uranium;
+    public override string AmmoIcon => "ui/ammo7.png";
 
 }

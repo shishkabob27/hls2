@@ -121,6 +121,9 @@
 		ply.GiveAmmo( AmmoType.SMGGrenade, 1000 );
 		ply.GiveAmmo( AmmoType.RPG, 1000 );
 		ply.GiveAmmo( AmmoType.Tripmine, 1000 );
+		ply.GiveAmmo( AmmoType.Satchel, 1000 );
+		ply.GiveAmmo( AmmoType.Uranium, 1000 );
+		ply.GiveAmmo( AmmoType.Snark, 1000 );
 
 		ply.Inventory.Add( new Crowbar());
 		ply.Inventory.Add( new Pistol());
