@@ -1,0 +1,94 @@
+HEADER
+{
+	DevShader = true;
+	CompileTargets = ( IS_SM_50 && ( PC || VULKAN ) );
+	Description = "Chrome";
+	Version = 1;
+}
+
+MODES
+{
+	VrForward();
+
+	Depth( "vr_depth_only_nonbindless.vfx" ); 
+
+	ToolsVis( S_MODE_TOOLS_VIS );
+	ToolsWireframe( "vr_tools_wireframe.vfx" );
+}
+
+FEATURES
+{
+	#include "vr_common_features.fxc"
+}
+
+COMMON
+{
+	#include "system.fxc"
+	#include "vr_common.fxc" 
+
+	#define S_UNLIT 0
+
+
+	#define VS_INPUT_HAS_TANGENT_BASIS 1
+	#define PS_INPUT_HAS_TANGENT_BASIS 1
+}
+
+struct VS_INPUT
+{
+	#include "vr_common_vs_input.fxc"
+};
+
+struct PS_INPUT
+{
+	#include "vr_common_ps_input.fxc"
+};
+
+VS
+{
+	#include "vr_common_vs_code.fxc"
+
+	PS_INPUT MainVs( INSTANCED_SHADER_PARAMS( VS_INPUT i ) )
+	{
+		PS_INPUT o;
+		
+		o = VS_CommonProcessing( i );
+
+		return VS_CommonProcessing_Post( o );
+	}
+}
+
+PS
+{
+	#include "vr_common_ps_code.fxc"
+
+	CreateInputTexture2D( TextureColor, Srgb, 8, "", "_color", "Color", Default3( 0.86, 0.67, 0.62 ) );
+	CreateTexture2D( g_tColor ) < Channel( RGB, Box( TextureColor ), Srgb ); OutputFormat( DXT1 ); SrgbRead( true ); >;
+	TextureAttribute( RepresentativeTexture, g_tColor );
+
+	PS_OUTPUT MainPs( PS_INPUT i )
+	{
+		FinalCombinerInput_t finalCombinerInput = PS_CommonProcessing( i );
+		LightingTerms_t lightingTerms = InitLightingTerms();
+
+		float3 vPositionWs = i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz;
+		float3 vCameraToPositionDirWs = CalculateCameraToPositionDirWs( vPositionWs.xyz );
+		
+		float3 vNormalWs = normalize( i.vNormalWs.xyz );
+		float3 vTangentUWs = i.vTangentUWs.xyz;
+		float3 vTangentVWs = i.vTangentVWs.xyz;
+		float3 vTangentViewVector = Vec3WsToTs( vCameraToPositionDirWs.xyz, vNormalWs.xyz, vTangentUWs.xyz, vTangentVWs.xyz );
+		float2 chromeUV = frac( i.vTextureCoords.xy );
+
+		float3 pos = float3(vTangentViewVector * 0.4 + (i.vTextureCoords * 0.01), 1 );
+
+		float2 reflectUV = pos.xy * 2;
+
+		float4 chrome = Tex2D( g_tColor, reflectUV.xy );
+		
+		PS_OUTPUT ps_output;
+		ps_output.vColor.rgba = float4( chrome.rgb, 1.0 );
+		ps_output = PS_FinalCombinerDoPostProcessing( finalCombinerInput, lightingTerms, ps_output );
+
+		return ps_output;
+	}
+}
