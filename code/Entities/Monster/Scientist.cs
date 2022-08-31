@@ -133,7 +133,7 @@ public partial class Scientist : NPC
 
         if (LifeState == LifeState.Alive)
         {
-            SpeakSound("sounds/hl1/scientist/sci_pain.sound", VoicePitch / 100);
+            SpeakSound("sounds/hl1/scientist/sci_pain.sound", VoicePitch);
         }
         animHelper.IsScared = true;
         //CurrentSound.Stop();
@@ -172,7 +172,7 @@ public partial class Scientist : NPC
             {
                 //CurrentSound.Stop();
                 //CurrentSound = PlaySound("sounds/hl1/scientist/sci_follow.sound").SetPitch(VoicePitch / 100);
-                SpeakSound("sounds/hl1/scientist/sci_follow.sound", VoicePitch / 100);
+                SpeakSound("sounds/hl1/scientist/sci_follow.sound", VoicePitch);
                 MODE = "MODE_FOLLOW";
                 DontSleep = true;
                 FollowTarget = HLUtils.ClosestPlayerTo(Position);
@@ -180,7 +180,7 @@ public partial class Scientist : NPC
             {
                 //CurrentSound.Stop();
                 //CurrentSound = PlaySound("sounds/hl1/scientist/sci_stopfollow.sound").SetPitch(VoicePitch / 100);
-                SpeakSound("sounds/hl1/scientist/sci_stopfollow.sound", VoicePitch / 100);
+                SpeakSound("sounds/hl1/scientist/sci_stopfollow.sound", VoicePitch);
                 MODE = "MODE_IDLE";
                 DontSleep = false;
                 FollowTarget = null;

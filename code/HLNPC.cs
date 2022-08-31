@@ -282,14 +282,14 @@ public partial class NPC : AnimatedEntity, IUse
         
 	}
 
-	public void SpeakSound(string sound, float pitch = 1)
+	public void SpeakSound(string sound, float pitch = 100)
 	{
         if (IsServer)
         {
 			using (Prediction.Off())
 			{
 				CurrentSound.Stop();
-				CurrentSound = PlaySound(sound).SetPitch(pitch);
+				CurrentSound = PlaySound(sound).SetPitch(HLUtils.CorrectPitch(pitch));
 			}
 			//SpeakSoundcl(sound, pitch);
 		}
@@ -297,10 +297,10 @@ public partial class NPC : AnimatedEntity, IUse
 	}
     
 	[ClientRpc]
-	public void SpeakSoundcl(string sound, float pitch = 1)
+	public void SpeakSoundcl(string sound, float pitch = 100)
 	{
 		//CurrentSound.Stop();
-		CurrentSound = PlaySound(sound).SetPitch(pitch);
+		CurrentSound = PlaySound(sound).SetPitch(HLUtils.CorrectPitch(pitch));
 		Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
 	}
     
