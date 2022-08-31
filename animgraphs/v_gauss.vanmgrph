@@ -24,7 +24,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "idle2"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 2.0
 					m_bLoop = false
 				}
 			},
@@ -88,7 +88,7 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 0.8
 							m_blendTime = 0.2
 						},
 						{
@@ -104,7 +104,7 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 0.1
 							m_blendTime = 0.2
 						},
 						{
@@ -120,7 +120,7 @@
 								}
 							}
 							m_name = ""
-							m_weight = 0.0
+							m_weight = 0.1
 							m_blendTime = 0.2
 						},
 					]
@@ -290,7 +290,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "fidget"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 2.0
 					m_bLoop = false
 				}
 			},
@@ -787,7 +787,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "idle"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 2.0
 					m_bLoop = false
 				}
 			},
