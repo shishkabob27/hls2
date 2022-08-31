@@ -6,4 +6,6 @@ partial class Egon : HLWeapon
     //stub
     public override int Bucket => 3;
     public override int BucketWeight => 3;
+    public override AmmoType AmmoType => AmmoType.Uranium;
+
 }

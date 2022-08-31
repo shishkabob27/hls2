@@ -7,4 +7,6 @@ partial class SatchelWeapon : HLWeapon
 
     public override int Bucket => 4;
     public override int BucketWeight => 2;
+    public override AmmoType AmmoType => AmmoType.Satchel;
+
 }
