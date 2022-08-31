@@ -32,11 +32,13 @@ partial class GrenadeWeapon : HLWeapon
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
-		if ( Owner is not HLPlayer player ) return;
 
-		if ( !TakeAmmo( 1 ) )
+        if (Owner is not HLPlayer player) return;
+
+        var owner = Owner as HLPlayer;
+
+        if ( owner.TakeAmmo( AmmoType, 1 ) == 0 )
 		{
-			Reload();
 			return;
 		}
 
@@ -71,7 +73,6 @@ partial class GrenadeWeapon : HLWeapon
 
 		player.SetAnimParameter( "b_attack", true );
 
-		Reload();
 		player.SetAnimParameter("attack", true);
         
 		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Grenade ) == 0 )
