@@ -7,4 +7,6 @@ partial class HornetGun : HLWeapon
 
     public override int Bucket => 3;
     public override int BucketWeight => 4;
+    public override AmmoType AmmoType => AmmoType.Hornet;
+
 }
