@@ -88,6 +88,7 @@
 			case AmmoType.Satchel: return 5;
 			case AmmoType.Tripmine: return 5;
 			case AmmoType.Snark: return 15;
+			case AmmoType.Hornet: return 8;
 		}
 
 		return 0;
@@ -107,5 +108,6 @@ public enum AmmoType
 	Tripmine,
 	Snark,
 	RPG,
-	Uranium
+	Uranium,
+	Hornet
 }
