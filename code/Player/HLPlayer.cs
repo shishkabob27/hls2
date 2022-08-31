@@ -131,6 +131,11 @@
 		ply.Inventory.Add( new Crossbow() );
 		ply.Inventory.Add( new GrenadeWeapon() );
 		ply.Inventory.Add( new TripmineWeapon() );
+		ply.Inventory.Add( new Gauss() );
+		ply.Inventory.Add( new Egon() );
+		ply.Inventory.Add( new HornetGun() );
+		ply.Inventory.Add( new SnarkWeapon() );
+		ply.Inventory.Add( new SatchelWeapon() );
 
 		var battery = new Battery();
         battery.Position = ConsoleSystem.Caller.Pawn.EyePosition;
