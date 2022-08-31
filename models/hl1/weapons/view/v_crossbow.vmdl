@@ -423,7 +423,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = "weapons/rust_crossbow/v_rust_crossbow.vanmgrph"
+		anim_graph_name = "animgraphs/v_crossbow.vanmgrph"
 		base_model_name = ""
 	}
 }

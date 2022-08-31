@@ -9,28 +9,6 @@
 			{
 				key = 
 				{
-					m_id = 167768150
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -672.0, -400.0 ]
-					m_nNodeID = 
-					{
-						m_id = 167768150
-					}
-					m_networkMode = "ClientSimulate"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "idle2"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
 					m_id = 206872258
 				}
 				value = 
@@ -48,35 +26,6 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 269992873
-						}
-						m_outputID = 
-						{
-							m_id = 4294967295
-						}
-					}
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 269992873
-				}
-				value = 
-				{
-					_class = "CSpeedScaleAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 80.0, -96.0 ]
-					m_nNodeID = 
-					{
-						m_id = 269992873
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_inputConnection = 
-					{
-						m_nodeID = 
-						{
 							m_id = 1714022296
 						}
 						m_outputID = 
@@ -84,87 +33,6 @@
 							m_id = 4294967295
 						}
 					}
-					m_param = 
-					{
-						m_id = 2100560790
-					}
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 460427034
-				}
-				value = 
-				{
-					_class = "CChoiceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -448.0, -416.0 ]
-					m_nNodeID = 
-					{
-						m_id = 460427034
-					}
-					m_networkMode = "ClientSimulate"
-					m_sNote = ""
-					m_children = 
-					[
-						{
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 2060363704
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_name = ""
-							m_weight = 0.0
-							m_blendTime = 0.2
-						},
-						{
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 167768150
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_name = ""
-							m_weight = 0.0
-							m_blendTime = 0.2
-						},
-						{
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 1429349272
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_name = ""
-							m_weight = 0.0
-							m_blendTime = 0.2
-						},
-					]
-					m_seed = 719848634
-					m_choiceMethod = "WeightedRandomNoRepeat"
-					m_choiceChangeMethod = "OnCycleEnd"
-					m_blendMethod = "SingleBlendTime"
-					m_blendTime = 0.2
-					m_bCrossFade = false
-					m_bResetChosen = true
-					m_bDontResetSameSelection = false
 				}
 			},
 			{
@@ -198,7 +66,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -618.0, -119.0 ]
+					m_vecPosition = [ -395.0, -91.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1421775535
@@ -206,29 +74,7 @@
 					m_networkMode = "ClientSimulate"
 					m_sNote = ""
 					m_tagSpans = [  ]
-					m_sequenceName = "draw"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1429349272
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -672.0, -352.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1429349272
-					}
-					m_networkMode = "ClientSimulate"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "idle3"
+					m_sequenceName = "deploy_loaded"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
 				}
@@ -242,7 +88,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -503.0, -207.0 ]
+					m_vecPosition = [ -661.0, -204.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1631504389
@@ -250,7 +96,7 @@
 					m_networkMode = "ClientSimulate"
 					m_sNote = ""
 					m_tagSpans = [  ]
-					m_sequenceName = "shoot"
+					m_sequenceName = "attack"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
 				}
@@ -283,7 +129,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 460427034
+									m_id = 2060363704
 								}
 								m_outputID = 
 								{
@@ -294,8 +140,8 @@
 							{
 								m_id = 1361374698
 							}
-							m_position = [ -128.0, -160.0 ]
-							m_bIsStartState = false
+							m_position = [ -117.0, -149.0 ]
+							m_bIsStartState = true
 							m_bIsEndtState = false
 							m_bIsPassthrough = false
 							m_bIsRootMotionExclusive = false
@@ -351,7 +197,7 @@
 							{
 								m_id = 1911934699
 							}
-							m_position = [ -368.0, -128.0 ]
+							m_position = [ -361.0, -124.0 ]
 							m_bIsStartState = false
 							m_bIsEndtState = false
 							m_bIsPassthrough = false
@@ -408,8 +254,8 @@
 							{
 								m_id = 1346017069
 							}
-							m_position = [ -368.0, 16.0 ]
-							m_bIsStartState = true
+							m_position = [ -359.0, 17.0 ]
+							m_bIsStartState = false
 							m_bIsEndtState = false
 							m_bIsPassthrough = false
 							m_bIsRootMotionExclusive = false
@@ -465,7 +311,7 @@
 							{
 								m_id = 1243514606
 							}
-							m_position = [ -368.0, -240.0 ]
+							m_position = [ -361.0, -237.0 ]
 							m_bIsStartState = false
 							m_bIsEndtState = false
 							m_bIsPassthrough = false
@@ -597,7 +443,7 @@
 							{
 								m_id = 1830143744
 							}
-							m_position = [ -576.0, -192.0 ]
+							m_position = [ -573.0, -188.0 ]
 							m_bIsStartState = false
 							m_bIsEndtState = false
 							m_bIsPassthrough = false
@@ -618,7 +464,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -672.0, -448.0 ]
+					m_vecPosition = [ -532.0, -279.0 ]
 					m_nNodeID = 
 					{
 						m_id = 2060363704
@@ -626,9 +472,9 @@
 					m_networkMode = "ClientSimulate"
 					m_sNote = ""
 					m_tagSpans = [  ]
-					m_sequenceName = "idle1"
+					m_sequenceName = "idle_loaded"
 					m_playbackSpeed = 1.0
-					m_bLoop = false
+					m_bLoop = true
 				}
 			},
 		]
@@ -680,23 +526,6 @@
 				m_bPredicted = false
 				m_bDefaultValue = false
 			},
-			{
-				_class = "CFloatAnimParameter"
-				m_name = "constspeed"
-				m_id = 
-				{
-					m_id = 2100560790
-				}
-				m_previewButton = "ANIMPARAM_BUTTON_NONE"
-				m_bNetwork = true
-				m_bUseMostRecentValue = false
-				m_bAutoReset = false
-				m_bPredicted = false
-				m_fDefaultValue = 0.66
-				m_fMinValue = 0.0
-				m_fMaxValue = 1.0
-				m_bInterpolate = false
-			},
 		]
 	}
 	m_pTagManager = 
@@ -741,7 +570,7 @@
 	}
 	m_previewModels = 
 	[
-		"models/hl1/weapons/view/v_glock.vmdl",
+		"weapons/rust_crossbow/v_rust_crossbow.vmdl",
 	]
 	m_boneMergeModels = [  ]
 }
