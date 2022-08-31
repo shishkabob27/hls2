@@ -69,5 +69,55 @@
             
 			Log.Info($"Player: {ply} named {ply.Client.Name}");
 		}
+		
+		[ConCmd.Admin("impulse")]
+		public static void Impulse(int impulse)
+		{
+			var caller = ConsoleSystem.Caller.Pawn as HLPlayer;
+
+			if (caller == null)
+				return;
+
+			if (impulse == 101)
+			{
+				caller.Inventory.Add( new Crowbar());
+				caller.Inventory.Add( new Pistol());
+				caller.Inventory.Add( new Python() );
+				caller.Inventory.Add( new Shotgun() );
+				caller.Inventory.Add( new SMG() );
+				caller.Inventory.Add( new RPG() );
+				caller.Inventory.Add( new Crossbow() );
+				caller.Inventory.Add( new GrenadeWeapon() );
+				caller.Inventory.Add( new TripmineWeapon() );
+				caller.Inventory.Add( new Gauss() );
+				caller.Inventory.Add( new Egon() );
+				caller.Inventory.Add( new HornetGun() );
+				caller.Inventory.Add( new SnarkWeapon() );
+				caller.Inventory.Add( new SatchelWeapon() );
+				
+
+				caller.GiveAmmo(AmmoType.Pistol, 67);
+				caller.GiveAmmo(AmmoType.Python, 6);
+				caller.GiveAmmo(AmmoType.Buckshot, 16);
+				caller.GiveAmmo(AmmoType.Crossbow, 5);
+				caller.GiveAmmo(AmmoType.RPG, 1);
+				caller.GiveAmmo(AmmoType.Uranium, 60);
+
+				caller.GiveAmmo(AmmoType.Grenade, 5);
+				caller.GiveAmmo(AmmoType.SMGGrenade, 2);
+				caller.GiveAmmo(AmmoType.Satchel, 1);
+
+				caller.GiveAmmo(AmmoType.Tripmine, 1);
+				caller.GiveAmmo(AmmoType.Snark, 5);
+
+				var battery = new Battery();
+				battery.Position = ConsoleSystem.Caller.Pawn.EyePosition;
+				battery.Spawn();
+
+				var suit = new Suit();
+				suit.Position = ConsoleSystem.Caller.Pawn.EyePosition;
+				suit.Spawn();
+			}
+		}
 	}
 }
