@@ -12,7 +12,8 @@ partial class GrenadeWeapon : HLWeapon
 	public override AmmoType AmmoType => AmmoType.Grenade;
 	public override int ClipSize => 1;
 	public override int Bucket => 4;
-    public override string AmmoIcon => "ui/ammo9.png";
+	public override int BucketWeight => 1;
+	public override string AmmoIcon => "ui/ammo9.png";
     public override void Spawn()
 	{
 		base.Spawn();
