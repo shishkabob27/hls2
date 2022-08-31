@@ -352,7 +352,7 @@
 		if ( Local.Hud == null ) return;
 	}
 
-	public bool IsUsable()
+	public virtual bool IsUsable()
 	{
 		if ( AmmoClip > 0 ) return true;
 		if ( AmmoType == AmmoType.None ) return true;
