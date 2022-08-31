@@ -144,7 +144,7 @@
 	public override void OnKilled()
 	{
 		base.OnKilled();
-
+		RemoveFlashlight();
 		if (hl_gamemode == "deathmatch"){
 			var coffin = new Coffin();
 			coffin.Position = Position + Vector3.Up * 30;

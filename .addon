@@ -44,7 +44,8 @@
         "monster": "Unset",
         "npc": "Unset",
         "weapon": "Unset",
-        "funcpush": "Collide"
+        "funcpush": "Collide",
+        "glass": "Unset"
       },
       "Pairs": [
         {
@@ -135,6 +136,11 @@
         {
           "a": "player",
           "b": "funcpush",
+          "r": "Collide"
+        },
+        {
+          "a": "player",
+          "b": "glass",
           "r": "Collide"
         }
       ]

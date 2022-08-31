@@ -57,7 +57,18 @@ public partial class HLPlayer
 
     protected void RemoveFlashlight()
     {
-        Light.Delete();
-        Light = null;
+        if (Light != null)
+        {
+
+            Light.Delete();
+            Light = null;
+        }
     }
+
+    [Event.Entity.PostCleanup]
+    public void OnMapCleanupEvent()
+    {
+        RemoveFlashlight();
+    }
+
 }
