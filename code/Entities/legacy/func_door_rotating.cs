@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
 
+	/// <summary>
 	/// Sounds to be used by ent_door if it does not override sounds.
 	/// </summary>
 	[ModelDoc.GameData( "door_sounds" )]

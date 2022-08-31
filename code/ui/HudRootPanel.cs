@@ -19,6 +19,8 @@ public class HudRootPanel : RootPanel
 		AddChild<InventoryBar>();
 		AddChild<PickupFeed>();
 
+		AddChild<FlashlightUI>();
+
 		AddChild<ChatBox>();
 		AddChild<KillFeed>();
 		Scoreboard = AddChild<Scoreboard>();
