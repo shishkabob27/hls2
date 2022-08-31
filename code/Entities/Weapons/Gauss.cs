@@ -31,7 +31,7 @@ partial class Gauss : HLWeapon
             return;
         }
 
-        ShootEffects();
+        //ShootEffects();
         ShootBullet(0, 1, 15, 2.0f);
 
         var startPos = owner.EyePosition;
@@ -47,6 +47,9 @@ partial class Gauss : HLWeapon
         {
             Beam = Particles.Create("particles/generic_beam.vpcf", tr.EndPosition);
         }
+
+        ViewModelEntity?.SetAnimParameter("fire", true);
+        ViewModelEntity?.SetAnimParameter("holdtype_attack", false ? 2 : 1);
 
         Beam.SetEntityAttachment(0, EffectEntity, "muzzle", true);
         Beam.SetPosition(2, new Vector3(255, 128, 0));
