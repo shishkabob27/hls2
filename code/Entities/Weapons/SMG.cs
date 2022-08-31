@@ -57,9 +57,6 @@ partial class SMG : HLWeapon
 
 	public override void AttackSecondary()
 	{
-		// Screw this for now
-		//return;
-		AltReload();
         
 		TimeSinceSecondaryAttack = 0;
 
