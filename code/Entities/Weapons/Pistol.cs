@@ -9,7 +9,7 @@ partial class Pistol : HLWeapon
 	public override int ClipSize => 17;	
 	public override float PrimaryRate => 3.3f;
 	public override float SecondaryRate => 5f;
-	public override float ReloadTime => 1f;
+	public override float ReloadTime => 1.4f;
 
 	public override int Bucket => 1;
 
@@ -23,7 +23,7 @@ partial class Pistol : HLWeapon
 
 	public override bool CanPrimaryAttack()
 	{
-		return base.CanPrimaryAttack() && Input.Pressed( InputButton.PrimaryAttack );
+		return base.CanPrimaryAttack();
 	}
 
 	public override void AttackPrimary()

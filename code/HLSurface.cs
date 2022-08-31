@@ -83,8 +83,12 @@
 			if (Particle == false)
 				return default;
 
+			if (surf == null)
+			{
+                surf = tr.Surface;
+            }
 			string particleName = Rand.FromArray(surf.ImpactEffects.Bullet);
-			//if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( self.ImpactEffects.Regular );
+			if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( self.ImpactEffects.Regular );
 
 			
 			while ( string.IsNullOrWhiteSpace( particleName ) && surf != null )

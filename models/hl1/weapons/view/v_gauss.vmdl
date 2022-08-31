@@ -1,0 +1,365 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "glove_handpak.vmat"
+								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
+							},
+							{
+								from = "gloved_knuckle.vmat"
+								to = "materials/hl1/weapons/view/hand/gloved_knuckle.vmat"
+							},
+							{
+								from = "gloved_sleeve.vmat"
+								to = "materials/hl1/weapons/view/hand/gloved_sleeve.vmat"
+							},
+							{
+								from = "rubberglovechrome.vmat"
+								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
+							},
+							{
+								from = "barrelchrome.vmat"
+								to = "materials/hl1/weapons/view/gauss/barrelchrome.vmat"
+							},
+							{
+								from = "battery.vmat"
+								to = "materials/hl1/weapons/view/gauss/battery.vmat"
+							},
+							{
+								from = "batterybox.vmat"
+								to = "materials/hl1/weapons/view/gauss/batterybox.vmat"
+							},
+							{
+								from = "batteryend.vmat"
+								to = "materials/hl1/weapons/view/gauss/batteryend.vmat"
+							},
+							{
+								from = "bottle.vmat"
+								to = "materials/hl1/weapons/view/gauss/bottle.vmat"
+							},
+							{
+								from = "boxrear.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxrear.vmat"
+							},
+							{
+								from = "boxsidea.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxsidea.vmat"
+							},
+							{
+								from = "boxsideb.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxsideb.vmat"
+							},
+							{
+								from = "boxsidec.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxsidec.vmat"
+							},
+							{
+								from = "boxtopa.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxtopa.vmat"
+							},
+							{
+								from = "boxtopb.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxtopb.vmat"
+							},
+							{
+								from = "nuspinner.vmat"
+								to = "materials/hl1/weapons/view/gauss/nuspinner.vmat"
+							},
+							{
+								from = "nuspinner2.vmat"
+								to = "materials/hl1/weapons/view/gauss/nuspinner2.vmat"
+							},
+							{
+								from = "spinner_rear.vmat"
+								to = "materials/hl1/weapons/view/gauss/spinner_rear.vmat"
+							},
+							{
+								from = "spinnerbright.vmat"
+								to = "materials/hl1/weapons/view/gauss/spinnerbright.vmat"
+							},
+							{
+								from = "wire_chrome.vmat"
+								to = "materials/hl1/weapons/view/gauss/wire_chrome.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "muzzle"
+						parent_bone = "gauss_master"
+						relative_origin = [ 16.992996, -0.936653, -0.100412 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/gauss_gun.smd"
+						import_translation = [ 0.0, 0.0, -68.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"reference_guass",
+								"gauss_gun",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/gauss_hand.smd"
+						import_translation = [ 0.0, 0.0, -68.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"reference_guass",
+								"gauss_hand",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "draw"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/draw.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "fidget"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/fidget.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "fire"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/fire.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "fire2"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/fire2.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "holster"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/holster.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle2"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/idle2.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "spin"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/spin.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "spinup"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_gauss_anims/spinup.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = "animgraphs/v_gauss.vanmgrph"
+		base_model_name = ""
+	}
+}

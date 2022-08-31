@@ -12,7 +12,7 @@ partial class TripmineWeapon : HLWeapon
 	public override AmmoType AmmoType => AmmoType.Tripmine;
 	public override int ClipSize => 1;
 	public override int Bucket => 4;
-	public override int BucketWeight => 200;
+	public override int BucketWeight => 3;
 	public override string AmmoIcon => "ui/ammo12.png";
 
 	public override void Spawn()
@@ -33,12 +33,18 @@ partial class TripmineWeapon : HLWeapon
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
-		if ( Owner is not HLPlayer player ) return;
+        if (Owner is not HLPlayer player) return;
 
-		// woosh sound
-		// screen shake
+        var owner = Owner as HLPlayer;
 
-		Rand.SetSeed( Time.Tick );
+        if (owner.TakeAmmo(AmmoType, 1) == 0)
+        {
+            return;
+        }
+        // woosh sound
+        // screen shake
+
+        Rand.SetSeed( Time.Tick );
 
 		var tr = Trace.Ray( Owner.EyePosition, Owner.EyePosition + Owner.EyeRotation.Forward * 150 )
 				.Ignore( Owner )
@@ -61,9 +67,6 @@ partial class TripmineWeapon : HLWeapon
 
 			_ = grenade.Arm( 1.0f );
 		}
-
-		TakeAmmo( 1 );
-		Reload();
 
 		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Tripmine ) == 0 )
 		{

@@ -1,4 +1,6 @@
-﻿[Library( "weapon_mp5" ), HammerEntity]
+﻿using static Sandbox.Package;
+
+[Library( "weapon_mp5" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/mp5.vmdl" )]
 [Title( "SMG" ), Category( "Weapons" )]
 partial class SMG : HLWeapon
@@ -55,30 +57,21 @@ partial class SMG : HLWeapon
 
 	public override void AttackSecondary()
 	{
-		// Screw this for now
-		//return;
-		AltReload();
         
 		TimeSinceSecondaryAttack = 0;
 
-		if ( Owner is not HLPlayer player ) return;
+        if (Owner is not HLPlayer player) return;
 
+        var owner = Owner as HLPlayer;
+        if (owner.TakeAmmo(AltAmmoType, 1) == 0)
+        {
+            return;
+        }
 
-		if (!TakeAltAmmo(1))
-		{
+        // woosh sound
+        // screen shake
 
-			AltReload();
-			if (!TakeAltAmmo(1))
-			{
-				DryFire();
-				return;
-			}
-		}
-
-		// woosh sound
-		// screen shake
-
-		PlaySound( "glauncher" );
+        PlaySound( "glauncher" );
 
 		Rand.SetSeed( Time.Tick );
 

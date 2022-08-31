@@ -33,4 +33,10 @@
         var ent = Entity.All.OfType<T>().ToList();
         return ent.Count();
     }
+
+    static public float CorrectPitch(float pitch, bool mult = true)
+    {
+        if (mult) return(float)Math.Sqrt(pitch / 100);
+        return (float)Math.Sqrt(pitch);
+    }
 }

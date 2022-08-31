@@ -35,9 +35,9 @@
 	[Net, Predicted]
 	public TimeSince TimeSinceDeployed { get; set; }
 
-
 	public PickupTrigger PickupTrigger { get; protected set; }
 
+	[ConVar.Replicated] public static bool cl_hdcontent { get; set; } = false;
 
 
 	public int AvailableAmmo()
@@ -212,10 +212,37 @@
 		}
 	}
 
-	/// <summary>
-	/// Shoot a single bullet
-	/// </summary>
-	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
+    public override IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float radius = 2.0f)
+    {
+        bool underWater = Trace.TestPoint(start, "water");
+
+        var trace = Trace.Ray(start, end)
+                .UseHitboxes()
+                .WithAnyTags("solid", "player", "npc", "glass")
+                .Ignore(this)
+                .Size(radius);
+
+        //
+        // If we're not underwater then we can hit water
+        //
+        if (!underWater)
+            trace = trace.WithAnyTags("water");
+
+        var tr = trace.Run();
+
+        if (tr.Hit)
+            yield return tr;
+
+        //
+        // Another trace, bullet going through thin material, penetrating water surface?
+        //
+    }
+
+
+    /// <summary>
+    /// Shoot a single bullet
+    /// </summary>
+    public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
 	{
 		//
 		// Seed rand using the tick, so bullet cones match on client and server
@@ -325,7 +352,7 @@
 		if ( Local.Hud == null ) return;
 	}
 
-	public bool IsUsable()
+	public virtual bool IsUsable()
 	{
 		if ( AmmoClip > 0 ) return true;
 		if ( AmmoType == AmmoType.None ) return true;
