@@ -54,7 +54,7 @@ partial class Gauss : HLWeapon
         //var pos = tr.StartPosition;
         //var a = GetAttachment("muzzle");
         //if (a != null)
-            //pos = (a ?? default).Position;
+        //pos = (a ?? default).Position;
         //Beam.SetPosition(0, pos);
         Beam.SetPosition(1, tr.EndPosition);
         Beam.Destroy();
@@ -62,5 +62,13 @@ partial class Gauss : HLWeapon
         Particles.Create("particles/gauss_impact.vpcf", tr.EndPosition);
 
     }
+    public override bool CanSecondaryAttack()
+    {
+        return Input.Released(InputButton.PrimaryAttack);
+    }
 
+    public override void AttackSecondary()
+    {
+        //charge attack here!
+    }
 }
