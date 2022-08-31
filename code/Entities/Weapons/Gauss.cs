@@ -1,4 +1,6 @@
-﻿[Library("weapon_gauss"), HammerEntity]
+﻿using static Sandbox.Package;
+
+[Library("weapon_gauss"), HammerEntity]
 [EditorModel("models/hl1/weapons/world/gauss.vmdl")]
 [Title("Gauss"), Category("Weapons")]
 partial class Gauss : HLWeapon
@@ -13,15 +15,31 @@ partial class Gauss : HLWeapon
     public override string AmmoIcon => "ui/ammo7.png";
     public override float ReloadTime => 0.1f;
     public override int ClipSize => 1;
+    
 
-
+    bool spinning = false;
+    float spintime = 0.0f;
 
     Particles Beam;
+    public override void Simulate(Client owner)
+    {
+        base.Simulate(owner);
+        if (Owner is not HLPlayer player) return;
 
+        var owner2 = Owner as HLPlayer;
+
+        if ((!(Input.Down(InputButton.SecondaryAttack)) && spinning))
+        {
+            ViewModelEntity?.SetAnimParameter("spinning", false);
+            ShootEffects();
+            ShootBullet(0, 1, 15 * spintime, 2.0f);
+            ViewModelEntity?.SetAnimParameter("fire", true);
+            spinning = false;
+        }
+    }
     public override void AttackPrimary()
     {
         TimeSincePrimaryAttack = 0;
-        TimeSinceSecondaryAttack = 0;
 
         if (Owner is not HLPlayer player) return;
 
@@ -31,14 +49,21 @@ partial class Gauss : HLWeapon
             return;
         }
 
-        //ShootEffects();
+
+        ShootEffects();
         ShootBullet(0, 1, 15, 2.0f);
 
+    }
+    protected override void ShootEffects()
+    {
+        if (Owner is not HLPlayer player) return;
+
+        var owner = Owner as HLPlayer;
         var startPos = owner.EyePosition;
         var dir = owner.EyeRotation.Forward;
 
         var tr = Trace.Ray(startPos, startPos + dir * 800)
-            .UseHitboxes()
+        .UseHitboxes()
             .Ignore(owner, false)
             .WithAllTags("solid")
             .Run();
@@ -65,15 +90,42 @@ partial class Gauss : HLWeapon
         Beam.Destroy();
 
         Particles.Create("particles/gauss_impact.vpcf", tr.EndPosition);
-
     }
+
+    int tickammouse = 0;
     public override bool CanSecondaryAttack()
     {
-        return Input.Released(InputButton.PrimaryAttack);
+        return base.CanSecondaryAttack();
     }
-
     public override void AttackSecondary()
     {
+
+        if (!spinning)
+            spintime = 0;
+
+        base.AttackSecondary();
+        TimeSinceSecondaryAttack = 0;
+        if (Owner is not HLPlayer player) return;
+
+        var owner = Owner as HLPlayer;
+        tickammouse += 1;
+
+        if (tickammouse >= 5 && spintime < 10)
+        {
+            tickammouse = 0;
+            if (owner.TakeAmmo(AmmoType, 1) == 0)
+            {
+                return;
+            }
+        }
+
+        spinning = true;
+
+        ViewModelEntity?.SetAnimParameter("spinning", true);
+        if (spintime >= 10)
+            return;
+
+        spintime += 0.1f;
         //charge attack here!
     }
 }
