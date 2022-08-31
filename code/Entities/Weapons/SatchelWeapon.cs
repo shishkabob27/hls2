@@ -5,6 +5,8 @@ partial class SatchelWeapon : HLWeapon
 {
     //stub
 
+    public override string ViewModelPath => "models/hl1/weapons/view/v_satchel.vmdl";
+
     public override int Bucket => 4;
     public override int BucketWeight => 2;
     public override AmmoType AmmoType => AmmoType.Satchel;

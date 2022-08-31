@@ -4,6 +4,9 @@
 partial class SnarkWeapon : HLWeapon
 {
     //stub
+
+    public override string ViewModelPath => "models/hl1/weapons/view/v_squeak.vmdl";
+
     public override int Bucket => 4;
     public override int BucketWeight => 4;
     public override AmmoType AmmoType => AmmoType.Snark;
