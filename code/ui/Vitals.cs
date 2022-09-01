@@ -25,8 +25,7 @@ public class HealthHud : Panel
 		SetClass( "low", player.Health < 40.0f );
 		SetClass( "empty", player.Health <= 0.0f );
 
-		if (!player.HasHEV)
-		{
+		if (!player.HasHEV || player.Health == 0){
 			SetClass( "invisible", true);
 		}
 		else{
@@ -68,8 +67,7 @@ public class ArmourHud : Panel
 		IconEmpty.Style.Height = 100 - player.Armour;
 		IconFull.Style.Height = player.Armour;
 
-		if (!player.HasHEV)
-		{
+		if (!player.HasHEV || player.Health == 0){
 			SetClass( "invisible", true);
 		}
 		else{
