@@ -293,23 +293,28 @@ armourhud
   
 }
 
-flashlightui{
+flashlightui {
     width: 48px;
     height: 32px;
     position: absolute;
-
     top: 16px;
     right: 8px;
     color: $orange;
     object-fit: contain;
     background-image-tint: #fb0;
     mix-blend-mode: lighten;
-
     background-image: url("/ui/flashlight_off.png");
     background-repeat: no-repeat;
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
 
-    &.on{
+    &.on {
         background-image: url("/ui/flashlight_on.png");
+    }
+
+    &.invisible {
+        opacity: 0;
     }
 }
 
