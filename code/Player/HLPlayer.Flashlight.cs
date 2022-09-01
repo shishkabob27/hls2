@@ -6,33 +6,38 @@ public partial class HLPlayer
     [Net, Predicted]
     public bool FlashlightEnabled { get; private set; } = false;
 
-    [Predicted]
+    [Net, Predicted]
     public SpotLightEntity Light { get; private set; }
 
     public void SimulateFlashlight()
     {
 
-        if (Light.IsValid())
+        if (Light.IsValid() && IsServer)
         {
             Light.Position = EyePosition + EyeRotation.Forward * 15;
             Light.Rotation = EyeRotation;
         }
-
         if (Input.Pressed(InputButton.Flashlight))
         {
             FlashlightEnabled = !FlashlightEnabled;
-            if (Light.IsValid() == false && FlashlightEnabled)
+
+            PlaySound("flashlight1");
+
+            if (Light.IsValid() == false && FlashlightEnabled && IsServer)
             {
                 NewFlashlight();
             }
-            if (Light.IsValid() == true && !FlashlightEnabled)
+
+            if (Light.IsValid() == true && !FlashlightEnabled && IsServer)
             {
                 RemoveFlashlight();
             }
-            PlaySound("flashlight1");
-
         }
+
+
     }
+
+    
 
     protected void NewFlashlight()
     {
@@ -57,12 +62,13 @@ public partial class HLPlayer
 
     protected void RemoveFlashlight()
     {
-        if (Light != null)
+        try
         {
 
             Light.Delete();
             Light = null;
         }
+        catch { }
     }
 
     [Event.Entity.PostCleanup]
