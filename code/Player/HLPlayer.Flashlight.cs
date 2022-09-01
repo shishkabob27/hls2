@@ -29,7 +29,7 @@ public partial class HLPlayer
             {
                 RemoveFlashlight();
             }
-            PlaySound(FlashlightEnabled ? "flashlight.on" : "flashlight.off");
+            PlaySound("flashlight1");
 
         }
     }
