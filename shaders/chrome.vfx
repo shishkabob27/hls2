@@ -73,11 +73,12 @@ PS
 	//
 
 	//CreateInputTexture2D( ChromeMapTexture, Srgb, 8, "", "",  "Shader Vars,10/10", Default3( 1, 1, 1) );
-    CreateTexture2D( ChromeMap ) < Channel( RGBA, None( TextureColor ), Srgb ); OutputFormat( DXT5 ); SrgbRead( true ); >;
+    CreateTexture2D( ChromeMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
 	TextureAttribute( ChromeMap, ChromeMap );
 
 	PixelOutput MainPs( PixelInput i )
 	{
+		ShadingModelValveStandard sm;
 		Material m = GatherMaterial( i );
 
 		float3 vPositionWs = i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz;
@@ -91,7 +92,7 @@ PS
 
 		// this is not how Half-Life 1 does it lol, I just did this because it looks close enough, please revisit :)
 
-		ShadingModelStandard sm;
+		
 
 		float3 pos = float3(vTangentViewVector * 0.3 + (i.vTextureCoords * 0.02), 1 );
 
@@ -104,6 +105,7 @@ PS
 		float4 chrome = Tex2D( ChromeMap, reflectUV.xy );
 
 		m.Albedo.rgb = chrome.rgb; 
-		return FinalizePixelMaterial( i, m, sm );
+		PixelOutput p = FinalizePixelMaterial( i, m, sm );
+		return p;
 	}
 }
