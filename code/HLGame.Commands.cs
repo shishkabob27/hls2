@@ -118,6 +118,11 @@
 				suit.Position = ConsoleSystem.Caller.Pawn.EyePosition;
 				suit.Spawn();
 			}
+
+			if (impulse == 201)
+			{
+				HLPlayer.Spray();
+			}
 		}
 	}
 }
