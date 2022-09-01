@@ -1,5 +1,4 @@
-﻿using System.Xml.Xsl.Runtime;
-public partial class HLPlayer
+﻿public partial class HLPlayer
 {
 	public TimeSince TimeSinceSprayed { get; set; }
 
