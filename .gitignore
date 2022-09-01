@@ -18,3 +18,6 @@ Properties/launchSettings.json
 *.vmat_c
 *.sound_c
 *.sound_c
+*.vanmgrph_c
+*.decal_c
+*.surface_c
