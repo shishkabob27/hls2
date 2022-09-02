@@ -43,7 +43,7 @@ public partial class HLCombat
         CLASS_BARNACLE
     }
 
-    int [,] ClassMatrix = new int [14,14]
+    public static int [,] ClassMatrix = new int [14,14]
     {			 //   NONE	 MACH	 PLYR	 HPASS	 HMIL	 AMIL	 APASS	 AMONST	APREY	 APRED	 INSECT	PLRALY	PBWPN	ABWPN
 	/*NONE*/		{ R_NO  ,R_NO   ,R_NO   ,R_NO   ,R_NO   ,R_NO   ,R_NO   ,R_NO   ,R_NO   ,R_NO   ,R_NO   ,R_NO,  R_NO,   R_NO    },
 	/*MACHINE*/		{ R_NO  ,R_NO   ,R_DL   ,R_DL   ,R_NO   ,R_DL   ,R_DL   ,R_DL   ,R_DL   ,R_DL   ,R_NO   ,R_DL,  R_DL,   R_DL    },

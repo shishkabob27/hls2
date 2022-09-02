@@ -1,4 +1,4 @@
-﻿public partial class HLPlayer : Player
+﻿public partial class HLPlayer : Player, ICombat
 {
 	TimeSince timeSinceDropped = 0;
 
@@ -440,5 +440,9 @@
 			weapon.RenderHud( screenSize );
 		}
 	}
-	
+
+	public int Classify()
+	{
+		return (int)HLCombat.Class.CLASS_PLAYER;
+	}
 }

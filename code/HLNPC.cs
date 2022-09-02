@@ -1,5 +1,5 @@
 ﻿[Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
-public partial class NPC : AnimatedEntity, IUse
+public partial class NPC : AnimatedEntity, IUse, ICombat
 {
 	public bool InScriptedSequence = false;
 	public bool InPriorityScriptedSequence = false;
@@ -19,12 +19,14 @@ public partial class NPC : AnimatedEntity, IUse
 	public float Speed;
 	public float WalkSpeed = 80;
 	public float RunSpeed = 200;
+	public float entFOV = 0.5f;
 
-	public string NPCAnimGraph = "";
+    public string NPCAnimGraph = "";
 	NavPath Path;
 	public NavSteer Steer;
 
     public Entity TargetEntity;
+    public int TargetEntityRel = 0;
     public virtual int Classify()
 	{
 		return (int)HLCombat.Class.CLASS_NONE;
@@ -154,6 +156,87 @@ public partial class NPC : AnimatedEntity, IUse
 
 
 	}
+	public virtual void See()
+	{
+        TargetEntity = null;
+        TargetEntityRel = 0;
+        // todo, trace a cone maybe...
+
+        /*
+        var a = Trace.Ray(EyePosition, EyePosition + Rotation.Forward * 2000)
+            .Radius(70f)
+            .EntitiesOnly()
+            .Ignore(this)
+            .Run();
+        if (a.Entity == null)
+        {
+            TargetEntity = null;
+            return;
+        }
+		var b = Trace.Ray(EyePosition, (a.Entity as ModelEntity).WorldSpaceBounds.Center)
+            .Ignore(this)
+            .Run();
+		if (b.Entity != a.Entity)
+		{
+			TargetEntity = null;
+			return;
+		}
+		TargetEntity = a.Entity;
+		*/
+        foreach (var ent in Entity.FindInSphere(Position, 5000))
+		{
+            var b = Trace.Ray(EyePosition, ent.WorldSpaceBounds.Center)
+                .Ignore(this)
+                .Run();
+            if (b.Entity != ent)
+            {
+                continue;
+            }
+			if (!InViewCone(ent))
+            {
+                continue;
+            }
+
+
+            ProcessEntity(ent, GetRelationship(ent));
+        }
+    }
+	public virtual void ProcessEntity(Entity ent, int rel)
+	{
+		Log.Warning("Process wasn't overwritten, mistake maybe?");
+	}
+	public int GetRelationship(Entity ent)
+	{
+		if (ent is ICombat)
+		{
+			var trgt = (ent as ICombat);
+			return HLCombat.ClassMatrix[Classify(), trgt.Classify()];
+		} else
+		{
+			return 0;
+		}
+	}
+	public bool InViewCone(Entity ent)
+	{
+        Vector2 vec2LOS;
+        float flDot;
+
+
+        var e = (ent.WorldSpaceBounds.Center - WorldSpaceBounds.Center);
+        vec2LOS = new Vector2(e.x, e.y);
+        vec2LOS = vec2LOS.Normal;
+
+        flDot = (float)Vector2.Dot(vec2LOS, new Vector2(Rotation.Forward.x, Rotation.Forward.y));
+
+        if (flDot > entFOV)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     public virtual void Think()
     {

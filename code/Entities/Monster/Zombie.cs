@@ -36,33 +36,31 @@ internal class Zombie : NPC
             SpeakSound("sounds/hl1/zombie/zo_idle.sound");
             
         }
-        base.Think();
-        // todo, trace a cone maybe...
-        var a = Trace.Ray(EyePosition, EyePosition + Rotation.Forward * 2000)
-            .Radius(50f)
-            .EntitiesOnly()
-            .Ignore(this)
-            .Run();
-
-        if (a.Entity != TargetEntity && a.Entity is HLPlayer or null)
+        See();
+        /*
+        if (TargetEntity is ICombat)
         {
-            TargetEntity = a.Entity;
-            if (TimeSinceLastSound > 2 && a.Entity is HLPlayer)
+            var trgt = (TargetEntity as ICombat);
+            var rel = HLCombat.ClassMatrix[Classify(), trgt.Classify()];
+
+            if (rel > 0 && TargetEntity.Position.Distance(Position) > 60)
             {
-                TimeSinceLastSound = 0;
-                SpeakSound("sounds/hl1/zombie/zo_alert.sound");
+                Steer.Target = TargetEntity.Position - ((TargetEntity.Position - Position).Normal * 50); // don't get too close!
+            }
+            else if (rel > 0 && TargetEntity.Position.Distance(Position) < 60)
+            {
+                animHelper.Attack = true;
             }
         }
-        if (a.Entity == null) return;
-        var b = Trace.Ray(EyePosition, a.Entity.Position)
-            .Ignore(this)
-            .Run();
-        if (b.Entity != a.Entity) return;
-        if (a.Entity is HLPlayer && a.Entity.Position.Distance(Position) > 60)
+        */
+    }
+    public override void ProcessEntity(Entity ent, int rel)
+    {
+        if (rel > 0 && ent.Position.Distance(Position) > 60)
         {
-            Steer.Target = a.Entity.Position - ((a.Entity.Position - Position).Normal * 50); // don't get too close!
-        } 
-        else if (a.Entity is HLPlayer && a.Entity.Position.Distance(Position) < 60)
+            Steer.Target = ent.Position - ((ent.Position - Position).Normal * 50); // don't get too close!
+        }
+        else if (rel > 0 && ent.Position.Distance(Position) < 60)
         {
             animHelper.Attack = true;
         }
@@ -76,5 +74,9 @@ internal class Zombie : NPC
             SpeakSound("sounds/hl1/zombie/zo_pain.sound");
         }
 
+    }
+    public override int Classify()
+    {
+        return (int)HLCombat.Class.CLASS_ALIEN_MONSTER;
     }
 }
