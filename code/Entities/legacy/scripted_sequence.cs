@@ -263,12 +263,13 @@ public partial class scripted_sequence : Entity
         }
 
     }
-
     float timetick = 0;
     float timeout = 0;
     float timeduration = 0;
     bool ticker = false;
     bool ticker2 = false;
+    bool preticker = false;
+    bool preticker2 = false;
     bool preactionplayed = false;
     bool startonspawncheckdone = false;
     float timesince = -1;
@@ -279,71 +280,94 @@ public partial class scripted_sequence : Entity
         {
             timeout += 1;
         }
-        if (TargetNPC is NPC && TargetNPC.IsValid() && startonspawncheckdone == false)
+        if (SpawnSettings.HasFlag(Flags.StartonSpawn)&& startonspawncheckdone == false)////this is a check that if the entity is meant to start on spawn
         {
-            if (SpawnSettings.HasFlag(Flags.StartonSpawn))
+            if (TargetNPC is not NPC)
             {
-                TargetNPC.Position = this.Position;
+                TargetNPC = FindByName(TargetEntity) as NPC;
             }
+            if (PreActionAnimation != null)////if we have a preaction we dont want to begain the sequence 
+            {
+                MoveToPosition();
+                hasStarted = true;
+            }
+            else
+                BeginSequence();///if we dont just play the sequence 
 
             startonspawncheckdone = true;
-        }
+        } 
+     
         if (hasStarted == false)
         {
-            if (TargetNPC is NPC && TargetNPC != null && TargetNPC.IsValid && (TargetNPC.Position.AlmostEqual(this.Position, 3.0f + (timeout / 1000)) && TargetNPC.Steer.Output.Finished))
+            
+            
+            return;
+        }
+        if (TargetNPC is NPC && TargetNPC != null && TargetNPC.IsValid && ((TargetNPC.Position.AlmostEqual(this.Position, 3.0f + (timeout / 1000)) && TargetNPC.Steer.Output.Finished) || TargetNPC.Position == this.Position || (TargetNPC.Steer.Output.Finished && TargetNPC.Position.AlmostEqual(this.Position, 8.0f + (timeout / 1000))))) //&& TargetNPC.CurrentSequence.IsFinished == true 
+        {
+            if (readyToPlay)
             {
-                if (PreActionAnimation != "null" && preactionplayed == false)
+                //TargetNPC.Position = this.Position;
+                timetick += 0.01f;
+
+                if (ticker == true && ticker2 == false) // next tick has happened, play the animation
                 {
+                    TargetNPC.Position = this.Position;
+                    TargetNPC.InScriptedSequence = true;
+                    ticker2 = true;
+                    timetick = 0;
+                    TargetNPC.CurrentSequence.Name = ActionAnimation;
+                    //TargetNPC.targetRotation = this.Rotation;
+                }
+
+                if (ticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
+                {
+                    ticker = true;
+                    //Log.Info("script sequence target reached");
+                    OnBeginSequence.Fire(this);
+
+                    // this is ass, when is direct playback in animgraph coming in?
                     TargetNPC.SetAnimGraph("");
                     TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
-                    TargetNPC.CurrentSequence.Name = PreActionAnimation;
+                    TargetNPC.CurrentSequence.Name = ActionAnimation;
                     TargetNPC.PlaybackRate = 0.5f;
                     timeduration = TargetNPC.CurrentSequence.Duration;
                     TargetNPC.targetRotationOVERRIDE = this.Rotation;
 
                     TargetNPC.targetRotation = this.Rotation;
-                    preactionplayed = true;
+                }
+
+
+
+
+
+
+            }else if (PreActionAnimation != null)
+            {
+                if (preticker == true && preticker2 == false) // next tick has happened, play the animation
+                {
+                    TargetNPC.Position = this.Position;
+                    TargetNPC.InScriptedSequence = true;
+                    preticker2 = true;
+                    TargetNPC.CurrentSequence.Name = PreActionAnimation;
+                    //TargetNPC.targetRotation = this.Rotation;
+                }
+
+                if (ticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
+                {
+                    preticker = true;
+                    //Log.Info("script sequence target reached");
+
+                    // this is ass, when is direct playback in animgraph coming in?
+                    TargetNPC.SetAnimGraph("");
+                    TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
+                    TargetNPC.CurrentSequence.Name = PreActionAnimation;
+                    TargetNPC.PlaybackRate = 0.5f;
+                    TargetNPC.targetRotationOVERRIDE = this.Rotation;
+
+                    TargetNPC.targetRotation = this.Rotation;
                 }
             }
-            return;
-        }
-        if (TargetNPC is NPC && TargetNPC != null && TargetNPC.IsValid && ((TargetNPC.Position.AlmostEqual(this.Position, 3.0f + (timeout / 1000)) && TargetNPC.Steer.Output.Finished) || TargetNPC.Position == this.Position || (TargetNPC.Steer.Output.Finished && TargetNPC.Position.AlmostEqual(this.Position, 8.0f + (timeout / 1000)))) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
-        {
-            //TargetNPC.Position = this.Position;
-            timetick += 0.01f;
-
-            if (ticker == true && ticker2 == false) // next tick has happened, play the animation
-            {
-                TargetNPC.Position = this.Position;
-                TargetNPC.InScriptedSequence = true;
-                ticker2 = true;
-                timetick = 0;
-                TargetNPC.CurrentSequence.Name = ActionAnimation;
-                //TargetNPC.targetRotation = this.Rotation;
-            }
-
-            if (ticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
-            {
-                ticker = true;
-                //Log.Info("script sequence target reached");
-                OnBeginSequence.Fire(this);
-
-                // this is ass, when is direct playback in animgraph coming in?
-                TargetNPC.SetAnimGraph("");
-                TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
-                TargetNPC.CurrentSequence.Name = ActionAnimation;
-                TargetNPC.PlaybackRate = 0.5f;
-                timeduration = TargetNPC.CurrentSequence.Duration;
-                TargetNPC.targetRotationOVERRIDE = this.Rotation;
-
-                TargetNPC.targetRotation = this.Rotation;
-            }
-
-
-
-
-
-
         }
         if (timetick > timeduration) // the animation has finished playing
         {
