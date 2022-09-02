@@ -92,7 +92,7 @@
         }
 
     }
-    public Vector3 TraceOffset;
+    public Vector3 TraceOffset = 0;
 
     /// <summary>
     /// Traces the bbox and returns the trace result.

@@ -57,8 +57,6 @@ public class ScientistSitting : NPC
             default: return Rand.FromList<string>(ScientistMDLList);
         }
     }
-
-    DamageInfo LastDamage;
     
     float tick = 0;
     public override void Think()

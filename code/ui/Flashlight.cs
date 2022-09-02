@@ -18,12 +18,21 @@ public class FlashlightUI : Panel
         }
 
 
-        switch (player.HasHEV)
+        switch (player.HasHEV && player.Health >= 0)
         {
             case true: SetClass( "invisible", false); break;
             case false: SetClass( "invisible", true); break;
         }
 
-	}
+        if (!player.HasHEV || player.Health == 0)
+        {
+            SetClass("invisible", true);
+        }
+        else
+        {
+            SetClass("invisible", false);
+        }
+
+    }
 
 }
