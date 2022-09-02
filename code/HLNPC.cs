@@ -76,7 +76,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			return;
 		}
 
-        if (HLUtils.PlayerInRangeOf(Position, 2048) == false && DontSleep == false)
+        if (HLUtils.PlayerInRangeOf(Position, 1024) == false && DontSleep == false)
 			return;
 		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
 
@@ -207,12 +207,14 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		TargetEntity = a.Entity;
 		*/
 
-        var allents = Entity.All.ToList();
-        allents.RemoveAll(ply => ply.Position.Distance(Position) > 512);
+        var allents = Entity.All.OfType<ICombat>().ToList();
+        allents.RemoveAll(allents => (allents as Entity).Position.Distance(Position) > 2048);
 
-        foreach (var ent in allents)
+		int i = 0;
+        foreach (Entity ent in allents)
 		{
-
+			i++;
+			if (i > 16) continue;
             if (!InViewCone(ent))
             {
                 continue;
@@ -350,7 +352,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
     
 	public override void TakeDamage(DamageInfo info)
 	{
-
+        targetRotation = Rotation.From(((Position - info.Position) * -360).EulerAngles.WithRoll(0).WithPitch(0));
         var trace = Trace.Ray(EyePosition, EyePosition + ((Position - info.Position) * 70) * 2)
 			.WorldOnly()
 			.Ignore(this)
