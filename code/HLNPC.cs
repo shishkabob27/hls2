@@ -207,10 +207,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		TargetEntity = a.Entity;
 		*/
 
-        var allents = Entity.All.OfType<NPC>().ToList();
-        allents.RemoveAll(allents => allents.Position.Distance(Position) > 800);
+        var allents = Entity.All.OfType<ICombat>().ToList();
+        allents.RemoveAll(allents => (allents as Entity).Position.Distance(Position) > 2048);
 
-        foreach (var ent in allents)
+        foreach (Entity ent in allents)
 		{
 
             if (!InViewCone(ent))
