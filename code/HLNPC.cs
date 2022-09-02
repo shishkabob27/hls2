@@ -1,4 +1,5 @@
-﻿[Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
+﻿
+[Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
 public partial class NPC : AnimatedEntity, IUse, ICombat
 {
 	public bool InScriptedSequence = false;
@@ -149,14 +150,34 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
         }
 		if (LifeState == LifeState.Dead)
 			return;
-		Think();
+
+        //See();
+        Think();
 		SoundProcess();
-		//SoundStream test;
-		//test.
+        //SoundStream test;
+        //test.
 
+        See();
 
-	}
-	public virtual void See()
+    }
+
+    public virtual void FindCover(Vector3 fromPos)
+    {
+        var MyNode = NavMesh.GetClosestPoint(Position);
+		var ThreatNode = NavMesh.GetClosestPoint(fromPos);
+		Steer.Target = NavMesh.GetPointWithinRadius(fromPos, 500, 600) ?? NavMesh.GetPointWithinRadius(fromPos, 300, 600) ?? NavMesh.GetPointWithinRadius(fromPos, 100, 600) ?? NavMesh.GetPointWithinRadius(fromPos, 10, 600) ?? fromPos ;
+        /*
+        foreach (var area in NavMesh.GetNavAreas())
+        {
+            foreach (var node in area.)
+            {
+
+            }
+        }
+		*/
+    }
+
+    public virtual void See()
 	{
         TargetEntity = null;
         TargetEntityRel = 0;
@@ -183,9 +204,9 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		TargetEntity = a.Entity;
 		*/
-        foreach (var ent in Entity.FindInSphere(Position, 5000))
+        foreach (var ent in Entity.FindInSphere(EyePosition, 5000))
 		{
-            var b = Trace.Ray(EyePosition, ent.WorldSpaceBounds.Center)
+            var b = Trace.Ray(EyePosition, ent.Position)
                 .Ignore(this)
                 .Run();
             if (b.Entity != ent)

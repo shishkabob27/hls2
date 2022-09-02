@@ -28,7 +28,10 @@ public partial class Scientist : NPC
         RunSpeed = 200;
         VoicePitch = SetPitch();
     }
-
+    public override int Classify()
+    {
+        return (int)HLCombat.Class.CLASS_HUMAN_PASSIVE;
+    }
     public override void Spawn()
     {
         //NPCAnimGraph = "animgraphs/scientist.vanmgrph";
@@ -193,6 +196,22 @@ public partial class Scientist : NPC
             return false;
         }
     }
+    TimeSince TimeSinceSeen = new TimeSince();
+    public override void ProcessEntity(Entity ent, int rel)
+    {
+        if (rel > 0)
+        {
+            targetRotation = Rotation.From(((Position - ent.Position) * -360).EulerAngles);
+            if (TimeSinceSeen > 5)
+            {
 
+                TimeSinceSeen = 0;
+                Speed = RunSpeed;
+                FindCover(ent.Position);
+                SpeakSound("sounds/hl1/scientist/sci_fear.sound", VoicePitch);
+                animHelper.IsScared = true;
+            }
+        }
+    }
 
 }

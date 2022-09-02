@@ -9,6 +9,11 @@ internal class Barney : NPC
 
         NPCAnimGraph = "animgraphs/scientist.vanmgrph";
     }
+    public override int Classify()
+    {
+        return (int)HLCombat.Class.CLASS_PLAYER_ALLY;
+    }
+
     public override void Spawn()
     {
         base.Spawn();
@@ -22,5 +27,12 @@ internal class Barney : NPC
         Tags.Add("npc", "playerclip");
     
     }
-    
+    public override void ProcessEntity(Entity ent, int rel)
+    {
+        if (rel > 0)
+        {
+            targetRotation = Rotation.From(((Position - ent.Position) * -360).EulerAngles);
+        }
+    }
+
 }

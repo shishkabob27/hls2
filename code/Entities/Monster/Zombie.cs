@@ -36,7 +36,6 @@ internal class Zombie : NPC
             SpeakSound("sounds/hl1/zombie/zo_idle.sound");
             
         }
-        See();
         /*
         if (TargetEntity is ICombat)
         {

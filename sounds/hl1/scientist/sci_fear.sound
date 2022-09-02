@@ -1,0 +1,33 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		UI = false
+		Volume = 1
+		VolumeRandom = 0
+		Pitch = 1
+		PitchRandom = 0
+		Decibels = 70
+		Sounds = 
+		[
+			resource:"sounds/hl1/scientist/sci_fear1.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear10.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear11.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear12.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear13.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear14.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear15.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear2.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear3.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear4.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear5.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear6.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear7.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear8.vsnd",
+			resource:"sounds/hl1/scientist/sci_fear9.vsnd",
+		]
+		SelectionMode = "Random"
+		MaximumDistance = 1143.9335
+		MinimumDistance = 57.196674
+	}
+}

@@ -39,4 +39,10 @@
         if (mult) return(float)Math.Sqrt(pitch / 100);
         return (float)Math.Sqrt(pitch);
     }
+
+    static public Vector3 GetCentreOf(Entity ent)
+    {
+        if (ent is ModelEntity) return (ent as ModelEntity).CollisionWorldSpaceCenter;
+        return ent.WorldSpaceBounds.Center;
+    }
 }
