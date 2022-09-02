@@ -121,10 +121,10 @@
 				case "flesh":
 					newName = "surface/hl_flesh.surface";
 					break;
-				case "hl_tile":
+				case "tile":
 					newName = "surface/hl_tile.surface";
 					break;
-				case "hl_metal":
+				case "metal":
 					newName = "surface/hl_metal.surface";
 					break;
 				default:
