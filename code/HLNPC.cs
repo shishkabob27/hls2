@@ -8,7 +8,26 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public bool InPriorityScriptedSequence = false;
 	public bool DontSleep = false;
 	public bool NoNav = false;
-    
+
+    [Flags]
+	public enum Flags
+	{
+		WaitTillSeen = 1,
+		Gag = 2,
+		MonsterClip = 4,
+		NoWreckage = 8,
+		Prisoner = 16,
+		StartInactive = 64,
+		WaitForScript = 128,
+		PreDisaster = 256,
+		FadeCorpse = 512,
+		NotInDeathmatch = 2048
+	}
+
+	// </summary>
+	[Property("spawnsetting", Title = "Spawn Settings")]
+	public Flags SpawnSettings { get; set; }
+
 	[ConVar.Replicated]
 	public static bool nav_drawpath { get; set; }
 
@@ -381,13 +400,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		LastDamage = info;
 
-		if (Health <= 0f)
+		if (Health <= 0f && LifeState == LifeState.Alive)
 		{
-			if (LifeState == LifeState.Alive)
-			{
 				LifeState = LifeState.Dead;
 				//Delete();
-			}
 		}
         if (Health < -20)
         {
