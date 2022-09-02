@@ -55,6 +55,7 @@ internal class Zombie : NPC
     }
     public override void ProcessEntity(Entity ent, int rel)
     {
+        if (ent.LifeState != LifeState.Alive) return;
         if (rel > 0 && ent.Position.Distance(Position) > 60)
         {
             Steer.Target = ent.Position - ((ent.Position - Position).Normal * 50); // don't get too close!
@@ -77,5 +78,21 @@ internal class Zombie : NPC
     public override int Classify()
     {
         return (int)HLCombat.Class.CLASS_ALIEN_MONSTER;
+    }
+    public override void OnAnimEventGeneric(string name, int intData, float floatData, Vector3 vectorData, string stringData)
+    {
+        if (stringData == "claw" && IsServer)
+        {
+            foreach (var tr in TraceBullet(EyePosition, EyePosition + EyeRotation.Forward * 70, 1))
+            {
+                var damageInfo = DamageInfo.FromBullet(tr.EndPosition, EyeRotation.Forward * 50, 5)
+                    .UsingTraceResult(tr)
+                    .WithAttacker(Owner)
+                    .WithWeapon(this);
+                Log.Info(damageInfo);
+                tr.Entity.TakeDamage(damageInfo);
+            }
+        }
+        //base.OnAnimEventGeneric(name, intData, floatData, vectorData, stringData);
     }
 }
