@@ -55,7 +55,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "run1"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 2.0
 					m_bLoop = true
 				}
 			},
