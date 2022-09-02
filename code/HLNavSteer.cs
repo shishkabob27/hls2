@@ -43,11 +43,10 @@
 
 		foreach (var ent in Entity.FindInSphere(center, radius))
 		{
-			Log.Info(ent);
 			if (ent is not ModelEntity or BrushEntity) continue;
 			if (ent.IsWorld && ent is not ModelEntity or BrushEntity) continue;
 			if (ent is ModelEntity) objectRadius = ((ent as ModelEntity).CollisionBounds.Maxs.Length * 2) + 32;
-			Log.Info(objectRadius);
+			
 			var delta = (position - ent.Position).WithZ(0);
 			var closeness = delta.Length;
 			if (closeness < 0.001f) continue;
