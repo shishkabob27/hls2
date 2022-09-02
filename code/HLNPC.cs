@@ -214,7 +214,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
         foreach (Entity ent in allents)
 		{
 			i++;
-			if (i > 8) continue;
+			if (i > 16) continue;
             if (!InViewCone(ent))
             {
                 continue;
