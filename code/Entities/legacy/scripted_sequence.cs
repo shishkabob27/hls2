@@ -353,7 +353,7 @@ public partial class scripted_sequence : Entity
                     //TargetNPC.targetRotation = this.Rotation;
                 }
 
-                if (ticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
+                if (preticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
                 {
                     preticker = true;
                     //Log.Info("script sequence target reached");
@@ -376,6 +376,9 @@ public partial class scripted_sequence : Entity
             {
                 ticker = false;
                 ticker2 = false;
+                preticker = false;
+                preticker2 = false;
+
             }
             else
             if (PostActionAnimation != "null" && ticker && ticker2)
@@ -383,6 +386,9 @@ public partial class scripted_sequence : Entity
                 TargetNPC.CurrentSequence.Name = PostActionAnimation;
                 ticker = false;
                 ticker2 = false;
+                preticker = false;
+                preticker2 = false;
+               
             }
             else
             {
@@ -404,10 +410,28 @@ public partial class scripted_sequence : Entity
             TargetNPC.InScriptedSequence = false;
             //if (TargetLegacy != "")
             //GameTask.RunInThreadAsync(TriggerTask);
-
-
+            
+          
+           
 
         }
+        if (LoopActionAnimation == true && ticker && ticker2)
+        {
+            if (TargetNPC.CurrentSequence.IsFinished)
+            {
+                TargetNPC.CurrentSequence.Name = ActionAnimation;
+            }
+
+        }
+        else
+            if (PostActionAnimation != "null" && ticker && ticker2)
+        {
+            if (TargetNPC.CurrentSequence.IsFinished)
+            {
+                TargetNPC.CurrentSequence.Name = PostActionAnimation;
+            }
+        }
+
         /*
         
         if (TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 16) || TargetNPC.Position == this.Position)) //&& TargetNPC.CurrentSequence.IsFinished == true 
