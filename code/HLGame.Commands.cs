@@ -32,7 +32,7 @@
 			if (owner == null)
 				return;
 
-			var entityType = TypeLibrary.GetDescription<Entity>(entName).GetType();
+			var entityType = TypeLibrary.GetTypeByName<Entity>(entName);
 			if (entityType == null)
 
 				if (!TypeLibrary.Has<SpawnableAttribute>(entityType))
