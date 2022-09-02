@@ -290,7 +290,7 @@ public partial class scripted_sequence : Entity
         }
         if (hasStarted == false)
         {
-            if (TargetNPC is NPC && TargetNPC != null && (TargetNPC.Position.AlmostEqual(this.Position, 3.0f + (timeout / 1000)) && TargetNPC.Steer.Output.Finished))
+            if (TargetNPC is NPC && TargetNPC != null && TargetNPC.IsValid && (TargetNPC.Position.AlmostEqual(this.Position, 3.0f + (timeout / 1000)) && TargetNPC.Steer.Output.Finished))
             {
                 if (PreActionAnimation != "null" && preactionplayed == false)
                 {
@@ -307,7 +307,7 @@ public partial class scripted_sequence : Entity
             }
             return;
         }
-        if (TargetNPC is NPC && TargetNPC != null && ((TargetNPC.Position.AlmostEqual(this.Position, 3.0f + (timeout / 1000)) && TargetNPC.Steer.Output.Finished) || TargetNPC.Position == this.Position || (TargetNPC.Steer.Output.Finished && TargetNPC.Position.AlmostEqual(this.Position, 8.0f + (timeout / 1000)))) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
+        if (TargetNPC is NPC && TargetNPC != null && TargetNPC.IsValid && ((TargetNPC.Position.AlmostEqual(this.Position, 3.0f + (timeout / 1000)) && TargetNPC.Steer.Output.Finished) || TargetNPC.Position == this.Position || (TargetNPC.Steer.Output.Finished && TargetNPC.Position.AlmostEqual(this.Position, 8.0f + (timeout / 1000)))) && readyToPlay) //&& TargetNPC.CurrentSequence.IsFinished == true 
         {
             //TargetNPC.Position = this.Position;
             timetick += 0.01f;
