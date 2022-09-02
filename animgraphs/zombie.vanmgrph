@@ -489,7 +489,7 @@
 										{
 											_class = "CFinishedCondition"
 											m_comparisonOp = 0
-											m_option = "FinishedConditionOption_OnFinished"
+											m_option = "FinishedConditionOption_OnAlmostFinished"
 											m_bIsFinished = true
 										},
 									]
@@ -529,7 +529,7 @@
 										{
 											_class = "CFinishedCondition"
 											m_comparisonOp = 0
-											m_option = "FinishedConditionOption_OnFinished"
+											m_option = "FinishedConditionOption_OnAlmostFinished"
 											m_bIsFinished = true
 										},
 									]
@@ -1007,7 +1007,7 @@
 					m_tagSpans = [  ]
 					m_sequenceName = "attack1"
 					m_playbackSpeed = 1.0
-					m_bLoop = true
+					m_bLoop = false
 				}
 			},
 		]
@@ -1061,7 +1061,7 @@
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
 				m_bNetwork = true
 				m_bUseMostRecentValue = false
-				m_bAutoReset = false
+				m_bAutoReset = true
 				m_bPredicted = false
 				m_bDefaultValue = false
 			},
