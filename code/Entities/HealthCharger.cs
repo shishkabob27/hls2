@@ -37,10 +37,10 @@ partial class HealthCharger : KeyframeEntity, IUse
 	public bool CanUse;
 
 	[Net]
-	public Vector3 Mins { get; set; } = new Vector3( 0, -32, -32 );
+	public Vector3 Mins { get; set; } = new Vector3( -32, -32, -32 );
 
 	[Net]
-	public Vector3 Maxs { get; set; } = new Vector3( 48, 32, 32 );
+	public Vector3 Maxs { get; set; } = new Vector3( 32, 32, 32 );
 
 	public override void Spawn()
 	{
@@ -55,17 +55,6 @@ partial class HealthCharger : KeyframeEntity, IUse
 		trigger.SetupPhysicsFromOBB( PhysicsMotionType.Static, Mins, Maxs );
 		trigger.Transmit = TransmitType.Always;
 		trigger.EnableTouchPersists = true;
-
-		/*
-		if ( !IsArmourCharger )
-		{
-			Model = HealthChargerModel;
-		}
-		else
-		{
-			Model = ArmourChargerModel;
-		}
-		*/
 	}
 
 	public bool IsUsable( Entity user )
