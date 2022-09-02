@@ -350,7 +350,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
     
 	public override void TakeDamage(DamageInfo info)
 	{
-
+        targetRotation = Rotation.From(((Position - info.Position) * -360).EulerAngles);
         var trace = Trace.Ray(EyePosition, EyePosition + ((Position - info.Position) * 70) * 2)
 			.WorldOnly()
 			.Ignore(this)
