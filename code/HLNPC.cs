@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 [Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
 public partial class NPC : AnimatedEntity, IUse, ICombat
 {
@@ -204,16 +206,21 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		TargetEntity = a.Entity;
 		*/
-        foreach (var ent in Entity.FindInSphere(EyePosition, 5000))
+
+        var allents = Entity.All.ToList();
+        allents.RemoveAll(ply => ply.Position.Distance(Position) > 512);
+
+        foreach (var ent in allents)
 		{
+
+            if (!InViewCone(ent))
+            {
+                continue;
+            }
             var b = Trace.Ray(EyePosition, ent.Position)
                 .Ignore(this)
                 .Run();
             if (b.Entity != ent)
-            {
-                continue;
-            }
-			if (!InViewCone(ent))
             {
                 continue;
             }
