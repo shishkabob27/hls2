@@ -29,13 +29,19 @@
 			var newName = tr.Surface.ResourceName;
 			switch (surf.ResourceName)
 			{
-				case "flesh":
-					newName = "surface/hl_flesh.surface";
-					break;
-				default:
-					newName = "surface/hl_default.surface";
-					break;
-			}
+                case "flesh":
+                    newName = "surface/hl_flesh.surface";
+                    break;
+                case "hl_tile":
+                    newName = "surface/hl_tile.surface";
+                    break;
+                case "hl_metal":
+                    newName = "surface/hl_metal.surface";
+                    break;
+                default:
+                    newName = "surface/hl_default.surface";
+                    break;
+            }
 			if (ResourceLibrary.TryGet<Surface>(newName, out var surfNew))
 			{
 				surf = surfNew;
@@ -121,10 +127,10 @@
 				case "flesh":
 					newName = "surface/hl_flesh.surface";
 					break;
-				case "tile":
+				case "hl_tile":
 					newName = "surface/hl_tile.surface";
 					break;
-				case "metal":
+				case "hl_metal":
 					newName = "surface/hl_metal.surface";
 					break;
 				default:
