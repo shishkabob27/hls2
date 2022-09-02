@@ -262,7 +262,6 @@ public partial class NPC : AnimatedEntity, IUse
 				//Delete();
 			}
 		}
-		Log.Info(Health);
         if (Health < -20)
         {
 			HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds);
