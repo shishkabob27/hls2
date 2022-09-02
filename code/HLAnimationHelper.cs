@@ -114,11 +114,19 @@ namespace Sandbox
 			get => Owner.GetAnimParameterFloat("health");
 			set => Owner.SetAnimParameter("health", value);
 		}
-		public bool IsScared
+
+        public bool Attack
+        {
+            get => Owner.GetAnimParameterBool("attack");
+            set => Owner.SetAnimParameter("attack", value);
+        }
+
+        public bool IsScared
 		{
 			get => Owner.GetAnimParameterBool("scared");
 			set => Owner.SetAnimParameter("scared", value);
 		}
+
 		public bool IsSitting
 		{
 			get => Owner.GetAnimParameterBool( "b_sit" );
@@ -155,8 +163,7 @@ namespace Sandbox
 			set => Owner.SetAnimParameter( "b_weapon_lower", value );
 		}
 
-        
-		public HLCombat.HoldTypes HoldType
+        public HLCombat.HoldTypes HoldType
 		{
 			get => (HLCombat.HoldTypes)Owner.GetAnimParameterInt( "holdtype" );
 			set => Owner.SetAnimParameter( "holdtype", (int)value );

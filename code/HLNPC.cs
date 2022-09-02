@@ -24,7 +24,12 @@ public partial class NPC : AnimatedEntity, IUse
 	NavPath Path;
 	public NavSteer Steer;
 
-	public override void Spawn()
+    public Entity TargetEntity;
+    public virtual int Classify()
+	{
+		return (int)HLCombat.Class.CLASS_NONE;
+	}
+    public override void Spawn()
     {
 		Tags.Add("npc", "playerclip");
 		base.Spawn();
