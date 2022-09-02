@@ -76,7 +76,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			return;
 		}
 
-        if (HLUtils.PlayerInRangeOf(Position, 2048) == false && DontSleep == false)
+        if (HLUtils.PlayerInRangeOf(Position, 1024) == false && DontSleep == false)
 			return;
 		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
 
@@ -210,9 +210,11 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
         var allents = Entity.All.OfType<ICombat>().ToList();
         allents.RemoveAll(allents => (allents as Entity).Position.Distance(Position) > 2048);
 
+		int i = 0;
         foreach (Entity ent in allents)
 		{
-
+			i++;
+			if (i > 8) continue;
             if (!InViewCone(ent))
             {
                 continue;
