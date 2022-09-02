@@ -1048,7 +1048,7 @@
 				m_bPredicted = false
 				m_fDefaultValue = 10.0
 				m_fMinValue = 0.0
-				m_fMaxValue = 1.0
+				m_fMaxValue = 100.0
 				m_bInterpolate = false
 			},
 			{
