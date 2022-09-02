@@ -785,7 +785,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -664.0, 176.0 ]
+					m_vecPosition = [ -672.0, 176.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1140579398
@@ -836,7 +836,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -664.0, 80.0 ]
+					m_vecPosition = [ -672.0, 80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1408912370
@@ -887,7 +887,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -656.0, -80.0 ]
+					m_vecPosition = [ -672.0, -80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1698220565
@@ -931,7 +931,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -664.0, 32.0 ]
+					m_vecPosition = [ -672.0, 32.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1880794173
@@ -953,7 +953,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -664.0, -16.0 ]
+					m_vecPosition = [ -672.0, -16.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1944122701
@@ -975,7 +975,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -664.0, 128.0 ]
+					m_vecPosition = [ -672.0, 128.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1973941465
