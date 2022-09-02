@@ -12,10 +12,13 @@ internal class Zombie : NPC
         
         SetModel("models/hl1/monster/zombie.vmdl");
         SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
-        EnableHitboxes = true; 
-
+        EnableHitboxes = true;
+        SetAnimGraph("animgraphs/zombie.vanmgrph");
         Tags.Add("npc", "playerclip");
     
     }
-    
+    public override void Think()
+    {
+        base.Think();
+    }
 }
