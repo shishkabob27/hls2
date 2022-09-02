@@ -15,7 +15,7 @@
 				{
 					_class = "CSpeedScaleAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -616.0, -80.0 ]
+					m_vecPosition = [ -464.0, -80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 181282783
@@ -623,7 +623,7 @@
 				{
 					_class = "CChoiceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -616.0, 160.0 ]
+					m_vecPosition = [ -464.0, -16.0 ]
 					m_nNodeID = 
 					{
 						m_id = 542670311
@@ -732,7 +732,7 @@
 				{
 					_class = "CDirectPlaybackAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 712.0, 256.0 ]
+					m_vecPosition = [ 80.0, -96.0 ]
 					m_nNodeID = 
 					{
 						m_id = 828034454
@@ -763,7 +763,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -480.0, 304.0 ]
+					m_vecPosition = [ -464.0, 112.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1047330709
@@ -785,7 +785,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -816.0, 352.0 ]
+					m_vecPosition = [ -664.0, 176.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1140579398
@@ -807,7 +807,7 @@
 				{
 					_class = "CChoreoAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 536.0, 256.0 ]
+					m_vecPosition = [ -80.0, -96.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1157224920
@@ -836,7 +836,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -816.0, 256.0 ]
+					m_vecPosition = [ -664.0, 80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1408912370
@@ -858,7 +858,7 @@
 				{
 					_class = "CRootAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 880.0, 256.0 ]
+					m_vecPosition = [ 240.0, -96.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1420390808
@@ -887,7 +887,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -808.0, -80.0 ]
+					m_vecPosition = [ -656.0, -80.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1698220565
@@ -909,7 +909,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -696.0, -272.0 ]
+					m_vecPosition = [ -464.0, -144.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1784961398
@@ -931,7 +931,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -816.0, 208.0 ]
+					m_vecPosition = [ -664.0, 32.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1880794173
@@ -953,7 +953,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -816.0, 160.0 ]
+					m_vecPosition = [ -664.0, -16.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1944122701
@@ -975,7 +975,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -816.0, 304.0 ]
+					m_vecPosition = [ -664.0, 128.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1973941465
@@ -997,7 +997,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -560.0, 16.0 ]
+					m_vecPosition = [ -464.0, 176.0 ]
 					m_nNodeID = 
 					{
 						m_id = 2007038557
