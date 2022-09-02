@@ -224,7 +224,6 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
     }
 	public virtual void ProcessEntity(Entity ent, int rel)
 	{
-		Log.Warning("Process wasn't overwritten, mistake maybe?");
 	}
 	public int GetRelationship(Entity ent)
 	{
@@ -344,9 +343,19 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
     
 	public override void TakeDamage(DamageInfo info)
 	{
-		
 
-		LastAttacker = info.Attacker;
+        var trace = Trace.Ray(EyePosition, EyePosition + ((Position - info.Position) * 70) * 2)
+			.WorldOnly()
+			.Ignore(this)
+			.Size(1.0f)
+			.Run();
+        if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+        {
+            //Log.Info( "Splat!" );
+            Decal.Place(decal, trace);
+        }
+
+        LastAttacker = info.Attacker;
 		LastAttackerWeapon = info.Weapon;
 		if (IsServer)
 		{

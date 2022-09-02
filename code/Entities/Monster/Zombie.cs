@@ -83,12 +83,13 @@ internal class Zombie : NPC
     {
         if (stringData == "claw" && IsServer)
         {
-            foreach (var tr in TraceBullet(EyePosition, EyePosition + EyeRotation.Forward * 70, 1))
+            foreach (var tr in TraceBullet(EyePosition, EyePosition + Rotation.Forward * 70, 1))
             {
-                var damageInfo = DamageInfo.FromBullet(tr.EndPosition, EyeRotation.Forward * 50, 5)
+                var damageInfo = DamageInfo.FromBullet(tr.EndPosition, Rotation.Forward * 50, 5)
                     .UsingTraceResult(tr)
-                    .WithAttacker(Owner)
-                    .WithWeapon(this);
+                    .WithAttacker(this);
+
+
                 Log.Info(damageInfo);
                 tr.Entity.TakeDamage(damageInfo);
             }
