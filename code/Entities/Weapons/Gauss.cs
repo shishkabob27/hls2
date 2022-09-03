@@ -1,12 +1,11 @@
-﻿using Sandbox;
-
-[Library("weapon_gauss"), HammerEntity]
+﻿[Library("weapon_gauss"), HammerEntity]
 [EditorModel("models/hl1/weapons/world/gauss.vmdl")]
 [Title("Gauss"), Category("Weapons")]
 partial class Gauss : HLWeapon
 {
     //stub
 
+    public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/gauss.vmdl");
     public override string ViewModelPath => "models/hl1/weapons/view/v_gauss.vmdl";
 
     public override int Bucket => 3;
@@ -20,6 +19,14 @@ partial class Gauss : HLWeapon
     Nullable<Sound> spinSound;
     bool spinning = false;
     float spintime = 0.0f;
+
+    public override void Spawn()
+    {
+        base.Spawn();
+
+        Model = WorldModel;
+        AmmoClip = 0;
+    }
 
     Particles Beam;
     public override void Simulate(Client owner)

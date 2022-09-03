@@ -1,0 +1,139 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "Skeleton"
+				children = 
+				[
+					{
+						_class = "Bone"
+						name = "hold_R"
+						origin = [ 0.0, 0.0, 0.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						do_not_discard = true
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "barrelchrome.vmat"
+								to = "materials/hl1/weapons/view/gauss/barrelchrome.vmat"
+							},
+							{
+								from = "body_rear.vmat"
+								to = "materials/hl1/weapons/world/gauss/body_rear.vmat"
+							},
+							{
+								from = "body_side.vmat"
+								to = "materials/hl1/weapons/world/gauss/body_side.vmat"
+							},
+							{
+								from = "bottle.vmat"
+								to = "materials/hl1/weapons/world/gauss/bottle.vmat"
+							},
+							{
+								from = "rubbertube.vmat"
+								to = "materials/hl1/weapons/world/gauss/rubbertube.vmat"
+							},
+							{
+								from = "stock.vmat"
+								to = "materials/hl1/weapons/world/gauss/stock.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						origin = [ -12.808889, 0.753548, 6.602203 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 35.617783, 12.564204, 13.430335 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						origin = [ -39.959496, 0.676862, 5.298067 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 17.81167, 8.116612, 7.05294 ]
+					},
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						origin = [ 11.197135, 0.742738, -0.628246 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 24.873812, 1.388535, 7.704722 ]
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "muzzle"
+						parent_bone = "box02"
+						relative_origin = [ -40.898712, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
+						weight = 1.0
+						ignore_rotation = false
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/w_gauss.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 180.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"reference_guass",
+								"w_gauss",
+							]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}
