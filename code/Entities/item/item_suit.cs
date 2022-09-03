@@ -28,10 +28,12 @@ public partial class Suit : ModelEntity
 
 		if ( other is not HLPlayer pl ) return;
 
-        pl.HasHEV = true;
-
-        Sound.FromScreen("bell");
-        Sound.FromScreen("hev_logon");
+        if (!pl.HasHEV)
+        {
+            pl.HasHEV = true;
+            Sound.FromScreen("bell");
+            Sound.FromScreen("hev_logon");
+        }
 
         OnPlayerTouch.Fire( other );
 
