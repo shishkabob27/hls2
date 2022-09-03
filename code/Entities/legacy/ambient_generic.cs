@@ -8,17 +8,18 @@
 [Title("ambient_generic"), Category("Sound"), Icon("volume_up")]
 public partial class SoundEventEntity : Entity
 {
+
+    [Flags]
     public enum Flags
     {
         Playeverywhere = 1,
         StartSilent = 16,
         IsNOTLooped = 32,
-        //StartUnbreakable = 524288,
     }
 
 
     [Property("spawnflags", Title = "Spawn Settings")]
-    public Flags SpawnSettings { get; set; } = Flags.Playeverywhere;
+    public Flags SpawnSettings { get; set; }
     /// <summary>
     /// Name of the sound to play.
     /// </summary>
@@ -112,7 +113,14 @@ public partial class SoundEventEntity : Entity
 
         using (Prediction.Off())
         {
-            PlayingSound = Sound.FromWorld(replacename, Position);
+            if (SpawnSettings.HasFlag(Flags.Playeverywhere))
+            {
+                PlayingSound = Sound.FromScreen(replacename);
+            }
+            else
+            {
+                PlayingSound = Sound.FromWorld(replacename, Position);
+            }
         }
 
     }
