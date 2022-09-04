@@ -37,7 +37,7 @@
 
 	public PickupTrigger PickupTrigger { get; protected set; }
 
-	[ConVar.Replicated] public static bool cl_hdcontent { get; set; } = false;
+	[ConVar.Replicated] public static bool cl_himodels { get; set; } = false;
 
 
 	public int AvailableAmmo()
