@@ -65,5 +65,12 @@ public partial class trigger_teleport : BaseTrigger
 		if(!Enabled) return;
 		OnEndTouch.Fire(toucher);
 	}
+
+	[Input]
+	void Kill()
+	{
+		if (IsServer)
+			Delete();
+	}
 }
 
