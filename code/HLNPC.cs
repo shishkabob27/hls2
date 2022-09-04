@@ -145,7 +145,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
         }
 		else
 		{
-			Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
+            if (LifeState == LifeState.Alive)
+                Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
 		}
 		
 		//var animHelper = new HLAnimationHelper(this);
@@ -371,7 +372,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
     
 	public override void TakeDamage(DamageInfo info)
 	{
-        targetRotation = Rotation.From(((Position - info.Position) * -360).EulerAngles.WithRoll(0).WithPitch(0));
+        if (LifeState == LifeState.Alive)
+            targetRotation = Rotation.From(((Position - info.Position) * -360).EulerAngles.WithRoll(0).WithPitch(0));
         var trace = Trace.Ray(EyePosition, EyePosition + ((Position - info.Position) * 70) * 2)
 			.WorldOnly()
 			.Ignore(this)
