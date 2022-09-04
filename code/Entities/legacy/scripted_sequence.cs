@@ -271,7 +271,7 @@ public partial class scripted_sequence : Entity
     bool preticker = false;
     bool preticker2 = false;
     bool preactionplayed = false;
-    bool startonspawncheckdone = false;
+    bool startonspawncheckdone = true; // disable start on spawn for now ;)
     float timesince = -1;
     [Event.Tick.Server]
     public void Tick()
