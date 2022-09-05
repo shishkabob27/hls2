@@ -6,6 +6,8 @@ public class HudRootPanel : RootPanel
 
 	public Scoreboard Scoreboard { get; set; }
 
+	public Subtitle Subtitle { get; set; }
+
 	public HudRootPanel()
 	{
 		Current = this;
@@ -26,6 +28,7 @@ public class HudRootPanel : RootPanel
 		Scoreboard = AddChild<Scoreboard>();
 		AddChild<VoiceList>();
 		AddChild<VoiceSpeaker>();
+		AddChild<Subtitle>();
 
 
 		AddChild<Menu>();

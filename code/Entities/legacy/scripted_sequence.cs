@@ -292,7 +292,7 @@ public partial class scripted_sequence : Entity
                 hasStarted = true;
             }
             else
-                BeginSequence();///if we dont just play the sequence 
+                BeginSequence();//if we dont just play the sequence 
 
             startonspawncheckdone = true;
         } 

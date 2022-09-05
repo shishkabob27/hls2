@@ -339,9 +339,11 @@ Subtitle {
     align-items: center;
     justify-content: center;
 
+    opacity:0;
+
     .subbackground {
         position: absolute;
-        background-color: rgb(0, 0, 0, 0.75);
+        background-color: rgb(0, 0, 0, 0.0);
         border-radius: 8px;
         bottom: 128px;
         min-width: 128px;
@@ -355,7 +357,8 @@ Subtitle {
             margin: 16px;
             width: 100%;
             font-family: 'Trebuchet MS';
-            text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+            //text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+            //outline-width:1;
         }
     }
 }
