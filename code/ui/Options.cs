@@ -1,19 +1,25 @@
+using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
 
-public class Menu : Panel
+[UseTemplate("/resource/templates/options.html")]
+public class Options : Panel
 {
 	public bool MenuOpen;
+	public bool bCviewroll;
 
-	public Panel MenuPanel;
-	public Panel MenuTabs;
-	public Panel MenuTab;
-	public Panel MainContent;
-	public Label OptionsText;
-	public Label TestText;
+    [ConVar.Client] public static float cl_rollangle { get; set; } = 0.0f;
+    //public Panel MenuPanel;
+    //public Panel MenuTabs;
+    //public Panel MenuTab;
+    //public Panel MainContent;
+    //public Label OptionsText;
+    //public Label TestText;
 
-	public Menu()
+    public Options()
 	{
+        StyleSheet.Load("/resource/styles/options.scss");
+        /*
 		MenuPanel = Add.Panel("menupanel");
 		OptionsText = Add.Label("Options", "optionstext");
 		MenuTabs = Add.Panel("menutabs");
@@ -44,19 +50,26 @@ public class Menu : Panel
 		var Csubtitile = new Checkbox();
 		Csubtitile.LabelText = "Enable subtitles";
 
-		MainContent.AddChild(Crollangle);
-		MainContent.AddChild(Cragdoll);
+        var A = new Button("s");
+        MainContent.AddChild(A);
+
+        MainContent.AddChild(Crollangle);
+
+		Crollangle.SetProperty("checked", "AHJ");
+        MainContent.AddChild(Cragdoll);
 		MainContent.AddChild(Chimodel);
 		MainContent.AddChild(Chiaudio);
 		MainContent.AddChild(Csubtitile);
-	}
+		*/
+    }
 
 	public override void Tick()
 	{
         base.Tick();
 
         SetClass( "active", MenuOpen );
-	}
+		cl_rollangle = (bCviewroll ? 0 : 2);
+    }
 
 	[Event.BuildInput]
 	public void ProcessClientInput( InputBuilder input )

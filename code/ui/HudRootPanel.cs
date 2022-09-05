@@ -31,7 +31,7 @@ public class HudRootPanel : RootPanel
 		AddChild<Subtitle>();
 
 
-		AddChild<Menu>();
+		AddChild<Options>();
 	}
 
 	public override void Tick()
