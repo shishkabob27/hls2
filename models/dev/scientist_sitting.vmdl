@@ -1,0 +1,381 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "sci2_hand1.vmat"
+								to = "materials/hl1/monster/scientist/sci2_hand1.vmat"
+							},
+							{
+								from = "sci2_knuckles.vmat"
+								to = "materials/hl1/monster/scientist/sci2_knuckles.vmat"
+							},
+							{
+								from = "sci3(back2).vmat"
+								to = "materials/hl1/monster/scientist/sci3(back2).vmat"
+							},
+							{
+								from = "sci3(chest).vmat"
+								to = "materials/hl1/monster/scientist/sci3(chest).vmat"
+							},
+							{
+								from = "sci3(l-leg).vmat"
+								to = "materials/hl1/monster/scientist/sci3(l-arm).vmat"
+							},
+							{
+								from = "sci3(pelvis).vmat"
+								to = "materials/hl1/monster/scientist/sci3(pelvis).vmat"
+							},
+							{
+								from = "sci3(r-arm).vmat"
+								to = "materials/hl1/monster/scientist/sci3(r-arm).vmat"
+							},
+							{
+								from = "sci3(r-leg).vmat"
+								to = "materials/hl1/monster/scientist/sci3(r-leg).vmat"
+							},
+							{
+								from = "sci3(shoe).vmat"
+								to = "materials/hl1/monster/scientist/sci3(shoe).vmat"
+							},
+							{
+								from = "sci3_collar1.vmat"
+								to = "materials/hl1/monster/scientist/sci3_collar1.vmat"
+							},
+							{
+								from = "sci3_legback1.vmat"
+								to = "materials/hl1/monster/scientist/sci3_legback1.vmat"
+							},
+							{
+								from = "sci3(l-arm).vmat"
+								to = "materials/hl1/monster/scientist/sci3(l-arm).vmat"
+							},
+							{
+								from = "sci3(c-tail).vmat"
+								to = "materials/hl1/monster/scientist/sci3(c-tail).vmat"
+							},
+							{
+								from = "sci2_teeth.vmat"
+								to = "materials/hl1/monster/scientist/sci2_teeth.vmat"
+							},
+							{
+								from = "sci2_tounge.vmat"
+								to = "materials/hl1/monster/scientist/sci2_tounge.vmat"
+							},
+							{
+								from = "sci3x_face1.vmat"
+								to = "materials/hl1/monster/scientist/sci3x_face1.vmat"
+							},
+							{
+								from = "sci3x_glasses1.vmat"
+								to = "materials/hl1/monster/scientist/sci3x_glasses1.vmat"
+							},
+							{
+								from = "sci3x_grim1.vmat"
+								to = "materials/hl1/monster/scientist/sci3x_grim1.vmat"
+							},
+							{
+								from = "sci3x_hside1.vmat"
+								to = "materials/hl1/monster/scientist/sci3x_hside1.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/SCI3_Template_Biped1(Headless_Body).smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"sci3_template_biped1_headless_body_",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/sci3_template_biped1(nerdhead).smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"sci3_template_biped1_headless_body_",
+								"sci2_template_biped1_einstienhead_",
+								"sci3_template_biped1_nerdhead_",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "sitting3"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/scientist_anims/sitting3.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "default"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								name = "bip02_pelvis"
+								parent_bone = "bip02_pelvis"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -6.675219, -4.815296, -6.468251 ]
+								hitbox_maxs = [ 5.125072, 5.170918, 6.832596 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_l_leg"
+								parent_bone = "bip02_l_leg"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 6
+								hitbox_mins = [ -0.5, -5.6908, -3.553321 ]
+								hitbox_maxs = [ 18.719671, 3.617196, 3.432955 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_l_leg1"
+								parent_bone = "bip02_l_leg1"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 6
+								hitbox_mins = [ -0.5, -3.777225, -2.973722 ]
+								hitbox_maxs = [ 16.967281, 2.213951, 2.415431 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_l_foot"
+								parent_bone = "bip02_l_foot"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 6
+								hitbox_mins = [ -0.5, -2.293018, -3.145531 ]
+								hitbox_maxs = [ 3.626887, 8.179523, 1.459369 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_r_leg"
+								parent_bone = "bip02_r_leg"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 7
+								hitbox_mins = [ -0.5, -5.966165, -3.772449 ]
+								hitbox_maxs = [ 18.649687, 3.588289, 3.394408 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_r_leg1"
+								parent_bone = "bip02_r_leg1"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 7
+								hitbox_mins = [ -0.5, -3.854765, -2.585094 ]
+								hitbox_maxs = [ 16.979456, 2.161301, 2.985309 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_r_foot"
+								parent_bone = "bip02_r_foot"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 7
+								hitbox_mins = [ -0.5, -2.293969, -1.389462 ]
+								hitbox_maxs = [ 3.61774, 8.178465, 2.990268 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_spine"
+								parent_bone = "bip02_spine"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 3
+								hitbox_mins = [ -0.5, -3.354992, -6.83168 ]
+								hitbox_maxs = [ 5.318531, 0.899258, 6.918987 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_spine1"
+								parent_bone = "bip02_spine1"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 2
+								hitbox_mins = [ -0.5, -3.903847, -6.204967 ]
+								hitbox_maxs = [ 5.701839, 5.672519, 5.918355 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_spine2"
+								parent_bone = "bip02_spine2"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 2
+								hitbox_mins = [ -0.5, -3.655415, -5.97687 ]
+								hitbox_maxs = [ 9.181408, 4.937926, 5.448448 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_head"
+								parent_bone = "bip02_head"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 1
+								hitbox_mins = [ -0.5, -3.218555, -3.46741 ]
+								hitbox_maxs = [ 9.512499, 6.23109, 4.114946 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_l_arm"
+								parent_bone = "bip02_l_arm"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 4
+								hitbox_mins = [ -0.5, -3.177065, -1.878193 ]
+								hitbox_maxs = [ 5.478314, 2.952372, 1.585262 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_l_arm1"
+								parent_bone = "bip02_l_arm1"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 4
+								hitbox_mins = [ -0.5, -3.405446, -1.954396 ]
+								hitbox_maxs = [ 12.957428, 2.065073, 2.466284 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_l_arm2"
+								parent_bone = "bip02_l_arm2"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 4
+								hitbox_mins = [ -0.5, -2.885211, -2.284794 ]
+								hitbox_maxs = [ 11.550413, 2.106232, 1.70675 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_l_hand"
+								parent_bone = "bip02_l_hand"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 4
+								hitbox_mins = [ -0.5, -1.649845, -1.969818 ]
+								hitbox_maxs = [ 4.120747, 1.793921, 1.779458 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_r_arm"
+								parent_bone = "bip02_r_arm"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 7
+								hitbox_mins = [ -0.5, -3.08797, -1.447118 ]
+								hitbox_maxs = [ 5.896871, 2.979826, 2.456937 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_r_arm1"
+								parent_bone = "bip02_r_arm1"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 7
+								hitbox_mins = [ -0.5, -3.351534, -2.714964 ]
+								hitbox_maxs = [ 12.920549, 2.402048, 2.116001 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_r_arm2"
+								parent_bone = "bip02_r_arm2"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 7
+								hitbox_mins = [ -0.5, -2.95357, -1.976249 ]
+								hitbox_maxs = [ 11.255957, 2.222526, 2.455561 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "bip02_r_hand"
+								parent_bone = "bip02_r_hand"
+								surface_property = "flesh"
+								translation_only = false
+								group_id = 7
+								hitbox_mins = [ -0.5, -1.853239, -1.778949 ]
+								hitbox_maxs = [ 3.932102, 1.599161, 2.080249 ]
+							},
+						]
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

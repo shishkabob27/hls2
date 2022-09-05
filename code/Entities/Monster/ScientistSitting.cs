@@ -1,5 +1,5 @@
 ﻿[Library("monster_sitting_scientist"), HammerEntity]
-[EditorModel("models/hl1/monster/scientist/scientist_01.vmdl")]
+[EditorModel("models/dev/scientist_sitting.vmdl")]
 [Title("Scientist"), Category("Monsters")]
 public class ScientistSitting : NPC
 {
