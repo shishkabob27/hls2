@@ -171,7 +171,7 @@ public partial class Scientist : NPC
             //}
 
 
-            if (MODE == "MODE_IDLE")
+            if (MODE == "MODE_IDLE" && !SpawnSettings.HasFlag(Flags.PreDisaster))
             {
                 //CurrentSound.Stop();
                 //CurrentSound = PlaySound("sounds/hl1/scientist/sci_follow.sound").SetPitch(VoicePitch / 100);

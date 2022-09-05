@@ -8,7 +8,27 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public bool InPriorityScriptedSequence = false;
 	public bool DontSleep = false;
 	public bool NoNav = false;
-    
+
+    [Flags]
+	public enum Flags
+	{
+		WaitTillSeen = 1,
+		Gag = 2,
+		MonsterClip = 4,
+		NoWreckage = 8,
+		Prisoner = 16,
+		StartInactive = 64,
+		WaitForScript = 128,
+		PreDisaster = 256,
+		FadeCorpse = 512,
+		NotInDeathmatch = 2048
+	}
+
+	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
+
+	[Property("spawnsetting", Title = "Spawn Settings")]
+	public Flags SpawnSettings { get; set; }
+
 	[ConVar.Replicated]
 	public static bool nav_drawpath { get; set; }
 
@@ -36,6 +56,11 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	}
     public override void Spawn()
     {
+		if (SpawnSettings.HasFlag(Flags.NotInDeathmatch) && hl_gamemode == "deathmatch" && IsServer)
+		{
+			Delete();
+		}
+
 		Tags.Add("npc", "playerclip");
 		base.Spawn();
 		animHelper = new HLAnimationHelper(this);
@@ -126,7 +151,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
         }
 		else
 		{
-			Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
+            if (LifeState == LifeState.Alive)
+                Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
 		}
 		
 		//var animHelper = new HLAnimationHelper(this);
@@ -352,7 +378,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
     
 	public override void TakeDamage(DamageInfo info)
 	{
-        targetRotation = Rotation.From(((Position - info.Position) * -360).EulerAngles.WithRoll(0).WithPitch(0));
+        if (LifeState == LifeState.Alive)
+            targetRotation = Rotation.From(((Position - info.Position) * -360).EulerAngles.WithRoll(0).WithPitch(0));
         var trace = Trace.Ray(EyePosition, EyePosition + ((Position - info.Position) * 70) * 2)
 			.WorldOnly()
 			.Ignore(this)
@@ -381,13 +408,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		LastDamage = info;
 
-		if (Health <= 0f)
+		if (Health <= 0f && LifeState == LifeState.Alive)
 		{
-			if (LifeState == LifeState.Alive)
-			{
 				LifeState = LifeState.Dead;
 				//Delete();
-			}
 		}
         if (Health < -20)
         {
