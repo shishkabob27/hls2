@@ -24,7 +24,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		NotInDeathmatch = 2048
 	}
 
-	// </summary>
+	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
+
 	[Property("spawnsetting", Title = "Spawn Settings")]
 	public Flags SpawnSettings { get; set; }
 
@@ -55,6 +56,11 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	}
     public override void Spawn()
     {
+		if (SpawnSettings.HasFlag(Flags.NotInDeathmatch) && hl_gamemode == "deathmatch" && IsServer)
+		{
+			Delete();
+		}
+
 		Tags.Add("npc", "playerclip");
 		base.Spawn();
 		animHelper = new HLAnimationHelper(this);
