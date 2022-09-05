@@ -22,11 +22,13 @@
   "chaptertext.c19": "ENDGAME",
 
 
-  //c2p0 - Barney
+  //c1p0 - Barney
   "BA_LATE": "Morning, Mr. Freeman. Looks like you're running late.",
-  "BA_HEADDOWN": "You got the wrong airlock, Mr. Freeman. You know I can't let you through here.",
+
+  //c2p0 - Barney
   "BA_DESK": "Hey, Mr. Freeman. I had a bunch of messages for you, but we had a system crash about 20 minutes ago and I'm still trying to find my files. Just one of those days, I guess. They were having some problems down in the test chamber, too, but I think that's all straightened out. They told me to make sure you headed down there as soon as you got into your hazard suit.",
   "BA_BUTTON": "Come on, Gordon, are you trying to get me into trouble?",
+  "BA_HEADDOWN": "You got the wrong airlock, Mr. Freeman. You know I can't let you through here.",
   "BA_HEVNO": "Sorry, Mr. Freeman, I got explicit orders not to let you through without your hazard suit on.",
   "BA_HEVYES": "Go right on through sir. Looks like you're in the barrel today.",
 
