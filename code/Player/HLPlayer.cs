@@ -38,6 +38,7 @@
 	public Vector3 WishVelocity { get; set; }
 
 	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
+	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
 	public HLPlayer()
 	{

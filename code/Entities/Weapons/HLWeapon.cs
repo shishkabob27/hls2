@@ -1,6 +1,8 @@
 ﻿partial class HLWeapon : BaseWeapon, IRespawnableEntity
 {
-	public virtual AmmoType AmmoType => AmmoType.Pistol;
+    [ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
+
+    public virtual AmmoType AmmoType => AmmoType.Pistol;
 	public virtual AmmoType AltAmmoType => AmmoType.SMGGrenade;
 	public virtual int ClipSize => 16;
 	public virtual int AltClipSize => 1; // 1 because all hl1 alts don't have reloadable clips but i'm adding it just in case, yknow for modding and why not.
@@ -264,7 +266,7 @@
 				tr.Surface.DoHLBulletImpact( tr );
 				
 
-				if ( tr.Distance > 200 )
+				if ( tr.Distance > 200 && !hl_sfmmode)
 				{
 					CreateTracerEffect( tr.EndPosition );
 				}
@@ -339,12 +341,15 @@
 		if ( string.IsNullOrEmpty( ViewModelPath ) )
 			return;
 
-		ViewModelEntity = new HLViewModel();
-		ViewModelEntity.Position = Position;
-		ViewModelEntity.Owner = Owner;
-		ViewModelEntity.EnableViewmodelRendering = true;
-		ViewModelEntity.SetModel( ViewModelPath );
-		ViewModelEntity.SetAnimParameter( "deploy", true );
+		if (!hl_sfmmode)
+		{
+            ViewModelEntity = new HLViewModel();
+            ViewModelEntity.Position = Position;
+            ViewModelEntity.Owner = Owner;
+            ViewModelEntity.EnableViewmodelRendering = true;
+            ViewModelEntity.SetModel(ViewModelPath);
+            ViewModelEntity.SetAnimParameter("deploy", true);
+        }
 	}
 
 	public override void CreateHudElements()
