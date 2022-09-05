@@ -245,6 +245,11 @@
 		}
 	}
 
+	public void Deafen(float strength)
+	{
+		//Audio.SetEffect("flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength);
+	}
+
 	public void SwitchToBestWeapon()
 	{
 		var best = Children.Select( x => x as HLWeapon)
