@@ -10,6 +10,8 @@ public class Options : Panel
 	public bool Dragging;
     public bool MenuOpen;
 	public bool bCviewroll { get; set; }
+	public bool bCsubtitle { get; set; }
+	public bool bCliveupdate { get; set; }
 	public float fChudScale { get; set; }
 	public Panel MenuPanel { get; set; }
 
@@ -29,7 +31,7 @@ public class Options : Panel
 		Style.Right = 0;
 		Style.Top = 0;
 		Style.Bottom = 0;
-		AcceptsFocus = true;
+		//AcceptsFocus = true;
 		Focus();
 		/*
 		MenuPanel = Add.Panel("menupanel");
@@ -78,12 +80,20 @@ public class Options : Panel
 	public override void Tick()
 	{
 		base.Tick();
-
+		if (MenuOpen && bCliveupdate)
+		{
+			updateCvars();
+		}
         SetClass("active", MenuOpen);
-		HLWalkController.cl_rollangle = (bCviewroll ? 2 : 0);
-		HLGame.hl_hud_scale = fChudScale;
+    }
+	public void updateCvars()
+	{
 
+        HLWalkController.cl_rollangle = (bCviewroll? 2 : 0);
+		HLGame.hl_hud_scale = fChudScale;
+        HLGame.cc_subtitles = (bCsubtitle? 1 : 0);
 	}
+
 
 	[Event.BuildInput]
 	public void ProcessClientInput(InputBuilder input)
@@ -95,7 +105,12 @@ public class Options : Panel
 			MenuOpen = !MenuOpen;
 		}
 	}
-	public void Close()
+    public void OK()
+    {
+		updateCvars();
+		Close();
+    }
+    public void Close()
 	{
 		MenuOpen = !MenuOpen;
 	}
