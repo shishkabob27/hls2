@@ -80,7 +80,9 @@ public class Options : Panel
 	public override void Tick()
 	{
 		base.Tick();
-		if (MenuOpen && bCliveupdate)
+		Drag();
+
+        if (MenuOpen && bCliveupdate)
 		{
 			updateCvars();
 		}
