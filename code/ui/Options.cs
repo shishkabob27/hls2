@@ -11,7 +11,7 @@ public class Options : Panel
     public bool MenuOpen;
 	public bool bCviewroll { get; set; }
 	public bool bCsubtitle { get; set; }
-	public bool bCliveupdate { get; set; }
+	public bool bCliveupdate { get; set; } = true;
 	public float fChudScale { get; set; }
 	public Panel MenuPanel { get; set; }
 
