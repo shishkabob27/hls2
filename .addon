@@ -178,7 +178,7 @@
         "DisplayName": "Gamemode",
         "DefaultValue": "campaign"
       },
-      "hl_difficulty": {
+      "hl_skill": {
         "DisplayType": "Choice",
         "Choices": [
           {
@@ -194,9 +194,9 @@
             "Name": "Hard"
           }
         ],
-        "ConVarName": "hl_difficulty",
+        "ConVarName": "hl_skill",
         "DisplayName": "Difficulty",
-        "DefaultValue": "easy"
+        "DefaultValue": "medium"
       },
       "sv_enablebunnyhopping": {
         "DisplayType": "Boolean",
