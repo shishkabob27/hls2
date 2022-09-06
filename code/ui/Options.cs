@@ -6,7 +6,7 @@ using System;
 [UseTemplate("/resource/templates/options.html")]
 public class Options : Panel
 {
-    public int ZIndex = 1;
+    public int ZIndex { get; set; } = 0;
 	public bool Dragging;
     public bool MenuOpen;
 	public bool bCviewroll { get; set; }
