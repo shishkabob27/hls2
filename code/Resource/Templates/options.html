@@ -1,21 +1,29 @@
 ﻿<link rel="stylesheet" href="Resource/Styles/options.scss" />
-<root>
-    <div class="menupanel">
-        <text class="optionstext">Options</text>
-        <div class="menutabs">
-            <div class="menutab">
-                <text>General</text>
-            </div>
-        </div>
-        <div class="maincontent">
-            <checkbox class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</checkbox>
-            <checkbox class="cragdoll">Enable ragdolls</checkbox>
-            <checkbox class="chimodel">Enable HD models</checkbox>
-            <checkbox class="chiaudio">Enable HD audio</checkbox>
-            <checkbox class="csubtitle">Enable Subtitles</checkbox>
-            <text>Hud Scale</text>
-            <SliderEntry min="0" max="10" @value="fChudScale">Hud Scale</SliderEntry>
+<root style="width: 512px; height: 406px;">
+
+        <div class="menubar">
+            <text class="optionstext">Options</text>
+            <button class="dragbutton" onmousedown="down()" onmouseup="up()" onmousemove="Drag()"></button>
+            <button class="closebutton" onclick="Close()">X</button>
         </div>
 
-    </div>
+        <tabcontrol @activeTab="SortOrder">
+            <tab tabName="general" slot="tab" tabtext="General">
+                <div class="maincontent">
+                    <checkbox class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</checkbox>
+                    <checkbox class="cragdoll">Enable ragdolls</checkbox>
+                    <checkbox class="chimodel">Enable HD models</checkbox>
+                    <checkbox class="chiaudio">Enable HD audio</checkbox>
+                    <checkbox class="csubtitle">Enable Subtitles</checkbox>
+                    <text>Hud Scale</text>
+                    <SliderScaleEntry min="0" max="5" step="0" mintext="Auto" maxtext="5.00" @value="fChudScale"></SliderScaleEntry>
+                </div>
+
+            </tab>
+            <tab tabName="test" slot="tab" tabtext="Test"></tab>
+
+        </tabcontrol>
+        <div style="margin: 4px; justify-content: flex-end;">
+            <button onclick="Close()">Close</button>
+        </div>
 </root>
