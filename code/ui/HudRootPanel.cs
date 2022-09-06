@@ -30,8 +30,6 @@ public class HudRootPanel : RootPanel
 		AddChild<VoiceSpeaker>();
 		AddChild<Subtitle>();
 
-
-		AddChild<Options>();
 	}
 
 	public override void Tick()
@@ -41,6 +39,12 @@ public class HudRootPanel : RootPanel
 
 	protected override void UpdateScale( Rect screenSize )
 	{
-		base.UpdateScale( screenSize );
+		if (HLGame.hl_hud_scale > 0)
+		{
+            Scale = HLGame.hl_hud_scale;
+        } else
+		{
+            base.UpdateScale(screenSize);
+        }
 	}
 }

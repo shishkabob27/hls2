@@ -6,9 +6,10 @@ using Sandbox.UI.Construct;
 public class Options : Panel
 {
 	public bool MenuOpen;
-	public bool bCviewroll;
+	public bool bCviewroll { get; set; }
+	public float fChudScale { get; set; }
 
-    [ConVar.Client] public static float cl_rollangle { get; set; } = 0.0f;
+    //[ConVar.Client] public static float cl_rollangle { get; set; } = 0.0f;
     //public Panel MenuPanel;
     //public Panel MenuTabs;
     //public Panel MenuTab;
@@ -16,6 +17,7 @@ public class Options : Panel
     //public Label OptionsText;
     //public Label TestText;
 
+	
     public Options()
 	{
         StyleSheet.Load("/resource/styles/options.scss");
@@ -68,7 +70,9 @@ public class Options : Panel
         base.Tick();
 
         SetClass( "active", MenuOpen );
-		cl_rollangle = (bCviewroll ? 0 : 2);
+		HLWalkController.cl_rollangle = (bCviewroll ? 2 : 0);
+		HLGame.hl_hud_scale = fChudScale;
+		
     }
 
 	[Event.BuildInput]

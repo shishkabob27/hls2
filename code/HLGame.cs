@@ -13,23 +13,23 @@ partial class HLGame : Game
 {
 	[Net]
 	HLHud Hud { get; set; }
+	HLGUI GUI { get; set; }
 
 	StandardPostProcess postProcess;
 
-	[ConVar.Replicated] public static string hl_difficulty { get; set; } = "medium";
-	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
 
 
-	public HLGame()
+    public HLGame()
 	{
 		//
 		// Create the HUD entity. This is always broadcast to all clients
 		// and will create the UI panels clientside.
 		//
 		if ( IsServer )
-		{
-			Hud = new HLHud();
-		}
+        {
+            GUI = new HLGUI();
+            Hud = new HLHud();
+        }
 
 		if ( IsClient )
 		{
