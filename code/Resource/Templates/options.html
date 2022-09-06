@@ -10,17 +10,38 @@
         <tabcontrol @activeTab="SortOrder">
             <tab tabName="general" slot="tab" tabtext="General">
                 <div class="maincontent">
-                    <checkbox class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</checkbox>
                     <checkbox class="cragdoll">Enable ragdolls</checkbox>
-                    <checkbox class="chimodel">Enable HD models</checkbox>
-                    <checkbox class="chiaudio">Enable HD audio</checkbox>
-                    <checkbox class="csubtitle" @checked="bCsubtitle">Enable Subtitles</checkbox>
                     <checkbox class="csubtitle" @checked="bCliveupdate">Enable live setting updates</checkbox>
+                </div>
+            </tab>
+
+            <tab tabName="video" slot="tab" tabtext="Video">
+                <div class="maincontent">
+                    <checkbox class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</checkbox>
+                    <checkbox class="chimodel">Enable HD models</checkbox>
+                    <checkbox class="clowviolence">Enable Low Violence</checkbox>
+                    <checkbox class="csubtitle" @checked="bCsubtitle">Enable Subtitles</checkbox>
                     <text>Hud Scale</text>
                     <SliderScaleEntry min="0" max="5" step="0" mintext="Auto" maxtext="5.00" @value="fChudScale"></SliderScaleEntry>
                 </div>
-
             </tab>
+
+            <tab tabName="audio" slot="tab" tabtext="Audio">
+                <div class="maincontent">
+                    <checkbox class="chiaudio">Enable HD audio</checkbox>
+                </div>
+            </tab>
+
+            <tab tabName="mp" slot="tab" tabtext="Multiplayer">
+                <div class="maincontent">
+                </div>
+            </tab>
+
+            <tab tabName="admin" slot="tab" tabtext="Admin">
+                <div class="maincontent">
+                </div>
+            </tab>
+
             <tab tabName="test" slot="tab" tabtext="Test">
                 <div class="maincontent">
                     <text>Label</text>
