@@ -1,6 +1,6 @@
 ﻿
 $yellow: #ff0;
-$orange: rgb(255, 196, 0);
+$orange: #ffd300;
 
 @import "_crosshair.scss";
 @import "_damageindicator.scss";
@@ -60,34 +60,6 @@ vitals
     bottom: 16px;
 }
 
-.top-middle
-{
-    top: 16px;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-
-    gamehud
-    {
-        font-family: Trebuchet MS;
-        font-size: 20px;
-        flex-direction: column;
-        justify-content: center;
-
-        .game-state
-        {
-            font-size: 12px;
-            font-weight: 400;
-            text-transform: uppercase;
-        }
-
-        .game-timer
-        {
-            font-size: 32px;
-        }
-    }
-}
-
 iconpanel {
     mix-blend-mode: lighten;
     background-color: $orange;
@@ -99,7 +71,7 @@ iconpanel {
     background-color: rgba(0, 0, 0, 0);
     background-position-x: center;
     background-position-y: center;
-    background-image-tint: #fb0;
+    background-image-tint: $orange;
 
     &.invisible {
         min-width: 0px;
@@ -215,13 +187,10 @@ iconpanel {
 
 
 
-healthhud, armourhud
-{
-
+healthhud, armourhud {
     //min-width: 150px;
-    iconpanel
-    {
-        margin-right:0px;
+    iconpanel {
+        margin-right: 0px;
         text-align: left;
         height: 48px;
         width: 48px;
@@ -230,11 +199,10 @@ healthhud, armourhud
         background-color: rgba(0, 0, 0, 0);
         background-position-x: center;
         background-position-y: center;
-        background-image-tint: #fb0;
-
+        background-image-tint: $orange;
     }
-    label
-    {
+
+    label {
         text-align: right;
         width: 64px;
     }
@@ -300,7 +268,7 @@ flashlightui {
     top: 16px;
     right: 8px;
     color: $orange;
-    background-image-tint: #fb0;
+    background-image-tint: $orange;
     mix-blend-mode: lighten;
     background-image: url("/ui/flashlight_off.png");
     background-repeat: no-repeat;
@@ -314,19 +282,6 @@ flashlightui {
 
     &.invisible {
         opacity: 0;
-    }
-}
-
-.game-end
-{
-    chatbox, .top-middle
-    {
-        z-index: 1000;
-    }
-
-    inventorybar, .bottom-right, .bottom-left
-    {
-        display: none;
     }
 }
 
