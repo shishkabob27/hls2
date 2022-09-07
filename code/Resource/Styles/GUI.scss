@@ -201,7 +201,7 @@ IconPanel {
         width: 15px;
         height: 15px;
         border: 1px solid rgba(103,100,88,255);
-        border-radius: 1px; 
+        border-radius: 1px;
         margin-right: 8px;
         color: white;
 
@@ -209,6 +209,7 @@ IconPanel {
             transform: translate(-3 -5);
             font-family: Webdings;
             font-size: 22px;
+            color: white;
         }
     }
 
@@ -243,7 +244,7 @@ IconPanel {
             .checklabel {
                 font-family: Webdings;
                 font-size: 22px;
-                color: #cfd6ca;
+                color: white;
             }
         }
 
