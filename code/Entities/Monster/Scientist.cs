@@ -83,6 +83,7 @@ public partial class Scientist : NPC
             return;
         //VoicePitch = SetPitch();
         var ply = HLUtils.ClosestPlayerTo(Position);
+        
         if (MODE == "MODE_FOLLOW") 
         {
             if (FollowTarget != null && FollowTarget.IsValid && FollowTarget.Position.Distance(Position) > 80)

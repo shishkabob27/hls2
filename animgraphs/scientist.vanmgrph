@@ -1720,8 +1720,8 @@
 				value = 
 				{
 					_class = "CDirectPlaybackAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 1424.0, 160.0 ]
+					m_sName = "mainD"
+					m_vecPosition = [ 720.0, -192.0 ]
 					m_nNodeID = 
 					{
 						m_id = 828034454
@@ -1732,7 +1732,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 1157224920
+							m_id = 254143332
 						}
 						m_outputID = 
 						{
@@ -2204,7 +2204,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 254143332
+							m_id = 828034454
 						}
 						m_outputID = 
 						{
@@ -2360,7 +2360,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 828034454
+							m_id = 1157224920
 						}
 						m_outputID = 
 						{

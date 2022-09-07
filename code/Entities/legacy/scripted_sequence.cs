@@ -153,8 +153,6 @@ public partial class scripted_sequence : Entity
                         }
                         else if (ActionAnimation != "null")
                         {
-                            TargetNPC.SetAnimGraph("");
-                            TargetNPC.UseAnimGraph = false;
                         }
                     }
                     break;
@@ -170,8 +168,6 @@ public partial class scripted_sequence : Entity
                         }
                         else if (ActionAnimation != "null")
                         {
-                            TargetNPC.SetAnimGraph("");
-                            TargetNPC.UseAnimGraph = false;
                         }
                     }
                     break;
@@ -179,8 +175,6 @@ public partial class scripted_sequence : Entity
                     TargetNPC.Position = this.Position;
                     if (ActionAnimation != "null")
                     {
-                        TargetNPC.SetAnimGraph("");
-                        TargetNPC.UseAnimGraph = false;
 
                         //TargetNPC.targetRotation = this.Rotation;
                     }
@@ -199,8 +193,6 @@ public partial class scripted_sequence : Entity
                         }
                         else if (ActionAnimation != "null")
                         {
-                            TargetNPC.SetAnimGraph("");
-                            TargetNPC.UseAnimGraph = false;
                             TargetNPC.CurrentSequence.Name = ActionAnimation;
 
                             //TargetNPC.targetRotation = this.Rotation;
@@ -316,7 +308,6 @@ public partial class scripted_sequence : Entity
                     TargetNPC.InScriptedSequence = true;
                     ticker2 = true;
                     timetick = 0;
-                    TargetNPC.CurrentSequence.Name = ActionAnimation;
                     //TargetNPC.targetRotation = this.Rotation;
                 }
 
@@ -327,11 +318,12 @@ public partial class scripted_sequence : Entity
                     OnBeginSequence.Fire(this);
 
                     // this is ass, when is direct playback in animgraph coming in?
-                    TargetNPC.SetAnimGraph("");
-                    TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
+                    //TargetNPC.SetAnimGraph("");
+                    //TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
                     TargetNPC.CurrentSequence.Name = ActionAnimation;
-                    TargetNPC.PlaybackRate = 0.5f;
                     timeduration = TargetNPC.CurrentSequence.Duration;
+                    TargetNPC.DirectPlayback.Play(ActionAnimation);
+                    TargetNPC.PlaybackRate = 0.5f;
                     TargetNPC.targetRotationOVERRIDE = this.Rotation;
 
                     TargetNPC.targetRotation = this.Rotation;
@@ -349,19 +341,19 @@ public partial class scripted_sequence : Entity
                     TargetNPC.Position = this.Position;
                     TargetNPC.InScriptedSequence = true;
                     preticker2 = true;
-                    TargetNPC.CurrentSequence.Name = PreActionAnimation;
                     //TargetNPC.targetRotation = this.Rotation;
                 }
 
                 if (ticker == false) // we've reached our goal, run this once, wait for next tick over to play the animation
                 {
                     preticker = true;
-                    //Log.Info("script sequence target reached");
 
                     // this is ass, when is direct playback in animgraph coming in?
-                    TargetNPC.SetAnimGraph("");
-                    TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
-                    TargetNPC.CurrentSequence.Name = PreActionAnimation;
+                    //TargetNPC.SetAnimGraph("");
+                    //TargetNPC.UseAnimGraph = false; // use animgraph = false does nothing... why?
+                    TargetNPC.CurrentSequence.Name = ActionAnimation;
+                    timeduration = TargetNPC.CurrentSequence.Duration;
+                    TargetNPC.DirectPlayback.Play(ActionAnimation);
                     TargetNPC.PlaybackRate = 0.5f;
                     TargetNPC.targetRotationOVERRIDE = this.Rotation;
 
@@ -381,6 +373,7 @@ public partial class scripted_sequence : Entity
             if (PostActionAnimation != "null" && ticker && ticker2)
             {
                 TargetNPC.CurrentSequence.Name = PostActionAnimation;
+                TargetNPC.DirectPlayback.Play(PostActionAnimation);
                 ticker = false;
                 ticker2 = false;
             }
@@ -389,8 +382,6 @@ public partial class scripted_sequence : Entity
                 timesince = Time.Now + DelayLegacy;
                 if (TargetNPC.NPCAnimGraph != "")
                 {
-                    TargetNPC.SetAnimGraph(TargetNPC.NPCAnimGraph);
-                    TargetNPC.UseAnimGraph = true;
                 }
             }
             TargetNPC.Speed = TargetNPC.WalkSpeed;

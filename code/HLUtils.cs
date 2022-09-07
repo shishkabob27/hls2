@@ -45,4 +45,12 @@
         if (ent is ModelEntity) return (ent as ModelEntity).CollisionWorldSpaceCenter;
         return ent.WorldSpaceBounds.Center;
     }
+
+    static public float VecToYaw(Vector3 vec)
+    {
+        var yaw = (int)(Math.Atan2(vec[1], vec[0]) * 180 / Math.PI);
+        if (yaw < 0)
+            yaw += 360;
+        return yaw;
+    }
 }

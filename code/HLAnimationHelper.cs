@@ -71,8 +71,13 @@ namespace Sandbox
 				Owner.SetAnimParameter( "aim_body_yaw", ang.yaw );
 			}
 		}
+        public float Neck
+        {
+            get => Owner.GetAnimParameterFloat("neck");
+            set => Owner.SetAnimParameter("neck", value);
+        }
 
-		public float AimEyesWeight
+        public float AimEyesWeight
 		{
 			get => Owner.GetAnimParameterFloat( "aim_eyes_weight" );
 			set => Owner.SetAnimParameter( "aim_eyes_weight", value );

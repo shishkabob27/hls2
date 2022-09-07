@@ -178,7 +178,43 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
         }
 		if (LifeState == LifeState.Dead)
 			return;
+        if (animHelper.VoiceLevel != 0)
+        {
+            var closestENTs = Entity.All.OfType<ICombat>().OfType<Entity>().ToList();
+            closestENTs.Remove(this);
+            var ck = closestENTs.OrderBy(o => (o.Position.Distance(Position)));
+            var closestENT = ck.First();
 
+            var a = Rotation.LookAt(closestENT.Position.WithZ(0) - Position.WithZ(0), Vector3.Up).Yaw();//HLUtils.VecToYaw(closestENT.Position.WithZ(0) - Position.WithZ(0));
+
+            //Log.Info(closestENT.Position - Position);
+            var c = Rotation.Yaw();
+            var d = a - c;
+            //if (a > 0) d = a - c;
+            //if (a < 0) d = a + c;
+            var b = (d / 90) * -1;
+
+            if (b > 1) b -= 2;
+            if (b < -1) b += 2;
+
+            if (b > 1) b -= 2;
+            if (b < -1) b += 2;
+
+            if (b > 1) b -= 2;
+            if (b < -1) b += 2;
+
+            if (b > 1) b -= 2;
+            if (b < -1) b += 2;
+
+            Log.Info(c);
+            Log.Info(a);
+            Log.Info(b);
+            animHelper.Neck = b;
+        }
+        else
+        {
+            animHelper.Neck = 0;
+        }
         //See();
         Think();
 		SoundProcess();
