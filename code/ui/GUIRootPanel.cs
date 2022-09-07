@@ -1,6 +1,7 @@
 ﻿using Sandbox;
 using Sandbox.UI;
 
+[UseTemplate("/resource/templates/ingamemenu.html")]
 public class GUIRootPanel : RootPanel
 {
     public bool MenuOpen;

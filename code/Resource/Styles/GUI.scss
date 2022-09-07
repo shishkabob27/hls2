@@ -112,6 +112,7 @@ IconPanel {
     border-right: 1px solid #282e22;
 }
 .textentry {
+    cursor: text;
     min-width: 48px;
     width: 48px;
     height: 24px;
@@ -126,6 +127,26 @@ IconPanel {
     font-size: 13px;
     align-items: center;
     padding: 5px;
+
+    .placeholder {
+        flex-grow: 1;
+    }
+
+    .placeholder {
+        opacity: 0.2;
+        pointer-events: none;
+        display: none;
+    }
+
+    &.has-placeholder {
+        .placeholder {
+            display: flex;
+        }
+
+        .content-label {
+            display: none;
+        }
+    }
 }
 .tabcontainer {
     flex-grow: 1;
