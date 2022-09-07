@@ -47,6 +47,13 @@ partial class HornetGun : HLWeapon
         }
 
         ViewModelEntity?.SetAnimParameter("fire", true);
-
+        if (IsServer)
+        {
+            var bolt = new CrossbowBolt();
+            bolt.Position = Owner.EyePosition;
+            bolt.Rotation = Owner.EyeRotation;
+            bolt.Owner = Owner;
+            bolt.Velocity = Owner.EyeRotation.Forward * 100;
+        }
     }
 }
