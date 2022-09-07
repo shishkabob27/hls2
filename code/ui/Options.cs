@@ -8,9 +8,10 @@ public class Options : GUIPanel
 {
 	public bool bCviewroll { get; set; }
 	public bool bCsubtitle { get; set; }
+	public bool bCguiscale { get; set; } = true;
+	public bool bCpixelfont { get; set; } = true;
 	public bool bCliveupdate { get; set; } = true;
 	public float fChudScale { get; set; }
-
 	public Options()
 	{
 		Style.Left = 0;
@@ -40,6 +41,9 @@ public class Options : GUIPanel
         HLWalkController.cl_rollangle = (bCviewroll? 2 : 0);
 		HLGame.hl_hud_scale = fChudScale;
         HLGame.cc_subtitles = (bCsubtitle? 1 : 0);
+        HLGame.hl_gui_rescale = bCguiscale;
+        HLGame.hl_pixelfont = bCpixelfont;
+		
 	}
 
 
@@ -48,8 +52,8 @@ public class Options : GUIPanel
 	{
 		if (input.Pressed(InputButton.Menu))
         {
-            Style.Left = (Screen.Width / 2) - (Box.Rect.Width / 2);
-            Style.Top = (Screen.Height / 2) - (Box.Rect.Height / 2); 
+            Position.x = (Screen.Width / 2) - (Box.Rect.Width / 2);
+            Position.y = (Screen.Height / 2) - (Box.Rect.Height / 2); 
 			MenuOpen = !MenuOpen;
 		}
 	}

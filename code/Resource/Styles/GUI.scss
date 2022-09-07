@@ -1,5 +1,6 @@
-@import "/styles/base.scss";
-@import "/styles/form.scss";
+//@import "/styles/base.scss";
+//@import "/styles/form.scss";
+
 // GUI Panel
 .root {
     opacity: 0;
@@ -8,23 +9,20 @@
     background-color: rgba(0, 0, 0, 0.75);
     display: flex;
     font-size: 13px;
-
     opacity: 0;
     padding: 4px;
     color: white;
     position: absolute;
     z-index: 101;
-    
-    
     left: 0px;
     top: 0px;
     flex-direction: column;
-    font-family: "Tahoma";
     background-color: rgba(76,88,68,255);
     border-top: 1px solid #889180;
     border-left: 1px solid #889180;
     border-bottom: 1px solid #282e22;
     border-right: 1px solid #282e22;
+    overflow:hidden;
 }
 
 .root.active {
@@ -32,9 +30,11 @@
     pointer-events: all;
 }
 
+IconPanel {
+    font-family: MaterialIcons;
+}
 
-.menupanel, .menutab, .maincontent {
-    font-family: "Tahoma";
+.menupanel, .menutab {
     background-color: rgba(76,88,68,255);
     border-top: 1px solid #889180;
     border-left: 1px solid #889180;
@@ -42,6 +42,7 @@
     border-right: 1px solid #282e22;
 }
 .button {
+    cursor: pointer;
     align-items: center;
     padding: 5px;
     min-width: 72px;
@@ -50,7 +51,6 @@
     border-left: 1px solid #889180;
     border-bottom: 1px solid #282e22;
     border-right: 1px solid #282e22;
-
     &:active {
         border-top: 1px solid #282e22;
         border-left: 1px solid #282e22;
@@ -84,6 +84,10 @@
         border-right: 1px solid #889180;
     }
 }
+.label {
+    flex-grow: 0;
+    min-width: 0px;
+}
 .optionstext{
     padding: 4px;
 }
@@ -95,9 +99,12 @@
     opacity: 0.001;
 }
 .closebutton {
+    font-family: Webdings;
+    font-size: 19px;
     min-width: 18px;
     width: 18px;
     height: 18px;
+    padding:0;
     background-color: rgba(76,88,68,255);
     border-top: 1px solid #889180;
     border-left: 1px solid #889180;
@@ -105,7 +112,7 @@
     border-right: 1px solid #282e22;
 }
 .textentry {
-    min-width: 64px;
+    min-width: 48px;
     width: 48px;
     height: 24px;
     overflow: hidden;
@@ -117,15 +124,17 @@
     background-color: #3e4637;
     margin-left: 0px;
     font-size: 13px;
-    color: $primary-alt;
+    align-items: center;
+    padding: 5px;
 }
 .tabcontainer {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 
     > .tabs {
+
         > .button {
-            font-family: "Tahoma";
             background-color: rgba(76,88,68,255);
             border-top: 1px solid #889180;
             border-left: 1px solid #889180;
@@ -138,7 +147,6 @@
             padding: 5px;
             opacity: 1;
             top: 3px;
-
             &.active {
                 color: #c4b550;
                 top: 1px;
@@ -155,83 +163,105 @@
 
     > .sheets {
         z-index: -1;
-        font-family: "Tahoma";
         background-color: rgba(76,88,68,255);
         border-top: 1px solid #889180;
         border-left: 1px solid #889180;
         border-bottom: 1px solid #282e22;
         border-right: 1px solid #282e22;
         display: flex;
-        flex-direction: row;
+        flex-grow: 1;
+        flex-direction: column;
+
+        > :not( .active ) {
+            display: none;
+        }
     }
 }
 
-    .maincontent {
-        padding: 8px;
-        border: 0px;
-        display: flex;
-        flex-direction: column;
-    }
+.maincontent {
+    overflow: hidden;
+    padding: 8px;
+    border: 0px;
+    display: flex;
+    flex-direction: column;
+}
 
     $primary: red !default;
     $primary-alt: white !default;
     $form-control-height: 24px !default;
 
-    .checkbox {
-        width: 256px;
-        height: 16px;
-        margin-bottom: 6px;
-        cursor: pointer;
+.checkbox {
+    min-width: 24px;
+    height: 16px;
+    margin-bottom: 6px;
+    cursor: pointer;
 
-        .iconpanel {
-            flex-shrink: 0;
-            width: 15px;
-            height: 15px;
-            border: 1px solid rgba(103,100,88,255);
-            border-radius: 1px;
+    .checkpanel, iconpanel {
+        flex-shrink: 0;
+        width: 15px;
+        height: 15px;
+        border: 1px solid rgba(103,100,88,255);
+        border-radius: 1px; 
+        margin-right: 8px;
+        color: white;
+
+        .checklabel {
+            transform: translate(-3 -5);
+            font-family: Webdings;
+            font-size: 22px;
         }
+    }
+
+    .label {
+        margin-right: 10px;
+        color: #cfd6ca;
+    }
+
+    > .checkmark {
+        padding: 1px;
+        font-size: 14px;
+        //border: 3px solid $primary;
+        border-radius: 2px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        color: transparent;
+        min-height: 15px;
+        margin-right: 10px;
+        pointer-events: none;
+        cursor: pointer;
+    }
+
+    &.checked {
 
         .label {
             margin-right: 10px;
-            color: #cfd6ca;
+            color: #c4b550;
+        }
+
+        > .checkpanel, .iconpanel {
+            .checklabel {
+                font-family: Webdings;
+                font-size: 22px;
+                color: #cfd6ca;
+            }
         }
 
         > .checkmark {
-            padding: 1px;
-            font-size: 14px;
-            //border: 3px solid $primary;
-            border-radius: 2px;
-            text-align: center;
-            justify-content: center;
-            align-items: center;
-            color: transparent;
-            min-height: 15px;
-            margin-right: 10px;
-            pointer-events: none;
-            cursor: pointer;
-        }
-
-        &.checked {
-            .label {
-                margin-right: 10px;
-                color: #c4b550;
-            }
-
-            > .checkmark {
-                //color: $primary-alt;
-                color: white;
-                background-color: transparent;
-            }
-        }
-
-        &:active {
-            color: gray;
-            transform: scale(1);
-        }
-
-        &:hover {
+            //color: $primary-alt;
+            color: white;
+            background-color: transparent;
         }
     }
+
+    &:active {
+        color: gray;
+        transform: scale(1);
+    }
+
+    &:hover {
+    }
+}
 
 .slider {
     flex-grow: 1;
@@ -271,7 +301,7 @@
         position: absolute;
         z-index: -1;
         flex-grow: 1;
-        top: 25px;
+        top: 19px;
         justify-content: flex-start;
         color: #889180;
         font-size: 9px;
@@ -281,7 +311,7 @@
         position: absolute;
         z-index: -1;
         flex-grow: 1;
-        top: 25px;
+        top: 19px;
         right: 8px;
         text-align: right;
         font-size: 9px;
@@ -291,7 +321,7 @@
     > .scalesteps {
         z-index: -1;
         flex-grow: 1;
-        top: 17px;
+        top: 11px;
         left: 4px;
         height: 10px;
         justify-content: space-between;
@@ -318,7 +348,7 @@
         > .inner {
             border-radius: 0px;
             background-color: rgb(31, 31, 31);
-            width: 200px;
+            width: 50px;
             height: 0px;
             transition: all 0.2s ease-out;
         }
@@ -326,29 +356,31 @@
 }
 
 
-    .sliderentry {
-        > .slider {
-            flex-grow: 1;
-            flex-shrink: 0;
-        }
-
-        > .textentry:not( .one.two ) {
-            max-width: 48px;
-            min-width: 48px;
-            width: 48px;
-            height: 24px;
-            overflow: hidden;
-            margin-left: 10px;
-            border-bottom: 1px solid #889180;
-            border-right: 1px solid #889180;
-            border-top: 1px solid #282e22;
-            border-left: 1px solid #282e22;
-            background-color: #3e4637;
-            margin-left: 0px;
-            font-size: 13px;
-            color: $primary-alt;
-        }
+.sliderentry {
+    > .slider {
+        flex-grow: 1;
+        flex-shrink: 0;
     }
+
+    > .textentry:not( .one.two ) {
+        align-items: center;
+        padding: 5px;
+        max-width: 48px;
+        min-width: 48px;
+        width: 48px;
+        height: 24px;
+        overflow: hidden;
+        margin-left: 10px;
+        border-bottom: 1px solid #889180;
+        border-right: 1px solid #889180;
+        border-top: 1px solid #282e22;
+        border-left: 1px solid #282e22;
+        background-color: #3e4637;
+        margin-left: 0px;
+        font-size: 13px;
+        color: $primary-alt;
+    }
+}
 
     .slider2d {
         flex-grow: 1;

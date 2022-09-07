@@ -10,7 +10,6 @@ public class Advanced : GUIPanel
 
 	public Advanced()
 	{
-		StyleSheet.Load("/resource/styles/options.scss");
 		Style.Left = 0;
 		Style.Right = 0;
 		Style.Top = 0;

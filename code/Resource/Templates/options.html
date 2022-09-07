@@ -3,24 +3,26 @@
         <div class="menubar">
             <text class="optionstext">Options</text>
             <button class="dragbutton" onmousedown="down()" onmouseup="up()" onmousemove="Drag()"></button>
-            <button class="closebutton" onclick="Close()">X</button>
+            <button class="closebutton" onclick="Close()">r</button>
         </div>
 
         <tabcontrol @activeTab="SortOrder">
             <tab tabName="general" slot="tab" tabtext="General">
                 <div class="maincontent" style="padding: 40px;">
-                    <checkbox class="cragdoll">Enable ragdolls</checkbox>
-                    <checkbox class="csubtitle" @checked="bCliveupdate">Enable live setting updates</checkbox>
+                    <check class="cragdoll">Enable ragdolls</check>
+                    <check class="csubtitle" @checked="bCliveupdate">Enable live setting updates</check>
+                    <check class="csubtitle" @checked="bCguiscale">Enable GUI rescaling</check>
+                    <check class="csubtitle" @checked="bCpixelfont">Enable GUI classic font.</check>
                     <button style="width:114px;" onclick="openTestdialog()">Open Test Dialog</button>
                 </div>
             </tab>
 
             <tab tabName="video" slot="tab" tabtext="Video">
                 <div class="maincontent" style="padding: 40px;">
-                    <checkbox class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</checkbox>
-                    <checkbox class="chimodel">Enable HD models</checkbox>
-                    <checkbox class="clowviolence">Enable Low Violence</checkbox>
-                    <checkbox class="csubtitle" @checked="bCsubtitle">Enable Subtitles</checkbox>
+                    <check class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</check>
+                    <check class="chimodel">Enable HD models</check>
+                    <check class="clowviolence">Enable Low Violence</check>
+                    <check class="csubtitle" @checked="bCsubtitle">Enable Subtitles</check>
                     <text>Hud Scale</text>
                     <SliderScaleEntry min="0" max="5" step="0" mintext="Auto" maxtext="5.00" @value="fChudScale"></SliderScaleEntry>
                 </div>
@@ -28,7 +30,7 @@
 
             <tab tabName="audio" slot="tab" tabtext="Audio">
                 <div class="maincontent" style="padding: 40px;">
-                    <checkbox class="chiaudio">Enable HD audio</checkbox>
+                    <check class="chiaudio">Enable HD audio</check>
                 </div>
             </tab>
 
@@ -46,7 +48,7 @@
                 <div class="maincontent">
                     <text>Label</text>
                     <button style="width:1px;">Button</button>
-                    <checkbox>Checkbox</checkbox>
+                    <check>Checkbox</check>
                     <text>Slider</text>
                     <SliderScaleEntry min="0" max="5" step="0.1" mintext="0.00" maxtext="5.00"></SliderScaleEntry>
                     <textentry placeholder="Text Entry" style="width:256px;"></textentry>

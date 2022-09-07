@@ -11,10 +11,13 @@ public class GUIPanel : Panel
     public bool MenuOpen;
 	public Panel MenuPanel { get; set; }
 
-	public GUIPanel()
+    public Vector2 Position;
+
+    public GUIPanel()
 	{
 		StyleSheet.Load("/resource/styles/GUI.scss");
-		Style.Left = 0;
+        Style.FontFamily = "Tahoma";
+        Style.Left = 0;
 		Style.Right = 0;
 		Style.Top = 0;
 		Style.Bottom = 0;
@@ -30,11 +33,26 @@ public class GUIPanel : Panel
     }
 	public override void Tick()
 	{
-
         Style.ZIndex = Parent.GetChildIndex(this);
         base.Tick();
-		Drag();
+        Drag();
         SetClass("active", MenuOpen);
+		if (HLGame.hl_pixelfont)
+		{
+			Style.FontFamily = "Tahoma";
+
+        }
+        else
+		{
+			Style.FontFamily = "Tahoma";
+        }
+        Style.Dirty();
+    }
+	[Event.PreRender]
+	void draw()
+	{
+        Style.Left = Position.x / (Parent as GUIRootPanel).Scale;
+        Style.Top = Position.y / (Parent as GUIRootPanel).Scale;
     }
     public virtual void Close()
 	{
@@ -46,8 +64,8 @@ public class GUIPanel : Panel
 	public void Drag()
 	{
 		if (!Dragging) return;
-		Style.Left = Parent.MousePosition.x - xoff;
-		Style.Top = Parent.MousePosition.y - yoff;
+        Position.x = ((Parent.MousePosition.x) - xoff);
+        Position.y = ((Parent.MousePosition.y) - yoff);
 	}
 	public void down()
 	{
