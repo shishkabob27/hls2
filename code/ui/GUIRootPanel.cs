@@ -10,11 +10,13 @@ public class GUIRootPanel : RootPanel
 	{
         Current = this;
 		StyleSheet.Load("resource/styles/ingamemenu.scss");
-		Focus();
+        Style.ZIndex = 100;
+        Focus();
         AddChild<Options>();
+        Focus();
     }
 
-	public override void Tick()
+    public override void Tick()
 	{
         base.Tick();
 	}

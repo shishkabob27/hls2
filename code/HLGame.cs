@@ -132,4 +132,16 @@ partial class HLGame : Game
 		}
 	}
 
+    [ConCmd.Server("resetgui", Help = "resets gui")]
+    public static void resetgui()
+    {
+		(HLGame.Current as HLGame).resetgui2();
+    }
+    public void resetgui2()
+	{
+        Hud.Delete();
+        Hud = new HLHud();
+        GUI.Delete();
+        GUI = new HLGUI();
+    }
 }
