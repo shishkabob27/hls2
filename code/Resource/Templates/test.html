@@ -1,0 +1,17 @@
+﻿<link rel="stylesheet" href="Resource/Styles/options.scss" />
+<root style="width: 300px; height: 256px;" class="root">
+
+        <div class="menubar">
+            <text class="optionstext">Test Dialog</text>
+            <button class="dragbutton" onmousedown="down()" onmouseup="up()" onmousemove="Drag()"></button>
+            <button class="closebutton" onclick="Close()">X</button>
+        </div>
+                <div class="maincontent">
+                    <text>Label</text>
+                    <button style="width:1px;">Button</button>
+                    <checkbox>Checkbox</checkbox>
+                    <text>Slider</text>
+                    <SliderScaleEntry min="0" max="5" step="0.1" mintext="0.00" maxtext="5.00"></SliderScaleEntry>
+                    <textentry placeholder="Text Entry" style="width:128px;"></textentry>
+                </div>
+</root>

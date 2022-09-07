@@ -1,5 +1,4 @@
-﻿<link rel="stylesheet" href="Resource/Styles/options.scss" />
-<root style="width: 512px; height: 406px;">
+﻿<root style="width: 512px; height: 406px;" class="root">
 
         <div class="menubar">
             <text class="optionstext">Options</text>
@@ -9,14 +8,15 @@
 
         <tabcontrol @activeTab="SortOrder">
             <tab tabName="general" slot="tab" tabtext="General">
-                <div class="maincontent">
+                <div class="maincontent" style="padding: 40px;">
                     <checkbox class="cragdoll">Enable ragdolls</checkbox>
                     <checkbox class="csubtitle" @checked="bCliveupdate">Enable live setting updates</checkbox>
+                    <button style="width:114px;" onclick="openTestdialog()">Open Test Dialog</button>
                 </div>
             </tab>
 
             <tab tabName="video" slot="tab" tabtext="Video">
-                <div class="maincontent">
+                <div class="maincontent" style="padding: 40px;">
                     <checkbox class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</checkbox>
                     <checkbox class="chimodel">Enable HD models</checkbox>
                     <checkbox class="clowviolence">Enable Low Violence</checkbox>
@@ -27,18 +27,18 @@
             </tab>
 
             <tab tabName="audio" slot="tab" tabtext="Audio">
-                <div class="maincontent">
+                <div class="maincontent" style="padding: 40px;">
                     <checkbox class="chiaudio">Enable HD audio</checkbox>
                 </div>
             </tab>
 
             <tab tabName="mp" slot="tab" tabtext="Multiplayer">
-                <div class="maincontent">
+                <div class="maincontent" style="padding: 40px;">
                 </div>
             </tab>
 
             <tab tabName="admin" slot="tab" tabtext="Admin">
-                <div class="maincontent">
+                <div class="maincontent" style="padding: 40px;">
                 </div>
             </tab>
 

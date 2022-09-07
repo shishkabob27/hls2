@@ -4,79 +4,25 @@ using Sandbox.UI.Construct;
 using System;
 
 [UseTemplate("/resource/templates/options.html")]
-public class Options : Panel
+public class Options : GUIPanel
 {
-    public int ZIndex { get; set; } = 0;
-	public bool Dragging;
-    public bool MenuOpen;
 	public bool bCviewroll { get; set; }
 	public bool bCsubtitle { get; set; }
 	public bool bCliveupdate { get; set; } = true;
 	public float fChudScale { get; set; }
-	public Panel MenuPanel { get; set; }
-
-	//[ConVar.Client] public static float cl_rollangle { get; set; } = 0.0f;
-	//public Panel MenuPanel;
-	//public Panel MenuTabs;
-	//public Panel MenuTab;
-	//public Panel MainContent;
-	//public Label OptionsText;
-	//public Label TestText;
-
 
 	public Options()
 	{
-		StyleSheet.Load("/resource/styles/options.scss");
 		Style.Left = 0;
 		Style.Right = 0;
 		Style.Top = 0;
 		Style.Bottom = 0;
-		//AcceptsFocus = true;
 		Focus();
-		/*
-		MenuPanel = Add.Panel("menupanel");
-		OptionsText = Add.Label("Options", "optionstext");
-		MenuTabs = Add.Panel("menutabs");
-		MenuTab = Add.Panel("menutab");
-		MainContent = Add.Panel("maincontent");
-
-		TestText = Add.Label("General");
-
-		MenuPanel.AddChild(OptionsText);
-		MenuPanel.AddChild(MenuTabs);
-		MenuTabs.AddChild(MenuTab);
-		MenuPanel.AddChild(MainContent);
-		MenuTab.AddChild(TestText);
-
-		//move this to its own file
-		var Crollangle = new Checkbox();
-		Crollangle.LabelText = "Enable HL1 WON Viewroll";
-
-		var Cragdoll = new Checkbox();
-		Cragdoll.LabelText = "Enable HL1 death animations";
-
-		var Chimodel = new Checkbox();
-		Chimodel.LabelText = "Enable HD models";
-
-		var Chiaudio = new Checkbox();
-		Chiaudio.LabelText = "Enable HD audio";
-
-		var Csubtitile = new Checkbox();
-		Csubtitile.LabelText = "Enable subtitles";
-
-        var A = new Button("s");
-        MainContent.AddChild(A);
-
-        MainContent.AddChild(Crollangle);
-
-		Crollangle.SetProperty("checked", "AHJ");
-        MainContent.AddChild(Cragdoll);
-		MainContent.AddChild(Chimodel);
-		MainContent.AddChild(Chiaudio);
-		MainContent.AddChild(Csubtitile);
-		*/
 	}
-
+	public override void Close()
+	{
+        MenuOpen = !MenuOpen;
+    }
 	public override void Tick()
 	{
 		base.Tick();
@@ -112,33 +58,9 @@ public class Options : Panel
 		updateCvars();
 		Close();
     }
-    public void Close()
-	{
-		MenuOpen = !MenuOpen;
-	}
-	float xoff = 0;
-	float yoff = 0;
-	public void Drag()
-	{
-		if (!Dragging) return;
-		Style.Left = Parent.MousePosition.x - xoff;
-		Style.Top = Parent.MousePosition.y - yoff;
-	}
-	public void down()
-	{
-		Focus();
-		Parent.SortChildren(x => x.HasFocus ? 0 : 1);
-		if (Style.Left == null)
-		{
-            Style.Left = 0;
-            Style.Top = 0;
-        }
-		xoff = (float)(Parent.MousePosition.x - Box.Rect.Left);
-        yoff = (float)(Parent.MousePosition.y - Box.Rect.Top);
-        Dragging = true;
-	}
-	public void up()
+    public void openTestdialog()
     {
-        Dragging = false;
+        var a = Parent.AddChild<Advanced>();
+		(a as Advanced).MenuOpen = true;
     }
 }
