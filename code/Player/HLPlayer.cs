@@ -37,7 +37,6 @@
 	[Net]
 	public Vector3 WishVelocity { get; set; }
 
-	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
 	public HLPlayer()
@@ -95,7 +94,7 @@
 
 		
 
-		if (hl_gamemode == "deathmatch"){
+		if (HLGame.hl_gamemode == "deathmatch"){
 			HasHEV = true;
 
 			Inventory.Add( new Crowbar());
@@ -154,7 +153,7 @@
 	{
 		base.OnKilled();
 		RemoveFlashlight();
-		if (hl_gamemode == "deathmatch"){
+		if (HLGame.hl_gamemode == "deathmatch"){
 			var coffin = new Coffin();
 			coffin.Position = Position + Vector3.Up * 30;
 			coffin.Rotation = Rotation;
