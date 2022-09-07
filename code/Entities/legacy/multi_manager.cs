@@ -62,15 +62,22 @@ using SandboxEditor;
 			Enabled = !Enabled;
 		}
 
-		/*
-		 * logic_auto
-		 *
-		 */
+		[Input]
+		void Kill()
+		{
+			if (IsServer)
+				Delete();
+		}
 
-		/// <summary>
-		///
-		/// </summary>
-		protected Output OnMapSpawn { get; set; }
+	/*
+	 * logic_auto
+	 *
+	 */
+
+	/// <summary>
+	///
+	/// </summary>
+	protected Output OnMapSpawn { get; set; }
 
 		/// <summary>
 		/// Fired after all map entities have spawned, even if it is disabled.

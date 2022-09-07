@@ -83,6 +83,13 @@ public partial class SoundEventEntity : Entity
     {
         OnStartSound();
     }
+
+    [Input]
+    void Kill()
+    {
+        if (IsServer)
+            Delete();
+    }
     public override void ClientSpawn()
     {
         if (StartOnSpawn) // || SpawnSettings.HasFlag(Flags.StartSilent) == false) broken. fix later
