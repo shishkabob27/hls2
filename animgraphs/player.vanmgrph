@@ -79,7 +79,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "crawl"
-					m_playbackSpeed = 0.004
+					m_playbackSpeed = 0.008
 					m_bLoop = true
 				}
 			},
