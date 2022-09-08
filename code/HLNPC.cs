@@ -91,6 +91,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public Nullable<Rotation> targetRotationOVERRIDE;
 	public Sound CurrentSound;
 	public HLAnimationHelper animHelper;
+	float neck = 0.0f;
+	float neck2 = 0.0f;
 	[Event.Tick.Server]
 	public void Tick()
 	{
@@ -209,12 +211,15 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
             Log.Info(c);
             Log.Info(a);
             Log.Info(b);
-            animHelper.Neck = b;
+			neck2 = b;
+			
         }
         else
         {
-            animHelper.Neck = 0;
+			neck2 = 0;
         }
+		neck = neck.LerpTo(neck2, 12 * Time.Delta);
+        animHelper.Neck = neck;
         //See();
         Think();
 		SoundProcess();
