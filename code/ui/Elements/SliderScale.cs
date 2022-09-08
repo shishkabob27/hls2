@@ -195,7 +195,7 @@ namespace Sandbox.UI
 
     namespace Construct
     {
-        public static class SliderConstructor
+        public static class SliderScaleConstructor
         {
             public static SliderScale SliderScale(this PanelCreator self, float min, float max, float step, string mintext, string maxtext)
             {
