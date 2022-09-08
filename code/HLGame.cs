@@ -9,7 +9,7 @@ global using System.Threading.Tasks;
 /// This is the heart of the gamemode. It's responsible
 /// for creating the player and stuff.
 /// </summary>
-partial class HLGame : Game
+public partial class HLGame : Game
 {
 	[Net]
 	HLHud Hud { get; set; }

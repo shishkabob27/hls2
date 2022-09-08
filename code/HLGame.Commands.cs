@@ -1,5 +1,4 @@
-﻿namespace Sandbox
-{
+﻿
 	public partial class HLGame : Game
 	{
 
@@ -125,4 +124,3 @@
 			}
 		}
 	}
-}
