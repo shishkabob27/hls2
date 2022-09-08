@@ -208,9 +208,6 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
             if (b > 1) b -= 2;
             if (b < -1) b += 2;
 
-            Log.Info(c);
-            Log.Info(a);
-            Log.Info(b);
 			neck2 = b;
 			
         }
