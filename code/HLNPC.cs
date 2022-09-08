@@ -207,7 +207,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
             if (b > 1) b -= 2;
             if (b < -1) b += 2;
-
+			
 			neck2 = b;
 			
         }
@@ -271,8 +271,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		TargetEntity = a.Entity;
 		*/
 
-        var allents = Entity.All.OfType<ICombat>().ToList();
-        allents.RemoveAll(allents => (allents as Entity).Position.Distance(Position) > 2048);
+        var allents = Entity.All.OfType<ICombat>().ToList().OrderBy(o => ((o as Entity).Position.Distance(Position)));
 
 		int i = 0;
         foreach (Entity ent in allents)
