@@ -974,6 +974,25 @@
 					{
 						_class = "AnimFile"
 						name = "crawl"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = false
+								extract_tz = false
+								extract_rz = false
+								linear = false
+								quadratic = false
+								root_bone_name = ""
+								motion_type = "Uniform"
+							},
+							{
+								_class = "AnimOffset"
+								translation = [ 0.0, 0.0, 18.1 ]
+								rotation_xyz = [ 0.0, 0.0, 0.0 ]
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -1499,6 +1518,14 @@
 					{
 						_class = "AnimFile"
 						name = "crouch_idle"
+						children = 
+						[
+							{
+								_class = "AnimOffset"
+								translation = [ 0.0, 0.0, 18.1 ]
+								rotation_xyz = [ 0.0, 0.0, 0.0 ]
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""

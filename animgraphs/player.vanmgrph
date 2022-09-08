@@ -78,7 +78,7 @@
 					m_networkMode = "ServerAuthoritative"
 					m_sNote = ""
 					m_tagSpans = [  ]
-					m_sequenceName = "crouch_idle"
+					m_sequenceName = "crawl"
 					m_playbackSpeed = 0.004
 					m_bLoop = true
 				}
@@ -4601,7 +4601,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -1088.0, 80.0 ]
+					m_vecPosition = [ -1120.0, 64.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1852585746
