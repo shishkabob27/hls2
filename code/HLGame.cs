@@ -41,7 +41,6 @@ partial class HLGame : Game
 	public override void PostLevelLoaded()
 	{
 		base.PostLevelLoaded();
-
 		ItemRespawn.Init();
 	}
 
@@ -143,5 +142,19 @@ partial class HLGame : Game
         Hud = new HLHud();
         GUI.Delete();
         GUI = new HLGUI();
+    }
+
+    [ConCmd.Server("resetplayer", Help = "resets player")]
+    public static void resetplayer()
+    {
+        foreach (var client in Client.All)
+        {
+            if (client.Pawn != null)
+                client.Pawn.Delete();
+            var player = new HLPlayer();
+            player.Respawn();
+
+            client.Pawn = player;
+        }
     }
 }
