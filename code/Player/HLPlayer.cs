@@ -432,7 +432,7 @@
         tr.Surface.DoHLFootstep( this, tr, foot, volume * 5 );
 	}
 
-	public void jumpsound(Vector3 pos)
+	public void OnJump(Vector3 pos)
 	{
         if (LifeState != LifeState.Alive)
             return;

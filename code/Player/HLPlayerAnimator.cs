@@ -146,7 +146,7 @@ namespace Sandbox
 			}
 
             var player = Pawn as HLPlayer;
-			player.jumpsound(Position);
+			player.OnJump(Position);
             base.OnEvent( name );
 		}
 	}
