@@ -154,6 +154,44 @@
 				self.GetBaseSurface().DoFootstep( ent, tr, foot, volume );
 			}
 		}
-	}
+        /// <summary>
+        /// Create a jump effect
+        /// </summary>
+        public static void DoHLJump(this Surface self, Entity ent, TraceResult tr, float volume)
+        {
+            var newName = tr.Surface.ResourceName;
+            switch (self.ResourceName)
+            {
+                case "flesh":
+                    newName = "surface/hl_flesh.surface";
+                    break;
+                case "tile":
+                    newName = "surface/hl_tile.surface";
+                    break;
+                case "metal":
+                    newName = "surface/hl_metal.surface";
+                    break;
+                default:
+                    newName = "surface/hl_default.surface";
+                    break;
+            }
+            if (ResourceLibrary.TryGet<Surface>(newName, out var surfNew))
+            {
+                self = surfNew;
+            }
+
+			var sound = self.Sounds.FootLaunch;
+
+            if (!string.IsNullOrWhiteSpace(sound))
+            {
+                Sound.FromWorld(sound, tr.EndPosition).SetVolume(volume);
+            }
+            else if (self.GetBaseSurface() != null)
+            {
+                // Give base surface a chance
+                self.GetBaseSurface().DoFootstep(ent, tr, 1, volume);
+            }
+        }
+    }
 
 }

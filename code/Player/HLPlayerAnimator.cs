@@ -145,7 +145,9 @@ namespace Sandbox
 				Trigger( "b_jump" );
 			}
 
-			base.OnEvent( name );
+            var player = Pawn as HLPlayer;
+			player.jumpsound(Position);
+            base.OnEvent( name );
 		}
 	}
 }

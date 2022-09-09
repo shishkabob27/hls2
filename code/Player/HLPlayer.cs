@@ -424,14 +424,39 @@
 		//DebugOverlay.Text( pos, $"{volume}", Color.White, 5 );
 
 		var tr = Trace.Ray( pos, pos + Vector3.Down * 20 )
-			.Radius( 1 )
+			.Radius( 1 ) 
 			.Ignore( this )
 			.Run();
 
-		if ( !tr.Hit ) return;
-
-		tr.Surface.DoHLFootstep( this, tr, foot, volume * 5 );
+		if (!tr.Hit) return;
+        tr.Surface.DoHLFootstep( this, tr, foot, volume * 5 );
 	}
+
+	public void jumpsound(Vector3 pos)
+	{
+        if (LifeState != LifeState.Alive)
+            return;
+
+        if (!IsServer)
+            return;
+
+
+        //var volume *= FootstepVolume();
+
+
+        //DebugOverlay.Box( 1, pos, -1, 1, Color.Red );
+        //DebugOverlay.Text( pos, $"{volume}", Color.White, 5 );
+
+        var tr = Trace.Ray(pos, pos + Vector3.Down * 20)
+            .Radius(10) // if we were able to jump we must've been on something, fixes jump sound not being played jumping off of thin / small surfaces
+            .Ignore(this)
+            .Run();
+
+        if (!tr.Hit) return;
+
+        tr.Surface.DoHLJump(this, tr, 1);
+    }
+
 
 	public void RenderHud( Vector2 screenSize )
 	{
