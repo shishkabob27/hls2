@@ -38,7 +38,10 @@
                 case "metal":
                     newName = "surface/hl_metal.surface";
                     break;
-                default:
+				case "grate":
+					newName = "surface/hl_grate.surface";
+					break;
+				default:
                     newName = "surface/hl_default.surface";
                     break;
             }
@@ -133,6 +136,9 @@
 				case "metal":
 					newName = "surface/hl_metal.surface";
 					break;
+				case "grate":
+					newName = "surface/hl_grate.surface";
+					break;
 				default:
 					newName = "surface/hl_default.surface";
 					break;
@@ -171,7 +177,10 @@
                 case "metal":
                     newName = "surface/hl_metal.surface";
                     break;
-                default:
+				case "grate":
+					newName = "surface/hl_grate.surface";
+					break;
+				default:
                     newName = "surface/hl_default.surface";
                     break;
             }
