@@ -255,7 +255,7 @@
 
 		TickPlayerUse();
 
-		if ( Input.Pressed( InputButton.View ) )
+		if ( Input.Pressed( InputButton.View ) && !Client.IsUsingVr)
 		{
 			if ( CameraMode is ThirdPersonCamera )
 			{
