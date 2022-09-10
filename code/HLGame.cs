@@ -49,10 +49,10 @@ public partial class HLGame : Game
 		base.ClientJoined( cl );
 
 		var player = new HLPlayer();
-		player.Respawn();
+		cl.Pawn = player; 
 
-		cl.Pawn = player;
-	}
+		player.Respawn();
+    }
 
 	public override void MoveToSpawnpoint( Entity pawn )
 	{
