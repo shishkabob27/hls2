@@ -19,24 +19,22 @@ public class HudRootPanel : HudEntity<RootPanel>
 				// Use a world panel - we're in VR
 				_ = new VRVitals();
 			}
-			else
-			{
-				// Just display the HUD on-screen
-				StyleSheet.FromFile("/resource/styles/hud.scss");
-				RootPanel.SetTemplate("/resource/templates/hud.html");
 
-				RootPanel.AddChild<DamageIndicator>();
-				RootPanel.AddChild<HitIndicator>();
-				RootPanel.AddChild<InventoryBar>();
-				RootPanel.AddChild<PickupFeed>();
-				RootPanel.AddChild<FlashlightUI>();
-				RootPanel.AddChild<ChatBox>();
-				RootPanel.AddChild<KillFeed>();
-				Scoreboard = RootPanel.AddChild<Scoreboard>();
-				RootPanel.AddChild<VoiceList>();
-				RootPanel.AddChild<VoiceSpeaker>();
-				RootPanel.AddChild<Subtitle>();
-			}
+			// Just display the HUD on-screen
+			StyleSheet.FromFile("/resource/styles/hud.scss");
+			RootPanel.SetTemplate("/resource/templates/hud.html");
+
+			RootPanel.AddChild<DamageIndicator>();
+			RootPanel.AddChild<HitIndicator>();
+			RootPanel.AddChild<InventoryBar>();
+			RootPanel.AddChild<PickupFeed>();
+			RootPanel.AddChild<FlashlightUI>();
+			RootPanel.AddChild<ChatBox>();
+			RootPanel.AddChild<KillFeed>();
+			Scoreboard = RootPanel.AddChild<Scoreboard>();
+			RootPanel.AddChild<VoiceList>();
+			RootPanel.AddChild<VoiceSpeaker>();
+			RootPanel.AddChild<Subtitle>();
 		}
 	}
 
