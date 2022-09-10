@@ -1,0 +1,111 @@
+﻿$orange: #ffd300;
+
+vitals {
+    font-size: 64px;
+    color: #ff0;
+    mix-blend-mode: lighten;
+    font-family: "Trebuchet MS";
+
+    label {
+        text-shadow: 0px 0px 20px #f70a;
+
+        &.danger {
+            color: #f00;
+            text-shadow: 0px 0px 10px #f005;
+        }
+    }
+}
+
+iconpanel {
+    mix-blend-mode: lighten;
+    background-color: $orange;
+    margin: 0px;
+    height: 48px;
+    width: 48px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: rgba(0, 0, 0, 0);
+    background-position-x: center;
+    background-position-y: center;
+    background-image-tint: $orange;
+
+    &.invisible {
+        min-width: 0px;
+        width: 0px;
+    }
+}
+
+
+healthhud, armourhud {
+    font-family: "Trebuchet MS";
+    font-size: 40px;
+    color: $orange;
+    text-shadow: 0px 0px 1px $orange;
+    min-width: 64px;
+    text-align: center;
+    align-items: center;
+    opacity: 1;
+
+    &.invisible {
+        opacity: 0;
+    }
+    iconpanel {
+        text-align: left;
+        height: 48px;
+        width: 48px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-color: rgba(0, 0, 0, 0);
+        background-position-x: center;
+        background-position-y: center;
+        background-image-tint: $orange;
+    }
+
+    label {
+        text-align: right;
+        width: 64px;
+    }
+}
+
+healthhud {
+
+    .label {
+        opacity: 0.35;
+    }
+
+    .icon {
+        opacity: 1;
+        background-image: url("/ui/health.png");
+    }
+}
+
+
+armourhud {
+
+    .label {
+        opacity: 0.35;
+    }
+
+
+    .iconcontainer {
+        flex-direction: column;
+        max-height: 48px;
+        background-size: cover;
+
+        .iconempty {
+            opacity: 1;
+            background-image: url("/ui/armour_empty.png");
+            min-width: 45px;
+            background-size: cover;
+            background-position-y: top;
+        }
+
+        .iconfull {
+            opacity: 1;
+            background-image: url("/ui/armour_full.png");
+            min-width: 45px;
+            background-size: cover;
+            background-position-y: bottom;
+        }
+    }
+}

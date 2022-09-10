@@ -1,9 +1,9 @@
 ﻿using Sandbox;
 using Sandbox.UI;
 
-public class VRHUDVitals : WorldPanel
+public class VRVitals : WorldPanel
 {
-	public VRHUDVitals()
+	public VRVitals()
 	{
 		SetTemplate("/resource/templates/VR/vitals.html");
 		SetClass("is-vr", true);
@@ -21,9 +21,9 @@ public class VRHUDVitals : WorldPanel
 			// Offsets
 			//
 			Rotation *= new Angles(-180, -90, 45).ToRotation();
-			Position += Rotation.Forward * 5 + Rotation.Up * 6 - Rotation.Left * 12;
+			Position += Rotation.Forward * 2 + Rotation.Up * 4 - Rotation.Left * 6;
 			WorldScale = 0.1f;
-			Scale = 2.0f;
+			Scale = 5f;
 
 			PanelBounds = new Rect(0, 0, 1920, 1080);
 		}
