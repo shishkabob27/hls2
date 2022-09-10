@@ -307,6 +307,9 @@
 	{
 		base.PostCameraSetup( ref setup );
 
+		setup.ZNear = 1;
+		setup.ZFar = 25000;
+
 		if ( setup.Viewer != null && !Client.IsUsingVr)
 		{
 			AddCameraEffects( ref setup );
