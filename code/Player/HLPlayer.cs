@@ -108,8 +108,8 @@
 		Tags.Add("player");
         if (Client.IsUsingVr)
         {
-            RightHand = new VRHandRight();
-            LeftHand = new VRHandLeft();
+			RightHand = new VRHandRight() { Owner = this };
+            LeftHand = new VRHandLeft() { Owner = this };
         }
         base.Respawn();
 	}

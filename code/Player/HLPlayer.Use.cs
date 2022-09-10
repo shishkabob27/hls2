@@ -19,8 +19,7 @@
                 StopUsing();
                 return;
             }
-
-            if ( Input.Pressed( InputButton.Use ) )
+            if ( Input.Pressed( InputButton.Use ) || Input.VR.RightHand.Grip.Value > 0.1 || Input.VR.LeftHand.Grip.Value > 0.1 )
 			{
 				Using = FindUsable();
 
@@ -30,7 +29,7 @@
 					return;
 				}
 			}
-			if (Input.Down(InputButton.Use) && Using is HLMovementBrush)
+			if ((Input.Down(InputButton.Use) || Input.VR.RightHand.Grip.Value > 0.1 || Input.VR.LeftHand.Grip.Value > 0.1) && Using is HLMovementBrush)
 			{
 				Using = FindUsable(false);
 			}
