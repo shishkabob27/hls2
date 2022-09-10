@@ -21,7 +21,7 @@ public class VRVitals : WorldPanel
 			// Offsets
 			//
 			Rotation *= new Angles(-180, -90, 45).ToRotation();
-			Position += Rotation.Forward * 2 + Rotation.Up * 4 - Rotation.Left * 6;
+			Position += Rotation.Forward * 4 + Rotation.Up * 4 - Rotation.Left * 6;
 			WorldScale = 0.1f;
 			Scale = 5f;
 
