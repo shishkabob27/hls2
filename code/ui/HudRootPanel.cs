@@ -1,6 +1,6 @@
 ﻿using Sandbox.UI;
 
-public class HudRootPanel : RootPanel
+public class HudRootPanel : HudEntity<RootPanel>
 {
 	public static HudRootPanel Current;
 
@@ -12,32 +12,36 @@ public class HudRootPanel : RootPanel
 	{
 		Current = this;
 
-		StyleSheet.Load( "/resource/styles/hud.scss" );
-		SetTemplate( "/resource/templates/hud.html" );
+		if (IsClient)
+		{
+			if (Global.IsRunningInVR)
+			{
+				// Use a world panel - we're in VR
+				_ = new VRHUDVitals();
+			}
+			else
+			{
+				// Just display the HUD on-screen
+				StyleSheet.FromFile("/resource/styles/hud.scss");
+				RootPanel.SetTemplate("/resource/templates/hud.html");
 
-		AddChild<DamageIndicator>();
-		AddChild<HitIndicator>();
-
-		AddChild<InventoryBar>();
-		AddChild<PickupFeed>();
-
-		AddChild<FlashlightUI>();
-
-		AddChild<ChatBox>();
-		AddChild<KillFeed>();
-		Scoreboard = AddChild<Scoreboard>();
-		AddChild<VoiceList>();
-		AddChild<VoiceSpeaker>();
-		AddChild<Subtitle>();
-
+				RootPanel.AddChild<DamageIndicator>();
+				RootPanel.AddChild<HitIndicator>();
+				RootPanel.AddChild<InventoryBar>();
+				RootPanel.AddChild<PickupFeed>();
+				RootPanel.AddChild<FlashlightUI>();
+				RootPanel.AddChild<ChatBox>();
+				RootPanel.AddChild<KillFeed>();
+				Scoreboard = RootPanel.AddChild<Scoreboard>();
+				RootPanel.AddChild<VoiceList>();
+				RootPanel.AddChild<VoiceSpeaker>();
+				RootPanel.AddChild<Subtitle>();
+			}
+		}
 	}
 
-	public override void Tick()
-	{
-		base.Tick();
-	}
 
-	protected override void UpdateScale( Rect screenSize )
+	/*protected override void UpdateScale( Rect screenSize )
 	{
 		if (HLGame.hl_hud_scale > 0)
 		{
@@ -46,5 +50,5 @@ public class HudRootPanel : RootPanel
 		{
             base.UpdateScale(screenSize);
         }
-	}
+	}*/
 }

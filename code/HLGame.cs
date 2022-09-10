@@ -12,7 +12,7 @@ global using System.Threading.Tasks;
 public partial class HLGame : Game
 {
 	[Net]
-	HLHud Hud { get; set; }
+	HudRootPanel Hud { get; set; }
 	HLGUI GUI { get; set; }
 
 	StandardPostProcess postProcess;
@@ -28,7 +28,7 @@ public partial class HLGame : Game
 		if ( IsServer )
         {
             GUI = new HLGUI();
-            Hud = new HLHud();
+            Hud = new HudRootPanel();
         }
 
 		if ( IsClient )
@@ -100,7 +100,7 @@ public partial class HLGame : Game
 	{
 		base.OnKilled( client, pawn );
 
-		Hud.OnPlayerDied( To.Everyone, pawn as HLPlayer);
+		//Hud.OnPlayerDied( To.Everyone, pawn as HLPlayer);
 	}
 
 
@@ -139,7 +139,7 @@ public partial class HLGame : Game
     public void resetgui2()
 	{
         Hud.Delete();
-        Hud = new HLHud();
+        Hud = new HudRootPanel();
         GUI.Delete();
         GUI = new HLGUI();
     }
