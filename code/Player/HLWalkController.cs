@@ -105,14 +105,29 @@ namespace Sandbox
         /// </summary>
         public virtual void UpdateBBox()
         {
-            var girth = BodyGirth * 0.5f;
+            if (Client.IsUsingVr)
+            {
+                Transform headLocal = Pawn.Transform.ToLocal(Input.VR.Head);
+                var girth = BodyGirth * 0.5f;
 
-            var mins = new Vector3(-girth, -girth, 0) * Pawn.Scale;
-            var maxs = new Vector3(+girth, +girth, BodyHeight) * Pawn.Scale;
+                var mins = (new Vector3(-girth, -girth, 0) + headLocal.Position.WithZ(0) * Rotation) * Pawn.Scale;
+                var maxs = (new Vector3(+girth, +girth, BodyHeight) + headLocal.Position.WithZ(0) * Rotation) *
+                           Pawn.Scale;
 
-            Duck.UpdateBBox(ref mins, ref maxs, Pawn.Scale);
+                Duck.UpdateBBox(ref mins, ref maxs, Pawn.Scale);
+                SetBBox(mins, maxs);
+            }
+            else
+            {
+                var girth = BodyGirth * 0.5f;
 
-            SetBBox(mins, maxs);
+                var mins = new Vector3(-girth, -girth, 0) * Pawn.Scale;
+                var maxs = new Vector3(+girth, +girth, BodyHeight) * Pawn.Scale;
+
+                Duck.UpdateBBox(ref mins, ref maxs, Pawn.Scale);
+
+                SetBBox(mins, maxs);
+            }
         }
 
         protected float SurfaceFriction;
@@ -122,6 +137,7 @@ namespace Sandbox
         {
             base.FrameSimulate();
             EyeRotation = Input.Rotation;
+            if (Client.IsUsingVr) EyeRotation = Input.VR.Head.Rotation;
             EyeRotation = EyeRotation.Angles().WithRoll(CalculateRoll(EyeRotation, Velocity, cl_rollangle, cl_rollspeed)).ToRotation();
         }
         public virtual void StartGravity()
@@ -159,10 +175,12 @@ namespace Sandbox
             GetWishSpeed();
             (Pawn as HLPlayer).WishVelocity = WishVelocity;
             EyeLocalPosition = Vector3.Up * (EyeHeight * Pawn.Scale);
+            if (Client.IsUsingVr) EyeLocalPosition = Input.VR.Head.Position;
             UpdateBBox();
 
             EyeLocalPosition += TraceOffset;
             EyeRotation = Input.Rotation;
+            if (Client.IsUsingVr) EyeRotation = Input.VR.Head.Rotation;
 
             RestoreGroundPos();
 
@@ -211,7 +229,7 @@ namespace Sandbox
 
             // if ( underwater ) do underwater movement
 
-            if (sv_autojump ? Input.Down(InputButton.Jump) : Input.Pressed(InputButton.Jump))
+            if (sv_autojump ? Input.Down(InputButton.Jump) | Input.VR.RightHand.ButtonA.IsPressed  : Input.Pressed(InputButton.Jump) | Input.VR.RightHand.ButtonA.WasPressed)
             {
                 CheckJumpButton();
             }
@@ -246,7 +264,7 @@ namespace Sandbox
 
             Duck.PreTick();
 
-            if (GroundEntity != null && Input.Down(InputButton.Use)) Velocity *= 0.3f;
+            if (GroundEntity != null && Input.Down(InputButton.Use) ) Velocity *= 0.3f;
 
 
             bool bStayOnGround = false;
@@ -312,6 +330,7 @@ namespace Sandbox
         public void GetWishSpeed()
         {
             QAngle a = Input.Rotation;
+            if (Client.IsUsingVr) a = Input.VR.Head.Rotation;
             a.AngleVectors(out var forward, out var right, out var up);
             var oldGround = GroundEntity;
 
@@ -321,11 +340,19 @@ namespace Sandbox
             if (Input.Down(InputButton.Run)) mvspeed = sv_walkspeed;
 
             if (ws >= 0) mvspeed = mvspeed * PLAYER_DUCKING_MULTIPLIER;
-
+            
             var ForwardMove = Input.Forward * mvspeed;
             var SideMove = -Input.Left * mvspeed;
             var UpMove = Input.Up * mvspeed;
 
+            if (Client.IsUsingVr)
+            {
+                ForwardMove = Input.VR.LeftHand.Joystick.Value.y * mvspeed;
+                SideMove = Input.VR.LeftHand.Joystick.Value.x * mvspeed;
+                forward = Input.VR.Head.Rotation.Forward;
+                right = Input.VR.Head.Rotation.Right;
+                up = Input.VR.Head.Rotation.Up;
+            }
 
             var spd = (ForwardMove * ForwardMove) + (SideMove * SideMove) + (UpMove * UpMove);
             spd = (float)Math.Sqrt(spd);
@@ -785,7 +812,9 @@ namespace Sandbox
         public virtual void CheckLadder()
         {
             var wishvel = new Vector3(Input.Forward, Input.Left, 0);
-            wishvel *= Input.Rotation.Angles().WithPitch(0).ToRotation();
+            var a = Input.Rotation;
+            if (Client.IsUsingVr) a = Input.VR.Head.Rotation;
+            wishvel *= a.Angles().WithPitch(0).ToRotation();
             wishvel = wishvel.Normal;
 
             if (IsTouchingLadder)

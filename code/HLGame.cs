@@ -33,8 +33,8 @@ public partial class HLGame : Game
 
 		if ( IsClient )
 		{
-			postProcess = new StandardPostProcess();
-			PostProcess.Add( postProcess );
+			//postProcess = new StandardPostProcess();
+			//PostProcess.Add( postProcess );
 		}
 	}
 

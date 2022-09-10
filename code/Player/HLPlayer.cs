@@ -2,7 +2,9 @@
 {
 	TimeSince timeSinceDropped = 0;
 
-	[Net]
+    [Net, Local] public VRHandLeft LeftHand { get; set; }
+    [Net, Local] public VRHandRight RightHand { get; set; }
+    [Net]
 	public float Armour { get; set; } = 0;
 
 	[Net]
@@ -64,9 +66,10 @@
             }
     }
     public override void Respawn()
-	{
-		//SetModel("models/citizen/citizen.vmdl");
-		SetModel( "models/hl1/player/player.vmdl" );
+    {
+        
+        //SetModel("models/citizen/citizen.vmdl");
+        SetModel( "models/hl1/player/player.vmdl" );
 
 		SetAnimGraph("animgraphs/player.vanmgrph");
 
@@ -91,7 +94,6 @@
 		SupressPickupNotices = false;
 		Health = 100;
 		Armour = 0;
-
 		
 
 		if (HLGame.hl_gamemode == "deathmatch"){
@@ -104,8 +106,12 @@
 		}
 
 		Tags.Add("player");
-
-		base.Respawn();
+        if (Client.IsUsingVr)
+        {
+            RightHand = new VRHandRight();
+            LeftHand = new VRHandLeft();
+        }
+        base.Respawn();
 	}
 
 	[ConCmd.Server]
@@ -194,23 +200,51 @@
 		base.BuildInput( input );
 	}
 
-
+	float vrrotate = 0;
 	public override void Simulate( Client cl )
 	{
         base.Simulate( cl );
 		Forward = Input.Forward;
         Left = Input.Left;
 		Up = Input.Up;
-        IN_USE = Input.Down(InputButton.Use);
-        IN_FORWARD = Input.Down(InputButton.Forward);
-		IN_LEFT = Input.Down(InputButton.Left);
-		IN_RIGHT = Input.Down(InputButton.Right);
-		IN_BACKWARD = Input.Down(InputButton.Back);
+        if (Client.IsUsingVr)
+        {
+            EyeRotation = Input.VR.Head.Rotation;
 
+
+            vrrotate -= Input.VR.RightHand.Joystick.Value.x * 4;
+
+
+            var a = Transform;
+            a.Position = Rotation.FromAxis(Vector3.Up, -(Input.VR.RightHand.Joystick.Value.x * 4)) * (Transform.Position - Input.VR.Head.Position.WithZ(Position.z)) + Input.VR.Head.Position.WithZ(Position.z);
+			
+
+
+            a.Rotation = Rotation.FromYaw(vrrotate);
+			
+			Transform = a;
+            IN_USE = Input.Down(InputButton.Use);
+            IN_FORWARD = Input.VR.RightHand.Joystick.Delta.x > 0;
+            IN_LEFT = Input.Down(InputButton.Left);
+            IN_RIGHT = Input.Down(InputButton.Right);
+            IN_BACKWARD = Input.Down(InputButton.Back);
+        } else { 
+			IN_USE = Input.Down(InputButton.Use);
+			IN_FORWARD = Input.Down(InputButton.Forward);
+			IN_LEFT = Input.Down(InputButton.Left);
+			IN_RIGHT = Input.Down(InputButton.Right);
+			IN_BACKWARD = Input.Down(InputButton.Back);
+        }
         SimulateFlashlight();
 		//
 		// Input requested a weapon switch
 		//
+		
+		if (LeftHand != null && RightHand != null)
+		{
+			LeftHand.Simulate(cl);
+            RightHand.Simulate(cl);
+		}
 		if ( Input.ActiveChild != null )
 		{
 			ActiveChild = Input.ActiveChild;
@@ -273,7 +307,7 @@
 	{
 		base.PostCameraSetup( ref setup );
 
-		if ( setup.Viewer != null )
+		if ( setup.Viewer != null && !Client.IsUsingVr)
 		{
 			AddCameraEffects( ref setup );
 		}
@@ -284,6 +318,7 @@
 
 	private void AddCameraEffects( ref CameraSetup setup )
 	{
+		if (Client.IsUsingVr) return;
 		var speed = Velocity.WithZ(0).Length.LerpInverse( 0, 2 );
 		var up = setup.Rotation.Up;
 
