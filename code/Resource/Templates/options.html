@@ -39,6 +39,17 @@
                 </div>
             </tab>
 
+            <tab tabName="vr" slot="tab" tabtext="VR">
+                <div class="maincontent" style="padding: 40px;">
+                    <check class="cvrlaser">Enable VR Pointer</check>
+                    <text>Movement direction</text>
+                    <select @value="ZIndex" style="width:128px;">
+                        <option value="0">Head</option>
+                        <option value="1">Hand</option>
+                    </select>
+                </div>
+            </tab>
+
             <tab tabName="admin" slot="tab" tabtext="Admin">
                 <div class="maincontent" style="padding: 40px;">
                 </div>
