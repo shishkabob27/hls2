@@ -1,4 +1,7 @@
-﻿public class NavSteer
+﻿
+namespace XeNPC;
+using XeNPC.Debug;
+public class NavSteer
 {
 	protected NavPath Path { get; private set; }
 
@@ -9,7 +12,7 @@
 
 	public virtual void Tick(Vector3 currentPosition)
 	{
-		using (Sandbox.Debug.Profile.Scope("Update Path"))
+		using (Profile.Scope("Update Path"))
 		{
 			Path.Update(currentPosition, Target);
 		}
@@ -22,7 +25,7 @@
 			return;
 		}
 
-		using (Sandbox.Debug.Profile.Scope("Update Direction"))
+		using (Profile.Scope("Update Direction"))
 		{
 			Output.Direction = Path.GetDirection(currentPosition);
 		}
@@ -62,7 +65,7 @@
 
 	public virtual void DebugDrawPath()
 	{
-		using (Sandbox.Debug.Profile.Scope("Path Debug Draw"))
+		using (Profile.Scope("Path Debug Draw"))
 		{
 			Path.DebugDraw(0.1f, 0.1f);
 		}

@@ -1,5 +1,7 @@
 ﻿
 using System;
+using XeNPC;
+using XeNPC.Debug;
 
 [Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
 public partial class NPC : AnimatedEntity, IUse, ICombat
@@ -45,7 +47,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float entFOV = 0.5f;
 
     public string NPCAnimGraph = "";
-	NavPath Path;
+	XeNPC.NavPath Path;
 	public NavSteer Steer;
 
     public Entity TargetEntity;
@@ -67,7 +69,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		if (!NoNav)
 		{
 
-			Path = new NavPath();
+			Path = new XeNPC.NavPath();
 
             Steer = new NavSteer();
 
@@ -81,7 +83,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		Speed = 50;
 	}
 
-	public Sandbox.Debug.Draw Draw => Sandbox.Debug.Draw.Once;
+	public XeNPC.Debug.Draw Draw => XeNPC.Debug.Draw.Once;
 
 	Vector3 InputVelocity;
 
@@ -105,7 +107,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
         if (HLUtils.PlayerInRangeOf(Position, 1024) == false && DontSleep == false)
 			return;
-		using var _a = Sandbox.Debug.Profile.Scope("NpcTest::Tick");
+		using var _a = Profile.Scope("NpcTest::Tick");
 
         
 
@@ -114,7 +116,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 		if (Steer != null && !NoNav)
 		{
-			using var _b = Sandbox.Debug.Profile.Scope("Steer");
+			using var _b = Profile.Scope("Steer");
 
 			Steer.Tick(Position);
 
@@ -130,7 +132,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			}
 		}
 
-		using (Sandbox.Debug.Profile.Scope("Move"))
+		using (Profile.Scope("Move"))
 		{
 			Move(Time.Delta);
 		}
@@ -365,14 +367,14 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			//						.IgnoreDepth()
 			//						.Arrow( Position, Position + Velocity * 2, Vector3.Up, 2.0f );
 
-			using (Sandbox.Debug.Profile.Scope("TryUnstuck"))
+			using (Profile.Scope("TryUnstuck"))
 				move.TryUnstuck();
 
-			using (Sandbox.Debug.Profile.Scope("TryMoveWithStep"))
+			using (Profile.Scope("TryMoveWithStep"))
 				move.TryMoveWithStep(timeDelta, 30);
 		}
 
-		using (Sandbox.Debug.Profile.Scope("Ground Checks"))
+		using (Profile.Scope("Ground Checks"))
 		{
 			var tr = move.TraceDirection(Vector3.Down * 10.0f);
 
@@ -402,7 +404,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			{
 				GroundEntity = null;
 				move.Velocity += Vector3.Down * 900 * timeDelta;
-				Sandbox.Debug.Draw.Once.WithColor(Color.Red).Circle(Position, Vector3.Up, 10.0f);
+				XeNPC.Debug.Draw.Once.WithColor(Color.Red).Circle(Position, Vector3.Up, 10.0f);
 			}
 		}
 

@@ -1,8 +1,7 @@
 ﻿using Sandbox;
 using System;
 
-namespace Sandbox.Debug
-{
+namespace XeNPC.Debug;
 	public struct Draw
 	{
 		public static Draw Once => new Draw(Time.Delta * 1.5f, Host.Color, true);
@@ -113,4 +112,3 @@ namespace Sandbox.Debug
 			DebugOverlay.Line(startPos, endPos, Color, Duration, DepthTest);
 		}
 	}
-}

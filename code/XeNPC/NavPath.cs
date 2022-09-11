@@ -1,4 +1,6 @@
-﻿public class NavPath
+﻿
+namespace XeNPC;
+public class NavPath
 {
 
 
@@ -81,7 +83,7 @@
 
 	public void DebugDraw(float time, float opacity = 1.0f)
 	{
-		var draw = Sandbox.Debug.Draw.ForSeconds(time);
+		var draw = XeNPC.Debug.Draw.ForSeconds(time);
 		var lift = Vector3.Up * 2;
 
 		draw.WithColor(Color.White.WithAlpha(opacity)).Circle(lift + TargetPosition, Vector3.Up, 20.0f);

@@ -1,6 +1,6 @@
-﻿namespace Sandbox.Debug
-{
-	public static class Profile
+﻿
+namespace XeNPC.Debug;
+public static class Profile
 	{
 		//static Stopwatch sw = Stopwatch.StartNew();
 		static Entry Root = new Entry();
@@ -117,4 +117,3 @@
 			}
 		}
 	}
-}
