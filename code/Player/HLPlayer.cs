@@ -108,10 +108,23 @@
 		Tags.Add("player");
         if (Client.IsUsingVr)
         {
-			RightHand = new VRHandRight() { Owner = this };
-            LeftHand = new VRHandLeft() { Owner = this };
-        }
+			CreateHands();
+		}
         base.Respawn();
+	}
+
+	private void CreateHands()
+	{
+		DeleteHands();
+
+		LeftHand = new() { Owner = this };
+		RightHand = new() { Owner = this };
+	}
+
+	private void DeleteHands()
+	{
+		LeftHand?.Delete();
+		RightHand?.Delete();
 	}
 
 	[ConCmd.Server]
@@ -158,6 +171,7 @@
 	public override void OnKilled()
 	{
 		base.OnKilled();
+		DeleteHands();
 		RemoveFlashlight();
 		if (HLGame.hl_gamemode == "deathmatch"){
 			var coffin = new Coffin();
