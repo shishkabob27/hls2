@@ -322,56 +322,106 @@
     /// </summary>
     public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
 	{
+		var player = Local.Pawn as HLPlayer;
 		//
 		// Seed rand using the tick, so bullet cones match on client and server
 		//
 		Rand.SetSeed( Time.Tick );
 
-		for ( int i = 0; i < bulletCount; i++ )
-		{
-			var forward = Owner.EyeRotation.Forward;
-			forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
-			forward = forward.Normal;
-
-			//
-			// ShootBullet is coded in a way where we can have bullets pass through shit
-			// or bounce off shit, in which case it'll return multiple results
-			//
-			foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 5000, bulletSize ) )
+		if (Client.IsUsingVr)
+        {
+			for (int i = 0; i < bulletCount; i++)
 			{
-				tr.Surface.DoHLBulletImpact( tr );
-				
+				var forward = player.RightHand.Rotation.Down;
+				forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
+				//forward = forward.Normal;
 
-				if ( tr.Distance > 200 && !hl_sfmmode)
+				//
+				// ShootBullet is coded in a way where we can have bullets pass through shit
+				// or bounce off shit, in which case it'll return multiple results
+				//
+				foreach (var tr in TraceBullet(player.RightHand.Position, player.RightHand.Position + forward * 5000, bulletSize))
 				{
-					CreateTracerEffect( tr.EndPosition );
-				}
+					tr.Surface.DoHLBulletImpact(tr);
 
-				if ( !IsServer ) continue;
-				if ( !tr.Entity.IsValid() ) continue;
 
-				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 100 * force, damage )
-					.UsingTraceResult( tr )
-					.WithAttacker( Owner )
-					.WithWeapon( this );
-
-				tr.Entity.TakeDamage( damageInfo );
-                if (tr.Entity is NPC)
-                {
-					var trace = Trace.Ray(Owner.EyePosition, Owner.EyePosition + forward * 256)
-					.WorldOnly()
-					.Ignore(this)
-					.Size(1.0f)
-					.Run();
-					if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+					if (tr.Distance > 200 && !hl_sfmmode)
 					{
-						//Log.Info( "Splat!" );
-						Decal.Place(decal, trace);
+						//CreateTracerEffect(tr.EndPosition);
+					}
+
+					if (!IsServer) continue;
+					if (!tr.Entity.IsValid()) continue;
+
+					var damageInfo = DamageInfo.FromBullet(tr.EndPosition, forward * 100 * force, damage)
+						.UsingTraceResult(tr)
+						.WithAttacker(Owner)
+						.WithWeapon(this);
+
+					tr.Entity.TakeDamage(damageInfo);
+					if (tr.Entity is NPC)
+					{
+						var trace = Trace.Ray(player.RightHand.Position, player.RightHand.Position + forward * 256)
+						.WorldOnly()
+						.Ignore(this)
+						.Size(1.0f)
+						.Run();
+						if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+						{
+							//Log.Info( "Splat!" );
+							Decal.Place(decal, trace);
+						}
 					}
 				}
 			}
 		}
-        
+        else
+        {
+			for (int i = 0; i < bulletCount; i++)
+			{
+				var forward = Owner.EyeRotation.Forward;
+				forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
+				forward = forward.Normal;
+
+				//
+				// ShootBullet is coded in a way where we can have bullets pass through shit
+				// or bounce off shit, in which case it'll return multiple results
+				//
+				foreach (var tr in TraceBullet(Owner.EyePosition, Owner.EyePosition + forward * 5000, bulletSize))
+				{
+					tr.Surface.DoHLBulletImpact(tr);
+
+
+					if (tr.Distance > 200 && !hl_sfmmode)
+					{
+						CreateTracerEffect(tr.EndPosition);
+					}
+
+					if (!IsServer) continue;
+					if (!tr.Entity.IsValid()) continue;
+
+					var damageInfo = DamageInfo.FromBullet(tr.EndPosition, forward * 100 * force, damage)
+						.UsingTraceResult(tr)
+						.WithAttacker(Owner)
+						.WithWeapon(this);
+
+					tr.Entity.TakeDamage(damageInfo);
+					if (tr.Entity is NPC)
+					{
+						var trace = Trace.Ray(Owner.EyePosition, Owner.EyePosition + forward * 256)
+						.WorldOnly()
+						.Ignore(this)
+						.Size(1.0f)
+						.Run();
+						if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+						{
+							//Log.Info( "Splat!" );
+							Decal.Place(decal, trace);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	[ClientRpc]
