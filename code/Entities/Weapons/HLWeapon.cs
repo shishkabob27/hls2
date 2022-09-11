@@ -344,9 +344,18 @@
 	{
 		Host.AssertClient();
 
-		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
+		if (Client.IsUsingVr)
+		{
+            Particles.Create("particles/pistol_muzzleflash.vpcf", VRWeaponModel, "muzzle");
+        } else
+		{
+            Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
+        }
+
+
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
+		VRWeaponModel?.SetAnimParameter( "fire", true );
 		CrosshairLastShoot = 0;
 
 		if (Owner is HLPlayer player)
@@ -498,7 +507,8 @@
 
 		var system = Particles.Create( "particles/tracer.standard.vpcf" );
 		system?.SetPosition( 0, pos.Position );
-		system?.SetPosition( 1, hitPosition );
+		if (Client.IsUsingVr) system?.SetPosition(0, (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position);
+        system?.SetPosition( 1, hitPosition );
 	}
 
 	public bool TakeAmmo( int amount )
@@ -525,7 +535,14 @@
 	{
 		PlaySound( "dryfire" );
 	}
-
+	public new virtual Sound PlaySound(string soundName)
+	{
+		if (Client.IsUsingVr)
+		{ 
+			return Sound.FromEntity(soundName, VRWeaponModel, "muzzle");
+        }
+		return base.PlaySound(soundName);
+	}
 	public void CreateVRModel()
 	{
 

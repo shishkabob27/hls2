@@ -100,8 +100,22 @@ partial class SMG : HLWeapon
 	{
 		Host.AssertClient();
 
-		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
-		Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
+        if (Client.IsUsingVr)
+        {
+            Particles.Create("particles/pistol_muzzleflash.vpcf", VRWeaponModel, "muzzle");
+        }
+        else
+        {
+            Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
+        }
+        if (Client.IsUsingVr)
+        {
+            Particles.Create("particles/pistol_ejectbrass.vpcf", VRWeaponModel, "ejection_point");
+        }
+        else
+        {
+            Particles.Create("particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point");
+        }
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 		CrosshairLastShoot = 0;

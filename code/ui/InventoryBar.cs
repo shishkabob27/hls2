@@ -37,7 +37,7 @@ public class InventoryBar : Panel
 			columns[weapon.Bucket].UpdateWeapon( weapon );
 		}
 	}
-
+	TimeSince SinceSelectedWeapon;
 	/// <summary>
 	/// IClientInput implementation, calls during the client input build.
 	/// You can both read and write to input, to affect what happens down the line.
@@ -51,8 +51,8 @@ public class InventoryBar : Panel
 		// If we're not open, maybe this input has something that will 
 		// make us want to start being open?
 		wantOpen = wantOpen || input.MouseWheel != 0;
-		wantOpen = wantOpen || input.Pressed(InputButton.SlotNext);
-		wantOpen = wantOpen || input.Pressed(InputButton.SlotPrev);
+		wantOpen = wantOpen || input.Pressed(InputButton.SlotNext) || Input.VR.RightHand.Joystick.Value.y < -0.2;
+		wantOpen = wantOpen || input.Pressed(InputButton.SlotPrev) || Input.VR.RightHand.Joystick.Value.y > 0.2;
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot1 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot2 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot3 );
@@ -81,7 +81,7 @@ public class InventoryBar : Panel
 		//
 		// Fire pressed when we're open - select the weapon and close.
 		//
-		if ( input.Down( InputButton.PrimaryAttack ) )
+		if ( input.Down( InputButton.PrimaryAttack ) || Input.VR.RightHand.JoystickPress )
 		{
 			input.SuppressButton( InputButton.PrimaryAttack );
 			input.ActiveChild = SelectedWeapon;
@@ -101,15 +101,20 @@ public class InventoryBar : Panel
 		// forward if mouse wheel was pressed
 		SelectedIndex -= input.MouseWheel;
 
-		if (input.Pressed(InputButton.SlotNext))
+		if (input.Pressed(InputButton.SlotNext) || (Input.VR.RightHand.Joystick.Value.y < -0.2 && SinceSelectedWeapon > 3))
 		{
-			SelectedIndex ++;
+			SinceSelectedWeapon = 0;
+            SelectedIndex ++;
 		}
-		if (input.Pressed(InputButton.SlotPrev))
+		if (input.Pressed(InputButton.SlotPrev) || (Input.VR.RightHand.Joystick.Value.y > 0.2 && SinceSelectedWeapon > 3))
+        {
+            SinceSelectedWeapon = 0;
+            SelectedIndex --;
+		}
+		if (Input.VR.RightHand.Joystick.Value.y.AlmostEqual(0))
 		{
-			SelectedIndex --;
-		}
-		
+            SinceSelectedWeapon = 3;
+        }
 		SelectedIndex = SelectedIndex.UnsignedMod( Weapons.Count );
 
 		SelectedWeapon = sortedWeapons[SelectedIndex];
