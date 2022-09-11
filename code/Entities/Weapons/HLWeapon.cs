@@ -534,6 +534,7 @@
         VRWeaponModel.Position = Position;
         VRWeaponModel.Owner = Owner;
 		VRWeaponModel.SetParent((Client.Pawn as HLPlayer).RightHand, true);
+		(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
 		var wmodel = ViewModelPath.Replace("view/v_", "vr/");
 		VRWeaponModel.SetModel(wmodel);
         VRWeaponModel.SetAnimParameter("deploy", true);
