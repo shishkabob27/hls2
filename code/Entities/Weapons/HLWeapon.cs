@@ -243,7 +243,14 @@
 
 	public virtual bool CanPrimaryAttack()
 	{
-		if (!Owner.IsValid() || !Input.Down(InputButton.PrimaryAttack)) return false;
+        if (Client.IsUsingVr)
+        {
+            if (!Owner.IsValid() || !(Input.VR.RightHand.Trigger.Value > 0.5)) return false;
+        }
+        else
+        {
+            if (!Owner.IsValid() || !Input.Down(InputButton.PrimaryAttack)) return false;
+        }
 
 		var rate = PrimaryRate;
 		if (rate <= 0) return true;
@@ -259,7 +266,14 @@
 
 	public virtual bool CanSecondaryAttack()
 	{
-		if (!Owner.IsValid() || !Input.Down(InputButton.SecondaryAttack)) return false;
+		if (Client.IsUsingVr)
+        {
+            if (!Owner.IsValid() || !(Input.VR.LeftHand.Trigger.Value > 0.5)) return false;
+        } else
+		{
+            if (!Owner.IsValid() || !Input.Down(InputButton.SecondaryAttack)) return false;
+        }
+
 
 		var rate = SecondaryRate;
 		if (rate <= 0) return true;
@@ -332,7 +346,7 @@
         {
 			for (int i = 0; i < bulletCount; i++)
 			{
-				var forward = player.RightHand.Rotation.Down;
+				var forward = Input.VR.RightHand.Transform.Rotation.Down;
 				forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
 				//forward = forward.Normal;
 
@@ -340,7 +354,7 @@
 				// ShootBullet is coded in a way where we can have bullets pass through shit
 				// or bounce off shit, in which case it'll return multiple results
 				//
-				foreach (var tr in TraceBullet(player.RightHand.Position, player.RightHand.Position + forward * 5000, bulletSize))
+				foreach (var tr in TraceBullet(Input.VR.RightHand.Transform.Position, Input.VR.RightHand.Transform.Position + forward * 5000, bulletSize))
 				{
 					tr.Surface.DoHLBulletImpact(tr);
 
@@ -361,7 +375,7 @@
 					tr.Entity.TakeDamage(damageInfo);
 					if (tr.Entity is NPC)
 					{
-						var trace = Trace.Ray(player.RightHand.Position, player.RightHand.Position + forward * 256)
+						var trace = Trace.Ray(Input.VR.RightHand.Transform.Position, Input.VR.RightHand.Transform.Position + forward * 256)
 						.WorldOnly()
 						.Ignore(this)
 						.Size(1.0f)
