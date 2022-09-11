@@ -296,7 +296,7 @@
 	{
         if (Client.IsUsingVr)
         {
-            if (!Owner.IsValid() || !(Input.VR.RightHand.Trigger.Value > 0.5)) return false;
+            if (!Owner.IsValid() || !(Input.VR.RightHand.Trigger.Value > 0.2)) return false;
         }
         else
         {
@@ -319,7 +319,7 @@
 	{
 		if (Client.IsUsingVr)
         {
-            if (!Owner.IsValid() || !(Input.VR.LeftHand.Trigger.Value > 0.5)) return false;
+            if (!Owner.IsValid() || !(Input.VR.LeftHand.Trigger.Value > 0.2)) return false;
         } else
 		{
             if (!Owner.IsValid() || !Input.Down(InputButton.SecondaryAttack)) return false;
