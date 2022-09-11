@@ -534,7 +534,8 @@
         VRWeaponModel.Position = Position;
         VRWeaponModel.Owner = Owner;
 		VRWeaponModel.SetParent((Client.Pawn as HLPlayer).RightHand, true);
-        VRWeaponModel.SetModel(ViewModelPath);
+		var wmodel = ViewModelPath.Replace("view/v_", "world/");
+		VRWeaponModel.SetModel(wmodel);
         VRWeaponModel.SetAnimParameter("deploy", true);
     }
 
