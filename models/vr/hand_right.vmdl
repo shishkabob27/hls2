@@ -77,23 +77,205 @@
 				]
 			},
 			{
-				_class = "WeightListList"
+				_class = "AnimationList"
 				children = 
 				[
 					{
-						_class = "WeightList"
-						name = "Index"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "finger_index_meta_r"
-								weight = 1.0
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
+						_class = "AnimFile"
+						name = "fullgrab_start"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/fullgrab_start.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
 					},
+					{
+						_class = "AnimFile"
+						name = "fullgrab_stop"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/fullgrab_stop.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "halfgrab_start"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/halfgrab_start.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "halfgrab_stop"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/halfgrab_stop.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "point_start"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/point_start.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "point_stop"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/point_stop.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "wait_start"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/wait_start.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "wait_stop"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp/v_hand_hevsuit/v_hand_hevsuit_anims/wait_stop.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
 					{
 						_class = "WeightList"
 						name = "Base"
@@ -101,41 +283,27 @@
 						weights = 
 						[
 							{
-								bone = "finger_index_meta_r"
+								bone = "bip01_r_finger0"
 								weight = 0.0
 							},
 							{
-								bone = "finger_middle_meta_r"
+								bone = "bip01_r_finger1"
 								weight = 0.0
 							},
 							{
-								bone = "finger_pinky_meta_r"
+								bone = "bip01_r_finger2"
 								weight = 0.0
 							},
 							{
-								bone = "finger_ring_0_r"
+								bone = "bip01_r_finger3"
 								weight = 0.0
 							},
 							{
-								bone = "finger_thumb_0_r"
+								bone = "bip01_r_finger4"
 								weight = 0.0
 							},
 							{
-								bone = "right_wrist"
-								weight = 1.0
-							},
-						]
-						master_morph_weight = -1.0
-						morph_weights = [  ]
-					},
-					{
-						_class = "WeightList"
-						name = "Middle"
-						default_weight = 0.0
-						weights = 
-						[
-							{
-								bone = "finger_middle_meta_r"
+								bone = "bip01_r_hand"
 								weight = 1.0
 							},
 						]
@@ -149,7 +317,39 @@
 						weights = 
 						[
 							{
-								bone = "finger_thumb_0_r"
+								bone = "bip01_r_finger0"
+								weight = 1.0
+							},
+							{
+								bone = "bip01_r_hand"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Index"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "bip01_r_finger1"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Middle"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "bip01_r_finger2"
 								weight = 1.0
 							},
 						]
@@ -163,32 +363,26 @@
 						weights = 
 						[
 							{
-								bone = "finger_ring_0_r"
+								bone = "bip01_r_finger3"
 								weight = 1.0
 							},
 						]
 						master_morph_weight = -1.0
 						morph_weights = [  ]
 					},
-				]
-			},
-			{
-				_class = "Skeleton"
-				children = 
-				[
 					{
-						_class = "Bone"
-						name = "hold_R"
-						origin = [ -4.779018, -0.80834, 0.793539 ]
-						angles = [ 50.0, 0.0, 0.0 ]
-						do_not_discard = true
-					},
-					{
-						_class = "Bone"
-						name = "bip01_r_hand"
-						origin = [ -5.741641, -2.114546, 1.95979 ]
-						angles = [ 60.0, 0.0, 0.0 ]
-						do_not_discard = true
+						_class = "WeightList"
+						name = "Pinky"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "bip01_r_finger4"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
 					},
 				]
 			},
