@@ -172,6 +172,26 @@
 					},
 				]
 			},
+			{
+				_class = "Skeleton"
+				children = 
+				[
+					{
+						_class = "Bone"
+						name = "hold_R"
+						origin = [ -4.779018, -0.80834, 0.793539 ]
+						angles = [ 50.0, 0.0, 0.0 ]
+						do_not_discard = true
+					},
+					{
+						_class = "Bone"
+						name = "bip01_r_hand"
+						origin = [ -5.741641, -2.114546, 1.95979 ]
+						angles = [ 60.0, 0.0, 0.0 ]
+						do_not_discard = true
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

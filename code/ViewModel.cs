@@ -29,4 +29,8 @@
 
 		Position += forward * MathF.Sin( walkBob ) * speed * -1;
 	}
+	public override void Simulate(Client cl)
+	{
+		base.Simulate(cl);
+    }
 }

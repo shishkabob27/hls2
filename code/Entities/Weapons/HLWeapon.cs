@@ -2,7 +2,10 @@
 {
     [ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
-	public virtual float PrimaryRate => 5.0f;
+
+    [Net, Predicted]
+    public AnimatedEntity VRWeaponModel { get; set; }
+    public virtual float PrimaryRate => 5.0f;
 	public virtual float SecondaryRate => 15.0f;
 
 	public virtual AmmoType AmmoType => AmmoType.Pistol;
@@ -65,14 +68,60 @@
 	}
 	public override void ActiveStart( Entity ent )
 	{
-		base.ActiveStart( ent );
+		
+        EnableDrawing = true;
 
-		TimeSinceDeployed = 0;
+        if (ent is Player player)
+        {
+            var animator = player.GetActiveAnimator();
+            if (animator != null)
+            {
+                SimulateAnimator(animator);
+            }
+        }
+
+        //
+        // If we're the local player (clientside) create viewmodel
+        // and any HUD elements that this weapon wants
+        //
+        if (IsLocalPawn)
+        {
+            DestroyHudElements();
+            DestroyViewModel();
+            CreateViewModel();
+            CreateHudElements();
+        }
+
+        if (Client.IsUsingVr)
+        {
+
+            CreateVRModel();
+        }
+        TimeSinceDeployed = 0;
 
 		IsReloading = false;
 	}
+    public override void ActiveEnd(Entity ent, bool dropped)
+    {
+        //
+        // If we're just holstering, then hide us
+        //
+        if (!dropped)
+        {
+            EnableDrawing = false;
+        }
+        if (Client.IsUsingVr)
+        {
+            DestroyVRModel();
+        }
+        if (IsClient)
+        {
+            DestroyViewModel();
+            DestroyHudElements();
+        }
+    }
 
-	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+    public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
 	public override void Spawn()
 	{
@@ -191,7 +240,8 @@
 		{
 			OnReloadFinish();
 		}
-
+		if (ViewModelEntity != null)
+			ViewModelEntity?.Simulate(owner);
 		
 	}
 
@@ -234,6 +284,7 @@
 	public virtual void StartReloadEffects()
 	{
 		ViewModelEntity?.SetAnimParameter( "reload", true );
+		VRWeaponModel?.SetAnimParameter( "reload", true );
 		if (Owner is HLPlayer player)
 		{
 			player.SetAnimParameter("reload", true);
@@ -335,39 +386,40 @@
     /// Shoot a single bullet
     /// </summary>
     public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
-	{
+	{ 
 		var player = Local.Pawn as HLPlayer;
 		//
 		// Seed rand using the tick, so bullet cones match on client and server
 		//
 		Rand.SetSeed( Time.Tick );
-
-		if (Client.IsUsingVr)
+        if (Client.IsUsingVr)
         {
 			for (int i = 0; i < bulletCount; i++)
 			{
-				var forward = Input.VR.RightHand.Transform.Rotation.Down;
-				forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
-				//forward = forward.Normal;
+				var BForward = (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Rotation.Forward;
+                var BPosition = (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position;
+                
+                BForward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
+                BForward = BForward.Normal;
 
 				//
 				// ShootBullet is coded in a way where we can have bullets pass through shit
 				// or bounce off shit, in which case it'll return multiple results
 				//
-				foreach (var tr in TraceBullet(Input.VR.RightHand.Transform.Position, Input.VR.RightHand.Transform.Position + forward * 5000, bulletSize))
+				foreach (var tr in TraceBullet(BPosition, BPosition + BForward * 5000, bulletSize))
 				{
 					tr.Surface.DoHLBulletImpact(tr);
 
 
 					if (tr.Distance > 200 && !hl_sfmmode)
 					{
-						//CreateTracerEffect(tr.EndPosition);
+						CreateTracerEffect(tr.EndPosition);
 					}
 
 					if (!IsServer) continue;
 					if (!tr.Entity.IsValid()) continue;
 
-					var damageInfo = DamageInfo.FromBullet(tr.EndPosition, forward * 100 * force, damage)
+					var damageInfo = DamageInfo.FromBullet(tr.EndPosition, BForward * 100 * force, damage)
 						.UsingTraceResult(tr)
 						.WithAttacker(Owner)
 						.WithWeapon(this);
@@ -375,7 +427,7 @@
 					tr.Entity.TakeDamage(damageInfo);
 					if (tr.Entity is NPC)
 					{
-						var trace = Trace.Ray(Input.VR.RightHand.Transform.Position, Input.VR.RightHand.Transform.Position + forward * 256)
+						var trace = Trace.Ray(BPosition, BPosition + BForward * 256)
 						.WorldOnly()
 						.Ignore(this)
 						.Size(1.0f)
@@ -474,10 +526,31 @@
 		PlaySound( "dryfire" );
 	}
 
-	public override void CreateViewModel()
+	public void CreateVRModel()
 	{
-		Host.AssertClient();
 
+        if (IsClient) return;
+        VRWeaponModel = new AnimatedEntity();
+        VRWeaponModel.Position = Position;
+        VRWeaponModel.Owner = Owner;
+		VRWeaponModel.SetParent((Client.Pawn as HLPlayer).RightHand, true);
+        VRWeaponModel.SetModel(ViewModelPath);
+        VRWeaponModel.SetAnimParameter("deploy", true);
+    }
+
+	public void DestroyVRModel()
+	{
+		if (IsClient) return;
+        VRWeaponModel?.Delete();
+        VRWeaponModel = null;
+    }
+    public override void DestroyViewModel()
+    {
+        ViewModelEntity?.Delete();
+        ViewModelEntity = null;
+    }
+    public override void CreateViewModel()
+	{
 		if ( string.IsNullOrEmpty( ViewModelPath ) )
 			return;
 

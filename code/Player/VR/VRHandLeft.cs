@@ -2,7 +2,6 @@
 {
     public override void Spawn()
     {
-        Predictable = true;
         SetModel("models/vr/hand_left.vmdl");
 		Transmit = TransmitType.Always;
     }

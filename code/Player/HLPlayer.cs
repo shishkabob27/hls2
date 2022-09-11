@@ -242,6 +242,7 @@
             IN_LEFT = Input.Down(InputButton.Left);
             IN_RIGHT = Input.Down(InputButton.Right);
             IN_BACKWARD = Input.Down(InputButton.Back);
+			
         } else { 
 			IN_USE = Input.Down(InputButton.Use);
 			IN_FORWARD = Input.Down(InputButton.Forward);
