@@ -1,5 +1,4 @@
-﻿
-public class VRHandLeft : VRHand
+﻿public class VRHandLeft : VRHand
 {
     public override void Spawn()
     {
@@ -7,6 +6,7 @@ public class VRHandLeft : VRHand
         SetModel("models/vr/hand_left.vmdl");
 		Transmit = TransmitType.Always;
     }
+
     public override void Simulate(Client cl)
     {
         base.Simulate(cl);
