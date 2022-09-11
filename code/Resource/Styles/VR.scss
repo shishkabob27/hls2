@@ -109,3 +109,94 @@ armourhud {
         }
     }
 }
+
+
+.altammocount, .ammocount, .inventory, .ammobar, healthhud, armourhud, gamehud {
+    font-family: "Trebuchet MS";
+    font-size: 40px;
+    color: $orange;
+    text-shadow: 0px 0px 1px $orange;
+    min-width: 64px;
+    text-align: center;
+    align-items: center;
+    opacity: 1;
+
+    &.invisible {
+        opacity: 0;
+    }
+}
+
+.seperator {
+    opacity: 1;
+    height: 32px;
+    width: 32px;
+    background-image: url("/ui/seperator.png");
+
+    &.invisible {
+        min-width: 0px;
+        width: 0px;
+    }
+}
+
+    ammo {
+
+        align-items: center;
+        text-align: left;
+        flex-direction: row;
+        mix-blend-mode: lighten;
+        font-family: "Trebuchet MS";
+
+
+        label {
+            opacity: 0.35;
+            text-align: right;
+
+            &.danger {
+                color: #f00;
+            }
+        }
+
+        .seperator {
+            right: 0px;
+        }
+    }
+
+.altammocount {
+    color: #f00;
+    text-shadow: 0px 0px 1px #f00;
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    text-align: right;
+
+    &.invisible {
+        opacity: 0;
+    }
+}
+
+.ammoicon2 {
+    background-size: 30px;
+    background-position-y: top;
+    color: #f00;
+    text-shadow: 0px 0px 1px #f00;
+    position: absolute;
+    bottom: 42px;
+    right: 0px;
+    text-align: right;
+    margin: 0px;
+
+    &.invisible {
+        opacity: 0;
+    }
+}
+
+.ammoicon1 {
+    margin: 0px;
+    background-size: 30px;
+    background-position-y: top;
+    top: 4px;
+
+    &.invisible {
+        opacity: 0;
+    }
+}

@@ -18,6 +18,7 @@ public class HudRootPanel : HudEntity<RootPanel>
 			{
 				// Use a world panel - we're in VR
 				_ = new VRVitals();
+				_ = new VRAmmo();
 			}
 
 			// Just display the HUD on-screen
