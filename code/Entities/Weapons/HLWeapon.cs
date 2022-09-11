@@ -1,8 +1,11 @@
-﻿partial class HLWeapon : BaseWeapon, IRespawnableEntity
+﻿partial class HLWeapon : BaseCarriable, IRespawnableEntity
 {
     [ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
-    public virtual AmmoType AmmoType => AmmoType.Pistol;
+	public virtual float PrimaryRate => 5.0f;
+	public virtual float SecondaryRate => 15.0f;
+
+	public virtual AmmoType AmmoType => AmmoType.Pistol;
 	public virtual AmmoType AltAmmoType => AmmoType.SMGGrenade;
 	public virtual int ClipSize => 16;
 	public virtual int AltClipSize => 1; // 1 because all hl1 alts don't have reloadable clips but i'm adding it just in case, yknow for modding and why not.
@@ -23,6 +26,12 @@
 
 	[Net, Predicted]
 	public int AltAmmoClip { get; set; }
+
+	[Net, Predicted]
+	public TimeSince TimeSincePrimaryAttack { get; set; }
+
+	[Net, Predicted]
+	public TimeSince TimeSinceSecondaryAttack { get; set; }
 
 	[Net, Predicted]
 	public TimeSince TimeSinceReload { get; set; }
@@ -78,7 +87,7 @@
 		Tags.Add("weapon");
 	}
 
-	public override void Reload()
+	public void Reload()
 	{
 		if ( IsReloading )
 			return;
@@ -142,7 +151,40 @@
 
 		if ( !IsReloading )
 		{
-			base.Simulate( owner );
+			if (CanReload())
+			{
+				Reload();
+			}
+
+			//
+			// Reload could have changed our owner
+			//
+			if (!Owner.IsValid())
+				return;
+
+			if (CanPrimaryAttack())
+			{
+				using (LagCompensation())
+				{
+					TimeSincePrimaryAttack = 0;
+					AttackPrimary();
+				}
+			}
+
+			//
+			// AttackPrimary could have changed our owner
+			//
+			if (!Owner.IsValid())
+				return;
+
+			if (CanSecondaryAttack())
+			{
+				using (LagCompensation())
+				{
+					TimeSinceSecondaryAttack = 0;
+					AttackSecondary();
+				}
+			}
 		}
 
 		if ( IsReloading && TimeSinceReload > ReloadTime )
@@ -151,6 +193,13 @@
 		}
 
 		
+	}
+
+	public virtual bool CanReload()
+	{
+		if (!Owner.IsValid() || !Input.Down(InputButton.Reload)) return false;
+
+		return true;
 	}
 
 	public virtual void OnReloadFinish()
@@ -192,11 +241,38 @@
 		// TODO - player third person model reload
 	}
 
-	public override void AttackPrimary()
+	public virtual bool CanPrimaryAttack()
+	{
+		if (!Owner.IsValid() || !Input.Down(InputButton.PrimaryAttack)) return false;
+
+		var rate = PrimaryRate;
+		if (rate <= 0) return true;
+
+		return TimeSincePrimaryAttack > (1 / rate);
+	}
+
+	public virtual void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0; // what???? why is secondary reset?
 	}
+
+	public virtual bool CanSecondaryAttack()
+	{
+		if (!Owner.IsValid() || !Input.Down(InputButton.SecondaryAttack)) return false;
+
+		var rate = SecondaryRate;
+		if (rate <= 0) return true;
+
+		return TimeSinceSecondaryAttack > (1 / rate);
+	}
+
+	public virtual void AttackSecondary()
+	{
+
+	}
+
+
 
 	[ClientRpc]
 	protected virtual void ShootEffects()
@@ -214,7 +290,7 @@
 		}
 	}
 
-    public override IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float radius = 2.0f)
+    public IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float radius = 2.0f)
     {
         bool underWater = Trace.TestPoint(start, "water");
 
