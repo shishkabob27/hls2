@@ -19,7 +19,7 @@ public partial class HLPlayer
 
             if (Client.IsUsingVr)
             {
-                Light.Position = EyeLocalPosition + EyeRotation.Forward * 15;
+                Light.Position = EyeLocalPosition;
                 Light.Rotation = Input.VR.Head.Rotation;
             }
         }
