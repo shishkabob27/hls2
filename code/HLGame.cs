@@ -5,6 +5,9 @@ global using System.Collections.Generic;
 global using System.Linq;
 global using System.Threading.Tasks;
 
+
+global using XeNPC;
+
 /// <summary>
 /// This is the heart of the gamemode. It's responsible
 /// for creating the player and stuff.
