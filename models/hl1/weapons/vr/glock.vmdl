@@ -37,6 +37,18 @@
 								from = "v_beretta_main.vmat"
 								to = "materials/hl1/weapons/vr/glock/v_beretta_main.vmat"
 							},
+							{
+								from = "bulletchrome.vmat"
+								to = "materials/hl1/weapons/view/python/bulletchrome.vmat"
+							},
+							{
+								from = "gclip.vmat"
+								to = "materials/hl1/weapons/view/glock/gclip.vmat"
+							},
+							{
+								from = "gclipinside.vmat"
+								to = "materials/hl1/weapons/view/glock/gclipinside.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -107,6 +119,27 @@
 							[
 								"v_9mmhandgun_v_beretta_reference",
 								"v_9mmhandgun_v_beretta_hands_reference",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_clip_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"v_9mmhandgun_v_beretta_reference",
+								"v_9mmhandgun_v_beretta_hands_reference",
+								"v_9mmhandgun_clip_reference",
 							]
 						}
 					},
