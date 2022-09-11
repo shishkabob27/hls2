@@ -1,5 +1,6 @@
 ﻿public class VRHandRight : VRHand
 {
+    public override Input.VrHand InputHand => Input.VR.RightHand;
     public override void Spawn()
     {
         SetModel("models/vr/hand_right.vmdl");
