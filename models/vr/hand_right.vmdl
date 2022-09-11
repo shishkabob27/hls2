@@ -76,10 +76,106 @@
 					},
 				]
 			},
+			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "Index"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "finger_index_meta_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Base"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "finger_index_meta_r"
+								weight = 0.0
+							},
+							{
+								bone = "finger_middle_meta_r"
+								weight = 0.0
+							},
+							{
+								bone = "finger_pinky_meta_r"
+								weight = 0.0
+							},
+							{
+								bone = "finger_ring_0_r"
+								weight = 0.0
+							},
+							{
+								bone = "finger_thumb_0_r"
+								weight = 0.0
+							},
+							{
+								bone = "right_wrist"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Middle"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "finger_middle_meta_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Thumb"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "finger_thumb_0_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+					{
+						_class = "WeightList"
+						name = "Ring"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "finger_ring_0_r"
+								weight = 1.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "animgraphs/vrhand.vanmgrph"
 		base_model_name = ""
 	}
 }
