@@ -535,7 +535,11 @@
         VRWeaponModel.Owner = Owner;
 		VRWeaponModel.SetParent((Client.Pawn as HLPlayer).RightHand, true);
 		(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
-		var wmodel = ViewModelPath.Replace("view/v_", "vr/");
+		var wmodel = ViewModelPath.Replace("view/v_", "vr/"); // get vr model
+        if (cl_himodels)
+        {
+			wmodel = ViewModelPath.Replace(".vmdl", "_hd.vmdl"); // get hd model
+		}
 		VRWeaponModel.SetModel(wmodel);
         VRWeaponModel.SetAnimParameter("deploy", true);
     }
@@ -562,7 +566,12 @@
             ViewModelEntity.Position = Position;
             ViewModelEntity.Owner = Owner;
             ViewModelEntity.EnableViewmodelRendering = true;
-            ViewModelEntity.SetModel(ViewModelPath);
+			var wmodel = ViewModelPath;
+			if (cl_himodels)
+			{
+				wmodel = ViewModelPath.Replace(".vmdl", "_hd.vmdl"); // get hd model
+			}
+			ViewModelEntity.SetModel(wmodel);
             ViewModelEntity.SetAnimParameter("deploy", true);
         }
 	}
