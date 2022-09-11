@@ -16,12 +16,6 @@ partial class Python : HLWeapon
 	public override int BucketWeight => 200;
 	public override string AmmoIcon => "ui/ammo2.png";
 
-	[Net, Predicted]
-	public bool Zoomed { get; set; }
-
-	//private float? LastFov;
-	//private float? LastViewmodelFov;
-
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -32,7 +26,7 @@ partial class Python : HLWeapon
 
 	public override bool CanPrimaryAttack()
 	{
-		return base.CanPrimaryAttack() && Input.Pressed( InputButton.PrimaryAttack );
+		return base.CanPrimaryAttack();
 	}
 
 	public override void AttackPrimary()
@@ -66,34 +60,7 @@ partial class Python : HLWeapon
 	public override void Simulate( Client cl )
 	{
 		base.Simulate( cl );
-
-		//Zoomed = Input.Down( InputButton.SecondaryAttack );
 	}
-
-	/*public override void PostCameraSetup( ref CameraSetup camSetup )
-	{
-		base.PostCameraSetup( ref camSetup );
-
-		float targetFov = camSetup.FieldOfView;
-		float targetViewmodelFov = camSetup.ViewModel.FieldOfView;
-		LastFov = LastFov ?? camSetup.FieldOfView;
-		LastViewmodelFov = LastViewmodelFov ?? camSetup.ViewModel.FieldOfView;
-
-		if ( Zoomed )
-		{
-			targetFov = 40.0f;
-			targetViewmodelFov = 40.0f;
-		}
-
-		float lerpedFov = LastFov.Value.LerpTo( targetFov, Time.Delta * 24.0f );
-		float lerpedViewmodelFov = LastViewmodelFov.Value.LerpTo( targetViewmodelFov, Time.Delta * 24.0f );
-
-		camSetup.FieldOfView = lerpedFov;
-		camSetup.ViewModel.FieldOfView = lerpedViewmodelFov;
-
-		LastFov = lerpedFov;
-		LastViewmodelFov = lerpedViewmodelFov;
-	}*/
 
 	public override void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
 	{
