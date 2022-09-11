@@ -110,11 +110,11 @@
 				caller.GiveAmmo(AmmoType.Snark, 5);
 
 				var battery = new Battery();
-				battery.Position = ConsoleSystem.Caller.Pawn.EyePosition;
+				battery.Position = ConsoleSystem.Caller.Pawn.Position;
 				battery.Spawn();
 
 				var suit = new Suit();
-				suit.Position = ConsoleSystem.Caller.Pawn.EyePosition;
+				suit.Position = ConsoleSystem.Caller.Pawn.Position;
 				suit.Spawn();
 			}
 
