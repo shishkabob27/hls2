@@ -382,7 +382,16 @@
 			player.SetAnimParameter("b_attack", true);
 		}
 	}
-
+	public virtual Vector3 GetFiringPos()
+	{
+        if (Client.IsUsingVr) return (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position;
+		return Owner.EyePosition;
+    }
+    public virtual Rotation GetFiringRotation()
+    {
+        if (Client.IsUsingVr) return (Rotation)VRWeaponModel.GetAttachment("muzzle")?.Rotation;
+		return Owner.EyeRotation;
+    }
     public IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float radius = 2.0f)
     {
         bool underWater = Trace.TestPoint(start, "water");
