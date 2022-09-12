@@ -58,7 +58,7 @@ partial class RPG : HLWeapon
 	
 
 	[ClientRpc]
-	protected override void ShootEffects()
+	protected override void ShootEffectsRPC()
 	{
 		Host.AssertClient();
 

@@ -96,7 +96,7 @@ partial class SMG : HLWeapon
 	}
 
 	[ClientRpc]
-	protected override void ShootEffects()
+	protected override void ShootEffectsRPC()
 	{
 		Host.AssertClient();
 

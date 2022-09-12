@@ -336,13 +336,21 @@
 	{
 
 	}
+    protected virtual void ShootEffects(To to)
+    {
+        ShootEffectsRPC(to);
+    }
+    protected virtual void ShootEffects()
+    {
+        ShootEffectsRPC();
+    }
 
 
-
-	[ClientRpc]
-	protected virtual void ShootEffects()
+    [ClientRpc]
+	protected virtual void ShootEffectsRPC()
 	{
-		Host.AssertClient();
+
+        Host.AssertClient();
 
 		if (Client.IsUsingVr)
 		{
@@ -355,7 +363,6 @@
 
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
-		VRWeaponModel?.SetAnimParameter( "fire", true );
 		CrosshairLastShoot = 0;
 
 		if (Owner is HLPlayer player)

@@ -97,7 +97,7 @@ partial class Crossbow : HLWeapon
 	}
 
 	[ClientRpc]
-	protected override void ShootEffects()
+	protected override void ShootEffectsRPC()
 	{
 		Host.AssertClient();
 
