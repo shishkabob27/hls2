@@ -338,20 +338,26 @@
 	}
     protected virtual void ShootEffects(To to)
     {
-        ShootEffectsSV();
+        ShootEffectsBoth();
+        if (IsServer)
+            ShootEffectsSV();
         ShootEffectsRPC(to);
     }
     protected virtual void ShootEffects()
     {
-		ShootEffectsSV();
+		ShootEffectsBoth();
+        if (IsServer)
+            ShootEffectsSV();
         ShootEffectsRPC();
     }
 	protected virtual void ShootEffectsSV()
 	{
+    }
+	protected virtual void ShootEffectsBoth()
+	{
 
         VRWeaponModel?.SetAnimParameter("fire", true);
     }
-
     [ClientRpc]
 	protected virtual void ShootEffectsRPC()
 	{
