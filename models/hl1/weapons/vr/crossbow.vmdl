@@ -263,7 +263,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "fire1"
+						name = "attack"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -368,7 +368,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "idle1"
+						name = "idle_loaded"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
