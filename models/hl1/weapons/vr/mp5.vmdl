@@ -26,8 +26,40 @@
 								to = "materials/vr/gordon_sleeve.vmat"
 							},
 							{
-								from = "m4_reference.vmat"
-								to = "materials/hl1/weapons/vr/mp5/m4_reference.vmat"
+								from = "hk_chrome.vmat"
+								to = "materials/hl1/weapons/view/mp5/hk_chrome.vmat"
+							},
+							{
+								from = "buttstockrear.vmat"
+								to = "materials/hl1/weapons/vr/mp5/buttstockrear.vmat"
+							},
+							{
+								from = "clip.vmat"
+								to = "materials/hl1/weapons/vr/mp5/clip.vmat"
+							},
+							{
+								from = "glback.vmat"
+								to = "materials/hl1/weapons/vr/mp5/glback.vmat"
+							},
+							{
+								from = "gunbodyrear.vmat"
+								to = "materials/hl1/weapons/vr/mp5/gunbodyrear.vmat"
+							},
+							{
+								from = "gunsidemap.vmat"
+								to = "materials/hl1/weapons/vr/mp5/gunsidemap.vmat"
+							},
+							{
+								from = "handleback.vmat"
+								to = "materials/hl1/weapons/vr/mp5/handleback.vmat"
+							},
+							{
+								from = "sighttop.vmat"
+								to = "materials/hl1/weapons/vr/mp5/sighttop.vmat"
+							},
+							{
+								from = "silencerback.vmat"
+								to = "materials/hl1/weapons/vr/mp5/silencerback.vmat"
 							},
 						]
 						use_global_default = false
@@ -42,18 +74,18 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "carbine"
-						relative_origin = [ 8.555754, -16.223675, 5.047583 ]
-						relative_angles = [ 0.0, -90.0, 90.0 ]
+						parent_bone = "muzzle_pos"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 90.0, 90.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
 					{
 						_class = "Attachment"
 						name = "ejection_point"
-						parent_bone = "carbine"
-						relative_origin = [ 7.03534, -5.700244, 4.462028 ]
-						relative_angles = [ -31.284595, -179.999985, 88.856041 ]
+						parent_bone = "bone17"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -65,7 +97,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_m4_view_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_mp5sd.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -79,12 +111,13 @@
 							exception_list = 
 							[
 								"v_9mmar_m4_view_reference",
+								"v_9mmar_mp5sd",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_v_gordon_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_v_gordon_hands_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -122,7 +155,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_anims/deploy.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_anims/deploy.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -143,7 +176,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_anims/grenade.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_anims/grenade.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -164,7 +197,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_anims/idle1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -185,7 +218,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_anims/longidle.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_anims/longidle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -206,7 +239,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_anims/reload.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -215,7 +248,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "shoot_1"
+						name = "shoot1"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -227,7 +260,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_anims/shoot_1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_anims/shoot_1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -236,7 +269,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "shoot_2"
+						name = "shoot2"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -248,7 +281,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_anims/shoot_2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_anims/shoot_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -257,7 +290,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "shoot_3"
+						name = "shoot3"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -269,7 +302,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmar/v_9mmar_anims/shoot_3.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmar/v_9mmar_anims/shoot_3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
