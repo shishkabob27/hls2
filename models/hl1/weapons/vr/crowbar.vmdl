@@ -318,6 +318,34 @@
 				]
 				default_root_bone_name = ""
 			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsMeshFile"
+						name = "v_crowbar_crowbar_reference"
+						parent_bone = "bip01_r_hand"
+						surface_prop = "default"
+						collision_tags = "solid vrweapon"
+						recenter_on_parent_bone = false
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_crowbar_reference.smd"
+						import_scale = 1.0
+						maxMeshVertices = 0
+						qemError = 0.0
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

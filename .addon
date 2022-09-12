@@ -45,7 +45,8 @@
         "npc": "Unset",
         "weapon": "Unset",
         "funcpush": "Collide",
-        "glass": "Unset"
+        "glass": "Unset",
+        "vrweapon": "Unset"
       },
       "Pairs": [
         {
@@ -142,6 +143,11 @@
           "a": "player",
           "b": "glass",
           "r": "Collide"
+        },
+        {
+          "a": "player",
+          "b": "vrweapon",
+          "r": "Ignore"
         }
       ]
     },
