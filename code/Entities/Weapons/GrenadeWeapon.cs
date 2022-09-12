@@ -24,7 +24,7 @@ partial class GrenadeWeapon : HLWeapon
 
 	public override bool CanPrimaryAttack()
 	{
-		return Input.Released( InputButton.PrimaryAttack );
+		return base.CanPrimaryAttack();
 	}
 
 	public override void AttackPrimary()
@@ -61,12 +61,9 @@ partial class GrenadeWeapon : HLWeapon
 
 				grenade.PhysicsBody.Velocity = GetFiringRotation().Forward * 600.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
 
-				// This is fucked in the head, lets sort this this year
+
 				Tags.Add("debris");
-				
-				//grenade.CollisionGroup = CollisionGroup.Debris;
-				//grenade.SetInteractsExclude( CollisionLayer.Player );
-				//grenade.SetInteractsAs( CollisionLayer.Debris );
+
 
 				_ = grenade.BlowIn( 3.0f );
 			}
