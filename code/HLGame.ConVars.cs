@@ -1,4 +1,4 @@
-﻿public partial class HLGame : Game
+﻿public partial class HLGame
 {
     // this can be accessed from anywhere!
 
@@ -8,4 +8,5 @@
     [ConVar.Client] public static bool hl_gui_rescale { get; set; } = true;
     [ConVar.Client] public static bool hl_pixelfont  { get; set; } = true;
     [ConVar.Client] public static int cc_subtitles { get; set; } = 0;
+    
 }

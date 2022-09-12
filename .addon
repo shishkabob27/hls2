@@ -142,7 +142,7 @@
         {
           "a": "player",
           "b": "glass",
-          "r": "Collide"
+          "r": "Trigger"
         },
         {
           "a": "player",
@@ -152,7 +152,7 @@
         {
           "a": "solid",
           "b": "glass",
-          "r": "Trigger"
+          "r": "Collide"
         },
         {
           "a": "glass",
@@ -162,7 +162,7 @@
         {
           "a": "glass",
           "b": "glass",
-          "r": "Trigger"
+          "r": "Collide"
         }
       ]
     },

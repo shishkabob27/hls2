@@ -8,7 +8,6 @@ public interface IRespawnableEntity
 
 public class ItemRespawn
 {
-	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
 	
 	/// <summary>
 	/// A record of an entity and its position
@@ -75,7 +74,7 @@ public class ItemRespawn
 	{
 		await GameTask.Delay( 1000 * 30 );
         
-		if (hl_gamemode == "deathmatch")
+		if (HLGame.hl_gamemode == "deathmatch")
 		{
 			// TODO - find a sound that sounds like the echoey crazy truck horn sound that played in HL1 when items spawned
 			Sound.FromWorld( "itemrespawn", record.Transform.Position + Vector3.Up * 50 );

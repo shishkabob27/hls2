@@ -39,7 +39,7 @@ public class Options : GUIPanel
 	{
 
         HLWalkController.cl_rollangle = (bCviewroll? 2 : 0);
-		HLGame.hl_hud_scale = fChudScale;
+        HLGame.hl_hud_scale = fChudScale;
         HLGame.cc_subtitles = (bCsubtitle? 1 : 0);
         HLGame.hl_gui_rescale = bCguiscale;
         HLGame.hl_pixelfont = bCpixelfont;

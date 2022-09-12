@@ -94,8 +94,8 @@
 		SupressPickupNotices = false;
 		Health = 100;
 		Armour = 0;
-		
 
+		Log.Info(HLGame.hl_gamemode);
 		if (HLGame.hl_gamemode == "deathmatch"){
 			HasHEV = true;
 

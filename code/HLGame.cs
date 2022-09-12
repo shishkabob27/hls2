@@ -15,7 +15,7 @@ global using XeNPC;
 public partial class HLGame : Game
 {
 	[Net]
-	HudRootPanel Hud { get; set; }
+	HudPanel Hud { get; set; }
 	HLGUI GUI { get; set; }
 
 	StandardPostProcess postProcess;
@@ -31,7 +31,7 @@ public partial class HLGame : Game
 		if ( IsServer )
         {
             GUI = new HLGUI();
-            Hud = new HudRootPanel();
+            Hud = new HudPanel();
         }
 
 		if ( IsClient )
@@ -142,7 +142,7 @@ public partial class HLGame : Game
     public void resetgui2()
 	{
         Hud.Delete();
-        Hud = new HudRootPanel();
+        Hud = new HudPanel();
         GUI.Delete();
         GUI = new HLGUI();
     }

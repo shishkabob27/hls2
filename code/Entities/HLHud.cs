@@ -1,4 +1,4 @@
-﻿public partial class HLHud : HudRootPanel
+﻿public partial class HLHud : HudPanel
 {
 	[ClientRpc]
 	public void OnPlayerDied( HLPlayer player )
