@@ -22,12 +22,40 @@
 								to = "materials/vr/gordon_sleeve.vmat"
 							},
 							{
-								from = "spas12_reference.vmat"
-								to = "materials/hl1/weapons/vr/shotgun/spas12_reference.vmat"
-							},
-							{
 								from = "gordon_glove.vmat"
 								to = "materials/vr/gordon_glove.vmat"
+							},
+							{
+								from = "barrel_chrome.vmat"
+								to = "materials/hl1/weapons/view/shotgun/barrel_chrome.vmat"
+							},
+							{
+								from = "barrelltop.vmat"
+								to = "materials/hl1/weapons/vr/shotgun/barrelltop.vmat"
+							},
+							{
+								from = "bodyback.vmat"
+								to = "materials/hl1/weapons/vr/shotgun/bodyback.vmat"
+							},
+							{
+								from = "grip.vmat"
+								to = "materials/hl1/weapons/vr/shotgun/grip.vmat"
+							},
+							{
+								from = "handle.vmat"
+								to = "materials/hl1/weapons/vr/shotgun/handle.vmat"
+							},
+							{
+								from = "shell.vmat"
+								to = "materials/hl1/weapons/vr/shotgun/shell.vmat"
+							},
+							{
+								from = "sidemap.vmat"
+								to = "materials/hl1/weapons/vr/shotgun/sidemap.vmat"
+							},
+							{
+								from = "sight.vmat"
+								to = "materials/hl1/weapons/vr/shotgun/sight.vmat"
 							},
 						]
 						use_global_default = false
@@ -44,7 +72,7 @@
 						name = "muzzle"
 						parent_bone = "muzzle_pos2"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ -0.0, 90.0, 0.0 ]
+						relative_angles = [ -0.0, -90.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -56,7 +84,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_v_spas12_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -70,12 +98,13 @@
 							exception_list = 
 							[
 								"v_shotgun_v_spas12_reference",
+								"v_shotgun_reference",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_v_gordon_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_v_gordon_hands_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -90,6 +119,27 @@
 							[
 								"v_shotgun_v_spas12_reference",
 								"v_shotgun_v_gordon_hands_reference",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/shell.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"v_shotgun_v_spas12_reference",
+								"v_shotgun_v_gordon_hands_reference",
+								"shell",
 							]
 						}
 					},
@@ -113,7 +163,28 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_anims/deepidle.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/deepidle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "draw"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -134,7 +205,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_anims/idle4.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/idle4.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -155,7 +226,28 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_anims/pump.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/pump.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "reholster"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/reholster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -176,7 +268,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_anims/reload.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -197,7 +289,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_anims/shoot.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/shoot.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -218,7 +310,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_anims/shoot_big.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/shoot_big.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -239,7 +331,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_anims/sm_idle.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/sm_idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -260,7 +352,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_shotgun/v_shotgun_anims/start_reload.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_shotgun/v_shotgun_anims/start_reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
