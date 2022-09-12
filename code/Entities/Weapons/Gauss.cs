@@ -79,7 +79,9 @@ partial class Gauss : HLWeapon
 
         var owner = Owner as HLPlayer;
         var startPos = owner.EyePosition;
+        if (Client.IsUsingVr) startPos = (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position;
         var dir = owner.EyeRotation.Forward;
+        if (Client.IsUsingVr) dir = (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Rotation.Forward;
 
         var tr = Trace.Ray(startPos, startPos + dir * 800)
         .UseHitboxes()
@@ -93,9 +95,12 @@ partial class Gauss : HLWeapon
         }
 
         ViewModelEntity?.SetAnimParameter("fire", true);
+        VRWeaponModel?.SetAnimParameter("fire", true);
         ViewModelEntity?.SetAnimParameter("holdtype_attack", false ? 2 : 1);
+        VRWeaponModel?.SetAnimParameter("holdtype_attack", false ? 2 : 1);
 
         Beam.SetEntityAttachment(0, EffectEntity, "muzzle", true);
+        if (Client.IsUsingVr) Beam.SetEntityAttachment(0, VRWeaponModel, "muzzle", true);
         Beam.SetPosition(2, beamcolour);
         Beam.SetPosition(3, new Vector3(2, 1, 0));
 
