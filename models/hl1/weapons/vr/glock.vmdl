@@ -14,10 +14,6 @@
 						remaps = 
 						[
 							{
-								from = "chrome_black.vmat"
-								to = "materials/hl1/weapons/vr/glock/chrome_black.vmat"
-							},
-							{
 								from = "gordon_glove.vmat"
 								to = "materials/vr/gordon_glove.vmat"
 							},
@@ -30,24 +26,32 @@
 								to = "materials/vr/gordon_sleeve.vmat"
 							},
 							{
-								from = "v_beretta_bottom.vmat"
-								to = "materials/hl1/weapons/vr/glock/v_beretta_bottom.vmat"
-							},
-							{
-								from = "v_beretta_main.vmat"
-								to = "materials/hl1/weapons/vr/glock/v_beretta_main.vmat"
-							},
-							{
 								from = "bulletchrome.vmat"
 								to = "materials/hl1/weapons/view/python/bulletchrome.vmat"
 							},
 							{
 								from = "gclip.vmat"
-								to = "materials/hl1/weapons/view/glock/gclip.vmat"
+								to = "materials/hl1/weapons/vr/glock/gclip.vmat"
 							},
 							{
 								from = "gclipinside.vmat"
-								to = "materials/hl1/weapons/view/glock/gclipinside.vmat"
+								to = "materials/hl1/weapons/vr/glock/gclipinside.vmat"
+							},
+							{
+								from = "back.vmat"
+								to = "materials/hl1/weapons/vr/glock/back.vmat"
+							},
+							{
+								from = "chrome.vmat"
+								to = "materials/hl1/weapons/view/crowbar/chrome.vmat"
+							},
+							{
+								from = "side.vmat"
+								to = "materials/hl1/weapons/vr/glock/side.vmat"
+							},
+							{
+								from = "top.vmat"
+								to = "materials/hl1/weapons/vr/glock/top.vmat"
 							},
 						]
 						use_global_default = false
@@ -62,16 +66,16 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "boxpistol"
-						relative_origin = [ -0.022864, -1.9751, -5.539027 ]
-						relative_angles = [ 84.910431, 89.623726, 75.092377 ]
+						parent_bone = "muzzle_pos2"
+						relative_origin = [ -0.016894, -0.064695, 0.018949 ]
+						relative_angles = [ 0.0, -90.0, -153.688995 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
 					{
 						_class = "Attachment"
 						name = "ejcetion_point"
-						parent_bone = "boxpistol"
+						parent_bone = "muzzle_pos"
 						relative_origin = [ -1.327044, -3.313259, -0.50296 ]
 						relative_angles = [ -0.0, 0.0, 0.0 ]
 						weight = 1.0
@@ -85,7 +89,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_v_beretta_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/glock_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -99,12 +103,13 @@
 							exception_list = 
 							[
 								"v_9mmhandgun_v_beretta_reference",
+								"glock_reference",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_v_beretta_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/clip_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -118,13 +123,14 @@
 							exception_list = 
 							[
 								"v_9mmhandgun_v_beretta_reference",
-								"v_9mmhandgun_v_beretta_hands_reference",
+								"glock_reference",
+								"clip_reference",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_clip_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_v_glock_hands_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -138,8 +144,8 @@
 							exception_list = 
 							[
 								"v_9mmhandgun_v_beretta_reference",
-								"v_9mmhandgun_v_beretta_hands_reference",
-								"v_9mmhandgun_clip_reference",
+								"glock_reference",
+								"v_9mmhandgun_v_glock_hands_reference",
 							]
 						}
 					},
@@ -149,6 +155,27 @@
 				_class = "AnimationList"
 				children = 
 				[
+					{
+						_class = "AnimFile"
+						name = "add_silencer"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/add_silencer.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
 					{
 						_class = "AnimFile"
 						name = "draw"
@@ -163,7 +190,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/draw.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -184,7 +211,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/holster.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -205,7 +232,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/idle1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -226,7 +253,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/idle2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -247,7 +274,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/idle3.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/idle3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -268,7 +295,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/reload.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -289,7 +316,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/reload_noshot.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/reload_noshot.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -310,7 +337,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/shoot.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/shoot.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -331,7 +358,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_9mmhandgun/v_9mmhandgun_anims/shoot_empty.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_9mmhandgun/v_9mmhandgun_anims/shoot_empty.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
