@@ -107,8 +107,9 @@ namespace Sandbox
         {
             if (Client.IsUsingVr)
             {
+                if (WishVelocity == 0) return;
                 Transform headLocal = Pawn.Transform.ToLocal(Input.VR.Head);
-                var girth = BodyGirth * 0.5f;
+                var girth = BodyGirth * 0.1f;
 
                 var mins = (new Vector3(-girth, -girth, 0) + headLocal.Position.WithZ(0) * Rotation) * Pawn.Scale;
                 var maxs = (new Vector3(+girth, +girth, BodyHeight) + headLocal.Position.WithZ(0) * Rotation) *

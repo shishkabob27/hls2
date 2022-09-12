@@ -148,6 +148,21 @@
           "a": "player",
           "b": "vrweapon",
           "r": "Ignore"
+        },
+        {
+          "a": "solid",
+          "b": "glass",
+          "r": "Trigger"
+        },
+        {
+          "a": "glass",
+          "b": "vrweapon",
+          "r": "Trigger"
+        },
+        {
+          "a": "glass",
+          "b": "glass",
+          "r": "Trigger"
         }
       ]
     },

@@ -561,7 +561,8 @@
 		}
 		Log.Info(vrmodel);
 		VRWeaponModel.SetModel(vrmodel);
-        VRWeaponModel.SetupPhysicsFromModel(PhysicsMotionType.Keyframed);
+        VRWeaponModel.SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
+
 		VRWeaponModel.Tags.Add("vrweapon");
 		VRWeaponModel.PhysicsEnabled = true;
 		VRWeaponModel.UsePhysicsCollision = true;

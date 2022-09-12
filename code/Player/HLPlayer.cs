@@ -119,6 +119,8 @@
 
 		LeftHand = new() { Owner = this };
 		RightHand = new() { Owner = this };
+		LeftHand.Spawn();
+		RightHand.Spawn();
 	}
 
 	private void DeleteHands()
