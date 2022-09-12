@@ -26,20 +26,96 @@
 								to = "materials/vr/gordon_sleeve.vmat"
 							},
 							{
-								from = "v_rpg_monitor_reference.vmat"
-								to = "materials/hl1/weapons/vr/rpg/v_rpg_monitor_reference.vmat"
+								from = "glove_handpak.bmp.vmat"
+								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
 							},
 							{
-								from = "v_rpg_primer.vmat"
-								to = "materials/hl1/weapons/vr/rpg/v_rpg_primer.vmat"
+								from = "gloved_knuckle.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/gloved_knuckle.vmat"
 							},
 							{
-								from = "v_rpg_reference.vmat"
-								to = "materials/hl1/weapons/vr/rpg/v_rpg_reference.vmat"
+								from = "gloved_sleeve.vmat"
+								to = "materials/hl1/weapons/view/hand/gloved_sleeve.vmat"
 							},
 							{
-								from = "v_rpg_rocket.vmat"
-								to = "materials/hl1/weapons/vr/rpg/v_rpg_rocket.vmat"
+								from = "rubberglovechrome.vmat"
+								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
+							},
+							{
+								from = "join.vmat"
+								to = "materials/hl1/weapons/vr/rpg/join.vmat"
+							},
+							{
+								from = "m10cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m10cl.vmat"
+							},
+							{
+								from = "m11cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m11cl.vmat"
+							},
+							{
+								from = "m12cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m12cl.vmat"
+							},
+							{
+								from = "m13cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m13cl.vmat"
+							},
+							{
+								from = "m16cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m16cl.vmat"
+							},
+							{
+								from = "m17cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m17cl.vmat"
+							},
+							{
+								from = "m18cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m18cl.vmat"
+							},
+							{
+								from = "m1cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m1cl.vmat"
+							},
+							{
+								from = "m2cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m2cl.vmat"
+							},
+							{
+								from = "m3cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m3cl.vmat"
+							},
+							{
+								from = "m4cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m4cl.vmat"
+							},
+							{
+								from = "m5cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m5cl.vmat"
+							},
+							{
+								from = "m6cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m6cl.vmat"
+							},
+							{
+								from = "m7cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m7cl.vmat"
+							},
+							{
+								from = "m8cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m8cl.vmat"
+							},
+							{
+								from = "m9cl.vmat"
+								to = "materials/hl1/weapons/vr/rpg/m9cl.vmat"
+							},
+							{
+								from = "rocket.vmat"
+								to = "materials/hl1/weapons/vr/rpg/rocket.vmat"
+							},
+							{
+								from = "rocketmotor.vmat"
+								to = "materials/hl1/weapons/vr/rpg/rocketmotor.vmat"
 							},
 						]
 						use_global_default = false
@@ -55,8 +131,8 @@
 						_class = "Attachment"
 						name = "muzzle"
 						parent_bone = "muzzle_pos2"
-						relative_origin = [ 0.0, 0.0, -0.000019 ]
-						relative_angles = [ -0.0, 90.0, 0.0 ]
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, -90.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -68,7 +144,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_rpg_rocket.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -82,12 +158,13 @@
 							exception_list = 
 							[
 								"v_rpg_reference",
+								"v_rpg_rpg_rocket",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_v_gordon_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_blowpipe.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -102,6 +179,29 @@
 							[
 								"v_rpg_reference",
 								"v_rpg_v_gordon_hands_reference",
+								"v_rpg_blowpipe",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_rpg_hand.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"v_rpg_reference",
+								"v_rpg_v_gordon_hands_reference",
+								"v_rpg_blowpipe",
+								"v_rpg_rpg_hand",
 							]
 						}
 					},
@@ -125,7 +225,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/draw1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/draw1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -146,7 +246,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/draw2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/draw2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -167,7 +267,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/fidget.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/fidget.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -188,7 +288,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/fire.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/fire.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -209,7 +309,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/holster1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/holster1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -230,7 +330,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/holster2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/holster2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -251,7 +351,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/idle.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -272,7 +372,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/idle2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -293,7 +393,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_rpg/v_rpg_anims/reload.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_rpg/v_rpg_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
