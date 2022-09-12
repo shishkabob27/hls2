@@ -382,11 +382,20 @@
 			player.SetAnimParameter("b_attack", true);
 		}
 	}
+
+	/// <summary>
+	/// This gets the position of where the weapon should fire a bullet
+	/// </summary>
+	/// <returns>Returns position of the muzzle attachment in VR Mode and Owner.EyePosition elsewhere.</returns>
 	public virtual Vector3 GetFiringPos()
 	{
         if (Client.IsUsingVr) return (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position;
 		return Owner.EyePosition;
     }
+    /// <summary>
+	/// This gets the rotation of where the weapon should fire a bullet
+    /// </summary>
+    /// <returns>Returns rotation of the muzzle attachment in VR Mode and Owner.EyeRotation elsewhere.</returns>
     public virtual Rotation GetFiringRotation()
     {
         if (Client.IsUsingVr) return (Rotation)VRWeaponModel.GetAttachment("muzzle")?.Rotation;
