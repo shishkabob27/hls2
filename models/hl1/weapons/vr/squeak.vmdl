@@ -26,12 +26,20 @@
 								to = "materials/vr/gordon_sleeve.vmat"
 							},
 							{
-								from = "snark_eye_01.vmat"
-								to = "materials/hl1/weapons/vr/squeak/snark_eye_01.vmat"
+								from = "chrome1.vmat"
+								to = "materials/hl1/weapons/view/squeak/chrome1.vmat"
 							},
 							{
-								from = "snark_reference.vmat"
-								to = "materials/hl1/weapons/vr/squeak/snark_reference.vmat"
+								from = "sqk_mouth1.vmat"
+								to = "materials/hl1/weapons/view/squeak/sqk_mouth1.vmat"
+							},
+							{
+								from = "sqk_eye1.vmat"
+								to = "materials/hl1/weapons/vr/squeak/sqk_eye1.vmat"
+							},
+							{
+								from = "sqk_side1.vmat"
+								to = "materials/hl1/weapons/vr/squeak/sqk_side1.vmat"
 							},
 						]
 						use_global_default = false
@@ -48,7 +56,7 @@
 						name = "muzzle"
 						parent_bone = "muzzle_pos2"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 27.678703, -103.578545, 6.903986 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -60,7 +68,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_squeak/v_squeak_v_snark_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_squeak/v_squeak_squeak_template_biped(weapon)1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -74,12 +82,13 @@
 							exception_list = 
 							[
 								"v_squeak_v_snark_reference",
+								"v_squeak_squeak_template_biped_weapon_1",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_squeak/v_squeak_v_gordon_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_squeak/v_squeak_v_gordon_hands_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -117,7 +126,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_squeak/v_squeak_anims/down.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_squeak/v_squeak_anims/down.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -138,7 +147,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_squeak/v_squeak_anims/fidgetfit.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_squeak/v_squeak_anims/fidgetfit.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -159,7 +168,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_squeak/v_squeak_anims/fidgetnip.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_squeak/v_squeak_anims/fidgetnip.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -180,7 +189,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_squeak/v_squeak_anims/idle1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_squeak/v_squeak_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -201,7 +210,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_squeak/v_squeak_anims/throw.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_squeak/v_squeak_anims/throw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -222,7 +231,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_squeak/v_squeak_anims/up.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_squeak/v_squeak_anims/up.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
