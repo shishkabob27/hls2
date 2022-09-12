@@ -358,6 +358,20 @@
 				]
 				default_root_bone_name = ""
 			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsHullFromRender"
+						parent_bone = "crossbow_parent"
+						surface_prop = "default"
+						collision_tags = "solid vrweapon"
+						faceMergeAngle = 5.0
+						maxHullVertices = 38
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
