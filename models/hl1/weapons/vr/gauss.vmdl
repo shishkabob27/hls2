@@ -30,16 +30,72 @@
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 							{
-								from = "gausschrome.vmat"
-								to = "materials/hl1/weapons/vr/gauss/gausschrome.vmat"
+								from = "barrelchrome.vmat"
+								to = "materials/hl1/weapons/view/gauss/barrelchrome.vmat"
 							},
 							{
-								from = "glow.vmat"
-								to = "materials/hl1/weapons/vr/gauss/glow.vmat"
+								from = "glove_handpak.bmp.vmat"
+								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
 							},
 							{
-								from = "v_gauss_reference.vmat"
-								to = "materials/hl1/weapons/vr/gauss/v_gauss_reference.vmat"
+								from = "gloved_knuckle.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/gloved_knuckle.vmat"
+							},
+							{
+								from = "gloved_sleeve.vmat"
+								to = "materials/hl1/weapons/view/hand/gloved_sleeve.vmat"
+							},
+							{
+								from = "spinnerbright.vmat"
+								to = "materials/hl1/weapons/view/gauss/spinnerbright.vmat"
+							},
+							{
+								from = "battery.vmat"
+								to = "materials/hl1/weapons/view/gauss/battery.vmat"
+							},
+							{
+								from = "boxsideb.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxsideb.vmat"
+							},
+							{
+								from = "boxtopa.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxtopa.vmat"
+							},
+							{
+								from = "boxsidec.vmat"
+								to = "materials/hl1/weapons/view/gauss/boxsidec.vmat"
+							},
+							{
+								from = "wire_chrome.vmat"
+								to = "materials/hl1/weapons/view/gauss/wire_chrome.vmat"
+							},
+							{
+								from = "batteryend.vmat"
+								to = "materials/hl1/weapons/vr/gauss/batteryend.vmat"
+							},
+							{
+								from = "bottle.vmat"
+								to = "materials/hl1/weapons/vr/gauss/bottle.vmat"
+							},
+							{
+								from = "boxrear.vmat"
+								to = "materials/hl1/weapons/vr/gauss/boxrear.vmat"
+							},
+							{
+								from = "boxsidea.vmat"
+								to = "materials/hl1/weapons/vr/gauss/boxsidea.vmat"
+							},
+							{
+								from = "boxtopb.vmat"
+								to = "materials/hl1/weapons/vr/gauss/boxtopb.vmat"
+							},
+							{
+								from = "nuspinner2.vmat"
+								to = "materials/hl1/weapons/vr/gauss/nuspinner2.vmat"
+							},
+							{
+								from = "spinner_rear.vmat"
+								to = "materials/hl1/weapons/vr/gauss/spinner_rear.vmat"
 							},
 						]
 						use_global_default = false
@@ -55,8 +111,8 @@
 						_class = "Attachment"
 						name = "muzzle"
 						parent_bone = "muzzle_pos2"
-						relative_origin = [ 0.000204, -1.762329, -0.000206 ]
-						relative_angles = [ -0.998666, 90.723099, -11.909167 ]
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, -90.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -68,7 +124,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_gauss_gun.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -82,12 +138,13 @@
 							exception_list = 
 							[
 								"v_gauss_reference",
+								"v_gauss_gauss_gun",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_v_gordon_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_gauss_hand.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -102,6 +159,7 @@
 							[
 								"v_gauss_reference",
 								"v_gauss_v_gordon_hands_reference",
+								"v_gauss_gauss_hand",
 							]
 						}
 					},
@@ -125,7 +183,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/draw.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -146,7 +204,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/fidget.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/fidget.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -167,7 +225,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/fire.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/fire.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -188,7 +246,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/fire2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/fire2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -209,7 +267,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/holster.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -230,7 +288,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/idle.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -251,7 +309,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/idle2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -272,7 +330,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/spin.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/spin.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -293,7 +351,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_gauss/v_gauss_anims/spinup.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_gauss/v_gauss_anims/spinup.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
