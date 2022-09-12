@@ -26,8 +26,12 @@
 								to = "materials/vr/gordon_sleeve.vmat"
 							},
 							{
-								from = "crowbar_01.vmat"
-								to = "materials/hl1/weapons/vr/crowbar/crowbar_01.vmat"
+								from = "chrome.vmat"
+								to = "materials/hl1/weapons/view/crowbar/chrome.vmat"
+							},
+							{
+								from = "chrome_red.vmat"
+								to = "materials/hl1/weapons/view/crowbar/chrome_red.vmat"
 							},
 						]
 						use_global_default = false
@@ -42,7 +46,7 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "boxend"
+						parent_bone = "muzzle_pos2"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ 0.0, 0.0, 0.0 ]
 						weight = 1.0
@@ -56,7 +60,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_crowbar_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -70,26 +74,7 @@
 							exception_list = 
 							[
 								"v_crowbar_reference",
-							]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_v_gordon_hands_reference.smd"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"v_crowbar_reference",
-								"v_crowbar_v_gordon_hands_reference",
+								"v_crowbar_crowbar_reference",
 							]
 						}
 					},
@@ -113,7 +98,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/attack1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/attack1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -134,7 +119,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/attack1miss.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/attack1miss.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -155,7 +140,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/attack2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/attack2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -176,7 +161,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/attack2hit.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/attack2hit.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -197,7 +182,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/attack3.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/attack3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -218,7 +203,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/attack3hit.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/attack3hit.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -239,7 +224,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/draw.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -260,7 +245,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/holster.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -281,7 +266,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/idle1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -302,7 +287,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/idle2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -323,7 +308,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crowbar/v_crowbar_anims/idle3.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crowbar/v_crowbar_anims/idle3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
