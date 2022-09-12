@@ -18,10 +18,6 @@
 								to = "materials/hl1/weapons/view/python/bluesteelchrome.vmat"
 							},
 							{
-								from = "v_python_reference.vmat"
-								to = "materials/hl1/weapons/vr/python/v_python_reference.vmat"
-							},
-							{
 								from = "gordon_glove.vmat"
 								to = "materials/vr/gordon_glove.vmat"
 							},
@@ -32,6 +28,14 @@
 							{
 								from = "gordon_sleeve.vmat"
 								to = "materials/vr/gordon_sleeve.vmat"
+							},
+							{
+								from = "bulletchrome.vmat"
+								to = "materials/hl1/weapons/view/python/bulletchrome.vmat"
+							},
+							{
+								from = "pythonhandle.vmat"
+								to = "materials/hl1/weapons/vr/python/pythonhandle.vmat"
 							},
 						]
 						use_global_default = false
@@ -46,9 +50,9 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "python"
-						relative_origin = [ 0.012729, -8.749192, 1.059685 ]
-						relative_angles = [ -2.29702, -89.995178, -0.018508 ]
+						parent_bone = "muzzle_pos2"
+						relative_origin = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, -90.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -60,7 +64,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_357/v_357_v_python_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_python_gun.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -74,12 +78,13 @@
 							exception_list = 
 							[
 								"v_357_v_python_reference",
+								"v_357_python_gun",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_357/v_357_v_gordon_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_v_gordon_hands_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -94,6 +99,48 @@
 							[
 								"v_357_v_python_reference",
 								"v_357_v_gordon_hands_reference",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_python_speedload.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"v_357_v_python_reference",
+								"v_357_v_gordon_hands_reference",
+								"v_357_python_speedload",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_python_bullets.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"v_357_v_python_reference",
+								"v_357_python_gun",
+								"v_357_python_bullets",
 							]
 						}
 					},
@@ -117,7 +164,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_357/v_357_anims/draw.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -138,7 +185,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_357/v_357_anims/fidget1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -159,7 +206,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_357/v_357_anims/fire1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_anims/fire1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -180,7 +227,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_357/v_357_anims/holster.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -201,7 +248,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_357/v_357_anims/idle1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -222,7 +269,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_357/v_357_anims/idle2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -243,7 +290,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_357/v_357_anims/idle3.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_anims/idle3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -264,7 +311,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_357/v_357_anims/reload.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_357/v_357_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
