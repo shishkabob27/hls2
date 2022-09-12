@@ -26,8 +26,32 @@
 								to = "materials/vr/gordon_sleeve.vmat"
 							},
 							{
-								from = "grenade s.vmat"
-								to = "materials/hl1/weapons/vr/grenade/grenade s.vmat"
+								from = "xbow_sleeve.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/xbow_sleeve.vmat"
+							},
+							{
+								from = "gloved_knuckle.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/gloved_knuckle.vmat"
+							},
+							{
+								from = "glove_handpak.bmp.vmat"
+								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
+							},
+							{
+								from = "rubberglovechrome.vmat"
+								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
+							},
+							{
+								from = "grenade3.vmat"
+								to = "materials/hl1/weapons/vr/grenade/grenade3.vmat"
+							},
+							{
+								from = "grenchrome.vmat"
+								to = "materials/hl1/weapons/vr/grenade/grenchrome.vmat"
+							},
+							{
+								from = "spoont.vmat"
+								to = "materials/hl1/weapons/vr/grenade/spoont.vmat"
 							},
 						]
 						use_global_default = false
@@ -42,9 +66,9 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "muzzle_pos"
+						parent_bone = "muzzle_pos2"
 						relative_origin = [ 0.0, 0.0, 0.0 ]
-						relative_angles = [ 0.0, 0.0, 0.0 ]
+						relative_angles = [ 0.0, -90.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -56,7 +80,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_grenade.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_grenade.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -75,7 +99,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_v_gordon_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_grenade_hand.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -90,6 +114,7 @@
 							[
 								"v_grenade_grenade",
 								"v_grenade_v_gordon_hands_reference",
+								"v_grenade_grenade_hand",
 							]
 						}
 					},
@@ -99,27 +124,6 @@
 				_class = "AnimationList"
 				children = 
 				[
-					{
-						_class = "AnimFile"
-						name = "idle"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = true
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_anims/idle.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
 					{
 						_class = "AnimFile"
 						name = "draw"
@@ -134,7 +138,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_anims/draw.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -155,7 +159,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_anims/fidget.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_anims/fidget.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -176,7 +180,28 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_anims/holster.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_anims/holster.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -197,7 +222,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_anims/pinpull.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_anims/pinpull.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -218,7 +243,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_anims/throw1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_anims/throw1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -239,7 +264,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_anims/throw2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_anims/throw2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -260,7 +285,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_grenade/v_grenade_anims/throw3.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_grenade/v_grenade_anims/throw3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
