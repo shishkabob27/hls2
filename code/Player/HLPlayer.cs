@@ -226,13 +226,11 @@
             EyeRotation = Input.VR.Head.Rotation;
 
 
-            vrrotate = Rotation.FromYaw(vrrotate.Yaw() - Input.VR.RightHand.Joystick.Value.x * 4);
+            vrrotate = Rotation.FromYaw(vrrotate.Yaw() - (float)Math.Round(Input.VR.RightHand.Joystick.Value.x, 1) * 4);
 
 
             var a = Transform;
             a.Position = Rotation.FromAxis(Vector3.Up, -(Input.VR.RightHand.Joystick.Value.x * 4)) * (Transform.Position - Input.VR.Head.Position.WithZ(Position.z)) + Input.VR.Head.Position.WithZ(Position.z);
-			
-
 
             a.Rotation = vrrotate;
 			
