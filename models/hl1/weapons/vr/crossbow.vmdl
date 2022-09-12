@@ -14,10 +14,6 @@
 						remaps = 
 						[
 							{
-								from = "bowchrome.vmat"
-								to = "materials/hl1/weapons/world/crossbow/bowchrome.vmat"
-							},
-							{
 								from = "gordon_glove.vmat"
 								to = "materials/vr/gordon_glove.vmat"
 							},
@@ -30,8 +26,84 @@
 								to = "materials/vr/gordon_sleeve.vmat"
 							},
 							{
-								from = "v_crossbow_reference.vmat"
-								to = "materials/hl1/weapons/vr/crossbow/v_crossbow_reference.vmat"
+								from = "lenschrome.vmat"
+								to = "materials/hl1/weapons/view/crossbow/lenschrome.vmat"
+							},
+							{
+								from = "bowtip.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/bowtip.vmat"
+							},
+							{
+								from = "cliprear.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/cliprear.vmat"
+							},
+							{
+								from = "clipside.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/clipside.vmat"
+							},
+							{
+								from = "glove_handpak.bmp.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/glove_handpak.vmat"
+							},
+							{
+								from = "gloved_knuckle.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/gloved_knuckle.vmat"
+							},
+							{
+								from = "grip.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/grip.vmat"
+							},
+							{
+								from = "ladder.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/ladder.vmat"
+							},
+							{
+								from = "lensring.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/lensring.vmat"
+							},
+							{
+								from = "mechside.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/mechside.vmat"
+							},
+							{
+								from = "mechtop.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/mechtop.vmat"
+							},
+							{
+								from = "receivertop.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/receivertop.vmat"
+							},
+							{
+								from = "recevierside.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/recevierside.vmat"
+							},
+							{
+								from = "shoulders.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/shoulders.vmat"
+							},
+							{
+								from = "slide_rear.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/slide_rear.vmat"
+							},
+							{
+								from = "slide_side.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/slide_side.vmat"
+							},
+							{
+								from = "slide_top.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/slide_top.vmat"
+							},
+							{
+								from = "stock.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/stock.vmat"
+							},
+							{
+								from = "xbow_sleeve.vmat"
+								to = "materials/hl1/weapons/vr/crossbow/xbow_sleeve.vmat"
+							},
+							{
+								from = "rubberglovechrome.vmat"
+								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 						]
 						use_global_default = false
@@ -48,7 +120,7 @@
 						name = "muzzle"
 						parent_bone = "muzzle_pos2"
 						relative_origin = [ -0.002952, 5.722965, -0.000195 ]
-						relative_angles = [ 0.003306, 94.631989, 0.000825 ]
+						relative_angles = [ 0.0, 90.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -60,7 +132,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_compound_scope.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -74,12 +146,13 @@
 							exception_list = 
 							[
 								"v_crossbow_reference",
+								"v_crossbow_compound_scope",
 							]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_v_gordon_hands_reference.smd"
+						filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_crossbow_hand.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -94,6 +167,7 @@
 							[
 								"v_crossbow_reference",
 								"v_crossbow_v_gordon_hands_reference",
+								"v_crossbow_crossbow_hand",
 							]
 						}
 					},
@@ -105,7 +179,7 @@
 				[
 					{
 						_class = "AnimFile"
-						name = "deploy_loaded"
+						name = "draw1"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -117,7 +191,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/draw1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/draw1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -138,7 +212,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/draw2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/draw2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -159,7 +233,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/fidget1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -180,7 +254,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/fidget2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/fidget2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -189,7 +263,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "attack"
+						name = "fire1"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -201,7 +275,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/fire1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/fire1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -222,7 +296,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/fire2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/fire2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -243,7 +317,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/fire3.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/fire3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -264,7 +338,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/holster1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/holster1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -285,7 +359,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/holster2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/holster2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -294,7 +368,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "idle_loaded"
+						name = "idle1"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -306,7 +380,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/idle1.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -327,7 +401,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/idle2.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -348,7 +422,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1/weapons/vr/decomp/v_crossbow/v_crossbow_anims/reload.smd"
+						source_filename = "models/hl1/weapons/vr/decomp_sd/v_crossbow/v_crossbow_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
