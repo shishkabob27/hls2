@@ -554,11 +554,13 @@
 		(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
 		var wmodel = ViewModelPath;
 		wmodel = ViewModelPath.Replace("view/v_", "vr/"); // get vr model
-        if (cl_himodels)
+		var vrmodel = wmodel;
+		if (cl_himodels)
         {
-			wmodel = ViewModelPath.Replace(".vmdl", "_hd.vmdl"); // get hd model
+			vrmodel = wmodel.Replace(".vmdl", "_hd.vmdl");
 		}
-		VRWeaponModel.SetModel(wmodel);
+		Log.Info(vrmodel);
+		VRWeaponModel.SetModel(vrmodel);
         VRWeaponModel.SetAnimParameter("deploy", true);
     }
 
