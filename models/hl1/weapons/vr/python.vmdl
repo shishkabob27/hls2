@@ -195,6 +195,20 @@
 					{
 						_class = "AnimFile"
 						name = "fire1"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = true
+								extract_tz = true
+								extract_rz = true
+								linear = false
+								quadratic = false
+								root_bone_name = "bip01_r_hand"
+								motion_type = "Uniform"
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
