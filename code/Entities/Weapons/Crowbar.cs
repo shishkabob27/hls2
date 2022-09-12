@@ -38,7 +38,7 @@ partial class Crowbar : HLWeapon
 
 		Rand.SetSeed( Time.Tick );
 
-		var forward = Owner.EyeRotation.Forward;
+		var forward = GetFiringRotation().Forward;
 		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.1f;
 		forward = forward.Normal;
 
@@ -46,7 +46,7 @@ partial class Crowbar : HLWeapon
 		bool didHit = false;
         var endPos = Vector3.Zero;
 		var trNormal = Vector3.Zero;
-		foreach ( var tr in TraceBullet( Owner.EyePosition, Owner.EyePosition + forward * 70, 1 ) )
+		foreach ( var tr in TraceBullet(GetFiringPos(), GetFiringPos() + forward * 70, 1 ) )
 		{
 
 			tr.Surface.DoHLBulletImpact(tr, false);
@@ -99,7 +99,7 @@ partial class Crowbar : HLWeapon
 				
 				Log.Info(hitEntity);
 				
-                var trace = Trace.Ray(Owner.EyePosition, Owner.EyePosition + forward * 70 * 2)
+                var trace = Trace.Ray(GetFiringPos(), GetFiringPos() + forward * 70 * 2)
 					.WorldOnly()
 					.Ignore(this)
 					.Size(1.0f)

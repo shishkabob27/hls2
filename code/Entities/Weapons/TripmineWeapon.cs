@@ -46,7 +46,7 @@ partial class TripmineWeapon : HLWeapon
 
         Rand.SetSeed( Time.Tick );
 
-		var tr = Trace.Ray( Owner.EyePosition, Owner.EyePosition + Owner.EyeRotation.Forward * 150 )
+		var tr = Trace.Ray( GetFiringPos(), GetFiringPos() + GetFiringRotation().Forward * 150 )
 				.Ignore( Owner )
 				.Run();
 

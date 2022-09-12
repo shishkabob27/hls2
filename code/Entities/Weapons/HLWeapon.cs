@@ -438,12 +438,10 @@
 		// Seed rand using the tick, so bullet cones match on client and server
 		//
 		Rand.SetSeed( Time.Tick );
-        if (Client.IsUsingVr)
-        {
 			for (int i = 0; i < bulletCount; i++)
 			{
-				var BForward = (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Rotation.Forward;
-                var BPosition = (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position;
+				var BForward = GetFiringRotation().Forward;
+                var BPosition = GetFiringPos();
                 
                 BForward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
                 BForward = BForward.Normal;
@@ -486,54 +484,6 @@
 					}
 				}
 			}
-		}
-        else
-        {
-			for (int i = 0; i < bulletCount; i++)
-			{
-				var forward = Owner.EyeRotation.Forward;
-				forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
-				forward = forward.Normal;
-
-				//
-				// ShootBullet is coded in a way where we can have bullets pass through shit
-				// or bounce off shit, in which case it'll return multiple results
-				//
-				foreach (var tr in TraceBullet(Owner.EyePosition, Owner.EyePosition + forward * 5000, bulletSize))
-				{
-					tr.Surface.DoHLBulletImpact(tr);
-
-
-					if (tr.Distance > 200 && !hl_sfmmode)
-					{
-						CreateTracerEffect(tr.EndPosition);
-					}
-
-					if (!IsServer) continue;
-					if (!tr.Entity.IsValid()) continue;
-
-					var damageInfo = DamageInfo.FromBullet(tr.EndPosition, forward * 100 * force, damage)
-						.UsingTraceResult(tr)
-						.WithAttacker(Owner)
-						.WithWeapon(this);
-
-					tr.Entity.TakeDamage(damageInfo);
-					if (tr.Entity is NPC)
-					{
-						var trace = Trace.Ray(Owner.EyePosition, Owner.EyePosition + forward * 256)
-						.WorldOnly()
-						.Ignore(this)
-						.Size(1.0f)
-						.Run();
-						if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
-						{
-							//Log.Info( "Splat!" );
-							Decal.Place(decal, trace);
-						}
-					}
-				}
-			}
-		}
 	}
 
 	[ClientRpc]

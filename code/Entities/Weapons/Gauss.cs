@@ -78,10 +78,8 @@ partial class Gauss : HLWeapon
         if (Owner is not HLPlayer player) return;
 
         var owner = Owner as HLPlayer;
-        var startPos = owner.EyePosition;
-        if (Client.IsUsingVr) startPos = (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position;
-        var dir = owner.EyeRotation.Forward;
-        if (Client.IsUsingVr) dir = (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Rotation.Forward;
+        var startPos = GetFiringPos();
+        var dir = GetFiringRotation().Forward;
 
         var tr = Trace.Ray(startPos, startPos + dir * 800)
         .UseHitboxes()

@@ -50,10 +50,10 @@ partial class HornetGun : HLWeapon
         if (IsServer)
         {
             var bolt = new CrossbowBolt();
-            bolt.Position = Owner.EyePosition;
-            bolt.Rotation = Owner.EyeRotation;
+            bolt.Position = GetFiringPos();
+            bolt.Rotation = GetFiringRotation();
             bolt.Owner = Owner;
-            bolt.Velocity = Owner.EyeRotation.Forward * 100;
+            bolt.Velocity = GetFiringRotation().Forward * 100;
         }
     }
 }

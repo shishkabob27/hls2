@@ -55,11 +55,11 @@ partial class GrenadeWeapon : HLWeapon
 			{
 				var grenade = new HandGrenade
 				{
-					Position = Owner.EyePosition + Owner.EyeRotation.Forward * 3.0f,
+					Position = GetFiringPos() + GetFiringRotation().Forward * 3.0f,
 					Owner = Owner
 				};
 
-				grenade.PhysicsBody.Velocity = Owner.EyeRotation.Forward * 600.0f + Owner.EyeRotation.Up * 200.0f + Owner.Velocity;
+				grenade.PhysicsBody.Velocity = GetFiringRotation().Forward * 600.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
 
 				// This is fucked in the head, lets sort this this year
 				Tags.Add("debris");
