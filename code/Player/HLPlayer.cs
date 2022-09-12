@@ -213,8 +213,8 @@
 	{
 		base.BuildInput( input );
 	}
-
-	float vrrotate = 0;
+	[Net, Predicted]
+	public Rotation vrrotate { get; set; }
 	public override void Simulate( Client cl )
 	{
         base.Simulate( cl );
@@ -226,7 +226,7 @@
             EyeRotation = Input.VR.Head.Rotation;
 
 
-            vrrotate -= Input.VR.RightHand.Joystick.Value.x * 4;
+            vrrotate = Rotation.FromYaw(vrrotate.Yaw() - Input.VR.RightHand.Joystick.Value.x * 4);
 
 
             var a = Transform;
@@ -234,7 +234,7 @@
 			
 
 
-            a.Rotation = Rotation.FromYaw(vrrotate);
+            a.Rotation = vrrotate;
 			
 			Transform = a;
             IN_USE = Input.Down(InputButton.Use);
