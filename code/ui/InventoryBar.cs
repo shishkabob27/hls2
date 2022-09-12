@@ -51,8 +51,8 @@ public class InventoryBar : Panel
 		// If we're not open, maybe this input has something that will 
 		// make us want to start being open?
 		wantOpen = wantOpen || input.MouseWheel != 0;
-		wantOpen = wantOpen || input.Pressed(InputButton.SlotNext) || Input.VR.RightHand.Joystick.Value.y < -0.2;
-		wantOpen = wantOpen || input.Pressed(InputButton.SlotPrev) || Input.VR.RightHand.Joystick.Value.y > 0.2;
+		wantOpen = wantOpen || input.Pressed(InputButton.SlotNext) || Input.VR.RightHand.Joystick.Value.y < -0.5;
+		wantOpen = wantOpen || input.Pressed(InputButton.SlotPrev) || Input.VR.RightHand.Joystick.Value.y > 0.5;
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot1 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot2 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot3 );
@@ -101,12 +101,12 @@ public class InventoryBar : Panel
 		// forward if mouse wheel was pressed
 		SelectedIndex -= input.MouseWheel;
 
-		if (input.Pressed(InputButton.SlotNext) || (Input.VR.RightHand.Joystick.Value.y < -0.2 && SinceSelectedWeapon > 3))
+		if (input.Pressed(InputButton.SlotNext) || (Input.VR.RightHand.Joystick.Value.y < -0.5 && SinceSelectedWeapon > 3))
 		{
 			SinceSelectedWeapon = 0;
             SelectedIndex ++;
 		}
-		if (input.Pressed(InputButton.SlotPrev) || (Input.VR.RightHand.Joystick.Value.y > 0.2 && SinceSelectedWeapon > 3))
+		if (input.Pressed(InputButton.SlotPrev) || (Input.VR.RightHand.Joystick.Value.y > 0.5 && SinceSelectedWeapon > 3))
         {
             SinceSelectedWeapon = 0;
             SelectedIndex --;
