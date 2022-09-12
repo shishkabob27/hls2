@@ -326,6 +326,21 @@
 					{
 						_class = "AnimFile"
 						name = "shoot"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = true
+								extract_tz = true
+								extract_rz = true
+								linear = true
+								quadratic = false
+								root_bone_name = "bip01_r_hand"
+								motion_type = "Uniform"
+								motion_samples = [ 12, 13 ]
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
