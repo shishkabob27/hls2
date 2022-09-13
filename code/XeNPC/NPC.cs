@@ -552,19 +552,50 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
     {
         if (stringData == "ragdoll" && IsServer && HLGame.hl_ragdoll)
         {
-            var ent = new ModelEntity();
-			ent.SetModel(this.Model.Name);
-            ent.SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
-            ent.Position = Position;
-            ent.Rotation = Rotation;
-            ent.UsePhysicsCollision = true;
-
-            ent.CopyFrom(this);
-            ent.CopyBonesFrom(this);
-            ent.SetRagdollVelocityFrom(this);
-            ent.DeleteAsync(20.0f);
-			this.Delete();
+			Ragdoll();
         }
         base.OnAnimEventGeneric(name, intData, floatData, vectorData, stringData);
+    }
+
+	[Input]
+	public void Ragdoll()
+	{
+        var ent = new ModelEntity();
+        ent.SetModel(this.Model.Name);
+        ent.SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
+        ent.Position = Position;
+        ent.Rotation = Rotation;
+        ent.UsePhysicsCollision = true;
+
+        ent.CopyFrom(this);
+        ent.CopyBonesFrom(this);
+        ent.SetRagdollVelocityFrom(this);
+        ent.DeleteAsync(20.0f);
+        this.Delete();
+    }
+
+    [Input]
+    public void Gib()
+    {
+        HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds);
+        this.Delete();
+    }
+
+    [Input]
+    public void Break()
+    {
+		Gib();
+    }
+
+    [Input]
+    public void Kill()
+	{
+		Health = -1;
+        if (LifeState == LifeState.Alive)
+        {
+            OnKilled();
+            LifeState = LifeState.Dead;
+            //Delete();
+        }
     }
 }
