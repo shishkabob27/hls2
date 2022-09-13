@@ -162,7 +162,7 @@
         {
           "a": "glass",
           "b": "glass",
-          "r": "Collide"
+          "r": "Trigger"
         },
         {
           "a": "solid",
@@ -172,7 +172,7 @@
       ]
     },
     "Physics": {
-      "SubSteps": 4,
+      "SubSteps": 8,
       "TimeScale": 1,
       "Gravity": "0,0,-800",
       "AirDensity": 1.2,
