@@ -18,7 +18,7 @@
     "MaxPlayers": 24,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
-    "MapSelect": "Tagged",
+    "MapSelect": "Unrestricted",
     "MapList": [
       "shishkabob.hls2_c2p0",
       "shishkabob.hls2_c4p0",
