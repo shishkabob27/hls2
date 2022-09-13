@@ -18,7 +18,7 @@
     "MaxPlayers": 24,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
-    "MapSelect": "Unrestricted",
+    "MapSelect": "Tagged",
     "MapList": [
       "shishkabob.hls2_c2p0",
       "shishkabob.hls2_c4p0"
@@ -45,8 +45,7 @@
         "npc": "Unset",
         "weapon": "Unset",
         "funcpush": "Collide",
-        "glass": "Unset",
-        "vrweapon": "Unset"
+        "glass": "Unset"
       },
       "Pairs": [
         {
@@ -142,31 +141,6 @@
         {
           "a": "player",
           "b": "glass",
-          "r": "Trigger"
-        },
-        {
-          "a": "player",
-          "b": "vrweapon",
-          "r": "Ignore"
-        },
-        {
-          "a": "solid",
-          "b": "glass",
-          "r": "Collide"
-        },
-        {
-          "a": "glass",
-          "b": "vrweapon",
-          "r": "Trigger"
-        },
-        {
-          "a": "glass",
-          "b": "glass",
-          "r": "Collide"
-        },
-        {
-          "a": "solid",
-          "b": "vrweapon",
           "r": "Collide"
         }
       ]
@@ -185,7 +159,6 @@
     },
     "ControlModes": {
       "Keyboard": true,
-      "VR": true,
       "Gamepad": true
     },
     "GameSettings": {
@@ -205,7 +178,7 @@
         "DisplayName": "Gamemode",
         "DefaultValue": "campaign"
       },
-      "hl_skill": {
+      "hl_difficulty": {
         "DisplayType": "Choice",
         "Choices": [
           {
@@ -221,9 +194,9 @@
             "Name": "Hard"
           }
         ],
-        "ConVarName": "hl_skill",
+        "ConVarName": "hl_difficulty",
         "DisplayName": "Difficulty",
-        "DefaultValue": "medium"
+        "DefaultValue": "easy"
       },
       "sv_enablebunnyhopping": {
         "DisplayType": "Boolean",

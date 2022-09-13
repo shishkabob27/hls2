@@ -1,0 +1,170 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "PhysicsBodyMarkupList"
+				children = 
+				[
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_pelvis"
+						mass_override = 13.831768
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_spine2"
+						mass_override = 32.53458
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_r_arm1"
+						mass_override = 3.535479
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_r_arm2"
+						mass_override = 2.52288
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_l_arm1"
+						mass_override = 3.535455
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_l_arm2"
+						mass_override = 2.5229
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_l_hand"
+						mass_override = 1.0
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_r_hand"
+						mass_override = 1.0
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_r_leg"
+						mass_override = 12.339385
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_r_leg1"
+						mass_override = 7.223018
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_head"
+						mass_override = 9.209369
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 5.0
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_l_leg"
+						mass_override = 12.339387
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_l_leg1"
+						mass_override = 7.223115
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_l_foot"
+						mass_override = 3.230259
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip01_r_foot"
+						mass_override = 3.230277
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

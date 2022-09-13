@@ -1,0 +1,425 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_pelvis_0_mesh"
+						parent_bone = "bip01_pelvis"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_pelvis_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_spine2_0_mesh"
+						parent_bone = "bip01_spine2"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_spine2_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_arm1_0_mesh"
+						parent_bone = "bip01_r_arm1"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_arm1_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_arm2_0_mesh"
+						parent_bone = "bip01_r_arm2"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_arm2_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_arm1_0_mesh"
+						parent_bone = "bip01_l_arm1"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_arm1_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_arm2_0_mesh"
+						parent_bone = "bip01_l_arm2"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_arm2_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_hand_0_mesh"
+						parent_bone = "bip01_l_hand"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_hand_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_hand_0_mesh"
+						parent_bone = "bip01_r_hand"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_hand_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_leg_0_mesh"
+						parent_bone = "bip01_r_leg"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_leg_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_leg1_0_mesh"
+						parent_bone = "bip01_r_leg1"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_leg1_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_head_0_mesh"
+						parent_bone = "bip01_head"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_head_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_leg_0_mesh"
+						parent_bone = "bip01_l_leg"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_leg_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_leg1_0_mesh"
+						parent_bone = "bip01_l_leg1"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_leg1_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_foot_0_mesh"
+						parent_bone = "bip01_l_foot"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_foot_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_foot_0_mesh"
+						parent_bone = "bip01_r_foot"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/barney_fbx/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_foot_0_mesh",
+							]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}
