@@ -94,6 +94,6 @@ internal class Zombie : NPC
                 tr.Entity.TakeDamage(damageInfo);
             }
         }
-        //base.OnAnimEventGeneric(name, intData, floatData, vectorData, stringData);
+        base.OnAnimEventGeneric(name, intData, floatData, vectorData, stringData);
     }
 }

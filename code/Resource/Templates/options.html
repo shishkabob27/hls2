@@ -9,7 +9,7 @@
         <tabcontrol @activeTab="SortOrder">
             <tab tabName="general" slot="tab" tabtext="General">
                 <div class="maincontent" style="padding: 40px;">
-                    <check class="cragdoll">Enable ragdolls</check>
+                    <check class="cragdoll" @checked="bCragdolls">Enable ragdolls</check>
                     <check class="cliveupdate" @checked="bCliveupdate">Enable live setting updates</check>
                     <check class="cguiscale" @checked="bCguiscale">Enable GUI rescaling</check>
                     <check class="cpixelfont" @checked="bCpixelfont">Enable GUI classic font.</check>
