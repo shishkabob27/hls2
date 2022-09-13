@@ -8,5 +8,6 @@
     [ConVar.Client] public static bool hl_gui_rescale { get; set; } = true;
     [ConVar.Client] public static bool hl_pixelfont  { get; set; } = true;
     [ConVar.Client] public static int cc_subtitles { get; set; } = 0;
-    
+    [ConVar.Client] public static bool cl_himodels { get; set; } = false;
+    [ConVar.Client] public static bool hl_vr_pointer { get; set; } = false;
 }

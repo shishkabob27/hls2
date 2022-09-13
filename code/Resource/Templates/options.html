@@ -10,9 +10,9 @@
             <tab tabName="general" slot="tab" tabtext="General">
                 <div class="maincontent" style="padding: 40px;">
                     <check class="cragdoll">Enable ragdolls</check>
-                    <check class="csubtitle" @checked="bCliveupdate">Enable live setting updates</check>
-                    <check class="csubtitle" @checked="bCguiscale">Enable GUI rescaling</check>
-                    <check class="csubtitle" @checked="bCpixelfont">Enable GUI classic font.</check>
+                    <check class="cliveupdate" @checked="bCliveupdate">Enable live setting updates</check>
+                    <check class="cguiscale" @checked="bCguiscale">Enable GUI rescaling</check>
+                    <check class="cpixelfont" @checked="bCpixelfont">Enable GUI classic font.</check>
                     <button style="width:114px;" onclick="openTestdialog()">Open Test Dialog</button>
                 </div>
             </tab>
@@ -20,7 +20,7 @@
             <tab tabName="video" slot="tab" tabtext="Video">
                 <div class="maincontent" style="padding: 40px;">
                     <check class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</check>
-                    <check class="chimodel">Enable HD models</check>
+                    <check class="chimodel" @checked="bChimodels">Enable HD models</check>
                     <check class="clowviolence">Enable Low Violence</check>
                     <check class="csubtitle" @checked="bCsubtitle">Enable Subtitles</check>
                     <text>Hud Scale</text>
@@ -41,7 +41,7 @@
 
             <tab tabName="vr" slot="tab" tabtext="VR">
                 <div class="maincontent" style="padding: 40px;">
-                    <check class="cvrlaser">Enable VR Pointer</check>
+                    <check class="cvrpointer" @checked="bCvrpointer">Enable VR Pointer</check>
                     <text>Movement direction</text>
                     <select @value="ZIndex" style="width:128px;">
                         <option value="0">Head</option>
