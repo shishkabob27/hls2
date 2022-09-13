@@ -21,7 +21,8 @@
     "MapSelect": "Tagged",
     "MapList": [
       "shishkabob.hls2_c2p0",
-      "shishkabob.hls2_c4p0"
+      "shishkabob.hls2_c4p0",
+      "facepunch.datacore"
     ],
     "RankType": "None",
     "PerMapRanking": false,
