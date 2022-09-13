@@ -250,7 +250,7 @@
 			IN_RIGHT = Input.Down(InputButton.Right);
 			IN_BACKWARD = Input.Down(InputButton.Back);
         }
-        SimulateFlashlight();
+        SimulateFlashlight(cl);
 		//
 		// Input requested a weapon switch
 		//

@@ -8,11 +8,24 @@ public partial class HLPlayer
 
     [Net, Predicted]
     public SpotLightEntity Light { get; private set; }
-
-    public void SimulateFlashlight()
+    [Event.Frame]
+    void flashlightframe()
     {
+        if (Light.IsValid())
+        {
+            Light.Position = EyePosition + EyeRotation.Forward * 15;
+            Light.Rotation = EyeRotation;
 
-        if (Light.IsValid() && IsServer)
+            if (Client.IsUsingVr)
+            {
+                Light.Position = EyeLocalPosition;
+                Light.Rotation = Input.VR.Head.Rotation;
+            }
+        }
+    }
+    public void SimulateFlashlight(Client cl)
+    {
+        if (Light.IsValid())
         {
             Light.Position = EyePosition + EyeRotation.Forward * 15;
             Light.Rotation = EyeRotation;
@@ -47,10 +60,13 @@ public partial class HLPlayer
 
     protected void NewFlashlight()
     {
+        if (Light.IsValid())
+        {
+            Light.Delete();
+        }
         Light = new SpotLightEntity();
         Light.Predictable = true;
-        Light.LightCookie = Texture.Load("materials/effects/lightcookie.vtex");
-        
+        Light.LightCookie = Texture.Load("materials/effects/lightcookie.vtex"); 
         Light.DynamicShadows = true;
         Light.Range = r_flashlightfarz;
         Light.Falloff = 1.0f;
@@ -61,7 +77,7 @@ public partial class HLPlayer
         Light.InnerConeAngle = 20;
         Light.OuterConeAngle = 40;
         Light.FogStrength = 1.0f;
-        
+        Light.Owner = this;
 
         Light.Enabled = true;
     }
