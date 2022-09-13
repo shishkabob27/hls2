@@ -46,6 +46,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float entFOV = 0.5f;
 
     public string NPCAnimGraph = "";
+    public string NPCSurface = "surface/hlflesh.surface";
 	XeNPC.NavPath Path;
 	public NavSteer Steer;
 
@@ -78,7 +79,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		if (PhysicsBody == null) SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(72, 8));
 		
 		EnableHitboxes = true;
-		PhysicsBody.SetSurface("surface/hlflesh.surface");
+		if (NPCSurface != null)
+		{
+            PhysicsBody.SetSurface(NPCSurface);
+        }
 		Speed = 50;
 	}
 
@@ -560,17 +564,21 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	[Input]
 	public void Ragdoll()
 	{
+
         var ent = new ModelEntity();
         ent.SetModel(this.Model.Name);
         ent.SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
         ent.Position = Position;
         ent.Rotation = Rotation;
-        ent.UsePhysicsCollision = true;
+        ent.UsePhysicsCollision = true; 
+		if (NPCSurface != null && ent.PhysicsBody != null)
+        {
+            ent.PhysicsBody.SetSurface(NPCSurface);
+        }
 
         ent.CopyFrom(this);
         ent.CopyBonesFrom(this);
         ent.SetRagdollVelocityFrom(this);
-        ent.DeleteAsync(20.0f);
         this.Delete();
     }
 
