@@ -22,10 +22,15 @@ partial class TripmineWeapon : HLWeapon
 		Model = WorldModel;
 		AmmoClip = 1;
 	}
-
+	float prevVRtrig = 0;
 	public override bool CanPrimaryAttack()
 	{
-		return Input.Released( InputButton.PrimaryAttack );
+		var a = false;
+        if (Client.IsUsingVr) a= Input.VR.RightHand.Trigger == 0 && prevVRtrig != 0;
+		if (Client.IsUsingVr) prevVRtrig = Input.VR.RightHand.Trigger;
+        if (Client.IsUsingVr) return a;
+
+        return Input.Released( InputButton.PrimaryAttack );
 	}
 
 	public override void AttackPrimary()

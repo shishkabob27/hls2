@@ -21,10 +21,15 @@ partial class GrenadeWeapon : HLWeapon
 		Model = WorldModel;
 		AmmoClip = 1;
 	}
+    float prevVRtrig = 0;
+    public override bool CanPrimaryAttack()
+    {
+        var a = false;
+        if (Client.IsUsingVr) a = Input.VR.RightHand.Trigger == 0 && prevVRtrig != 0;
+        if (Client.IsUsingVr) prevVRtrig = Input.VR.RightHand.Trigger;
+        if (Client.IsUsingVr) return a;
 
-	public override bool CanPrimaryAttack()
-	{
-		return Input.Released( InputButton.PrimaryAttack );
+        return Input.Released( InputButton.PrimaryAttack );
 	}
 
 	public override void AttackPrimary()
