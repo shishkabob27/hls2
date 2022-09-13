@@ -51,9 +51,6 @@
 
 	public PickupTrigger PickupTrigger { get; protected set; }
 
-	[ConVar.Replicated] public static bool cl_himodels { get; set; } = false;
-
-
 	public int AvailableAmmo()
 	{
 		var owner = Owner as HLPlayer;
@@ -542,7 +539,7 @@
 		var wmodel = ViewModelPath;
 		wmodel = ViewModelPath.Replace("view/v_", "vr/"); // get vr model
 		var vrmodel = wmodel;
-		if (cl_himodels)
+		if (HLGame.cl_himodels)
         {
 			vrmodel = wmodel.Replace(".vmdl", "_hd.vmdl");
 		}
@@ -579,7 +576,7 @@
             ViewModelEntity.Owner = Owner;
             ViewModelEntity.EnableViewmodelRendering = true;
 			var wmodel = ViewModelPath;
-			if (cl_himodels)
+			if (HLGame.cl_himodels)
 			{
 				wmodel = ViewModelPath.Replace(".vmdl", "_hd.vmdl"); // get hd model
 			}

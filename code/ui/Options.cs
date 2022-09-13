@@ -8,10 +8,14 @@ public class Options : GUIPanel
 {
 	public bool bCviewroll { get; set; }
 	public bool bCsubtitle { get; set; }
+	public bool bChimodels { get; set; }
 	public bool bCguiscale { get; set; } = true;
 	public bool bCpixelfont { get; set; } = true;
 	public bool bCliveupdate { get; set; } = true;
 	public float fChudScale { get; set; }
+
+	public bool bCvrpointer { get; set; }
+
 	public Options()
 	{
 		Style.Left = 0;
@@ -40,10 +44,12 @@ public class Options : GUIPanel
 
         HLWalkController.cl_rollangle = (bCviewroll? 2 : 0);
         HLGame.hl_hud_scale = fChudScale;
-        HLGame.cc_subtitles = (bCsubtitle? 1 : 0);
+        HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
         HLGame.hl_gui_rescale = bCguiscale;
         HLGame.hl_pixelfont = bCpixelfont;
-		
+		HLGame.cl_himodels = bChimodels;
+		HLGame.hl_vr_pointer = bCvrpointer;
+
 	}
 
 
