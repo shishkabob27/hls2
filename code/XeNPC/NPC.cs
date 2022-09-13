@@ -550,7 +550,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
     }
     public override void OnAnimEventGeneric(string name, int intData, float floatData, Vector3 vectorData, string stringData)
     {
-        if (stringData == "ragdoll" && IsServer)
+        if (stringData == "ragdoll" && IsServer && HLGame.hl_ragdoll)
         {
             var ent = new ModelEntity();
 			ent.SetModel(this.Model.Name);
