@@ -19,7 +19,6 @@ partial class Egon : HLWeapon
     Particles Beam;
     public override void Simulate(Client owner)
     {
-        Log.Info("hi!");
         if (!Input.Down(InputButton.PrimaryAttack))
         {
             if (Beam != null)
