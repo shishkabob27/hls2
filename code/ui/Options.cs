@@ -12,7 +12,7 @@ public class Options : GUIPanel
 	public bool bCguiscale { get; set; } = true;
 	public bool bCpixelfont { get; set; } = true;
 	public bool bCliveupdate { get; set; } = true;
-	public bool bCragdolls { get; set; } = false;
+	public bool bCragdolls { get; set; }
 	public float fChudScale { get; set; }
 
 	public bool bCvrpointer { get; set; }
@@ -42,7 +42,6 @@ public class Options : GUIPanel
     }
 	public void updateCvars()
 	{
-
         HLWalkController.cl_rollangle = (bCviewroll? 2 : 0);
         HLGame.hl_hud_scale = fChudScale;
         HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
@@ -52,7 +51,7 @@ public class Options : GUIPanel
 		HLGame.hl_vr_pointer = bCvrpointer;
 		HLGame.hl_ragdoll = bCragdolls;
 
-	}
+    }
 
 
 	[Event.BuildInput]
