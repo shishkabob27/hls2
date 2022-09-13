@@ -548,4 +548,23 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
         // Another trace, bullet going through thin material, penetrating water surface?
         //
     }
+    public override void OnAnimEventGeneric(string name, int intData, float floatData, Vector3 vectorData, string stringData)
+    {
+        if (stringData == "ragdoll" && IsServer)
+        {
+            var ent = new ModelEntity();
+			ent.SetModel(this.Model.Name);
+            ent.SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
+            ent.Position = Position;
+            ent.Rotation = Rotation;
+            ent.UsePhysicsCollision = true;
+
+            ent.CopyFrom(this);
+            ent.CopyBonesFrom(this);
+            ent.SetRagdollVelocityFrom(this);
+            ent.DeleteAsync(20.0f);
+			this.Delete();
+        }
+        base.OnAnimEventGeneric(name, intData, floatData, vectorData, stringData);
+    }
 }
