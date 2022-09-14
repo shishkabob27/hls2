@@ -20,6 +20,7 @@ namespace Sandbox
 		{
 			var pawn = Local.Pawn;
 			if ( pawn == null ) return;
+			if (pawn.Client.IsUsingVr) return;
 
 			var eyePos = pawn.EyePosition;
 

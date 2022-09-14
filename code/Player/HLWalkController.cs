@@ -105,7 +105,7 @@ namespace Sandbox
         /// </summary>
         public virtual void UpdateBBox()
         {
-            if (Client.IsUsingVr)
+            if (Client.IsUsingVr && false)
             {
                 if (WishVelocity == 0) return;
                 Transform headLocal = Pawn.Transform.ToLocal(Input.VR.Head);

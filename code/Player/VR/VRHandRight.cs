@@ -12,4 +12,9 @@
         base.Simulate(cl);
         Transform = Input.VR.RightHand.Transform;
     }
+    public override void FrameSimulate(Client cl)
+    {
+        base.FrameSimulate(cl);
+        Transform = Input.VR.RightHand.Transform;
+    }
 }

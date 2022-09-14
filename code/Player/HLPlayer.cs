@@ -67,7 +67,7 @@
     }
     public override void Respawn()
     {
-        
+
         //SetModel("models/citizen/citizen.vmdl");
         SetModel( "models/hl1/player/player.vmdl" );
 
@@ -215,10 +215,37 @@
 	{
 		base.BuildInput( input );
 	}
-	[Net, Predicted]
-	public Rotation vrrotate { get; set; }
-	public override void Simulate( Client cl )
+
+	public override void FrameSimulate(Client cl)
 	{
+		
+        if (Client.IsUsingVr)
+        {
+            rotationvr();
+            LeftHand.FrameSimulate(cl);
+            RightHand.FrameSimulate(cl);
+        } else
+		{
+            base.FrameSimulate(cl);
+        }
+    }
+	 
+	public Rotation vrrotate { get; set; }
+	public void rotationvr()
+	{
+        vrrotate = Rotation.FromYaw(vrrotate.Yaw() - (float)Math.Round(Input.VR.RightHand.Joystick.Value.x, 1) * 4);
+
+
+        var a = Transform;
+        //a.Position = Rotation.FromAxis(Vector3.Up, -(Input.VR.RightHand.Joystick.Value.x * 4)) * (Transform.Position - Input.VR.Head.Position.WithZ(Position.z)) + Input.VR.Head.Position.WithZ(Position.z);
+
+		a.Rotation = vrrotate;// Rotation.FromAxis(Vector3.Up, -(Input.VR.RightHand.Joystick.Value.x * 4)) * Transform.Rotation;
+
+        EyeRotation = a.Rotation;
+        Transform = a;
+    }
+	public override void Simulate( Client cl )
+    {
         base.Simulate( cl );
 		Forward = Input.Forward;
         Left = Input.Left;
@@ -227,16 +254,7 @@
         {
             EyeRotation = Input.VR.Head.Rotation;
 
-
-            vrrotate = Rotation.FromYaw(vrrotate.Yaw() - (float)Math.Round(Input.VR.RightHand.Joystick.Value.x, 1) * 4);
-
-
-            var a = Transform;
-            a.Position = Rotation.FromAxis(Vector3.Up, -(Input.VR.RightHand.Joystick.Value.x * 4)) * (Transform.Position - Input.VR.Head.Position.WithZ(Position.z)) + Input.VR.Head.Position.WithZ(Position.z);
-
-            a.Rotation = vrrotate;
-			
-			Transform = a;
+			//offsetsomehowidk = (Input.VR.Head.Position.WithZ(Position.z) - Position.WithZ(Position.z));  
             IN_USE = Input.Down(InputButton.Use);
             IN_FORWARD = Input.VR.RightHand.Joystick.Delta.x > 0;
             IN_LEFT = Input.Down(InputButton.Left);
