@@ -21,8 +21,7 @@
     "MapSelect": "Unrestricted",
     "MapList": [
       "shishkabob.hls2_c2p0",
-      "shishkabob.hls2_c4p0",
-      "facepunch.datacore"
+      "shishkabob.hls2_c4p0"
     ],
     "RankType": "None",
     "PerMapRanking": false,
@@ -46,7 +45,8 @@
         "npc": "Unset",
         "weapon": "Unset",
         "funcpush": "Collide",
-        "glass": "Unset"
+        "glass": "Unset",
+        "vrweapon": "Unset"
       },
       "Pairs": [
         {
@@ -142,12 +142,37 @@
         {
           "a": "player",
           "b": "glass",
+          "r": "Trigger"
+        },
+        {
+          "a": "player",
+          "b": "vrweapon",
+          "r": "Ignore"
+        },
+        {
+          "a": "solid",
+          "b": "glass",
+          "r": "Collide"
+        },
+        {
+          "a": "glass",
+          "b": "vrweapon",
+          "r": "Trigger"
+        },
+        {
+          "a": "glass",
+          "b": "glass",
+          "r": "Trigger"
+        },
+        {
+          "a": "solid",
+          "b": "vrweapon",
           "r": "Collide"
         }
       ]
     },
     "Physics": {
-      "SubSteps": 4,
+      "SubSteps": 8,
       "TimeScale": 1,
       "Gravity": "0,0,-800",
       "AirDensity": 1.2,
@@ -160,6 +185,7 @@
     },
     "ControlModes": {
       "Keyboard": true,
+      "VR": true,
       "Gamepad": true
     },
     "GameSettings": {
@@ -179,7 +205,7 @@
         "DisplayName": "Gamemode",
         "DefaultValue": "campaign"
       },
-      "hl_difficulty": {
+      "hl_skill": {
         "DisplayType": "Choice",
         "Choices": [
           {
@@ -195,9 +221,9 @@
             "Name": "Hard"
           }
         ],
-        "ConVarName": "hl_difficulty",
+        "ConVarName": "hl_skill",
         "DisplayName": "Difficulty",
-        "DefaultValue": "easy"
+        "DefaultValue": "medium"
       },
       "sv_enablebunnyhopping": {
         "DisplayType": "Boolean",
