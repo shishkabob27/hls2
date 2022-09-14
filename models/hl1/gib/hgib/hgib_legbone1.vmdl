@@ -30,7 +30,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						radius = 2.576567
 						point0 = [ -0.690331, -0.802769, -1.286933 ]
@@ -39,7 +39,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						radius = 1.625316
 						point0 = [ -0.920883, 0.210477, 16.461018 ]
@@ -48,7 +48,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						radius = 2.042154
 						point0 = [ -0.96389, -0.199759, 19.216118 ]

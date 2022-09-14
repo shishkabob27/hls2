@@ -18,7 +18,13 @@ public partial class func_breakable : BrushEntity
     {
         if (Health <= 0)
         {
-            Break();
+            Log.Info("1");
+            Breakables.Break(this);
         }
-    } 
+    }
+    public override void OnKilled()
+    { 
+        Breakables.Break(this);
+        Delete();
+    }
 }   

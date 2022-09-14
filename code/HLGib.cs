@@ -24,8 +24,14 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	int LifeTime = 0;
 	float bGirth = 1 * 0.8f;
 	float bHeight = 1;
+	 
+    /// <summary>
+    /// This prop won't be able to be damaged for this amount of time
+    /// </summary>
+    public RealTimeUntil Invulnerable { get; set; }
+    public string BreakpieceName { get; set; }
 
-	List<string> HGibList = new List<string>{
+    List<string> HGibList = new List<string>{
 		//"models/hl1/gib/hgib/hgib_skull1.vmdl", spawn manually please!
 		"models/hl1/gib/hgib/hgib_lung1.vmdl",
 		"models/hl1/gib/hgib/hgib_legbone1.vmdl",
@@ -122,8 +128,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		mover.TryMove( Time.Delta );
 		if (mover.HitWall || mover.HitFloor)
 		{
+			Log.Info(PhysicsBody.GetDominantSurface());
 			this.StartTouch(this);
-			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal) && (this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh"))
 			{
 				var vecSpot = Position + new Vector3(0, 0, 8);
                 Decal.Place(decal, mover.TraceResult);

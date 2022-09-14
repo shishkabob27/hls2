@@ -18,4 +18,9 @@ public partial class func_pushable : HLMovementBrush
         GroundBounce = bounce;
         WallBounce = bounce;
     }
+    public override void OnKilled()
+    {
+        Breakables.Break(this);
+        Delete();
+    }
 }   

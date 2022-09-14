@@ -552,6 +552,14 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
         // Another trace, bullet going through thin material, penetrating water surface?
         //
     }
+
+	public new void SetAnimGraph(string name)
+	{
+		if (IsServer)
+		{
+			base.SetAnimGraph(name);
+		}
+	}
     public override void OnAnimEventGeneric(string name, int intData, float floatData, Vector3 vectorData, string stringData)
     {
         if (stringData == "ragdoll" && IsServer && HLGame.hl_ragdoll)

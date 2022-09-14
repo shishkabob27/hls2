@@ -30,7 +30,7 @@
 					{
 						_class = "PhysicsShapeCapsule"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						radius = 1.963803
 						point0 = [ -1.048294, 0.733856, -10.914545 ]

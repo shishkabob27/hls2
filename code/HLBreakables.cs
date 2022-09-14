@@ -16,8 +16,8 @@ namespace Sandbox
 		static public int MaxGibs { get; set; } = 256;
 
 		public static void Break( Entity ent, Result result = null )
-		{
-			if ( ent is ModelEntity modelEnt && modelEnt.IsValid )
+        { 
+            if ( ent is ModelEntity modelEnt && modelEnt.IsValid )
 			{
 				if ( result != null )
 				{
@@ -29,7 +29,6 @@ namespace Sandbox
 						result.Params.DamagePositon = modelEnt.CollisionWorldSpaceCenter;
 					}
 				}
-
 				Break( modelEnt.Model, modelEnt.Position, modelEnt.Rotation, modelEnt.Scale, modelEnt.RenderColor, result, modelEnt.PhysicsBody );
 				if ( result != null ) ApplyBreakCommands( result );
 			}
@@ -82,10 +81,10 @@ namespace Sandbox
 				for ( int i = 0; i < num; i++ )
 				{
 					ModelBreakPiece piece = new();
-					piece.Model = surface.GetRandomGib();
+					piece.Model = HLSurface.GetRandomGib(surface);
 					piece.Offset = model.Bounds.RandomPointInside;
 					piece.CollisionTags = "debris";
-					piece.FadeTime = 3.0f;
+					//piece.FadeTime = 3.0f;
 					pieces.Add( piece );
 
 					//DebugOverlay.Axis( pos + rot * piece.Offset, Rotation.Identity, 10, 10 );
@@ -112,7 +111,7 @@ namespace Sandbox
 				}
 				CurrentGibs.RemoveRange( 0, toRemove );
 			}
-
+			
 			foreach ( var piece in breakList )
 			{
 				if ( MaxGibs >= 0 && CurrentGibs.Count >= MaxGibs ) return;
@@ -120,7 +119,7 @@ namespace Sandbox
 				var mdl = Model.Load( piece.Model );
 				var offset = mdl.GetAttachment( "placementOrigin" ) ?? Transform.Zero;
 
-				var gib = new PropGib
+				var gib = new HLGib
 				{
 					Position = pos + rot * ((piece.Offset - offset.Position) * scale),
 					Rotation = rot,
@@ -180,7 +179,7 @@ namespace Sandbox
 			}
 		}
 
-		static async Task FadeAsync( Prop gib, float fadeTime )
+		static async Task FadeAsync( ModelEntity gib, float fadeTime )
 		{
 			fadeTime += Rand.Float( -1, 1 );
 
