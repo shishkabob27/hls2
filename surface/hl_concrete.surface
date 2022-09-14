@@ -31,10 +31,7 @@
 		}
 		Breakables = 
 		{
-			GenericGibs = 
-			[
-				resource:"models/hl1/gib/hgib/hgib_skull1.vmdl",
-			]
+			GenericGibs = [  ]
 		}
 	}
 }
