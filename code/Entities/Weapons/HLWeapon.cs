@@ -543,7 +543,6 @@
         {
 			vrmodel = wmodel.Replace(".vmdl", "_hd.vmdl");
 		}
-		Log.Info(vrmodel);
 		VRWeaponModel.SetModel(vrmodel);
         VRWeaponModel.SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
 
