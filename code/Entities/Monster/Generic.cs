@@ -1,4 +1,5 @@
 ﻿[Library("monster_generic"), HammerEntity]
+[Model]
 [Title("monster_generic"), Category("Monsters")]
 public partial class GenericMonster : NPC
 {
