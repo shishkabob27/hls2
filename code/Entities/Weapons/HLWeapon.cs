@@ -525,7 +525,7 @@
 		{ 
 			return Sound.FromEntity(soundName, VRWeaponModel, "muzzle");
         }
-		return base.PlaySound(soundName);
+		return Sound.FromEntity(soundName, Owner);
 	}
 	public void CreateVRModel()
 	{
