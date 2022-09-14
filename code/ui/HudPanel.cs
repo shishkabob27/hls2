@@ -20,6 +20,7 @@ public class HudPanel : HudEntity<HudRootPanel>
                 _ = new VRVitals();
                 _ = new VRAmmo();
                 _ = new VRInventory();
+                _ = new VRChat();
             }
 
             // Just display the HUD on-screen
