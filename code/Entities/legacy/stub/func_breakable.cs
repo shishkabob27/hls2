@@ -4,13 +4,13 @@
 public partial class func_breakable : BrushEntity
 {
     // stub
-
-    [Property]
-    public float StartingHealth { get; set; } = 10;
     public override void Spawn()
     {
         base.Spawn();
-        Health = StartingHealth;
+        if (Health <= 0)
+        {
+            Health = 1;
+        }
     }
 
     [Event.Tick.Server]
