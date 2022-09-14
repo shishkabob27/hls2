@@ -31,7 +31,11 @@
 		}
 		Breakables = 
 		{
-			GenericGibs = [  ]
+			BreakSound = resource:"sounds/hl1/debris/bustconcrete.sound"
+			GenericGibs = 
+			[
+				resource:"models/citizen_props/concreteroaddivider01/concreteroaddivider01_gib01_lod01.vmdl",
+			]
 		}
 	}
 }
