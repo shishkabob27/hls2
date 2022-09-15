@@ -72,6 +72,9 @@
                     newName = "surface/hl_concrete.surface";
                     break;
                 case "wood":
+                    newName = "surface/hl_wood.surface";
+                    break;
+                case "default":
                     newName = "surface/hl_concrete.surface";
                     break;
                 default:
@@ -226,6 +229,27 @@
 
 			return text;
         }
+        public static void GetBounceSound(this Surface self, Vector3 pos, float volume = 1)
+        {
+            self = ReplaceSurface(self);
 
+            var sound = self.Sounds.ImpactHard;
+
+            if (!string.IsNullOrWhiteSpace(sound))
+            {
+                Sound.FromWorld(sound, pos).SetVolume(volume);
+            }
+        }
+        public static void GetBustSound(this Surface self, Vector3 pos, float volume = 1)
+        {
+            self = ReplaceSurface(self);
+
+            var sound = self.Breakables.BreakSound;
+
+            if (!string.IsNullOrWhiteSpace(sound))
+            {
+                Sound.FromWorld(sound, pos).SetVolume(volume);
+            }
+        }
     }
 }

@@ -18,6 +18,14 @@ public partial class func_pushable : HLMovementBrush
         GroundBounce = bounce;
         WallBounce = bounce;
     }
+    public override void TakeDamage(DamageInfo info)
+    {
+        base.TakeDamage(info);
+        string surfName = PhysicsBody?.GetDominantSurface();
+        var surface = Surface.FindByName(surfName);
+        if (surface == null) surface = Surface.FindByName("default");
+        surface.GetBounceSound(Position, 2f);
+    }
     public override void OnKilled()
     {
         Breakables.Break(this);

@@ -22,6 +22,10 @@ public partial class func_breakable : BrushEntity
             Breakables.Break(this);
         }
     }
+    public override void TakeDamage(DamageInfo info)
+    {
+        base.TakeDamage(info);
+    }
     public override void OnKilled()
     { 
         Breakables.Break(this);

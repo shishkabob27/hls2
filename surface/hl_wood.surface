@@ -13,11 +13,11 @@
 		BounceThreshold = 40
 		ImpactEffects = 
 		{
-			Regular = [  ]
-			Bullet = 
+			Regular = 
 			[
 				resource:"particles/hlimpact.vpcf",
 			]
+			Bullet = [  ]
 			BulletDecal = 
 			[
 				resource:"decals/bullet_hole.decal",
@@ -27,15 +27,21 @@
 		{
 			FootLeft = resource:"sounds/hl1/player/pl_step.sound"
 			FootRight = resource:"sounds/hl1/player/pl_step.sound"
-			FootLaunch = resource:"sounds/hl1/player/pl_step.sound"
-			ImpactHard = resource:"sounds/hl1/debris/concrete.sound"
+			FootLand = resource:"sounds/hl1/player/pl_step.sound"
+			ImpactHard = resource:"sounds/hl1/debris/wood.sound"
 		}
 		Breakables = 
 		{
-			BreakSound = resource:"sounds/hl1/debris/bustconcrete.sound"
+			BreakSound = resource:"sounds/hl1/debris/bustcrate.sound"
 			GenericGibs = 
 			[
-				resource:"models/citizen_props/concreteroaddivider01/concreteroaddivider01_gib01_lod01.vmdl",
+				resource:"models/hl1/gib/wood/wood_plank1.vmdl",
+				resource:"models/hl1/gib/wood/wood_plank2.vmdl",
+				resource:"models/hl1/gib/wood/wood1.vmdl",
+				resource:"models/hl1/gib/wood/wood1_splinter.vmdl",
+				resource:"models/hl1/gib/wood/wood2.vmdl",
+				resource:"models/hl1/gib/wood/wood3.vmdl",
+				resource:"models/hl1/gib/wood/wood4.vmdl",
 			]
 		}
 	}
