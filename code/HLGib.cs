@@ -18,6 +18,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 
     public Angles RotAngles = Angles.Zero;
 	public Angles SleepAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
+	public Angles AltSleepAngles = new Angles( 0, Rand.Float( 0, 360 ), 0 );
 	Entity SleepGroundEntity;
 	Vector3 prevTickPos;
 	PhysicsGroup phys;
@@ -30,6 +31,10 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
     /// </summary>
     public RealTimeUntil Invulnerable { get; set; }
     public string BreakpieceName { get; set; }
+	public bool AlternateLandingRotation { get; set; } = false;
+    public bool BounceSound { get; set; } = false;
+
+	public Surface SurfaceType { get; set; }
 
     List<string> HGibList = new List<string>{
 		//"models/hl1/gib/hgib/hgib_skull1.vmdl", spawn manually please!
@@ -128,12 +133,20 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		mover.TryMove( Time.Delta );
 		if (mover.HitWall || mover.HitFloor)
 		{
-			Log.Info(PhysicsBody.GetDominantSurface());
 			this.StartTouch(this);
-			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal) && (this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh"))
+			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal) && (this.PhysicsBody != null && (this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh")))
 			{
 				var vecSpot = Position + new Vector3(0, 0, 8);
                 Decal.Place(decal, mover.TraceResult);
+            }
+			if (BounceSound)
+			{
+				if (SurfaceType != null)
+				{
+					SurfaceType.GetBounceSound(Position, 0.3f);
+
+                }
+
             }
 		} 
 		prevTickPos = Position;
@@ -204,7 +217,13 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		if ( ( Position == prevTickPos ) || (Velocity.WithZ(0).IsNearlyZero(6) && Position.AlmostEqual(prevTickPos, 1f) && GroundEntity != null && (GroundEntity is not HLPlayer)))
 		{
 			sleepytime += 1;
-			RotAngles = SleepAngles;
+            if (AlternateLandingRotation)
+            {
+				RotAngles = AltSleepAngles; // new Angles(0, Rand.Float(0, 360), 0);
+            } else
+			{
+                RotAngles = SleepAngles;
+            }
 			// Clear rotation if not moving (even if on a conveyor)
 			//AngularVelocity = Angles.Zero;
 			if (Velocity != Vector3.Zero)

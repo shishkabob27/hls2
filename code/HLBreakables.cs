@@ -41,7 +41,9 @@ namespace Sandbox
 
 			var genericGibsSpawned = false;
 			var breakList = model.GetData<ModelBreakPiece[]>();
-
+			string surfName = sourcePhysics?.GetDominantSurface();
+			var surface = Surface.FindByName( surfName );
+			if ( surface == null ) surface = Surface.FindByName( "default" );
 			// If model has particles to spawn on break, do not do generic gibs
 			var hasAnyBreakParticles = model.GetBreakCommands().ContainsKey( "break_create_particle" );
 
@@ -53,13 +55,12 @@ namespace Sandbox
 
 				List<ModelBreakPiece> pieces = new();
 
-				string surfName = sourcePhysics?.GetDominantSurface();
-				var surface = Surface.FindByName( surfName );
-				if ( surface == null ) surface = Surface.FindByName( "default" );
+
 
 				if ( surface != null )
 				{
-					var breakSnd = surface.Breakables.BreakSound;
+                    HLSurface.GetBustSound(surface, pos);
+                    /*var breakSnd = surface.Breakables.BreakSound;
 
 					var surf = surface.GetBaseSurface();
 					while ( string.IsNullOrWhiteSpace( breakSnd ) && surf != null )
@@ -71,11 +72,11 @@ namespace Sandbox
 					if ( !string.IsNullOrEmpty( breakSnd ) )
 					{
 						Sound.FromWorld( breakSnd, pos );
-					}
-				}
+					}*/
+                }
 
 				//int num = ( model.Bounds.Volume / 20000.0f ).CeilToInt();
-				int num = (model.Bounds.Size.x * model.Bounds.Size.y + model.Bounds.Size.y * model.Bounds.Size.z + model.Bounds.Size.z * model.Bounds.Size.x).CeilToInt() / (432 * 2);
+				int num = (model.Bounds.Size.x * model.Bounds.Size.y + model.Bounds.Size.y * model.Bounds.Size.z + model.Bounds.Size.z * model.Bounds.Size.x).CeilToInt() / (432 * 1);
 
 				//DebugOverlay.Box( 10, pos, rot, model.Bounds.Mins, model.Bounds.Maxs, Color.Green );
 				for ( int i = 0; i < num; i++ )
@@ -122,17 +123,24 @@ namespace Sandbox
 				var gib = new HLGib
 				{
 					Position = pos + rot * ((piece.Offset - offset.Position) * scale),
-					Rotation = rot,
+					//Rotation = rot,
 					Scale = scale,
 					RenderColor = color,
 					Invulnerable = 0.2f,
-					BreakpieceName = piece.PieceName
-				};
+					BreakpieceName = piece.PieceName,
+					AlternateLandingRotation = true,
+					BounceSound = true
+                };
 
+				gib.SurfaceType = surface;
 				gib.Tags.Add( "gib" );
 				gib.Model = mdl;
+                gib.AngularVelocity = new Angles(Rand.Float(100, 300), 0, Rand.Float(100, 200));
+				 
+                gib.Velocity += new Vector3(Rand.Float(-0.25f, 0.25f), Rand.Float(-0.25f, 0.25f), Rand.Float(-0.25f, 0.25f));
+                gib.Velocity = gib.Velocity * Rand.Float(40f, 60f);
 
-				if ( result != null && result.Source != null && result.Source is ModelEntity mdlEnt )
+                if ( result != null && result.Source != null && result.Source is ModelEntity mdlEnt )
 				{
 					gib.CopyMaterialGroup( mdlEnt );
 				}
