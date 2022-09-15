@@ -133,7 +133,12 @@ public partial class HLGame : Game
 			localPawn.RenderHud( screenSize );
 		}
 	}
-
+	[Event.Entity.PostCleanup]
+	void onclean()
+	{
+		HLCombat.GibCount = 0;
+		HLCombat.GibFadingCount = 0;
+    }
     [ConCmd.Server("resetgui", Help = "resets gui")]
     public static void resetgui()
     {
