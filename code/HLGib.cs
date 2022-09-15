@@ -1,6 +1,5 @@
 ﻿// This was over 12 hours of work lol if you wanna take my half-life 1 gibs for your own usage in your own game, atleast credit me (Xenthio)
-using static ItemRespawn;
-
+using static ItemRespawn; 
 public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim cus gmod brain.
 {
 	//[Net] public float MaxVelocity { get; set; } = 800;
@@ -23,9 +22,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	Vector3 prevTickPos;
 	PhysicsGroup phys;
 	int LifeTime = 0;
-	float bGirth = 1 * 0.8f;
-	float bHeight = 1;
-	 
+	float bGirth = 1 * 0.5f;
+	float bHeight = 1 * 0.5f;
+
     /// <summary>
     /// This prop won't be able to be damaged for this amount of time
     /// </summary>
@@ -85,12 +84,12 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
     {
 		if (isInit)
 			return;
-		isInit = true;
+        phys = SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
+        isInit = true;
         HLCombat.GibCount += 1;
         Velocity += new Vector3(Rand.Int(-1, 1), Rand.Int(-1, 1), Rand.Int(-1, 1));
 		//base.Spawn();
 		Predictable = true;
-		phys = SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
 		//phys = SetupPhysicsFromOBB(PhysicsMotionType.Dynamic, new Vector3( -0.5f, -0.5f, -0.5f ), new Vector3(0.5f, 0.5f, 0.5f));
 		//phys.GetBody( 0 ).RemoveShadowController();
 		EnableHitboxes = true;
@@ -104,7 +103,8 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		//base.Spawn();
 
 		Predictable = true;
-	}
+        
+    }
 
 	public virtual void StepMove()
 	{
@@ -130,7 +130,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		mover.GroundBounce = 0.55f;
 		mover.MaxStandableAngle = 10;
 		mover.WallBounce = 0.55f;
-		mover.TryMove( Time.Delta );
+        mover.TryMove( Time.Delta );
 		if (mover.HitWall || mover.HitFloor)
 		{
 			this.StartTouch(this);
@@ -148,8 +148,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
                 }
 
             }
-		} 
-		prevTickPos = Position;
+        }
+        mover.TryUnstuck();
+        prevTickPos = Position;
 		Position = mover.Position;
 		Velocity = mover.Velocity;
 
