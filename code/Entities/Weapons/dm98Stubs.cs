@@ -153,7 +153,7 @@ class dm_ammo9mmbox : BaseDM98Stub
     public override void Spawn()
     {
         base.Spawn();
-        var a = new Ammo9mmBox();
+        var a = new Ammo9mmAR();//new Ammo9mmBox();
         a.Position = Position;
         this.Delete();
     }
