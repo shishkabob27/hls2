@@ -68,7 +68,7 @@ partial class Ammo9mmBox : BaseAmmo
 partial class Ammo9mmAR : BaseAmmo
 {
     public override AmmoType AmmoType => AmmoType.Pistol;
-    public override int AmmoAmount => 200;
+    public override int AmmoAmount => 20;
 
     public override Model WorldModel => Model.Load("models/hl1/weapons/ammo/w_9mmar.vmdl");
 }
