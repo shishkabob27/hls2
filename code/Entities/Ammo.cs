@@ -62,6 +62,16 @@ partial class Ammo9mmBox : BaseAmmo
 	public override Model WorldModel => Model.Load("models/hl1/weapons/ammo/w_9mmbox.vmdl");
 }
 
+[Library("ammo_9mmar"), HammerEntity]
+[EditorModel("models/hl1/weapons/ammo/w_9mmar.vmdl")]
+[Title("9mm AR"), Category("Ammo")]
+partial class Ammo9mmAR : BaseAmmo
+{
+    public override AmmoType AmmoType => AmmoType.Pistol;
+    public override int AmmoAmount => 200;
+
+    public override Model WorldModel => Model.Load("models/hl1/weapons/ammo/w_9mmar.vmdl");
+}
 
 
 [Library( "ammo_buckshot" ), HammerEntity]
