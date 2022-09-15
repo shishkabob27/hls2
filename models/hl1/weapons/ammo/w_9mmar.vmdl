@@ -11,7 +11,13 @@
 				[
 					{
 						_class = "DefaultMaterialGroup"
-						remaps = [  ]
+						remaps = 
+						[
+							{
+								from = "clipside.vmat"
+								to = "materials/hl1/weapons/ammo/w_9mmar/clipside.vmat"
+							},
+						]
 						use_global_default = false
 						global_default_material = ""
 					},
@@ -37,6 +43,21 @@
 							exclude_by_default = false
 							exception_list = [  ]
 						}
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						origin = [ -0.639491, -0.053381, 1.409826 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 17.853331, 5.911792, 2.958538 ]
 					},
 				]
 			},
