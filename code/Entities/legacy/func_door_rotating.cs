@@ -1,4 +1,5 @@
 using SandboxEditor;
+using Sandbox;
 using System;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
@@ -61,19 +62,30 @@ using System.Text.Json.Serialization;
 	[Flags]
 	public enum Flags
 	{
-		UseOpens = 1,
-		StartLocked = 2,
-		//SpawnOpen = 4,
-		//OneWay = 8,
-		//Touch = 16,
+		StartOpen = 1,
+		NonSolidToPlayer = 4,
+        ReverseDir = 2,
+        Passable = 8,
+        Oneway = 16,
+        Toggle = 32,
+        XAxis = 64,
+        YAxis = 128,
+        UseOpens = 256,
+		NPCsCant = 512,
+        TouchOpens = 1024,
+		StartLocked = 2048,
+        DoorSilent = 4096,
+        //SpawnOpen = 4,
+        //OneWay = 8,
+        //Touch = 16,
 
-		//StartUnbreakable = 524288,
-	}
+        //StartUnbreakable = 524288,
+    }
 
 	/// <summary>
 	/// Settings that are only applicable when the entity spawns
 	/// </summary>
-	[Property("spawnsettings", Title = "Spawn Settings")]
+	[Property("spawnflags", Title = "Spawn Settings")]
 	public Flags SpawnSettings { get; set; } = Flags.UseOpens;
 
 	/// <summary>
@@ -225,6 +237,7 @@ using System.Text.Json.Serialization;
 		SetupPhysicsFromModel(PhysicsMotionType.Keyframed);
 
 		// DoorMoveType.Moving
+		/*
 		{
 			PositionA = LocalPosition;
 
@@ -242,18 +255,22 @@ using System.Text.Json.Serialization;
 				PositionB = PositionA + dir_world * (MathF.Abs(boundSize.Dot(dir)) - Distance);
 			}
 		}
-
+		*/
 		// DoorMoveType.Rotating
 		{
 			RotationA = LocalRotation;
 
 			var axis = Rotation.From(MoveDir).Up;
+			if (SpawnSettings.HasFlag(Flags.XAxis)) axis = Rotation.From(MoveDir).Right;
+			if (SpawnSettings.HasFlag(Flags.YAxis)) axis = Rotation.From(MoveDir).Forward;
 			if (!MoveDirIsLocal) axis = Transform.NormalToLocal(axis);
 
 			RotationB_Opposite = RotationA.RotateAroundAxis(axis, -Distance);
 			RotationB_Normal = RotationA.RotateAroundAxis(axis, Distance);
 			RotationB = RotationB_Normal;
-		}
+			if (SpawnSettings.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Opposite;
+
+        }
 
 		State = DoorState.Closed;
 		Locked = SpawnSettings.HasFlag(Flags.StartLocked);
@@ -471,11 +488,12 @@ using System.Text.Json.Serialization;
 		{
 			// TODO: In this case the door could be moving faster than given speed if we are trying to open the door while it is closing from the opposite side
 			var axis = Rotation.From(MoveDir).Up;
-			if (!MoveDirIsLocal) axis = Transform.NormalToLocal(axis);
-
-			// Generate the correct "inward" direction for the door since we can't assume RotationA.Forward is it
-			// TODO: This does not handle non UP axis doors!
-			var Dir = (WorldSpaceBounds.Center.WithZ(Position.z) - Position).Normal;
+            if (SpawnSettings.HasFlag(Flags.XAxis)) axis = new Vector3(1, 0, 0);
+            if (SpawnSettings.HasFlag(Flags.YAxis)) axis = new Vector3(0, 1, 0);
+            if (!MoveDirIsLocal) axis = Transform.NormalToLocal(axis);
+            // Generate the correct "inward" direction for the door since we can't assume RotationA.Forward is it
+            // TODO: This does not handle non UP axis doors!
+            var Dir = (WorldSpaceBounds.Center.WithZ(Position.z) - Position).Normal;
 			var Pos1 = Position + Rotation.FromAxis(Dir, 0).RotateAroundAxis(axis, Distance) * Dir * 24.0f;
 			var Pos2 = Position + Rotation.FromAxis(Dir, 0).RotateAroundAxis(axis, -Distance) * Dir * 24.0f;
 
@@ -483,11 +501,13 @@ using System.Text.Json.Serialization;
 			if (PlyPos.Distance(Pos2) < PlyPos.Distance(Pos1))
 			{
 				RotationB = RotationB_Normal;
-			}
+                if (SpawnSettings.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Opposite;
+            }
 			else
 			{
 				RotationB = RotationB_Opposite;
-			}
+                if (SpawnSettings.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Normal;
+            }
 		}
 
 		UpdateAnimGraph(true);
