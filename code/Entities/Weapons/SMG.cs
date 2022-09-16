@@ -84,12 +84,12 @@ partial class SMG : HLWeapon
 			var grenade = new SMGGrenade
 			{
 				Owner = Owner,
-				Rotation = Rotation.LookAt( Owner.EyeRotation.Forward ),
-				Position = Owner.EyePosition + Owner.EyeRotation.Forward * 40
+				Rotation = Rotation.LookAt(GetFiringRotation().Forward ),
+				Position = GetFiringPos() + GetFiringRotation().Forward * 40
 			};
 
 			grenade.SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
-			grenade.PhysicsGroup.Velocity = Owner.EyeRotation.Forward * 1000;
+			grenade.PhysicsGroup.Velocity = GetFiringRotation().Forward * 1000;
 
 			grenade.ApplyLocalAngularImpulse( new Vector3( 0, 300, 0 ) );
 		}
