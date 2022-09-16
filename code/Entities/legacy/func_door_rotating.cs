@@ -56,7 +56,7 @@ using System.Text.Json.Serialization;
 	[Model( Archetypes = ModelArchetype.animated_model )]
 	[DoorHelper( "movedir", "movedir_islocal", "movedir_type", "distance" )]
 	[RenderFields, VisGroup( VisGroup.Dynamic )]
-	[Title( "Door" ), Category("Brush Entities"), Icon( "door_front" )]
+	[Title( "Door Rotating" ), Category("Brush Entities"), Icon( "door_front" )]
 	public partial class DoorRotatingEntity : KeyframeEntity, IUse
 {
 	[Flags]
@@ -86,7 +86,7 @@ using System.Text.Json.Serialization;
 	/// Settings that are only applicable when the entity spawns
 	/// </summary>
 	[Property("spawnflags", Title = "Spawn Settings")]
-	public Flags SpawnSettings { get; set; } = Flags.UseOpens;
+	public Flags spawnflags { get; set; } = Flags.StartOpen;
 
 	/// <summary>
 	/// The direction the door will move, when it opens.
@@ -141,7 +141,7 @@ using System.Text.Json.Serialization;
 	/// <summary>
 	/// Amount of time, in seconds, after the door has opened before it closes automatically. If the value is set to -1, the door never closes itself.
 	/// </summary>
-	[Property("close_delay", Title = "Auto Close Delay (-1 stay)")]
+	[Property("wait", Title = "Auto Close Delay (-1 stay)")]
 	public float TimeBeforeReset { get; set; } = 4;
 
 	/// <summary>
@@ -203,13 +203,13 @@ using System.Text.Json.Serialization;
 	[Net]
 	public bool Locked { get; set; }
 
-	/// <summary>
-	/// The easing function for both movement and rotation
-	/// TODO: Expose to hammer in a nice way
-	/// </summary>
-	public Easing.Function Ease { get; set; } = Easing.EaseOut;
+    /// <summary>
+    /// The easing function for both movement and rotation
+    /// TODO: Expose to hammer in a nice way
+    /// </summary>
+    public Easing.Function Ease { get; set; } = null; //Easing.EaseOut; half-life doors don't ease.
 
-	Vector3 PositionA;
+    Vector3 PositionA;
 	Vector3 PositionB;
 	Rotation RotationA;
 	Rotation RotationB;
@@ -261,19 +261,19 @@ using System.Text.Json.Serialization;
 			RotationA = LocalRotation;
 
 			var axis = Rotation.From(MoveDir).Up;
-			if (SpawnSettings.HasFlag(Flags.XAxis)) axis = Rotation.From(MoveDir).Right;
-			if (SpawnSettings.HasFlag(Flags.YAxis)) axis = Rotation.From(MoveDir).Forward;
-			if (!MoveDirIsLocal) axis = Transform.NormalToLocal(axis);
+			if (spawnflags.HasFlag(Flags.XAxis)) axis = new Vector3(1, 0, 0);//Rotation.From(MoveDir).Right;
+			if (spawnflags.HasFlag(Flags.YAxis)) axis = new Vector3(0, 1, 0);//Rotation.From(MoveDir).Forward;
+            if (!MoveDirIsLocal) axis = Transform.NormalToLocal(axis);
 
 			RotationB_Opposite = RotationA.RotateAroundAxis(axis, -Distance);
 			RotationB_Normal = RotationA.RotateAroundAxis(axis, Distance);
 			RotationB = RotationB_Normal;
-			if (SpawnSettings.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Opposite;
+			if (spawnflags.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Opposite;
 
         }
 
 		State = DoorState.Closed;
-		Locked = SpawnSettings.HasFlag(Flags.StartLocked);
+		Locked = spawnflags.HasFlag(Flags.StartLocked);
 
 		if (InitialPosition > 0)
 		{
@@ -353,7 +353,7 @@ using System.Text.Json.Serialization;
 		}
 	}
 
-	public virtual bool IsUsable(Entity user) => SpawnSettings.HasFlag(Flags.UseOpens);
+	public virtual bool IsUsable(Entity user) => spawnflags.HasFlag(Flags.UseOpens);
 
 	/// <summary>
 	/// Fired when a player tries to open/close this door with +use, but it's locked
@@ -373,7 +373,7 @@ using System.Text.Json.Serialization;
 			return false;
 		}
 
-		if (SpawnSettings.HasFlag(Flags.UseOpens))
+		if (spawnflags.HasFlag(Flags.UseOpens))
 		{
 			Toggle(user);
 		}
@@ -488,8 +488,8 @@ using System.Text.Json.Serialization;
 		{
 			// TODO: In this case the door could be moving faster than given speed if we are trying to open the door while it is closing from the opposite side
 			var axis = Rotation.From(MoveDir).Up;
-            if (SpawnSettings.HasFlag(Flags.XAxis)) axis = new Vector3(1, 0, 0);
-            if (SpawnSettings.HasFlag(Flags.YAxis)) axis = new Vector3(0, 1, 0);
+            if (spawnflags.HasFlag(Flags.XAxis)) axis = new Vector3(1, 0, 0);
+            if (spawnflags.HasFlag(Flags.YAxis)) axis = new Vector3(0, 1, 0);
             if (!MoveDirIsLocal) axis = Transform.NormalToLocal(axis);
             // Generate the correct "inward" direction for the door since we can't assume RotationA.Forward is it
             // TODO: This does not handle non UP axis doors!
@@ -501,12 +501,12 @@ using System.Text.Json.Serialization;
 			if (PlyPos.Distance(Pos2) < PlyPos.Distance(Pos1))
 			{
 				RotationB = RotationB_Normal;
-                if (SpawnSettings.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Opposite;
+                if (spawnflags.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Opposite;
             }
 			else
 			{
 				RotationB = RotationB_Opposite;
-                if (SpawnSettings.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Normal;
+                if (spawnflags.HasFlag(Flags.ReverseDir)) RotationB = RotationB_Normal;
             }
 		}
 
