@@ -13,6 +13,7 @@ public class Options : GUIPanel
 	public bool bCpixelfont { get; set; } = true;
 	public bool bCliveupdate { get; set; } = true;
 	public bool bCragdolls { get; set; }
+	public bool bColdTorch { get; set; }
 	public float fChudScale { get; set; }
 
 	public bool bCvrpointer { get; set; }
@@ -50,6 +51,7 @@ public class Options : GUIPanel
 		HLGame.cl_himodels = bChimodels;
 		HLGame.hl_vr_pointer = bCvrpointer;
 		HLGame.hl_ragdoll = bCragdolls;
+		HLGame.hl_classic_flashlight = bColdTorch;
 
     }
 

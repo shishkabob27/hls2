@@ -11,4 +11,5 @@
     [ConVar.Client] public static int cc_subtitles { get; set; } = 0;
     [ConVar.Client] public static bool cl_himodels { get; set; } = false;
     [ConVar.Client] public static bool hl_vr_pointer { get; set; } = false;
+    [ConVar.ClientData] public static bool hl_classic_flashlight { get; set; } = false;
 }
