@@ -170,6 +170,7 @@
     },
     "ControlModes": {
       "Keyboard": true,
+      "VR": true,
       "Gamepad": true
     },
     "GameSettings": {
