@@ -199,7 +199,7 @@
 
 		Controller = null;
 
-		CameraMode = new SpectateRagdollCamera();
+		CameraMode = new HLDeadCamera();
 
 		EnableAllCollisions = false;
 		EnableDrawing = false;
