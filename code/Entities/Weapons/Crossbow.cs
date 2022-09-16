@@ -12,6 +12,7 @@ partial class Crossbow : HLWeapon
 	public override AmmoType AmmoType => AmmoType.Crossbow;
 	public override int ClipSize => 5;
 	public override string AmmoIcon => "ui/ammo5.png";
+	public override string InventoryIcon => "/ui/weapons/weapon_crossbow.png";
 
 	[Net, Predicted]
 	public bool Zoomed { get; set; }

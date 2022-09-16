@@ -23,6 +23,7 @@
 
 	public virtual string AmmoIcon => "ui/ammo1.png";
 	public virtual string AltAmmoIcon => "ui/ammo3.png";
+	public virtual string InventoryIcon => "/ui/weapons/weapon_pistol.png";
 
 	[Net, Predicted]
 	public int AmmoClip { get; set; }

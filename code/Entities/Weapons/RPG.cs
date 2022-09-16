@@ -12,8 +12,9 @@ partial class RPG : HLWeapon
 	public override AmmoType AmmoType => AmmoType.RPG;
 	public override int ClipSize => 1;
 	public override string AmmoIcon => "ui/ammo6.png";
+    public override string InventoryIcon => "/ui/weapons/weapon_rpg.png";
 
-	public override void Spawn()
+    public override void Spawn()
 	{
 		base.Spawn();
 

@@ -14,8 +14,9 @@ partial class TripmineWeapon : HLWeapon
 	public override int Bucket => 4;
 	public override int BucketWeight => 3;
 	public override string AmmoIcon => "ui/ammo12.png";
+    public override string InventoryIcon => "/ui/weapons/weapon_tripmine.png";
 
-	public override void Spawn()
+    public override void Spawn()
 	{
 		base.Spawn();
 

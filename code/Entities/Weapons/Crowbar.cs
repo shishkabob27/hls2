@@ -13,7 +13,8 @@ partial class Crowbar : HLWeapon
 	public override int ClipSize => 0;
 	public override int Bucket => 0;
 
-	public override void Spawn()
+    public override string InventoryIcon => "/ui/weapons/weapon_crowbar.png";
+    public override void Spawn()
 	{
 		base.Spawn();
 

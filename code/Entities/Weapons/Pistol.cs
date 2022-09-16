@@ -11,7 +11,8 @@ partial class Pistol : HLWeapon
 	public override float SecondaryRate => 5f;
 	public override float ReloadTime => 1.4f;
 
-	public override int Bucket => 1;
+    public override string InventoryIcon => "/ui/weapons/weapon_pistol.png";
+    public override int Bucket => 1;
 
 	public override void Spawn()
 	{

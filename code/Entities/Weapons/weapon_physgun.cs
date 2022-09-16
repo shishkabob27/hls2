@@ -27,6 +27,7 @@ partial class PhysGun : HLWeapon
 
     private const string grabbedTag = "grabbed";
 
+    public override string InventoryIcon => "/ui/weapons/weapon_gauss.png";
     [Net] public bool BeamActive { get; set; }
     [Net] public Entity GrabbedEntity { get; set; }
     [Net] public int GrabbedBone { get; set; }

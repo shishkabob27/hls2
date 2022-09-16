@@ -14,6 +14,7 @@ partial class Shotgun : HLWeapon
 	public override int BucketWeight => 2;
 
     public override string AmmoIcon => "ui/ammo4.png";
+    public override string InventoryIcon => "/ui/weapons/weapon_shotgun.png";
 
     [Net, Predicted]
 	public bool StopReloading { get; set; }

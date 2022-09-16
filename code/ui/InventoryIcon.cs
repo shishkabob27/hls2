@@ -9,8 +9,7 @@ class InventoryIcon : Panel
 	{
 		Weapon = weapon;
 		Icon = Add.Panel( "icon" );
-
-		AddClass( weapon.ClassName );
+		Icon.Style.SetBackgroundImage(weapon.InventoryIcon);
 	}
 
 	internal void TickSelection( HLWeapon selectedWeapon )

@@ -12,6 +12,7 @@ partial class Egon : HLWeapon
     public override AmmoType AmmoType => AmmoType.Uranium;
     public override string AmmoIcon => "ui/ammo7.png";
 
+    public override string InventoryIcon => "/ui/weapons/weapon_egon.png";
     public override bool CanPrimaryAttack()
     {
         return base.CanPrimaryAttack();//Input.Pressed(InputButton.PrimaryAttack);
