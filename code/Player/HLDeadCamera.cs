@@ -18,7 +18,7 @@
 			FocusPoint = Vector3.Lerp(FocusPoint, GetSpectatePoint(), 1.0f);
 
 			Position = FocusPoint + new Vector3(0f, 0f, 8f);
-			Rotation = Input.Rotation;
+			Rotation = (Input.Rotation.Angles() + new Angles(0,0,128)).ToRotation();
 
 			//Viewer = Local.Pawn;
 		}
