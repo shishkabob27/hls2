@@ -432,6 +432,12 @@
     public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
 	{ 
 		var player = Local.Pawn as HLPlayer;
+
+        if (Client.IsUsingVr)
+        {
+			Input.VR.RightHand.TriggerHapticVibration(0f, 200f, 1.0f);
+		}
+
 		//
 		// Seed rand using the tick, so bullet cones match on client and server
 		//
