@@ -24,6 +24,12 @@ public partial class ChangeLevelTrigger : BaseTrigger
 		_ = DeleteAsync( Time.Delta );
 	}
 
+	[Input]
+	protected void ChangeLevel()
+	{
+		Global.ChangeLevel(Map);
+	}
+
 	/// <summary>
 	/// Called once at least a single entity that passes filters is touching this trigger, just before this trigger getting deleted
 	/// </summary>
