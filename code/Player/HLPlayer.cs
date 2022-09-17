@@ -194,7 +194,11 @@
 		}
 		else
 		{
-			CreateCorpse(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
+			var a = Client.All.ToList();
+
+			a.RemoveAll(ply => ply == this.Owner);
+			//create corpse on everyones client except the client who died.
+            CreateCorpse(To.Multiple(a), Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
 		}
 
 		Controller = null;
