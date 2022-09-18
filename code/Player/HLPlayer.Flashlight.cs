@@ -78,7 +78,7 @@ public partial class HLPlayer
                 Light.Rotation = Input.VR.Head.Rotation;
             }
         }
-        if (Input.Pressed(InputButton.Flashlight))
+        if (Input.Pressed(InputButton.Flashlight) && HasHEV)
         {
             FlashlightEnabled = !FlashlightEnabled;
 
