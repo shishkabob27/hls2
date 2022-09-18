@@ -72,9 +72,10 @@ PS
 	// Main
 	//
 
-        float WaveStrength;
-        float WaveSize;
-        float WaveSpeed;
+    	float WaveStrength < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
+		
+     float WaveSize < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
+     float WaveSpeed < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
 
 
     CreateTexture2D( WaveTexMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
@@ -83,8 +84,10 @@ PS
 	PixelOutput MainPs( PixelInput i )
 	{
 		ShadingModelValveStandard sm;
+
 		Material m = GatherMaterial( i );
 		float2 inputUV = i.vTextureCoords.xy;
+		
 
 		float2 DeltaTime = (inputUV.yx * (WaveSize) + g_flTime * (WaveSpeed / 10)) * 3.14159265359;
 
