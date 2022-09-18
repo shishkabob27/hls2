@@ -66,6 +66,7 @@ VS
 
 PS
 {
+    #define BLEND_MODE_ALREADY_SET
     #include "common/pixel.hlsl"
 	
 	//
@@ -76,10 +77,14 @@ PS
 		
      float WaveSize < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
      float WaveSpeed < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
-
+     float WaveAlpha < UiType( Slider ); Default1(1.0); Range( 0.0f, 1.0f ); UiGroup( "Color,10/20" ); >;
 
     CreateTexture2D( WaveTexMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
 	TextureAttribute( WaveTexMap, WaveTexMap );
+
+
+    RenderState(BlendEnable, true);
+
 
 	PixelOutput MainPs( PixelInput i )
 	{
@@ -103,6 +108,7 @@ PS
 
 		m.Albedo.rgb = wave.rgb; 
 		PixelOutput p = FinalizePixelMaterial( i, m, sm );
+		p.vColor.a = WaveAlpha;
 		return p;
 	}
 }
