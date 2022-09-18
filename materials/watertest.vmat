@@ -4,10 +4,13 @@ Layer0
 {
 	shader "qliquid.vfx"
 
+	//---- Rendering ----
+	F_RENDER_BACKFACES 1
+
 	//---- Color ----
 	g_flModelTintAmount "0.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 1.000000]"
-	WaveAlpha "0.700"
+	WaveAlpha "0.500"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
@@ -22,7 +25,7 @@ Layer0
 	//---- Material ----
 	TextureAmbientOcclusion "materials/default/default_ao.tga"
 	TextureBlendMask "materials/default/default_blend.tga"
-	TextureColor "materials/halflife/generic_114.tga"
+	TextureColor "materials/halflife/_c2a1aw01.tga"
 	TextureMetalness "[0.000000 0.000000 0.000000 0.000000]"
 	TextureNormal "materials/default/default_normal.tga"
 	TextureRoughness "[0.000000 0.000000 0.000000 0.000000]"
