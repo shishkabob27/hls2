@@ -26,6 +26,7 @@ partial class Battery : ModelEntity, IRespawnableEntity
 
 		if ( other is not HLPlayer player ) return;
 		if ( player.Armour >= 100 ) return;
+		if ( !player.HasHEV ) return;
 
 		var newhealth = player.Armour + 15;
 
