@@ -1,14 +1,13 @@
 ﻿
 pickupfeed {
 	position: absolute;
-	right: 220px;
-	bottom: 250px;
+	right: 16px;
+	bottom: 128px;
 	flex-direction: column;
 	text-align: right;
 	mix-blend-mode: lighten;
 
 	.entry {
-		transition: all 0.2s ease-out;
 		opacity: 1;
 		height: 50px;
 		overflow: hidden;
@@ -16,7 +15,7 @@ pickupfeed {
 		align-items: center;
 		min-width: 300px;
 		font-size: 30px;
-		font-family: Poppins;
+		font-family: "Trebuchet MS";
 		//
 		// Pseudo class set for the last frame of its life
 		// (and keeps the panel alive until transition ends)
