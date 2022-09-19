@@ -1,6 +1,4 @@
-﻿[Library( "hl_handgrenade" ), HammerEntity]
-[Title( "Hand Grenade" )]
-partial class HandGrenade : BasePhysics
+﻿partial class HandGrenade : BasePhysics
 {
 	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/grenade.vmdl");
 	public override void Spawn()

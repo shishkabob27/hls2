@@ -1,6 +1,6 @@
 ﻿[Library( "item_sodacan" ), HammerEntity]
 [EditorModel( "models/hl1/items/can.vmdl" )]
-[Title(  "item_sodacan" )]
+[Title(  "item_sodacan" ), Category("Items")]
 partial class item_sodacan : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/items/can.vmdl" );

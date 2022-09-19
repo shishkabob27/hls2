@@ -3,7 +3,7 @@
 /// </summary>
 [Library( "item_battery" ), HammerEntity]
 [EditorModel( "models/hl1/gameplay/battery.vmdl" )]
-[Title(  "Battery" )]
+[Title(  "Battery" ), Category("Items")]
 partial class Battery : ModelEntity, IRespawnableEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/gameplay/battery.vmdl" );

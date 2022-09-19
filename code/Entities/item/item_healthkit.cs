@@ -3,7 +3,7 @@
 /// </summary>
 [Library("item_healthkit"), HammerEntity]
 [EditorModel( "models/hl1/gameplay/medkit.vmdl" )]
-[Title(  "Health Kit" )]
+[Title(  "Health Kit" ), Category("Items")]
 partial class HealthKit : ModelEntity, IRespawnableEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/gameplay/medkit.vmdl" );

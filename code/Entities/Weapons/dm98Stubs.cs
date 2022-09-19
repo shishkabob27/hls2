@@ -130,7 +130,7 @@ class dm_battery : BaseDM98Stub
 }
 
 [Library("dm_chargerstation")]
-class dm_chargerstation : HealthCharger
+class dm_chargerstation : func_healthcharger
 {
 }
 
