@@ -25,6 +25,8 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	float bGirth = 1 * 0.5f;
 	float bHeight = 1 * 0.5f;
 
+	TraceResult lastTrace;
+
     /// <summary>
     /// This prop won't be able to be damaged for this amount of time
     /// </summary>
@@ -82,20 +84,28 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 
     void Initialise()
     {
-		if (isInit)
-			return;
-
         if (!HLGame.hl_classic_gibs)
         {
-			var a = Velocity;
+            var a = Velocity;
+            var b = AngularVelocity;
             phys = SetupPhysicsFromModel(PhysicsMotionType.Dynamic, false);
+            EnableAllCollisions = true;
+            Velocity = a;
+            PhysicsBody.Velocity = a;
+            PhysicsBody.AngularVelocity = new Vector3(b.yaw, b.pitch, b.roll) / 32;
+
+            if (isInit)
+                return;
+
             isInit = true;
             HLCombat.GibCount += 1;
-			Velocity = a * 100;
-            PhysicsBody.Velocity = a * 100;
             this.Tags.Add("debris");
             return;
         }
+        if (isInit)
+			return;
+
+       
         phys = SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
         isInit = true;
         HLCombat.GibCount += 1;
@@ -130,7 +140,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		Velocity = mover.Velocity;
 	}
 
-	public virtual void Move()
+	public virtual void Move(bool setpos = true)
 	{
 		mins = new Vector3( -bGirth, -bGirth, 0 );
 		maxs = new Vector3( +bGirth, +bGirth, bHeight );
@@ -143,28 +153,20 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		mover.MaxStandableAngle = 10;
 		mover.WallBounce = 0.55f;
         mover.TryMove( Time.Delta );
-		if (mover.HitWall || mover.HitFloor)
+		lastTrace = mover.TraceResult;
+
+        if (mover.HitWall || mover.HitFloor)
 		{
 			this.StartTouch(this);
-			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal) && (this.PhysicsBody != null && (this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh")))
-			{
-				var vecSpot = Position + new Vector3(0, 0, 8);
-                Decal.Place(decal, mover.TraceResult);
-            }
-			if (BounceSound)
-			{
-				if (SurfaceType != null)
-				{
-					SurfaceType.GetBounceSound(Position, 0.3f);
 
-                }
-
-            }
         }
         mover.TryUnstuck();
         prevTickPos = Position;
-		Position = mover.Position;
-		Velocity = mover.Velocity;
+		if (setpos)
+        {
+            Position = mover.Position;
+            Velocity = mover.Velocity;
+        }
 
 	}
 
@@ -173,8 +175,6 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	public void Think()
 	{
 		if (IsClient)
-			return;
-        if (!HLGame.hl_classic_gibs) 
 			return;
         if (HLCombat.GibCount < 0) {
 			HLCombat.GibCount = 0;
@@ -221,6 +221,13 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			HLCombat.GibFadingCount -= 1;
 			hasCountedFading = false;
         }
+
+        if (!HLGame.hl_classic_gibs)
+        {
+			Move(false); // hacky workaround for starttouch not working idk why
+            return;
+        }
+
         if (sleepytime > 20)
 		{
 			return;
@@ -389,7 +396,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		if ( wasOffGround )
 		{
 
-			this.StartTouch( this );
+			//this.StartTouch( this );
 		}
 		
 	}
@@ -438,20 +445,39 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 
 		// mv->m_outWishVel -= (1.f-newspeed) * mv->m_vecVelocity;
 	}
+	public override void Touch(Entity other)
+	{
+		StartTouch(other); // shitty
+		base.Touch(other);
+	}
 	public override void StartTouch( Entity other )
 	{
 		//AngularVelocity = Angles.Zero;
 		base.StartTouch( other );
-		//Log.Info( "boing!" );
-		//if (Velocity.IsNearlyZero())
-			//RotAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
-		// set angle
+        if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal) && (this.PhysicsBody != null && (this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh")))
+        {
+            var vecSpot = Position + new Vector3(0, 0, 8);
+            Decal.Place(decal, lastTrace);
+        }
+        if (BounceSound)
+        {
+            if (SurfaceType != null)
+            {
+                SurfaceType.GetBounceSound(Position, 0.3f);
 
-		// set anglular velocity
+            }
 
-		//bounce?
-		
-	}
+        }
+        //Log.Info( "boing!" );
+        //if (Velocity.IsNearlyZero())
+        //RotAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
+        // set angle
+
+        // set anglular velocity
+
+        //bounce?
+
+    }
 
 	public override void EndTouch( Entity other )
 	{
