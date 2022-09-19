@@ -27,7 +27,7 @@
                     newName = "surface/hl_concrete.surface";
                     break;
                 case "glass":
-                    newName = "surface/hl_concrete.surface";
+                    newName = "surface/hl_tile.surface";
                     break;
                 case "glass.pane":
                     newName = "surface/hl_concrete.surface";
@@ -36,7 +36,7 @@
                     newName = "surface/hl_concrete.surface";
                     break;
                 case "dirt":
-                    newName = "surface/hl_concrete.surface";
+                    newName = "surface/hl_dirt.surface";
                     break;
                 case "carpet":
                     newName = "surface/hl_concrete.surface";
