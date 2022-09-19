@@ -84,6 +84,18 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
     {
 		if (isInit)
 			return;
+
+        if (!HLGame.hl_classic_gibs)
+        {
+			var a = Velocity;
+            phys = SetupPhysicsFromModel(PhysicsMotionType.Dynamic, false);
+            isInit = true;
+            HLCombat.GibCount += 1;
+			Velocity = a * 100;
+            PhysicsBody.Velocity = a * 100;
+            this.Tags.Add("debris");
+            return;
+        }
         phys = SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
         isInit = true;
         HLCombat.GibCount += 1;
@@ -162,7 +174,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	{
 		if (IsClient)
 			return;
-		if (HLCombat.GibCount < 0) {
+        if (!HLGame.hl_classic_gibs) 
+			return;
+        if (HLCombat.GibCount < 0) {
 			HLCombat.GibCount = 0;
 		}
 		if (HLCombat.GibFadingCount < 0)
