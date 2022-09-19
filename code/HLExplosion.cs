@@ -4,7 +4,6 @@ partial class HLExplosion
 	{
 		// Effects
 		Sound.FromWorld( "explode", position );
-		Log.Info(HLGame.hl_classic_explosion);
 		if (HLGame.hl_classic_explosion)
 		{
 			switch (type)
