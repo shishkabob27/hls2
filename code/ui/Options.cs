@@ -15,6 +15,7 @@ public class Options : GUIPanel
 	public bool bCragdolls { get; set; }
 	public bool bColdTorch { get; set; }
 	public float fChudScale { get; set; }
+	public bool bColdexplosion { get; set; }
 
 	public bool bCvrpointer { get; set; }
 
@@ -52,6 +53,7 @@ public class Options : GUIPanel
 		HLGame.hl_vr_pointer = bCvrpointer;
 		HLGame.hl_ragdoll = bCragdolls;
 		HLGame.hl_classic_flashlight = bColdTorch;
+		HLGame.hl_classic_explosion = bColdexplosion;
 
     }
 

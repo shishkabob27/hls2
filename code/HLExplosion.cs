@@ -1,18 +1,29 @@
 partial class HLExplosion
 {
-public static void Explosion( Entity weapon, Entity owner, Vector3 position, float radius, float damage, float forceScale, string type)
+	public static void Explosion( Entity weapon, Entity owner, Vector3 position, float radius, float damage, float forceScale, string type)
 	{
 		// Effects
 		Sound.FromWorld( "explode", position );
-		switch (type)
+		Log.Info(HLGame.hl_classic_explosion);
+		if (HLGame.hl_classic_explosion)
 		{
-			case "grenade": Particles.Create( "particles/explosion.vpcf", position ); break;
-			case "tripmine": Particles.Create( "particles/explosion_tripmine.vpcf", position ); break;
-			default: Particles.Create( "particles/explosion.vpcf", position ); break;
+			switch (type)
+			{
+				case "grenade": Particles.Create( "particles/explosion.vpcf", position ); break;
+				case "tripmine": Particles.Create( "particles/explosion_tripmine.vpcf", position ); break;
+				default: Particles.Create( "particles/explosion.vpcf", position ); break;
+			}
+		}
+		else
+		{
+			switch (type)
+			{
+				case "grenade": Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
+				case "tripmine": Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
+				default: Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
+			}
 		}
 		
-		
-
 		// Damage, etc
 		var overlaps = Entity.FindInSphere( position, radius );
 
@@ -55,5 +66,5 @@ public static void Explosion( Entity weapon, Entity owner, Vector3 position, flo
 
 			ent.TakeDamage( damageInfo );
 		}
-}	
+	}	
 }
