@@ -96,7 +96,7 @@ public partial class scripted_sequence : Entity
         {
             TargetNPC.InPriorityScriptedSequence = true;
         }
-        else if (TargetNPC.InPriorityScriptedSequence)
+        else if (TargetNPC != null && TargetNPC.InPriorityScriptedSequence)
         {
             hasStarted = false;
             return;
