@@ -11,7 +11,7 @@ public class Options : GUIPanel
 	public bool bChimodels { get; set; }
 	public bool bCguiscale { get; set; } = true;
 	public bool bCpixelfont { get; set; } = true;
-	public bool bCliveupdate { get; set; } = true;
+	public bool bCliveupdate { get; set; } = false;
 	public bool bCragdolls { get; set; }
 	public bool bColdTorch { get; set; }
 	public float fChudScale { get; set; }
