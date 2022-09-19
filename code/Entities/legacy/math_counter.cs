@@ -1,7 +1,7 @@
 ﻿[Library("math_counter")]
 [HammerEntity]
 [EditorSprite("editor/math_counter.vmat")]
-[Title("math_counter"), Category("Legacy")]
+[Title("math_counter"), Category("Legacy"), Icon("calculate")]
 public partial class MathCounter : Entity
 {
 	// stub

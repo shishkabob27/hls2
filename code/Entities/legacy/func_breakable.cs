@@ -1,6 +1,6 @@
 ﻿[Library("func_breakable")]
 [HammerEntity, Solid]
-[Title("func_breakable"), Category("Brush Entities"), Icon("volume_up")]
+[Title("func_breakable"), Category("Brush Entities"), Icon("sound_detection_glass_break")]
 public partial class func_breakable : BrushEntity
 {
     [Property]

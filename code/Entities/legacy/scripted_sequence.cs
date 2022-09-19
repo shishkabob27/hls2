@@ -1,7 +1,7 @@
 ﻿[Library("scripted_sequence")]
 [HammerEntity]
 [EditorModel("models/editor/scripted_sequence.vmdl")]
-[Title("scripted_sequence"), Category("Choreo"), Icon("volume_up")]
+[Title("scripted_sequence"), Category("Choreo"), Icon("theater_comedy")]
 public partial class scripted_sequence : Entity
 {
     [Flags]

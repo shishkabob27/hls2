@@ -1,7 +1,7 @@
 ﻿[Library("env_explosion")]
 [HammerEntity]
 [EditorSprite("editor/env_explosion.vmat")]
-[Title("env_explosion"), Category("Effects"), Icon("explosion")]
+[Title("env_explosion"), Category("Effects"), Icon("mode_heat")]
 public partial class env_explosion : Entity
 {
 	[Input]

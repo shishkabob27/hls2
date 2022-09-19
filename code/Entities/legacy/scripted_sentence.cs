@@ -1,6 +1,6 @@
 ﻿[Library("scripted_sentence")]
 [HammerEntity]
-[Title("scripted_sentence"), Category("Choreo"), Icon("volume_up")]
+[Title("scripted_sentence"), Category("Choreo"), Icon("theater_comedy")]
 public partial class scripted_sentence : Entity
 {
     // stub

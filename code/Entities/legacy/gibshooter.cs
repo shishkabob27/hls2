@@ -1,7 +1,7 @@
 ﻿[Library("gibshooter")]
 [HammerEntity]
 [EditorSprite("editor/gibshooter.vmat")]
-[Title("gibshooter"), Category("Legacy")]
+[Title("gibshooter"), Category("Legacy"), Icon("dirty_lens")]
 public partial class gibshooter : Entity
 {
     // stub
