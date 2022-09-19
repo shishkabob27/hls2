@@ -1,5 +1,5 @@
 ﻿using static ItemRespawn; 
-public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim cus gmod brain.
+public partial class HLGib : ModelEntity
 {
 	//[Net] public float MaxVelocity { get; set; } = 800;
 	public float gGravity { get; set; } = 800;
