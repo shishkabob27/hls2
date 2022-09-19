@@ -1,6 +1,6 @@
 ﻿[Library("monster_generic"), HammerEntity]
 [Model]
-[Title("monster_generic"), Category("Monsters")]
+[Title("monster_generic"), Category("Monsters"), Icon("person")]
 public partial class GenericMonster : NPC
 {
     // Stub NPC, this does nothing yet

@@ -1,6 +1,6 @@
 ﻿[Library("monster_gman"), HammerEntity]
 [EditorModel("models/hl1/monster/gman.vmdl")]
-[Title("Gman"), Category("Monsters")]
+[Title("Gman"), Category("Monsters"), Icon("person")]
 public class Gman : NPC
 {
     // Stub NPC, this does nothing yet

@@ -1,6 +1,6 @@
 ﻿[Library("monster_alien_slave"), HammerEntity]
 [EditorModel("models/hl1/monster/vortigaunt.vmdl")]
-[Title("Alien Slave"), Category("Monsters")]
+[Title("Alien Slave"), Category("Monsters"), Icon("person")]
 internal class AlienSlave : NPC
 {
     // Stub NPC, this does nothing yet

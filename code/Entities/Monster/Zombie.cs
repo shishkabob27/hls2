@@ -1,6 +1,6 @@
 ﻿[Library("monster_zombie"), HammerEntity]
 [EditorModel("models/hl1/monster/zombie.vmdl")]
-[Title("Zombie"), Category("Monsters")]
+[Title("Zombie"), Category("Monsters"), Icon("person")]
 internal class Zombie : NPC
 {
     // Stub NPC, this does nothing yet
