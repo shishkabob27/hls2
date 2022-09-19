@@ -103,7 +103,7 @@ public partial class scripted_sequence : Entity
         }
 
         if (IsClient) return;
-        TargetNPC.InScriptedSequence = true;
+        if (TargetNPC != null) TargetNPC.InScriptedSequence = true;
         hasStarted = true;
         ticker = false;
         ticker2 = false;
