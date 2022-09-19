@@ -3,6 +3,29 @@
 [Title("env_beam"), Category("Legacy"), Icon("volume_up")]
 public partial class env_beam : Entity
 {
+    [Flags]
+    public enum Flags
+    {
+        StartOn = 1,
+        Toggle = 2,
+        RandomStrike = 4,
+        Ring = 8,
+        StartSparks = 16,
+        EndSparks = 32,
+        DecalEnd = 64,
+        ShadeStart = 128,
+        ShadeEnd = 256,
+        TaperOut = 512,
+    }
+
+    /// <summary>
+    /// Settings that are only applicable when the entity spawns
+    /// </summary>
+    [Property("spawnflags", Title = "Spawn Settings")]
+    public Flags spawnflags { get; set; } = Flags.StartOn;
+
+
+
     [Property("LightningStart"), FGDType("target_destination")]
     public string LightningStart { get; set; } = "";
     [Property("LightningEnd"), FGDType("target_destination")]
@@ -19,6 +42,16 @@ public partial class env_beam : Entity
     Vector3 targetpoint { get; set; }
     Particles Beam;
     // stub
+
+    public override void Spawn()
+    {
+        base.Spawn();
+        if (spawnflags.HasFlag(Flags.StartOn))
+        {
+            TurnOn();
+        }
+    }
+
     [Input]
     void TurnOn()
     {
