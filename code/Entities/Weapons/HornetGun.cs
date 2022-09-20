@@ -1,10 +1,10 @@
 ﻿[Library("weapon_hornetgun"), HammerEntity]
-[EditorModel("models/hl1/weapons/world/hornet.vmdl")]
+[EditorModel("models/hl1/weapons/world/hgun.vmdl")]
 [Title("Hornet Gun"), Category("Weapons")]
 partial class HornetGun : HLWeapon
 {
     //stub
-
+    public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/hgun.vmdl");
     public override string ViewModelPath => "models/hl1/weapons/view/v_hgun.vmdl";
 
     public override int Bucket => 3;
@@ -17,6 +17,13 @@ partial class HornetGun : HLWeapon
 
     int tickammoregen = 0;
 
+    public override void Spawn()
+	{
+		base.Spawn();
+
+		Model = WorldModel;
+		AmmoClip = 0;
+	}
     public override void Simulate(Client owner)
     {
         base.Simulate(owner);
