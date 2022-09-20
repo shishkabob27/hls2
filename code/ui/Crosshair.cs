@@ -1,31 +1,29 @@
 ﻿using Sandbox.UI;
+using Sandbox.UI.Construct;
 
 public class Crosshair : Panel
 {
-	int fireCounter;
+	public IconPanel Icon;
+
+	public string prevWeapon;
 
 	public Crosshair()
 	{
-		for ( int i = 0; i < 5; i++ )
-		{
-			var p = Add.Panel( "element" );
-			p.AddClass( $"el{i}" );
-		}
+		Icon = Add.Icon( string.Empty, "icon" );
 	}
 
 	public override void Tick()
 	{
 		base.Tick();
 
-		SetClass( "fire", fireCounter > 0 );
+		var p = Local.Pawn as HLPlayer;
+		
 
-		if ( fireCounter > 0 )
-			fireCounter--;
-	}
-
-	[PanelEvent]
-	public void FireEvent()
-	{
-		fireCounter += 2;
+		if ( p.ActiveChild is HLWeapon weapon && prevWeapon != weapon.ClassName)
+		{
+			Icon.RemoveClass(prevWeapon);
+			Icon.AddClass(weapon.ClassName);
+			prevWeapon = weapon.ClassName;
+		}
 	}
 }

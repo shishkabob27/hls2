@@ -28,6 +28,7 @@ public class HudPanel : HudEntity<HudRootPanel>
             RootPanel.SetTemplate("/resource/templates/hud.html");
 
             RootPanel.AddChild<DamageIndicator>();
+            RootPanel.AddChild<Crosshair>();
             RootPanel.AddChild<HitIndicator>();
             RootPanel.AddChild<InventoryBar>();
             RootPanel.AddChild<PickupFeed>();

@@ -539,11 +539,6 @@
 			return;
 
 		// RenderOverlayTest( screenSize );
-
-		if ( ActiveChild is HLWeapon weapon )
-		{
-			weapon.RenderHud( screenSize );
-		}
 	}
 
 	public int Classify()

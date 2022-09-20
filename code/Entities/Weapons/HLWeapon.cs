@@ -373,7 +373,6 @@
 
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
-		CrosshairLastShoot = 0;
 
 		if (Owner is HLPlayer player)
 		{
@@ -622,24 +621,5 @@
 			PickupTrigger.EnableTouch = true;
 		}
 	}
-
-	protected TimeSince CrosshairLastShoot { get; set; }
-	protected TimeSince CrosshairLastReload { get; set; }
-
-	public virtual void RenderHud( in Vector2 screensize )
-	{
-		var center = screensize * 0.5f;
-
-		if ( IsReloading || (AmmoClip == 0 && ClipSize > 1) )
-			CrosshairLastReload = 0;
-
-		RenderCrosshair( center, CrosshairLastShoot.Relative, CrosshairLastReload.Relative );
-	}
-
-	public virtual void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
-	{
-		var draw = Render.Draw2D;
-	}
-
 
 }
