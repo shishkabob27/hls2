@@ -91,6 +91,7 @@
 			PhysicsBody.Velocity = a;
 			PhysicsBody.AngularVelocity = new Vector3(b.yaw, b.pitch, b.roll) / 32;
 
+			this.Tags.Add("debris");
 			if (isInit)
 				return;
 
@@ -100,28 +101,13 @@
 		}
 		if (isInit)
 			return;
-
-
 		phys = SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
 		isInit = true;
 		HLCombat.GibCount += 1;
 		Velocity += new Vector3(Rand.Int(-1, 1), Rand.Int(-1, 1), Rand.Int(-1, 1));
-		//base.Spawn();
-		Predictable = true;
-		//phys = SetupPhysicsFromOBB(PhysicsMotionType.Dynamic, new Vector3( -0.5f, -0.5f, -0.5f ), new Vector3(0.5f, 0.5f, 0.5f));
-		//phys.GetBody( 0 ).RemoveShadowController();
 		EnableHitboxes = true;
-
 		Transmit = TransmitType.Always;
 		this.Tags.Add("debris");
-
-		Predictable = true;
-
-		Predictable = true;
-		//base.Spawn();
-
-		Predictable = true;
-
 	}
 
 	public virtual void StepMove()
@@ -219,7 +205,7 @@
 
 		if (!HLGame.hl_classic_gibs)
 		{
-			//Move(false); // hacky workaround for starttouch not working idk why
+			Move(false); // hacky workaround for starttouch not working idk why
 			return;
 		}
 
