@@ -8,16 +8,14 @@ public class Gman : NPC
     public Gman()
     {
         NPCAnimGraph = "animgraphs/gman.vanmgrph";
-        SetAnimGraph(NPCAnimGraph);
     }
     public override void Spawn()
     {
         base.Spawn();
-        //SetAnimGraph("animgraphs/scientist.vanmgrph");
-        Health = 20;
 
-        SetAnimGraph(NPCAnimGraph);
+        Health = 20;
         SetModel("models/hl1/monster/gman.vmdl");
+        SetAnimGraph(NPCAnimGraph);
         SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
         EnableHitboxes = true;
 

@@ -3,8 +3,6 @@
 [Title("Scientist"), Category("Monsters"), Icon("person")]
 public partial class Scientist : NPC
 {
-    // Stub NPC, this does nothing yet
-
     Entity FollowTarget;
     
     List<string> ScientistMDLList = new List<string>{
@@ -21,7 +19,6 @@ public partial class Scientist : NPC
     
     public Scientist() {
         NPCAnimGraph = "animgraphs/scientist.vanmgrph";
-        SetAnimGraph(NPCAnimGraph);
         Health = 20;
         Speed = 60;
         WalkSpeed = 60;
@@ -40,11 +37,12 @@ public partial class Scientist : NPC
         if (Body > 3) {
             Body = Rand.Int(0, 3);
         }
+        SetModel(SetScientistModel());
         SetAnimGraph(NPCAnimGraph);
         Health = 20;
         Speed = 70;
         VoicePitch = SetPitch();
-        SetModel(SetScientistModel());
+
         //SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
         EnableHitboxes = true;
 
