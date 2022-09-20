@@ -105,6 +105,7 @@ iconpanel {
         {
             opacity: 0.35;
             text-align: right;
+            letter-spacing: 3px;
 
             &.danger
             {
@@ -203,7 +204,8 @@ healthhud, armourhud {
 
     label {
         text-align: right;
-        width: 64px;
+        width: 76px;
+        letter-spacing: 3px;
     }
 }
 
