@@ -25,12 +25,18 @@ public static partial class Breakables
 					result.Params.DamagePositon = modelEnt.CollisionWorldSpaceCenter;
 				}
 			}
-			Break( modelEnt.Model, modelEnt.Position, modelEnt.Rotation, modelEnt.Scale, modelEnt.RenderColor, result, modelEnt.PhysicsBody );
+			else
+			{
+				result = new Result();
+				result.Source = ent;
+				result.Params.DamagePositon = modelEnt.CollisionWorldSpaceCenter;
+			}
+			Break( modelEnt.Model, modelEnt.Position, modelEnt.Rotation, modelEnt.Scale, modelEnt.RenderColor, result, modelEnt.PhysicsBody, result.Params.DamagePositon );
 			if ( result != null ) ApplyBreakCommands( result );
 		}
 	}
 
-	public static void Break( Model model, Vector3 pos, Rotation rot, float scale, Color color, Result result = null, PhysicsBody sourcePhysics = null )
+	public static void Break( Model model, Vector3 pos, Rotation rot, float scale, Color color, Result result = null, PhysicsBody sourcePhysics = null, Vector3 DMGPos = default )
 	{
 		if ( model == null || model.IsError )
 			return;
@@ -131,11 +137,17 @@ public static partial class Breakables
 			gib.SurfaceType = surface;
 			gib.Tags.Add( "gib" );
 			gib.Model = mdl;
+
+			gib.Initialise();
 			gib.AngularVelocity = new Angles( Rand.Float( 100, 300 ), 0, Rand.Float( 100, 200 ) );
 
+
+			Vector3 attackDir = ( DMGPos - new Vector3( 0, 0, 10 ) - gib.Position ).Normal;
+			gib.Velocity = attackDir * -1;
 			gib.Velocity += new Vector3( Rand.Float( -0.25f, 0.25f ), Rand.Float( -0.25f, 0.25f ), Rand.Float( -0.25f, 0.25f ) );
 			gib.Velocity = gib.Velocity * Rand.Float( 40f, 60f );
-			gib.Initialise();
+			if ( !HLGame.hl_classic_gibs ) gib.Velocity *= 2;
+
 
 			if ( result != null && result.Source != null && result.Source is ModelEntity mdlEnt )
 			{

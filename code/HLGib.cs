@@ -78,6 +78,9 @@
 			HLCombat.GibFadingCount += 1;
 		}
 	}
+	public new Vector3 Velocity;
+
+	public new Angles AngularVelocity;
 
 	public void Initialise()
 	{
