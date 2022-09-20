@@ -4,6 +4,7 @@
 partial class SatchelWeapon : HLWeapon
 {
     //stub
+    public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/satchel.vmdl");
 
     public override string ViewModelPath => "models/hl1/weapons/view/v_satchel.vmdl";
 
@@ -13,5 +14,13 @@ partial class SatchelWeapon : HLWeapon
 	public override string AmmoIcon => "ui/ammo10.png";
     public override string InventoryIcon => "/ui/weapons/weapon_satchel.png";
     public override int ClipSize => 1;
+
+    public override void Spawn()
+	{
+		base.Spawn();
+
+		Model = WorldModel;
+		AmmoClip = 0;
+	}
 
 }
