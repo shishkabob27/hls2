@@ -4,7 +4,7 @@
 partial class SnarkWeapon : HLWeapon
 {
     //stub
-
+    public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/snarknest.vmdl");
     public override string ViewModelPath => "models/hl1/weapons/view/v_squeak.vmdl";
 
     public override int Bucket => 4;
@@ -13,5 +13,13 @@ partial class SnarkWeapon : HLWeapon
 	public override string AmmoIcon => "ui/ammo11.png";
     public override string InventoryIcon => "/ui/weapons/weapon_snark.png";
     public override int ClipSize => 1;
+
+    public override void Spawn()
+	{
+		base.Spawn();
+
+		Model = Model.Load("models/hl1/weapons/world/squeak.vmdl");
+		AmmoClip = 0;
+	}
 
 }
