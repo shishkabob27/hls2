@@ -12,7 +12,7 @@ public static partial class Breakables
 	static public int MaxGibs { get; set; } = 256;
 
 	public static void Break( Entity ent, Result result = null )
-	{ 
+	{
 		if ( ent is ModelEntity modelEnt && modelEnt.IsValid )
 		{
 			if ( result != null )
@@ -45,7 +45,7 @@ public static partial class Breakables
 
 		// If model has no gibs of it own, try to replace them with something.
 		// This is mostly intended for map models, not vmdls.
-		if ( (breakList == null || breakList.Length <= 0) && !hasAnyBreakParticles )
+		if ( ( breakList == null || breakList.Length <= 0 ) && !hasAnyBreakParticles )
 		{
 			genericGibsSpawned = true;
 
@@ -55,7 +55,7 @@ public static partial class Breakables
 
 			if ( surface != null )
 			{
-				HLSurface.GetBustSound(surface, pos);
+				HLSurface.GetBustSound( surface, pos );
 				/*var breakSnd = surface.Breakables.BreakSound;
 
 				var surf = surface.GetBaseSurface();
@@ -72,13 +72,13 @@ public static partial class Breakables
 			}
 
 			//int num = ( model.Bounds.Volume / 20000.0f ).CeilToInt();
-			int num = (model.Bounds.Size.x * model.Bounds.Size.y + model.Bounds.Size.y * model.Bounds.Size.z + model.Bounds.Size.z * model.Bounds.Size.x).CeilToInt() / (432 * 1);
+			int num = ( model.Bounds.Size.x * model.Bounds.Size.y + model.Bounds.Size.y * model.Bounds.Size.z + model.Bounds.Size.z * model.Bounds.Size.x ).CeilToInt() / ( 432 * 1 );
 
 			//DebugOverlay.Box( 10, pos, rot, model.Bounds.Mins, model.Bounds.Maxs, Color.Green );
 			for ( int i = 0; i < num; i++ )
 			{
 				ModelBreakPiece piece = new();
-				piece.Model = HLSurface.GetRandomGib(surface);
+				piece.Model = HLSurface.GetRandomGib( surface );
 				piece.Offset = model.Bounds.RandomPointInside;
 				piece.CollisionTags = "debris";
 				//piece.FadeTime = 3.0f;
@@ -98,7 +98,7 @@ public static partial class Breakables
 		// Remove enough old gibs to fit the new ones...
 		if ( MaxGibs > 0 && CurrentGibs.Count + breakList.Length >= MaxGibs )
 		{
-			int toRemove = (CurrentGibs.Count + breakList.Length) - MaxGibs;
+			int toRemove = ( CurrentGibs.Count + breakList.Length ) - MaxGibs;
 			toRemove = Math.Min( toRemove, CurrentGibs.Count );
 			for ( int i = 0; i < toRemove; i++ )
 			{
@@ -108,7 +108,7 @@ public static partial class Breakables
 			}
 			CurrentGibs.RemoveRange( 0, toRemove );
 		}
-		
+
 		foreach ( var piece in breakList )
 		{
 			if ( MaxGibs >= 0 && CurrentGibs.Count >= MaxGibs ) return;
@@ -118,7 +118,7 @@ public static partial class Breakables
 
 			var gib = new HLGib
 			{
-				Position = pos + rot * ((piece.Offset - offset.Position) * scale),
+				Position = pos + rot * ( ( piece.Offset - offset.Position ) * scale ),
 				//Rotation = rot,
 				Scale = scale,
 				RenderColor = color,
@@ -131,10 +131,11 @@ public static partial class Breakables
 			gib.SurfaceType = surface;
 			gib.Tags.Add( "gib" );
 			gib.Model = mdl;
-			gib.AngularVelocity = new Angles(Rand.Float(100, 300), 0, Rand.Float(100, 200));
-				
-			gib.Velocity += new Vector3(Rand.Float(-0.25f, 0.25f), Rand.Float(-0.25f, 0.25f), Rand.Float(-0.25f, 0.25f));
-			gib.Velocity = gib.Velocity * Rand.Float(40f, 60f);
+			gib.AngularVelocity = new Angles( Rand.Float( 100, 300 ), 0, Rand.Float( 100, 200 ) );
+
+			gib.Velocity += new Vector3( Rand.Float( -0.25f, 0.25f ), Rand.Float( -0.25f, 0.25f ), Rand.Float( -0.25f, 0.25f ) );
+			gib.Velocity = gib.Velocity * Rand.Float( 40f, 60f );
+			gib.Initialise();
 
 			if ( result != null && result.Source != null && result.Source is ModelEntity mdlEnt )
 			{
@@ -144,7 +145,7 @@ public static partial class Breakables
 			if ( !string.IsNullOrWhiteSpace( piece.CollisionTags ) )
 			{
 				var parts = piece.CollisionTags.Split( ' ' );
-				foreach( var p in parts )
+				foreach ( var p in parts )
 				{
 					gib.Tags.Add( p );
 				}
