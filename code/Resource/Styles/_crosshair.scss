@@ -1,55 +1,53 @@
-﻿crosshair
-{
+﻿crosshair {
 	position: absolute;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-	opacity: 0.75;
-	
-	Iconpanel{
+	width: 100%;
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+	opacity: 1;
+
+	Iconpanel {
+		width: 30px;
+		height: 30px;
 		background-image-tint: #ffffff;
 		background-repeat: no-repeat;
 		background-position-x: center;
 		background-position-y: center;
 
-		&.weapon_9mmhandgun
-		{
+		&.weapon_9mmhandgun {
 			background-image: url("/ui/crosshairs/crosshair2.png");
 		}
-		&.weapon_357
-		{
+
+		&.weapon_357 {
 			background-image: url("/ui/crosshairs/crosshair3.png");
 		}
-		&.weapon_mp5
-		{
+
+		&.weapon_mp5 {
 			background-image: url("/ui/crosshairs/crosshair8.png");
 		}
-		&.weapon_shotgun
-		{
+
+		&.weapon_shotgun {
 			background-image: url("/ui/crosshairs/crosshair6.png");
 		}
-		&.weapon_crossbow
-		{
+
+		&.weapon_crossbow {
 			background-image: url("/ui/crosshairs/crosshair4.png");
 		}
-		&.weapon_rpg
-		{
+
+		&.weapon_rpg {
 			background-image: url("/ui/crosshairs/crosshair9.png");
 		}
-		&.weapon_gauss
-		{
+
+		&.weapon_gauss {
 			background-image: url("/ui/crosshairs/crosshair10.png");
 		}
-		&.weapon_egon
-		{
+
+		&.weapon_egon {
 			background-image: url("/ui/crosshairs/crosshair11.png");
 		}
-		&.weapon_hornetgun
-		{
+
+		&.weapon_hornetgun {
 			background-image: url("/ui/crosshairs/crosshair7.png");
 		}
-
-	}	
+	}
 }
-	
