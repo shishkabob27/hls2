@@ -4,7 +4,7 @@
 partial class Egon : HLWeapon
 {
     //stub
-
+    public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/egon.vmdl");
     public override string ViewModelPath => "models/hl1/weapons/view/v_egon.vmdl";
 
     public override int Bucket => 3;
@@ -13,6 +13,14 @@ partial class Egon : HLWeapon
     public override string AmmoIcon => "ui/ammo7.png";
 
     public override string InventoryIcon => "/ui/weapons/weapon_egon.png";
+
+    public override void Spawn()
+	{
+		base.Spawn();
+
+		Model = WorldModel;
+		AmmoClip = 0;
+	}
     public override bool CanPrimaryAttack()
     {
         return base.CanPrimaryAttack();//Input.Pressed(InputButton.PrimaryAttack);

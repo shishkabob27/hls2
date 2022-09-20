@@ -116,10 +116,6 @@ partial class Gauss : HLWeapon
     }
 
     int tickammouse = 0;
-    public override bool CanSecondaryAttack()
-    {
-        return base.CanSecondaryAttack();
-    }
     public override void AttackSecondary()
     {
 
