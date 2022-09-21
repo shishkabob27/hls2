@@ -127,10 +127,6 @@
 
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
 
-		PickupTrigger = new PickupTrigger();
-		PickupTrigger.Parent = this;
-		PickupTrigger.Position = Position;
-
 		Tags.Add("weapon");
 	}
 
@@ -601,25 +597,4 @@
 		if ( AmmoType == AmmoType.None ) return true;
 		return AvailableAmmo() > 0;
 	}
-
-	public override void OnCarryStart( Entity carrier )
-	{
-		base.OnCarryStart( carrier );
-
-		if ( PickupTrigger.IsValid() )
-		{
-			PickupTrigger.EnableTouch = false;
-		}
-	}
-
-	public override void OnCarryDrop( Entity dropper )
-	{
-		base.OnCarryDrop( dropper );
-
-		if ( PickupTrigger.IsValid() )
-		{
-			PickupTrigger.EnableTouch = true;
-		}
-	}
-
 }
