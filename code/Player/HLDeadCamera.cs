@@ -20,7 +20,7 @@
 			Position = FocusPoint + new Vector3(0f, 0f, 24f);
 			Rotation = (Input.Rotation.Angles() + new Angles(0,0,60)).ToRotation();
 
-			//Viewer = Local.Pawn;
+			Viewer = Local.Pawn;
 		}
 
 		public virtual Vector3 GetSpectatePoint()
