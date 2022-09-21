@@ -358,6 +358,7 @@
 	private void AddCameraEffects( ref CameraSetup setup )
 	{
 		if (Client.IsUsingVr) return;
+		if (Health == 0) return;
 		var speed = Velocity.WithZ(0).Length.LerpInverse( 0, 2 );
 		var up = setup.Rotation.Up;
 
