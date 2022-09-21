@@ -6,9 +6,11 @@
     
 
 	[ClientRpc]
-    private void CreateCorpse(Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, int bone)
+    private void CreateCorpse(Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, int bone, Entity owner)
 	{
 		var ent = new HLMovement();
+		ent.Parent = owner;
+		ent.EnableHideInFirstPerson = true;
         ent.UseAnimGraph = false;
         ent.Tags.Add("debris");
 		ent.Position = Position;
