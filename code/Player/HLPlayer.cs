@@ -194,12 +194,7 @@
 		}
 		else
 		{
-			var a = Client.All.ToList();
-
-			a.RemoveAll(ply => ply == this.Owner);
-			// create corpse on everyones client except the client who died.
-			// maybe use hideinfirstperson on the client who died instead?
-            CreateCorpse(To.Multiple(a), Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex));
+            CreateCorpse(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex), this);
 		}
 
 		Controller = null;
