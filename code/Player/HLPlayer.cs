@@ -226,9 +226,13 @@
         if (Client.IsUsingVr)
         {
             rotationvr();
-            LeftHand.FrameSimulate(cl);
-            RightHand.FrameSimulate(cl);
-        } else
+
+			if(Health > 0){
+				LeftHand.FrameSimulate(cl);
+            	RightHand.FrameSimulate(cl);
+			}
+        } 
+		else
 		{
             base.FrameSimulate(cl);
         }
