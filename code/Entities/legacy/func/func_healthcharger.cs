@@ -23,16 +23,7 @@ partial class func_healthcharger : KeyframeEntity, IUse
 	[Property( "chargerresettime", Title = "Charger Reset Time" )]
 	public float ChargerResetTime { get; set; } = 60f;
 
-	/// <summary>
-	/// This controls the time it takes for the charger to refill, Default Value is 60.
-	/// </summary>
-	[Net]
-	[Property( "armourcharger", Title = "Is Armour Charger" )]
-	public bool IsArmourCharger { get; set; } = false;
-
 	private TimeSince TimeSinceUsed;
-
-	public PickupTrigger PickupTrigger { get; protected set; }
 
 	public bool CanUse;
 
@@ -77,8 +68,7 @@ partial class func_healthcharger : KeyframeEntity, IUse
 			return false;
 
 
-		if ( !IsArmourCharger && player.Health >= 100 ) return false;
-		if ( IsArmourCharger && player.Armour >= 100 ) return false;
+		if ( player.Health >= 100 ) return false;
 
 		// standard rate of 10 health per second
 		var add = 10 * Time.Delta;
@@ -90,21 +80,9 @@ partial class func_healthcharger : KeyframeEntity, IUse
 		TimeSinceUsed = 0;
 		ChargerPower -= add;
 
-		if ( IsArmourCharger )
-		{
-			player.Armour += add;
-			player.Armour.Clamp( 0, 100 );
-			return player.Armour < 100;
-		}
-
-		if ( !IsArmourCharger )
-		{
-			player.Health += add;
-			player.Health.Clamp( 0, 100 );
-			return player.Health < 100;
-		}
-
-		return false;
+		player.Health += add;
+		player.Health.Clamp( 0, 100 );
+		return player.Health < 100;
 	}
 
 	public override void StartTouch( Entity other )
@@ -142,12 +120,4 @@ partial class func_healthcharger : KeyframeEntity, IUse
 			ChargerPower = DefaultChargerPower;
 		}
 	}
-
-	[Event.Tick.Client]
-	private void ClientTick()
-	{
-
-		SceneObject?.Attributes.Set( "PowerCharge", (ChargerPower / DefaultChargerPower) * .5f );
-	}
-
 }
