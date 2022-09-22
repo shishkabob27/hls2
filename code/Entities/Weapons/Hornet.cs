@@ -56,6 +56,7 @@ partial class Hornet : NPC, ICombat
 		StartAttack = Time.Now + 0.2f;
 
 		PlaySound( "ag_fire" );
+		Tags.Clear();
 		Tags.Add( "debris" );
 		TrailEffect();
 		Model = WorldModel;
