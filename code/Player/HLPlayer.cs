@@ -145,17 +145,7 @@
 	{
 		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
 
-		ply.GiveAmmo( AmmoType.Pistol, 1000 );
-		ply.GiveAmmo( AmmoType.Python, 1000 );
-		ply.GiveAmmo( AmmoType.Buckshot, 1000 );
-		ply.GiveAmmo( AmmoType.Crossbow, 1000 );
-		ply.GiveAmmo( AmmoType.Grenade, 1000 );
-		ply.GiveAmmo( AmmoType.SMGGrenade, 1000 );
-		ply.GiveAmmo( AmmoType.RPG, 1000 );
-		ply.GiveAmmo( AmmoType.Tripmine, 1000 );
-		ply.GiveAmmo( AmmoType.Satchel, 1000 );
-		ply.GiveAmmo( AmmoType.Uranium, 1000 );
-		ply.GiveAmmo( AmmoType.Snark, 1000 );
+
 
 		ply.Inventory.Add( new Crowbar() );
 		ply.Inventory.Add( new Pistol() );
@@ -171,6 +161,18 @@
 		ply.Inventory.Add( new HornetGun() );
 		ply.Inventory.Add( new SnarkWeapon() );
 		ply.Inventory.Add( new SatchelWeapon() );
+
+		ply.GiveAmmo( AmmoType.Pistol, 1000 );
+		ply.GiveAmmo( AmmoType.Python, 1000 );
+		ply.GiveAmmo( AmmoType.Buckshot, 1000 );
+		ply.GiveAmmo( AmmoType.Crossbow, 1000 );
+		ply.GiveAmmo( AmmoType.Grenade, 1000 );
+		ply.GiveAmmo( AmmoType.SMGGrenade, 1000 );
+		ply.GiveAmmo( AmmoType.RPG, 1000 );
+		ply.GiveAmmo( AmmoType.Tripmine, 1000 );
+		ply.GiveAmmo( AmmoType.Satchel, 1000 );
+		ply.GiveAmmo( AmmoType.Uranium, 1000 );
+		ply.GiveAmmo( AmmoType.Snark, 1000 );
 
 		var battery = new Battery();
 		battery.Position = ConsoleSystem.Caller.Pawn.Position;
