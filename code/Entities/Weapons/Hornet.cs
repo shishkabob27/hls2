@@ -74,6 +74,12 @@ partial class Hornet : NPC, ICombat
 		}
 		Trail.SetEntity( 0, this );
 	}
+	[ClientRpc]
+	public void DeleteTrailEffect()
+	{
+		if ( Trail != null ) Trail.Destroy();
+	}
+
 	public override void ProcessEntity( Entity ent, int rel )
 	{
 		if ( Time.Now < StartAttack ) return;
@@ -157,7 +163,8 @@ partial class Hornet : NPC, ICombat
 		if ( Time.Now > StopAttack )
 		{
 			PlaySound( "ag_hornethit" );
-			if ( Trail != null ) Trail.Destroy();
+
+			DeleteTrailEffect();
 			Delete();
 			return;
 		}
@@ -199,7 +206,7 @@ partial class Hornet : NPC, ICombat
 				{
 
 					// delete self
-					if ( Trail != null ) Trail.Destroy();
+					DeleteTrailEffect();
 					Delete();
 				}
 				return;
@@ -222,7 +229,7 @@ partial class Hornet : NPC, ICombat
 
 
 			// delete self
-			if ( Trail != null ) Trail.Destroy();
+			DeleteTrailEffect();
 			Delete();
 		}
 		else
