@@ -46,7 +46,6 @@ partial class HornetGun : HLWeapon
     public override void AttackPrimary()
     {
 
-        tickammoregen = 0;
         if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
@@ -54,6 +53,7 @@ partial class HornetGun : HLWeapon
         {
             return;
         }
+        tickammoregen = 0;
 
         ViewModelEntity?.SetAnimParameter( "fire", true );
         if ( IsServer )
