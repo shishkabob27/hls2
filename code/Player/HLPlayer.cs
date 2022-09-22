@@ -76,7 +76,7 @@
 		switch ( Client.GetClientData( "hl_pm" ) )
 		{
 			case "player": pm = "models/hl1/player/player.vmdl"; break; // helmet is a different model, it has colour support and this doesn't. I like this better so add it here since yeah
-			case "barney": pm = "models/hl1/monster/barney.vmdl"; break;
+			case "barney": pm = "models/hl1/player/barney.vmdl"; break;
 			default: pm = "models/hl1/player/player.vmdl"; break;
 		}
 
