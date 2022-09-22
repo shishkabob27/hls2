@@ -337,6 +337,7 @@
 		},
 		{
 			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 0.5
 		},
 	]
 	m_Renderers = 
