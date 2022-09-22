@@ -15,10 +15,32 @@
 
 		if ( weapon == null )
 			return false;
+
+		weapon.OnPickup();
 		//
 		// We don't want to pick up the same weapon twice
 		// But we'll take the ammo from it Winky Face
 		//
+
+
+		if ( weapon.WeaponIsAmmo )
+		{
+			var ammo2 = weapon.WeaponIsAmmoAmount;
+			var ammoType2 = weapon.AmmoType;
+			if ( ammo2 > 0 )
+			{
+				var taken = player.GiveAmmo( ammoType2, ammo2 );
+				if ( taken == 0 )
+					return false;
+
+				if ( notices && taken > 0 )
+				{
+					Sound.FromWorld( "dm.pickup_ammo", ent.Position );
+					PickupFeed.OnPickup( To.Single( player ), $"+{taken} {ammoType2}" );
+				}
+			}
+		}
+
 		if ( weapon != null && IsCarryingType( ent.GetType() ) )
 		{
 			var ammo = weapon.AmmoClip;

@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_tripmine" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/tripmine.vmdl" )]
-[Title(  "Tripmine" ), Category( "Weapons" )]
+[Title( "Tripmine" ), Category( "Weapons" )]
 partial class TripmineWeapon : HLWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/tripmine.vmdl" );
@@ -14,24 +14,25 @@ partial class TripmineWeapon : HLWeapon
 	public override int Bucket => 4;
 	public override int BucketWeight => 3;
 	public override string AmmoIcon => "ui/ammo12.png";
-    public override string InventoryIcon => "/ui/weapons/weapon_tripmine.png";
+	public override string InventoryIcon => "/ui/weapons/weapon_tripmine.png";
 
-    public override void Spawn()
+	public override void Spawn()
 	{
 		base.Spawn();
 
 		Model = WorldModel;
-		AmmoClip = 1;
+		AmmoClip = 0;
+		WeaponIsAmmo = true;
 	}
 	float prevVRtrig = 0;
 	public override bool CanPrimaryAttack()
 	{
 		var a = false;
-        if (Client.IsUsingVr) a= Input.VR.RightHand.Trigger == 0 && prevVRtrig != 0;
-		if (Client.IsUsingVr) prevVRtrig = Input.VR.RightHand.Trigger;
-        if (Client.IsUsingVr) return a;
+		if ( Client.IsUsingVr ) a = Input.VR.RightHand.Trigger == 0 && prevVRtrig != 0;
+		if ( Client.IsUsingVr ) prevVRtrig = Input.VR.RightHand.Trigger;
+		if ( Client.IsUsingVr ) return a;
 
-        return Input.Released( InputButton.PrimaryAttack );
+		return Input.Released( InputButton.PrimaryAttack );
 	}
 
 	public override void AttackPrimary()
@@ -39,18 +40,18 @@ partial class TripmineWeapon : HLWeapon
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
-        if (Owner is not HLPlayer player) return;
+		if ( Owner is not HLPlayer player ) return;
 
-        var owner = Owner as HLPlayer;
+		var owner = Owner as HLPlayer;
 
-        if (owner.TakeAmmo(AmmoType, 1) == 0)
-        {
-            return;
-        }
-        // woosh sound
-        // screen shake
+		if ( owner.TakeAmmo( AmmoType, 1 ) == 0 )
+		{
+			return;
+		}
+		// woosh sound
+		// screen shake
 
-        Rand.SetSeed( Time.Tick );
+		Rand.SetSeed( Time.Tick );
 
 		var tr = Trace.Ray( GetFiringPos(), GetFiringPos() + GetFiringRotation().Forward * 150 )
 				.Ignore( Owner )
@@ -74,9 +75,8 @@ partial class TripmineWeapon : HLWeapon
 			_ = grenade.Arm( 1.0f );
 		}
 
-		if ( IsServer && AmmoClip == 0 && player.AmmoCount( AmmoType.Tripmine ) == 0 )
+		if ( IsServer && player.AmmoCount( AmmoType.Tripmine ) == 0 )
 		{
-			Delete();
 			player.SwitchToBestWeapon();
 		}
 	}

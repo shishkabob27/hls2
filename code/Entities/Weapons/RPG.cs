@@ -1,9 +1,9 @@
-﻿[Library("weapon_rpg"), HammerEntity]
+﻿[Library( "weapon_rpg" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/rpg.vmdl" )]
 [Title( "RPG" ), Category( "Weapons" )]
 partial class RPG : HLWeapon
 {
-	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/rpg.vmdl");
+	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/rpg.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_rpg.vmdl";
 
 	public override float PrimaryRate => 1.333f;
@@ -12,9 +12,9 @@ partial class RPG : HLWeapon
 	public override AmmoType AmmoType => AmmoType.RPG;
 	public override int ClipSize => 1;
 	public override string AmmoIcon => "ui/ammo6.png";
-    public override string InventoryIcon => "/ui/weapons/weapon_rpg.png";
+	public override string InventoryIcon => "/ui/weapons/weapon_rpg.png";
 
-    public override void Spawn()
+	public override void Spawn()
 	{
 		base.Spawn();
 
@@ -24,6 +24,8 @@ partial class RPG : HLWeapon
 
 	public override void AttackPrimary()
 	{
+		if ( Owner is not HLPlayer player ) return;
+
 		if ( !TakeAmmo( 1 ) )
 		{
 			DryFire();
@@ -49,6 +51,11 @@ partial class RPG : HLWeapon
 			bolt.Owner = Owner;
 			bolt.Velocity = GetFiringRotation().Forward * 100;
 		}
+		if ( IsServer && player.AmmoCount( AmmoType.RPG ) == 0 )
+		{
+
+			player.SwitchToBestWeapon();
+		}
 	}
 
 	public override void Simulate( Client cl )
@@ -56,7 +63,7 @@ partial class RPG : HLWeapon
 		base.Simulate( cl );
 	}
 
-	
+
 
 	[ClientRpc]
 	protected override void ShootEffectsRPC()
