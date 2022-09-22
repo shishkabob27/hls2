@@ -132,6 +132,21 @@
 							]
 						}
 					},
+					{
+						_class = "LookAtChain"
+						name = "upper"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "bip01_spine1"
+									weight = 1.0
+								},
+							]
+						}
+					},
 				]
 			},
 			{
