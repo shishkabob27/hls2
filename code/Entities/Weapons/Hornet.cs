@@ -8,10 +8,18 @@ partial class Hornet : NPC, ICombat
 	public bool alienShot = false;
 	public bool Dart = false;
 
+	const int HORNET_RED = 0;
+	const int HORNET_ORANGE = 1;
+
 	float FlySpeed = 800;
-	float FlySpeedAlt = 600;
+	float FlySpeedOrange = 800;
+	float FlySpeedRed = 600;
 	float StopAttack = 200;
 	float StartAttack = 200;
+	[Net]
+	int Type { get; set; } = 1;
+	Vector3 OrangeColour = new Vector3( 1f, 0.5f, 0f );
+	Vector3 RedColour = new Vector3( 0.7f, 0.15f, 0.05f );
 
 	Particles Trail;
 	public override int Classify()
@@ -24,6 +32,17 @@ partial class Hornet : NPC, ICombat
 		NoNav = true;
 		entFOV = 0.9f;
 		Health = 1;
+		if ( Rand.Int( 1, 5 ) <= 2 )
+		{
+			Type = HORNET_RED;
+			FlySpeed = FlySpeedRed;
+		}
+		else
+		{
+			Type = HORNET_ORANGE;
+			FlySpeed = FlySpeedOrange;
+		}
+
 		base.Spawn();
 		if ( HLGame.hl_gamemode == "deathmatch" )
 		{
@@ -35,15 +54,24 @@ partial class Hornet : NPC, ICombat
 			StopAttack = Time.Now + 5.0f;
 		}
 		StartAttack = Time.Now + 0.2f;
+
 		PlaySound( "ag_fire" );
 
+		TrailEffect();
 		Model = WorldModel;
 	}
 	[ClientRpc]
 	public void TrailEffect()
 	{
 		Trail = Particles.Create( "particles/hornet_trail.vpcf", Position );
-		Trail.SetPosition( 1, new Vector3( 1f, 0.5f, 0f ) );
+		if ( Type == HORNET_ORANGE )
+		{
+			Trail.SetPosition( 1, OrangeColour );
+		}
+		else
+		{
+			Trail.SetPosition( 1, RedColour );
+		}
 		Trail.SetEntity( 0, this );
 	}
 	public override void ProcessEntity( Entity ent, int rel )
@@ -75,6 +103,11 @@ partial class Hornet : NPC, ICombat
 
 				PlaySound( "ag_buzz" );
 			}
+			if ( flDelta <= 0 && Type == HORNET_RED )
+			{// no flying backwards, but we don't want to invert this, cause we'd go fast when we have to turn REAL far.
+				flDelta = 0.25f;
+			}
+
 			Velocity = ( vecFlightDir + vecDirToEnemy ).Normal;
 			if ( alienShot )
 			{
@@ -85,6 +118,19 @@ partial class Hornet : NPC, ICombat
 				a.z += Rand.Float( -0.10f, 0.10f );
 				Velocity = a;
 			}
+
+			switch ( Type )
+			{
+				case HORNET_RED:
+					Velocity = Velocity * ( FlySpeed * flDelta );// scale the dir by the ( speed * width of turn )
+					StartAttack = Time.Now + Rand.Float( 0.1f, 0.3f );
+					break;
+				case HORNET_ORANGE:
+					Velocity = Velocity * FlySpeed;// do not have to slow down to turn.
+					StartAttack = Time.Now + 0.1f;// fixed think time
+					break;
+			}
+
 			Velocity *= FlySpeed;
 
 			if ( HLGame.hl_gamemode != "deathmatch" )

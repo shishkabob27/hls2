@@ -66,7 +66,6 @@ partial class HornetGun : HLWeapon
             bolt.Rotation = GetFiringRotation();
             bolt.Owner = Owner;
             bolt.Velocity = GetFiringRotation().Forward * 300;
-            bolt.TrailEffect();
         }
     }
 
@@ -122,7 +121,6 @@ partial class HornetGun : HLWeapon
             bolt.Owner = Owner;
             bolt.Velocity = GetFiringRotation().Forward * 1200;
             bolt.Dart = true;
-            bolt.TrailEffect();
         }
     }
     public override void SimulateAnimator( PawnAnimator anim )
