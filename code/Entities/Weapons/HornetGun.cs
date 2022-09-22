@@ -115,12 +115,12 @@ partial class HornetGun : HLWeapon
         ViewModelEntity?.SetAnimParameter( "fire", true );
         if ( IsServer )
         {
-            var bolt = new Hornet();
-            bolt.Position = vecSrc;
-            bolt.Rotation = GetFiringRotation();
-            bolt.Owner = Owner;
-            bolt.Velocity = GetFiringRotation().Forward * 1200;
-            bolt.Dart = true;
+            var hornet = new Hornet();
+            hornet.Position = vecSrc;
+            hornet.Rotation = GetFiringRotation();
+            hornet.Owner = Owner;
+            hornet.Velocity = GetFiringRotation().Forward * 1200;
+            hornet.Dart = true;
         }
     }
     public override void SimulateAnimator( PawnAnimator anim )
