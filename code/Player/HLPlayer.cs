@@ -82,6 +82,7 @@
 			case "gordon": pm = "models/hl1/player/gordon.vmdl"; break;
 			case "helmet": pm = "models/hl1/player/helmet.vmdl"; break;
 			case "hgrunt": pm = "models/hl1/player/hgrunt.vmdl"; break;
+			case "scientist": pm = "models/hl1/player/scientist.vmdl"; break;
 			case "robo": pm = "models/hl1/player/robo.vmdl"; break;
 			default: pm = "models/hl1/player/player.vmdl"; break;
 		}
