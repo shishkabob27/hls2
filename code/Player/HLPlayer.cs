@@ -41,6 +41,8 @@
 
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
+	[ConVar.Replicated] public static string hl_pm { get; set; } = "barney";
+
 	public HLPlayer()
 	{
 		Inventory = new HLInventory( this );
@@ -69,7 +71,16 @@
     {
 
         //SetModel("models/citizen/citizen.vmdl");
-        SetModel( "models/hl1/player/player.vmdl" );
+       
+		var pm = "";
+		switch (hl_pm)
+		{
+			case "helmet": pm = "models/hl1/player/player.vmdl"; break;
+			case "barney": pm = "models/hl1/monster/barney.vmdl"; break;
+			default: pm = "models/hl1/player/playe.vmdl"; break;
+		}
+		
+		SetModel(pm);
 
 		SetAnimGraph("animgraphs/player.vanmgrph");
 
