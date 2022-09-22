@@ -16,6 +16,7 @@ partial class HornetGun : HLWeapon
     public override float PrimaryRate => 4;
 
     int tickammoregen = 0;
+    int FirePhase = 0;
 
     public override void Spawn()
     {
@@ -54,12 +55,46 @@ partial class HornetGun : HLWeapon
             return;
         }
         tickammoregen = 0;
+        var vecSrc = GetFiringPos() + GetFiringRotation().Forward * 16;
 
+        FirePhase++;
+        switch ( FirePhase )
+        {
+            case 1:
+                vecSrc = vecSrc + GetFiringRotation().Up * 8;
+                break;
+            case 2:
+                vecSrc = vecSrc + GetFiringRotation().Up * 8;
+                vecSrc = vecSrc + GetFiringRotation().Right * 8;
+                break;
+            case 3:
+                vecSrc = vecSrc + GetFiringRotation().Right * 8;
+                break;
+            case 4:
+                vecSrc = vecSrc + GetFiringRotation().Up * -8;
+                vecSrc = vecSrc + GetFiringRotation().Right * 8;
+                break;
+            case 5:
+                vecSrc = vecSrc + GetFiringRotation().Up * -8;
+                break;
+            case 6:
+                vecSrc = vecSrc + GetFiringRotation().Up * -8;
+                vecSrc = vecSrc + GetFiringRotation().Right * -8;
+                break;
+            case 7:
+                vecSrc = vecSrc + GetFiringRotation().Right * -8;
+                break;
+            case 8:
+                vecSrc = vecSrc + GetFiringRotation().Up * 8;
+                vecSrc = vecSrc + GetFiringRotation().Right * -8;
+                FirePhase = 0;
+                break;
+        }
         ViewModelEntity?.SetAnimParameter( "fire", true );
         if ( IsServer )
         {
             var bolt = new CrossbowBolt();
-            bolt.Position = GetFiringPos();
+            bolt.Position = vecSrc;
             bolt.Rotation = GetFiringRotation();
             bolt.Owner = Owner;
             bolt.Velocity = GetFiringRotation().Forward * 100;
