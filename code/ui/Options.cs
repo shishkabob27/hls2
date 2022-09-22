@@ -17,6 +17,8 @@ public class Options : GUIPanel
 	public float fChudScale { get; set; }
 	public bool bColdexplosion { get; set; }
 
+	public string sPM { get; set; }
+
 	public bool bCvrpointer { get; set; }
 
 	public Options()
@@ -54,6 +56,7 @@ public class Options : GUIPanel
 		HLGame.hl_ragdoll = bCragdolls;
 		HLGame.hl_classic_flashlight = bColdTorch;
 		HLGame.hl_classic_explosion = bColdexplosion;
+		HLPlayer.hl_pm = sPM;
 
     }
 

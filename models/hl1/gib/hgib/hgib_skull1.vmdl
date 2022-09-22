@@ -40,12 +40,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeSphere"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
-						radius = 6.806405
-						center = [ -0.5569, 0.058419, 4.578079 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},
