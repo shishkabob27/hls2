@@ -14,9 +14,9 @@ public class Options : GUIPanel
 	public float fChudScale { get; set; }
 	public bool bColdexplosion { get; set; }
 
-	public string bSplayerModel { get; set; }
-	public string bSsprayColour { get; set; }
-	public string bSsprayIcon { get; set; }
+	public string bSplayerModel { get; set; } = "player";
+	public string bSsprayColour { get; set; } = "orange";
+	public string bSsprayIcon { get; set; } = "lambda";
 
 	public bool bCvrpointer { get; set; }
 
