@@ -46,7 +46,6 @@ partial class HornetGun : HLWeapon
     }
     public override void AttackPrimary()
     {
-
         if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
@@ -54,6 +53,7 @@ partial class HornetGun : HLWeapon
         {
             return;
         }
+        PlaySound( "ag_fire" );
         tickammoregen = 0;
         var vecSrc = GetFiringPos() + GetFiringRotation().Forward * 16;
 
