@@ -1646,6 +1646,9 @@
 		{
 			_class = "C_OP_EndCapTimedDecay"
 		},
+		{
+			_class = "C_OP_PinParticleToCP"
+		},
 	]
 	m_Renderers = 
 	[
@@ -1698,6 +1701,7 @@
 			}
 			m_hTexture = resource:"materials/particle/base_rope.vtex"
 			m_nMaxTesselation = 1024
+			m_bAdditive = true
 		},
 	]
 }
