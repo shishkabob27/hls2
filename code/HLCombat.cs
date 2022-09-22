@@ -19,7 +19,7 @@ public partial class HLCombat
         Gauss,
         Hive,
         RPG,
-        Sqeak,
+        Squeak,
         Trip,
         Punch,
         Swing
