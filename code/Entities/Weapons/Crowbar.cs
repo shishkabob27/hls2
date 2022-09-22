@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_crowbar" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/crowbar.vmdl" )]
-[Title(  "Crowbar" ), Category( "Weapons" )]
+[Title( "Crowbar" ), Category( "Weapons" )]
 partial class Crowbar : HLWeapon
 {
 	public static Model WorldModel = Model.Load( "models/hl1/weapons/world/crowbar.vmdl" );
@@ -13,8 +13,8 @@ partial class Crowbar : HLWeapon
 	public override int ClipSize => 0;
 	public override int Bucket => 0;
 
-    public override string InventoryIcon => "/ui/weapons/weapon_crowbar.png";
-    public override void Spawn()
+	public override string InventoryIcon => "/ui/weapons/weapon_crowbar.png";
+	public override void Spawn()
 	{
 		base.Spawn();
 
@@ -35,23 +35,23 @@ partial class Crowbar : HLWeapon
 
 		// woosh sound
 		// screen shake
-		
+
 
 		Rand.SetSeed( Time.Tick );
 
 		var forward = GetFiringRotation().Forward;
-		forward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * 0.1f;
+		forward += ( Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random ) * 0.1f;
 		forward = forward.Normal;
 
 		hitEntity = this;
 		bool didHit = false;
-        var endPos = Vector3.Zero;
+		var endPos = Vector3.Zero;
 		var trNormal = Vector3.Zero;
-		foreach ( var tr in TraceBullet(GetFiringPos(), GetFiringPos() + forward * 70, 1 ) )
+		foreach ( var tr in TraceBullet( GetFiringPos(), GetFiringPos() + forward * 70, 1 ) )
 		{
 
-			tr.Surface.DoHLBulletImpact(tr, false);
-			if (tr.Hit)
+			tr.Surface.DoHLBulletImpact( tr, false );
+			if ( tr.Hit )
 			{
 				didHit = true;
 			}
@@ -66,76 +66,76 @@ partial class Crowbar : HLWeapon
 			var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 32, 5 )
 				.UsingTraceResult( tr )
 				.WithAttacker( Owner )
-				.WithWeapon( this);
+				.WithWeapon( this );
 
-            tr.Entity.TakeDamage(damageInfo);
+			tr.Entity.TakeDamage( damageInfo );
 
-            hitEntity = tr.Entity;
+			hitEntity = tr.Entity;
 			endPos = tr.EndPosition;
 			trNormal = tr.Normal;
 
 		}
-        
-        
-        
-        
-		ViewModelEntity?.SetAnimParameter("attack_has_hit", false);
-        
 
-		if (!didHit)
+
+
+
+		ViewModelEntity?.SetAnimParameter( "attack_has_hit", false );
+
+
+		if ( !didHit )
 		{
-			PlaySound("sounds/hl1/weapons/cbar_miss.sound");
+			PlaySound( "sounds/hl1/weapons/cbar_miss.sound" );
 		}
 		else
 		{
-			PlaySound("sounds/hl1/weapons/cbar_miss.sound");
+			PlaySound( "sounds/hl1/weapons/cbar_miss.sound" );
 			TimeSincePrimaryAttack = 0.26f;
-            ViewModelEntity?.SetAnimParameter("attack_has_hit", true);
-			
-			if (hitEntity != this && hitEntity is NPC && IsServer)
-            {
+			ViewModelEntity?.SetAnimParameter( "attack_has_hit", true );
+
+			if ( hitEntity != this && hitEntity is NPC && IsServer )
+			{
 				// recreate that funny glitch :)
-				if (hitEntity.LifeState == LifeState.Dead)
+				if ( hitEntity.LifeState == LifeState.Dead )
 					TimeSincePrimaryAttack = 5f;
-				
-				Log.Info(hitEntity);
-				
-                var trace = Trace.Ray(GetFiringPos(), GetFiringPos() + forward * 70 * 2)
+
+				Log.Info( hitEntity );
+
+				var trace = Trace.Ray( GetFiringPos(), GetFiringPos() + forward * 70 * 2 )
 					.WorldOnly()
-					.Ignore(this)
-					.Size(1.0f)
+					.Ignore( this )
+					.Size( 1.0f )
 					.Run();
-				if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+				if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
 				{
 					//Log.Info( "Splat!" );
-					Decal.Place(decal, trace);
+					Decal.Place( decal, trace );
 				}
-                
-				using (Prediction.Off())
+
+				using ( Prediction.Off() )
 				{
-					PlaySound("sounds/hl1/weapons/cbar_hitbod.sound");
-					var ps = Particles.Create("particles/hlimpact_blood.vpcf", endPos);
+					PlaySound( "sounds/hl1/weapons/cbar_hitbod.sound" );
+					var ps = Particles.Create( "particles/hlimpact_blood.vpcf", endPos );
 					//ps.SetForward(0, trNormal);
 					//ps.SetPosition(0, endPos);
 				}
 			}
-            else if (hitEntity is not NPC && IsServer)
-            {
-				using (Prediction.Off())
-					PlaySound("sounds/hl1/weapons/cbar_hit.sound");
+			else if ( hitEntity is not NPC && IsServer )
+			{
+				using ( Prediction.Off() )
+					PlaySound( "sounds/hl1/weapons/cbar_hit.sound" );
 			}
 		}
-        
+
 
 		ViewModelEntity?.SetAnimParameter( "attack", true );
 		ViewModelEntity?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );
 
-		(Owner as AnimatedEntity).SetAnimParameter("b_attack", true);
+		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 	}
 
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", 7 ); // TODO this is shit
+		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Swing ); // TODO this is shit
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 
 		if ( Owner.IsValid() )

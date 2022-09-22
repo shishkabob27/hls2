@@ -3,7 +3,7 @@
 [Title( "Shotgun" ), Category( "Weapons" )]
 partial class Shotgun : HLWeapon
 {
-	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/shotgun.vmdl");
+	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/shotgun.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_shotgun.vmdl";
 	public override float PrimaryRate => 1;
 	public override float SecondaryRate => 1;
@@ -13,10 +13,10 @@ partial class Shotgun : HLWeapon
 	public override int Bucket => 2;
 	public override int BucketWeight => 2;
 
-    public override string AmmoIcon => "ui/ammo4.png";
-    public override string InventoryIcon => "/ui/weapons/weapon_shotgun.png";
+	public override string AmmoIcon => "ui/ammo4.png";
+	public override string InventoryIcon => "/ui/weapons/weapon_shotgun.png";
 
-    [Net, Predicted]
+	[Net, Predicted]
 	public bool StopReloading { get; set; }
 
 	public override void Spawn()
@@ -31,7 +31,7 @@ partial class Shotgun : HLWeapon
 	{
 		base.Simulate( owner );
 
-		if ( IsReloading && (Input.Pressed( InputButton.PrimaryAttack ) || Input.Pressed( InputButton.SecondaryAttack )) )
+		if ( IsReloading && ( Input.Pressed( InputButton.PrimaryAttack ) || Input.Pressed( InputButton.SecondaryAttack ) ) )
 		{
 			StopReloading = true;
 		}
@@ -53,7 +53,7 @@ partial class Shotgun : HLWeapon
 			return;
 		}
 
-		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
+		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -78,7 +78,7 @@ partial class Shotgun : HLWeapon
 			return;
 		}
 
-		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
+		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -153,8 +153,8 @@ partial class Shotgun : HLWeapon
 
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", 3 ); // TODO this is shit
+		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Shotgun ); // TODO this is shit
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
-	
+
 }

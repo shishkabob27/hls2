@@ -5,7 +5,7 @@
 [Title( "SMG" ), Category( "Weapons" )]
 partial class SMG : HLWeapon
 {
-	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/mp5.vmdl");
+	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/mp5.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_mp5.vmdl";
 
 	public override float PrimaryRate => 10.0f;
@@ -15,9 +15,9 @@ partial class SMG : HLWeapon
 	public override int Bucket => 2;
 	public override int BucketWeight => 1;
 	public override bool HasAltAmmo => true;
-    public override string InventoryIcon => "/ui/weapons/weapon_smg.png";
+	public override string InventoryIcon => "/ui/weapons/weapon_smg.png";
 
-    public override void Spawn()
+	public override void Spawn()
 	{
 		base.Spawn();
 
@@ -41,7 +41,7 @@ partial class SMG : HLWeapon
 			return;
 		}
 
-		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
+		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 
 		//
 		// Tell the clients to play the shoot effects
@@ -58,25 +58,25 @@ partial class SMG : HLWeapon
 
 	public override void AttackSecondary()
 	{
-        
+
 		TimeSinceSecondaryAttack = 0;
 
-        if (Owner is not HLPlayer player) return;
+		if ( Owner is not HLPlayer player ) return;
 
-        var owner = Owner as HLPlayer;
-        if (owner.TakeAmmo(AltAmmoType, 1) == 0)
-        {
-            return;
-        }
+		var owner = Owner as HLPlayer;
+		if ( owner.TakeAmmo( AltAmmoType, 1 ) == 0 )
+		{
+			return;
+		}
 
-        // woosh sound
-        // screen shake
+		// woosh sound
+		// screen shake
 
-        PlaySound( "glauncher" );
+		PlaySound( "glauncher" );
 
 		Rand.SetSeed( Time.Tick );
 
-		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
+		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 		ViewModelEntity?.SetAnimParameter( "fire_grenade", true );
 
 		if ( IsServer )
@@ -84,7 +84,7 @@ partial class SMG : HLWeapon
 			var grenade = new SMGGrenade
 			{
 				Owner = Owner,
-				Rotation = Rotation.LookAt(GetFiringRotation().Forward ),
+				Rotation = Rotation.LookAt( GetFiringRotation().Forward ),
 				Position = GetFiringPos() + GetFiringRotation().Forward * 40
 			};
 
@@ -101,29 +101,29 @@ partial class SMG : HLWeapon
 	{
 		Host.AssertClient();
 
-        if (Client.IsUsingVr)
-        {
-            Particles.Create("particles/pistol_muzzleflash.vpcf", VRWeaponModel, "muzzle");
-        }
-        else
-        {
-            Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
-        }
-        if (Client.IsUsingVr)
-        {
-            Particles.Create("particles/pistol_ejectbrass.vpcf", VRWeaponModel, "ejection_point");
-        }
-        else
-        {
-            Particles.Create("particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point");
-        }
+		if ( Client.IsUsingVr )
+		{
+			Particles.Create( "particles/pistol_muzzleflash.vpcf", VRWeaponModel, "muzzle" );
+		}
+		else
+		{
+			Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
+		}
+		if ( Client.IsUsingVr )
+		{
+			Particles.Create( "particles/pistol_ejectbrass.vpcf", VRWeaponModel, "ejection_point" );
+		}
+		else
+		{
+			Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
+		}
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 	}
 
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", 2 ); // TODO this is shit
+		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Rifle ); // TODO this is shit
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 

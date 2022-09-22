@@ -83,7 +83,7 @@ partial class TripmineWeapon : HLWeapon
 
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", 4 ); // TODO this is shit
+		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Trip ); // TODO this is shit
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }
