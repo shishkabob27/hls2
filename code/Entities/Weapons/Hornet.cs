@@ -56,7 +56,7 @@ partial class Hornet : NPC, ICombat
 		StartAttack = Time.Now + 0.2f;
 
 		PlaySound( "ag_fire" );
-
+		Tags.Add( "debris" );
 		TrailEffect();
 		Model = WorldModel;
 	}
@@ -190,25 +190,17 @@ partial class Hornet : NPC, ICombat
 				Position = end;
 				return;
 			}
-			if ( tr.Entity.IsValid() && GetRelationship( tr.Entity ) == HLCombat.R_NO )
+			if ( tr.Entity.IsValid() && GetRelationship( tr.Entity ) == HLCombat.R_NO && !Dart )
 			{
 				//Rotation =
-				if ( !Dart )
-				{
-					var a = Velocity.Normal;
-					a.x *= -1;
-					a.y *= -1;
-					Velocity = a;
-					Position = Position + Velocity * 4;
-					Velocity = Velocity * FlySpeed;
-				}
-				else
-				{
 
-					// delete self
-					DeleteTrailEffect();
-					Delete();
-				}
+				var a = Velocity.Normal;
+				a.x *= -1;
+				a.y *= -1;
+				Velocity = a;
+				Position = Position + Velocity * 4;
+				Velocity = Velocity * FlySpeed;
+
 				return;
 			}
 			// TODO: SPARKY PARTICLES (unless flesh)
