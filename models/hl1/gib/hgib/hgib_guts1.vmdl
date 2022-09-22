@@ -36,6 +36,14 @@
 						point0 = [ -1.048294, 0.733856, -10.914545 ]
 						point1 = [ 0.372897, 0.2742, 15.385014 ]
 					},
+					{
+						_class = "PhysicsHullFromRender"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
+					},
 				]
 			},
 			{
