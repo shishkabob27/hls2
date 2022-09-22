@@ -2,9 +2,9 @@
 {
 	TimeSince timeSinceDropped = 0;
 
-    [Net, Local] public VRHandLeft LeftHand { get; set; }
-    [Net, Local] public VRHandRight RightHand { get; set; }
-    [Net]
+	[Net, Local] public VRHandLeft LeftHand { get; set; }
+	[Net, Local] public VRHandRight RightHand { get; set; }
+	[Net]
 	public float Armour { get; set; } = 0;
 
 	[Net]
@@ -13,25 +13,25 @@
 	[Net]
 	public float MaxHealth { get; set; } = 100;
 
-    //[Net]
-    public bool IN_FORWARD { get; set; } = false;
-    //[Net]
-    public bool IN_LEFT { get; set; } = false;
-    //[Net]
-    public bool IN_RIGHT { get; set; } = false;
 	//[Net]
-    public bool IN_BACKWARD { get; set; } = false;
+	public bool IN_FORWARD { get; set; } = false;
+	//[Net]
+	public bool IN_LEFT { get; set; } = false;
+	//[Net]
+	public bool IN_RIGHT { get; set; } = false;
+	//[Net]
+	public bool IN_BACKWARD { get; set; } = false;
 
 	public float Forward { get; set; }
 	public float Left { get; set; }
 	public float Up { get; set; }
 
-    [Net]
-    public bool IN_USE { get; set; } = false;
+	[Net]
+	public bool IN_USE { get; set; } = false;
 
 	public int button { get; set; } = 0;
 
-    public bool SupressPickupNotices { get; private set; }
+	public bool SupressPickupNotices { get; private set; }
 	public Rotation BaseRotation;
 	public int ComboKillCount { get; set; } = 0;
 	public TimeSince TimeSinceLastKill { get; set; }
@@ -41,51 +41,51 @@
 
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
-	[ConVar.Client] public static string hl_pm { get; set; } = "barney";
+	[ConVar.Client] public static string hl_pm { get; set; } = "helmet";
 
 	public HLPlayer()
 	{
 		Inventory = new HLInventory( this );
 	}
 
-    public void DoHLPlayerNoclip(Client player)
-    {
-        //if (!player.HasPermission("noclip"))
-            //return;
+	public void DoHLPlayerNoclip( Client player )
+	{
+		//if (!player.HasPermission("noclip"))
+		//return;
 
-            if (player.Pawn is HLPlayer basePlayer)
-            {
-                if (basePlayer.DevController is NoclipController)
-                {
-                    Log.Info("Noclip Mode Off");
-                    basePlayer.DevController = null;
-                }
-                else
-                {
-                    Log.Info("Noclip Mode On");
-                    basePlayer.DevController = new NoclipController();
-                }
-            }
-    }
-    public override void Respawn()
-    {
+		if ( player.Pawn is HLPlayer basePlayer )
+		{
+			if ( basePlayer.DevController is NoclipController )
+			{
+				Log.Info( "Noclip Mode Off" );
+				basePlayer.DevController = null;
+			}
+			else
+			{
+				Log.Info( "Noclip Mode On" );
+				basePlayer.DevController = new NoclipController();
+			}
+		}
+	}
+	public override void Respawn()
+	{
 
-        //SetModel("models/citizen/citizen.vmdl");
-       
+		//SetModel("models/citizen/citizen.vmdl");
+
 		var pm = "";
-		switch (hl_pm)
+		switch ( hl_pm )
 		{
 			case "helmet": pm = "models/hl1/player/player.vmdl"; break;
 			case "barney": pm = "models/hl1/monster/barney.vmdl"; break;
 			default: pm = "models/hl1/player/playe.vmdl"; break;
 		}
 
-		SetModel(pm);
+		SetModel( pm );
 
-		SetAnimGraph("animgraphs/player.vanmgrph");
+		SetAnimGraph( "animgraphs/player.vanmgrph" );
 
 		Controller = new HLWalkController();
-        
+
 		Animator = new HLPlayerAnimator();
 
 		CameraMode = new HLFirstPersonCamera();
@@ -106,21 +106,22 @@
 		Health = 100;
 		Armour = 0;
 
-		if (HLGame.hl_gamemode == "deathmatch"){
+		if ( HLGame.hl_gamemode == "deathmatch" )
+		{
 			HasHEV = true;
 
-			Inventory.Add( new Crowbar());
-			Inventory.Add( new Pistol());
+			Inventory.Add( new Crowbar() );
+			Inventory.Add( new Pistol() );
 
 			GiveAmmo( AmmoType.Pistol, 68 );
 		}
 
-		Tags.Add("player");
-        if (Client.IsUsingVr)
-        {
+		Tags.Add( "player" );
+		if ( Client.IsUsingVr )
+		{
 			CreateHands();
 		}
-        base.Respawn();
+		base.Respawn();
 	}
 
 	private void CreateHands()
@@ -156,8 +157,8 @@
 		ply.GiveAmmo( AmmoType.Uranium, 1000 );
 		ply.GiveAmmo( AmmoType.Snark, 1000 );
 
-		ply.Inventory.Add( new Crowbar());
-		ply.Inventory.Add( new Pistol());
+		ply.Inventory.Add( new Crowbar() );
+		ply.Inventory.Add( new Pistol() );
 		ply.Inventory.Add( new Python() );
 		ply.Inventory.Add( new Shotgun() );
 		ply.Inventory.Add( new SMG() );
@@ -172,11 +173,11 @@
 		ply.Inventory.Add( new SatchelWeapon() );
 
 		var battery = new Battery();
-        battery.Position = ConsoleSystem.Caller.Pawn.Position;
+		battery.Position = ConsoleSystem.Caller.Pawn.Position;
 		battery.Spawn();
 
 		var suit = new Suit();
-        suit.Position = ConsoleSystem.Caller.Pawn.Position;
+		suit.Position = ConsoleSystem.Caller.Pawn.Position;
 		suit.Spawn();
 	}
 
@@ -185,7 +186,8 @@
 		base.OnKilled();
 		DeleteHands();
 		RemoveFlashlight();
-		if (HLGame.hl_gamemode == "deathmatch"){
+		if ( HLGame.hl_gamemode == "deathmatch" )
+		{
 			var coffin = new Coffin();
 			coffin.Position = Position + Vector3.Up * 30;
 			coffin.Rotation = Rotation;
@@ -199,13 +201,13 @@
 		{
 			using ( Prediction.Off() )
 			{
-				HLCombat.CreateGibs(CollisionWorldSpaceCenter, LastDamage.Position, Health, this.CollisionBounds);
+				HLCombat.CreateGibs( CollisionWorldSpaceCenter, LastDamage.Position, Health, this.CollisionBounds );
 
-            }
+			}
 		}
 		else
 		{
-            CreateCorpse(Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone(LastDamage.HitboxIndex), this);
+			CreateCorpse( Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone( LastDamage.HitboxIndex ), this );
 		}
 
 		Controller = null;
@@ -226,71 +228,74 @@
 		base.BuildInput( input );
 	}
 
-	public override void FrameSimulate(Client cl)
+	public override void FrameSimulate( Client cl )
 	{
-		
-        if (Client.IsUsingVr)
-        {
-            rotationvr();
 
-			if(Health > 0){
-				LeftHand.FrameSimulate(cl);
-            	RightHand.FrameSimulate(cl);
+		if ( Client.IsUsingVr )
+		{
+			rotationvr();
+
+			if ( Health > 0 )
+			{
+				LeftHand.FrameSimulate( cl );
+				RightHand.FrameSimulate( cl );
 			}
-        } 
+		}
 		else
 		{
-            base.FrameSimulate(cl);
-        }
-    }
-	 
+			base.FrameSimulate( cl );
+		}
+	}
+
 	public Rotation vrrotate { get; set; }
 	public void rotationvr()
 	{
-        vrrotate = Rotation.FromYaw(vrrotate.Yaw() - (float)Math.Round(Input.VR.RightHand.Joystick.Value.x, 1) * 4);
+		vrrotate = Rotation.FromYaw( vrrotate.Yaw() - (float)Math.Round( Input.VR.RightHand.Joystick.Value.x, 1 ) * 4 );
 
 
-        var a = Transform;
-        //a.Position = Rotation.FromAxis(Vector3.Up, -(Input.VR.RightHand.Joystick.Value.x * 4)) * (Transform.Position - Input.VR.Head.Position.WithZ(Position.z)) + Input.VR.Head.Position.WithZ(Position.z);
+		var a = Transform;
+		//a.Position = Rotation.FromAxis(Vector3.Up, -(Input.VR.RightHand.Joystick.Value.x * 4)) * (Transform.Position - Input.VR.Head.Position.WithZ(Position.z)) + Input.VR.Head.Position.WithZ(Position.z);
 
 		a.Rotation = vrrotate;// Rotation.FromAxis(Vector3.Up, -(Input.VR.RightHand.Joystick.Value.x * 4)) * Transform.Rotation;
 
-        EyeRotation = a.Rotation;
-        Transform = a;
-    }
+		EyeRotation = a.Rotation;
+		Transform = a;
+	}
 	public override void Simulate( Client cl )
-    {
-        base.Simulate( cl );
+	{
+		base.Simulate( cl );
 		Forward = Input.Forward;
-        Left = Input.Left;
+		Left = Input.Left;
 		Up = Input.Up;
-        if (Client.IsUsingVr)
-        {
-            EyeRotation = Input.VR.Head.Rotation;
+		if ( Client.IsUsingVr )
+		{
+			EyeRotation = Input.VR.Head.Rotation;
 
 			//offsetsomehowidk = (Input.VR.Head.Position.WithZ(Position.z) - Position.WithZ(Position.z));  
-            IN_USE = Input.Down(InputButton.Use);
-            IN_FORWARD = Input.VR.RightHand.Joystick.Delta.x > 0;
-            IN_LEFT = Input.Down(InputButton.Left);
-            IN_RIGHT = Input.Down(InputButton.Right);
-            IN_BACKWARD = Input.Down(InputButton.Back);
-			
-        } else { 
-			IN_USE = Input.Down(InputButton.Use);
-			IN_FORWARD = Input.Down(InputButton.Forward);
-			IN_LEFT = Input.Down(InputButton.Left);
-			IN_RIGHT = Input.Down(InputButton.Right);
-			IN_BACKWARD = Input.Down(InputButton.Back);
-        }
-        SimulateFlashlight(cl);
+			IN_USE = Input.Down( InputButton.Use );
+			IN_FORWARD = Input.VR.RightHand.Joystick.Delta.x > 0;
+			IN_LEFT = Input.Down( InputButton.Left );
+			IN_RIGHT = Input.Down( InputButton.Right );
+			IN_BACKWARD = Input.Down( InputButton.Back );
+
+		}
+		else
+		{
+			IN_USE = Input.Down( InputButton.Use );
+			IN_FORWARD = Input.Down( InputButton.Forward );
+			IN_LEFT = Input.Down( InputButton.Left );
+			IN_RIGHT = Input.Down( InputButton.Right );
+			IN_BACKWARD = Input.Down( InputButton.Back );
+		}
+		SimulateFlashlight( cl );
 		//
 		// Input requested a weapon switch
 		//
-		
-		if (LeftHand != null && RightHand != null)
+
+		if ( LeftHand != null && RightHand != null )
 		{
-			LeftHand.Simulate(cl);
-            RightHand.Simulate(cl);
+			LeftHand.Simulate( cl );
+			RightHand.Simulate( cl );
 		}
 		if ( Input.ActiveChild != null )
 		{
@@ -302,7 +307,7 @@
 
 		TickPlayerUse();
 
-		if ( Input.Pressed( InputButton.View ) && !Client.IsUsingVr)
+		if ( Input.Pressed( InputButton.View ) && !Client.IsUsingVr )
 		{
 			if ( CameraMode is ThirdPersonCamera )
 			{
@@ -326,14 +331,14 @@
 		}
 	}
 
-	public void Deafen(float strength)
+	public void Deafen( float strength )
 	{
 		//Audio.SetEffect("flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength);
 	}
 
 	public void SwitchToBestWeapon()
 	{
-		var best = Children.Select( x => x as HLWeapon)
+		var best = Children.Select( x => x as HLWeapon )
 			.Where( x => x.IsValid() && x.IsUsable() )
 			.OrderByDescending( x => x.BucketWeight )
 			.FirstOrDefault();
@@ -357,7 +362,7 @@
 		setup.ZNear = 1;
 		setup.ZFar = 25000;
 
-		if ( setup.Viewer != null && !Client.IsUsingVr)
+		if ( setup.Viewer != null && !Client.IsUsingVr )
 		{
 			AddCameraEffects( ref setup );
 		}
@@ -368,9 +373,9 @@
 
 	private void AddCameraEffects( ref CameraSetup setup )
 	{
-		if (Client.IsUsingVr) return;
-		if (Health == 0) return;
-		var speed = Velocity.WithZ(0).Length.LerpInverse( 0, 2 );
+		if ( Client.IsUsingVr ) return;
+		if ( Health == 0 ) return;
+		var speed = Velocity.WithZ( 0 ).Length.LerpInverse( 0, 2 );
 		var up = setup.Rotation.Up;
 
 		if ( GroundEntity != null )
@@ -510,38 +515,38 @@
 		//DebugOverlay.Text( pos, $"{volume}", Color.White, 5 );
 
 		var tr = Trace.Ray( pos, pos + Vector3.Down * 20 )
-			.Radius( 1 ) 
+			.Radius( 1 )
 			.Ignore( this )
 			.Run();
 
-		if (!tr.Hit) return;
-        tr.Surface.DoHLFootstep( this, tr, foot, volume * 5 );
+		if ( !tr.Hit ) return;
+		tr.Surface.DoHLFootstep( this, tr, foot, volume * 5 );
 	}
 
-	public void OnJump(Vector3 pos)
+	public void OnJump( Vector3 pos )
 	{
-        if (LifeState != LifeState.Alive)
-            return;
+		if ( LifeState != LifeState.Alive )
+			return;
 
-        if (!IsServer)
-            return;
-
-
-        //var volume *= FootstepVolume();
+		if ( !IsServer )
+			return;
 
 
-        //DebugOverlay.Box( 1, pos, -1, 1, Color.Red );
-        //DebugOverlay.Text( pos, $"{volume}", Color.White, 5 );
+		//var volume *= FootstepVolume();
 
-        var tr = Trace.Ray(pos, pos + Vector3.Down * 20)
-            .Radius(10) // if we were able to jump we must've been on something, fixes jump sound not being played jumping off of thin / small surfaces
-            .Ignore(this)
-            .Run();
 
-        if (!tr.Hit) return;
+		//DebugOverlay.Box( 1, pos, -1, 1, Color.Red );
+		//DebugOverlay.Text( pos, $"{volume}", Color.White, 5 );
 
-        tr.Surface.DoHLJump(this, tr, 1);
-    }
+		var tr = Trace.Ray( pos, pos + Vector3.Down * 20 )
+			.Radius( 10 ) // if we were able to jump we must've been on something, fixes jump sound not being played jumping off of thin / small surfaces
+			.Ignore( this )
+			.Run();
+
+		if ( !tr.Hit ) return;
+
+		tr.Surface.DoHLJump( this, tr, 1 );
+	}
 
 
 	public void RenderHud( Vector2 screenSize )
