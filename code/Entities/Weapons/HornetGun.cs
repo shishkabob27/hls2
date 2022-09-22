@@ -14,6 +14,7 @@ partial class HornetGun : HLWeapon
     public override string InventoryIcon => "/ui/weapons/weapon_hornetgun.png";
     public override int ClipSize => 1;
     public override float PrimaryRate => 4;
+    public override float SecondaryRate => 9.5f;
 
     int tickammoregen = 0;
     int FirePhase = 0;
@@ -53,10 +54,31 @@ partial class HornetGun : HLWeapon
         {
             return;
         }
-        PlaySound( "ag_fire" );
         tickammoregen = 0;
-        var vecSrc = GetFiringPos() + GetFiringRotation().Forward * 16;
 
+
+        var vecSrc = GetFiringPos() + GetFiringRotation().Forward * 16 + GetFiringRotation().Right * 8 + GetFiringRotation().Up * -12;
+        ViewModelEntity?.SetAnimParameter( "fire", true );
+        if ( IsServer )
+        {
+            var bolt = new Hornet();
+            bolt.Position = vecSrc;
+            bolt.Rotation = GetFiringRotation();
+            bolt.Owner = Owner;
+            bolt.Velocity = GetFiringRotation().Forward * 300;
+            bolt.TrailEffect();
+        }
+    }
+
+    public override void AttackSecondary()
+    {
+        var owner = Owner as HLPlayer;
+        if ( owner.TakeAmmo( AmmoType.Hornet, 1 ) == 0 )
+        {
+            return;
+        }
+        tickammoregen = 0;
+        var vecSrc = GetFiringPos() + GetFiringRotation().Forward * 16 + GetFiringRotation().Right * 8 + GetFiringRotation().Up * -12;
         FirePhase++;
         switch ( FirePhase )
         {
@@ -90,14 +112,17 @@ partial class HornetGun : HLWeapon
                 FirePhase = 0;
                 break;
         }
+
         ViewModelEntity?.SetAnimParameter( "fire", true );
         if ( IsServer )
         {
-            var bolt = new CrossbowBolt();
+            var bolt = new Hornet();
             bolt.Position = vecSrc;
             bolt.Rotation = GetFiringRotation();
             bolt.Owner = Owner;
-            bolt.Velocity = GetFiringRotation().Forward * 100;
+            bolt.Velocity = GetFiringRotation().Forward * 1200;
+            bolt.Dart = true;
+            bolt.TrailEffect();
         }
     }
     public override void SimulateAnimator( PawnAnimator anim )

@@ -25,12 +25,12 @@ public partial class HLCombat
         Swing
     }
     // monster to monster relationship types
-    static int R_AL = -2; // (ALLY) pals. Good alternative to R_NO when applicable.
-    static int R_FR = -1; // (FEAR)will run
-    static int R_NO = 0;  // (NO RELATIONSHIP) disregard
-    static int R_DL = 1;  // (DISLIKE) will attack
-    static int R_HT = 2;  // (HATE)will attack this character instead of any visible DISLIKEd characters
-    static int R_NM = 3;  // (NEMESIS)  A monster Will ALWAYS attack its nemsis, no matter what
+    public static int R_AL = -2; // (ALLY) pals. Good alternative to R_NO when applicable.
+    public static int R_FR = -1; // (FEAR)will run
+    public static int R_NO = 0;  // (NO RELATIONSHIP) disregard
+    public static int R_DL = 1;  // (DISLIKE) will attack
+    public static int R_HT = 2;  // (HATE)will attack this character instead of any visible DISLIKEd characters
+    public static int R_NM = 3;  // (NEMESIS)  A monster Will ALWAYS attack its nemsis, no matter what
     public enum Class
     {
         // For CLASSIFY

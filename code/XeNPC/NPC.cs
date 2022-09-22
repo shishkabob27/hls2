@@ -1,9 +1,7 @@
-﻿
-using System;
-namespace XeNPC;
+﻿namespace XeNPC;
 using XeNPC.Debug;
 
-[Library("monster_test"), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
+[Library( "monster_test" ), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
 public partial class NPC : AnimatedEntity, IUse, ICombat
 {
 	public bool InScriptedSequence = false;
@@ -11,7 +9,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public bool DontSleep = false;
 	public bool NoNav = false;
 
-    [Flags]
+	[Flags]
 	public enum Flags
 	{
 		WaitTillSeen = 1,
@@ -27,16 +25,16 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	}
 
 
-	[Property("spawnsetting", Title = "Spawn Settings")]
+	[Property( "spawnsetting", Title = "Spawn Settings" )]
 	public Flags SpawnSettings { get; set; }
 
 	[ConVar.Replicated]
 	public static bool nav_drawpath { get; set; }
 
-	[ConCmd.Server("npc_clear")]
+	[ConCmd.Server( "npc_clear" )]
 	public static void NpcClear()
 	{
-		foreach (var npc in Entity.All.OfType<NPC>().ToArray())
+		foreach ( var npc in Entity.All.OfType<NPC>().ToArray() )
 			npc.Delete();
 	}
 
@@ -45,44 +43,44 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float RunSpeed = 200;
 	public float entFOV = 0.5f;
 
-    public string NPCAnimGraph = "";
-    public string NPCSurface = "surface/hlflesh.surface";
+	public string NPCAnimGraph = "";
+	public string NPCSurface = "surface/hlflesh.surface";
 	XeNPC.NavPath Path;
 	public NavSteer Steer;
 
-    public Entity TargetEntity;
-    public int TargetEntityRel = 0;
-    public virtual int Classify()
+	public Entity TargetEntity;
+	public int TargetEntityRel = 0;
+	public virtual int Classify()
 	{
 		return (int)HLCombat.Class.CLASS_NONE;
 	}
-    public override void Spawn()
-    {
-		if (SpawnSettings.HasFlag(Flags.NotInDeathmatch) && HLGame.hl_gamemode == "deathmatch" && IsServer)
+	public override void Spawn()
+	{
+		if ( SpawnSettings.HasFlag( Flags.NotInDeathmatch ) && HLGame.hl_gamemode == "deathmatch" && IsServer )
 		{
 			Delete();
 		}
 
-		Tags.Add("npc", "playerclip");
+		Tags.Add( "npc", "playerclip" );
 		base.Spawn();
-		animHelper = new HLAnimationHelper(this);
-		if (!NoNav)
+		animHelper = new HLAnimationHelper( this );
+		if ( !NoNav )
 		{
 
 			Path = new XeNPC.NavPath();
 
-            Steer = new NavSteer();
+			Steer = new NavSteer();
 
-        }
-		SetModel("models/citizen/citizen.vmdl");
+		}
+		SetModel( "models/citizen/citizen.vmdl" );
 		EyePosition = Position + Vector3.Up * 64;
-		if (PhysicsBody == null) SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(72, 8));
-		
+		if ( PhysicsBody == null ) SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius( 72, 8 ) );
+
 		EnableHitboxes = true;
-		if (NPCSurface != null)
+		if ( NPCSurface != null )
 		{
-            PhysicsBody.SetSurface(NPCSurface);
-        }
+			PhysicsBody.SetSurface( NPCSurface );
+		}
 		Speed = 50;
 	}
 
@@ -101,143 +99,144 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	[Event.Tick.Server]
 	public void Tick()
 	{
-        if (NoNav)
+		if ( NoNav )
 		{
+			See();
 			Think();
 			SoundProcess();
 			return;
 		}
 
-        if (HLUtils.PlayerInRangeOf(Position, 1024) == false && DontSleep == false)
+		if ( HLUtils.PlayerInRangeOf( Position, 1024 ) == false && DontSleep == false )
 			return;
-		using var _a = Profile.Scope("NpcTest::Tick");
+		using var _a = Profile.Scope( "NpcTest::Tick" );
 
-        
+
 
 
 		InputVelocity = 0;
 
-		if (Steer != null && !NoNav)
+		if ( Steer != null && !NoNav )
 		{
-			using var _b = Profile.Scope("Steer");
+			using var _b = Profile.Scope( "Steer" );
 
-			Steer.Tick(Position);
+			Steer.Tick( Position );
 
-			if (!Steer.Output.Finished)
+			if ( !Steer.Output.Finished )
 			{
 				InputVelocity = Steer.Output.Direction.Normal;
-				Velocity = Velocity.AddClamped(InputVelocity * Time.Delta * 500, Speed);
+				Velocity = Velocity.AddClamped( InputVelocity * Time.Delta * 500, Speed );
 			}
 
-			if (nav_drawpath)
+			if ( nav_drawpath )
 			{
 				Steer.DebugDrawPath();
 			}
 		}
 
-		using (Profile.Scope("Move"))
+		using ( Profile.Scope( "Move" ) )
 		{
-			Move(Time.Delta);
+			Move( Time.Delta );
 		}
 
-		var walkVelocity = Velocity.WithZ(0);
+		var walkVelocity = Velocity.WithZ( 0 );
 		var turnSpeed = 0.32f;
-		if (walkVelocity.Length > 0.5f)
+		if ( walkVelocity.Length > 0.5f )
 		{
-			turnSpeed = walkVelocity.Length.LerpInverse(0, 100, true);
-			targetRotation = Rotation.LookAt(walkVelocity.Normal, Vector3.Up);
+			turnSpeed = walkVelocity.Length.LerpInverse( 0, 100, true );
+			targetRotation = Rotation.LookAt( walkVelocity.Normal, Vector3.Up );
 		}
-		if (targetRotationOVERRIDE != null)
+		if ( targetRotationOVERRIDE != null )
 		{
-            targetRotation = (Rotation)targetRotationOVERRIDE;
-            Rotation = Rotation.Lerp(Rotation, (Rotation)targetRotationOVERRIDE, turnSpeed * Time.Delta * 20.0f);
-            if (Angles.AngleVector(Rotation.Angles()).AlmostEqual(Angles.AngleVector(targetRotation.Angles())))
-            {
-                targetRotationOVERRIDE = null;
-            }
-        }
+			targetRotation = (Rotation)targetRotationOVERRIDE;
+			Rotation = Rotation.Lerp( Rotation, (Rotation)targetRotationOVERRIDE, turnSpeed * Time.Delta * 20.0f );
+			if ( Angles.AngleVector( Rotation.Angles() ).AlmostEqual( Angles.AngleVector( targetRotation.Angles() ) ) )
+			{
+				targetRotationOVERRIDE = null;
+			}
+		}
 		else
 		{
-            if (LifeState == LifeState.Alive)
-                Rotation = Rotation.Lerp(Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f);
+			if ( LifeState == LifeState.Alive )
+				Rotation = Rotation.Lerp( Rotation, targetRotation, turnSpeed * Time.Delta * 20.0f );
 		}
-		
+
 		//var animHelper = new HLAnimationHelper(this);
 
-		LookDir = Vector3.Lerp(LookDir, InputVelocity.WithZ(0) * 1000, Time.Delta * 100.0f);
-		animHelper.WithLookAt(EyePosition + LookDir);
-		animHelper.WithVelocity(Velocity);
-		animHelper.WithWishVelocity(InputVelocity);
+		LookDir = Vector3.Lerp( LookDir, InputVelocity.WithZ( 0 ) * 1000, Time.Delta * 100.0f );
+		animHelper.WithLookAt( EyePosition + LookDir );
+		animHelper.WithVelocity( Velocity );
+		animHelper.WithWishVelocity( InputVelocity );
 		animHelper.HealthLevel = Health;
 
 		//animHelper.VoiceLevel = CurrentSound.Index / 100;
 
 
 		//Log.Info();//SoundFile.Load("sounds/hl1/scientist/alright.wav"));
-		if (CurrentSound.Finished != true)
-        {
+		if ( CurrentSound.Finished != true )
+		{
 			animHelper.VoiceLevel = Rand.Float();
 			// It's not possible to get the sound volume for animating the mouths so i'll just randomise a float for now,.
 		}
 		else
-        {
-            animHelper.VoiceLevel = 0;
-        }
-		if (LifeState == LifeState.Dead)
+		{
+			animHelper.VoiceLevel = 0;
+		}
+		if ( LifeState == LifeState.Dead )
 			return;
-        if (animHelper.VoiceLevel != 0)
-        {
-            var closestENTs = Entity.All.OfType<ICombat>().OfType<Entity>().ToList();
-            closestENTs.Remove(this);
-            var ck = closestENTs.OrderBy(o => (o.Position.Distance(Position)));
-            var closestENT = ck.First();
+		if ( animHelper.VoiceLevel != 0 )
+		{
+			var closestENTs = Entity.All.OfType<ICombat>().OfType<Entity>().ToList();
+			closestENTs.Remove( this );
+			var ck = closestENTs.OrderBy( o => ( o.Position.Distance( Position ) ) );
+			var closestENT = ck.First();
 
-            var a = Rotation.LookAt(closestENT.Position.WithZ(0) - Position.WithZ(0), Vector3.Up).Yaw();//HLUtils.VecToYaw(closestENT.Position.WithZ(0) - Position.WithZ(0));
+			var a = Rotation.LookAt( closestENT.Position.WithZ( 0 ) - Position.WithZ( 0 ), Vector3.Up ).Yaw();//HLUtils.VecToYaw(closestENT.Position.WithZ(0) - Position.WithZ(0));
 
-            //Log.Info(closestENT.Position - Position);
-            var c = Rotation.Yaw();
-            var d = a - c;
-            //if (a > 0) d = a - c;
-            //if (a < 0) d = a + c;
-            var b = (d / 90) * -1;
+			//Log.Info(closestENT.Position - Position);
+			var c = Rotation.Yaw();
+			var d = a - c;
+			//if (a > 0) d = a - c;
+			//if (a < 0) d = a + c;
+			var b = ( d / 90 ) * -1;
 
-            if (b > 1) b -= 2;
-            if (b < -1) b += 2;
+			if ( b > 1 ) b -= 2;
+			if ( b < -1 ) b += 2;
 
-            if (b > 1) b -= 2;
-            if (b < -1) b += 2;
+			if ( b > 1 ) b -= 2;
+			if ( b < -1 ) b += 2;
 
-            if (b > 1) b -= 2;
-            if (b < -1) b += 2;
+			if ( b > 1 ) b -= 2;
+			if ( b < -1 ) b += 2;
 
-            if (b > 1) b -= 2;
-            if (b < -1) b += 2;
-			
+			if ( b > 1 ) b -= 2;
+			if ( b < -1 ) b += 2;
+
 			neck2 = b;
-			
-        }
-        else
-        {
+
+		}
+		else
+		{
 			neck2 = 0;
-        }
-		neck = neck.LerpTo(neck2, 12 * Time.Delta);
-        animHelper.Neck = neck;
-        //See();
-        Think();
+		}
+		neck = neck.LerpTo( neck2, 12 * Time.Delta );
+		animHelper.Neck = neck;
+		//See();
+		Think();
 		SoundProcess();
-        //SoundStream test;
-        //test.
+		//SoundStream test;
+		//test.
 
-        See();
+		See();
 
-    }
+	}
 
-    public virtual void FindCover(Vector3 fromPos)
-    {
-        var MyNode = NavMesh.GetClosestPoint(Position);
-		var ThreatNode = NavMesh.GetClosestPoint(fromPos);
-		Steer.Target = NavMesh.GetPointWithinRadius(fromPos, 500, 600) ?? NavMesh.GetPointWithinRadius(fromPos, 300, 600) ?? NavMesh.GetPointWithinRadius(fromPos, 100, 600) ?? NavMesh.GetPointWithinRadius(fromPos, 10, 600) ?? fromPos ;
-        /*
+	public virtual void FindCover( Vector3 fromPos )
+	{
+		var MyNode = NavMesh.GetClosestPoint( Position );
+		var ThreatNode = NavMesh.GetClosestPoint( fromPos );
+		Steer.Target = NavMesh.GetPointWithinRadius( fromPos, 500, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 300, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 100, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 10, 600 ) ?? fromPos;
+		/*
         foreach (var area in NavMesh.GetNavAreas())
         {
             foreach (var node in area.)
@@ -246,15 +245,15 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
             }
         }
 		*/
-    }
+	}
 
-    public virtual void See()
+	public virtual void See()
 	{
-        TargetEntity = null;
-        TargetEntityRel = 0;
-        // todo, trace a cone maybe...
+		TargetEntity = null;
+		TargetEntityRel = 0;
+		// todo, trace a cone maybe...
 
-        /*
+		/*
         var a = Trace.Ray(EyePosition, EyePosition + Rotation.Forward * 2000)
             .Radius(70f)
             .EntitiesOnly()
@@ -276,68 +275,69 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		TargetEntity = a.Entity;
 		*/
 
-        var allents = Entity.All.OfType<ICombat>().ToList().OrderBy(o => ((o as Entity).Position.Distance(Position)));
+		var allents = Entity.All.OfType<ICombat>().ToList().OrderBy( o => ( ( o as Entity ).Position.Distance( Position ) ) );
 
 		int i = 0;
-        foreach (Entity ent in allents)
+		foreach ( Entity ent in allents )
 		{
 			i++;
-			if (i > 16) continue;
-            if (!InViewCone(ent))
-            {
-                continue;
-            }
-            var b = Trace.Ray(EyePosition, ent.Position)
-                .Ignore(this)
-                .Run();
-            if (b.Entity != ent)
-            {
-                continue;
-            }
+			if ( i > 16 ) continue;
+			if ( !InViewCone( ent ) )
+			{
+				continue;
+			}
+			var b = Trace.Ray( EyePosition, ent.Position )
+				.Ignore( this )
+				.Run();
+			if ( b.Entity != ent )
+			{
+				continue;
+			}
 
 
-            ProcessEntity(ent, GetRelationship(ent));
-        }
-    }
-	public virtual void ProcessEntity(Entity ent, int rel)
+			ProcessEntity( ent, GetRelationship( ent ) );
+		}
+	}
+	public virtual void ProcessEntity( Entity ent, int rel )
 	{
 	}
-	public int GetRelationship(Entity ent)
+	public int GetRelationship( Entity ent )
 	{
-		if (ent is ICombat)
+		if ( ent is ICombat )
 		{
-			var trgt = (ent as ICombat);
+			var trgt = ( ent as ICombat );
 			return HLCombat.ClassMatrix[Classify(), trgt.Classify()];
-		} else
+		}
+		else
 		{
 			return 0;
 		}
 	}
-	public bool InViewCone(Entity ent)
+	public bool InViewCone( Entity ent )
 	{
-        Vector2 vec2LOS;
-        float flDot;
+		Vector2 vec2LOS;
+		float flDot;
 
 
-        var e = (ent.WorldSpaceBounds.Center - WorldSpaceBounds.Center);
-        vec2LOS = new Vector2(e.x, e.y);
-        vec2LOS = vec2LOS.Normal;
+		var e = ( ent.WorldSpaceBounds.Center - WorldSpaceBounds.Center );
+		vec2LOS = new Vector2( e.x, e.y );
+		vec2LOS = vec2LOS.Normal;
 
-        flDot = (float)Vector2.Dot(vec2LOS, new Vector2(Rotation.Forward.x, Rotation.Forward.y));
+		flDot = (float)Vector2.Dot( vec2LOS, new Vector2( Rotation.Forward.x, Rotation.Forward.y ) );
 
-        if (flDot > entFOV)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+		if ( flDot > entFOV )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 
-    public virtual void Think()
-    {
-		
+	public virtual void Think()
+	{
+
 	}
 
 	public virtual void SoundProcess()
@@ -345,69 +345,69 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 	}
 
-	public virtual bool OnUse(Entity user)
+	public virtual bool OnUse( Entity user )
 	{
-		if (LifeState == LifeState.Dead)
+		if ( LifeState == LifeState.Dead )
 			return false;
 		return true;
 	}
-    
-	protected virtual void Move(float timeDelta)
+
+	protected virtual void Move( float timeDelta )
 	{
-		if (LifeState == LifeState.Dead)
+		if ( LifeState == LifeState.Dead )
 			return;
-		var bbox = BBox.FromHeightAndRadius(64, 4);
+		var bbox = BBox.FromHeightAndRadius( 64, 4 );
 		//DebugOverlay.Box( Position, bbox.Mins, bbox.Maxs, Color.Green );
 
-		MoveHelper move = new(Position, Velocity);
+		MoveHelper move = new( Position, Velocity );
 		move.MaxStandableAngle = 50;
-		move.Trace = move.Trace.Ignore(this).Size(bbox);
+		move.Trace = move.Trace.Ignore( this ).Size( bbox );
 
-		if (!Velocity.IsNearlyZero(0.001f))
+		if ( !Velocity.IsNearlyZero( 0.001f ) )
 		{
 			//	Sandbox.Debug.Draw.Once
 			//						.WithColor( Color.Red )
 			//						.IgnoreDepth()
 			//						.Arrow( Position, Position + Velocity * 2, Vector3.Up, 2.0f );
 
-			using (Profile.Scope("TryUnstuck"))
+			using ( Profile.Scope( "TryUnstuck" ) )
 				move.TryUnstuck();
 
-			using (Profile.Scope("TryMoveWithStep"))
-				move.TryMoveWithStep(timeDelta, 30);
+			using ( Profile.Scope( "TryMoveWithStep" ) )
+				move.TryMoveWithStep( timeDelta, 30 );
 		}
 
-		using (Profile.Scope("Ground Checks"))
+		using ( Profile.Scope( "Ground Checks" ) )
 		{
-			var tr = move.TraceDirection(Vector3.Down * 10.0f);
+			var tr = move.TraceDirection( Vector3.Down * 10.0f );
 
-			if (move.IsFloor(tr))
+			if ( move.IsFloor( tr ) )
 			{
 				GroundEntity = tr.Entity;
 
-				if (!tr.StartedSolid)
+				if ( !tr.StartedSolid )
 				{
 					move.Position = tr.EndPosition;
 				}
 
-				if (InputVelocity.Length > 0)
+				if ( InputVelocity.Length > 0 )
 				{
-					var movement = move.Velocity.Dot(InputVelocity.Normal);
+					var movement = move.Velocity.Dot( InputVelocity.Normal );
 					move.Velocity = move.Velocity - movement * InputVelocity.Normal;
-					move.ApplyFriction(tr.Surface.Friction * 10.0f, timeDelta);
+					move.ApplyFriction( tr.Surface.Friction * 10.0f, timeDelta );
 					move.Velocity += movement * InputVelocity.Normal;
 
 				}
 				else
 				{
-					move.ApplyFriction(tr.Surface.Friction * 10.0f, timeDelta);
+					move.ApplyFriction( tr.Surface.Friction * 10.0f, timeDelta );
 				}
 			}
 			else
 			{
 				GroundEntity = null;
 				move.Velocity += Vector3.Down * 900 * timeDelta;
-				XeNPC.Debug.Draw.Once.WithColor(Color.Red).Circle(Position, Vector3.Up, 10.0f);
+				XeNPC.Debug.Draw.Once.WithColor( Color.Red ).Circle( Position, Vector3.Up, 10.0f );
 			}
 		}
 
@@ -417,32 +417,32 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 
 	DamageInfo LastDamage;
-    
-	public override void TakeDamage(DamageInfo info)
-	{
-        if (LifeState == LifeState.Alive)
-            targetRotation = Rotation.From(((Position - info.Position) * -360).EulerAngles.WithRoll(0).WithPitch(0));
-        var trace = Trace.Ray(EyePosition, EyePosition + ((Position - info.Position) * 70) * 2)
-			.WorldOnly()
-			.Ignore(this)
-			.Size(1.0f)
-			.Run();
-        if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
-        {
-            //Log.Info( "Splat!" );
-            Decal.Place(decal, trace);
-        }
 
-        LastAttacker = info.Attacker;
+	public override void TakeDamage( DamageInfo info )
+	{
+		if ( LifeState == LifeState.Alive )
+			targetRotation = Rotation.From( ( ( Position - info.Position ) * -360 ).EulerAngles.WithRoll( 0 ).WithPitch( 0 ) );
+		var trace = Trace.Ray( EyePosition, EyePosition + ( ( Position - info.Position ) * 70 ) * 2 )
+			.WorldOnly()
+			.Ignore( this )
+			.Size( 1.0f )
+			.Run();
+		if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+		{
+			//Log.Info( "Splat!" );
+			Decal.Place( decal, trace );
+		}
+
+		LastAttacker = info.Attacker;
 		LastAttackerWeapon = info.Weapon;
-		if (IsServer)
+		if ( IsServer )
 		{
 			Health -= info.Damage;
-			if (Health <= 0f)
+			if ( Health <= 0f )
 			{
-				if (LifeState == LifeState.Alive)
+				if ( LifeState == LifeState.Alive )
 				{
-                    OnKilled();
+					OnKilled();
 					LifeState = LifeState.Dead;
 					//Delete();
 				}
@@ -450,66 +450,66 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		LastDamage = info;
 
-		if (Health <= 0f && LifeState == LifeState.Alive)
+		if ( Health <= 0f && LifeState == LifeState.Alive )
 		{
-				LifeState = LifeState.Dead;
-				//Delete();
+			LifeState = LifeState.Dead;
+			//Delete();
 		}
-        if (Health < -20)
-        {
-			HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds);
+		if ( Health < -20 )
+		{
+			HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds );
 			Delete();
 		}
-		this.ProceduralHitReaction(info);
+		this.ProceduralHitReaction( info );
 		//
 		// Add a score to the killer
 		//
-		if (LifeState == LifeState.Dead && info.Attacker != null)
+		if ( LifeState == LifeState.Dead && info.Attacker != null )
 		{
-			if (info.Attacker.Client != null && info.Attacker != this)
+			if ( info.Attacker.Client != null && info.Attacker != this )
 			{
-				info.Attacker.Client.AddInt("kills");
+				info.Attacker.Client.AddInt( "kills" );
 			}
 		}
-        
+
 	}
 
-	public void SpeakSound(string sound, float pitch = 100)
+	public void SpeakSound( string sound, float pitch = 100 )
 	{
-        if (IsServer)
-        {
-			using (Prediction.Off())
+		if ( IsServer )
+		{
+			using ( Prediction.Off() )
 			{
 				CurrentSound.Stop();
-				CurrentSound = PlaySound(sound).SetPitch(HLUtils.CorrectPitch(pitch));
+				CurrentSound = PlaySound( sound ).SetPitch( HLUtils.CorrectPitch( pitch ) );
 			}
 			//SpeakSoundcl(sound, pitch);
 		}
-        
+
 	}
-    
+
 	[ClientRpc]
-	public void SpeakSoundcl(string sound, float pitch = 100)
+	public void SpeakSoundcl( string sound, float pitch = 100 )
 	{
 		//CurrentSound.Stop();
-		CurrentSound = PlaySound(sound).SetPitch(HLUtils.CorrectPitch(pitch));
-		Log.Info($"IsClient: {IsClient} IsServer: {IsServer}");
+		CurrentSound = PlaySound( sound ).SetPitch( HLUtils.CorrectPitch( pitch ) );
+		Log.Info( $"IsClient: {IsClient} IsServer: {IsServer}" );
 	}
-    
+
 	public override void OnKilled()
 	{
-		Tags.Add("debris");
+		Tags.Add( "debris" );
 
-		SetupPhysicsFromCapsule(PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius(1, 8));
-		if (LifeState == LifeState.Alive)
+		SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius( 1, 8 ) );
+		if ( LifeState == LifeState.Alive )
 		{
 			LifeState = LifeState.Dead;
 			//Delete();
 		}
 
-		if (LastDamage.Flags.HasFlag(DamageFlags.Blast))
+		if ( LastDamage.Flags.HasFlag( DamageFlags.Blast ) )
 		{
-			
+
 		}
 		else
 		{
@@ -517,101 +517,101 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 	}
 
-    bool IUse.OnUse(Entity user)
-    {
-        return OnUse(user);
-    }
-
-    bool IUse.IsUsable(Entity user)
-    {
-		return true;
-    }
-
-    public IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float radius = 2.0f)
-    {
-        bool underWater = Trace.TestPoint(start, "water");
-
-        var trace = Trace.Ray(start, end)
-                .UseHitboxes()
-                .WithAnyTags("solid", "player", "npc", "glass")
-                .Ignore(this)
-                .Size(radius);
-
-        //
-        // If we're not underwater then we can hit water
-        //
-        if (!underWater)
-            trace = trace.WithAnyTags("water");
-
-        var tr = trace.Run();
-
-        if (tr.Hit)
-            yield return tr;
-
-        //
-        // Another trace, bullet going through thin material, penetrating water surface?
-        //
-    }
-
-	public new void SetAnimGraph(string name)
+	bool IUse.OnUse( Entity user )
 	{
-		if (IsServer)
+		return OnUse( user );
+	}
+
+	bool IUse.IsUsable( Entity user )
+	{
+		return true;
+	}
+
+	public IEnumerable<TraceResult> TraceBullet( Vector3 start, Vector3 end, float radius = 2.0f )
+	{
+		bool underWater = Trace.TestPoint( start, "water" );
+
+		var trace = Trace.Ray( start, end )
+				.UseHitboxes()
+				.WithAnyTags( "solid", "player", "npc", "glass" )
+				.Ignore( this )
+				.Size( radius );
+
+		//
+		// If we're not underwater then we can hit water
+		//
+		if ( !underWater )
+			trace = trace.WithAnyTags( "water" );
+
+		var tr = trace.Run();
+
+		if ( tr.Hit )
+			yield return tr;
+
+		//
+		// Another trace, bullet going through thin material, penetrating water surface?
+		//
+	}
+
+	public new void SetAnimGraph( string name )
+	{
+		if ( IsServer )
 		{
-			base.SetAnimGraph(name);
+			base.SetAnimGraph( name );
 		}
 	}
-    public override void OnAnimEventGeneric(string name, int intData, float floatData, Vector3 vectorData, string stringData)
-    {
-        if (stringData == "ragdoll" && IsServer && HLGame.hl_ragdoll)
-        {
+	public override void OnAnimEventGeneric( string name, int intData, float floatData, Vector3 vectorData, string stringData )
+	{
+		if ( stringData == "ragdoll" && IsServer && HLGame.hl_ragdoll )
+		{
 			Ragdoll();
-        }
-        base.OnAnimEventGeneric(name, intData, floatData, vectorData, stringData);
-    }
+		}
+		base.OnAnimEventGeneric( name, intData, floatData, vectorData, stringData );
+	}
 
 	[Input]
 	public void Ragdoll()
 	{
 
-        var ent = new ModelEntity();
-        ent.SetModel(this.Model.Name);
-        ent.SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
-        ent.Position = Position;
-        ent.Rotation = Rotation;
-        ent.UsePhysicsCollision = true; 
-		if (NPCSurface != null && ent.PhysicsBody != null)
-        {
-            ent.PhysicsBody.SetSurface(NPCSurface);
-        }
+		var ent = new ModelEntity();
+		ent.SetModel( this.Model.Name );
+		ent.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
+		ent.Position = Position;
+		ent.Rotation = Rotation;
+		ent.UsePhysicsCollision = true;
+		if ( NPCSurface != null && ent.PhysicsBody != null )
+		{
+			ent.PhysicsBody.SetSurface( NPCSurface );
+		}
 
-        ent.CopyFrom(this);
-        ent.CopyBonesFrom(this);
-        ent.SetRagdollVelocityFrom(this);
-        this.Delete();
-    }
+		ent.CopyFrom( this );
+		ent.CopyBonesFrom( this );
+		ent.SetRagdollVelocityFrom( this );
+		this.Delete();
+	}
 
-    [Input]
-    public void Gib()
-    {
-        HLCombat.CreateGibs(this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds);
-        this.Delete();
-    }
+	[Input]
+	public void Gib()
+	{
+		HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds );
+		this.Delete();
+	}
 
-    [Input]
-    public void Break()
-    {
+	[Input]
+	public void Break()
+	{
 		Gib();
-    }
+	}
 
-    [Input]
-    public void Kill()
+	[Input]
+	public void Kill()
 	{
 		Health = -1;
-        if (LifeState == LifeState.Alive)
-        {
-            OnKilled();
-            LifeState = LifeState.Dead;
-            //Delete();
-        }
-    }
+		if ( LifeState == LifeState.Alive )
+		{
+			OnKilled();
+			LifeState = LifeState.Dead;
+			//Delete();
+		}
+	}
 }

@@ -7,4 +7,5 @@ public interface ICombat
     /// Classify the Entity in the CombatMatrix!
     /// </summary>
     int Classify();
+
 }
