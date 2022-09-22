@@ -41,7 +41,7 @@
 
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
-	[ConVar.Client] public static string hl_pm { get; set; } = "player";
+	[ConVar.ClientData] public static string hl_pm { get; set; } = "player";
 
 	public HLPlayer()
 	{
@@ -73,11 +73,11 @@
 		//SetModel("models/citizen/citizen.vmdl");
 
 		var pm = "";
-		switch ( hl_pm )
+		switch ( Client.GetClientData( "hl_pm" ) )
 		{
 			case "player": pm = "models/hl1/player/player.vmdl"; break; // helmet is a different model, it has colour support and this doesn't. I like this better so add it here since yeah
 			case "barney": pm = "models/hl1/monster/barney.vmdl"; break;
-			default: pm = "models/hl1/player/playe.vmdl"; break;
+			default: pm = "models/hl1/player/player.vmdl"; break;
 		}
 
 		SetModel( pm );

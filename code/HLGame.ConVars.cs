@@ -15,7 +15,7 @@
     [ConVar.Replicated] public static bool hl_classic_explosion { get; set; } = true;
     [ConVar.Replicated] public static bool hl_classic_gibs { get; set; } = true;
     [ConVar.Client] public static bool hl_vr_pointer { get; set; } = false;
-    [ConVar.Client] public static string hl_spray_icon { get; set; } = "lambda";
+    [ConVar.ClientData] public static string hl_spray_icon { get; set; } = "lambda";
     [ConVar.ClientData] public static string hl_spray_colour { get; set; } = "orange";
     [ConVar.ClientData] public static bool hl_classic_flashlight { get; set; } = false;
 }
