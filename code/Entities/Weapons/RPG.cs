@@ -72,5 +72,9 @@ partial class RPG : HLWeapon
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 	}
-
+	public override void SimulateAnimator( PawnAnimator anim )
+	{
+		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.RPG ); // TODO this is shit
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+	}
 }

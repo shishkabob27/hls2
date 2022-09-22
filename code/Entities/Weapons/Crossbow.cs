@@ -1,9 +1,9 @@
-﻿[Library("weapon_crossbow"), HammerEntity]
+﻿[Library( "weapon_crossbow" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/crossbow.vmdl" )]
 [Title( "Crossbow" ), Category( "Weapons" )]
 partial class Crossbow : HLWeapon
 {
-	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/crossbow.vmdl");
+	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/crossbow.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_crossbow.vmdl";
 
 	public override float PrimaryRate => 1.333f;
@@ -66,21 +66,21 @@ partial class Crossbow : HLWeapon
 
 	public override void PostCameraSetup( ref CameraSetup camSetup )
 	{
-		base.PostCameraSetup(ref camSetup);
+		base.PostCameraSetup( ref camSetup );
 
 		float targetFov = camSetup.FieldOfView;
 		float targetViewmodelFov = camSetup.ViewModel.FieldOfView;
 		LastFov = LastFov ?? camSetup.FieldOfView;
 		LastViewmodelFov = LastViewmodelFov ?? camSetup.ViewModel.FieldOfView;
 
-		if (Zoomed)
+		if ( Zoomed )
 		{
 			targetFov = 20.0f;
 			targetViewmodelFov = 20.0f;
 		}
 
-		float lerpedFov = LastFov.Value.LerpTo(targetFov, Time.Delta * 24.0f);
-		float lerpedViewmodelFov = LastViewmodelFov.Value.LerpTo(targetViewmodelFov, Time.Delta * 24.0f);
+		float lerpedFov = LastFov.Value.LerpTo( targetFov, Time.Delta * 24.0f );
+		float lerpedViewmodelFov = LastViewmodelFov.Value.LerpTo( targetViewmodelFov, Time.Delta * 24.0f );
 
 		camSetup.FieldOfView = targetFov;
 		camSetup.ViewModel.FieldOfView = targetViewmodelFov;
@@ -104,7 +104,11 @@ partial class Crossbow : HLWeapon
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 	}
-
+	public override void SimulateAnimator( PawnAnimator anim )
+	{
+		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Crossbow ); // TODO this is shit
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+	}
 	TimeSince timeSinceZoomed;
 
 }

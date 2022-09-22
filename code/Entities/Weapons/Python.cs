@@ -1,9 +1,9 @@
-﻿[Library("weapon_357"), HammerEntity]
+﻿[Library( "weapon_357" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/python.vmdl" )]
 [Title( ".357 Magnum Revolver" ), Category( "Weapons" )]
 partial class Python : HLWeapon
 {
-	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/python.vmdl");
+	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/python.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_python.vmdl";
 
 	public override float PrimaryRate => 1.5f;
@@ -15,9 +15,9 @@ partial class Python : HLWeapon
 	public override int Bucket => 1;
 	public override int BucketWeight => 200;
 	public override string AmmoIcon => "ui/ammo2.png";
-    public override string InventoryIcon => "/ui/weapons/weapon_357.png";
+	public override string InventoryIcon => "/ui/weapons/weapon_357.png";
 
-    public override void Spawn()
+	public override void Spawn()
 	{
 		base.Spawn();
 
@@ -62,5 +62,9 @@ partial class Python : HLWeapon
 	{
 		base.Simulate( cl );
 	}
-
+	public override void SimulateAnimator( PawnAnimator anim )
+	{
+		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Python ); // TODO this is shit
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+	}
 }

@@ -1,10 +1,10 @@
-﻿[Library("weapon_egon"), HammerEntity]
-[EditorModel("models/hl1/weapons/world/egon.vmdl")]
-[Title("Egon"), Category("Weapons")]
+﻿[Library( "weapon_egon" ), HammerEntity]
+[EditorModel( "models/hl1/weapons/world/egon.vmdl" )]
+[Title( "Egon" ), Category( "Weapons" )]
 partial class Egon : HLWeapon
 {
     //stub
-    public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/egon.vmdl");
+    public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/egon.vmdl" );
     public override string ViewModelPath => "models/hl1/weapons/view/v_egon.vmdl";
 
     public override int Bucket => 3;
@@ -15,43 +15,43 @@ partial class Egon : HLWeapon
     public override string InventoryIcon => "/ui/weapons/weapon_egon.png";
 
     public override void Spawn()
-	{
-		base.Spawn();
+    {
+        base.Spawn();
 
-		Model = WorldModel;
-		AmmoClip = 0;
-	}
+        Model = WorldModel;
+        AmmoClip = 0;
+    }
     public override bool CanPrimaryAttack()
     {
         return base.CanPrimaryAttack();//Input.Pressed(InputButton.PrimaryAttack);
     }
     Particles Beam;
-    public override void Simulate(Client owner)
+    public override void Simulate( Client owner )
     {
-        if (!Input.Down(InputButton.PrimaryAttack))
+        if ( !Input.Down( InputButton.PrimaryAttack ) )
         {
-            if (Beam != null)
+            if ( Beam != null )
             {
                 Beam.Destroy();
                 Beam = null;
             }
         }
-        if (Beam != null)
+        if ( Beam != null )
         {
 
             var owner2 = Owner as HLPlayer;
             var startPos = GetFiringPos();
             var dir = GetFiringRotation().Forward;
-            var tr = Trace.Ray(startPos, startPos + dir * 800)
+            var tr = Trace.Ray( startPos, startPos + dir * 800 )
             .UseHitboxes()
-                .Ignore(owner2, false)
-                .WithAllTags("solid")
+                .Ignore( owner2, false )
+                .WithAllTags( "solid" )
                 .Run();
-            Beam.SetPosition(1, tr.EndPosition);
-            Beam.SetPosition(1, tr.EndPosition);
+            Beam.SetPosition( 1, tr.EndPosition );
+            Beam.SetPosition( 1, tr.EndPosition );
         }
 
-        base.Simulate(owner);
+        base.Simulate( owner );
     }
     public override void AttackPrimary()
     {
@@ -59,31 +59,35 @@ partial class Egon : HLWeapon
         var owner = Owner as HLPlayer;
         var startPos = GetFiringPos();
         var dir = GetFiringRotation().Forward;
-        var tr = Trace.Ray(startPos, startPos + dir * 800)
+        var tr = Trace.Ray( startPos, startPos + dir * 800 )
         .UseHitboxes()
-            .Ignore(owner, false)
-            .WithAllTags("solid")
+            .Ignore( owner, false )
+            .WithAllTags( "solid" )
             .Run();
-        if (Beam == null)
+        if ( Beam == null )
         {
-            Beam = Particles.Create("particles/egon_beam.vpcf", tr.EndPosition);
+            Beam = Particles.Create( "particles/egon_beam.vpcf", tr.EndPosition );
         }
 
-        Beam.SetPosition(1, tr.EndPosition);
-        Beam.SetEntityAttachment(0, EffectEntity, "muzzle", true);
-        if (Client.IsUsingVr) Beam.SetEntityAttachment(0, VRWeaponModel, "muzzle", true);
+        Beam.SetPosition( 1, tr.EndPosition );
+        Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
+        if ( Client.IsUsingVr ) Beam.SetEntityAttachment( 0, VRWeaponModel, "muzzle", true );
 
-        Beam.SetPosition(0, (Vector3)GetAttachment("muzzle")?.Position);
-        Beam.SetForward(0, GetFiringRotation().Forward); 
+        Beam.SetPosition( 0, (Vector3)GetAttachment( "muzzle" )?.Position );
+        Beam.SetForward( 0, GetFiringRotation().Forward );
         //var pos = tr.StartPosition;
         //var a = GetAttachment("muzzle");
         //if (a != null)
         //pos = (a ?? default).Position;
         //Beam.SetPosition(0, pos);
-        Beam.SetPosition(1, tr.EndPosition);
-        Particles.Create("particles/gauss_impact.vpcf", tr.EndPosition);
+        Beam.SetPosition( 1, tr.EndPosition );
+        Particles.Create( "particles/gauss_impact.vpcf", tr.EndPosition );
 
         base.AttackPrimary();
     }
-
+    public override void SimulateAnimator( PawnAnimator anim )
+    {
+        anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Egon ); // TODO this is shit
+        anim.SetAnimParameter( "aim_body_weight", 1.0f );
+    }
 }
