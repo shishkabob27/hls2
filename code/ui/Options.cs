@@ -1,9 +1,6 @@
-using Sandbox;
 using Sandbox.UI;
-using Sandbox.UI.Construct;
-using System;
 
-[UseTemplate("/resource/templates/options.html")]
+[UseTemplate( "/resource/templates/options.html" )]
 public class Options : GUIPanel
 {
 	public bool bCviewroll { get; set; }
@@ -17,7 +14,9 @@ public class Options : GUIPanel
 	public float fChudScale { get; set; }
 	public bool bColdexplosion { get; set; }
 
-	public string sPM { get; set; }
+	public string bSplayerModel { get; set; }
+	public string bSsprayColour { get; set; }
+	public string bSsprayIcon { get; set; }
 
 	public bool bCvrpointer { get; set; }
 
@@ -31,54 +30,56 @@ public class Options : GUIPanel
 	}
 	public override void Close()
 	{
-        MenuOpen = !MenuOpen;
-    }
+		MenuOpen = !MenuOpen;
+	}
 	public override void Tick()
 	{
 		base.Tick();
 		Drag();
 
-        if (MenuOpen && bCliveupdate)
+		if ( MenuOpen && bCliveupdate )
 		{
 			updateCvars();
 		}
-        SetClass("active", MenuOpen);
-    }
+		SetClass( "active", MenuOpen );
+	}
 	public void updateCvars()
 	{
-        HLWalkController.cl_rollangle = (bCviewroll? 2 : 0);
-        HLGame.hl_hud_scale = fChudScale;
-        HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
-        HLGame.hl_gui_rescale = bCguiscale;
-        HLGame.hl_pixelfont = bCpixelfont;
+		HLWalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
+		HLGame.hl_hud_scale = fChudScale;
+		HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
+		HLGame.hl_gui_rescale = bCguiscale;
+		HLGame.hl_pixelfont = bCpixelfont;
 		HLGame.cl_himodels = bChimodels;
 		HLGame.hl_vr_pointer = bCvrpointer;
 		HLGame.hl_ragdoll = bCragdolls;
 		HLGame.hl_classic_flashlight = bColdTorch;
 		HLGame.hl_classic_explosion = bColdexplosion;
-		HLPlayer.hl_pm = sPM;
+		HLGame.hl_spray_icon = bSsprayIcon;
+		HLGame.hl_spray_colour = bSsprayColour;
+		HLPlayer.hl_pm = bSplayerModel;
 
-    }
+	}
 
 
 	[Event.BuildInput]
-	public void ProcessClientInput(InputBuilder input)
+	public void ProcessClientInput( InputBuilder input )
 	{
-		if (input.Pressed(InputButton.Menu))
-        {
-            Position.x = (Screen.Width / 2) - (Box.Rect.Width / 2);
-            Position.y = (Screen.Height / 2) - (Box.Rect.Height / 2); 
+		if ( input.Pressed( InputButton.Menu ) )
+		{
+			Position.x = ( Screen.Width / 2 ) - ( Box.Rect.Width / 2 );
+			Position.y = ( Screen.Height / 2 ) - ( Box.Rect.Height / 2 );
 			MenuOpen = !MenuOpen;
 		}
 	}
-    public void OK()
-    {
+	public void OK()
+	{
 		updateCvars();
 		Close();
-    }
-    public void openTestdialog()
-    {
-        var a = Parent.AddChild<Advanced>();
-		(a as Advanced).MenuOpen = true;
-    }
+	}
+	public void openTestdialog()
+	{
+		var a = Parent.AddChild<Advanced>();
+		( a as Advanced ).MenuOpen = true;
+	}
 }
