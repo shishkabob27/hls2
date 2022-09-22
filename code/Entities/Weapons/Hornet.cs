@@ -27,6 +27,12 @@ partial class Hornet : NPC, ICombat
 		//if ( alienShot ) return (int)HLCombat.Class.CLASS_ALIEN_BIOWEAPON;
 		return (int)HLCombat.Class.CLASS_PLAYER_BIOWEAPON;
 	}
+	public override void TakeDamage( DamageInfo info )
+	{
+		// Hornets shouldn't gib.
+		info.Damage = 2;
+		base.TakeDamage( info );
+	}
 	public override void Spawn()
 	{
 		NoNav = true;
