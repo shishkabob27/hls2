@@ -4,9 +4,10 @@
 	height: 100%;
 	align-items: center;
 	justify-content: center;
-	opacity: 1;
+	opacity: 0.6;
 
 	Iconpanel {
+		image-rendering: pixelated;
 		width: 30px;
 		height: 30px;
 		background-image-tint: #ffffff;
