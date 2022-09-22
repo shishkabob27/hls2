@@ -42,7 +42,7 @@ partial class Egon : HLWeapon
             var owner2 = Owner as HLPlayer;
             var startPos = GetFiringPos();
             var dir = GetFiringRotation().Forward;
-            var tr = Trace.Ray( startPos, startPos + dir * 800 )
+            var tr = Trace.Ray( startPos, startPos + dir * 2048 )
             .UseHitboxes()
                 .Ignore( owner2, false )
                 .WithAllTags( "solid" )
@@ -59,7 +59,7 @@ partial class Egon : HLWeapon
         var owner = Owner as HLPlayer;
         var startPos = GetFiringPos();
         var dir = GetFiringRotation().Forward;
-        var tr = Trace.Ray( startPos, startPos + dir * 800 )
+        var tr = Trace.Ray( startPos, startPos + dir * 2048 )
         .UseHitboxes()
             .Ignore( owner, false )
             .WithAllTags( "solid" )
