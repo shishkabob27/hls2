@@ -20,6 +20,7 @@ partial class RPGRocket : ModelEntity
 
 		float Speed = 2000.0f;
 		var velocity = Rotation.Forward * Speed;
+		Rotation = Owner.EyeRotation;
 
 		var start = Position;
 		var end = start + velocity * Time.Delta;
