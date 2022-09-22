@@ -204,9 +204,8 @@ partial class Hornet : NPC, ICombat
 				var a = Velocity.Normal;
 				a.x *= -1;
 				a.y *= -1;
-				Velocity = a;
-				Position = Position + Velocity * 4;
-				Velocity = Velocity * FlySpeed;
+				Position = Position + a * 4;
+				Velocity = a * FlySpeed;
 
 				return;
 			}
