@@ -32,6 +32,124 @@
 				bone_cull_type = "Aggressive"
 			},
 			{
+				_class = "WeightListList"
+				children = 
+				[
+					{
+						_class = "WeightList"
+						name = "uppermixlower"
+						default_weight = 0.0
+						weights = 
+						[
+							{
+								bone = "bip01_l_leg"
+								weight = 1.0
+							},
+							{
+								bone = "bip01_pelvis"
+								weight = 1.0
+							},
+							{
+								bone = "bip01_r_leg"
+								weight = 1.0
+							},
+							{
+								bone = "bip01_spine"
+								weight = 1.0
+							},
+							{
+								bone = "bip01_spine1"
+								weight = 0.0
+							},
+						]
+						master_morph_weight = -1.0
+						morph_weights = [  ]
+					},
+				]
+			},
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "LookAtChain"
+						name = "lowerchainl"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "bip01_l_leg"
+									weight = 1.0
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "upper"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "bip01_spine1"
+									weight = 1.0
+								},
+							]
+						}
+					},
+					{
+						_class = "LookAtChain"
+						name = "lowerchainr"
+						lookat_chain = 
+						{
+							name = ""
+							bones = 
+							[
+								{
+									name = "bip01_r_leg"
+									weight = 1.0
+								},
+							]
+						}
+					},
+					{
+						_class = "Feet"
+						children = 
+						[
+							{
+								_class = "Foot"
+								name = "left_foot"
+								anklebone = "bip01_l_foot"
+								toebone = "bip01_l_toe0"
+								balloffset = [ 0.0, 0.0, 0.0 ]
+								heeloffset = [ 0.0, 0.0, 0.0 ]
+								autolevel = true
+								traceheight = 10.0
+								traceradius = 4.0
+							},
+							{
+								_class = "Foot"
+								name = "right_foot"
+								anklebone = "bip01_r_foot"
+								toebone = "bip01_r_toe0"
+								balloffset = [ 0.0, 0.0, 0.0 ]
+								heeloffset = [ 0.0, 0.0, 0.0 ]
+								autolevel = true
+								traceheight = 10.0
+								traceradius = 4.0
+							},
+						]
+						locktolerance = 0.6
+						heighttolerance = 2.0
+						sanitizetrajectories = true
+					},
+				]
+			},
+			{
 				_class = "MaterialGroupList"
 				children = 
 				[
@@ -3071,7 +3189,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "animgraphs/player.vanmgrph"
 		base_model_name = ""
 	}
 }
