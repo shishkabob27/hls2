@@ -86,7 +86,6 @@ partial class Hornet : NPC, ICombat
 				Velocity = a;
 			}
 			Velocity *= FlySpeed;
-			Rotation = Rotation.LookAt( Velocity );
 
 			if ( HLGame.hl_gamemode != "deathmatch" )
 			{
@@ -119,6 +118,8 @@ partial class Hornet : NPC, ICombat
 			return;
 		}
 
+
+		Rotation = Rotation.LookAt( Velocity, new Vector3( 0, 0, 1 ) );
 
 		var start = Position;
 		var end = start + ( Velocity * Time.Delta );
@@ -164,7 +165,7 @@ partial class Hornet : NPC, ICombat
 			if ( tr.Entity.IsValid() )
 			{
 				PlaySound( "ag_hornethit" );
-				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, tr.Direction * 200, 20 )
+				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, tr.Direction * 200, 8 )
 													.UsingTraceResult( tr )
 													.WithAttacker( Owner )
 													.WithWeapon( this );
