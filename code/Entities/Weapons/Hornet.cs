@@ -82,7 +82,7 @@ partial class Hornet : NPC, ICombat
 
 	public override void ProcessEntity( Entity ent, int rel )
 	{
-		if ( Time.Now < StartAttack ) return;
+		if ( Time.Now < StartAttack || Dart ) return;
 		if ( rel > 0 && ent.Position.Distance( Position ) < 512 )
 		{
 			var EnemyLKP = ent.Position;
