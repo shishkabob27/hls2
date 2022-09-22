@@ -2,7 +2,7 @@
 [HideInEditor]
 partial class Hornet : NPC, ICombat
 {
-	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/crossbow_bolt.vmdl" );
+	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/hornet.vmdl" );
 
 	bool Stuck;
 	public bool alienShot = false;
