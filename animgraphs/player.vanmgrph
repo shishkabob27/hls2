@@ -371,7 +371,7 @@
 				{
 					_class = "CGroupAnimNode"
 					m_sName = "punch"
-					m_vecPosition = [ -448.0, 400.0 ]
+					m_vecPosition = [ -448.0, 528.0 ]
 					m_nNodeID = 
 					{
 						m_id = 825906600
@@ -1257,7 +1257,7 @@
 				{
 					_class = "CGroupAnimNode"
 					m_sName = "swing"
-					m_vecPosition = [ -448.0, 448.0 ]
+					m_vecPosition = [ -448.0, 576.0 ]
 					m_nNodeID = 
 					{
 						m_id = 892768618
@@ -2068,7 +2068,7 @@
 				{
 					_class = "CGroupAnimNode"
 					m_sName = "rifle"
-					m_vecPosition = [ -448.0, 256.0 ]
+					m_vecPosition = [ -448.0, 304.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1191285462
@@ -3633,6 +3633,16 @@
 						{
 							m_nodeID = 
 							{
+								m_id = 4294967295
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
 								m_id = 1191285462
 							}
 							m_outputID = 
@@ -3663,6 +3673,76 @@
 						{
 							m_nodeID = 
 							{
+								m_id = 4294967295
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
+								m_id = 4294967295
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
+								m_id = 4294967295
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
+								m_id = 4294967295
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
+								m_id = 4294967295
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
+								m_id = 4294967295
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
+								m_id = 4294967295
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
 								m_id = 825906600
 							}
 							m_outputID = 
@@ -3683,6 +3763,30 @@
 					]
 					m_tags = 
 					[
+						{
+							m_id = 4294967295
+						},
+						{
+							m_id = 4294967295
+						},
+						{
+							m_id = 4294967295
+						},
+						{
+							m_id = 4294967295
+						},
+						{
+							m_id = 4294967295
+						},
+						{
+							m_id = 4294967295
+						},
+						{
+							m_id = 4294967295
+						},
+						{
+							m_id = 4294967295
+						},
 						{
 							m_id = 4294967295
 						},
@@ -3823,7 +3927,7 @@
 				{
 					_class = "CGroupAnimNode"
 					m_sName = "shotgun"
-					m_vecPosition = [ -448.0, 304.0 ]
+					m_vecPosition = [ -448.0, 352.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1753638265
@@ -6079,7 +6183,7 @@
 				{
 					_class = "CGroupAnimNode"
 					m_sName = "holditem"
-					m_vecPosition = [ -448.0, 352.0 ]
+					m_vecPosition = [ -448.0, 400.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1997442101
@@ -7043,9 +7147,17 @@
 				[
 					"None",
 					"Pistol",
+					"Python",
 					"Rifle",
 					"Shotgun",
 					"HoldItem",
+					"Crossbow",
+					"Egon",
+					"Gauss",
+					"Hive",
+					"RPG",
+					"Squeak",
+					"Trip",
 					"Punch",
 					"Swing",
 				]
