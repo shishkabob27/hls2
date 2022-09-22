@@ -19,7 +19,7 @@ partial class Egon : HLWeapon
         base.Spawn();
 
         Model = WorldModel;
-        AmmoClip = 0;
+        WeaponIsAmmoAmount = 15;
     }
     public override bool CanPrimaryAttack()
     {

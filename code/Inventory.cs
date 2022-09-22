@@ -23,7 +23,7 @@
 		//
 
 
-		if ( weapon.WeaponIsAmmo )
+		if ( weapon.WeaponIsAmmo || weapon.ClipSize < 0 )
 		{
 			var ammo2 = weapon.WeaponIsAmmoAmount;
 			var ammoType2 = weapon.AmmoType;

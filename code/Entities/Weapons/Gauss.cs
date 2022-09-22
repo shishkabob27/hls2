@@ -14,7 +14,7 @@ partial class Gauss : HLWeapon
     public override string AmmoIcon => "ui/ammo7.png";
     public override string InventoryIcon => "/ui/weapons/weapon_gauss.png";
     public override float ReloadTime => 0.1f;
-    public override int ClipSize => 1;
+    public override int ClipSize => -1;
     static Vector3 orangeCOLOUR = new Vector3( 255, 128, 0 );
     static Vector3 whiteCOLOUR = new Vector3( 255, 255, 255 );
     Nullable<Sound> spinSound;
@@ -24,9 +24,8 @@ partial class Gauss : HLWeapon
     public override void Spawn()
     {
         base.Spawn();
-
         Model = WorldModel;
-        AmmoClip = 0;
+        WeaponIsAmmoAmount = 15;
     }
 
     Particles Beam;
