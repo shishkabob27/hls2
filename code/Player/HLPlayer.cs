@@ -78,6 +78,7 @@
 			case "player": pm = "models/hl1/player/player.vmdl"; break; // helmet is a different model, it has colour support and this doesn't. I like this better so add it here since yeah
 			case "barney": pm = "models/hl1/player/barney.vmdl"; break;
 			case "gina": pm = "models/hl1/player/gina.vmdl"; break;
+			case "gman": pm = "models/hl1/player/gman.vmdl"; break;
 			case "helmet": pm = "models/hl1/player/helmet.vmdl"; break;
 			case "robo": pm = "models/hl1/player/robo.vmdl"; break;
 			default: pm = "models/hl1/player/player.vmdl"; break;
