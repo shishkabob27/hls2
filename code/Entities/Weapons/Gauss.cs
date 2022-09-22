@@ -1,11 +1,11 @@
-﻿[Library("weapon_gauss"), HammerEntity]
-[EditorModel("models/hl1/weapons/world/gauss.vmdl")]
-[Title("Gauss"), Category("Weapons")]
+﻿[Library( "weapon_gauss" ), HammerEntity]
+[EditorModel( "models/hl1/weapons/world/gauss.vmdl" )]
+[Title( "Gauss" ), Category( "Weapons" )]
 partial class Gauss : HLWeapon
 {
     //stub
 
-    public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/gauss.vmdl");
+    public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/gauss.vmdl" );
     public override string ViewModelPath => "models/hl1/weapons/view/v_gauss.vmdl";
 
     public override int Bucket => 3;
@@ -15,8 +15,8 @@ partial class Gauss : HLWeapon
     public override string InventoryIcon => "/ui/weapons/weapon_gauss.png";
     public override float ReloadTime => 0.1f;
     public override int ClipSize => 1;
-    static Vector3 orangeCOLOUR = new Vector3(255, 128, 0);
-    static Vector3 whiteCOLOUR = new Vector3(255, 255, 255);
+    static Vector3 orangeCOLOUR = new Vector3( 255, 128, 0 );
+    static Vector3 whiteCOLOUR = new Vector3( 255, 255, 255 );
     Nullable<Sound> spinSound;
     bool spinning = false;
     float spintime = 0.0f;
@@ -30,29 +30,35 @@ partial class Gauss : HLWeapon
     }
 
     Particles Beam;
-    public override void Simulate(Client owner)
+    public override void Simulate( Client owner )
     {
-        if (spinSound == null)
+        if ( spinSound == null )
         {
-            spinSound = Sound.FromEntity("pulsemachine", this).SetVolume(0);
-        } else
-        {
-            spinSound?.SetVolume(spinning ? 1 : 0);
-            spinSound?.SetPitch(((spintime + 1.05f)/2).Clamp(1.1f,2.50f));
+            spinSound = Sound.FromEntity( "pulsemachine", this ).SetVolume( 0 );
         }
-        base.Simulate(owner);
-        if (Owner is not HLPlayer player) return;
+        else
+        {
+            spinSound?.SetVolume( spinning ? 1 : 0 );
+            spinSound?.SetPitch( ( ( spintime + 1.05f ) / 2 ).Clamp( 1.1f, 2.50f ) );
+        }
+        base.Simulate( owner );
+        if ( Owner is not HLPlayer player ) return;
 
         var owner2 = Owner as HLPlayer;
 
-        if ((!(Input.Down(InputButton.SecondaryAttack)) && spinning))
+        if ( ( !( Input.Down( InputButton.SecondaryAttack ) ) && spinning ) || ( ( player.AmmoCount( AmmoType.Uranium ) <= 0 ) && spinning ) )
         {
-            ViewModelEntity?.SetAnimParameter("spinning", false);
-            ShootEffects(whiteCOLOUR);
-            var x = 85 + Rand.Float(0, 31);
-            PlaySound("gauss").SetPitch(HLUtils.CorrectPitch(x));
-            ShootBullet(0, 1, 15 * spintime, 2.0f);
-            ViewModelEntity?.SetAnimParameter("fire", true);
+            ViewModelEntity?.SetAnimParameter( "spinning", false );
+            ShootEffects( whiteCOLOUR );
+            var x = 85 + Rand.Float( 0, 31 );
+            PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
+            var dmg = 15 * spintime;
+            ShootBullet( 0, 1, dmg, 2.0f );
+            var a = player.Velocity;
+
+            a.z += ( ( player.EyeRotation.Forward * spintime ) * dmg * -5 ).z;
+            if ( HLGame.hl_gamemode == "deathmatch" ) player.Velocity = a;
+            ViewModelEntity?.SetAnimParameter( "fire", true );
             spinning = false;
         }
     }
@@ -60,48 +66,48 @@ partial class Gauss : HLWeapon
     {
         TimeSincePrimaryAttack = 0;
 
-        if (Owner is not HLPlayer player) return;
+        if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
-        if (owner.TakeAmmo(AmmoType, 2) == 0)
+        if ( owner.TakeAmmo( AmmoType, 2 ) == 0 )
         {
             return;
         }
-        var x = 85 + Rand.Float(0, 31);
-        PlaySound("gauss").SetPitch(HLUtils.CorrectPitch(x));
+        var x = 85 + Rand.Float( 0, 31 );
+        PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 
-        ShootEffects(orangeCOLOUR);
-        ShootBullet(0, 1, 15, 2.0f);
+        ShootEffects( orangeCOLOUR );
+        ShootBullet( 0, 1, 15, 2.0f );
 
     }
-    protected void ShootEffects(Vector3 beamcolour)
+    protected void ShootEffects( Vector3 beamcolour )
     {
-        if (Owner is not HLPlayer player) return;
+        if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
         var startPos = GetFiringPos();
         var dir = GetFiringRotation().Forward;
 
-        var tr = Trace.Ray(startPos, startPos + dir * 800)
+        var tr = Trace.Ray( startPos, startPos + dir * 800 )
         .UseHitboxes()
-            .Ignore(owner, false)
-            .WithAllTags("solid")
+            .Ignore( owner, false )
+            .WithAllTags( "solid" )
             .Run();
 
-        if (true)//Beam == null)
+        if ( true )//Beam == null)
         {
-            Beam = Particles.Create("particles/generic_beam.vpcf", tr.EndPosition);
+            Beam = Particles.Create( "particles/generic_beam.vpcf", tr.EndPosition );
         }
 
-        ViewModelEntity?.SetAnimParameter("fire", true);
-        VRWeaponModel?.SetAnimParameter("fire", true);
-        ViewModelEntity?.SetAnimParameter("holdtype_attack", false ? 2 : 1);
-        VRWeaponModel?.SetAnimParameter("holdtype_attack", false ? 2 : 1);
+        ViewModelEntity?.SetAnimParameter( "fire", true );
+        VRWeaponModel?.SetAnimParameter( "fire", true );
+        ViewModelEntity?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );
+        VRWeaponModel?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );
 
-        Beam.SetEntityAttachment(0, EffectEntity, "muzzle", true);
-        if (Client.IsUsingVr) Beam.SetEntityAttachment(0, VRWeaponModel, "muzzle", true);
-        Beam.SetPosition(2, beamcolour);
-        Beam.SetPosition(3, new Vector3(2, 1, 0));
+        Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
+        if ( Client.IsUsingVr ) Beam.SetEntityAttachment( 0, VRWeaponModel, "muzzle", true );
+        Beam.SetPosition( 2, beamcolour );
+        Beam.SetPosition( 3, new Vector3( 2, 1, 0 ) );
 
         //Beam.SetPosition(0, Position);
         //var pos = tr.StartPosition;
@@ -109,17 +115,17 @@ partial class Gauss : HLWeapon
         //if (a != null)
         //pos = (a ?? default).Position;
         //Beam.SetPosition(0, pos);
-        Beam.SetPosition(1, tr.EndPosition);
+        Beam.SetPosition( 1, tr.EndPosition );
         Beam.Destroy();
 
-        Particles.Create("particles/gauss_impact.vpcf", tr.EndPosition);
+        Particles.Create( "particles/gauss_impact.vpcf", tr.EndPosition );
     }
 
     int tickammouse = 0;
     public override void AttackSecondary()
     {
 
-        if (!spinning)
+        if ( !spinning )
         {
             tickammouse = 5;
             spintime = 0;
@@ -127,28 +133,28 @@ partial class Gauss : HLWeapon
 
         base.AttackSecondary();
         TimeSinceSecondaryAttack = 0;
-        if (Owner is not HLPlayer player) return;
+        if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
         tickammouse += 1;
 
-        if (tickammouse >= 5 && spintime < 10)
+        if ( tickammouse >= 5 && spintime < 10 )
         {
             tickammouse = 0;
-            if (owner.TakeAmmo(AmmoType, 1) == 0)
+            if ( owner.TakeAmmo( AmmoType, 1 ) == 0 )
             {
                 return;
-            }  
+            }
         }
 
         spinning = true;
 
-        ViewModelEntity?.SetAnimParameter("spinning", true);
-        if (spintime >= 10)
+        ViewModelEntity?.SetAnimParameter( "spinning", true );
+        if ( spintime >= 10 )
             return;
 
         spintime += 0.1f;
         //charge attack here!
-        
+
     }
 }
