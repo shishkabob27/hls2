@@ -41,7 +41,7 @@
 
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
-	[ConVar.Replicated] public static string hl_pm { get; set; } = "barney";
+	[ConVar.Client] public static string hl_pm { get; set; } = "barney";
 
 	public HLPlayer()
 	{
@@ -79,7 +79,7 @@
 			case "barney": pm = "models/hl1/monster/barney.vmdl"; break;
 			default: pm = "models/hl1/player/playe.vmdl"; break;
 		}
-		
+
 		SetModel(pm);
 
 		SetAnimGraph("animgraphs/player.vanmgrph");
