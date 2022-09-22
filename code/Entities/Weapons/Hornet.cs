@@ -131,8 +131,6 @@ partial class Hornet : NPC, ICombat
 					break;
 			}
 
-			Velocity *= FlySpeed;
-
 			if ( HLGame.hl_gamemode != "deathmatch" )
 			{
 				if ( flDelta >= 0.4 && ( Position - EnemyLKP ).Length <= 300 )
@@ -173,7 +171,6 @@ partial class Hornet : NPC, ICombat
 		var tr = Trace.Ray( start, end )
 				.UseHitboxes()
 				//.HitLayer( CollisionLayer.Water, !InWater )
-				.Ignore( Owner )
 				.Ignore( this )
 				.Size( 1.0f )
 				.Run();
@@ -181,7 +178,11 @@ partial class Hornet : NPC, ICombat
 
 		if ( tr.Hit )
 		{
-
+			if ( tr.Entity == Owner )
+			{
+				Position = end;
+				return;
+			}
 			if ( tr.Entity.IsValid() && GetRelationship( tr.Entity ) == HLCombat.R_NO )
 			{
 				//Rotation =
