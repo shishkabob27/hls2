@@ -8,6 +8,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public bool InPriorityScriptedSequence = false;
 	public bool DontSleep = false;
 	public bool NoNav = false;
+	public float GroundBounce = 0;
+	public bool HasFriction = true;
 
 	[Flags]
 	public enum Flags
@@ -356,10 +358,11 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	{
 		if ( LifeState == LifeState.Dead )
 			return;
-		var bbox = BBox.FromHeightAndRadius( 64, 4 );
+		var bbox = CollisionBounds;
 		//DebugOverlay.Box( Position, bbox.Mins, bbox.Maxs, Color.Green );
 
 		MoveHelper move = new( Position, Velocity );
+		move.GroundBounce = GroundBounce;
 		move.MaxStandableAngle = 50;
 		move.Trace = move.Trace.Ignore( this ).Size( bbox );
 
@@ -387,27 +390,27 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 				if ( !tr.StartedSolid )
 				{
-					move.Position = tr.EndPosition;
+					//move.Position = tr.EndPosition;
 				}
 
 				if ( InputVelocity.Length > 0 )
 				{
 					var movement = move.Velocity.Dot( InputVelocity.Normal );
 					move.Velocity = move.Velocity - movement * InputVelocity.Normal;
-					move.ApplyFriction( tr.Surface.Friction * 10.0f, timeDelta );
+					if ( HasFriction ) move.ApplyFriction( tr.Surface.Friction * 10.0f, timeDelta );
 					move.Velocity += movement * InputVelocity.Normal;
 
 				}
 				else
 				{
-					move.ApplyFriction( tr.Surface.Friction * 10.0f, timeDelta );
+					if ( HasFriction ) move.ApplyFriction( tr.Surface.Friction * 10.0f, timeDelta );
 				}
 			}
 			else
 			{
 				GroundEntity = null;
-				move.Velocity += Vector3.Down * 900 * timeDelta;
-				XeNPC.Debug.Draw.Once.WithColor( Color.Red ).Circle( Position, Vector3.Up, 10.0f );
+				move.Velocity += Vector3.Down * 800 * timeDelta;
+				//XeNPC.Debug.Draw.Once.WithColor( Color.Red ).Circle( Position, Vector3.Up, 10.0f );
 			}
 		}
 
