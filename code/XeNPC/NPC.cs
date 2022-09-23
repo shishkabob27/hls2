@@ -12,6 +12,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float WallBounce = 0;
 	public Entity WallEntity;
 	public bool HasFriction = true;
+	public bool Unstick = true;
 
 	[Flags]
 	public enum Flags
@@ -379,7 +380,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			//						.Arrow( Position, Position + Velocity * 2, Vector3.Up, 2.0f );
 
 			using ( Profile.Scope( "TryUnstuck" ) )
-				move.TryUnstuck();
+				if ( Unstick ) move.TryUnstuck();
 
 			using ( Profile.Scope( "TryMoveWithStep" ) )
 				move.TryMoveWithStep( timeDelta, 30 );

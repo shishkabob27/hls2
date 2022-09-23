@@ -28,6 +28,7 @@ public class Snark : NPC
         GroundBounce = 1;
         WallBounce = 1;
         HasFriction = false;
+        Unstick = true;
         PlaySound( "sqk_throw" );
         entFOV = 0; // 180 degrees
         Tags.Clear();
@@ -36,6 +37,8 @@ public class Snark : NPC
     }
     public override void ProcessEntity( Entity ent, int rel )
     {
+        if ( ent is Snark ) return;
+        if ( ent == Owner ) return;
         if ( Time.Now < StartAttack2 ) return;
         StartAttack2 = Time.Now + 0.1f;
         if ( Time.Now < NextHunt2 ) return;
