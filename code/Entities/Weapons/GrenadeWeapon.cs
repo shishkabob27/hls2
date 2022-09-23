@@ -62,13 +62,31 @@ partial class GrenadeWeapon : HLWeapon
 		if ( IsServer )
 			using ( Prediction.Off() )
 			{
+
+
+				Vector3 angThrow = new Vector3( player.EyeRotation.Angles().pitch, player.EyeRotation.Angles().yaw, player.EyeRotation.Angles().roll ) + 0; // todo punchangle
+
+				if ( angThrow.x < 0 )
+					angThrow.x = -10 + angThrow.x * ( ( 90 - 10 ) / 90.0f );
+				else
+					angThrow.x = -10 + angThrow.x * ( ( 90 + 10 ) / 90.0f );
+
+				var a = new Angles( angThrow.x, angThrow.y, angThrow.z );
+				float flVel = ( 90 - angThrow.x ) * 4;
+				if ( flVel > 500 )
+					flVel = 500;
+
+				Vector3 vecSrc = player.EyePosition + a.ToRotation().Forward * 16;
+
+				Vector3 vecThrow = a.ToRotation().Forward * flVel + player.Velocity;
+
 				var grenade = new HandGrenade
 				{
-					Position = GetFiringPos() + GetFiringRotation().Forward * 3.0f,
+					Position = vecSrc,
 					Owner = Owner
 				};
 
-				grenade.Velocity = GetFiringRotation().Forward * 600.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
+				grenade.Velocity = vecThrow; //GetFiringRotation().Forward * 600.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
 
 				// This is fucked in the head, lets sort this this year
 				Tags.Add( "debris" );
