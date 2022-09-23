@@ -436,8 +436,12 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 
 	DamageInfo LastDamage;
-
 	public override void TakeDamage( DamageInfo info )
+	{
+		TakeDamage( info, false );
+
+	}
+	public void TakeDamage( DamageInfo info, bool alwaysgib = false )
 	{
 		if ( LifeState == LifeState.Alive )
 			targetRotation = Rotation.From( ( ( Position - info.Position ) * -360 ).EulerAngles.WithRoll( 0 ).WithPitch( 0 ) );
@@ -462,6 +466,11 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				if ( LifeState == LifeState.Alive )
 				{
 					OnKilled();
+					if ( alwaysgib )
+					{
+						HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds );
+						Delete();
+					}
 					LifeState = LifeState.Dead;
 					//Delete();
 				}
