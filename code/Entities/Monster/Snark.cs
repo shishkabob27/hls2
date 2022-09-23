@@ -26,6 +26,7 @@ public class Snark : NPC
         SetAnimGraph( NPCAnimGraph );
         Die = Time.Now + SQUEEK_DETONATE_DELAY;
         GroundBounce = 1;
+        WallBounce = 1;
         HasFriction = false;
         PlaySound( "sqk_throw" );
         entFOV = 0; // 180 degrees
@@ -126,6 +127,14 @@ public class Snark : NPC
             }
             //PrevGroundEntity = GroundEntity;
         }
+        if ( WallEntity != null )
+        {
+            NextHunt = Time.Now - 1;
+            NextHunt2 = Time.Now - 1;
+            StartAttack = Time.Now - 1;
+            StartAttack2 = Time.Now - 1;
+            Bounce( WallEntity );
+        }
     }
     public override void Touch( Entity other )
     {
@@ -146,6 +155,11 @@ public class Snark : NPC
 
             NextSound2 = Time.Now + 0.2f;
             Sound.FromEntity( "sqk_deploy", this ).SetPitch( flpitch );
+            var damageInfo = DamageInfo.FromBullet( Position, other.Position * 200, 10 )
+                                                    .WithAttacker( Owner )
+                                                    .WithWeapon( this );
+
+            other.TakeDamage( damageInfo );
         }
 
         if ( Time.Now < NextSound ) return;

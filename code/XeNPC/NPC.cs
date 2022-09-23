@@ -9,6 +9,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public bool DontSleep = false;
 	public bool NoNav = false;
 	public float GroundBounce = 0;
+	public float WallBounce = 0;
+	public Entity WallEntity;
 	public bool HasFriction = true;
 
 	[Flags]
@@ -364,8 +366,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 		MoveHelper move = new( Position, Velocity );
 		move.GroundBounce = GroundBounce;
+		move.WallBounce = WallBounce;
 		move.MaxStandableAngle = 50;
 		move.Trace = move.Trace.Ignore( this ).Size( bbox );
+
 
 		if ( !Velocity.IsNearlyZero( 0.001f ) )
 		{
@@ -412,6 +416,16 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				GroundEntity = null;
 				move.Velocity += Vector3.Down * 800 * timeDelta;
 				//XeNPC.Debug.Draw.Once.WithColor( Color.Red ).Circle( Position, Vector3.Up, 10.0f );
+			}
+
+			var tr2 = move.TraceDirection( Vector3.Forward * 16.0f );
+			if ( move.HitWall )
+			{
+				WallEntity = tr2.Entity;
+			}
+			else
+			{
+				WallEntity = null;
 			}
 		}
 
