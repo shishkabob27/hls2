@@ -63,7 +63,7 @@ partial class Crowbar : HLWeapon
 			if ( !IsServer ) continue;
 			if ( !tr.Entity.IsValid() ) continue;
 
-			var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 32, 5 )
+			var damageInfo = DamageInfo.FromBullet( tr.EndPosition, forward * 32, 10 )
 				.UsingTraceResult( tr )
 				.WithAttacker( Owner )
 				.WithWeapon( this );
