@@ -20,7 +20,23 @@ partial class Gauss : HLWeapon
     Nullable<Sound> spinSound;
     bool spinning = false;
     float spintime = 0.0f;
+    float spintime2 = 0.0f;
+    float startspin = 0.0f;
 
+    float GetFullChargeTime()
+    {
+
+        if ( HLGame.hl_gamemode == "deathmatch" )
+            return 1.5f;
+        return 4;
+    }
+    float GetAmmoTickTime()
+    {
+
+        if ( HLGame.hl_gamemode == "deathmatch" )
+            return 0.1f;
+        return 0.3f;
+    }
     public override void Spawn()
     {
         base.Spawn();
@@ -37,8 +53,12 @@ partial class Gauss : HLWeapon
         }
         else
         {
+            float pitch = ( Time.Now - startspin ) * ( 150 / GetFullChargeTime() ) + 100;
+            if ( pitch > 250 )
+                pitch = 250;
+
             spinSound?.SetVolume( spinning ? 1 : 0 );
-            spinSound?.SetPitch( ( ( spintime + 1.05f ) / 2 ).Clamp( 1.1f, 2.50f ) );
+            spinSound?.SetPitch( pitch / 100 ); // ( spintime + 1.05f ) / 2 ).Clamp( 1.1f, 2.50f ) ); // old math, similar effect but doesnt play with multiplayers different timings as nice
         }
         base.Simulate( owner );
         if ( Owner is not HLPlayer player ) return;
@@ -51,12 +71,27 @@ partial class Gauss : HLWeapon
             ShootEffects( whiteCOLOUR );
             var x = 85 + Rand.Float( 0, 31 );
             PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
-            var dmg = 15 * spintime;
+            var dmg = 200.0f;
+            if ( Time.Now - startspin > GetFullChargeTime() )
+            {
+                dmg = 200;
+            }
+            else
+            {
+                dmg = 200 * ( ( Time.Now - startspin ) / GetFullChargeTime() );
+            }
             ShootBullet( 0, 1, dmg, 2.0f );
+            var ZVel = player.Velocity.z;
             var a = player.Velocity;
 
-            a = ( ( player.EyeRotation.Forward * spintime ) * dmg * -5 );
-            if ( HLGame.hl_gamemode == "deathmatch" ) player.Velocity = a;
+            a = player.Velocity - player.EyeRotation.Forward * dmg * 5;
+            if ( HLGame.hl_gamemode != "deathmatch" )
+            {
+                // In singleplayer we do not get launched upwards
+                a.z = ZVel;
+            }
+            player.Velocity = a;
+
             ViewModelEntity?.SetAnimParameter( "fire", true );
             spinning = false;
         }
@@ -76,7 +111,7 @@ partial class Gauss : HLWeapon
         PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 
         ShootEffects( orangeCOLOUR );
-        ShootBullet( 0, 1, 15, 2.0f );
+        ShootBullet( 0, 1, 20, 2.0f );
 
     }
     protected void ShootEffects( Vector3 beamcolour )
@@ -120,14 +155,16 @@ partial class Gauss : HLWeapon
         Particles.Create( "particles/gauss_impact.vpcf", tr.EndPosition );
     }
 
-    int tickammouse = 0;
+    float tickammouse = 0;
     public override void AttackSecondary()
     {
 
         if ( !spinning )
         {
-            tickammouse = 5;
+            tickammouse = Time.Now - 1;
             spintime = 0;
+            spintime2 = Time.Now + GetFullChargeTime();
+            startspin = Time.Now;
         }
 
         base.AttackSecondary();
@@ -135,11 +172,10 @@ partial class Gauss : HLWeapon
         if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
-        tickammouse += 1;
 
-        if ( tickammouse >= 5 && spintime < 10 )
+        if ( Time.Now > tickammouse && Time.Now < spintime2 )
         {
-            tickammouse = 0;
+            tickammouse = Time.Now + GetAmmoTickTime();
             if ( owner.TakeAmmo( AmmoType, 1 ) == 0 )
             {
                 return;
@@ -149,7 +185,7 @@ partial class Gauss : HLWeapon
         spinning = true;
 
         ViewModelEntity?.SetAnimParameter( "spinning", true );
-        if ( spintime >= 10 )
+        if ( Time.Now > spintime2 )
             return;
 
         spintime += 0.1f;
