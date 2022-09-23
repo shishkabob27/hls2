@@ -55,7 +55,7 @@ partial class Gauss : HLWeapon
             ShootBullet( 0, 1, dmg, 2.0f );
             var a = player.Velocity;
 
-            a.z += ( ( player.EyeRotation.Forward * spintime ) * dmg * -5 ).z;
+            a = ( ( player.EyeRotation.Forward * spintime ) * dmg * -5 );
             if ( HLGame.hl_gamemode == "deathmatch" ) player.Velocity = a;
             ViewModelEntity?.SetAnimParameter( "fire", true );
             spinning = false;
