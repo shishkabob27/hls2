@@ -37,14 +37,15 @@ public class Snark : NPC
     }
     public override void ProcessEntity( Entity ent, int rel )
     {
-        if ( ent is Snark ) return;
-        if ( ent == Owner ) return;
-        if ( Time.Now < StartAttack2 ) return;
-        StartAttack2 = Time.Now + 0.1f;
-        if ( Time.Now < NextHunt2 ) return;
-        NextHunt2 = Time.Now + 2.0f;
+
         if ( ent.Position.Distance( Position ) < 512 && ent is not Snark && ent != Owner )
         {
+            if ( ent is Snark ) return;
+            if ( ent == Owner ) return;
+            if ( Time.Now < StartAttack2 ) return;
+            StartAttack2 = Time.Now + 0.1f;
+            if ( Time.Now < NextHunt2 ) return;
+            NextHunt2 = Time.Now + 2.0f;
             var vecDir = ent.Position - Position;
             if ( ( ent as ModelEntity ) != null )
             {
@@ -156,7 +157,7 @@ public class Snark : NPC
         if ( other is ICombat && other is not Snark && Time.Now > NextSound2 )
         {
 
-            NextSound2 = Time.Now + 0.2f;
+            NextSound2 = Time.Now + 0.4f;
             Sound.FromEntity( "sqk_deploy", this ).SetPitch( flpitch );
             var damageInfo = DamageInfo.FromBullet( Position, other.Position * 200, 10 )
                                                     .WithAttacker( Owner )
