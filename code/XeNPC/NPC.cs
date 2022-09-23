@@ -291,7 +291,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			{
 				continue;
 			}
-			var b = Trace.Ray( EyePosition, ent.Position )
+			var b = Trace.Ray( ( Position + Vector3.Up * EyeHeight ), ent.Position )
 				.Ignore( this )
 				.Run();
 			if ( b.Entity != ent )
@@ -324,7 +324,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		float flDot;
 
 
-		var e = ( ent.WorldSpaceBounds.Center - WorldSpaceBounds.Center );
+		var e = ( ent.WorldSpaceBounds.Center - ( Position + Vector3.Up * EyeHeight ) );
 		vec2LOS = new Vector2( e.x, e.y );
 		vec2LOS = vec2LOS.Normal;
 

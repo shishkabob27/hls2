@@ -54,7 +54,7 @@ partial class SnarkWeapon : HLWeapon
                     Owner = Owner
                 };
 
-                snark.Velocity = GetFiringRotation().Forward * 600.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
+                snark.Velocity = GetFiringRotation().Forward * 300.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
 
                 // This is fucked in the head, lets sort this this year
                 Tags.Add( "debris" );

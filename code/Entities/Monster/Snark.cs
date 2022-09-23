@@ -42,7 +42,6 @@ public class Snark : NPC
         NextHunt2 = Time.Now + 2.0f;
         if ( ent.Position.Distance( Position ) < 512 && ent is not Snark && ent != Owner )
         {
-            Owner = null;
             var vecDir = ent.Position - Position;
             if ( ( ent as ModelEntity ) != null )
             {
@@ -144,6 +143,7 @@ public class Snark : NPC
     void Bounce( Entity other )
     {
         if ( IsClient ) return;
+        Owner = null;
         NextHunt = Time.Now - 1;
         NextHunt2 = Time.Now - 1;
         RotAngles.pitch = 0;
