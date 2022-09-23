@@ -10,8 +10,13 @@ partial class Egon : HLWeapon
     public override int Bucket => 3;
     public override int BucketWeight => 3;
     public override AmmoType AmmoType => AmmoType.Uranium;
+    public override int ClipSize => -1;
     public override string AmmoIcon => "ui/ammo7.png";
-
+    float AmmoUseTime;
+    float dmgtime;
+    Sound currentsound;
+    float rundelay;
+    bool hasStartedrun;
     public override string InventoryIcon => "/ui/weapons/weapon_egon.png";
 
     public override void Spawn()
@@ -19,6 +24,7 @@ partial class Egon : HLWeapon
         base.Spawn();
 
         Model = WorldModel;
+        AmmoClip = 0;
         WeaponIsAmmoAmount = 15;
     }
     public override bool CanPrimaryAttack()
@@ -32,13 +38,20 @@ partial class Egon : HLWeapon
         {
             if ( Beam != null )
             {
+                currentsound.Stop();
+                currentsound = PlaySound( "egon_off" );
                 Beam.Destroy();
                 Beam = null;
             }
         }
         if ( Beam != null )
         {
-
+            if ( Time.Now > rundelay && !hasStartedrun )
+            {
+                hasStartedrun = true;
+                currentsound.Stop();
+                currentsound = PlaySound( "egon_run" );
+            }
             var owner2 = Owner as HLPlayer;
             var startPos = GetFiringPos();
             var dir = GetFiringRotation().Forward;
@@ -55,20 +68,53 @@ partial class Egon : HLWeapon
     }
     public override void AttackPrimary()
     {
-
         var owner = Owner as HLPlayer;
         var startPos = GetFiringPos();
         var dir = GetFiringRotation().Forward;
         var tr = Trace.Ray( startPos, startPos + dir * 4096 )
         .UseHitboxes()
             .Ignore( owner, false )
-            .WithAllTags( "solid" )
+            .WithAnyTags( "solid", "npc" )
             .Run();
         if ( Beam == null )
         {
+            AmmoUseTime = Time.Now;
+            currentsound.Stop();
+            currentsound = PlaySound( "egon_windup" );
+            hasStartedrun = false;
+            rundelay = Time.Now + 3.935f;
             Beam = Particles.Create( "particles/egon_beam.vpcf", tr.EndPosition );
         }
-
+        if ( Time.Now > dmgtime )
+        {
+            dmgtime = Time.Now + 0.1f;
+            if ( tr.Entity is NPC )
+            {
+                ( tr.Entity as NPC ).TakeDamage( DamageInfo.Generic( 14 ), true );
+            }
+            else
+            {
+                tr.Entity.TakeDamage( DamageInfo.Generic( 14 ) );
+            }
+            if ( HLGame.hl_gamemode == "deathmatch" )
+            {
+                // multiplayer uses 1 ammo every 1/10th second
+                if ( Time.Now >= AmmoUseTime )
+                {
+                    owner.TakeAmmo( AmmoType, 1 );
+                    AmmoUseTime = Time.Now + 0.2f;
+                }
+            }
+            else
+            {
+                // single player, use 3 ammo/second
+                if ( Time.Now >= AmmoUseTime )
+                {
+                    owner.TakeAmmo( AmmoType, 1 );
+                    AmmoUseTime = Time.Now + 0.1f;
+                }
+            }
+        }
         Beam.SetPosition( 1, tr.EndPosition );
         Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
         if ( Client.IsUsingVr ) Beam.SetEntityAttachment( 0, VRWeaponModel, "muzzle", true );
@@ -81,7 +127,6 @@ partial class Egon : HLWeapon
         //pos = (a ?? default).Position;
         //Beam.SetPosition(0, pos);
         Beam.SetPosition( 1, tr.EndPosition );
-        Particles.Create( "particles/gauss_impact.vpcf", tr.EndPosition );
 
         base.AttackPrimary();
     }
