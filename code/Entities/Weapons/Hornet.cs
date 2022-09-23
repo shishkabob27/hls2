@@ -35,6 +35,7 @@ partial class Hornet : NPC, ICombat
 	}
 	public override void Spawn()
 	{
+		EyeHeight = 0;
 		NoNav = true;
 		entFOV = 0.9f;
 		Health = 1;
