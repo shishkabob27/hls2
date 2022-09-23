@@ -7,6 +7,8 @@
 
 		Model = WorldModel;
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+		Friction = 0.8f;
+
 		minsOverride = CollisionBounds.Mins;
 		maxsOverride = CollisionBounds.Maxs;
 
