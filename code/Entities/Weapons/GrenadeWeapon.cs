@@ -68,7 +68,7 @@ partial class GrenadeWeapon : HLWeapon
 					Owner = Owner
 				};
 
-				grenade.PhysicsBody.Velocity = GetFiringRotation().Forward * 600.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
+				grenade.Velocity = GetFiringRotation().Forward * 600.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
 
 				// This is fucked in the head, lets sort this this year
 				Tags.Add( "debris" );
