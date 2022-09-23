@@ -87,7 +87,7 @@ partial class Gauss : HLWeapon
         var startPos = GetFiringPos();
         var dir = GetFiringRotation().Forward;
 
-        var tr = Trace.Ray( startPos, startPos + dir * 800 )
+        var tr = Trace.Ray( startPos, startPos + dir * 4096 )
         .UseHitboxes()
             .Ignore( owner, false )
             .WithAllTags( "solid" )
