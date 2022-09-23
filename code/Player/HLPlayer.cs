@@ -170,16 +170,17 @@
 		ply.Inventory.Add( new SnarkWeapon() );
 		ply.Inventory.Add( new SatchelWeapon() );
 
-		//ply.GiveAmmo( AmmoType.Pistol, 1000 );
-		//ply.GiveAmmo( AmmoType.Python, 1000 );
-		//ply.GiveAmmo( AmmoType.Buckshot, 1000 );
-		//ply.GiveAmmo( AmmoType.Crossbow, 1000 );
+		ply.GiveAmmo( AmmoType.Pistol, 17 );
+		ply.GiveAmmo( AmmoType.Python, 6 );
+		ply.GiveAmmo( AmmoType.Buckshot, 12 );
+		ply.GiveAmmo( AmmoType.Crossbow, 5 );
 		//ply.GiveAmmo( AmmoType.Grenade, 1000 );
-		//ply.GiveAmmo( AmmoType.SMGGrenade, 1000 );
-		//ply.GiveAmmo( AmmoType.RPG, 1000 );
+		ply.GiveAmmo( AmmoType.Pistol, 20 );
+		ply.GiveAmmo( AmmoType.SMGGrenade, 3 );
+		ply.GiveAmmo( AmmoType.RPG, 1 );
 		//ply.GiveAmmo( AmmoType.Tripmine, 1000 );
 		//ply.GiveAmmo( AmmoType.Satchel, 1000 );
-		//ply.GiveAmmo( AmmoType.Uranium, 1000 );
+		ply.GiveAmmo( AmmoType.Uranium, 5 );
 		//ply.GiveAmmo( AmmoType.Snark, 1000 );
 
 		var battery = new Battery();
