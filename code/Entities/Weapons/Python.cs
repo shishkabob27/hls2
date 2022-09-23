@@ -57,7 +57,30 @@ partial class Python : HLWeapon
 		//
 		ShootBullet( 0.01f, 1.5f, 40.0f, 2.0f );
 	}
+	[ClientRpc]
+	protected override void ShootEffectsRPC()
+	{
 
+		Host.AssertClient();
+
+		if ( Client.IsUsingVr )
+		{
+			Particles.Create( "particles/muzflash2.vpcf", VRWeaponModel, "muzzle" );
+		}
+		else
+		{
+			Particles.Create( "particles/muzflash2.vpcf", EffectEntity, "muzzle" );
+		}
+
+
+
+		ViewModelEntity?.SetAnimParameter( "fire", true );
+
+		if ( Owner is HLPlayer player )
+		{
+			player.SetAnimParameter( "b_attack", true );
+		}
+	}
 	public override void Simulate( Client cl )
 	{
 		base.Simulate( cl );

@@ -97,7 +97,7 @@ partial class Shotgun : HLWeapon
 	{
 		Host.AssertClient();
 
-		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
+		Particles.Create( "particles/muzflash2.vpcf", EffectEntity, "muzzle" );
 		Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
@@ -108,7 +108,7 @@ partial class Shotgun : HLWeapon
 	{
 		Host.AssertClient();
 
-		Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
+		Particles.Create( "particles/muzflash2.vpcf", EffectEntity, "muzzle" );
 
 		ViewModelEntity?.SetAnimParameter( "fire_double", true );
 	}

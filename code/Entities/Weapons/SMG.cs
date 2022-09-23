@@ -103,11 +103,11 @@ partial class SMG : HLWeapon
 
 		if ( Client.IsUsingVr )
 		{
-			Particles.Create( "particles/pistol_muzzleflash.vpcf", VRWeaponModel, "muzzle" );
+			Particles.Create( "particles/muzflash1.vpcf", VRWeaponModel, "muzzle" );
 		}
 		else
 		{
-			Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
+			Particles.Create( "particles/muzflash1.vpcf", EffectEntity, "muzzle" );
 		}
 		if ( Client.IsUsingVr )
 		{

@@ -367,11 +367,11 @@
 
 		if ( Client.IsUsingVr )
 		{
-			Particles.Create( "particles/pistol_muzzleflash.vpcf", VRWeaponModel, "muzzle" );
+			Particles.Create( "particles/muzflash.vpcf", VRWeaponModel, "muzzle" );
 		}
 		else
 		{
-			Particles.Create( "particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle" );
+			Particles.Create( "particles/muzflash.vpcf", EffectEntity, "muzzle" );
 		}
 
 
