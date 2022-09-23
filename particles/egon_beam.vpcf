@@ -1703,6 +1703,8 @@
 			m_nMaxTesselation = 1024
 			m_flTessScale = 3.0
 			m_bAdditive = true
+			m_bGammaCorrectVertexColors = false
+			m_bSaturateColorPreAlphaBlend = false
 		},
 	]
 }
