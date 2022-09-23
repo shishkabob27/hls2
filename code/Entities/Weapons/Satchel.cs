@@ -6,7 +6,7 @@
 
 		base.Spawn();
 
-		Friction = 1;
+		Friction = 0.9f;
 		bHeight = 8;
 		Model = WorldModel;
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
