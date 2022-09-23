@@ -19,6 +19,7 @@ public class Snark : NPC
     public override void Spawn()
     {
         base.Spawn();
+        EyeHeight = 5;
         SetupPhysicsFromOBB( PhysicsMotionType.Keyframed, new Vector3( -4f, -4f, 0f ), new Vector3( 4f, 4f, 8f ) );
         Model = WorldModel;
         NPCAnimGraph = "animgraphs/squeak_npc.vanmgrph";

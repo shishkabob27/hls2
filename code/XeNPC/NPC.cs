@@ -44,6 +44,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float WalkSpeed = 80;
 	public float RunSpeed = 200;
 	public float entFOV = 0.5f;
+	public float EyeHeight = 64;
 
 	public string NPCAnimGraph = "";
 	public string NPCSurface = "surface/hlflesh.surface";
@@ -75,7 +76,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 		}
 		SetModel( "models/citizen/citizen.vmdl" );
-		EyePosition = Position + Vector3.Up * 64;
+		EyePosition = Position + Vector3.Up * EyeHeight;
 		if ( PhysicsBody == null ) SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius( 72, 8 ) );
 
 		EnableHitboxes = true;
