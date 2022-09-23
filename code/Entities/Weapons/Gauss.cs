@@ -100,13 +100,16 @@ partial class Gauss : HLWeapon
     {
         TimeSincePrimaryAttack = 0;
 
-        if ( Owner is not HLPlayer player ) return;
+		if ( spinning ) return; // Cancels the ability to Primary fire if it is currently charging
+
+		if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
         if ( owner.TakeAmmo( AmmoType, 2 ) == 0 )
         {
             return;
         }
+
         var x = 85 + Rand.Float( 0, 31 );
         PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 
