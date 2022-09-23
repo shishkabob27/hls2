@@ -69,6 +69,9 @@ partial class SnarkWeapon : HLWeapon
 
         player.SetAnimParameter( "attack", true );
 
+        if ( IsClient )
+            ViewModelEntity.SetAnimParameter( "attack", true );
+
         if ( IsServer && player.AmmoCount( AmmoType.Snark ) == 0 )
         {
 
