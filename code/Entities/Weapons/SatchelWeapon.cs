@@ -10,11 +10,14 @@ partial class SatchelWeapon : HLWeapon
 
     public override int Bucket => 4;
     public override int BucketWeight => 2;
+    public override float PrimaryRate => 3.0f;
+    public override float SecondaryRate => 3.0f;
     public override AmmoType AmmoType => AmmoType.Satchel;
     public override string AmmoIcon => "ui/ammo10.png";
     public override string InventoryIcon => "/ui/weapons/weapon_satchel.png";
     public override int ClipSize => -1;
 
+    List<Satchel> CurrentSatchels = new();
     public override void Spawn()
     {
         base.Spawn();
@@ -23,12 +26,46 @@ partial class SatchelWeapon : HLWeapon
         AmmoClip = 0;
         WeaponIsAmmo = true;
     }
+
+    public override bool IsUsable()
+    {
+        return true;
+    }
+
     public override void AttackPrimary()
     {
         TimeSincePrimaryAttack = 0;
+
+        if ( Owner is not HLPlayer player ) return;
+
+        if ( CurrentSatchels.Count <= 0 )
+        {
+            AttackSecondary();
+        }
+        else
+        {
+
+            foreach ( var satchel in CurrentSatchels )
+            {
+                try
+                {
+                    if ( IsServer )
+                        using ( Prediction.Off() )
+                        {
+                            satchel.Explode();
+                        }
+                }
+                catch { }
+
+            }
+            CurrentSatchels.Clear();
+        }
+
+
+    }
+    public override void AttackSecondary()
+    {
         TimeSinceSecondaryAttack = 0;
-
-
         if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
@@ -63,6 +100,7 @@ partial class SatchelWeapon : HLWeapon
                 //grenade.SetInteractsExclude( CollisionLayer.Player );
                 //grenade.SetInteractsAs( CollisionLayer.Debris );
 
+                CurrentSatchels.Add( satchel );
             }
 
         player.SetAnimParameter( "b_attack", true );
@@ -74,7 +112,6 @@ partial class SatchelWeapon : HLWeapon
 
             //player.SwitchToBestWeapon();
         }
-
     }
     public override void SimulateAnimator( PawnAnimator anim )
     {

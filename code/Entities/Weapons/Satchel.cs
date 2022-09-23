@@ -18,4 +18,9 @@
 		PlaySound( "g_bounce" );
 		base.StartTouch( other );
 	}
+	public void Explode()
+	{
+		HLExplosion.Explosion( this, Owner, Position, 256, 100, 24.0f, "grenade" );
+		Delete();
+	}
 }
