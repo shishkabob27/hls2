@@ -22,6 +22,7 @@
     public float GroundBounce { get; set; } = 0.1f;
     public float WallBounce { get; set; } = 0.1f;
     public float GroundAngle { get; set; } = 46.0f;
+    public float Gravity { get; set; } = 1.0f;
 
     Entity lastTouch;
     Entity lastHit;
@@ -85,7 +86,7 @@
     }
     public void ApplyGravity()
     {
-        Velocity -= new Vector3( 0, 0, sv_gravity * 0.5f ) * Time.Delta;
+        Velocity -= new Vector3( 0, 0, ( sv_gravity * Gravity ) * 0.5f ) * Time.Delta;
         Velocity += new Vector3( 0, 0, BaseVelocity.z ) * Time.Delta;
 
         BaseVelocity = BaseVelocity.WithZ( 0 );
