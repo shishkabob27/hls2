@@ -92,7 +92,7 @@ partial class Egon : HLWeapon
             {
                 ( tr.Entity as NPC ).TakeDamage( DamageInfo.Generic( 14 ), true );
             }
-            else
+            else if ( tr.Entity != null )
             {
                 tr.Entity.TakeDamage( DamageInfo.Generic( 14 ) );
             }
