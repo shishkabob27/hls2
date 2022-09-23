@@ -1,7 +1,7 @@
 {
   "Title": "Half-Life: Source 2",
   "Type": "game",
-  "Org": "shishkabob",
+  "Org": "local",
   "Ident": "hls2",
   "Schema": 1,
   "HasAssets": true,
