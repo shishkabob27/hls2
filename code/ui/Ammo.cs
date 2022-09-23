@@ -54,8 +54,12 @@ public class Ammo : Panel
 		Seperator.SetClass( "invisible", weapon.ClipSize == 0 || Inventory.Text == "0" );
 
 		AmmoIcon1.SetClass( "invisible", weapon.ClipSize == 0 );
-		if ( weapon.ClipSize <= 1 )
-			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine TODO - Better way to do this? add a ShowClip bool in HLWeapon maybe?	            
+		if ( weapon.ClipSize <= 0 )
+		{
+			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine TODO - Better way to do this? add a ShowClip bool in HLWeapon maybe?	   
+
+			Seperator.SetClass( "invisible", true );
+		}
 		AmmoIcon1.Style.BackgroundImage = Texture.Load( FileSystem.Mounted, weapon.AmmoIcon, true );
 
 		AltAmmoInventory.SetClass( "invisible", !weapon.HasAltAmmo );
