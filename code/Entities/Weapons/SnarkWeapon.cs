@@ -22,6 +22,61 @@ partial class SnarkWeapon : HLWeapon
         AmmoClip = 0;
         WeaponIsAmmo = true;
     }
+    public override void AttackPrimary()
+    {
+        TimeSincePrimaryAttack = 0;
+        TimeSinceSecondaryAttack = 0;
+
+
+        if ( Owner is not HLPlayer player ) return;
+
+        var owner = Owner as HLPlayer;
+
+        if ( owner.TakeAmmo( AmmoType, 1 ) == 0 )
+        {
+            return;
+        }
+
+        // woosh sound
+        // screen shake
+
+        PlaySound( "dm.grenade_throw" );
+
+        Rand.SetSeed( Time.Tick );
+
+
+        if ( IsServer )
+            using ( Prediction.Off() )
+            {
+                var snark = new Snark
+                {
+                    Position = GetFiringPos() + GetFiringRotation().Forward * 53.0f,
+                    Owner = Owner
+                };
+
+                snark.Velocity = GetFiringRotation().Forward * 600.0f + GetFiringRotation().Up * 200.0f + Owner.Velocity;
+
+                // This is fucked in the head, lets sort this this year
+                Tags.Add( "debris" );
+
+                //grenade.CollisionGroup = CollisionGroup.Debris;
+                //grenade.SetInteractsExclude( CollisionLayer.Player );
+                //grenade.SetInteractsAs( CollisionLayer.Debris );
+
+            }
+
+        player.SetAnimParameter( "b_attack", true );
+
+        player.SetAnimParameter( "attack", true );
+
+        if ( IsServer && player.AmmoCount( AmmoType.Snark ) == 0 )
+        {
+
+            player.SwitchToBestWeapon();
+        }
+
+    }
+
     public override void SimulateAnimator( PawnAnimator anim )
     {
         anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Squeak ); // TODO this is shit
