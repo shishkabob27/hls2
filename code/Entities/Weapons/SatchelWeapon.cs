@@ -23,6 +23,59 @@ partial class SatchelWeapon : HLWeapon
         AmmoClip = 0;
         WeaponIsAmmo = true;
     }
+    public override void AttackPrimary()
+    {
+        TimeSincePrimaryAttack = 0;
+        TimeSinceSecondaryAttack = 0;
+
+
+        if ( Owner is not HLPlayer player ) return;
+
+        var owner = Owner as HLPlayer;
+
+        if ( owner.TakeAmmo( AmmoType, 1 ) == 0 )
+        {
+            return;
+        }
+
+        // woosh sound
+        // screen shake
+
+        PlaySound( "dm.grenade_throw" );
+
+        Rand.SetSeed( Time.Tick );
+
+
+        if ( IsServer )
+            using ( Prediction.Off() )
+            {
+                var satchel = new Satchel
+                {
+                    Position = GetFiringPos() + GetFiringRotation().Forward * 3.0f,
+                    Owner = Owner
+                };
+
+                satchel.Velocity = GetFiringRotation().Forward * 274 + Owner.Velocity;
+                satchel.AngularVelocity = new Vector3( 0, 400, 0 );
+                satchel.Rotation = ( new Angles( 90, 0, 0 ) ).ToRotation();
+
+                //grenade.CollisionGroup = CollisionGroup.Debris;
+                //grenade.SetInteractsExclude( CollisionLayer.Player );
+                //grenade.SetInteractsAs( CollisionLayer.Debris );
+
+            }
+
+        player.SetAnimParameter( "b_attack", true );
+
+        player.SetAnimParameter( "attack", true );
+
+        if ( IsServer && player.AmmoCount( AmmoType.Satchel ) == 0 )
+        {
+
+            //player.SwitchToBestWeapon();
+        }
+
+    }
     public override void SimulateAnimator( PawnAnimator anim )
     {
         anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.HoldItem ); // TODO this is shit
