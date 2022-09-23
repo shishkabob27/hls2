@@ -494,7 +494,7 @@
 		[
 			{
 				_class = "CBoolAnimParameter"
-				m_name = "fire"
+				m_name = "attack"
 				m_id = 
 				{
 					m_id = 1416194514
