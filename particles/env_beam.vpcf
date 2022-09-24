@@ -470,6 +470,14 @@
 			m_vInputMax = [ 1.0, 1.0, 1.0 ]
 			m_vOutputMax = [ 1.0, 1.0, 1.0 ]
 		},
+		{
+			_class = "C_OP_PinParticleToCP"
+		},
+		{
+			_class = "C_OP_PinParticleToCP"
+			m_nControlPointNumber = 1
+			m_nParticleSelection = "PARTICLE_SELECTION_LAST"
+		},
 	]
 	m_Renderers = 
 	[
