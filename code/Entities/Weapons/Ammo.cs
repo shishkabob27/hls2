@@ -41,10 +41,20 @@
 
 
 [Library( "ammo_9mmclip" ), HammerEntity]
-[Alias( "ammo_glockclip" )]
 [EditorModel( "models/hl1/weapons/ammo/w_9mmclip.vmdl" )]
 [Title( "9mm Clip" ), Category( "Ammo" )]
 partial class Ammo9mmClip : BaseAmmo
+{
+	public override AmmoType AmmoType => AmmoType.Pistol;
+	public override int AmmoAmount => 17;
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_9mmclip.vmdl" );
+
+}
+
+[Library( "ammo_glockclip" ), HammerEntity]
+[EditorModel( "models/hl1/weapons/ammo/w_9mmclip.vmdl" )]
+[Title( "Glock Clip" ), Category( "Ammo" )]
+partial class AmmoGlockClip : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Pistol;
 	public override int AmmoAmount => 17;
@@ -63,11 +73,21 @@ partial class Ammo9mmBox : BaseAmmo
 	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_9mmbox.vmdl" );
 }
 
-[Library( "ammo_9mmar" ), HammerEntity]
-[Alias( "ammo_mp5clip" )]
+[Library( "ammo_9mmAR" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/ammo/w_9mmar.vmdl" )]
 [Title( "9mm AR" ), Category( "Ammo" )]
 partial class Ammo9mmAR : BaseAmmo
+{
+	public override AmmoType AmmoType => AmmoType.Pistol;
+	public override int AmmoAmount => 20;
+
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_9mmar.vmdl" );
+}
+
+[Library( "ammo_mp5clip" ), HammerEntity]
+[EditorModel( "models/hl1/weapons/ammo/w_9mmar.vmdl" )]
+[Title( "Ammo MP5 Clip" ), Category( "Ammo" )]
+partial class AmmoMP5clip : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Pistol;
 	public override int AmmoAmount => 20;
@@ -120,10 +140,32 @@ partial class AmmoUranium : BaseAmmo
 	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" );
 }
 
+[Library( "ammo_gaussclip" ), HammerEntity]
+[EditorModel( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" )]
+[Title( "Gauss Ammo Clip" ), Category( "Ammo" )]
+partial class AmmoGaussClip : BaseAmmo
+{
+	public override AmmoType AmmoType => AmmoType.Uranium;
+	public override int AmmoAmount => 5;
+
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" );
+}
+
 [Library( "ammo_rockets" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" )]
 [Title( "RPG Ammo" ), Category( "Ammo" )]
 partial class AmmoRPG : BaseAmmo
+{
+	public override AmmoType AmmoType => AmmoType.RPG;
+	public override int AmmoAmount => 5;
+
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" );
+}
+
+[Library( "ammo_rpgclip" ), HammerEntity]
+[EditorModel( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" )]
+[Title( "RPG Ammo Clip" ), Category( "Ammo" )]
+partial class AmmoRPGClip : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.RPG;
 	public override int AmmoAmount => 5;
