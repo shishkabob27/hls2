@@ -1,10 +1,10 @@
-﻿[Library("func_train")]
+﻿[Library( "func_train" )]
 [HammerEntity]
-[Title("func_train"), Category("Brush Entities"), Icon("directions_railway")]
+[Title( "func_train" ), Category( "Brush Entities" ), Icon( "directions_railway" )]
 public partial class func_train : BrushEntity
 {
 
-    [Property("target"), FGDType("target_destination")]
+    [Property( "target" ), FGDType( "target_destination" )]
     public string Target { get; set; } = "";
 
     public override void Spawn()
@@ -12,19 +12,23 @@ public partial class func_train : BrushEntity
         base.Spawn();
     }
 
-    [Event.Tick.Server] 
+    [Event.Tick.Server]
     void tick()
     {
-        if (Enabled)
+        if ( Enabled )
         {
-            
-            Position = Position.LerpTo(Entity.FindAllByName(Target).First().Position, 0.2f);
-            if (Position.AlmostEqual(Entity.FindAllByName(Target).First().Position, 16))
+            try
             {
-                Position = Entity.FindAllByName(Target).First().Position;
-                Target = (Entity.FindAllByName(Target).First() as path_corner).Target;
+                Position = Position.LerpTo( Entity.FindAllByName( Target ).First().Position, 0.2f );
+                if ( Position.AlmostEqual( Entity.FindAllByName( Target ).First().Position, 16 ) )
+                {
+                    Position = Entity.FindAllByName( Target ).First().Position;
+                    Target = ( Entity.FindAllByName( Target ).First() as path_corner ).Target;
+                }
             }
-            
+            catch { }
+
+
         }
     }
     /// <summary>
