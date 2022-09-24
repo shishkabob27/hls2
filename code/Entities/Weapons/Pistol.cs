@@ -87,11 +87,3 @@ partial class Pistol : HLWeapon
 	}
 
 }
-
-[Library("weapon_glock"), HammerEntity]
-[EditorModel( "models/hl1/weapons/world/glock.vmdl" )]
-[Title( "Pistol" ), Category( "Weapons" )]
-partial class Glock : Pistol
-{
-	
-}
