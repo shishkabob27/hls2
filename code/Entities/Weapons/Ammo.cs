@@ -51,6 +51,17 @@ partial class Ammo9mmClip : BaseAmmo
 
 }
 
+[Library("ammo_glockclip"), HammerEntity]
+[EditorModel("models/hl1/weapons/ammo/w_9mmclip.vmdl")]
+[Title("Glock Clip"), Category("Ammo")]
+partial class AmmoGlockClip : BaseAmmo
+{
+	public override AmmoType AmmoType => AmmoType.Pistol;
+	public override int AmmoAmount => 17;
+	public override Model WorldModel => Model.Load("models/hl1/weapons/ammo/w_9mmclip.vmdl");
+
+}
+
 [Library("ammo_9mmbox"), HammerEntity]
 [EditorModel("models/hl1/weapons/ammo/w_9mmbox.vmdl")]
 [Title("9mm Box"), Category("Ammo")]
