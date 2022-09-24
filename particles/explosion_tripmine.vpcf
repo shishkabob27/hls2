@@ -224,6 +224,7 @@
 			}
 			m_bGammaCorrectVertexColors = false
 			m_bSaturateColorPreAlphaBlend = false
+			m_bAdditive = true
 		},
 	]
 	m_Children = 
