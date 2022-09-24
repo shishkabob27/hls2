@@ -607,6 +607,7 @@
 					m_vDomainMaxs = [ 0.0, 0.0 ]
 				}
 			}
+			m_bAdditive = true
 		},
 	]
 }
