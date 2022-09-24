@@ -1,6 +1,6 @@
-﻿[Library("env_beam")]
+﻿[Library( "env_beam" )]
 [HammerEntity]
-[Title("env_beam"), Category("Legacy"), Icon("volume_up")]
+[Title( "env_beam" ), Category( "Legacy" ), Icon( "volume_up" )]
 public partial class env_beam : Entity
 {
     [Flags]
@@ -21,14 +21,14 @@ public partial class env_beam : Entity
     /// <summary>
     /// Settings that are only applicable when the entity spawns
     /// </summary>
-    [Property("spawnflags", Title = "Spawn Settings")]
+    [Property( "spawnflags", Title = "Spawn Settings" )]
     public Flags spawnflags { get; set; } = Flags.StartOn;
 
 
 
-    [Property("LightningStart"), FGDType("target_destination")]
+    [Property( "LightningStart" ), FGDType( "target_destination" )]
     public string LightningStart { get; set; } = "";
-    [Property("LightningEnd"), FGDType("target_destination")]
+    [Property( "LightningEnd" ), FGDType( "target_destination" )]
     public string LightningEnd { get; set; } = "";
     [Property]
     public string texture { get; set; } = "";
@@ -46,7 +46,7 @@ public partial class env_beam : Entity
     public override void Spawn()
     {
         base.Spawn();
-        if (spawnflags.HasFlag(Flags.StartOn))
+        if ( spawnflags.HasFlag( Flags.StartOn ) )
         {
             TurnOn();
         }
@@ -55,19 +55,24 @@ public partial class env_beam : Entity
     [Input]
     void TurnOn()
     {
-        if (true)//Beam == null)
+        if ( true )//Beam == null)
         {
-            Beam = Particles.Create("particles/env_beam.vpcf", Position);
+            Beam = Particles.Create( "particles/env_beam.vpcf", Position );
         }
-        UpdateBeam(); 
-        Beam.SetPosition(2, rendercolor);
-        Beam.SetPosition(3, new Vector3(BoltWidth, 1, 0)); 
-        Beam.SetPosition(4, new Vector3(NoiseAmplitude, 0, 0));
+        UpdateBeam();
+        Beam.SetPosition( 2, rendercolor );
+        Beam.SetPosition( 3, new Vector3( BoltWidth, 1, 0 ) );
+        Beam.SetPosition( 4, new Vector3( NoiseAmplitude, 0, 0 ) );
     }
     [Input]
     void TurnOff()
     {
-        if (Beam != null)
+        rpcremove();
+    }
+    [ClientRpc]
+    void rpcremove()
+    {
+        if ( Beam != null )
         {
             Beam.Destroy();
             Beam = null;
@@ -76,24 +81,25 @@ public partial class env_beam : Entity
     [Input]
     void Toggle()
     {
-        if (Beam == null)
+        if ( Beam == null )
         {
             TurnOn();
-        } else
+        }
+        else
         {
             Beam.Destroy();
         }
     }
     void UpdateBeam()
     {
-        if (Beam != null)
+        if ( Beam != null )
         {
             try
             {
-                var c = Entity.FindAllByName(LightningStart).First();
-                var d = Entity.FindAllByName(LightningEnd).First();
-                Beam.SetEntity(0, c);
-                Beam.SetEntity(1, d);
+                var c = Entity.FindAllByName( LightningStart ).First();
+                var d = Entity.FindAllByName( LightningEnd ).First();
+                Beam.SetEntity( 0, c );
+                Beam.SetEntity( 1, d );
             }
             catch
             {
@@ -104,20 +110,21 @@ public partial class env_beam : Entity
 
             try
             {
-                a = Entity.FindAllByName(LightningStart).First().Position;
-                b = Entity.FindAllByName(LightningEnd).First().Position;
+                a = Entity.FindAllByName( LightningStart ).First().Position;
+                b = Entity.FindAllByName( LightningEnd ).First().Position;
             }
             catch
             {
 
             }
-            Beam.SetPosition(0, a);
-            Beam.SetPosition(1, b);
+            Beam.SetPosition( 0, a );
+            Beam.SetPosition( 1, b );
         }
     }
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        TurnOff();
+
+        rpcremove();
     }
 }
