@@ -132,7 +132,7 @@
 		base.Spawn();
 
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
-
+		PhysicsEnabled = false;
 		Tags.Add( "weapon" );
 	}
 

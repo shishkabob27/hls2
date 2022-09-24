@@ -10,7 +10,6 @@
 
 		Model = WorldModel;
 
-		PhysicsEnabled = true;
 		UsePhysicsCollision = true;
 
 		Tags.Add( "weapon" );
