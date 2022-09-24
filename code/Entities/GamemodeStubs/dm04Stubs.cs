@@ -1,24 +1,22 @@
-﻿class BaseDM98Stub : BaseGamemodeStub
+﻿class BaseDM04Stub : BaseGamemodeStub
 {
 }
 
-
-// ---------------- WEAPONS ----------------
-[Library( "dm_tripmine" )]
-class dm_tripmine : BaseDM98Stub
+[Library( "hl2_357" )]
+class hl2_357 : BaseDM04Stub
 {
     public override void Spawn()
     {
         if ( SpawnCheck() ) { Delete(); return; }
-        var a = new TripmineWeapon();
+        var a = new Python();
         a.Position = Position;
         a.Tags.Add( "stubmade" );
         this.Delete();
     }
 }
 
-[Library( "dm_smg" )]
-class dm_smg : BaseDM98Stub
+[Library( "hl2_ar2" )]
+class hl2_ar2 : BaseDM04Stub
 {
     public override void Spawn()
     {
@@ -30,32 +28,21 @@ class dm_smg : BaseDM98Stub
     }
 }
 
-[Library( "dm_357" )]
-class dm_357 : BaseDM98Stub
+[Library( "hl2_bugbait" )]
+class hl2_bugbait : BaseDM04Stub
 {
     public override void Spawn()
     {
         if ( SpawnCheck() ) { Delete(); return; }
-        var a = new Python();
+        var a = new SatchelWeapon();
         a.Position = Position;
         a.Tags.Add( "stubmade" );
         this.Delete();
     }
 }
-[Library( "dm_pistol" )]
-class dm_pistol : BaseDM98Stub
-{
-    public override void Spawn()
-    {
-        if ( SpawnCheck() ) { Delete(); return; }
-        var a = new Pistol();
-        a.Position = Position;
-        a.Tags.Add( "stubmade" );
-        this.Delete();
-    }
-}
-[Library( "dm_crossbow" )]
-class dm_crossbow : BaseDM98Stub
+
+[Library( "hl2_crossbow" )]
+class hl2_crossbow : BaseDM04Stub
 {
     public override void Spawn()
     {
@@ -67,8 +54,8 @@ class dm_crossbow : BaseDM98Stub
     }
 }
 
-[Library( "dm_crowbar" )]
-class dm_crowbar : BaseDM98Stub
+[Library( "hl2_crowbar" )]
+class hl2_crowbar : BaseDM04Stub
 {
     public override void Spawn()
     {
@@ -80,20 +67,47 @@ class dm_crowbar : BaseDM98Stub
     }
 }
 
-[Library( "dm_shotgun" )]
-class dm_shotgun : BaseDM98Stub
+[Library( "hl2_egon" )]
+class hl2_egon : BaseDM04Stub
 {
     public override void Spawn()
     {
         if ( SpawnCheck() ) { Delete(); return; }
-        var a = new Shotgun();
+        var a = new Egon();
         a.Position = Position;
         a.Tags.Add( "stubmade" );
         this.Delete();
     }
 }
-[Library( "dm_grenade" )]
-class dm_grenade : BaseDM98Stub
+
+[Library( "hl2_gauss" )]
+class hl2_gauss : BaseDM04Stub
+{
+    public override void Spawn()
+    {
+        if ( SpawnCheck() ) { Delete(); return; }
+        var a = new Gauss();
+        a.Position = Position;
+        a.Tags.Add( "stubmade" );
+        this.Delete();
+    }
+}
+
+[Library( "hl2_gravgun" )]
+class hl2_gravgun : BaseDM04Stub
+{
+    public override void Spawn()
+    {
+        if ( SpawnCheck() ) { Delete(); return; }
+        var a = new Gauss();
+        a.Position = Position;
+        a.Tags.Add( "stubmade" );
+        this.Delete();
+    }
+}
+
+[Library( "hl2_grenade" )]
+class hl2_grenade : BaseDM04Stub
 {
     public override void Spawn()
     {
@@ -104,95 +118,92 @@ class dm_grenade : BaseDM98Stub
         this.Delete();
     }
 }
+
+[Library( "hl2_rpg" )]
+class hl2_rpg : BaseDM04Stub
+{
+    public override void Spawn()
+    {
+        if ( SpawnCheck() ) { Delete(); return; }
+        var a = new RPG();
+        a.Position = Position;
+        a.Tags.Add( "stubmade" );
+        this.Delete();
+    }
+}
+
+[Library( "hl2_slam" )]
+class hl2_slam : BaseDM04Stub
+{
+    public override void Spawn()
+    {
+        if ( SpawnCheck() ) { Delete(); return; }
+        var a = new TripmineWeapon();
+        a.Position = Position;
+        a.Tags.Add( "stubmade" );
+        this.Delete();
+    }
+}
+
+[Library( "hl2_smg1" )]
+class hl2_smg1 : BaseDM04Stub
+{
+    public override void Spawn()
+    {
+        if ( SpawnCheck() ) { Delete(); return; }
+        var a = new SMG();
+        a.Position = Position;
+        a.Tags.Add( "stubmade" );
+        this.Delete();
+    }
+}
+
+[Library( "hl2_spas12" )]
+class hl2_spas12 : BaseDM04Stub
+{
+    public override void Spawn()
+    {
+        if ( SpawnCheck() ) { Delete(); return; }
+        var a = new Shotgun();
+        a.Position = Position;
+        a.Tags.Add( "stubmade" );
+        this.Delete();
+    }
+}
+
+[Library( "hl2_stunstick" )]
+class hl2_stunstick : BaseDM04Stub
+{
+    public override void Spawn()
+    {
+        if ( SpawnCheck() ) { Delete(); return; }
+        var a = new HornetGun();
+        a.Position = Position;
+        a.Tags.Add( "stubmade" );
+        this.Delete();
+    }
+}
+
+[Library( "hl2_uspmatch" )]
+class hl2_uspmatch : BaseDM04Stub
+{
+    public override void Spawn()
+    {
+        if ( SpawnCheck() ) { Delete(); return; }
+        var a = new Pistol();
+        a.Position = Position;
+        a.Tags.Add( "stubmade" );
+        this.Delete();
+    }
+}
 // ---------------- ITEMS ----------------
-[Library( "dm_healthkit" )]
-class dm_healthkit : BaseDM98Stub
+[Library( "dm08_healthkit" )]
+class dm08_healthkit : BaseDM04Stub
 {
     public override void Spawn()
     {
         if ( SpawnCheck() ) { Delete(); return; }
         var a = new HealthKit();
-        a.Position = Position;
-        a.Tags.Add( "stubmade" );
-        this.Delete();
-    }
-}
-
-[Library( "dm_battery" )]
-class dm_battery : BaseDM98Stub
-{
-    public override void Spawn()
-    {
-        if ( SpawnCheck() ) { Delete(); return; }
-        var a = new Battery();
-        a.Position = Position;
-        a.Tags.Add( "stubmade" );
-        this.Delete();
-    }
-}
-
-[Library( "dm_chargerstation" )]
-class dm_chargerstation : func_healthcharger
-{
-}
-
-
-// ---------------- AMMO ----------------
-[Library( "dm_ammo9mmclip" )]
-class dm_ammo9mmclip : BaseDM98Stub
-{
-    public override void Spawn()
-    {
-        if ( SpawnCheck() ) { Delete(); return; }
-        var a = new Ammo9mmClip();
-        a.Position = Position;
-        a.Tags.Add( "stubmade" );
-        this.Delete();
-    }
-}
-[Library( "dm_ammo9mmbox" )]
-class dm_ammo9mmbox : BaseDM98Stub
-{
-    public override void Spawn()
-    {
-        if ( SpawnCheck() ) { Delete(); return; }
-        var a = new Ammo9mmAR();//new Ammo9mmBox();
-        a.Position = Position;
-        a.Tags.Add( "stubmade" );
-        this.Delete();
-    }
-}
-[Library( "dm_ammobuckshot" )]
-class dm_ammobuckshot : BaseDM98Stub
-{
-    public override void Spawn()
-    {
-        if ( SpawnCheck() ) { Delete(); return; }
-        var a = new AmmoBuckshot();
-        a.Position = Position;
-        a.Tags.Add( "stubmade" );
-        this.Delete();
-    }
-}
-[Library( "dm_ammo357" )]
-class dm_ammo357 : BaseDM98Stub
-{
-    public override void Spawn()
-    {
-        if ( SpawnCheck() ) { Delete(); return; }
-        var a = new Ammo357();
-        a.Position = Position;
-        a.Tags.Add( "stubmade" );
-        this.Delete();
-    }
-}
-[Library( "dm_ammocrossbow" )]
-class dm_ammocrossbow : BaseDM98Stub
-{
-    public override void Spawn()
-    {
-        if ( SpawnCheck() ) { Delete(); return; }
-        var a = new AmmoCrossbow();
         a.Position = Position;
         a.Tags.Add( "stubmade" );
         this.Delete();

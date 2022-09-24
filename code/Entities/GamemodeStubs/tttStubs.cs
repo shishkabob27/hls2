@@ -210,7 +210,7 @@ class ttt_grenade_random : BaseTTTStub
 }
 // ---------------- ITEMS ----------------
 [Library( "ttt_equipment_healthstation" )]
-class ttt_equipment_healthstation : func_healthcharger
+class ttt_equipment_healthstation : LegacyChargerStation
 {
 }
 

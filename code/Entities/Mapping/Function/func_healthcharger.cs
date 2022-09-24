@@ -3,7 +3,7 @@
 /// </summary>
 [Library( "func_healthcharger" ), HammerEntity]
 [Solid]
-[Category("Gameplay")]
+[Category( "Gameplay" )]
 partial class func_healthcharger : KeyframeEntity, IUse
 {
 	/// <summary>
@@ -68,7 +68,7 @@ partial class func_healthcharger : KeyframeEntity, IUse
 			return false;
 
 
-		if ( player.Health >= 100 ) return false;
+		if ( player.Health >= player.MaxHealth ) return false;
 
 		// standard rate of 10 health per second
 		var add = 10 * Time.Delta;
@@ -81,8 +81,8 @@ partial class func_healthcharger : KeyframeEntity, IUse
 		ChargerPower -= add;
 
 		player.Health += add;
-		player.Health.Clamp( 0, 100 );
-		return player.Health < 100;
+		player.Health = player.Health.Clamp( 0, player.MaxHealth );
+		return player.Health < player.MaxHealth;
 	}
 
 	public override void StartTouch( Entity other )

@@ -13,6 +13,9 @@
 	[Net]
 	public float MaxHealth { get; set; } = 100;
 
+	[Net]
+	public float MaxArmour { get; set; } = 100;
+
 	//[Net]
 	public bool IN_FORWARD { get; set; } = false;
 	//[Net]
