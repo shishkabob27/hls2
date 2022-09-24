@@ -1,0 +1,9 @@
+// Created by Crowbar 0.72
+version 1
+nodes
+  0 "Bip01 R Hand" -1
+end
+skeleton
+  time 0
+    0 1.765625 -6.410156 2.025391 -1.570755 0.008881 -4.703162
+end
