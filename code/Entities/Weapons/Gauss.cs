@@ -127,6 +127,7 @@ partial class Gauss : HLWeapon
 
 
     [ConVar.Client] public static bool hl_debug_gauss { get; set; } = false;
+    [ConVar.Replicated] public static bool hl_gauss_experimental_punch { get; set; } = false;
 
     public void GaussLaser( Vector3 Colour, float Damage, Vector3 vecOrigDir, Vector3 vecOrigSrc, bool doPunch = false )
     {
@@ -208,7 +209,7 @@ partial class Gauss : HLWeapon
                     else
                     {
                         nTotal += 13;
-                        if ( doPunch )
+                        if ( doPunch && hl_gauss_experimental_punch )
                         {
 
                             var trace = Trace.Ray( tr.EndPosition + vecDir * 8, vecDest ).Run();
