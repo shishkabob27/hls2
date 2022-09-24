@@ -45,11 +45,28 @@ partial class LegacyChargerStation : KeyframeEntity, IUse
 
     [Net]
     public Vector3 Maxs { get; set; } = new Vector3( 48, 32, 32 );
+    public bool SpawnCheck()
+    {
+        var b = Entity.All.OfType<HLWeapon>().ToList();
+        b.RemoveAll( x => ( x as Entity ).Tags.Has( "stubmade" ) );
+        b.RemoveAll( x => ( x as Entity ).Owner is HLPlayer );
+        Log.Info( b.Count() );
+        if ( b.Count() > 2 ) // If we find any of our base entities from this gamemode we should abort.
+        {
+            Delete();
+            return true;
+        }
+        return false;
+    }
 
     public override void Spawn()
     {
         base.Spawn();
-
+        if ( SpawnCheck() )
+        {
+            Delete();
+            return;
+        }
         ChargerPower = DefaultChargerPower;
 
         SetupPhysicsFromModel( PhysicsMotionType.Static );
