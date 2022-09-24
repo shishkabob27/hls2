@@ -1,5 +1,5 @@
 ﻿
-[Library( "hl_tripmine_planted", Title = "Planted Tripmine" )]
+[Library( "monster_tripmine", Title = "Planted Tripmine" )]
 partial class Tripmine : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/tripmine.vmdl" );
@@ -31,7 +31,7 @@ partial class Tripmine : ModelEntity
 		LaserParticle.SetPosition( 0, Position );
 
 		var tr = Trace.Ray( Position, Position + Rotation.Forward * 4000.0f )
-					.Ignore(this)
+					.Ignore( this )
 					.Run();
 
 		LaserParticle.SetPosition( 1, tr.EndPosition );
@@ -75,7 +75,7 @@ partial class Tripmine : ModelEntity
 		exploding = true;
 		await Task.DelaySeconds( delay );
 
-		HLExplosion.Explosion( this, Owner, Position, 400, 150, 24.0f, "tripmine");
+		HLExplosion.Explosion( this, Owner, Position, 400, 150, 24.0f, "tripmine" );
 		Delete();
 	}
 }
@@ -95,8 +95,8 @@ public class LaserTrigger : ModelEntity
 	public void CreateTrigger( float length )
 	{
 		SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, new Capsule( Vector3.Zero, Rotation.Forward * length, 0.2f ) );
-        Tags.Add("trigger");
-    }
+		Tags.Add( "trigger" );
+	}
 
 	public override void StartTouch( Entity other )
 	{
@@ -104,7 +104,7 @@ public class LaserTrigger : ModelEntity
 
 		if ( other is WorldEntity ) return;
 		if ( other is BaseTrigger ) return;
-		if (other is Tripmine) return;
+		if ( other is Tripmine ) return;
 
 		OnTriggered?.Invoke( other );
 	}

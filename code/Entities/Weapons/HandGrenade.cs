@@ -1,4 +1,5 @@
-﻿partial class HandGrenade : HLMovement
+﻿[Library( "ggrenade" )]
+partial class HandGrenade : HLMovement
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade.vmdl" );
 	public override void Spawn()

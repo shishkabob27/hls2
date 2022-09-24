@@ -1,4 +1,5 @@
 ﻿[Library( "weapon_357" ), HammerEntity]
+[Alias( "weapon_python" )]
 [EditorModel( "models/hl1/weapons/world/python.vmdl" )]
 [Title( ".357 Magnum Revolver" ), Category( "Weapons" )]
 partial class Python : HLWeapon

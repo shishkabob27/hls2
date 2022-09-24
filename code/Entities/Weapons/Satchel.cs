@@ -1,4 +1,5 @@
-﻿partial class Satchel : HLMovement
+﻿[Library( "monster_satchel" )]
+partial class Satchel : HLMovement
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/satchel.vmdl" );
 	public override void Spawn()
