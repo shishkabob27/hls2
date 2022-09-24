@@ -2,6 +2,81 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
+	m_flConstantRadius = 2.0
+	m_flConstantLifespan = 0.1
+	m_controlPointConfigurations = 
+	[
+		{
+			m_name = "preview"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 63.026329, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 255.0, 255.0, 255.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 2.0, 1.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+			m_previewState = 
+			{
+				m_bShouldDrawControlPointAxes = true
+			}
+		},
+		{
+			m_name = "game"
+			m_drivers = 
+			[
+				{
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 1
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 0.0, 0.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 2
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 255.0, 255.0, 255.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+				{
+					m_iControlPoint = 3
+					m_iAttachType = "PATTACH_WORLDORIGIN"
+					m_vecOffset = [ 1.0, 1.0, 0.0 ]
+					m_angOffset = [ 0.0, 0.0, 0.0 ]
+					m_entityName = "self"
+				},
+			]
+		},
+	]
 	m_Emitters = 
 	[
 		{
@@ -168,81 +243,7 @@
 				}
 			}
 			m_hTexture = resource:"materials/particle/base_rope.vtex"
-		},
-	]
-	m_flConstantRadius = 2.0
-	m_flConstantLifespan = 0.1
-	m_controlPointConfigurations = 
-	[
-		{
-			m_name = "preview"
-			m_drivers = 
-			[
-				{
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 1
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 63.026329, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 2
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 255.0, 255.0, 255.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 3
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 2.0, 1.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
-				},
-			]
-			m_previewState = 
-			{
-				m_bShouldDrawControlPointAxes = true
-			}
-		},
-		{
-			m_name = "game"
-			m_drivers = 
-			[
-				{
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 1
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 0.0, 0.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 2
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 255.0, 255.0, 255.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
-				},
-				{
-					m_iControlPoint = 3
-					m_iAttachType = "PATTACH_WORLDORIGIN"
-					m_vecOffset = [ 1.0, 1.0, 0.0 ]
-					m_angOffset = [ 0.0, 0.0, 0.0 ]
-					m_entityName = "self"
-				},
-			]
+			m_bAdditive = true
 		},
 	]
 }
