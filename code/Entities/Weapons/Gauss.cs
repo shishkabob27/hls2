@@ -98,6 +98,8 @@ partial class Gauss : HLWeapon
     }
     public override void AttackPrimary()
     {
+        if (spinning) return;
+
         TimeSincePrimaryAttack = 0;
 
         if ( Owner is not HLPlayer player ) return;
