@@ -69,7 +69,7 @@ partial class Gauss : HLWeapon
 
         var owner2 = Owner as HLPlayer;
 
-        if ( ( !( Input.Down( InputButton.SecondaryAttack ) ) && spinning ) || ( ( player.AmmoCount( AmmoType.Uranium ) <= 0 ) && spinning ) )
+        if ( ( !( Input.Down( InputButton.SecondaryAttack ) ) && spinning ) || ( ( player.AmmoCount( AmmoType.Uranium ) <= 0 ) && spinning ) || ( !EnableDrawing && spinning ) )
         {
             var dmg = 200.0f;
             if ( Time.Now - startspin > GetFullChargeTime() )
@@ -103,6 +103,13 @@ partial class Gauss : HLWeapon
             spinning = false;
         }
     }
+    public override void ActiveEnd( Entity ent, bool dropped )
+    {
+        spinning = false;
+        spinSound?.SetVolume( spinning ? 1 : 0 );
+        base.ActiveEnd( ent, dropped );
+    }
+
     public override void AttackPrimary()
     {
         if ( spinning ) return;
