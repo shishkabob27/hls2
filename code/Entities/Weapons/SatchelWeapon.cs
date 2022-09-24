@@ -17,7 +17,8 @@ partial class SatchelWeapon : HLWeapon
     public override string InventoryIcon => "/ui/weapons/weapon_satchel.png";
     public override int ClipSize => -1;
 
-    List<Satchel> CurrentSatchels = new();
+    [Net]
+    List<Satchel> CurrentSatchels { get; set; } = new();
     public override void Spawn()
     {
         base.Spawn();
@@ -29,7 +30,8 @@ partial class SatchelWeapon : HLWeapon
 
     public override bool IsUsable()
     {
-        return true;
+        if ( CurrentSatchels.Count > 0 ) return true;
+        return ( AvailableAmmo() > 0 );
     }
 
     public override void AttackPrimary()
