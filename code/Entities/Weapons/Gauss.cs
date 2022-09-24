@@ -3,8 +3,6 @@
 [Title( "Gauss" ), Category( "Weapons" )]
 partial class Gauss : HLWeapon
 {
-    //stub
-
     public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/gauss.vmdl" );
     public override string ViewModelPath => "models/hl1/weapons/view/v_gauss.vmdl";
 
