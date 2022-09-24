@@ -86,7 +86,7 @@ partial class Gauss : HLWeapon
             PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 
             GaussLaser( whiteCOLOUR, dmg, player.EyeRotation.Forward, GetFiringPos(), true );
-            Rand.SetSeed( ( Time.Now / 10 ).CeilToInt() ); // same random seed across client and server
+            Rand.SetSeed( Time.Tick ); // same random seed across client and server
             PlayAftershock = Time.Now + Rand.Float( 0.3f, 0.8f );
             var ZVel = player.Velocity.z;
             var a = player.Velocity;
@@ -127,7 +127,7 @@ partial class Gauss : HLWeapon
         PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
         GaussLaser( orangeCOLOUR, 20, player.EyeRotation.Forward, GetFiringPos() );
 
-        Rand.SetSeed( ( Time.Now / 10 ).CeilToInt() ); // same random seed across client and server
+        Rand.SetSeed( Time.Tick ); // same random seed across client and server
         PlayAftershock = Time.Now + Rand.Float( 0.3f, 0.8f );
 
     }
