@@ -22,6 +22,7 @@ partial class Gauss : HLWeapon
     float spintime = 0.0f;
     float spintime2 = 0.0f;
     float startspin = 0.0f;
+    float PlayAftershock = 0;
 
     float GetFullChargeTime()
     {
@@ -60,6 +61,11 @@ partial class Gauss : HLWeapon
             spinSound?.SetVolume( spinning ? 1 : 0 );
             spinSound?.SetPitch( pitch / 100 ); // ( spintime + 1.05f ) / 2 ).Clamp( 1.1f, 2.50f ) ); // old math, similar effect but doesnt play with multiplayers different timings as nice
         }
+        if ( PlayAftershock != 0 && PlayAftershock < Time.Now )
+        {
+            PlaySound( "gauss_electro" );
+            PlayAftershock = 0;
+        }
         base.Simulate( owner );
         if ( Owner is not HLPlayer player ) return;
 
@@ -82,6 +88,8 @@ partial class Gauss : HLWeapon
             PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 
             GaussLaser( whiteCOLOUR, dmg, player.EyeRotation.Forward, GetFiringPos() );
+            Rand.SetSeed( ( Time.Now / 10 ).CeilToInt() ); // same random seed across client and server
+            PlayAftershock = Time.Now + Rand.Float( 0.3f, 0.8f );
             var ZVel = player.Velocity.z;
             var a = player.Velocity;
 
@@ -113,6 +121,9 @@ partial class Gauss : HLWeapon
         var x = 85 + Rand.Float( 0, 31 );
         PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
         GaussLaser( orangeCOLOUR, 20, player.EyeRotation.Forward, GetFiringPos() );
+
+        Rand.SetSeed( ( Time.Now / 10 ).CeilToInt() ); // same random seed across client and server
+        PlayAftershock = Time.Now + Rand.Float( 0.3f, 0.8f );
 
     }
 
