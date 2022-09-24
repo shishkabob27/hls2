@@ -66,12 +66,12 @@
 				[
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "dummy01"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 6.192431, 3.549592, 9.769014 ]
+						origin = [ -5.422025, 4.870328, -0.534326 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 71.655212, 21.274326, 18.265549 ]
+						dimensions = [ 67.566818, 17.251328, 19.818863 ]
 					},
 				]
 			},
@@ -98,7 +98,7 @@
 						_class = "RenderMeshFile"
 						filename = "models/hl1decomp/WHGUN_Template_Model1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 180.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
@@ -114,6 +114,34 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "stayput"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_hgun_anims/stayput.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

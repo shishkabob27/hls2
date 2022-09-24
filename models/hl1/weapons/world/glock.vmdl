@@ -103,21 +103,21 @@
 				[
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "sides01"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ -0.464604, -0.313314, -1.7419 ]
+						origin = [ -6.568233, -1.41352, -2.842113 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 6.326426, 2.728496, 6.5162 ]
+						dimensions = [ 5.465956, 2.751941, 6.891706 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "sides01"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 3.863831, -0.23494, 3.073414 ]
+						origin = [ -1.835064, -1.567388, 1.847986 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 15.317007, 2.885243, 2.995062 ]
+						dimensions = [ 15.196225, 2.885243, 2.995062 ]
 					},
 				]
 			},
@@ -148,6 +148,34 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_9mmhandgun_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

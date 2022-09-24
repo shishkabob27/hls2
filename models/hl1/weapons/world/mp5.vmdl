@@ -34,8 +34,8 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "models/hl1decomp/wrld_mp5.smd"
-						import_translation = [ -2.0, 0.0, 4.0 ]
-						import_rotation = [ 90.0, 90.0, 0.0 ]
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
@@ -71,30 +71,30 @@
 				[
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "line02"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ -1.012331, 0.938687, 4.318751 ]
+						origin = [ 4.116492, 3.865901, 0.880227 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 31.260883, 3.747156, 6.903504 ]
+						dimensions = [ 34.12925, 9.601583, 2.429668 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "line02"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 3.040551, 1.280271, -3.576712 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 6.266316, 3.747156, 9.384873 ]
+						origin = [ 1.276053, -4.30044, 0.978123 ]
+						angles = [ 0.0, -19.307486, 0.0 ]
+						dimensions = [ 3.671464, 13.106787, 1.707087 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "line02"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ -9.021338, 1.779079, -1.343036 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 5.575548, 3.747156, 6.824935 ]
+						origin = [ 13.34588, -2.104622, 0.927454 ]
+						angles = [ -0.0, 24.916283, 0.0 ]
+						dimensions = [ 3.614888, 7.644925, 2.208805 ]
 					},
 				]
 			},
@@ -166,6 +166,34 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_9mmar_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

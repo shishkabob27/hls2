@@ -79,8 +79,8 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "models/hl1decomp/wrld_shotgun.smd"
-						import_translation = [ 8.0, 2.0, 1.0 ]
-						import_rotation = [ 0.0, 180.0, -90.0 ]
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
@@ -107,17 +107,17 @@
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 1.802667
-						point0 = [ -3.169211, 0.529528, 1.036073 ]
-						point1 = [ 25.890142, 0.139368, 1.319237 ]
+						point0 = [ -18.162848, -0.01967, 1.166915 ]
+						point1 = [ 13.746168, -0.44809, 1.477847 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
-						radius = 1.802667
-						point0 = [ -3.912605, 0.192621, -6.108781 ]
-						point1 = [ -2.094313, 0.154894, 1.169656 ]
+						radius = 1.326119
+						point0 = [ 12.597584, 7.028329, 1.833943 ]
+						point1 = [ 11.264191, 1.043398, 1.857709 ]
 					},
 				]
 			},
@@ -148,6 +148,34 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_shotgun_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

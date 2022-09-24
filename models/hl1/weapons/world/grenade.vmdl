@@ -59,12 +59,12 @@
 				[
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = ""
+						parent_bone = "line02"
 						surface_prop = "plastic.hollow"
 						collision_tags = "solid"
 						radius = 4.36261
-						point0 = [ 0.009759, 0.082779, 4.439838 ]
-						point1 = [ 0.046892, 0.222522, -1.570235 ]
+						point0 = [ -0.292969, -5.659778, 1.027456 ]
+						point1 = [ 0.26228, 2.903539, 0.916777 ]
 					},
 				]
 			},
@@ -97,6 +97,34 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_grenade_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

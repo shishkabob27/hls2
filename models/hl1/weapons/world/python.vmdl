@@ -42,21 +42,21 @@
 				[
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "cylinder01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 2.016036
-						point0 = [ -2.047736, -0.071917, -4.610871 ]
-						point1 = [ 5.062693, -0.037474, 5.705562 ]
+						point0 = [ -0.11154, -10.121347, -7.384945 ]
+						point1 = [ 0.18296, -0.959347, -2.929003 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "cylinder01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 2.016036
-						point0 = [ 4.598123, -0.428513, 3.842029 ]
-						point1 = [ 23.128704, 0.241074, 6.3669 ]
+						point0 = [ 0.255021, 1.507029, -0.244633 ]
+						point1 = [ 0.188973, 1.299905, 18.916252 ]
 					},
 				]
 			},
@@ -82,8 +82,8 @@
 					{
 						_class = "RenderMeshFile"
 						filename = "models/hl1decomp/w_python.smd"
-						import_translation = [ 8.0, 0.0, 4.0 ]
-						import_rotation = [ 0.0, 180.0, -90.0 ]
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
@@ -99,6 +99,34 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "position"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_357_anims/position.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""
