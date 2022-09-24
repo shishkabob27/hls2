@@ -3,7 +3,7 @@
 /// </summary>
 [Library("ambient_generic")]
 [HammerEntity]
-[EditorSprite("editor/snd_event.vmat")]
+[EditorSprite("editor/ambient_generic.vmat")]
 [VisGroup(VisGroup.Sound)]
 [Title("ambient_generic"), Category("Sound"), Icon("volume_up")]
 public partial class SoundEventEntity : Entity
