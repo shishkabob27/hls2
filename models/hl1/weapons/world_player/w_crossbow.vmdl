@@ -1,0 +1,106 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "Skeleton"
+				children = 
+				[
+					{
+						_class = "Bone"
+						name = "hold_R"
+						origin = [ -7.168093, -0.676641, 0.0 ]
+						angles = [ 4.455544, 0.0, 0.0 ]
+						do_not_discard = true
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "bowchrome.vmat"
+								to = "materials/hl1/weapons/world/crossbow/bowchrome.vmat"
+							},
+							{
+								from = "clip_side.vmat"
+								to = "materials/hl1/weapons/world/crossbow/clip_side.vmat"
+							},
+							{
+								from = "mechanismside.vmat"
+								to = "materials/hl1/weapons/world/crossbow/mechanismside.vmat"
+							},
+							{
+								from = "receiverside.vmat"
+								to = "materials/hl1/weapons/world/crossbow/receiverside.vmat"
+							},
+							{
+								from = "sightcyl.vmat"
+								to = "materials/hl1/weapons/world/crossbow/sightcyl.vmat"
+							},
+							{
+								from = "stock.vmat"
+								to = "materials/hl1/weapons/world/crossbow/stock.vmat"
+							},
+							{
+								from = "string.vmat"
+								to = "materials/hl1/weapons/world/crossbow/string.vmat"
+							},
+							{
+								from = "world_grip.vmat"
+								to = "materials/hl1/weapons/world/crossbow/world_grip.vmat"
+							},
+							{
+								from = "world_shoulder.vmat"
+								to = "materials/hl1/weapons/world/crossbow/world_shoulder.vmat"
+							},
+							{
+								from = "world_slide.vmat"
+								to = "materials/hl1/weapons/world/crossbow/world_slide.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/mp_weapons/w_crossbow/w_crossbow.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 180.0, 0.0 ]
+						import_scale = 0.75
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"w_crossbow",
+							]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}
