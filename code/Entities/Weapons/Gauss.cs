@@ -67,9 +67,6 @@ partial class Gauss : HLWeapon
 
         if ( ( !( Input.Down( InputButton.SecondaryAttack ) ) && spinning ) || ( ( player.AmmoCount( AmmoType.Uranium ) <= 0 ) && spinning ) )
         {
-            ViewModelEntity?.SetAnimParameter( "spinning", false );
-            var x = 85 + Rand.Float( 0, 31 );
-            PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
             var dmg = 200.0f;
             if ( Time.Now - startspin > GetFullChargeTime() )
             {
@@ -79,6 +76,10 @@ partial class Gauss : HLWeapon
             {
                 dmg = 200 * ( ( Time.Now - startspin ) / GetFullChargeTime() );
             }
+            if ( dmg < 10 ) return; // wait until we have a bit of charge
+            ViewModelEntity?.SetAnimParameter( "spinning", false );
+            var x = 85 + Rand.Float( 0, 31 );
+            PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 
             GaussLaser( whiteCOLOUR, dmg, player.EyeRotation.Forward, GetFiringPos() );
             var ZVel = player.Velocity.z;
