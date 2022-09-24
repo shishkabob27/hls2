@@ -68,7 +68,6 @@ partial class Gauss : HLWeapon
         if ( ( !( Input.Down( InputButton.SecondaryAttack ) ) && spinning ) || ( ( player.AmmoCount( AmmoType.Uranium ) <= 0 ) && spinning ) )
         {
             ViewModelEntity?.SetAnimParameter( "spinning", false );
-            ShootEffects( whiteCOLOUR );
             var x = 85 + Rand.Float( 0, 31 );
             PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
             var dmg = 200.0f;
@@ -80,7 +79,8 @@ partial class Gauss : HLWeapon
             {
                 dmg = 200 * ( ( Time.Now - startspin ) / GetFullChargeTime() );
             }
-            ShootBullet( 0, 1, dmg, 2.0f );
+
+            GaussLaser( whiteCOLOUR, dmg, player.EyeRotation.Forward, GetFiringPos() );
             var ZVel = player.Velocity.z;
             var a = player.Velocity;
 
@@ -98,7 +98,7 @@ partial class Gauss : HLWeapon
     }
     public override void AttackPrimary()
     {
-        if (spinning) return;
+        if ( spinning ) return;
 
         TimeSincePrimaryAttack = 0;
 
@@ -111,20 +111,109 @@ partial class Gauss : HLWeapon
         }
         var x = 85 + Rand.Float( 0, 31 );
         PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
-
-        ShootEffects( orangeCOLOUR );
-        ShootBullet( 0, 1, 20, 2.0f );
+        GaussLaser( orangeCOLOUR, 20, player.EyeRotation.Forward, GetFiringPos() );
 
     }
-    protected void ShootEffects( Vector3 beamcolour )
+
+
+    [ConVar.Client] public static bool hl_debug_gauss { get; set; } = false;
+
+    public void GaussLaser( Vector3 Colour, float Damage, Vector3 vecOrigDir, Vector3 vecOrigSrc, bool doPunch = false )
+    {
+        Vector3 vecSrc = vecOrigSrc;
+        Vector3 vecDir = vecOrigDir;
+        Vector3 vecDest = vecSrc + vecDir * 8192;
+        float DMG = Damage;
+        float flMaxFrac = 1.0f;
+        int nTotal = 0;
+        int MaxHits = 10; // how many times do we trace and bounce?
+        float force = 1;
+        bool FirstBeam = true;
+        while ( DMG > 10 && MaxHits > 0 )
+        {
+            MaxHits--;
+
+
+            ShootEffects( Colour, vecSrc, vecDir, vecDest, FirstBeam );
+            //ShootBullet( 0, 1, DMG, 2.0f );
+
+            if ( FirstBeam )
+            {
+                // TODO: muzzleflash here 
+                FirstBeam = false;
+                nTotal += 26;
+            }
+
+            foreach ( var tr in TraceBullet( vecSrc, vecDest, 2.0f ) )
+            {
+
+                tr.Surface.DoHLBulletImpact( tr );
+
+                var damageInfo = DamageInfo.FromBullet( vecSrc, vecDest * force, DMG )
+                    .UsingTraceResult( tr )
+                    .WithAttacker( Owner )
+                    .WithWeapon( this );
+
+                tr.Entity.TakeDamage( damageInfo );
+                if ( tr.Entity is NPC )
+                {
+                    var trace = Trace.Ray( vecSrc, vecDest )
+                    .WorldOnly()
+                    .Ignore( this )
+                    .Size( 1.0f )
+                    .Run();
+                    if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+                    {
+                        Decal.Place( decal, trace );
+                    }
+                }
+
+                if ( hl_debug_gauss ) DebugOverlay.Line( tr.StartPosition, tr.EndPosition, 10 );
+
+                if ( tr.Entity is WorldEntity )
+                {
+                    var n = -Vector3.Dot( tr.Normal, vecDir );
+                    if ( n < 0.5 ) // 60 degrees
+                    {
+                        Vector3 r;
+
+                        r = 2.0f * tr.Normal * n + vecDir;
+                        flMaxFrac = flMaxFrac - tr.Fraction;
+                        vecDir = r;
+                        vecSrc = tr.EndPosition + vecDir * 8;
+                        vecDest = vecSrc + vecDir * 8192;
+
+                        // explode a bit
+                        //m_pPlayer->RadiusDamage( tr.vecEndPos, pev, m_pPlayer->pev, flDamage * n, CLASS_NONE, DMG_BLAST );
+
+                        nTotal += 34;
+
+                        // lose energy
+                        if ( n == 0 ) n = 0.1f;
+                        DMG = DMG * ( 1 - n );
+                    }
+                    else
+                    {
+                        DMG = 0;
+                        nTotal += 13;
+                    }
+                }
+                else
+                {
+                    vecSrc = tr.EndPosition + vecDir;
+                }
+            }
+        }
+    }
+    protected void ShootEffects( Vector3 beamcolour, Vector3 vecSrc, Vector3 vecDir, Vector3 vecDest, bool FirstBeam = true )
     {
         if ( Owner is not HLPlayer player ) return;
 
         var owner = Owner as HLPlayer;
-        var startPos = GetFiringPos();
-        var dir = GetFiringRotation().Forward;
+        var startPos = vecSrc;//GetFiringPos();
+        var dir = vecDir;//GetFiringRotation().Forward;
 
-        var tr = Trace.Ray( startPos, startPos + dir * 4096 )
+        var tr = Trace.Ray( startPos, vecDest )
         .UseHitboxes()
             .Ignore( owner, false )
             .WithAllTags( "solid" )
@@ -132,7 +221,7 @@ partial class Gauss : HLWeapon
 
         if ( true )//Beam == null)
         {
-            Beam = Particles.Create( "particles/generic_beam.vpcf", tr.EndPosition );
+            Beam = Particles.Create( "particles/generic_beam.vpcf", vecSrc );
         }
 
         ViewModelEntity?.SetAnimParameter( "fire", true );
@@ -140,7 +229,15 @@ partial class Gauss : HLWeapon
         ViewModelEntity?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );
         VRWeaponModel?.SetAnimParameter( "holdtype_attack", false ? 2 : 1 );
 
-        Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
+
+        if ( FirstBeam )
+        {
+            Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
+        }
+        else
+        {
+            Beam.SetPosition( 0, startPos );
+        }
         if ( Client.IsUsingVr ) Beam.SetEntityAttachment( 0, VRWeaponModel, "muzzle", true );
         Beam.SetPosition( 2, beamcolour );
         Beam.SetPosition( 3, new Vector3( 2, 1, 0 ) );
