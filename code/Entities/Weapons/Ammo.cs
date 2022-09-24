@@ -64,6 +64,7 @@ partial class Ammo9mmBox : BaseAmmo
 }
 
 [Library( "ammo_9mmar" ), HammerEntity]
+[Alias( "ammo_mp5clip" )]
 [EditorModel( "models/hl1/weapons/ammo/w_9mmar.vmdl" )]
 [Title( "9mm AR" ), Category( "Ammo" )]
 partial class Ammo9mmAR : BaseAmmo
