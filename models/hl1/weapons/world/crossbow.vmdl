@@ -78,39 +78,30 @@
 				[
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "line01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 2.203498
-						point0 = [ -6.561722, -0.17001, 1.505627 ]
-						point1 = [ 16.139021, -0.10755, 1.641748 ]
+						point0 = [ 0.799007, 1.058832, 2.975586 ]
+						point1 = [ 22.668274, -1.339775, 2.547466 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "line01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 2.269182
-						point0 = [ -22.947718, 0.415537, -0.163249 ]
-						point1 = [ -6.487861, 0.266136, 0.264313 ]
+						point0 = [ -16.608322, 0.850193, 1.079891 ]
+						point1 = [ 1.776921, 0.557007, 1.631485 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
-						surface_prop = "default"
-						collision_tags = "solid"
-						radius = 1.627204
-						point0 = [ 6.483297, -0.069189, -0.799426 ]
-						point1 = [ 9.757689, -0.093285, -8.644125 ]
-					},
-					{
-						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "line01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 2.203498
-						point0 = [ 13.772336, -10.017127, 1.809067 ]
-						point1 = [ 13.690002, 10.886774, 2.079557 ]
+						point0 = [ -13.985236, 1.569741, -12.222603 ]
+						point1 = [ -13.528501, 1.773009, 12.349819 ]
 					},
 				]
 			},
