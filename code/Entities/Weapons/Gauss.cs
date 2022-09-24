@@ -147,24 +147,27 @@ partial class Gauss : HLWeapon
             foreach ( var tr in TraceBullet( vecSrc, vecDest, 2.0f ) )
             {
 
-                tr.Surface.DoHLBulletImpact( tr );
-
-                var damageInfo = DamageInfo.FromBullet( vecSrc, vecDest * force, DMG )
-                    .UsingTraceResult( tr )
-                    .WithAttacker( Owner )
-                    .WithWeapon( this );
-
-                tr.Entity.TakeDamage( damageInfo );
-                if ( tr.Entity is NPC )
+                if ( IsServer )
                 {
-                    var trace = Trace.Ray( vecSrc, vecDest )
-                    .WorldOnly()
-                    .Ignore( this )
-                    .Size( 1.0f )
-                    .Run();
-                    if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+                    tr.Surface.DoHLBulletImpact( tr );
+
+                    var damageInfo = DamageInfo.FromBullet( vecSrc, vecDest * force, DMG )
+                        .UsingTraceResult( tr )
+                        .WithAttacker( Owner )
+                        .WithWeapon( this );
+
+                    tr.Entity.TakeDamage( damageInfo );
+                    if ( tr.Entity is NPC )
                     {
-                        Decal.Place( decal, trace );
+                        var trace = Trace.Ray( vecSrc, vecDest )
+                        .WorldOnly()
+                        .Ignore( this )
+                        .Size( 1.0f )
+                        .Run();
+                        if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+                        {
+                            Decal.Place( decal, trace );
+                        }
                     }
                 }
 
