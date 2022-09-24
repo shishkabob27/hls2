@@ -85,7 +85,7 @@ partial class Gauss : HLWeapon
             var x = 85 + Rand.Float( 0, 31 );
             PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 
-            GaussLaser( whiteCOLOUR, dmg, player.EyeRotation.Forward, GetFiringPos() );
+            GaussLaser( whiteCOLOUR, dmg, player.EyeRotation.Forward, GetFiringPos(), true );
             Rand.SetSeed( ( Time.Now / 10 ).CeilToInt() ); // same random seed across client and server
             PlayAftershock = Time.Now + Rand.Float( 0.3f, 0.8f );
             var ZVel = player.Velocity.z;
@@ -207,8 +207,54 @@ partial class Gauss : HLWeapon
                     }
                     else
                     {
-                        DMG = 0;
                         nTotal += 13;
+                        if ( doPunch )
+                        {
+
+                            var trace = Trace.Ray( tr.EndPosition + vecDir * 8, vecDest ).Run();
+                            if ( !trace.StartedSolid )
+                            {
+                                var trace2 = Trace.Ray( trace.EndPosition, tr.EndPosition ).Run();
+                                float n2 = ( trace2.EndPosition - trace2.EndPosition ).Length;
+
+                                if ( n2 < DMG )
+                                {
+                                    if ( n2 == 0 ) n2 = 1;
+                                    DMG -= n2;
+
+                                    // ALERT( at_console, "punch %f\n", n );
+                                    nTotal += 21;
+
+                                    // exit blast damage
+                                    //m_pPlayer->RadiusDamage( beam_tr.vecEndPos + vecDir * 8, pev, m_pPlayer->pev, flDamage, CLASS_NONE, DMG_BLAST );
+                                    float damage_radius;
+
+
+                                    if ( HLGame.hl_gamemode == "deathmatch" )
+                                    {
+                                        damage_radius = DMG * 1.75f;  // Old code == 2.5
+                                    }
+                                    else
+                                    {
+                                        damage_radius = DMG * 2.5f;
+                                    }
+                                    //HLExplosion.Explosion( this, Owner, trace2.EndPosition + vecDir * 8, damage_radius, DMG, 1, "electro" );
+
+                                    //:RadiusDamage( beam_tr.vecEndPos + vecDir * 8, pev, m_pPlayer->pev, flDamage, damage_radius, CLASS_NONE, DMG_BLAST );
+
+                                    //CSoundEnt::InsertSound( bits_SOUND_COMBAT, pev->origin, NORMAL_EXPLOSION_VOLUME, 3.0 );
+
+                                    nTotal += 53;
+
+                                    vecSrc = trace2.EndPosition + vecDir;
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                            DMG = 0;
+                        }
                     }
                 }
                 else
