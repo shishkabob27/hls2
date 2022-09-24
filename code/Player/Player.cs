@@ -92,11 +92,11 @@
 
 		SetAnimGraph( "animgraphs/player.vanmgrph" );
 
-		Controller = new HLWalkController();
+		Controller = new WalkController();
 
 		Animator = new HLPlayerAnimator();
 
-		CameraMode = new HLFirstPersonCamera();
+		CameraMode = new FirstPersonCamera();
 
 
 		EnableAllCollisions = true;
@@ -223,7 +223,7 @@
 
 		Controller = null;
 
-		CameraMode = new HLDeadCamera();
+		CameraMode = new DeadCamera();
 
 		EnableAllCollisions = false;
 		EnableDrawing = false;
@@ -322,7 +322,7 @@
 		{
 			if ( CameraMode is ThirdPersonCamera )
 			{
-				CameraMode = new HLFirstPersonCamera();
+				CameraMode = new FirstPersonCamera();
 			}
 			else
 			{

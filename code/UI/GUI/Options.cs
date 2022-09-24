@@ -45,7 +45,7 @@ public class Options : GUIPanel
 	}
 	public void updateCvars()
 	{
-		HLWalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
+		WalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
 		HLGame.hl_hud_scale = fChudScale;
 		HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
 		HLGame.hl_gui_rescale = bCguiscale;
