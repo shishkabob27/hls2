@@ -23,6 +23,8 @@
 	float bGirth = 1 * 0.5f;
 	float bHeight = 1 * 0.5f;
 
+	int BloodColour = 0;
+
 	TraceResult lastTrace;
 
 	/// <summary>
@@ -44,6 +46,15 @@
 		"models/hl1/gib/hgib/hgib_b_gib1.vmdl",
 		"models/hl1/gib/hgib/hgib_b_bone1.vmdl"
 	};
+	List<string> AGibList = new List<string>{
+		//"models/hl1/gib/hgib/hgib_skull1.vmdl", spawn manually please!
+		"models/hl1/gib/agib/agib_lung1.vmdl",
+		"models/hl1/gib/agib/agib_legbone1.vmdl",
+		"models/hl1/gib/agib/agib_hmeat1.vmdl",
+		"models/hl1/gib/agib/agib_guts1.vmdl",
+		"models/hl1/gib/agib/agib_b_gib1.vmdl",
+		"models/hl1/gib/agib/agib_b_bone1.vmdl"
+	};
 	Vector3 mins;
 	Vector3 maxs;
 
@@ -58,6 +69,20 @@
 		SetModel( ModelName );
 		Initialise();
 		_ = FadeOut( 30 );
+	}
+	public void Spawn( int Colour )
+	{
+		if ( Colour == 0 )
+		{
+			SetModel( Rand.FromList<string>( HGibList ) );
+		}
+		else
+		{
+			SetModel( Rand.FromList<string>( AGibList ) );
+		}
+		Initialise();
+		_ = FadeOut( 30 );
+
 	}
 	public override void Spawn()
 	{
@@ -437,11 +462,28 @@
 	{
 		//AngularVelocity = Angles.Zero;
 		base.StartTouch( other );
-		if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) && ( this.PhysicsBody != null && ( this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh" ) ) )
+
+		if ( ( this.PhysicsBody != null && ( this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh" || this.PhysicsBody.GetDominantSurface() == "flesh_yellow" || this.PhysicsBody.GetDominantSurface() == "hl_flesh_yellow" ) ) )
 		{
-			var vecSpot = Position + new Vector3( 0, 0, 8 );
-			Decal.Place( decal, lastTrace );
+			if ( BloodColour == NPC.BLOOD_COLOUR_RED )
+			{
+				if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+				{
+					var vecSpot = Position + new Vector3( 0, 0, 8 );
+					Decal.Place( decal, lastTrace );
+				}
+			}
+			else
+			{
+				if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/yellow_blood.decal", out var decal ) )
+				{
+
+					var vecSpot = Position + new Vector3( 0, 0, 8 );
+					Decal.Place( decal, lastTrace );
+				}
+			}
 		}
+
 		if ( BounceSound )
 		{
 			if ( SurfaceType != null )

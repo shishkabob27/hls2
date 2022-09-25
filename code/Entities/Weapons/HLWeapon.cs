@@ -485,11 +485,23 @@
 					.Ignore( this )
 					.Size( 1.0f )
 					.Run();
-					if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+					if ( ( tr.Entity as NPC ).BloodColour == NPC.BLOOD_COLOUR_RED )
 					{
-						//Log.Info( "Splat!" );
-						Decal.Place( decal, trace );
+						if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+						{
+							//Log.Info( "Splat!" );
+							Decal.Place( decal, trace );
+						}
 					}
+					else
+					{
+						if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/yellow_blood.decal", out var decal ) )
+						{
+							//Log.Info( "Splat!" );
+							Decal.Place( decal, trace );
+						}
+					}
+
 				}
 			}
 		}
