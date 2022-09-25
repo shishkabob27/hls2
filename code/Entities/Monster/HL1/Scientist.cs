@@ -158,7 +158,6 @@ public partial class Scientist : NPC
             ticker = 0;
 
             //Steer.Target = Position + (user.Position - Position).Normal * 10; // Turn to face the user.
-            targetRotation = Rotation.LookAt( user.Position.WithZ( 0 ) - Position.WithZ( 0 ), Vector3.Up );
             //targetRotation.w = Rotation.w;
             //this.LookDir = 
             //lookAt = user.Position.WithZ(Position.z);
@@ -172,25 +171,33 @@ public partial class Scientist : NPC
 
             //}
 
+            if ( SpawnSettings.HasFlag( Flags.PreDisaster ) )
+            {
+                SpeakSound( "sounds/hl1/scientist/sci_poke.sound", VoicePitch );
+            }
+            else
+            {
+                targetRotation = Rotation.LookAt( user.Position.WithZ( 0 ) - Position.WithZ( 0 ), Vector3.Up );
+                if ( MODE == "MODE_IDLE" )
+                {
+                    //CurrentSound.Stop();
+                    //CurrentSound = PlaySound("sounds/hl1/scientist/sci_follow.sound").SetPitch(VoicePitch / 100);
+                    SpeakSound( "sounds/hl1/scientist/sci_follow.sound", VoicePitch );
+                    MODE = "MODE_FOLLOW";
+                    DontSleep = true;
+                    FollowTarget = HLUtils.ClosestPlayerTo( Position );
+                }
+                else if ( MODE == "MODE_FOLLOW" )
+                {
+                    //CurrentSound.Stop();
+                    //CurrentSound = PlaySound("sounds/hl1/scientist/sci_stopfollow.sound").SetPitch(VoicePitch / 100);
+                    SpeakSound( "sounds/hl1/scientist/sci_stopfollow.sound", VoicePitch );
+                    MODE = "MODE_IDLE";
+                    DontSleep = false;
+                    FollowTarget = null;
+                }
+            }
 
-            if ( MODE == "MODE_IDLE" && !SpawnSettings.HasFlag( Flags.PreDisaster ) )
-            {
-                //CurrentSound.Stop();
-                //CurrentSound = PlaySound("sounds/hl1/scientist/sci_follow.sound").SetPitch(VoicePitch / 100);
-                SpeakSound( "sounds/hl1/scientist/sci_follow.sound", VoicePitch );
-                MODE = "MODE_FOLLOW";
-                DontSleep = true;
-                FollowTarget = HLUtils.ClosestPlayerTo( Position );
-            }
-            else if ( MODE == "MODE_FOLLOW" )
-            {
-                //CurrentSound.Stop();
-                //CurrentSound = PlaySound("sounds/hl1/scientist/sci_stopfollow.sound").SetPitch(VoicePitch / 100);
-                SpeakSound( "sounds/hl1/scientist/sci_stopfollow.sound", VoicePitch );
-                MODE = "MODE_IDLE";
-                DontSleep = false;
-                FollowTarget = null;
-            }
             return true;
         }
         else
