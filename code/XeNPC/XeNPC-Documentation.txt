@@ -9,9 +9,10 @@ You must classify an NPC to have them have relationships with other npcs, to do 
 		return (int)HLCombat.Class.BLAHBLAHBLAH-SET-CLASS-HERE;
 	}
 
-Logic should go in an override of Think and seeing and processing other NPC's / Entities is done in a function called ProcessEntity( Entity ent, int rel )
+Logic should go in an override of Think() 
 
-ProcessEntity( Entity ent, int rel ) ent being the entity it currently sees and rel being the relationship in the matrix from -2 to 2 (currently hard wired to hls2 check HLCombat.CS).
+Processing other NPCs/Entities is done in a function called ProcessEntity( Entity ent, int rel ), ent being the entity it currently sees and rel being the relationship in the matrix from -2 to 2 (currently hard wired to hls2 check HLCombat.CS).
+ProcessEntity is only called for seeing Entities that have the ICombat interface, this includes NPCs and the player but will work if you add your own entity with the interface
 
 Sound reactions and processing will be done in SoundProcess at some point, doesn't do anything right now
 
@@ -50,5 +51,5 @@ all NPCs will gib if they take enough damage but you can override the behaviour 
 	public string NPCSurface = "surface/hlflesh.surface"; -- the surface of the npc, for being hit or shot
 
 ------------Misc Functions------------
-public virtual void FindCover( Vector3 fromPos ) -- Find cover from a position, kinda works right now but its not really finding cover but it does its job most of the time kinda
+	public virtual void FindCover( Vector3 fromPos ) -- Find cover from a position, kinda works right now but its not really finding cover but it does its job most of the time kinda
 	
