@@ -14,6 +14,11 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public bool HasFriction = true;
 	public bool Unstick = true;
 
+	public const int BLOOD_COLOUR_RED = 0;
+	public const int BLOOD_COLOUR_YELLOW = 1;
+	public const int BLOOD_COLOUR_GREEN = BLOOD_COLOUR_YELLOW;
+	public int BloodColour = BLOOD_COLOUR_RED;
+
 	[Flags]
 	public enum Flags
 	{
@@ -50,7 +55,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float EyeHeight = 64;
 
 	public string NPCAnimGraph = "";
-	public string NPCSurface = "surface/hlflesh.surface";
+	public string NPCSurface = "flesh";
 	XeNPC.NavPath Path;
 	public NavSteer Steer;
 
@@ -472,7 +477,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 					OnKilled();
 					if ( alwaysgib )
 					{
-						HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds );
+						HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, BloodColour );
 						Delete();
 					}
 					LifeState = LifeState.Dead;
@@ -489,7 +494,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		if ( Health < -20 )
 		{
-			HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds );
+			HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, BloodColour );
 			Delete();
 		}
 		this.ProceduralHitReaction( info );
@@ -625,7 +630,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	[Input]
 	public void Gib()
 	{
-		HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds );
+		HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds, BloodColour );
 		this.Delete();
 	}
 

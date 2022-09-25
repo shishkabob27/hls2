@@ -13,6 +13,8 @@ public class Headcrab : NPC
         Health = 20;
         SetModel( "models/hl1/monster/headcrab.vmdl" );
         SetupPhysicsFromAABB( PhysicsMotionType.Keyframed, new Vector3( -12, -12, 0 ), new Vector3( 12, 12, 24 ) );
+        NPCSurface = "flesh_yellow";
+        BloodColour = BLOOD_COLOUR_YELLOW;
         entFOV = 0.5f;
         EnableHitboxes = true;
         Tags.Add( "npc", "playerclip" );

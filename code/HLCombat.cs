@@ -69,12 +69,12 @@ public partial class HLCombat
 	/*ABIOWEAPON*/	{ R_NO  ,R_NO   ,R_DL   ,R_DL   ,R_DL   ,R_AL   ,R_NO   ,R_DL   ,R_DL   ,R_NO   ,R_NO   ,R_DL,  R_DL,   R_NO    }
     };
 
-    public static void CreateGibs( Vector3 Position, Vector3 DMGPos, float Health, BBox bbox )
+    public static void CreateGibs( Vector3 Position, Vector3 DMGPos, float Health, BBox bbox, int Colour = 0 )
     {
         Sound.FromWorld( "bodysplat", Position );
 
         Vector3 attackDir = ( DMGPos - new Vector3( 0, 0, 10 ) - Position ).Normal;
-        CreateHeadGib( Position, DMGPos, Health );
+        if ( Colour == 0 ) CreateHeadGib( Position, DMGPos, Health ); // no heads for aliens :(
 
         for ( int i = 0; i < 4; i++ )
         {
@@ -100,11 +100,12 @@ public partial class HLCombat
 
             gib.Position = bbox.RandomPointInside + Position - bbox.Mins;
             gib.Rotation = Rotation.LookAt( Vector3.Random.Normal );
-            gib.Spawn();
+
+            gib.Spawn( Colour );
         }
     }
 
-    static void CreateHeadGib( Vector3 Position, Vector3 DMGPos, float Health )
+    static void CreateHeadGib( Vector3 Position, Vector3 DMGPos, float Health, int Colour = 0 )
     {
         Vector3 attackDir = ( DMGPos - new Vector3( 0, 0, 10 ) - Position ).Normal;
         var skullGib = new HLGib();
