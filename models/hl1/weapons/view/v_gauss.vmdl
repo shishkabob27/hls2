@@ -120,7 +120,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/gauss_gun.smd"
+						filename = "models/hl1decomp/v_gauss/gauss_gun.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -140,7 +140,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/gauss_hand.smd"
+						filename = "models/hl1decomp/v_gauss/gauss_hand.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -178,7 +178,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/draw.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -199,7 +199,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/fidget.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/fidget.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -220,7 +220,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/fire.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/fire.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -241,7 +241,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/fire2.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/fire2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -262,7 +262,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/holster.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -283,7 +283,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/idle.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -304,7 +304,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/idle2.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -325,7 +325,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/spin.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/spin.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -346,7 +346,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss_anims/spinup.smd"
+						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/spinup.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
