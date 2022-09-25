@@ -151,14 +151,14 @@ partial class AmmoGaussClip : BaseAmmo
 }
 
 [Library( "ammo_rockets" ), HammerEntity]
-[EditorModel( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" )]
+[EditorModel( "models/hl1/weapons/ammo/w_rpgammo.vmdl" )]
 [Title( "RPG Ammo" ), Category( "Ammo" )]
 partial class AmmoRPG : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.RPG;
 	public override int AmmoAmount => 5;
 
-	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" );
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_rpgammo.vmdl" );
 }
 
 [Library( "ammo_rpgclip" ), HammerEntity]
