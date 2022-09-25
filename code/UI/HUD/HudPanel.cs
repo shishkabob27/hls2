@@ -8,13 +8,14 @@ public class HudPanel : HudEntity<HudRootPanel>
 
     public Subtitle Subtitle { get; set; }
 
+
     public HudPanel()
     {
         Current = this;
 
-        if (IsClient)
+        if ( IsClient )
         {
-            if (Global.IsRunningInVR)
+            if ( Global.IsRunningInVR )
             {
                 // Use a world panel - we're in VR
                 _ = new VRVitals();
@@ -24,8 +25,8 @@ public class HudPanel : HudEntity<HudRootPanel>
             }
 
             // Just display the HUD on-screen
-            StyleSheet.FromFile("/resource/styles/hud.scss");
-            RootPanel.SetTemplate("/resource/templates/hud.html");
+            StyleSheet.FromFile( "/resource/styles/hud.scss" );
+            RootPanel.SetTemplate( "/resource/templates/hud.html" );
 
             RootPanel.AddChild<DamageIndicator>();
             RootPanel.AddChild<Crosshair>();
@@ -39,6 +40,7 @@ public class HudPanel : HudEntity<HudRootPanel>
             RootPanel.AddChild<VoiceList>();
             RootPanel.AddChild<VoiceSpeaker>();
             RootPanel.AddChild<Subtitle>();
+
         }
     }
 }

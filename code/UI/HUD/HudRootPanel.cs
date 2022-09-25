@@ -2,14 +2,20 @@
 
 public class HudRootPanel : RootPanel
 {
-    protected override void UpdateScale(Rect screenSize)
+    public static HudRootPanel Current;
+    public HudRootPanel()
     {
-		if (HLGame.hl_hud_scale > 0)
-		{
+        Current = this;
+    }
+    protected override void UpdateScale( Rect screenSize )
+    {
+        if ( HLGame.hl_hud_scale > 0 )
+        {
             Scale = HLGame.hl_hud_scale;
-        } else
-		{
-            base.UpdateScale(screenSize);
         }
-	}
+        else
+        {
+            base.UpdateScale( screenSize );
+        }
+    }
 }

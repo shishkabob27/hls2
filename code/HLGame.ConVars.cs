@@ -8,6 +8,7 @@
     [ConVar.Replicated] public static bool hl_ragdoll { get; set; } = false;
     [ConVar.Replicated] public static float sv_spray_max_distance { get; set; } = 100;
     [ConVar.Replicated] public static float sv_spray_cooldown { get; set; } = 1;
+    [ConVar.Replicated] public static bool hl_extended_mapvote { get; set; } = false;
     [ConVar.Client] public static bool hl_gui_rescale { get; set; } = true;
     [ConVar.Client] public static bool hl_pixelfont { get; set; } = true;
     [ConVar.Client] public static int cc_subtitles { get; set; } = 0;
