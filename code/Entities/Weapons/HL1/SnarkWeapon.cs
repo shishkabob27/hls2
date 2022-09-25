@@ -1,5 +1,5 @@
 ﻿[Library( "weapon_snark" ), HammerEntity]
-[EditorModel( "models/hl1/weapons/world/snarknest.vmdl" )]
+[EditorModel( "models/hl1/weapons/world/sqknest.vmdl" )]
 [Title( "Snark" ), Category( "Weapons" )]
 partial class SnarkWeapon : HLWeapon
 {
@@ -18,7 +18,7 @@ partial class SnarkWeapon : HLWeapon
     {
         base.Spawn();
 
-        Model = Model.Load( "models/hl1/weapons/world/squeak.vmdl" );
+        Model = WorldModel;
         AmmoClip = 0;
         WeaponIsAmmo = true;
     }
