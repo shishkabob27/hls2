@@ -36,6 +36,8 @@
 
     public void Simulate()
     {
+        if ( HLUtils.PlayerInRangeOf( Position, 1024 ) == false )
+            return;
         try
         {
             CalcGroundEnt();
