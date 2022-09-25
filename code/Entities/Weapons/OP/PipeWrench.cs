@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_pipewrench" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/pipe_wrench.vmdl" )]
-[Title( "Crowbar" ), Category( "Weapons" )]
+[Title( "weapon_pipewrench" ), Category( "Weapons" )]
 partial class PipeWrench : HLWeapon
 {
 	public static Model WorldModel = Model.Load( "models/hl1/weapons/world/pipe_wrench.vmdl" );
