@@ -11,8 +11,16 @@
 		Sounds = 
 		[
 			resource:"sounds/hl1/fvox/hev_logon.vsnd",
+			resource:"sounds/hl1/fvox/powerarmor_on.vsnd",
+			resource:"sounds/hl1/fvox/atmospherics_on.vsnd",
+			resource:"sounds/hl1/fvox/vitalsigns_on.vsnd",
+			resource:"sounds/hl1/fvox/automedic_on.vsnd",
+			resource:"sounds/hl1/fvox/weaponselect_on.vsnd",
+			resource:"sounds/hl1/fvox/munitionview_on.vsnd",
+			resource:"sounds/hl1/fvox/communications_on.vsnd",
+			resource:"sounds/hl1/fvox/safe_day.vsnd",
 		]
-		SelectionMode = "Random"
+		SelectionMode = "Forward"
 		MaximumDistance = 1143.9335
 		MinimumDistance = 57.196674
 	}
