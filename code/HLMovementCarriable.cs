@@ -37,7 +37,7 @@
     public void Simulate()
     {
         if ( Owner is HLPlayer ) return; // Don't do physics if we are being carried
-        if ( HLUtils.PlayerInRangeOf( Position, 1024 ) == false )
+        if ( HLUtils.PlayerInRangeOf( Position, 2048 ) == false )
             return;
         try
         {
