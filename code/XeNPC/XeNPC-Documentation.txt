@@ -32,7 +32,6 @@ all NPCs will gib if they take enough damage but you can override the behaviour 
 ------------NPC Settings------------
 
 
-	public float Speed; -- this is their current travelling speed, not really a setting set walkspeed instead
 	public float WalkSpeed = 80; -- this is their walking travelling speed
 	public float RunSpeed = 200;-- this is their running travelling speed
 	public float entFOV = 0.5f; -- the FOV the entity can see, you can always override the viewcone functionality in void See() instead (remember to call process entity in it if you do override that function)
@@ -59,6 +58,14 @@ all NPCs will gib if they take enough damage but you can override the behaviour 
 	void Think() -- Do logic here, called after main NPC Logic every server tick
 	void SoundProcess() -- Called for every sound the NPC can hear (Doesn't do anything yes)
 	bool OnUse( Entity user ) -- Called when the player presses their USE key on the NPC
+
+------------Variables that do things------------
+
+	Rotation targetRotation
+	Nullable<Rotation> targetRotationOVERRIDE
+	NavSteer Steer -- the pathfinding navigation steer thingy, you can use Steer.Target to move to places
+	float Speed -- their current movement speed, set this to change their speed
+	float neck -- this is shit and heavily tied to HLS2 but you use this to change the rotation of their head to look at things, this is currently automatically set to whoever they're talking to when a SpeakSound() sound is playing
 
 ------------Misc Functions------------
 
