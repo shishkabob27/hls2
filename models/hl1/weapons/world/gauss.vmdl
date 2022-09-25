@@ -77,7 +77,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/mp_weapons/w_gauss/w_gauss.smd"
+						filename = "models/hl1decomp/w_gauss/w_gauss.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 180.0, 0.0 ]
 						import_scale = 1.0
@@ -115,7 +115,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/mp_weapons/w_gauss/w_gauss_anims/onside.smd"
+						source_filename = "models/hl1decomp/w_gauss/w_gauss_anims/onside.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -136,7 +136,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/mp_weapons/w_gauss/w_gauss_anims/stayput.smd"
+						source_filename = "models/hl1decomp/w_gauss/w_gauss_anims/stayput.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
