@@ -43,7 +43,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/HGIB_Legbone1.smd"
+						filename = "models/hl1decomp/gib_legbone/gib_legbone1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -57,6 +57,7 @@
 							exception_list = 
 							[
 								"hgib_legbone1",
+								"gib_legbone1",
 							]
 						}
 					},

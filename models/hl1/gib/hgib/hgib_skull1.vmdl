@@ -55,7 +55,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/HGIB_Skull1.smd"
+						filename = "models/hl1decomp/gib_skull/gib_skull1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -69,6 +69,7 @@
 							exception_list = 
 							[
 								"hgib_skull1",
+								"gib_skull1",
 							]
 						}
 					},
