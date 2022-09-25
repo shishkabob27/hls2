@@ -96,7 +96,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/WHGUN_Template_Model1.smd"
+						filename = "models/hl1decomp/w_hgun/whgun_template_model1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -133,7 +133,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_hgun_anims/stayput.smd"
+						source_filename = "models/hl1decomp/w_hgun/w_hgun_anims/stayput.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
