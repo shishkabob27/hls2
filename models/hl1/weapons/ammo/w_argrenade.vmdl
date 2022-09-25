@@ -48,7 +48,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/w_mp5grenade.smd"
+						filename = "models/hl1decomp/w_argrenade/w_mp5grenade.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0

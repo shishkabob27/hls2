@@ -30,7 +30,7 @@
 					{
 						_class = "RenderMeshFile"
 						name = "mp6"
-						filename = "models/hl1decomp/clip.smd"
+						filename = "models/hl1decomp/w_9mmarclip/clip.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
