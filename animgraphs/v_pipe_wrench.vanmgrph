@@ -25,7 +25,7 @@
 					m_tagSpans = [  ]
 					m_sequenceName = "attack3hit"
 					m_playbackSpeed = 1.0
-					m_bLoop = true
+					m_bLoop = false
 				}
 			},
 			{
@@ -91,7 +91,7 @@
 					m_tagSpans = [  ]
 					m_sequenceName = "attack1miss"
 					m_playbackSpeed = 1.0
-					m_bLoop = true
+					m_bLoop = false
 				}
 			},
 			{
@@ -308,7 +308,7 @@
 										{
 											_class = "CFinishedCondition"
 											m_comparisonOp = 0
-											m_option = "FinishedConditionOption_OnAlmostFinished"
+											m_option = "FinishedConditionOption_OnFinished"
 											m_bIsFinished = true
 										},
 									]
@@ -494,7 +494,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -384.0, 96.0 ]
+					m_vecPosition = [ -400.0, 96.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1229061874
@@ -504,7 +504,7 @@
 					m_tagSpans = [  ]
 					m_sequenceName = "attack2hit"
 					m_playbackSpeed = 1.0
-					m_bLoop = true
+					m_bLoop = false
 				}
 			},
 			{
@@ -623,7 +623,7 @@
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
 				m_bNetwork = false
 				m_bUseMostRecentValue = false
-				m_bAutoReset = false
+				m_bAutoReset = true
 				m_bPredicted = false
 				m_bDefaultValue = false
 			},
@@ -637,7 +637,7 @@
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
 				m_bNetwork = false
 				m_bUseMostRecentValue = false
-				m_bAutoReset = false
+				m_bAutoReset = true
 				m_bPredicted = false
 				m_bDefaultValue = false
 			},
