@@ -85,11 +85,11 @@ partial class PipeWrench : HLWeapon
 
 		if ( !didHit )
 		{
-			PlaySound( "sounds/hl1/weapons/cbar_miss.sound" );
+			PlaySound( "sounds/op/weapons/pwrench_miss.sound" );
 		}
 		else
 		{
-			PlaySound( "sounds/hl1/weapons/cbar_miss.sound" );
+			PlaySound( "sounds/op/weapons/pwrench_miss.sound" );
 			TimeSincePrimaryAttack = 0.26f;
 			ViewModelEntity?.SetAnimParameter( "attack_has_hit", true );
 
@@ -143,7 +143,7 @@ partial class PipeWrench : HLWeapon
 			else if ( hitEntity is not NPC && IsServer )
 			{
 				using ( Prediction.Off() )
-					PlaySound( "sounds/hl1/weapons/cbar_hit.sound" );
+					PlaySound( "sounds/op/weapons/pwrench_hit.sound" );
 			}
 		}
 
