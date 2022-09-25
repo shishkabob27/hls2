@@ -6,59 +6,23 @@
 		children = 
 		[
 			{
-				_class = "MaterialGroupList"
-				children = 
-				[
-					{
-						_class = "DefaultMaterialGroup"
-						remaps = 
-						[
-							{
-								from = "aliengeneric2.vmat"
-								to = "materials/hl1/gib/agibs/aliengeneric2.vmat"
-							},
-						]
-						use_global_default = false
-						global_default_material = ""
-					},
-				]
-			},
-			{
-				_class = "PhysicsShapeList"
-				children = 
-				[
-					{
-						_class = "PhysicsHullFromRender"
-						parent_bone = ""
-						surface_prop = "flesh"
-						collision_tags = "solid"
-						faceMergeAngle = 20.0
-						maxHullVertices = 32
-					},
-				]
-			},
-			{
 				_class = "RenderMeshList"
 				children = 
 				[
 					{
-						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/agibs/aliengeneric2.smd"
-						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
+						_class = "RenderPrimitiveBox"
+						name = "box"
 						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"aliengeneric2",
-							]
-						}
+						material_name = "dev/helper/testgrid.vmat"
+						origin = [ 0.0, 0.0, 0.0 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						max_u = 1.0
+						max_v = 1.0
+						dimensions = [ 10.0, 10.0, 10.0 ]
+						segments_x = 1
+						segments_y = 1
+						segments_z = 1
+						invert = false
 					},
 				]
 			},
@@ -66,6 +30,5 @@
 		model_archetype = ""
 		primary_associated_entity = ""
 		anim_graph_name = ""
-		base_model_name = ""
 	}
 }
