@@ -4,7 +4,7 @@
 partial class SnarkWeapon : HLWeapon
 {
     //stub
-    public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/snarknest.vmdl" );
+    public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/sqknest.vmdl" );
     public override string ViewModelPath => "models/hl1/weapons/view/v_squeak.vmdl";
 
     public override int Bucket => 4;
