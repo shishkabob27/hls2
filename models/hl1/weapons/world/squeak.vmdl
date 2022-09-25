@@ -76,7 +76,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/WORLDSQUEAK_Template_Biped1.smd"
+						filename = "models/hl1decomp/w_squeak/worldsqueak_template_biped1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0

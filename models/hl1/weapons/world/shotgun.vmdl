@@ -78,7 +78,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/wrld_shotgun.smd"
+						filename = "models/hl1decomp/w_shotgun/wrld_shotgun.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -167,7 +167,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_shotgun_anims/idle.smd"
+						source_filename = "models/hl1decomp/w_shotgun/w_shotgun_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0

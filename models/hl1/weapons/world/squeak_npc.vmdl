@@ -131,7 +131,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/WORLDSQUEAK_Template_Biped1.smd"
+						filename = "models/hl1decomp/w_squeak2/worldsqueak_template_biped1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -168,7 +168,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_squeak_anims/fidget.smd"
+						source_filename = "models/hl1decomp/w_squeak/w_squeak_anims/fidget.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -189,7 +189,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_squeak_anims/idle.smd"
+						source_filename = "models/hl1decomp/w_squeak/w_squeak_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -210,7 +210,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_squeak_anims/jump.smd"
+						source_filename = "models/hl1decomp/w_squeak/w_squeak_anims/jump.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -245,7 +245,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_squeak_anims/run.smd"
+						source_filename = "models/hl1decomp/w_squeak/w_squeak_anims/run.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0

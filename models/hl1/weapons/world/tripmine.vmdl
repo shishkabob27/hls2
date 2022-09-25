@@ -45,7 +45,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/tripmine_boned_world.smd"
+						filename = "models/hl1decomp/w_tripmine/tripmine_boned_world.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -127,7 +127,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_tripmine_anims/ground.smd"
+						source_filename = "models/hl1decomp/w_tripmine/w_tripmine_anims/ground.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -148,7 +148,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_tripmine_anims/world.smd"
+						source_filename = "models/hl1decomp/w_tripmine/w_tripmine_anims/world.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
