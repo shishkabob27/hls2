@@ -4,6 +4,8 @@
 public class Headcrab : NPC
 {
     float NextAttack;
+    float NextIdleSound;
+    float NextAlertSound;
     Entity Enemy;
     public override void Spawn()
     {
@@ -24,7 +26,12 @@ public class Headcrab : NPC
     {
         if ( rel > 0 )
         {
-
+            if ( ent != Enemy && Time.Now > NextAlertSound )
+            {
+                NextAlertSound = Time.Now + Rand.Int( 2, 4 );
+                PlaySound( "hc_alert" );
+            }
+            Enemy = ent;
             targetRotation = Rotation.LookAt( ent.Position.WithZ( 0 ) - Position.WithZ( 0 ), Vector3.Up );
 
             var e = ( ent.Position - Position );
@@ -35,7 +42,6 @@ public class Headcrab : NPC
 
             if ( CheckRangeAttack1( flDot, flDist ) && Time.Now > NextAttack )//&& Position.AlmostEqual( Steer.Target ) )
             {
-                Enemy = ent;
                 jumpAttack();
             }
             else
@@ -44,7 +50,15 @@ public class Headcrab : NPC
             }
         }
     }
-
+    public override void Think()
+    {
+        if ( Time.Now > NextIdleSound )
+        {
+            NextIdleSound = Time.Now + Rand.Int( 2, 4 );
+            PlaySound( "hc_idle" );
+        }
+        base.Think();
+    }
     void jumpAttack()
     {
         //ClearBits( pev->flags, FL_ONGROUND );
@@ -91,6 +105,7 @@ public class Headcrab : NPC
         //if ( iSound != 0 )
         //    EMIT_SOUND_DYN( edict(), CHAN_VOICE, pAttackSounds[iSound], GetSoundVolue(), ATTN_IDLE, 0, GetVoicePitch() );
 
+        PlaySound( "hc_attack" );
         Velocity = vecJumpDir;
         NextAttack = Time.Now + 2;
     }
@@ -101,5 +116,17 @@ public class Headcrab : NPC
             return true;
         }
         return false;
+    }
+    public override void TakeDamage( DamageInfo info )
+    {
+
+        PlaySound( "hc_pain" );
+        TakeDamage( info );
+    }
+    public override void OnKilled()
+    {
+
+        PlaySound( "hc_death" );
+        base.OnKilled();
     }
 }
