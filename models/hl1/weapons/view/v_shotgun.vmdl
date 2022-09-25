@@ -85,7 +85,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_shotgun_reference.smd"
+						filename = "models/hl1decomp/v_shotgun/v_shotgun_reference.smd"
 						import_translation = [ -15.0, 0.0, -60.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -123,7 +123,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/deepidle.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/deepidle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -144,7 +144,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/draw.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -165,7 +165,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/idle4.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/idle4.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -186,7 +186,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/pump.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/pump.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -207,7 +207,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/reholster.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/reholster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -243,7 +243,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/reload.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -279,7 +279,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/shoot.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/shoot.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -300,7 +300,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/shoot_big.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/shoot_big.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -321,7 +321,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/sm_idle.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/sm_idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -342,7 +342,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_shotgun_anims/start_reload.smd"
+						source_filename = "models/hl1decomp/v_shotgun/v_shotgun_anims/start_reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
