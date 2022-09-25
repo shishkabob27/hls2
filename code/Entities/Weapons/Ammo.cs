@@ -1,4 +1,4 @@
-﻿partial class BaseAmmo : ModelEntity, IRespawnableEntity
+﻿partial class BaseAmmo : HLMovement, IRespawnableEntity
 {
 	public virtual AmmoType AmmoType => AmmoType.None;
 	public virtual int AmmoAmount => 17;
