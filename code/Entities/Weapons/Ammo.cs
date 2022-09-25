@@ -162,14 +162,14 @@ partial class AmmoRPG : BaseAmmo
 }
 
 [Library( "ammo_rpgclip" ), HammerEntity]
-[EditorModel( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" )]
+[EditorModel( "models/hl1/weapons/ammo/w_rpgammo.vmdl" )]
 [Title( "RPG Ammo Clip" ), Category( "Ammo" )]
 partial class AmmoRPGClip : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.RPG;
 	public override int AmmoAmount => 5;
 
-	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" );
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_rpgammo.vmdl" );
 }
 
 [Library( "ammo_ARgrenades" ), HammerEntity]
