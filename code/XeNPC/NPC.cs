@@ -109,7 +109,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		{
 			See();
 			Think();
-			SoundProcess();
+			Hear();
 			return;
 		}
 
@@ -229,7 +229,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		animHelper.Neck = neck;
 		//See();
 		Think();
-		SoundProcess();
+		Hear();
 		//SoundStream test;
 		//test.
 
@@ -345,8 +345,12 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	{
 
 	}
+	public virtual void Hear()
+	{
+		ProcessSound(); // TODO: all of this.
+	}
 
-	public virtual void SoundProcess()
+	public virtual void ProcessSound()
 	{
 
 	}

@@ -56,7 +56,7 @@ all NPCs will gib if they take enough damage but you can override the behaviour 
 	int Classify() -- Set the relationship class here
 	void ProcessEntity( Entity ent, int rel ) -- Called for every ICombat(NPC/Player/Other Entities) the NPC has in their view cone
 	void Think() -- Do logic here, called after main NPC Logic every server tick
-	void SoundProcess() -- Called for every sound the NPC can hear (Doesn't do anything yes)
+	void ProcessSound() -- Called for every sound the NPC can hear (Doesn't do anything yes)
 	bool OnUse( Entity user ) -- Called when the player presses their USE key on the NPC
 
 ------------Variables that do things------------
