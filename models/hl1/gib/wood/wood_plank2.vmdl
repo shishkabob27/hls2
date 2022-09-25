@@ -44,7 +44,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/WOOD_Plank2.smd"
+						filename = "models/hl1decomp/woodgibs/WOOD_Plank2.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0

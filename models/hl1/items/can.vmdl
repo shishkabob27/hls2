@@ -15,19 +15,34 @@
 						[
 							{
 								from = "canbutt.vmat"
-								to = "materials/hl1/items/can/canbutt.vmat"
+								to = "materials/hl1/items/can/cantop.vmat"
 							},
 							{
 								from = "cantop.vmat"
 								to = "materials/hl1/items/can/cantop.vmat"
 							},
 							{
-								from = "sprite.vmat"
+								from = "gensoda1.vmat"
 								to = "materials/hl1/items/can/sprite.vmat"
 							},
 						]
 						use_global_default = false
 						global_default_material = ""
+					},
+					{
+						_class = "MaterialGroup"
+						name = "sprite"
+						remaps = 
+						[
+							{
+								from = "materials/hl1/items/can/cantop.vmat"
+								to = "materials/hl1/items/can/cantop.vmat"
+							},
+							{
+								from = "materials/hl1/items/can/sprite.vmat"
+								to = "materials/hl1/items/can/sprite.vmat"
+							},
+						]
 					},
 				]
 			},

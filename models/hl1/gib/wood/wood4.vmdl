@@ -48,7 +48,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/wood4.smd"
+						filename = "models/hl1decomp/mil_crategibs/wood4.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
