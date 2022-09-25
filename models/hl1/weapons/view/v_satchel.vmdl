@@ -61,7 +61,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/satchel_charge.smd"
+						filename = "models/hl1decomp/v_satchel/satchel_charge.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -80,7 +80,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/satchel_hand_fix.smd"
+						filename = "models/hl1decomp/v_satchel/satchel_hand_fix.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -118,7 +118,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_anims/draw.smd"
+						source_filename = "models/hl1decomp/v_satchel/v_satchel_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -139,7 +139,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_anims/drop.smd"
+						source_filename = "models/hl1decomp/v_satchel/v_satchel_anims/drop.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -160,7 +160,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_anims/fidget1.smd"
+						source_filename = "models/hl1decomp/v_satchel/v_satchel_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -181,7 +181,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_anims/idle1.smd"
+						source_filename = "models/hl1decomp/v_satchel/v_satchel_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
