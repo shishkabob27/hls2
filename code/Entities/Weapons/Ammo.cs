@@ -129,25 +129,25 @@ partial class AmmoCrossbow : BaseAmmo
 }
 
 [Library( "ammo_uranium" ), HammerEntity]
-[EditorModel( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" )]
+[EditorModel( "models/hl1/weapons/ammo/w_rpgammo.vmdl" )]
 [Title( "Uranium Ammo" ), Category( "Ammo" )]
 partial class AmmoUranium : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Uranium;
 	public override int AmmoAmount => 5;
 
-	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" );
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_rpgammo.vmdl" );
 }
 
 [Library( "ammo_gaussclip" ), HammerEntity]
-[EditorModel( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" )]
+[EditorModel( "models/hl1/weapons/ammo/w_rpgammo.vmdl" )]
 [Title( "Gauss Ammo Clip" ), Category( "Ammo" )]
 partial class AmmoGaussClip : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Uranium;
 	public override int AmmoAmount => 5;
 
-	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_crossbow_clip.vmdl" );
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_rpgammo.vmdll" );
 }
 
 [Library( "ammo_rockets" ), HammerEntity]
