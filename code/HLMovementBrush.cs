@@ -19,6 +19,7 @@
     public float GroundAngle { get; set; } = 46.0f;
 
     public float SurfaceFriction;
+    public bool DontSleep = false;
     public override void Spawn()
     {
 
@@ -36,7 +37,7 @@
 
     public void Simulate()
     {
-        if ( HLUtils.PlayerInRangeOf( Position, 2048 ) == false )
+        if ( HLUtils.PlayerInRangeOf( Position, 2048 ) == false && !DontSleep )
             return;
         FindTouching();
         CalcGroundEnt();

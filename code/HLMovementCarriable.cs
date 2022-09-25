@@ -23,6 +23,7 @@
     public float WallBounce { get; set; } = 0.1f;
     public float GroundAngle { get; set; } = 46.0f;
     public float Gravity { get; set; } = 1.0f;
+    public bool DontSleep = false;
 
     Entity lastTouch;
     Entity lastHit;
@@ -37,7 +38,7 @@
     public void Simulate()
     {
         if ( Owner is HLPlayer ) return; // Don't do physics if we are being carried
-        if ( HLUtils.PlayerInRangeOf( Position, 2048 ) == false )
+        if ( HLUtils.PlayerInRangeOf( Position, 2048 ) == false && !DontSleep )
             return;
         try
         {
