@@ -1,0 +1,211 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1/intro/reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+				]
+			},
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "arms.vmat"
+								to = "materials/hl1/intro/arms.vmat"
+							},
+							{
+								from = "back.vmat"
+								to = "materials/hl1/intro/back.vmat"
+							},
+							{
+								from = "blacking.vmat"
+								to = "materials/hl1/intro/blacking.vmat"
+							},
+							{
+								from = "face.vmat"
+								to = "materials/hl1/intro/face.vmat"
+							},
+							{
+								from = "hand_bottom.vmat"
+								to = "materials/hl1/intro/hand_bottom.vmat"
+							},
+							{
+								from = "hand_top.vmat"
+								to = "materials/hl1/intro/hand_top.vmat"
+							},
+							{
+								from = "pants.vmat"
+								to = "materials/hl1/intro/pants.vmat"
+							},
+							{
+								from = "profile.vmat"
+								to = "materials/hl1/intro/profile.vmat"
+							},
+							{
+								from = "serratus.vmat"
+								to = "materials/hl1/intro/serratus.vmat"
+							},
+							{
+								from = "shoeside.vmat"
+								to = "materials/hl1/intro/shoeside.vmat"
+							},
+							{
+								from = "shoetop.vmat"
+								to = "materials/hl1/intro/shoetop.vmat"
+							},
+							{
+								from = "shoulders.vmat"
+								to = "materials/hl1/intro/shoulders.vmat"
+							},
+							{
+								from = "thumb.vmat"
+								to = "materials/hl1/intro/thumb.vmat"
+							},
+							{
+								from = "torso.vmat"
+								to = "materials/hl1/intro/torso.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "final"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/intro/mrvalve_anims/final.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "finalidle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/intro/mrvalve_anims/finalidle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/intro/mrvalve_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "walk"
+						children = 
+						[
+							{
+								_class = "ExtractMotion"
+								extract_tx = true
+								extract_ty = true
+								extract_tz = false
+								extract_rz = false
+								linear = false
+								quadratic = false
+								root_bone_name = ""
+								motion_type = "Single"
+							},
+						]
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1/intro/mrvalve_anims/walk.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

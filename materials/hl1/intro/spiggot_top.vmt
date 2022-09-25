@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/valve/spiggot_top"
+	"$surfaceprop" "Metal"
+}
