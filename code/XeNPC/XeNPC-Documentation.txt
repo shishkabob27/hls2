@@ -50,6 +50,18 @@ all NPCs will gib if they take enough damage but you can override the behaviour 
 	public string NPCAnimGraph = ""; -- set the animgraph, is this really needed anymore? this was in a variable for when scripted sequences overrode the animgraph but they don't anymore
 	public string NPCSurface = "surface/hlflesh.surface"; -- the surface of the npc, for being hit or shot
 
+------------Functions you should override------------
+
+
+	void Spawn() -- Set all NPC settings and vars here
+	int Classify() -- Set the relationship class here
+	void ProcessEntity( Entity ent, int rel ) -- Called for every ICombat(NPC/Player/Other Entities) the NPC has in their view cone
+	void Think() -- Do logic here, called after main NPC Logic every server tick
+	void SoundProcess() -- Called for every sound the NPC can hear (Doesn't do anything yes)
+	bool OnUse( Entity user ) -- Called when the player presses their USE key on the NPC
+
 ------------Misc Functions------------
-	public virtual void FindCover( Vector3 fromPos ) -- Find cover from a position, kinda works right now but its not really finding cover but it does its job most of the time kinda
+
+
+	void FindCover( Vector3 fromPos ) -- Find cover from a position, kinda works right now but its not really finding cover but it does its job most of the time kinda
 	
