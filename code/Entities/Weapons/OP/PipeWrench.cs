@@ -6,7 +6,7 @@ partial class PipeWrench : HLWeapon
 	public static Model WorldModel = Model.Load( "models/hl1/weapons/world/pipe_wrench.vmdl" );
 	public override string ViewModelPath => "models/op/weapons/view/v_pipe_wrench.vmdl";
 
-	public override float PrimaryRate => 2.0f;
+	public override float PrimaryRate => 1.33f;
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 3.0f;
 	public override AmmoType AmmoType => AmmoType.None;
