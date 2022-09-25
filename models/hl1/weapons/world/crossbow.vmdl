@@ -12,7 +12,7 @@
 					{
 						_class = "Bone"
 						name = "hold_R"
-						origin = [ 0.0, 0.0, 0.0 ]
+						origin = [ -9.90797, 0.0, 0.853155 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						do_not_discard = true
 					},
@@ -78,39 +78,30 @@
 				[
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "line01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 2.203498
-						point0 = [ -6.561722, -0.17001, 1.505627 ]
-						point1 = [ 16.139021, -0.10755, 1.641748 ]
+						point0 = [ 0.799007, 1.058832, 2.975586 ]
+						point1 = [ 22.668274, -1.339775, 2.547466 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "line01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 2.269182
-						point0 = [ -22.947718, 0.415537, -0.163249 ]
-						point1 = [ -6.487861, 0.266136, 0.264313 ]
+						point0 = [ -16.608322, 0.850193, 1.079891 ]
+						point1 = [ 1.776921, 0.557007, 1.631485 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
-						surface_prop = "default"
-						collision_tags = "solid"
-						radius = 1.627204
-						point0 = [ 6.483297, -0.069189, -0.799426 ]
-						point1 = [ 9.757689, -0.093285, -8.644125 ]
-					},
-					{
-						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "line01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 2.203498
-						point0 = [ 13.772336, -10.017127, 1.809067 ]
-						point1 = [ 13.690002, 10.886774, 2.079557 ]
+						point0 = [ -13.985236, 1.569741, -12.222603 ]
+						point1 = [ -13.528501, 1.773009, 12.349819 ]
 					},
 				]
 			},
@@ -120,9 +111,9 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/w_crossbow.smd"
+						filename = "models/hl1decomp/w_crossbow/w_crossbow.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
-						import_rotation = [ 0.0, 180.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 0.5
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
@@ -243,6 +234,55 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "onside"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_crossbow/w_crossbow_anims/onside.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_crossbow/w_crossbow_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

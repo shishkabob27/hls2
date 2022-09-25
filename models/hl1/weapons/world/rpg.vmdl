@@ -12,7 +12,7 @@
 					{
 						_class = "Bone"
 						name = "hold_R"
-						origin = [ 0.0, 0.0, 0.0 ]
+						origin = [ 0.0, -11.834123, 2.548377 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						do_not_discard = true
 					},
@@ -42,21 +42,21 @@
 				[
 					{
 						_class = "PhysicsShapeCapsule"
-						parent_bone = ""
+						parent_bone = "cylinder01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 5.737674
-						point0 = [ -33.257652, -10.524872, 10.145401 ]
-						point1 = [ 36.048683, -10.524872, 10.145401 ]
+						point0 = [ 0.225688, 0.039441, 71.033356 ]
+						point1 = [ -0.222581, -0.329327, 1.949232 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "cylinder01"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 11.272247, -5.9656, 4.576212 ]
+						origin = [ -5.200858, -6.389993, 21.908527 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 19.958511, 12.613359, 7.233583 ]
+						dimensions = [ 7.417962, 7.972105, 10.424395 ]
 					},
 				]
 			},
@@ -81,7 +81,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/newrpg_worldmodel.smd"
+						filename = "models/hl1decomp/w_rpg/newrpg_worldmodel.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -100,6 +100,55 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "onside"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_rpg/w_rpg_anims/onside.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "stayput"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_rpg/w_rpg_anims/stayput.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

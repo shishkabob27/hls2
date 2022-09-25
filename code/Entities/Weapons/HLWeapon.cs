@@ -1,11 +1,11 @@
-﻿partial class HLWeapon : BaseCarriable, IRespawnableEntity
+﻿partial class HLWeapon : HLMovementCarriable, IRespawnableEntity
 {
-    [ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
+	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
 
-    [Net, Predicted]
-    public AnimatedEntity VRWeaponModel { get; set; }
-    public virtual float PrimaryRate => 5.0f;
+	[Net, Predicted]
+	public AnimatedEntity VRWeaponModel { get; set; }
+	public virtual float PrimaryRate => 5.0f;
 	public virtual float SecondaryRate => 15.0f;
 
 	public virtual AmmoType AmmoType => AmmoType.Pistol;
@@ -19,10 +19,14 @@
 	public virtual int BucketWeight => 100;
 
 	public virtual bool HasAltAmmo => false;
-	public virtual int Order => (Bucket * 10000) + BucketWeight;
+	public virtual int Order => ( Bucket * 10000 ) + BucketWeight;
 
 	public virtual string AmmoIcon => "ui/ammo1.png";
 	public virtual string AltAmmoIcon => "ui/ammo3.png";
+	public virtual string InventoryIcon => "/ui/weapons/weapon_pistol.png";
+
+	public bool WeaponIsAmmo = false;
+	public int WeaponIsAmmoAmount = 1;
 
 	[Net, Predicted]
 	public int AmmoClip { get; set; }
@@ -51,6 +55,9 @@
 
 	public PickupTrigger PickupTrigger { get; protected set; }
 
+	public virtual void OnPickup()
+	{
+	}
 	public int AvailableAmmo()
 	{
 		var owner = Owner as HLPlayer;
@@ -60,77 +67,75 @@
 	public int AvailableAltAmmo()
 	{
 		var owner = Owner as HLPlayer;
-		if (owner == null) return 0;
-		return owner.AmmoCount(AltAmmoType);
+		if ( owner == null ) return 0;
+		return owner.AmmoCount( AltAmmoType );
 	}
 	public override void ActiveStart( Entity ent )
 	{
-		
-        EnableDrawing = true;
 
-        if (ent is Player player)
-        {
-            var animator = player.GetActiveAnimator();
-            if (animator != null)
-            {
-                SimulateAnimator(animator);
-            }
-        }
+		EnableDrawing = true;
 
-        //
-        // If we're the local player (clientside) create viewmodel
-        // and any HUD elements that this weapon wants
-        //
-        if (IsLocalPawn)
-        {
-            DestroyHudElements();
-            DestroyViewModel();
-            CreateViewModel();
-            CreateHudElements();
-        }
+		if ( ent is Player player )
+		{
+			var animator = player.GetActiveAnimator();
+			if ( animator != null )
+			{
+				SimulateAnimator( animator );
+			}
+		}
 
-        if (Client.IsUsingVr)
-        {
+		//
+		// If we're the local player (clientside) create viewmodel
+		// and any HUD elements that this weapon wants
+		//
+		SetModel( ViewModelPath.Replace( "view/v_", "world_player/w_" ) ); //temp solution to change to correct world model when player picks the weapon up
 
-            CreateVRModel();
-        }
-        TimeSinceDeployed = 0;
+		if ( IsLocalPawn )
+		{
+			DestroyHudElements();
+			DestroyViewModel();
+			CreateViewModel();
+			CreateHudElements();
+		}
+
+		if ( Client.IsUsingVr )
+		{
+
+			CreateVRModel();
+		}
+		TimeSinceDeployed = 0;
 
 		IsReloading = false;
 	}
-    public override void ActiveEnd(Entity ent, bool dropped)
-    {
-        //
-        // If we're just holstering, then hide us
-        //
-        if (!dropped)
-        {
-            EnableDrawing = false;
-        }
-        if (Client.IsUsingVr)
-        {
-            DestroyVRModel();
-        }
-        if (IsClient)
-        {
-            DestroyViewModel();
-            DestroyHudElements();
-        }
-    }
+	public override void ActiveEnd( Entity ent, bool dropped )
+	{
+		//
+		// If we're just holstering, then hide us
+		//
+		if ( !dropped )
+		{
+			EnableDrawing = false;
+		}
+		if ( Client.IsUsingVr )
+		{
+			DestroyVRModel();
+		}
+		if ( IsClient )
+		{
+			DestroyViewModel();
+			DestroyHudElements();
+		}
+	}
 
-    public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 
 	public override void Spawn()
 	{
 		base.Spawn();
 
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
-
-		PickupTrigger = new PickupTrigger();
-		PickupTrigger.Parent = this;
-		PickupTrigger.Position = Position;
-
-		Tags.Add("weapon");
+		PhysicsEnabled = false;
+		Tags.Add( "weapon" );
 	}
 
 	public void Reload()
@@ -151,31 +156,31 @@
 
 		IsReloading = true;
 
-		(Owner as AnimatedEntity).SetAnimParameter( "b_reload", true );
+		( Owner as AnimatedEntity ).SetAnimParameter( "b_reload", true );
 
 		StartReloadEffects();
 	}
 
 	public void AltReload()
 	{
-		if (IsReloadingAlt)
+		if ( IsReloadingAlt )
 			return;
 
-		if (AltAmmoClip >= AltClipSize)
+		if ( AltAmmoClip >= AltClipSize )
 			return;
 
-		if (Owner is HLPlayer player)
+		if ( Owner is HLPlayer player )
 		{
-			if (player.AmmoCount(AltAmmoType) <= 0)
+			if ( player.AmmoCount( AltAmmoType ) <= 0 )
 				return;
 		}
 
-		if ( AltReloadTime == 0.0f) // if it's zero just skip the extra stuff and go straight to a reload
+		if ( AltReloadTime == 0.0f ) // if it's zero just skip the extra stuff and go straight to a reload
 		{
 			OnAltReloadFinish();
 		}
-        else 
-        {
+		else
+		{
 			TimeSinceAltReload = 0;
 			IsReloadingAlt = true;
 		}
@@ -187,17 +192,17 @@
 
 	public override void Simulate( Client owner )
 	{
-		if (IsReloadingAlt && TimeSinceAltReload > AltReloadTime)
+		if ( IsReloadingAlt && TimeSinceAltReload > AltReloadTime )
 		{
 			OnAltReloadFinish();
-		}        
-        
+		}
+
 		if ( TimeSinceDeployed < 0.6f )
 			return;
 
 		if ( !IsReloading )
 		{
-			if (CanReload())
+			if ( CanReload() )
 			{
 				Reload();
 			}
@@ -205,12 +210,12 @@
 			//
 			// Reload could have changed our owner
 			//
-			if (!Owner.IsValid())
+			if ( !Owner.IsValid() )
 				return;
 
-			if (CanPrimaryAttack())
+			if ( CanPrimaryAttack() )
 			{
-				using (LagCompensation())
+				using ( LagCompensation() )
 				{
 					TimeSincePrimaryAttack = 0;
 					AttackPrimary();
@@ -220,12 +225,12 @@
 			//
 			// AttackPrimary could have changed our owner
 			//
-			if (!Owner.IsValid())
+			if ( !Owner.IsValid() )
 				return;
 
-			if (CanSecondaryAttack())
+			if ( CanSecondaryAttack() )
 			{
-				using (LagCompensation())
+				using ( LagCompensation() )
 				{
 					TimeSinceSecondaryAttack = 0;
 					AttackSecondary();
@@ -237,14 +242,14 @@
 		{
 			OnReloadFinish();
 		}
-		if (ViewModelEntity != null)
-			ViewModelEntity?.Simulate(owner);
-		
+		if ( ViewModelEntity != null )
+			ViewModelEntity?.Simulate( owner );
+
 	}
 
 	public virtual bool CanReload()
 	{
-		if (!Owner.IsValid() || !Input.Down(InputButton.Reload)) return false;
+		if ( !Owner.IsValid() || !Input.Down( InputButton.Reload ) ) return false;
 
 		return true;
 	}
@@ -267,10 +272,10 @@
 	{
 		IsReloadingAlt = false;
 
-		if (Owner is HLPlayer player)
+		if ( Owner is HLPlayer player )
 		{
-			var ammo = player.TakeAmmo(AltAmmoType, AltClipSize - AltAmmoClip);
-			if (ammo == 0)
+			var ammo = player.TakeAmmo( AltAmmoType, AltClipSize - AltAmmoClip );
+			if ( ammo == 0 )
 				return;
 
 			AltAmmoClip += ammo;
@@ -282,28 +287,28 @@
 	{
 		ViewModelEntity?.SetAnimParameter( "reload", true );
 		VRWeaponModel?.SetAnimParameter( "reload", true );
-		if (Owner is HLPlayer player)
+		if ( Owner is HLPlayer player )
 		{
-			player.SetAnimParameter("reload", true);
+			player.SetAnimParameter( "reload", true );
 		}
 		// TODO - player third person model reload
 	}
 
 	public virtual bool CanPrimaryAttack()
 	{
-        if (Client.IsUsingVr)
-        {
-            if (!Owner.IsValid() || !(Input.VR.RightHand.Trigger.Value > 0.2)) return false;
-        }
-        else
-        {
-            if (!Owner.IsValid() || !Input.Down(InputButton.PrimaryAttack)) return false;
-        }
+		if ( Client.IsUsingVr )
+		{
+			if ( !Owner.IsValid() || !( Input.VR.RightHand.Trigger.Value > 0.2 ) ) return false;
+		}
+		else
+		{
+			if ( !Owner.IsValid() || !Input.Down( InputButton.PrimaryAttack ) ) return false;
+		}
 
 		var rate = PrimaryRate;
-		if (rate <= 0) return true;
+		if ( rate <= 0 ) return true;
 
-		return TimeSincePrimaryAttack > (1 / rate);
+		return TimeSincePrimaryAttack > ( 1 / rate );
 	}
 
 	public virtual void AttackPrimary()
@@ -314,69 +319,70 @@
 
 	public virtual bool CanSecondaryAttack()
 	{
-		if (Client.IsUsingVr)
-        {
-            if (!Owner.IsValid() || !(Input.VR.LeftHand.Trigger.Value > 0.2)) return false;
-        } else
+		if ( Client.IsUsingVr )
 		{
-            if (!Owner.IsValid() || !Input.Down(InputButton.SecondaryAttack)) return false;
-        }
+			if ( !Owner.IsValid() || !( Input.VR.LeftHand.Trigger.Value > 0.2 ) ) return false;
+		}
+		else
+		{
+			if ( !Owner.IsValid() || !Input.Down( InputButton.SecondaryAttack ) ) return false;
+		}
 
 
 		var rate = SecondaryRate;
-		if (rate <= 0) return true;
+		if ( rate <= 0 ) return true;
 
-		return TimeSinceSecondaryAttack > (1 / rate);
+		return TimeSinceSecondaryAttack > ( 1 / rate );
 	}
 
 	public virtual void AttackSecondary()
 	{
 
 	}
-    protected virtual void ShootEffects(To to)
-    {
-        ShootEffectsBoth();
-        if (IsServer)
-            ShootEffectsSV();
-        ShootEffectsRPC(to);
-    }
-    protected virtual void ShootEffects()
-    {
+	protected virtual void ShootEffects( To to )
+	{
 		ShootEffectsBoth();
-        if (IsServer)
-            ShootEffectsSV();
-        ShootEffectsRPC();
-    }
+		if ( IsServer )
+			ShootEffectsSV();
+		ShootEffectsRPC( to );
+	}
+	protected virtual void ShootEffects()
+	{
+		ShootEffectsBoth();
+		if ( IsServer )
+			ShootEffectsSV();
+		ShootEffectsRPC();
+	}
 	protected virtual void ShootEffectsSV()
 	{
-    }
+	}
 	protected virtual void ShootEffectsBoth()
 	{
 
-        VRWeaponModel?.SetAnimParameter("fire", true);
-    }
-    [ClientRpc]
+		VRWeaponModel?.SetAnimParameter( "fire", true );
+	}
+	[ClientRpc]
 	protected virtual void ShootEffectsRPC()
 	{
 
-        Host.AssertClient();
+		Host.AssertClient();
 
-		if (Client.IsUsingVr)
+		if ( Client.IsUsingVr )
 		{
-            Particles.Create("particles/pistol_muzzleflash.vpcf", VRWeaponModel, "muzzle");
-        } else
+			Particles.Create( "particles/muzflash.vpcf", VRWeaponModel, "muzzle" );
+		}
+		else
 		{
-            Particles.Create("particles/pistol_muzzleflash.vpcf", EffectEntity, "muzzle");
-        }
+			Particles.Create( "particles/muzflash.vpcf", EffectEntity, "muzzle" );
+		}
 
 
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
-		CrosshairLastShoot = 0;
 
-		if (Owner is HLPlayer player)
+		if ( Owner is HLPlayer player )
 		{
-			player.SetAnimParameter("b_attack", true);
+			player.SetAnimParameter( "b_attack", true );
 		}
 	}
 
@@ -386,101 +392,119 @@
 	/// <returns>Returns position of the muzzle attachment in VR Mode and Owner.EyePosition elsewhere.</returns>
 	public virtual Vector3 GetFiringPos()
 	{
-        if (Client.IsUsingVr) return (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position;
+		if ( Client.IsUsingVr ) return (Vector3)VRWeaponModel.GetAttachment( "muzzle" )?.Position;
 		return Owner.EyePosition;
-    }
-    /// <summary>
+	}
+	/// <summary>
 	/// This gets the rotation of where the weapon should fire a bullet
-    /// </summary>
-    /// <returns>Returns rotation of the muzzle attachment in VR Mode and Owner.EyeRotation elsewhere.</returns>
-    public virtual Rotation GetFiringRotation()
-    {
-        if (Client.IsUsingVr) return (Rotation)VRWeaponModel.GetAttachment("muzzle")?.Rotation;
+	/// </summary>
+	/// <returns>Returns rotation of the muzzle attachment in VR Mode and Owner.EyeRotation elsewhere.</returns>
+	public virtual Rotation GetFiringRotation()
+	{
+		if ( Client.IsUsingVr ) return (Rotation)VRWeaponModel.GetAttachment( "muzzle" )?.Rotation;
 		return Owner.EyeRotation;
-    }
-    public IEnumerable<TraceResult> TraceBullet(Vector3 start, Vector3 end, float radius = 2.0f)
-    {
-        bool underWater = Trace.TestPoint(start, "water");
+	}
+	public IEnumerable<TraceResult> TraceBullet( Vector3 start, Vector3 end, float radius = 2.0f )
+	{
+		bool underWater = Trace.TestPoint( start, "water" );
 
-        var trace = Trace.Ray(start, end)
-                .UseHitboxes()
-                .WithAnyTags("solid", "player", "npc", "glass")
-                .Ignore(this)
-                .Size(radius);
+		var trace = Trace.Ray( start, end )
+				.UseHitboxes()
+				.WithAnyTags( "solid", "player", "npc", "glass" )
+				.Ignore( this )
+				.Size( radius );
 
-        //
-        // If we're not underwater then we can hit water
-        //
-        if (!underWater)
-            trace = trace.WithAnyTags("water");
+		//
+		// If we're not underwater then we can hit water
+		//
+		if ( !underWater )
+			trace = trace.WithAnyTags( "water" );
 
-        var tr = trace.Run();
+		var tr = trace.Run();
 
-        if (tr.Hit)
-            yield return tr;
+		if ( tr.Hit )
+			yield return tr;
 
-        //
-        // Another trace, bullet going through thin material, penetrating water surface?
-        //
-    }
+		//
+		// Another trace, bullet going through thin material, penetrating water surface?
+		//
+	}
 
 
-    /// <summary>
-    /// Shoot a single bullet
-    /// </summary>
-    public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
-	{ 
+	/// <summary>
+	/// Shoot a single bullet
+	/// </summary>
+	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
+	{
 		var player = Local.Pawn as HLPlayer;
+
+		if ( Client.IsUsingVr )
+		{
+			Input.VR.RightHand.TriggerHapticVibration( 0f, 200f, 1.0f );
+		}
+
 		//
 		// Seed rand using the tick, so bullet cones match on client and server
 		//
 		Rand.SetSeed( Time.Tick );
-			for (int i = 0; i < bulletCount; i++)
+		for ( int i = 0; i < bulletCount; i++ )
+		{
+			var BForward = GetFiringRotation().Forward;
+			var BPosition = GetFiringPos();
+
+			BForward += ( Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random ) * spread * 0.25f;
+			BForward = BForward.Normal;
+
+			//
+			// ShootBullet is coded in a way where we can have bullets pass through shit
+			// or bounce off shit, in which case it'll return multiple results
+			//
+			foreach ( var tr in TraceBullet( BPosition, BPosition + BForward * 5000, bulletSize ) )
 			{
-				var BForward = GetFiringRotation().Forward;
-                var BPosition = GetFiringPos();
-                
-                BForward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
-                BForward = BForward.Normal;
+				tr.Surface.DoHLBulletImpact( tr );
 
-				//
-				// ShootBullet is coded in a way where we can have bullets pass through shit
-				// or bounce off shit, in which case it'll return multiple results
-				//
-				foreach (var tr in TraceBullet(BPosition, BPosition + BForward * 5000, bulletSize))
+
+				if ( tr.Distance > 200 && !hl_sfmmode )
 				{
-					tr.Surface.DoHLBulletImpact(tr);
+					CreateTracerEffect( tr.EndPosition );
+				}
 
+				if ( !IsServer ) continue;
+				if ( !tr.Entity.IsValid() ) continue;
 
-					if (tr.Distance > 200 && !hl_sfmmode)
+				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, BForward * 100 * force, damage )
+					.UsingTraceResult( tr )
+					.WithAttacker( Owner )
+					.WithWeapon( this );
+
+				tr.Entity.TakeDamage( damageInfo );
+				if ( tr.Entity is NPC )
+				{
+					var trace = Trace.Ray( BPosition, BPosition + BForward * 256 )
+					.WorldOnly()
+					.Ignore( this )
+					.Size( 1.0f )
+					.Run();
+					if ( ( tr.Entity as NPC ).BloodColour == NPC.BLOOD_COLOUR_RED )
 					{
-						CreateTracerEffect(tr.EndPosition);
-					}
-
-					if (!IsServer) continue;
-					if (!tr.Entity.IsValid()) continue;
-
-					var damageInfo = DamageInfo.FromBullet(tr.EndPosition, BForward * 100 * force, damage)
-						.UsingTraceResult(tr)
-						.WithAttacker(Owner)
-						.WithWeapon(this);
-
-					tr.Entity.TakeDamage(damageInfo);
-					if (tr.Entity is NPC)
-					{
-						var trace = Trace.Ray(BPosition, BPosition + BForward * 256)
-						.WorldOnly()
-						.Ignore(this)
-						.Size(1.0f)
-						.Run();
-						if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
+						if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
 						{
 							//Log.Info( "Splat!" );
-							Decal.Place(decal, trace);
+							Decal.Place( decal, trace );
 						}
 					}
+					else
+					{
+						if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/yellow_blood.decal", out var decal ) )
+						{
+							//Log.Info( "Splat!" );
+							Decal.Place( decal, trace );
+						}
+					}
+
 				}
 			}
+		}
 	}
 
 	[ClientRpc]
@@ -491,8 +515,8 @@
 
 		var system = Particles.Create( "particles/tracer.standard.vpcf" );
 		system?.SetPosition( 0, pos.Position );
-		if (Client.IsUsingVr) system?.SetPosition(0, (Vector3)VRWeaponModel.GetAttachment("muzzle")?.Position);
-        system?.SetPosition( 1, hitPosition );
+		if ( Client.IsUsingVr ) system?.SetPosition( 0, (Vector3)VRWeaponModel.GetAttachment( "muzzle" )?.Position );
+		system?.SetPosition( 1, hitPosition );
 	}
 
 	public bool TakeAmmo( int amount )
@@ -504,9 +528,9 @@
 		return true;
 	}
 
-	public bool TakeAltAmmo(int amount)
+	public bool TakeAltAmmo( int amount )
 	{
-		if (AltAmmoClip < amount)
+		if ( AltAmmoClip < amount )
 			return false;
 
 		AltAmmoClip -= amount;
@@ -519,70 +543,69 @@
 	{
 		PlaySound( "dryfire" );
 	}
-	public new virtual Sound PlaySound(string soundName)
+	public new virtual Sound PlaySound( string soundName )
 	{
-		if (Client.IsUsingVr)
-		{ 
-			return Sound.FromEntity(soundName, VRWeaponModel, "muzzle");
-        }
-		return base.PlaySound(soundName);
+		if ( Client.IsUsingVr )
+		{
+			return Sound.FromEntity( soundName, VRWeaponModel, "muzzle" );
+		}
+		return Sound.FromEntity( soundName, Owner );
 	}
 	public void CreateVRModel()
 	{
 
-        if (IsClient) return;
-        VRWeaponModel = new AnimatedEntity();
-        VRWeaponModel.Position = Position;
-        VRWeaponModel.Owner = Owner;
-		VRWeaponModel.SetParent((Client.Pawn as HLPlayer).RightHand, true);
-		(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
+		if ( IsClient ) return;
+		VRWeaponModel = new AnimatedEntity();
+		VRWeaponModel.Position = Position;
+		VRWeaponModel.Owner = Owner;
+		VRWeaponModel.SetParent( ( Client.Pawn as HLPlayer ).RightHand, true );
+		( Client.Pawn as HLPlayer ).RightHand.RenderColor = Color.Transparent;
 		var wmodel = ViewModelPath;
-		wmodel = ViewModelPath.Replace("view/v_", "vr/"); // get vr model
+		wmodel = ViewModelPath.Replace( "view/v_", "vr/" ); // get vr model
 		var vrmodel = wmodel;
-		if (HLGame.cl_himodels)
-        {
-			vrmodel = wmodel.Replace(".vmdl", "_hd.vmdl");
+		if ( HLGame.cl_himodels )
+		{
+			vrmodel = wmodel.Replace( ".vmdl", "_hd.vmdl" );
 		}
-		Log.Info(vrmodel);
-		VRWeaponModel.SetModel(vrmodel);
-        VRWeaponModel.SetupPhysicsFromModel(PhysicsMotionType.Dynamic);
+		VRWeaponModel.SetModel( vrmodel );
+		VRWeaponModel.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 
-		VRWeaponModel.Tags.Add("vrweapon");
+		VRWeaponModel.Tags.Add( "vrweapon" );
 		VRWeaponModel.PhysicsEnabled = true;
 		VRWeaponModel.UsePhysicsCollision = true;
-        VRWeaponModel.SetAnimParameter("deploy", true);
-    }
+		VRWeaponModel.SetAnimParameter( "deploy", true );
+	}
 
 	public void DestroyVRModel()
 	{
-		if (IsClient) return;
-        VRWeaponModel?.Delete();
-        VRWeaponModel = null;
-    }
-    public override void DestroyViewModel()
-    {
-        ViewModelEntity?.Delete();
-        ViewModelEntity = null;
-    }
-    public override void CreateViewModel()
+		if ( IsClient ) return;
+		VRWeaponModel?.Delete();
+		VRWeaponModel = null;
+	}
+	public override void DestroyViewModel()
+	{
+		ViewModelEntity?.Delete();
+		ViewModelEntity = null;
+	}
+	public override void CreateViewModel()
 	{
 		if ( string.IsNullOrEmpty( ViewModelPath ) )
 			return;
 
-		if (!hl_sfmmode)
+		if ( !hl_sfmmode )
 		{
-            ViewModelEntity = new HLViewModel();
-            ViewModelEntity.Position = Position;
-            ViewModelEntity.Owner = Owner;
-            ViewModelEntity.EnableViewmodelRendering = true;
+			ViewModelEntity = new HLViewModel();
+			ViewModelEntity.Position = Position;
+			ViewModelEntity.Owner = Owner;
+			ViewModelEntity.EnableViewmodelRendering = true;
 			var wmodel = ViewModelPath;
-			if (HLGame.cl_himodels)
+			if ( HLGame.cl_himodels )
 			{
-				wmodel = ViewModelPath.Replace(".vmdl", "_hd.vmdl"); // get hd model
+				wmodel = ViewModelPath.Replace( ".vmdl", "_hd.vmdl" ); // get hd model
 			}
-			ViewModelEntity.SetModel(wmodel);
-            ViewModelEntity.SetAnimParameter("deploy", true);
-        }
+			ViewModelEntity.SetModel( wmodel );
+			ViewModelEntity.SetAnimParameter( "deploy", true );
+		}
 	}
 
 	public override void CreateHudElements()
@@ -596,44 +619,4 @@
 		if ( AmmoType == AmmoType.None ) return true;
 		return AvailableAmmo() > 0;
 	}
-
-	public override void OnCarryStart( Entity carrier )
-	{
-		base.OnCarryStart( carrier );
-
-		if ( PickupTrigger.IsValid() )
-		{
-			PickupTrigger.EnableTouch = false;
-		}
-	}
-
-	public override void OnCarryDrop( Entity dropper )
-	{
-		base.OnCarryDrop( dropper );
-
-		if ( PickupTrigger.IsValid() )
-		{
-			PickupTrigger.EnableTouch = true;
-		}
-	}
-
-	protected TimeSince CrosshairLastShoot { get; set; }
-	protected TimeSince CrosshairLastReload { get; set; }
-
-	public virtual void RenderHud( in Vector2 screensize )
-	{
-		var center = screensize * 0.5f;
-
-		if ( IsReloading || (AmmoClip == 0 && ClipSize > 1) )
-			CrosshairLastReload = 0;
-
-		RenderCrosshair( center, CrosshairLastShoot.Relative, CrosshairLastReload.Relative );
-	}
-
-	public virtual void RenderCrosshair( in Vector2 center, float lastAttack, float lastReload )
-	{
-		var draw = Render.Draw2D;
-	}
-
-
 }

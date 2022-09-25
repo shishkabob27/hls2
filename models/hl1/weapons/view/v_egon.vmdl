@@ -124,7 +124,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/egon_newgun.smd"
+						filename = "models/hl1decomp/v_egon/egon_newgun.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -143,7 +143,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/egon_hands.smd"
+						filename = "models/hl1decomp/v_egon/egon_hands.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -169,27 +169,6 @@
 				[
 					{
 						_class = "AnimFile"
-						name = "draw"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/draw.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
 						name = "altfirecycle"
 						activity_name = ""
 						activity_weight = 1
@@ -202,7 +181,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/altfirecycle.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/altfirecycle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -223,7 +202,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/altfireoff.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/altfireoff.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -244,7 +223,28 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/altfireon.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/altfireon.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "draw"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -265,7 +265,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/fidget1.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -286,7 +286,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/fire1.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fire1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -307,7 +307,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/fire2.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fire2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -328,7 +328,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/fire3.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fire3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -349,7 +349,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/fire4.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fire4.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -370,7 +370,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/holster.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -391,7 +391,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon_anims/idle1.smd"
+						source_filename = "models/hl1decomp/v_egon/v_egon_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0

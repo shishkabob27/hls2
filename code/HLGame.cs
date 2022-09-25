@@ -22,17 +22,25 @@ public partial class HLGame : Game
 
 
 
-    public HLGame()
+	public HLGame()
 	{
 		//
 		// Create the HUD entity. This is always broadcast to all clients
 		// and will create the UI panels clientside.
 		//
 		if ( IsServer )
-        {
-            GUI = new HLGUI();
-            Hud = new HudPanel();
-        }
+		{
+			if ( Global.IsDedicatedServer )
+			{
+				hl_gamemode = "deathmatch";
+			}
+			GUI = new HLGUI();
+			Hud = new HudPanel();
+			if ( hl_gamemode == "deathmatch" )
+			{
+				_ = GameLoopAsync();
+			}
+		}
 
 		if ( IsClient )
 		{
@@ -52,10 +60,10 @@ public partial class HLGame : Game
 		base.ClientJoined( cl );
 
 		var player = new HLPlayer();
-		cl.Pawn = player; 
+		cl.Pawn = player;
 
 		player.Respawn();
-    }
+	}
 
 	public override void MoveToSpawnpoint( Entity pawn )
 	{
@@ -90,7 +98,7 @@ public partial class HLGame : Game
 			if ( client.Pawn == pawn ) continue;
 			if ( client.Pawn.LifeState != LifeState.Alive ) continue;
 
-			var spawnDist = (spawnpoint.Position - client.Pawn.Position).Length;
+			var spawnDist = ( spawnpoint.Position - client.Pawn.Position ).Length;
 			distance = MathF.Max( distance, spawnDist );
 		}
 
@@ -108,7 +116,7 @@ public partial class HLGame : Game
 
 
 
-    [ClientRpc]
+	[ClientRpc]
 	public override void OnKilledMessage( long leftid, string left, long rightid, string right, string method )
 	{
 		Sandbox.UI.KillFeed.Current?.AddEntry( leftid, left, rightid, right, method );
@@ -133,31 +141,36 @@ public partial class HLGame : Game
 			localPawn.RenderHud( screenSize );
 		}
 	}
-
-    [ConCmd.Server("resetgui", Help = "resets gui")]
-    public static void resetgui()
-    {
-		(HLGame.Current as HLGame).resetgui2();
-    }
-    public void resetgui2()
+	[Event.Entity.PostCleanup]
+	void onclean()
 	{
-        Hud.Delete();
-        Hud = new HudPanel();
-        GUI.Delete();
-        GUI = new HLGUI();
-    }
+		HLCombat.GibCount = 0;
+		HLCombat.GibFadingCount = 0;
+	}
+	[ConCmd.Server( "resetgui", Help = "resets gui" )]
+	public static void resetgui()
+	{
+		( HLGame.Current as HLGame ).resetgui2();
+	}
+	public void resetgui2()
+	{
+		Hud.Delete();
+		Hud = new HudPanel();
+		GUI.Delete();
+		GUI = new HLGUI();
+	}
 
-    [ConCmd.Server("resetplayer", Help = "resets player")]
-    public static void resetplayer()
-    {
-        foreach (var client in Client.All)
-        {
-            if (client.Pawn != null)
-                client.Pawn.Delete();
-            var player = new HLPlayer();
-            player.Respawn();
+	[ConCmd.Server( "resetplayer", Help = "resets player" )]
+	public static void resetplayer()
+	{
+		foreach ( var client in Client.All )
+		{
+			if ( client.Pawn != null )
+				client.Pawn.Delete();
+			var player = new HLPlayer();
+			player.Respawn();
 
-            client.Pawn = player;
-        }
-    }
+			client.Pawn = player;
+		}
+	}
 }

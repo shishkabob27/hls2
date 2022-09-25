@@ -1,0 +1,48 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		BaseSurface = null
+		AudioMaterial = null
+		Description = ""
+		Friction = 0.8
+		Elasticity = 0.25
+		Density = 2000
+		Thickness = -1
+		Dampening = 0
+		BounceThreshold = 40
+		ImpactEffects = 
+		{
+			Regular = 
+			[
+				resource:"particles/hlimpact.vpcf",
+			]
+			Bullet = [  ]
+			BulletDecal = 
+			[
+				resource:"decals/bullet_hole.decal",
+			]
+		}
+		Sounds = 
+		{
+			FootLeft = resource:"sounds/hl1/player/pl_step.sound"
+			FootRight = resource:"sounds/hl1/player/pl_step.sound"
+			FootLand = resource:"sounds/hl1/player/pl_step.sound"
+			ImpactHard = resource:"sounds/hl1/debris/wood.sound"
+		}
+		Breakables = 
+		{
+			BreakSound = resource:"sounds/hl1/debris/bustcrate.sound"
+			GenericGibs = 
+			[
+				resource:"models/hl1/gib/wood/wood_plank1.vmdl",
+				resource:"models/hl1/gib/wood/wood_plank2.vmdl",
+				resource:"models/hl1/gib/wood/wood1.vmdl",
+				resource:"models/hl1/gib/wood/wood1_splinter.vmdl",
+				resource:"models/hl1/gib/wood/wood2.vmdl",
+				resource:"models/hl1/gib/wood/wood3.vmdl",
+				resource:"models/hl1/gib/wood/wood4.vmdl",
+			]
+		}
+	}
+}

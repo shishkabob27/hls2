@@ -1,7 +1,4 @@
-﻿// This was over 12 hours of work lol if you wanna take my half-life 1 gibs for your own usage in your own game, atleast credit me (Xenthio)
-using static ItemRespawn;
-
-public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim cus gmod brain.
+﻿public partial class HLGib : ModelEntity
 {
 	//[Net] public float MaxVelocity { get; set; } = 800;
 	public float gGravity { get; set; } = 800;
@@ -10,20 +7,35 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	public float gStopSpeed { get; set; } = 50.0f;
 	public float gGroundAngle { get; set; } = 46.0f;
 	public bool toDelete = false;
-    public bool toDeletefromMax = false;
-    float alpha = 1.0f;
+	public bool toDeletefromMax = false;
+	float alpha = 1.0f;
 	bool isInit = false;
 
-    bool hasCountedFading = false;
+	bool hasCountedFading = false;
 
-    public Angles RotAngles = Angles.Zero;
+	public Angles RotAngles = Angles.Zero;
 	public Angles SleepAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
+	public Angles AltSleepAngles = new Angles( 0, Rand.Float( 0, 360 ), 0 );
 	Entity SleepGroundEntity;
 	Vector3 prevTickPos;
 	PhysicsGroup phys;
 	int LifeTime = 0;
-	float bGirth = 1 * 0.8f;
-	float bHeight = 1;
+	float bGirth = 1 * 0.5f;
+	float bHeight = 1 * 0.5f;
+
+	int BloodColour = 0;
+
+	TraceResult lastTrace;
+
+	/// <summary>
+	/// This prop won't be able to be damaged for this amount of time
+	/// </summary>
+	public RealTimeUntil Invulnerable { get; set; }
+	public string BreakpieceName { get; set; }
+	public bool AlternateLandingRotation { get; set; } = false;
+	public bool BounceSound { get; set; } = false;
+
+	public Surface SurfaceType { get; set; }
 
 	List<string> HGibList = new List<string>{
 		//"models/hl1/gib/hgib/hgib_skull1.vmdl", spawn manually please!
@@ -34,65 +46,96 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		"models/hl1/gib/hgib/hgib_b_gib1.vmdl",
 		"models/hl1/gib/hgib/hgib_b_bone1.vmdl"
 	};
+	List<string> AGibList = new List<string>{
+		"models/hl1/gib/agib/aliengeneric1.vmdl",
+		"models/hl1/gib/agib/aliengeneric2.vmdl",
+		"models/hl1/gib/agib/aliengeneric3.vmdl",
+		"models/hl1/gib/agib/aliengeneric4.vmdl"
+	};
 	Vector3 mins;
 	Vector3 maxs;
 
 	public HLGib()
 	{
 
-        alpha = Rand.Float(1.1f, 2.0f);
-        EnableTouch = true;
+		alpha = Rand.Float( 1.1f, 2.0f );
 	}
 
-	public void Spawn(string ModelName)
+	public void Spawn( string ModelName )
 	{
-		SetModel(ModelName);        
+		SetModel( ModelName );
 		Initialise();
-		_ = FadeOut(30);
+		_ = FadeOut( 30 );
+	}
+	public void Spawn( int Colour )
+	{
+		if ( Colour == 0 )
+		{
+			SetModel( Rand.FromList<string>( HGibList ) );
+		}
+		else
+		{
+			SetModel( Rand.FromList<string>( AGibList ) );
+		}
+		Initialise();
+		_ = FadeOut( 30 );
+
 	}
 	public override void Spawn()
 	{
 
-        SetModel( Rand.FromList<string>( HGibList ) );
+		SetModel( Rand.FromList<string>( HGibList ) );
 		Initialise();
-		_ = FadeOut(30);
+		_ = FadeOut( 30 );
 
-    }
+	}
 
-    public async Task FadeOut(float fTime)
-    {
-        await Task.DelaySeconds(fTime);
-		if (!toDelete)
+	public async Task FadeOut( float fTime )
+	{
+		await Task.DelaySeconds( fTime );
+		if ( !toDelete )
 		{
 
-            this.toDelete = true;
-            HLCombat.GibFadingCount += 1;
-        }
-    }
+			this.toDelete = true;
+			HLCombat.GibFadingCount += 1;
+		}
+	}
+	public new Vector3 Velocity;
 
-    void Initialise()
-    {
-		if (isInit)
+	public new Angles AngularVelocity;
+
+	public void Initialise()
+	{
+		if ( !HLGame.hl_classic_gibs )
+		{
+			var a = Velocity;
+			var b = AngularVelocity;
+			phys = SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
+			EnableTouch = true;
+			Velocity = a;
+			if ( PhysicsBody != null )
+			{
+				PhysicsBody.Velocity = a * 2;
+				PhysicsBody.AngularVelocity = new Vector3( b.yaw, b.pitch, b.roll ) / 32;
+			}
+
+			this.Tags.Add( "debris" );
+			if ( isInit )
+				return;
+
+			isInit = true;
+			HLCombat.GibCount += 1;
 			return;
+		}
+		if ( isInit )
+			return;
+		phys = SetupPhysicsFromModel( PhysicsMotionType.Keyframed, false );
 		isInit = true;
-        HLCombat.GibCount += 1;
-        Velocity += new Vector3(Rand.Int(-1, 1), Rand.Int(-1, 1), Rand.Int(-1, 1));
-		//base.Spawn();
-		Predictable = true;
-		phys = SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
-		//phys = SetupPhysicsFromOBB(PhysicsMotionType.Dynamic, new Vector3( -0.5f, -0.5f, -0.5f ), new Vector3(0.5f, 0.5f, 0.5f));
-		//phys.GetBody( 0 ).RemoveShadowController();
+		HLCombat.GibCount += 1;
+		Velocity += new Vector3( Rand.Int( -1, 1 ), Rand.Int( -1, 1 ), Rand.Int( -1, 1 ) );
 		EnableHitboxes = true;
-
 		Transmit = TransmitType.Always;
-		this.Tags.Add("debris");
-
-		Predictable = true;
-
-		Predictable = true;
-		//base.Spawn();
-
-		Predictable = true;
+		this.Tags.Add( "debris" );
 	}
 
 	public virtual void StepMove()
@@ -107,31 +150,33 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		Velocity = mover.Velocity;
 	}
 
-	public virtual void Move()
+	public virtual void Move( bool setpos = true )
 	{
 		mins = new Vector3( -bGirth, -bGirth, 0 );
 		maxs = new Vector3( +bGirth, +bGirth, bHeight );
 		NewMoveHelper mover = new NewMoveHelper( Position, Velocity );
 		mover.Trace = mover.Trace
-			.Size(mins, maxs)
-			.Ignore(this)
-			.WithoutTags("player");
+			.Size( mins, maxs )
+			.Ignore( this )
+			.WithoutTags( "player" );
 		mover.GroundBounce = 0.55f;
 		mover.MaxStandableAngle = 10;
 		mover.WallBounce = 0.55f;
 		mover.TryMove( Time.Delta );
-		if (mover.HitWall || mover.HitFloor)
+		lastTrace = mover.TraceResult;
+
+		if ( mover.HitWall || mover.HitFloor )
 		{
-			this.StartTouch(this);
-			if (ResourceLibrary.TryGet<DecalDefinition>("decals/red_blood.decal", out var decal))
-			{
-				var vecSpot = Position + new Vector3(0, 0, 8);
-                Decal.Place(decal, mover.TraceResult);
-            }
-		} 
+			this.StartTouch( this );
+
+		}
+		mover.TryUnstuck();
 		prevTickPos = Position;
-		Position = mover.Position;
-		Velocity = mover.Velocity;
+		if ( setpos )
+		{
+			Position = mover.Position;
+			Velocity = mover.Velocity;
+		}
 
 	}
 
@@ -139,74 +184,87 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	[Event.Tick.Server]
 	public void Think()
 	{
-		if (IsClient)
-			return;
-		if (HLCombat.GibCount < 0) {
+		if ( HLCombat.GibCount < 0 )
+		{
 			HLCombat.GibCount = 0;
 		}
-		if (HLCombat.GibFadingCount < 0)
+		if ( HLCombat.GibFadingCount < 0 )
 		{
 			HLCombat.GibFadingCount = 0;
 		}
-        if (HLCombat.GibFadingCount > HLCombat.GibCount)
-        {
-            HLCombat.GibFadingCount = 0;
-        }
+		if ( HLCombat.GibFadingCount > HLCombat.GibCount )
+		{
+			HLCombat.GibFadingCount = 0;
+		}
 
-		if (((HLCombat.GibCount - HLCombat.GibFadingCount) > HLCombat.max_gibs ))
+		if ( ( ( HLCombat.GibCount - HLCombat.GibFadingCount ) > HLCombat.max_gibs ) )
 		{
 			toDeletefromMax = true;
 		}
 		else
 		{
-			if (!hasCountedFading)
+			if ( !hasCountedFading )
 				toDeletefromMax = false;
 
-        }
+		}
 
-		if (toDelete || toDeletefromMax)
+		if ( toDelete || toDeletefromMax )
 		{
-			alpha = alpha.LerpTo(0, (((HLCombat.GibCount - HLCombat.max_gibs).Clamp(0, HLCombat.max_gibs) * 0.1f)).Clamp(1, 100) * Time.Delta);
-			RenderColor = RenderColor.WithAlpha(alpha);
-			if (alpha.AlmostEqual(0, 0.2f))
+			alpha = alpha.LerpTo( 0, ( ( ( HLCombat.GibCount - HLCombat.max_gibs ).Clamp( 0, HLCombat.max_gibs ) * 0.1f ) ).Clamp( 1, 100 ) * Time.Delta );
+			RenderColor = RenderColor.WithAlpha( alpha );
+			if ( alpha.AlmostEqual( 0, 0.2f ) )
 			{
 				HLCombat.GibCount -= 1;
 				HLCombat.GibFadingCount -= 1;
 				Delete();
 			}
 		}
-			
-        if (hasCountedFading == false && alpha < 1.0f)
+
+		if ( hasCountedFading == false && alpha < 1.0f )
 		{
-            HLCombat.GibFadingCount += 1;
+			HLCombat.GibFadingCount += 1;
 			hasCountedFading = true;
-        } 
-		else if (hasCountedFading && alpha >= 1)
-        {
+		}
+		else if ( hasCountedFading && alpha >= 1 )
+		{
 			HLCombat.GibFadingCount -= 1;
 			hasCountedFading = false;
-        }
-        if (sleepytime > 20)
+		}
+
+		if ( !HLGame.hl_classic_gibs )
+		{
+			Move( false ); // hacky workaround for starttouch not working idk why
+			return;
+		}
+
+		if ( sleepytime > 20 )
 		{
 			return;
 		}
-        LifeTime += 1;
-		if (RotAngles != SleepAngles)
+		LifeTime += 1;
+		if ( RotAngles != SleepAngles )
 			RotAngles += AngularVelocity * Time.Delta;
 		Rotation = RotAngles.ToRotation();
-		if ( ( Position == prevTickPos ) || (Velocity.WithZ(0).IsNearlyZero(6) && Position.AlmostEqual(prevTickPos, 1f) && GroundEntity != null && (GroundEntity is not HLPlayer)))
+		if ( ( Position == prevTickPos ) || ( Velocity.WithZ( 0 ).IsNearlyZero( 6 ) && Position.AlmostEqual( prevTickPos, 1f ) && GroundEntity != null && ( GroundEntity is not HLPlayer ) ) )
 		{
 			sleepytime += 1;
-			RotAngles = SleepAngles;
+			if ( AlternateLandingRotation )
+			{
+				RotAngles = AltSleepAngles; // new Angles(0, Rand.Float(0, 360), 0);
+			}
+			else
+			{
+				RotAngles = SleepAngles;
+			}
 			// Clear rotation if not moving (even if on a conveyor)
 			//AngularVelocity = Angles.Zero;
-			if (Velocity != Vector3.Zero)
+			if ( Velocity != Vector3.Zero )
 				Velocity.LerpTo( Vector3.Zero, 0.1f * Time.Delta );
 
-            //Move();
+			//Move();
 
-            
-            return;
+
+			return;
 		}
 		/*if ( true )
 		{
@@ -225,17 +283,17 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			//DebugOverlay.ScreenText( $" SurfaceFriction: {SurfaceFriction}", lineOffset + 6 );
 			//DebugOverlay.ScreenText( $"    WishVelocity: {WishVelocity}", lineOffset + 7 );
 		}*/
-		if (LifeTime > 300 && !toDelete)
-        {
-            toDelete = true;
-        }
+		if ( LifeTime > 300 && !toDelete )
+		{
+			toDelete = true;
+		}
 		CalcGroundEnt();
 		Velocity -= new Vector3( 0, 0, gGravity * 0.5f ) * Time.Delta;
 		Velocity += new Vector3( 0, 0, BaseVelocity.z ) * Time.Delta;
 		BaseVelocity = BaseVelocity.WithZ( 0 );
 
-		
-		
+
+
 
 		//player->m_Local.m_flFallVelocity = 0.0f;
 		bool bStartOnGround = GroundEntity != null;
@@ -253,16 +311,11 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			}
 		}
 		Move();
-
-		
-
 	}
 
 
-    public virtual void CalcGroundEnt()
+	public virtual void CalcGroundEnt()
 	{
-
-
 		mins = new Vector3( -bGirth, -bGirth, 0 );
 		maxs = new Vector3( +bGirth, +bGirth, bHeight );
 		gSurfaceFriction = 1.0f;
@@ -270,11 +323,11 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		var vBumpOrigin = Position;
 		//if ( GroundEntity != null ) // and not underwater
 		//{
-			//bMoveToEndPos = true;
-			//point.z -= 18;
+		//bMoveToEndPos = true;
+		//point.z -= 18;
 		//}
 
-		
+
 		var pm = TraceBBox( vBumpOrigin, point, mins, maxs, 4.0f );
 
 		if ( pm.Entity == null || Vector3.GetAngle( Vector3.Up, pm.Normal ) > gGroundAngle )
@@ -306,9 +359,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 			maxs = maxs.WithZ( maxs.z - liftFeet );
 		}
 
-		var tr = Trace.Ray(start + TraceOffset, end + TraceOffset)
-					.Size(mins, maxs)
-					.WithAnyTags("solid")
+		var tr = Trace.Ray( start + TraceOffset, end + TraceOffset )
+					.Size( mins, maxs )
+					.WithAnyTags( "solid" )
 					.Ignore( this )
 					.Run();
 
@@ -336,10 +389,10 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		bool wasOffGround = GroundEntity == null;
 
 		GroundEntity = tr.Entity;
-		if ( tr.Entity.IsValid && tr.Entity != null ) 
+		if ( tr.Entity.IsValid && tr.Entity != null )
 			SleepGroundEntity = tr.Entity;
 
-		
+
 
 		if ( GroundEntity != null )
 		{
@@ -348,9 +401,9 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 		if ( wasOffGround )
 		{
 
-			this.StartTouch( this );
+			//this.StartTouch( this );
 		}
-		
+
 	}
 
 	/// <summary>
@@ -358,7 +411,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 	/// </summary>
 	public virtual void ClearGroundEntity()
 	{
-		
+
 		if ( GroundEntity == null ) return;
 		this.EndTouch( this );
 		GroundEntity = null;
@@ -380,7 +433,7 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 
 		// Bleed off some speed, but if we have less than the bleed
 		//  threshold, bleed the threshold amount.
-		float control = (speed < gStopSpeed) ? gStopSpeed : speed;
+		float control = ( speed < gStopSpeed ) ? gStopSpeed : speed;
 
 		// Add the amount to the drop amount.
 		var drop = control * Time.Delta * frictionAmount;
@@ -397,19 +450,55 @@ public partial class HLGib : AnimatedEntity // model ent or anim ent? goin anim 
 
 		// mv->m_outWishVel -= (1.f-newspeed) * mv->m_vecVelocity;
 	}
+	public override void Touch( Entity other )
+	{
+		StartTouch( other ); // shitty
+		base.Touch( other );
+	}
 	public override void StartTouch( Entity other )
 	{
 		//AngularVelocity = Angles.Zero;
 		base.StartTouch( other );
+
+		if ( ( this.PhysicsBody != null && ( this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh" || this.PhysicsBody.GetDominantSurface() == "flesh_yellow" || this.PhysicsBody.GetDominantSurface() == "hl_flesh_yellow" ) ) )
+		{
+			if ( BloodColour == NPC.BLOOD_COLOUR_RED )
+			{
+				if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+				{
+					var vecSpot = Position + new Vector3( 0, 0, 8 );
+					Decal.Place( decal, lastTrace );
+				}
+			}
+			else
+			{
+				if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/yellow_blood.decal", out var decal ) )
+				{
+
+					var vecSpot = Position + new Vector3( 0, 0, 8 );
+					Decal.Place( decal, lastTrace );
+				}
+			}
+		}
+
+		if ( BounceSound )
+		{
+			if ( SurfaceType != null )
+			{
+				SurfaceType.GetBounceSound( Position, 0.3f );
+
+			}
+
+		}
 		//Log.Info( "boing!" );
 		//if (Velocity.IsNearlyZero())
-			//RotAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
+		//RotAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
 		// set angle
 
 		// set anglular velocity
 
 		//bounce?
-		
+
 	}
 
 	public override void EndTouch( Entity other )

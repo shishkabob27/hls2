@@ -2,7 +2,15 @@
 
 Layer0
 {
-	shader "simple.vfx"
+	shader "complex.vfx"
+
+	//---- Z-Buffering ----
+	F_DISABLE_Z_BUFFERING 1
+
+	//---- Ambient Occlusion ----
+	g_flAmbientOcclusionDirectDiffuse "0.000"
+	g_flAmbientOcclusionDirectSpecular "0.000"
+	TextureAmbientOcclusion "materials/default/default_ao.tga"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"

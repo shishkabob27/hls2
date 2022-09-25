@@ -45,7 +45,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/tripmine_boned_world.smd"
+						filename = "models/hl1decomp/w_tripmine/tripmine_boned_world.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -70,12 +70,12 @@
 				[
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "dummy22"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 5.59031, 0.057921, 0.796606 ]
+						origin = [ 0.848443, 1.65627, 0.597664 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 11.622776, 23.44632, 10.173536 ]
+						dimensions = [ 21.106514, 11.147104, 9.691221 ]
 					},
 				]
 			},
@@ -108,6 +108,55 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "ground"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_tripmine/w_tripmine_anims/ground.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "world"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_tripmine/w_tripmine_anims/world.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

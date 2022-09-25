@@ -56,7 +56,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_Hgun_Template_Biped1.smd"
+						filename = "models/hl1decomp/v_hgun/v_Hgun_Template_Biped1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -93,7 +93,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun_anims/up.smd"
+						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/up.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -114,7 +114,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun_anims/down.smd"
+						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/down.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -135,7 +135,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun_anims/fidgetShake.smd"
+						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/fidgetShake.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -156,7 +156,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun_anims/fidgetSway.smd"
+						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/fidgetSway.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -177,7 +177,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun_anims/idle1.smd"
+						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -198,7 +198,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun_anims/Shoot.smd"
+						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/Shoot.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0

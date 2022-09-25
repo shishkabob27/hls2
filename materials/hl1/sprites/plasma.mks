@@ -1,0 +1,5 @@
+sequence 0
+loop
+frame plasma001.tga 1
+frame plasma002.tga 1
+frame plasma003.tga 1

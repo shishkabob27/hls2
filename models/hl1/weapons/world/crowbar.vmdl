@@ -29,9 +29,9 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/crowbar.smd"
-						import_translation = [ -2.0, -1.0, 8.0 ]
-						import_rotation = [ -90.0, -120.0, 0.0 ]
+						filename = "models/hl1decomp/w_crowbar/crowbar.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
 						align_origin_y_type = "None"
@@ -67,30 +67,30 @@
 				[
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "box01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 1.223972
-						point0 = [ -1.062263, 0.180925, -8.864547 ]
-						point1 = [ -0.679929, 0.745581, 24.353373 ]
+						point0 = [ -0.660034, -0.170686, 0.95899 ]
+						point1 = [ -0.293566, 0.37054, 32.798515 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "box01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 1.226783
-						point0 = [ -0.564003, -0.006177, 25.262636 ]
-						point1 = [ 5.418573, -3.400511, 25.19628 ]
+						point0 = [ -2.409112, -0.005412, 39.000912 ]
+						point1 = [ -0.05696, 0.054897, 28.940742 ]
 					},
 					{
 						_class = "PhysicsShapeCylinder"
-						parent_bone = ""
+						parent_bone = "box01"
 						surface_prop = "default"
 						collision_tags = "solid"
 						radius = 1.304729
-						point0 = [ -2.654275, 1.126896, -16.67063 ]
-						point1 = [ -1.171996, 0.244216, -8.844043 ]
+						point0 = [ 6.48749, 2.138491, -4.305919 ]
+						point1 = [ -0.330544, 0.740257, 1.684202 ]
 					},
 				]
 			},
@@ -110,6 +110,34 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "idle"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = true
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/w_crowbar/w_crowbar_anims/idle.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

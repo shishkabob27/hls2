@@ -6,7 +6,6 @@ $orange: #ffd300;
 @import "_damageindicator.scss";
 @import "_hitindicator.scss";
 @import "_inventory.scss";
-@import "_inventoryicon.scss";
 @import "_killfeed.scss";
 @import "_pickupfeed.scss";
 @import "_scoreboard.scss";
@@ -60,6 +59,31 @@ vitals
     bottom: 16px;
 }
 
+.top-middle {
+    opacity: 0.35;
+    position: absolute;
+    top: 16px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+
+    gamehud {
+        font-size: 20px;
+        flex-direction: column;
+        justify-content: center;
+
+        .game-state {
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .game-timer {
+            font-size: 24px;
+        }
+    }
+}
+
 iconpanel {
     mix-blend-mode: lighten;
     background-color: $orange;
@@ -106,6 +130,7 @@ iconpanel {
         {
             opacity: 0.35;
             text-align: right;
+            letter-spacing: 3px;
 
             &.danger
             {
@@ -204,7 +229,8 @@ healthhud, armourhud {
 
     label {
         text-align: right;
-        width: 64px;
+        width: 76px;
+        letter-spacing: 3px;
     }
 }
 

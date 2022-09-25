@@ -20,6 +20,8 @@
             <tab tabName="video" slot="tab" tabtext="Video">
                 <div class="maincontent" style="padding: 40px;">
                     <check class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</check>
+                    <check class="coldtorch" @checked="bColdTorch">Enable classic Torch</check>
+                    <check class="coldexplosion" @checked="bColdexplosion">Enable classic explosion effect</check>
                     <check class="chimodel" @checked="bChimodels">Enable HD models</check>
                     <check class="clowviolence">Enable Low Violence</check>
                     <check class="csubtitle" @checked="bCsubtitle">Enable Subtitles</check>
@@ -36,6 +38,47 @@
 
             <tab tabName="mp" slot="tab" tabtext="Multiplayer">
                 <div class="maincontent" style="padding: 40px;">
+                    <text>Spraypaint image</text>
+                    <select @value="bSsprayIcon" style="width:128px;">
+                        <option value="8ball1">8ball1</option>
+                        <option value="andre">andre</option>
+                        <option value="camp1">camp1</option>
+                        <option value="chick1">chick1</option>
+                        <option value="chuckskull">chuckskull</option>
+                        <option value="devl1">devl1</option>
+                        <option value="gun1">gun1</option>
+                        <option value="lambda">lambda</option>
+                        <option value="splatt">splatt</option>
+                        <option value="tiki">tiki</option>
+                        <option value="v_1">v_1</option>
+                    </select>
+
+                    <select @value="bSsprayColour" style="width:128px;">
+                        <option value="orange">Orange</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="blue">Blue</option>
+                        <option value="ltblue">Ltblue</option>
+                        <option value="green">Green</option>
+                        <option value="red">Red</option>
+                        <option value="brown">Brown</option>
+                        <option value="ltgray">Ltgray</option>
+                        <option value="dkgray">Dkgray</option>
+                    </select>
+
+                    <text>Player model</text>
+                    <select @value="bSplayerModel" style="width:128px;">
+                        <option value="barney">barney</option>
+                        <option value="gina">gina</option>
+                        <option value="gman">gman</option>
+                        <option value="gordon">gordon</option>
+                        <option value="helmet">helmet</option>
+                        <option value="hgrunt">hgrunt</option>
+                        <option value="robo">robo</option>
+                        <option value="scientist">scientist</option>
+                        <option value="zombie">zombie</option>
+                        <option value="player">player</option>
+                        
+                    </select>
                 </div>
             </tab>
 

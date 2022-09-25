@@ -105,6 +105,26 @@
 								from = "player_shoulders1.vmat"
 								to = "materials/hl1/player/player_shoulders1.vmat"
 							},
+							{
+								from = "player_teeth1.vmat"
+								to = "materials/hl1/player/player_teeth1.vmat"
+							},
+							{
+								from = "player_facetop1.vmat"
+								to = "materials/hl1/player/player_facetop1.vmat"
+							},
+							{
+								from = "player_faceside1.vmat"
+								to = "materials/hl1/player/player_faceside1.vmat"
+							},
+							{
+								from = "player_face1.vmat"
+								to = "materials/hl1/player/player_face1.vmat"
+							},
+							{
+								from = "player_inmouth1.vmat"
+								to = "materials/hl1/player/player_inmouth1.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -117,7 +137,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/player_template_biped(No_Head)1.smd"
+						name = "body"
+						filename = "models/hl1decomp/player/player_template_biped(No_Head)1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -136,7 +157,8 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/player_template_biped(Helmet)1.smd"
+						name = "helmet"
+						filename = "models/hl1decomp/player/player_template_biped(Helmet)1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -150,6 +172,27 @@
 							exception_list = 
 							[
 								"player_template_biped_helmet_1",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						name = "head"
+						filename = "models/hl1decomp/player/player_template_biped(gordon_head)1.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"player_template_biped_no_head_1",
+								"player_template_biped_gordon_head_1",
 							]
 						}
 					},
@@ -880,7 +923,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/2handshoot.smd"
+						source_filename = "models/hl1decomp/player/player_anims/2handshoot.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -901,7 +944,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/aim_1.smd"
+						source_filename = "models/hl1decomp/player/player_anims/aim_1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -922,7 +965,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/aim_1_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/aim_1_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -943,7 +986,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/aim_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/aim_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -964,7 +1007,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/aim_2_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/aim_2_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1004,7 +1047,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crawl.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crawl.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1025,7 +1068,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_bow.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_bow.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1046,7 +1089,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_bow_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_bow_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1067,7 +1110,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_crowbar.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_crowbar.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1088,7 +1131,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_crowbar_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_crowbar_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1109,7 +1152,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_egon.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_egon.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1130,7 +1173,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_egon_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_egon_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1151,7 +1194,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_gauss.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_gauss.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1172,7 +1215,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_gauss_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_gauss_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1193,7 +1236,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_hive.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_hive.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1214,7 +1257,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_hive_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_hive_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1235,7 +1278,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_mp5.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_mp5.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1256,7 +1299,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_mp5_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_mp5_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1277,7 +1320,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_onehanded.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_onehanded.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1298,7 +1341,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_onehanded_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_onehanded_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1319,7 +1362,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_python.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_python.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1340,7 +1383,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_python_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_python_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1361,7 +1404,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_rpg.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_rpg.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1382,7 +1425,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_rpg_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_rpg_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1403,7 +1446,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_shotgun.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_shotgun.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1424,7 +1467,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_shotgun_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_shotgun_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1445,7 +1488,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_squeak.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_squeak.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1466,7 +1509,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_squeak_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_squeak_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1487,7 +1530,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_trip.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_trip.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1508,7 +1551,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_aim_trip_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_aim_trip_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1537,7 +1580,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_idle.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1558,7 +1601,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_bow.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_bow.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1579,7 +1622,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_bow_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_bow_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1600,7 +1643,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_crowbar.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_crowbar.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1621,7 +1664,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_crowbar_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_crowbar_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1642,7 +1685,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_egon.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_egon.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1663,7 +1706,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_egon_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_egon_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1684,7 +1727,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_gauss.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_gauss.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1705,7 +1748,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_gauss_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_gauss_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1726,7 +1769,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_hive.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_hive.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1747,7 +1790,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_hive_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_hive_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1768,7 +1811,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_mp5.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_mp5.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1789,7 +1832,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_mp5_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_mp5_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1810,7 +1853,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_onehanded.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_onehanded.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1831,7 +1874,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_onehanded_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_onehanded_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1852,7 +1895,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_python.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_python.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1873,7 +1916,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_python_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_python_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1894,7 +1937,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_rpg.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_rpg.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1915,7 +1958,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_rpg_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_rpg_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1936,7 +1979,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_shotgun.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_shotgun.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1957,7 +2000,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_shotgun_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_shotgun_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1978,7 +2021,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_squeak.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_squeak.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -1999,7 +2042,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_squeak_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_squeak_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2020,7 +2063,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_trip.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_trip.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2041,7 +2084,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/crouch_shoot_trip_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/crouch_shoot_trip_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2062,7 +2105,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/deadback.smd"
+						source_filename = "models/hl1decomp/player/player_anims/deadback.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2083,7 +2126,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/deadsitting.smd"
+						source_filename = "models/hl1decomp/player/player_anims/deadsitting.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2104,7 +2147,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/deadstomach.smd"
+						source_filename = "models/hl1decomp/player/player_anims/deadstomach.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2125,7 +2168,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/deadtable.smd"
+						source_filename = "models/hl1decomp/player/player_anims/deadtable.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2146,7 +2189,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/deep_idle.smd"
+						source_filename = "models/hl1decomp/player/player_anims/deep_idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2167,7 +2210,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/die_backwards.smd"
+						source_filename = "models/hl1decomp/player/player_anims/die_backwards.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2188,7 +2231,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/die_backwards1.smd"
+						source_filename = "models/hl1decomp/player/player_anims/die_backwards1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2209,7 +2252,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/die_forwards.smd"
+						source_filename = "models/hl1decomp/player/player_anims/die_forwards.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2230,7 +2273,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/die_simple.smd"
+						source_filename = "models/hl1decomp/player/player_anims/die_simple.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2251,7 +2294,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/die_spin.smd"
+						source_filename = "models/hl1decomp/player/player_anims/die_spin.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2272,7 +2315,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/gutshot.smd"
+						source_filename = "models/hl1decomp/player/player_anims/gutshot.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2293,7 +2336,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/headshot.smd"
+						source_filename = "models/hl1decomp/player/player_anims/headshot.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2314,7 +2357,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/idle.smd"
+						source_filename = "models/hl1decomp/player/player_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2335,7 +2378,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/jump.smd"
+						source_filename = "models/hl1decomp/player/player_anims/jump.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2356,7 +2399,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/long_jump.smd"
+						source_filename = "models/hl1decomp/player/player_anims/long_jump.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2377,7 +2420,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/look_idle.smd"
+						source_filename = "models/hl1decomp/player/player_anims/look_idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2398,7 +2441,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_bow.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_bow.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2419,7 +2462,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_bow_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_bow_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2440,7 +2483,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_crowbar.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_crowbar.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2461,7 +2504,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_crowbar_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_crowbar_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2482,7 +2525,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_egon.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_egon.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2503,7 +2546,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_egon_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_egon_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2524,7 +2567,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_gauss.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_gauss.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2545,7 +2588,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_gauss_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_gauss_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2566,7 +2609,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_hive.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_hive.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2587,7 +2630,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_hive_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_hive_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2608,7 +2651,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_mp5.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_mp5.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2629,7 +2672,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_mp5_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_mp5_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2650,7 +2693,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_onehanded.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_onehanded.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2671,7 +2714,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_onehanded_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_onehanded_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2692,7 +2735,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_python.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_python.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2713,7 +2756,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_python_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_python_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2734,7 +2777,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_rpg.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_rpg.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2755,7 +2798,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_rpg_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_rpg_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2776,7 +2819,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_shotgun.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_shotgun.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2797,7 +2840,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_shotgun_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_shotgun_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2818,7 +2861,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_squeak.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_squeak.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2839,7 +2882,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_squeak_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_squeak_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2860,7 +2903,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_trip.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_trip.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2881,7 +2924,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_aim_trip_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_aim_trip_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2902,7 +2945,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_bow.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_bow.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2923,7 +2966,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_bow_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_bow_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2944,7 +2987,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_crowbar.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_crowbar.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2965,7 +3008,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_crowbar_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_crowbar_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -2986,7 +3029,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_egon.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_egon.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3007,7 +3050,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_egon_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_egon_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3028,7 +3071,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_gauss.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_gauss.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3049,7 +3092,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_gauss_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_gauss_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3070,7 +3113,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_hive.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_hive.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3091,7 +3134,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_hive_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_hive_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3112,7 +3155,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_mp5.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_mp5.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3133,7 +3176,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_mp5_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_mp5_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3154,7 +3197,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_onehanded.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_onehanded.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3175,7 +3218,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_onehanded_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_onehanded_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3196,7 +3239,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_python.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_python.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3217,7 +3260,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_python_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_python_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3238,7 +3281,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_rpg.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_rpg.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3259,7 +3302,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_rpg_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_rpg_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3280,7 +3323,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_shotgun.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_shotgun.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3301,7 +3344,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_shotgun_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_shotgun_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3322,7 +3365,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_squeak.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_squeak.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3343,7 +3386,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_squeak_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_squeak_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3364,7 +3407,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_trip.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_trip.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3385,7 +3428,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/ref_shoot_trip_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/ref_shoot_trip_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3442,7 +3485,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/run.smd"
+						source_filename = "models/hl1decomp/player/player_anims/run.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3477,7 +3520,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/run2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/run2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3498,7 +3541,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/shoot_1.smd"
+						source_filename = "models/hl1decomp/player/player_anims/shoot_1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3519,7 +3562,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/shoot_1_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/shoot_1_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3540,7 +3583,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/shoot_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/shoot_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3561,7 +3604,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/shoot_2_2.smd"
+						source_filename = "models/hl1decomp/player/player_anims/shoot_2_2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3582,7 +3625,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/swim.smd"
+						source_filename = "models/hl1decomp/player/player_anims/swim.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3603,7 +3646,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/treadwater.smd"
+						source_filename = "models/hl1decomp/player/player_anims/treadwater.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3638,7 +3681,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/walk.smd"
+						source_filename = "models/hl1decomp/player/player_anims/walk.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -3673,7 +3716,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/player_anims/walk2handed.smd"
+						source_filename = "models/hl1decomp/player/player_anims/walk2handed.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -4117,6 +4160,34 @@
 						_class = "RenameBone"
 						original_bone_name = "bip01_l_hand"
 						new_bone_name = "hold_L"
+					},
+				]
+			},
+			{
+				_class = "BodyGroupList"
+				children = 
+				[
+					{
+						_class = "BodyGroup"
+						name = "head"
+						children = 
+						[
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"helmet",
+								]
+							},
+							{
+								_class = "BodyGroupChoice"
+								meshes = 
+								[
+									"head",
+								]
+							},
+						]
+						hidden_in_tools = false
 					},
 				]
 			},

@@ -57,7 +57,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/python_hands.smd"
+						filename = "models/hl1decomp/v_357/python_hands.smd"
 						import_translation = [ 0.0, 0.0, -80.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -76,7 +76,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/python_gun.smd"
+						filename = "models/hl1decomp/v_357/python_gun.smd"
 						import_translation = [ 0.0, 0.0, -80.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -95,7 +95,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/python_bullets.smd"
+						filename = "models/hl1decomp/v_357/python_bullets.smd"
 						import_translation = [ 0.0, 0.0, -80.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -132,7 +132,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_357_anims/draw.smd"
+						source_filename = "models/hl1decomp/v_357/v_357_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -153,7 +153,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_357_anims/fidget1.smd"
+						source_filename = "models/hl1decomp/v_357/v_357_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -174,7 +174,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_357_anims/fire1.smd"
+						source_filename = "models/hl1decomp/v_357/v_357_anims/fire1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -195,7 +195,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_357_anims/holster.smd"
+						source_filename = "models/hl1decomp/v_357/v_357_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -216,7 +216,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_357_anims/idle1.smd"
+						source_filename = "models/hl1decomp/v_357/v_357_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -237,7 +237,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_357_anims/idle2.smd"
+						source_filename = "models/hl1decomp/v_357/v_357_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -258,7 +258,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_357_anims/idle3.smd"
+						source_filename = "models/hl1decomp/v_357/v_357_anims/idle3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -294,7 +294,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_357_anims/reload.smd"
+						source_filename = "models/hl1decomp/v_357/v_357_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -339,7 +339,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = "animgraphs/v_glock.vanmgrph"
+		anim_graph_name = "animgraphs/v_python.vanmgrph"
 		base_model_name = ""
 	}
 }

@@ -1,0 +1,74 @@
+﻿XeNPC (working name kinda shit) is meant to be easy to use,
+to make an npc, make a class and derive it from the NPC class.
+
+You must override Spawn() on an NPC to set its model and other NPC settings, not doing this defaults them to their values in NPC.cs
+
+You must classify an NPC to have them have relationships with other npcs, to do this override the Classify function like so:
+	public virtual int Classify()
+	{
+		return (int)HLCombat.Class.BLAHBLAHBLAH-SET-CLASS-HERE;
+	}
+
+Logic should go in an override of Think() 
+
+Processing other NPCs/Entities is done in a function called ProcessEntity( Entity ent, int rel ), ent being the entity it currently sees and rel being the relationship in the matrix from -2 to 2 (currently hard wired to hls2 check HLCombat.CS).
+ProcessEntity is only called for seeing Entities that have the ICombat interface, this includes NPCs and the player but will work if you add your own entity with the interface
+
+Sound reactions and processing will be done in SoundProcess at some point, doesn't do anything right now
+
+You can make NPCs walk by Setting their Steer.Target to a position (Vector3), this uses the navmesh of the map and does pathfinding,
+
+you can make NPCs turn around by setting either of these 
+	public Rotation targetRotation;
+
+	public Nullable<Rotation> targetRotationOVERRIDE; -- used in scripted sequences
+
+You can have NPCs do things when the player USES them by overriding OnUse( Entity user )
+
+NPCs that can talk can talk by using the SpeakSound method, this will animate their voicelevel if their animgraph has one.
+
+all NPCs will gib if they take enough damage but you can override the behaviour by overriding takedamage.
+
+------------NPC Settings------------
+
+
+	public float WalkSpeed = 80; -- this is their walking travelling speed
+	public float RunSpeed = 200;-- this is their running travelling speed
+	public float entFOV = 0.5f; -- the FOV the entity can see, you can always override the viewcone functionality in void See() instead (remember to call process entity in it if you do override that function)
+	public float EyeHeight = 64; -- the height of their eyes from the floor, for all purposes
+
+	
+	public bool DontSleep = false; -- if they should sleep there's no players in a distance, you usually want this on. (TODO there should probably be a function to change the distance they check)
+	public bool NoNav = false; -- No navigation or movement/physics, used for sitting scientist.
+	public float GroundBounce = 0; -- the ground bounce value of their movehelper, if you want your NPCs to bounce off the ground, used in Snark.cs
+	public float WallBounce = 0; -- the wall bounce value of their movehelper, if you want your NPCs to bounce off the walls, used in Snark.cs
+	public bool HasFriction = true; -- do you want their movehelper to apply friction? useful for underwater npcs maybe, used in Snark.cs
+	public bool Unstick = true; -- do you want their movehelper to unstick them if it thinks the NPC is stuck?
+
+	
+	public string NPCAnimGraph = ""; -- set the animgraph, is this really needed anymore? this was in a variable for when scripted sequences overrode the animgraph but they don't anymore
+	public string NPCSurface = "surface/hlflesh.surface"; -- the surface of the npc, for being hit or shot
+
+------------Functions you should override------------
+
+
+	void Spawn() -- Set all NPC settings and vars here
+	int Classify() -- Set the relationship class here
+	void ProcessEntity( Entity ent, int rel ) -- Called for every ICombat(NPC/Player/Other Entities) the NPC has in their view cone
+	void Think() -- Do logic here, called after main NPC Logic every server tick
+	void ProcessSound() -- Called for every sound the NPC can hear (Doesn't do anything yes)
+	bool OnUse( Entity user ) -- Called when the player presses their USE key on the NPC
+
+------------Variables that do things------------
+
+	Rotation targetRotation
+	Nullable<Rotation> targetRotationOVERRIDE
+	NavSteer Steer -- the pathfinding navigation steer thingy, you can use Steer.Target to move to places
+	float Speed -- their current movement speed, set this to change their speed
+	float neck -- this is shit and heavily tied to HLS2 but you use this to change the rotation of their head to look at things, this is currently automatically set to whoever they're talking to when a SpeakSound() sound is playing
+
+------------Misc Functions------------
+
+
+	void FindCover( Vector3 fromPos ) -- Find cover from a position, kinda works right now but its not really finding cover but it does its job most of the time kinda
+	

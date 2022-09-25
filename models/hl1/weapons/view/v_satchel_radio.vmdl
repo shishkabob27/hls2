@@ -61,7 +61,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/satchel_radio_detonator.smd"
+						filename = "models/hl1decomp/v_satchel_radio/satchel_radio_detonator.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -80,7 +80,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/satchel_radio_hand.smd"
+						filename = "models/hl1decomp/v_satchel_radio/satchel_radio_hand.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -118,7 +118,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio_anims/draw.smd"
+						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -139,7 +139,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio_anims/fidget1.smd"
+						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -160,7 +160,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio_anims/fire.smd"
+						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/fire.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -181,7 +181,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio_anims/holster.smd"
+						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -202,7 +202,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio_anims/idle1.smd"
+						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0

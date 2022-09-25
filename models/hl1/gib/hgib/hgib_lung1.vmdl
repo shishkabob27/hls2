@@ -32,13 +32,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeCapsule"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
-						radius = 4.24899
-						point0 = [ -1.840425, 1.011189, 9.193504 ]
-						point1 = [ -0.612011, 1.343472, -7.427298 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},
@@ -48,7 +47,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/HGIB_Lung1.smd"
+						filename = "models/hl1decomp/gib_lung/gib_lung1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -62,6 +61,7 @@
 							exception_list = 
 							[
 								"hgib_lung1",
+								"gib_lung1",
 							]
 						}
 					},

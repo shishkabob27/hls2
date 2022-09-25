@@ -28,6 +28,15 @@
 		}
 		Breakables = 
 		{
+			GenericGibs = 
+			[
+				resource:"models/hl1/gib/hgib/hgib_lung1.vmdl",
+				resource:"models/hl1/gib/hgib/hgib_legbone1.vmdl",
+				resource:"models/hl1/gib/hgib/hgib_hmeat1.vmdl",
+				resource:"models/hl1/gib/hgib/hgib_guts1.vmdl",
+				resource:"models/hl1/gib/hgib/hgib_b_gib1.vmdl",
+				resource:"models/hl1/gib/hgib/hgib_b_bone1.vmdl",
+			]
 		}
 	}
 }

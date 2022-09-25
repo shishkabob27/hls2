@@ -57,7 +57,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/SQUEAK_Template_Biped(Weapon)1.smd"
+						filename = "models/hl1decomp/v_squeak/SQUEAK_Template_Biped(Weapon)1.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -76,7 +76,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/squeak_template_biped(hand)1.smd"
+						filename = "models/hl1decomp/v_squeak/squeak_template_biped(hand)1.smd"
 						import_translation = [ 0.0, 0.0, -68.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -106,15 +106,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_squeak_anims/up.smd"
+						source_filename = "models/hl1decomp/v_squeak/v_squeak_anims/up.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -127,15 +127,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_squeak_anims/down.smd"
+						source_filename = "models/hl1decomp/v_squeak/v_squeak_anims/down.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -148,15 +148,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_squeak_anims/fidgetfit.smd"
+						source_filename = "models/hl1decomp/v_squeak/v_squeak_anims/fidgetfit.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -169,15 +169,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_squeak_anims/fidgetnip.smd"
+						source_filename = "models/hl1decomp/v_squeak/v_squeak_anims/fidgetnip.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -190,15 +190,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_squeak_anims/idle1.smd"
+						source_filename = "models/hl1decomp/v_squeak/v_squeak_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -211,15 +211,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_squeak_anims/throw.smd"
+						source_filename = "models/hl1decomp/v_squeak/v_squeak_anims/throw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -232,7 +232,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "animgraphs/v_squeak.vanmgrph"
 		base_model_name = ""
 	}
 }

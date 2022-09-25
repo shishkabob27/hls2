@@ -12,7 +12,7 @@
 					{
 						_class = "Bone"
 						name = "hold_R"
-						origin = [ 0.0, 0.0, 0.0 ]
+						origin = [ -6.296577, -1.294382, 0.0 ]
 						angles = [ 0.0, 0.0, 0.0 ]
 						do_not_discard = true
 					},
@@ -62,30 +62,30 @@
 				[
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "box02"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ -12.808889, 0.753548, 6.602203 ]
+						origin = [ -21.430233, 1.774636, -1.580278 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 35.617783, 12.564204, 13.430335 ]
+						dimensions = [ 35.530251, 12.564204, 12.555349 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "box02"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ -39.959496, 0.676862, 5.298067 ]
+						origin = [ -47.793716, 0.766631, -1.390131 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 17.81167, 8.116612, 7.05294 ]
+						dimensions = [ 18.059555, 8.116612, 8.046954 ]
 					},
 					{
 						_class = "PhysicsShapeBox"
-						parent_bone = ""
+						parent_bone = "box02"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 11.197135, 0.742738, -0.628246 ]
+						origin = [ 3.517675, -5.843242, -1.272817 ]
 						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 24.873812, 1.388535, 7.704722 ]
+						dimensions = [ 24.302105, 8.018829, 1.279633 ]
 					},
 				]
 			},
@@ -110,7 +110,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/w_gauss.smd"
+						filename = "models/hl1decomp/mp_weapons/w_gauss/w_gauss.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 180.0, 0.0 ]
 						import_scale = 1.0
@@ -129,6 +129,55 @@
 						}
 					},
 				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "onside"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/mp_weapons/w_gauss/w_gauss_anims/onside.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "stayput"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/mp_weapons/w_gauss/w_gauss_anims/stayput.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""

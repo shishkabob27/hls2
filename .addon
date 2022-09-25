@@ -18,10 +18,11 @@
     "MaxPlayers": 24,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
-    "MapSelect": "Tagged",
+    "MapSelect": "Unrestricted",
     "MapList": [
       "shishkabob.hls2_c2p0",
-      "shishkabob.hls2_c4p0"
+      "shishkabob.hls2_c4p0",
+      "facepunch.datacore"
     ],
     "RankType": "None",
     "PerMapRanking": false,
@@ -141,7 +142,17 @@
         {
           "a": "player",
           "b": "glass",
-          "r": "Collide"
+          "r": "Trigger"
+        },
+        {
+          "a": "glass",
+          "b": "glass",
+          "r": "Ignore"
+        },
+        {
+          "a": "trigger",
+          "b": "glass",
+          "r": "Ignore"
         }
       ]
     },
@@ -159,6 +170,7 @@
     },
     "ControlModes": {
       "Keyboard": true,
+      "VR": true,
       "Gamepad": true
     },
     "GameSettings": {
