@@ -125,7 +125,7 @@ partial class PipeWrench : HLWeapon
 
 				using ( Prediction.Off() )
 				{
-					PlaySound( "sounds/hl1/weapons/cbar_hitbod.sound" );
+					PlaySound( "sounds/op/weapons/pwrench_hitbod.sound" );
 					if ( ( hitEntity as NPC ).BloodColour == NPC.BLOOD_COLOUR_RED )
 					{
 
