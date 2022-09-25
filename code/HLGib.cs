@@ -47,13 +47,10 @@
 		"models/hl1/gib/hgib/hgib_b_bone1.vmdl"
 	};
 	List<string> AGibList = new List<string>{
-		//"models/hl1/gib/hgib/hgib_skull1.vmdl", spawn manually please!
-		"models/hl1/gib/agib/agib_lung1.vmdl",
-		"models/hl1/gib/agib/agib_legbone1.vmdl",
-		"models/hl1/gib/agib/agib_hmeat1.vmdl",
-		"models/hl1/gib/agib/agib_guts1.vmdl",
-		"models/hl1/gib/agib/agib_b_gib1.vmdl",
-		"models/hl1/gib/agib/agib_b_bone1.vmdl"
+		"models/hl1/gib/agib/aliengeneric1.vmdl",
+		"models/hl1/gib/agib/aliengeneric2.vmdl",
+		"models/hl1/gib/agib/aliengeneric3.vmdl",
+		"models/hl1/gib/agib/aliengeneric4.vmdl"
 	};
 	Vector3 mins;
 	Vector3 maxs;
