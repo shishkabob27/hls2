@@ -355,6 +355,16 @@
 					},
 				]
 			},
+			{
+				_class = "PrefabList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "models/hl1/monster/prefabs/ragdoll.vmdl_prefab"
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

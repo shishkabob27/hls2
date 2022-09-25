@@ -1,0 +1,779 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "PhysicsBodyMarkupList"
+				children = 
+				[
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_pelvis"
+						mass_override = 13.831768
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_spine2"
+						mass_override = 32.53458
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_r_arm1"
+						mass_override = 3.535479
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_r_arm2"
+						mass_override = 2.52288
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_l_arm1"
+						mass_override = 3.535455
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_l_arm2"
+						mass_override = 2.5229
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_l_hand"
+						mass_override = 1.0
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_r_hand"
+						mass_override = 1.0
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_r_leg"
+						mass_override = 12.339385
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_r_leg1"
+						mass_override = 7.223018
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_head"
+						mass_override = 9.209369
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 5.0
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_l_leg"
+						mass_override = 12.339387
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_l_leg1"
+						mass_override = 7.223115
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_l_foot"
+						mass_override = 3.230259
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+					{
+						_class = "PhysicsBodyMarkup"
+						target_body = "bip02_r_foot"
+						mass_override = 3.230277
+						inertia_scale = 10.0
+						linear_damping = 0.01
+						angular_damping = 1.5
+						use_mass_center_override = false
+						mass_center_override = [ 0.0, 0.0, 0.0 ]
+					},
+				]
+			},
+			{
+				_class = "PhysicsJointList"
+				children = 
+				[
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "bip02_pelvis"
+						child_body = "bip02_spine2"
+						anchor_origin = [ 10.964497, -0.0041, 0.000008 ]
+						anchor_angles = [ 89.999763, 5.542795, 0.0 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_swing_limit = true
+						swing_limit = 26.25
+						swing_offset_angle = [ 0.0, 0.0, -2.5 ]
+						enable_twist_limit = true
+						min_twist_angle = -60.0
+						max_twist_angle = 60.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "bip02_spine2"
+						child_body = "bip02_r_arm1"
+						anchor_origin = [ 6.129055, -0.978319, -8.496841 ]
+						anchor_angles = [ 16.804657, -5.542745, -171.004395 ]
+						collision_enabled = false
+						friction = 0.133333
+						enable_swing_limit = true
+						swing_limit = 48.5
+						swing_offset_angle = [ 0.0, 9.5, 30.5 ]
+						enable_twist_limit = true
+						min_twist_angle = 0.0
+						max_twist_angle = 0.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "bip02_r_arm1"
+						child_body = "bip02_r_arm2"
+						anchor_origin = [ 8.573804, 0.0, 0.000004 ]
+						anchor_angles = [ 0.000001, -11.459153, 0.000002 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_limit = true
+						min_angle = -120.0
+						max_angle = 4.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "bip02_spine2"
+						child_body = "bip02_l_arm1"
+						anchor_origin = [ 6.064556, -0.945686, 8.40004 ]
+						anchor_angles = [ 15.805118, 174.457138, 9.994751 ]
+						collision_enabled = false
+						friction = 0.133333
+						enable_swing_limit = true
+						swing_limit = 45.5
+						swing_offset_angle = [ 0.0, -18.5, 30.5 ]
+						enable_twist_limit = true
+						min_twist_angle = 0.0
+						max_twist_angle = 0.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "bip02_l_arm1"
+						child_body = "bip02_l_arm2"
+						anchor_origin = [ 7.685221, 0.0, -0.000008 ]
+						anchor_angles = [ 0.000002, -11.459155, 0.000002 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_limit = true
+						min_angle = -120.0
+						max_angle = 4.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "bip02_l_arm2"
+						child_body = "bip02_l_hand"
+						anchor_origin = [ 10.246257, -0.000001, 0.0 ]
+						anchor_angles = [ 0.096794, -90.0, -90.0 ]
+						collision_enabled = false
+						friction = 0.133333
+						enable_swing_limit = true
+						swing_limit = 31.75
+						swing_offset_angle = [ 0.0, 0.0, -6.5 ]
+						enable_twist_limit = true
+						min_twist_angle = -60.0
+						max_twist_angle = 60.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "bip02_r_arm2"
+						child_body = "bip02_r_hand"
+						anchor_origin = [ 9.913456, 0.0, 0.000008 ]
+						anchor_angles = [ 0.103384, 90.017288, 99.495186 ]
+						collision_enabled = false
+						friction = 0.133333
+						enable_swing_limit = true
+						swing_limit = 31.75
+						swing_offset_angle = [ 0.0, 0.0, -6.5 ]
+						enable_twist_limit = true
+						min_twist_angle = -60.0
+						max_twist_angle = 60.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "bip02_pelvis"
+						child_body = "bip02_r_leg"
+						anchor_origin = [ 0.000008, -0.000004, -4.427395 ]
+						anchor_angles = [ -88.001091, -5.72778, -0.001781 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_swing_limit = true
+						swing_limit = 40.0
+						swing_offset_angle = [ 0.0, -10.0, -13.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -25.0
+						max_twist_angle = 20.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "bip02_r_leg"
+						child_body = "bip02_r_leg1"
+						anchor_origin = [ 18.133177, 0.0, 0.000008 ]
+						anchor_angles = [ -0.0, -13.458149, -0.000001 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_limit = true
+						min_angle = -95.0
+						max_angle = 4.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "bip02_spine2"
+						child_body = "bip02_head"
+						anchor_origin = [ 12.879116, 0.188711, 0.0 ]
+						anchor_angles = [ 90.0, 3.452587, 0.0 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_swing_limit = true
+						swing_limit = 23.25
+						swing_offset_angle = [ 0.0, 0.0, -8.5 ]
+						enable_twist_limit = true
+						min_twist_angle = -20.0
+						max_twist_angle = 20.0
+					},
+					{
+						_class = "PhysicsJointConical"
+						parent_body = "bip01_pelvis"
+						child_body = "bip02_l_leg"
+						anchor_origin = [ -0.000011, 0.000008, 4.427395 ]
+						anchor_angles = [ -87.001442, 174.269211, -179.998795 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_swing_limit = true
+						swing_limit = 40.0
+						swing_offset_angle = [ 0.0, 10.0, -13.0 ]
+						enable_twist_limit = true
+						min_twist_angle = -25.0
+						max_twist_angle = 20.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "bip02_l_leg"
+						child_body = "bip02_l_leg1"
+						anchor_origin = [ 18.301065, 0.0, 0.000002 ]
+						anchor_angles = [ -0.000007, -14.457614, 0.0 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_limit = true
+						min_angle = -95.0
+						max_angle = 4.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "bip02_l_leg1"
+						child_body = "bip02_l_foot"
+						anchor_origin = [ 17.10676, -0.0, 0.0 ]
+						anchor_angles = [ 2.983512, 8.720246, -0.299599 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_limit = true
+						min_angle = -15.0
+						max_angle = 35.0
+					},
+					{
+						_class = "PhysicsJointRevolute"
+						parent_body = "bip02_r_leg1"
+						child_body = "bip02_r_foot"
+						anchor_origin = [ 17.375961, 0.0, 0.000004 ]
+						anchor_angles = [ -1.989026, 7.725076, 0.199676 ]
+						collision_enabled = false
+						friction = 0.2
+						enable_limit = true
+						min_angle = -15.0
+						max_angle = 35.0
+					},
+				]
+			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_pelvis_0_mesh"
+						parent_bone = "bip02_pelvis"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_pelvis_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_spine2_0_mesh"
+						parent_bone = "bip02_spine2"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_spine2_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_arm1_0_mesh"
+						parent_bone = "bip02_r_arm1"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_arm1_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_arm2_0_mesh"
+						parent_bone = "bip02_r_arm2"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_arm2_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_arm1_0_mesh"
+						parent_bone = "bip02_l_arm1"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_arm1_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_arm2_0_mesh"
+						parent_bone = "bip02_l_arm2"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_arm2_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_hand_0_mesh"
+						parent_bone = "bip02_l_hand"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_hand_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_hand_0_mesh"
+						parent_bone = "bip02_r_hand"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_hand_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_leg_0_mesh"
+						parent_bone = "bip02_r_leg"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_leg_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_leg1_0_mesh"
+						parent_bone = "bip02_r_leg1"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_leg1_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_head_0_mesh"
+						parent_bone = "bip02_head"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_head_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_leg_0_mesh"
+						parent_bone = "bip02_l_leg"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_leg_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_leg1_0_mesh"
+						parent_bone = "bip02_l_leg1"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_leg1_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_l_foot_0_mesh"
+						parent_bone = "bip02_l_foot"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_l_foot_0_mesh",
+							]
+						}
+					},
+					{
+						_class = "PhysicsHullFile"
+						name = "bip01_r_foot_0_mesh"
+						parent_bone = "bip02_r_foot"
+						surface_prop = "default"
+						collision_tags = "solid"
+						recenter_on_parent_bone = true
+						offset_origin = [ 0.0, 0.0, 0.0 ]
+						offset_angles = [ 0.0, 0.0, 0.0 ]
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						filename = "models/hl1/monster/prefabs/physics/physmesh.dmx"
+						import_scale = 1.0
+						faceMergeAngle = 10.0
+						maxHullVertices = 0
+						import_mode = "SingleHull"
+						optimization_algorithm = "QEM"
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"bip01_r_foot_0_mesh",
+							]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

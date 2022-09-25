@@ -351,6 +351,10 @@
 						_class = "Prefab"
 						target_file = "models/hl1/monster/scientist/prefabs/scientistanim.vmdl_prefab"
 					},
+					{
+						_class = "Prefab"
+						target_file = "models/hl1/monster/scientist/prefabs/sciragdoll.vmdl_prefab"
+					},
 				]
 			},
 		]
