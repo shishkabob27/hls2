@@ -1,0 +1,5 @@
+"VertexlitGeneric"
+{
+	"$basetexture" "models/valve/face"
+	"$surfaceprop" "Flesh"
+}
