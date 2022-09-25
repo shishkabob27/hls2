@@ -81,7 +81,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/newrpg_worldmodel.smd"
+						filename = "models/hl1decomp/w_rpg/newrpg_worldmodel.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -119,7 +119,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_rpg_anims/onside.smd"
+						source_filename = "models/hl1decomp/w_rpg/w_rpg_anims/onside.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -140,7 +140,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/w_rpg_anims/stayput.smd"
+						source_filename = "models/hl1decomp/w_rpg/w_rpg_anims/stayput.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
