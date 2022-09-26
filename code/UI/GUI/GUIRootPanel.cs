@@ -14,6 +14,10 @@ public class GUIRootPanel : RootPanel
         StyleSheet.Load( "resource/styles/GUI.scss" );
         Style.ZIndex = 100;
         AddChild<Options>();
+        if ( HLGame.hl_gamemode == "ctf" )
+        {
+            AddChild<TeamSelector>();
+        }
         Focus();
     }
 
