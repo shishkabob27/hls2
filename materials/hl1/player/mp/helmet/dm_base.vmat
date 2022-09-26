@@ -35,7 +35,7 @@ Layer0
 	g_flMetalness "0.000"
 
 	//---- Normal ----
-	TextureNormal "materials/default/default_normal.tga"
+	TextureNormal "[0.501961 0.501961 1.000000 0.000000]"
 
 	//---- Roughness ----
 	TextureRoughness "[1.000000 1.000000 1.000000 0.000000]"
