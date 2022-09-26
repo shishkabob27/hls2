@@ -25,6 +25,11 @@
                     <check class="chimodel" @checked="bChimodels">Enable HD models</check>
                     <check class="clowviolence">Enable Low Violence</check>
                     <check class="csubtitle" @checked="bCsubtitle">Enable Subtitles</check>
+                    <text>HUD style</text>
+                    <select @value="Shudstyle" style="width:128px;">
+                        <option value="hl1">Half-Life</option>
+                        <option value="op">Opposing Force</option>
+                    </select>
                     <text>Hud Scale</text>
                     <SliderScaleEntry min="0" max="5" step="0" mintext="Auto" maxtext="5.00" @value="fChudScale"></SliderScaleEntry>
                 </div>

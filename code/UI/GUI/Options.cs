@@ -17,6 +17,7 @@ public class Options : GUIPanel
 	public string bSplayerModel { get; set; } = "player";
 	public string bSsprayColour { get; set; } = "orange";
 	public string bSsprayIcon { get; set; } = "lambda";
+	public string Shudstyle { get; set; } = "hl1";
 
 	public bool bCvrpointer { get; set; }
 
@@ -58,7 +59,7 @@ public class Options : GUIPanel
 		HLGame.hl_spray_icon = bSsprayIcon;
 		HLGame.hl_spray_colour = bSsprayColour;
 		HLPlayer.hl_pm = bSplayerModel;
-
+		HLGame.hl_hud_style = Shudstyle;
 	}
 
 
