@@ -46,7 +46,6 @@ public class Options : GUIPanel
 	}
 	public void updateCvars()
 	{
-		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
 		ConsoleSystem.Run( "cl_rollangle " + ( bCviewroll ? 2 : 0 ) );
 		ConsoleSystem.Run( "hl_hud_scale " + fChudScale );
 		ConsoleSystem.Run( "cc_subtitles " + ( bCsubtitle ? 1 : 0 ) );
@@ -58,7 +57,10 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_classic_explosion " + ( bColdexplosion ? 1 : 0 ) );
 		ConsoleSystem.Run( "hl_spray_icon " + bSsprayIcon );
 		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
-		updtasync();
+		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
+		ConsoleSystem.Run( "hl_hud_style " + Shudstyle );
+		ConsoleSystem.Run( "hl_updatepm" );
+
 		/*
 		WalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
 		HLGame.hl_hud_scale = fChudScale;
@@ -76,11 +78,7 @@ public class Options : GUIPanel
 		HLGame.hl_hud_style = Shudstyle;
 		*/
 	}
-	public async void updtasync()
-	{
-		await GameTask.DelaySeconds( 0.1f );
-		ConsoleSystem.Run( "hl_updatepm" );
-	}
+
 
 	[Event.BuildInput]
 	public void ProcessClientInput( InputBuilder input )
