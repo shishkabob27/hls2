@@ -71,7 +71,6 @@
 
     public enum GameStates
     {
-        Warmup,
         Live,
         GameEnd,
         MapVote
