@@ -13,7 +13,7 @@ partial class PipeWrench : HLWeapon
 	public override int ClipSize => 0;
 	public override int Bucket => 0;
 
-	public override string InventoryIcon => "/ui/weapons/weapon_crowbar.png";
+	public override string InventoryIcon => "/ui/weapons/op/weapon_pipewrench.png";
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -98,8 +98,6 @@ partial class PipeWrench : HLWeapon
 				// recreate that funny glitch :)
 				if ( hitEntity.LifeState == LifeState.Dead )
 					TimeSincePrimaryAttack = 5f;
-
-				Log.Info( hitEntity );
 
 				var trace = Trace.Ray( GetFiringPos(), GetFiringPos() + forward * 70 * 2 )
 					.WorldOnly()
