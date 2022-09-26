@@ -1,6 +1,7 @@
 ﻿using static Sandbox.Package;
 
 [Library( "weapon_mp5" ), HammerEntity]
+[Alias( "weapon_9mmAR" )]
 [EditorModel( "models/hl1/weapons/world/mp5.vmdl" )]
 [Title( "SMG" ), Category( "Weapons" )]
 partial class SMG : HLWeapon
@@ -128,7 +129,3 @@ partial class SMG : HLWeapon
 	}
 
 }
-
-[Library( "weapon_9mmAR" ), HammerEntity]
-partial class weapon_9mmAR : SMG
-{}
