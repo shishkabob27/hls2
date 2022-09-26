@@ -60,7 +60,19 @@ inventorycolumn {
 			}
 
 			&.active {
+				background-color: rgba(255,170,2,0.024);
 				opacity: 1;
+			}
+
+			&.empty {
+				opacity: 0.5;
+				background-color: rgba(204,0,68,0.03);
+				color: #f002;
+
+				.icon {
+					background-color: rgba(255,85,0,0.01);
+					background-image-tint: #f50;
+				}
 			}
 		}
 	}
