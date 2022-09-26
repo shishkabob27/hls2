@@ -1,0 +1,60 @@
+TeamSelector{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    background-color: rgba(0, 0, 0, 0.75);
+    pointer-events: all;
+
+    > text
+    {
+    padding: 54px;
+    }
+}
+
+
+
+text{
+    color: #ffbb00;
+    font-family: "Trebuchet MS";
+    font-weight: 600;
+    font-size: 40px;
+    text-shadow: 0px 0px 1px #ffbb00;
+}
+
+.teams{
+    position: absolute;
+    padding: 128px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    
+
+    div
+    {
+        margin: 32px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        border: 1px;
+        border-color: #ffbb00;
+        align-items:center;
+        flex-direction: column;
+
+        text{
+            padding: 32px;
+            font-size: 28px;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+
+        cursor: pointer;
+
+        >.hover
+        {
+            background-color: rgba(32, 32, 32, 0.9);
+        }
+    }
+}
