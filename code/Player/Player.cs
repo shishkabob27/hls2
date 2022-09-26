@@ -460,6 +460,9 @@
 
 	public override void PostCameraSetup( ref CameraSetup setup )
 	{
+		if (HLGame.CurrentState == HLGame.GameStates.GameEnd )
+			return;
+			
 		base.PostCameraSetup( ref setup );
 
 		setup.ZNear = 1;
