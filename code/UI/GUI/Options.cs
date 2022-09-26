@@ -1,7 +1,7 @@
 using Sandbox.UI;
 
 [UseTemplate( "/resource/templates/options.html" )]
-public class Options : GUI
+public class Options : GUIPanel
 {
 	public bool bCviewroll { get; set; }
 	public bool bCsubtitle { get; set; }
@@ -17,6 +17,7 @@ public class Options : GUI
 	public string bSplayerModel { get; set; } = "player";
 	public string bSsprayColour { get; set; } = "orange";
 	public string bSsprayIcon { get; set; } = "lambda";
+	public string Shudstyle { get; set; } = "hl1";
 
 	public bool bCvrpointer { get; set; }
 
@@ -72,8 +73,8 @@ public class Options : GUI
 		HLGame.hl_spray_icon = bSsprayIcon;
 		HLGame.hl_spray_colour = bSsprayColour;
 		HLPlayer.hl_pm = bSplayerModel;
+		HLGame.hl_hud_style = Shudstyle;
 		*/
-
 	}
 	public async void updtasync()
 	{

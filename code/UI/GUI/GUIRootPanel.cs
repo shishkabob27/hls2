@@ -9,10 +9,11 @@ public class GUIRootPanel : RootPanel
 
     public GUIRootPanel()
     {
-        Current = this;
         AcceptsFocus = true;
+        Current = this;
         StyleSheet.Load( "resource/styles/ingamemenu.scss" );
         Style.ZIndex = 100;
+        AddChild<Options>();
         Focus();
     }
 

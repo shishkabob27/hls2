@@ -186,8 +186,8 @@
             "Name": "Deathmatch"
           },
           {
-            "Value": "Capture the Flag (Opposing Force)",
-            "Name": "ctf"
+            "Value": "ctf",
+            "Name": "Capture the Flag (Opposing Force)"
           }
         ],
         "ConVarName": "hl_gamemode",

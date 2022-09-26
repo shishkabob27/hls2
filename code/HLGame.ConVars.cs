@@ -5,6 +5,7 @@
     [ConVar.Replicated] public static string hl_skill { get; set; } = "medium";
     [ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
     [ConVar.Client] public static float hl_hud_scale { get; set; } = 0;
+    [ConVar.Client] public static string hl_hud_style { get; set; } = "hl1";
     [ConVar.Replicated] public static bool hl_ragdoll { get; set; } = false;
     [ConVar.Replicated] public static float sv_spray_max_distance { get; set; } = 100;
     [ConVar.Replicated] public static float sv_spray_cooldown { get; set; } = 1;
