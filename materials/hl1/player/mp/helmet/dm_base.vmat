@@ -10,8 +10,8 @@ Layer0
 	TextureAmbientOcclusion "materials/default/default_ao.tga"
 
 	//---- Color ----
-	g_flModelTintAmount "1.000"
-	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
+	g_flModelTintAmount "0.000"
+	g_vColorTint "[0.925490 0.925490 0.925490 1.000000]"
 	TextureColor "materials/hl1/player/mp/helmet/dm_base.tga"
 
 	//---- Fade ----
@@ -39,4 +39,16 @@ Layer0
 	g_vTexCoordOffset "[0.000 0.000]"
 	g_vTexCoordScale "[1.000 1.000]"
 	g_vTexCoordScrollSpeed "[0.000 0.000]"
+
+	Attributes
+	{
+		clTintR ""
+		clTintG ""
+		clTintB ""
+	}
+
+	DynamicParams
+	{
+		g_vColorTint "\nclTintR = 1;\nclTintG = 1;\nclTintB = 1;\nreturn float4(clTintR,clTintG,clTintB,0);"
+	}
 }

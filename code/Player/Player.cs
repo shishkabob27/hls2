@@ -98,8 +98,19 @@
 			SetBodyGroup( "head", 1 );
 			SetModel( pm );
 		}
-		//RenderColor = HSVtoRGB( Client.GetClientData( "hl_pm_colour1" ).ToInt(), 100, 100 );
+		updateColours();
 
+
+	}
+
+	[ClientRpc]
+	void updateColours()
+	{
+
+		var a = HSVtoRGB( Client.GetClientData( "hl_pm_colour1" ).ToInt(), 100, 100 );
+		SceneObject.Attributes.Set( "clTintR", a.r );
+		SceneObject.Attributes.Set( "clTintG", a.g );
+		SceneObject.Attributes.Set( "clTintB", a.b );
 	}
 
 	Color HSVtoRGB( float H, float S, float V )
@@ -111,7 +122,7 @@
 		float s = S / 100;
 		float v = V / 100;
 		float C = s * v;
-		float X = C * ( 1 - Math.Abs( MathX.UnsignedMod( H / 60.0f, 2 ) - 1 ) );
+		float X = C * ( 1 - Math.Abs( ( H / 60.0f % 2 ) - 1 ) );
 		float m = v - C;
 		float r, g, b;
 		if ( H >= 0 && H < 60 )
