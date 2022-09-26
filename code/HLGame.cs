@@ -31,7 +31,7 @@ public partial class HLGame : Game
 			{
 				hl_gamemode = "deathmatch";
 			}
-			if ( hl_gamemode == "deathmatch" )
+			if ( hl_gamemode == "deathmatch" || hl_gamemode == "ctf" )
 			{
 				_ = GameLoopAsync();
 			}
