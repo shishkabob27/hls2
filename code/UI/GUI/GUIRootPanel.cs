@@ -11,7 +11,7 @@ public class GUIRootPanel : RootPanel
     {
         AcceptsFocus = true;
         Current = this;
-        StyleSheet.Load( "resource/styles/ingamemenu.scss" );
+        StyleSheet.Load( "resource/styles/GUI.scss" );
         Style.ZIndex = 100;
         AddChild<Options>();
         Focus();
