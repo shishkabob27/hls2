@@ -5,9 +5,9 @@
 		FileSystem.Data.WriteJson( "player_settings.json", data );
 	}
 
-	public static PlayerData LoadSettings()
+	public static PlayerSettingsData LoadSettings()
 	{
-		return FileSystem.Data.ReadJson<PlayerData>( "player_settings.json" );
+		return FileSystem.Data.ReadJson<PlayerSettingsData>( "player_settings.json" );
 	}
 
 }

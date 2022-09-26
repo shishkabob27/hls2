@@ -29,7 +29,26 @@ public class Options : GUIPanel
 		Style.Right = 0;
 		Style.Top = 0;
 		Style.Bottom = 0;
+		getCvars();
+
 		Focus();
+	}
+	void getCvars()
+	{
+		bCviewroll = WalkController.cl_rollangle != 0;
+		fChudScale = HLGame.hl_hud_scale;
+		bCsubtitle = HLGame.cc_subtitles == 1;
+		bCguiscale = HLGame.hl_gui_rescale;
+		bCpixelfont = HLGame.hl_pixelfont;
+		bChimodels = HLGame.cl_himodels;
+		bCvrpointer = HLGame.hl_vr_pointer;
+		bCragdolls = HLGame.hl_ragdoll;
+		bColdTorch = HLGame.hl_classic_flashlight;
+		bColdexplosion = HLGame.hl_classic_explosion;
+		bSsprayIcon = HLGame.hl_spray_icon;
+		bSsprayColour = HLGame.hl_spray_colour;
+		bSplayerModel = HLPlayer.hl_pm;
+		Shudstyle = HLGame.hl_hud_style;
 	}
 	public override void Close()
 	{
