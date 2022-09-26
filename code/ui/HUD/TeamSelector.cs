@@ -5,8 +5,12 @@ using Sandbox.UI.Construct;
 public class TeamSelector : Panel
 {
     
-	public TeamSelector(){
+	public TeamSelector()
+	{
 	}
 
+	void SelectTeam(string team){
+		var p = Local.Pawn as Player;
+	}
 
 }

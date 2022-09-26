@@ -25,12 +25,13 @@ text{
 .teams{
     position: absolute;
     padding: 128px;
+    padding-bottom: 32px;
     width: 100%;
     height: 100%;
     justify-content: center;
     
 
-    div
+    .team
     {
         margin: 32px;
         width: 100%;
@@ -51,10 +52,14 @@ text{
         }
 
         cursor: pointer;
+        //transition: all 1s;
+        transition: all 0.2s ease-out;
 
-        >.hover
+        &:hover
         {
-            background-color: rgba(32, 32, 32, 0.9);
+            background-color: rgba(0, 0, 0, 0.75);
+            transform: scale( 1.01 );
+            
         }
     }
 }
