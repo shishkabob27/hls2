@@ -4,6 +4,27 @@
 
     [ConVar.Replicated] public static string hl_skill { get; set; } = "medium";
     [ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
+    public static bool GameIsMultiplayer()
+    {
+        var a = true;
+        switch ( hl_gamemode )
+        {
+            case "campaign":
+                a = false;
+                break;
+            case "deathmatch":
+                a = true;
+                break;
+            case "ctf":
+                a = true;
+                break;
+            default:
+                a = true;
+                break;
+        }
+        return a;
+    }
+
     [ConVar.Client] public static float hl_hud_scale { get; set; } = 0;
     [ConVar.Client] public static string hl_hud_style { get; set; } = "hl1";
     [ConVar.Replicated] public static bool hl_ragdoll { get; set; } = false;

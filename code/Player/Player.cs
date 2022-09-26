@@ -122,7 +122,7 @@
 		Health = 100;
 		Armour = 0;
 
-		if ( HLGame.hl_gamemode == "deathmatch" )
+		if ( HLGame.GameIsMultiplayer() )
 		{
 			HasHEV = true;
 
@@ -205,7 +205,7 @@
 		base.OnKilled();
 		DeleteHands();
 		RemoveFlashlight();
-		if ( HLGame.hl_gamemode == "deathmatch" )
+		if ( HLGame.GameIsMultiplayer() )
 		{
 			var coffin = new Coffin();
 			coffin.Position = Position + Vector3.Up * 30;
