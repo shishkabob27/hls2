@@ -11,6 +11,8 @@ public class Headcrab : NPC
     {
         base.Spawn();
         Health = 20;
+        NPCAnimGraph = "animgraphs/headcrab.vanmgrph";
+        SetAnimGraph( NPCAnimGraph );
         SetModel( "models/hl1/monster/headcrab.vmdl" );
         SetupPhysicsFromAABB( PhysicsMotionType.Keyframed, new Vector3( -12, -12, 0 ), new Vector3( 12, 12, 24 ) );
         NPCSurface = "flesh_yellow";
@@ -63,6 +65,7 @@ public class Headcrab : NPC
     }
     void jumpAttack()
     {
+        animHelper.Attack = true;
         //ClearBits( pev->flags, FL_ONGROUND );
 
         //UTIL_SetOrigin( pev, pev->origin + Vector( 0, 0, 1 ) );// take him off ground so engine doesn't instantly reset onground 
