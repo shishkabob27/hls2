@@ -18,6 +18,7 @@ partial class Egon : HLWeapon
     float rundelay;
     bool hasStartedrun;
     public override string InventoryIcon => "/ui/weapons/weapon_egon.png";
+    public override string InventoryIconSelected => "/ui/weapons/weapon_egon_selected.png";
 
     public override void Spawn()
     {

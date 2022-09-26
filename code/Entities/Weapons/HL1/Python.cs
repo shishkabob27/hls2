@@ -17,6 +17,7 @@ partial class Python : HLWeapon
 	public override int BucketWeight => 200;
 	public override string AmmoIcon => "ui/ammo2.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_357.png";
+	public override string InventoryIconSelected => "/ui/weapons/weapon_357_selected.png";
 
 	public override void Spawn()
 	{

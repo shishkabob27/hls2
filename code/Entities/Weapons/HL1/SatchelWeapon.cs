@@ -15,6 +15,7 @@ partial class SatchelWeapon : HLWeapon
     public override AmmoType AmmoType => AmmoType.Satchel;
     public override string AmmoIcon => "ui/ammo10.png";
     public override string InventoryIcon => "/ui/weapons/weapon_satchel.png";
+    public override string InventoryIconSelected => "/ui/weapons/weapon_satchel_selected.png";
     public override int ClipSize => -1;
 
     [Net]

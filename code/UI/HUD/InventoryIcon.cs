@@ -9,12 +9,20 @@ class InventoryIcon : Panel
 	{
 		Weapon = weapon;
 		Icon = Add.Panel( "icon" );
-		Icon.Style.SetBackgroundImage(weapon.InventoryIcon);
+		Icon.Style.SetBackgroundImage( weapon.InventoryIcon );
 	}
 
 	internal void TickSelection( HLWeapon selectedWeapon )
 	{
 		SetClass( "active", selectedWeapon == Weapon );
+		if ( selectedWeapon == Weapon )
+		{
+			Icon.Style.SetBackgroundImage( Weapon.InventoryIconSelected );
+		}
+		else
+		{
+			Icon.Style.SetBackgroundImage( Weapon.InventoryIcon );
+		}
 		SetClass( "empty", !Weapon?.IsUsable() ?? true );
 	}
 

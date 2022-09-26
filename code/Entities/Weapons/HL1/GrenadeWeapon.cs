@@ -15,6 +15,7 @@ partial class GrenadeWeapon : HLWeapon
 	public override int BucketWeight => 1;
 	public override string AmmoIcon => "ui/ammo9.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_grenade.png";
+	public override string InventoryIconSelected => "/ui/weapons/weapon_grenade_selected.png";
 
 
 	public override void Spawn()

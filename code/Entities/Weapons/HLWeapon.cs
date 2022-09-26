@@ -23,7 +23,8 @@
 
 	public virtual string AmmoIcon => "ui/ammo1.png";
 	public virtual string AltAmmoIcon => "ui/ammo3.png";
-	public virtual string InventoryIcon => "/ui/weapons/weapon_pistol.png";
+	public virtual string InventoryIcon => "/ui/weapons/weapon_error.png";
+	public virtual string InventoryIconSelected => "/ui/weapons/weapon_error_selected.png";
 
 	public bool WeaponIsAmmo = false;
 	public int WeaponIsAmmoAmount = 1;

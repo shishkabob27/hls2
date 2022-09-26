@@ -17,6 +17,7 @@ partial class SMG : HLWeapon
 	public override int BucketWeight => 1;
 	public override bool HasAltAmmo => true;
 	public override string InventoryIcon => "/ui/weapons/weapon_smg.png";
+	public override string InventoryIconSelected => "/ui/weapons/weapon_smg_selected.png";
 
 	public override void Spawn()
 	{
