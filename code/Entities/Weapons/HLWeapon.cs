@@ -147,6 +147,9 @@
 		if ( AmmoClip >= ClipSize )
 			return;
 
+		if ( ClipSize <= 0 )
+			return;
+
 		TimeSinceReload = 0;
 
 		if ( Owner is HLPlayer player )
@@ -168,6 +171,9 @@
 			return;
 
 		if ( AltAmmoClip >= AltClipSize )
+			return;
+
+		if ( AltClipSize <= 0 )
 			return;
 
 		if ( Owner is HLPlayer player )
