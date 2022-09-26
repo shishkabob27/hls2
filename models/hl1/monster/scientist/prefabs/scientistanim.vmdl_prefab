@@ -908,6 +908,22 @@
 					{
 						_class = "AnimFile"
 						name = "diebackward"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 3
+								event_keys = 
+								{
+									TypeName = ""
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = "ragdoll"
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -929,6 +945,22 @@
 					{
 						_class = "AnimFile"
 						name = "dieforward"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 4
+								event_keys = 
+								{
+									TypeName = ""
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = "ragdoll"
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -950,6 +982,22 @@
 					{
 						_class = "AnimFile"
 						name = "dieforward1"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 2
+								event_keys = 
+								{
+									TypeName = ""
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = "ragdoll"
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -971,6 +1019,22 @@
 					{
 						_class = "AnimFile"
 						name = "diesimple"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 2
+								event_keys = 
+								{
+									TypeName = ""
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = "ragdoll"
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -1265,6 +1329,22 @@
 					{
 						_class = "AnimFile"
 						name = "gutshot"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 4
+								event_keys = 
+								{
+									TypeName = ""
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = "ragdoll"
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -1412,6 +1492,22 @@
 					{
 						_class = "AnimFile"
 						name = "headshot"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 2
+								event_keys = 
+								{
+									TypeName = ""
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = "ragdoll"
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
