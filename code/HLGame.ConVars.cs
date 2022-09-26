@@ -42,4 +42,6 @@
     [ConVar.ClientData] public static string hl_spray_icon { get; set; } = "lambda";
     [ConVar.ClientData] public static string hl_spray_colour { get; set; } = "orange";
     [ConVar.ClientData] public static bool hl_classic_flashlight { get; set; } = false;
+    [ConVar.ClientData] public static int hl_pm_colour1 { get; set; } = 32;
+    [ConVar.ClientData] public static int hl_pm_colour2 { get; set; } = 32;
 }
