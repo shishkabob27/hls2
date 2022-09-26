@@ -51,7 +51,7 @@ partial class Hornet : NPC, ICombat
 		}
 
 		base.Spawn();
-		if ( HLGame.hl_gamemode == "deathmatch" )
+		if ( HLGame.GameIsMultiplayer() )
 		{
 			// hornets don't live as long in multiplayer
 			StopAttack = Time.Now + 3.5f;
@@ -145,7 +145,7 @@ partial class Hornet : NPC, ICombat
 					break;
 			}
 
-			if ( HLGame.hl_gamemode != "deathmatch" )
+			if ( !HLGame.GameIsMultiplayer() )
 			{
 				if ( flDelta >= 0.4 && ( Position - EnemyLKP ).Length <= 300 )
 				{

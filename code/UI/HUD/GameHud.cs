@@ -8,14 +8,14 @@ internal class GameHud : Panel
 
     public GameHud()
     {
-        if ( HLGame.hl_gamemode != "deathmatch" ) return;
+        if ( !HLGame.GameIsMultiplayer() ) return;
         State = Add.Label( string.Empty, "game-state" );
         Timer = Add.Label( string.Empty, "game-timer" );
     }
 
     public override void Tick()
     {
-        if ( HLGame.hl_gamemode != "deathmatch" ) return;
+        if ( !HLGame.GameIsMultiplayer() ) return;
         base.Tick();
 
         var game = Game.Current as HLGame;

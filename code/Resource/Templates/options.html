@@ -3,7 +3,7 @@
         <div class="menubar">
             <text class="optionstext">Options</text>
             <button class="dragbutton" onmousedown="down()" onmouseup="up()" onmousemove="Drag()"></button>
-            <button class="closebutton" onclick="Close()">r</button>
+            <button class="closebutton" onclick="Close()"></button>
         </div>
 
         <tabcontrol @activeTab="SortOrder">
@@ -25,6 +25,11 @@
                     <check class="chimodel" @checked="bChimodels">Enable HD models</check>
                     <check class="clowviolence">Enable Low Violence</check>
                     <check class="csubtitle" @checked="bCsubtitle">Enable Subtitles</check>
+                    <text>HUD style</text>
+                    <select @value="Shudstyle" style="width:128px;">
+                        <option value="hl1">Half-Life</option>
+                        <option value="op">Opposing Force</option>
+                    </select>
                     <text>Hud Scale</text>
                     <SliderScaleEntry min="0" max="5" step="0" mintext="Auto" maxtext="5.00" @value="fChudScale"></SliderScaleEntry>
                 </div>
@@ -37,7 +42,7 @@
             </tab>
 
             <tab tabName="mp" slot="tab" tabtext="Multiplayer">
-                <div class="maincontent" style="padding: 40px;">
+                <div class="maincontent" style="padding: 40px; width: 300px;">
                     <text>Spraypaint image</text>
                     <select @value="bSsprayIcon" style="width:128px;">
                         <option value="8ball1">8ball1</option>
@@ -77,8 +82,15 @@
                         <option value="scientist">scientist</option>
                         <option value="zombie">zombie</option>
                         <option value="player">player</option>
-                        
+                        <option value="freeman">player head</option>
+
                     </select>
+
+                    <text>Primary Colour</text>
+                    <SliderScaleEntry min="0" max="360" step="1" mintext="0.00" maxtext="360" @value="fCpmColour1"></SliderScaleEntry>
+
+                    <text>Secondary Colour</text>
+                    <SliderScaleEntry min="0" max="360" step="1" mintext="0.00" maxtext="360" @value="fCpmColour2"></SliderScaleEntry>
                 </div>
             </tab>
 

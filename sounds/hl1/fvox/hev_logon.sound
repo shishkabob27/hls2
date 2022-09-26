@@ -12,7 +12,7 @@
 		[
 			resource:"sounds/hl1/fvox/hev_logon.vsnd",
 		]
-		SelectionMode = "Random"
+		SelectionMode = "Forward"
 		MaximumDistance = 1143.9335
 		MinimumDistance = 57.196674
 	}

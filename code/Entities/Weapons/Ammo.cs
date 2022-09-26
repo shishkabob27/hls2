@@ -129,7 +129,7 @@ partial class AmmoCrossbow : BaseAmmo
 }
 
 [Library( "ammo_uranium" ), HammerEntity]
-[EditorModel( "models/hl1/weapons/ammo/w_rpgammo.vmdl" )]
+[EditorModel( "models/hl1/weapons/ammo/w_gaussammo.vmdl" )]
 [Title( "Uranium Ammo" ), Category( "Ammo" )]
 partial class AmmoUranium : BaseAmmo
 {
@@ -140,7 +140,7 @@ partial class AmmoUranium : BaseAmmo
 }
 
 [Library( "ammo_gaussclip" ), HammerEntity]
-[EditorModel( "models/hl1/weapons/ammo/w_rpgammo.vmdl" )]
+[EditorModel( "models/hl1/weapons/ammo/w_gaussammo.vmdl" )]
 [Title( "Gauss Ammo Clip" ), Category( "Ammo" )]
 partial class AmmoGaussClip : BaseAmmo
 {

@@ -18,10 +18,6 @@ public partial class HLGame : Game
 	HudPanel Hud { get; set; }
 	HLGUI GUI { get; set; }
 
-	StandardPostProcess postProcess;
-
-
-
 	public HLGame()
 	{
 		//
@@ -30,16 +26,16 @@ public partial class HLGame : Game
 		//
 		if ( IsServer )
 		{
+			GUI = new HLGUI();
 			if ( Global.IsDedicatedServer )
 			{
 				hl_gamemode = "deathmatch";
 			}
-			GUI = new HLGUI();
-			Hud = new HudPanel();
 			if ( hl_gamemode == "deathmatch" )
 			{
 				_ = GameLoopAsync();
 			}
+			Hud = new HudPanel();
 		}
 
 		if ( IsClient )

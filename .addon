@@ -184,11 +184,16 @@
           {
             "Value": "deathmatch",
             "Name": "Deathmatch"
+          },
+          {
+            "Value": "ctf",
+            "Name": "Capture the Flag (Opposing Force)"
           }
         ],
         "ConVarName": "hl_gamemode",
         "DisplayName": "Gamemode",
-        "DefaultValue": "campaign"
+        "DefaultValue": "campaign",
+        "Description": ""
       },
       "hl_difficulty": {
         "DisplayType": "Choice",
@@ -208,14 +213,26 @@
         ],
         "ConVarName": "hl_difficulty",
         "DisplayName": "Difficulty",
-        "DefaultValue": "easy"
+        "DefaultValue": "easy",
+        "Description": ""
       },
       "sv_enablebunnyhopping": {
         "DisplayType": "Boolean",
         "Choices": [],
         "ConVarName": "sv_enablebunnyhopping",
         "DisplayName": "Enable Bunnyhopping",
-        "DefaultValue": "true"
+        "DefaultValue": "true",
+        "Description": ""
+      },
+      "hl_dm_time": {
+        "DisplayType": "Integer",
+        "Choices": [],
+        "ConVarName": "hl_dm_time",
+        "DisplayName": "Time Limit",
+        "DefaultValue": "10",
+        "Description": "",
+        "Minimum": 1,
+        "Maximum": 60
       }
     }
   }

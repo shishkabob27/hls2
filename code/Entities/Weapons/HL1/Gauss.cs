@@ -25,14 +25,14 @@ partial class Gauss : HLWeapon
     float GetFullChargeTime()
     {
 
-        if ( HLGame.hl_gamemode == "deathmatch" )
+        if ( HLGame.GameIsMultiplayer() )
             return 1.5f;
         return 4;
     }
     float GetAmmoTickTime()
     {
 
-        if ( HLGame.hl_gamemode == "deathmatch" )
+        if ( HLGame.GameIsMultiplayer() )
             return 0.1f;
         return 0.3f;
     }
@@ -92,7 +92,7 @@ partial class Gauss : HLWeapon
             var a = player.Velocity;
 
             a = player.Velocity - player.EyeRotation.Forward * dmg * 5;
-            if ( HLGame.hl_gamemode != "deathmatch" )
+            if ( !HLGame.GameIsMultiplayer() )
             {
                 // In singleplayer we do not get launched upwards
                 a.z = ZVel;
@@ -238,7 +238,7 @@ partial class Gauss : HLWeapon
                                     float damage_radius;
 
 
-                                    if ( HLGame.hl_gamemode == "deathmatch" )
+                                    if ( HLGame.GameIsMultiplayer() )
                                     {
                                         damage_radius = DMG * 1.75f;  // Old code == 2.5
                                     }

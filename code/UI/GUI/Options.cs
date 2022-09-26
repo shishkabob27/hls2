@@ -12,11 +12,14 @@ public class Options : GUIPanel
 	public bool bCragdolls { get; set; }
 	public bool bColdTorch { get; set; }
 	public float fChudScale { get; set; }
+	public float fCpmColour1 { get; set; }
+	public float fCpmColour2 { get; set; }
 	public bool bColdexplosion { get; set; }
 
 	public string bSplayerModel { get; set; } = "player";
 	public string bSsprayColour { get; set; } = "orange";
 	public string bSsprayIcon { get; set; } = "lambda";
+	public string Shudstyle { get; set; } = "hl1";
 
 	public bool bCvrpointer { get; set; }
 
@@ -45,6 +48,24 @@ public class Options : GUIPanel
 	}
 	public void updateCvars()
 	{
+		ConsoleSystem.Run( "cl_rollangle " + ( bCviewroll ? 2 : 0 ) );
+		ConsoleSystem.Run( "hl_hud_scale " + fChudScale );
+		ConsoleSystem.Run( "cc_subtitles " + ( bCsubtitle ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_gui_rescale " + ( bCguiscale ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_pixelfont " + ( bCpixelfont ? 1 : 0 ) );
+		ConsoleSystem.Run( "cl_himodels " + ( bChimodels ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_vr_pointer " + ( bCvrpointer ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_classic_flashlight " + ( bColdTorch ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_classic_explosion " + ( bColdexplosion ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_spray_icon " + bSsprayIcon );
+		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
+		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
+		ConsoleSystem.Run( "hl_pm_colour1 " + fCpmColour1 );
+		ConsoleSystem.Run( "hl_pm_colour2 " + fCpmColour2 );
+		ConsoleSystem.Run( "hl_hud_style " + Shudstyle );
+		updtasync();
+
+		/*
 		WalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
 		HLGame.hl_hud_scale = fChudScale;
 		HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
@@ -58,9 +79,14 @@ public class Options : GUIPanel
 		HLGame.hl_spray_icon = bSsprayIcon;
 		HLGame.hl_spray_colour = bSsprayColour;
 		HLPlayer.hl_pm = bSplayerModel;
-
+		HLGame.hl_hud_style = Shudstyle;
+		*/
 	}
-
+	public async void updtasync()
+	{
+		await GameTask.DelaySeconds( 0.1f );
+		ConsoleSystem.Run( "hl_updatepm" );
+	}
 
 	[Event.BuildInput]
 	public void ProcessClientInput( InputBuilder input )

@@ -218,6 +218,13 @@ public partial class HLGame : Game
         sci.Spawn();
     }
 
+
+    [ConCmd.Server( "hl_updatepm", Help = "Update the player model of the caller" )]
+    public static void updatePM()
+    {
+        ( ConsoleSystem.Caller.Pawn as HLPlayer ).SetPlayerModel();
+    }
+
     [ConCmd.Admin( "respawn_entities" )]
     public static void RespawnEntities()
     {

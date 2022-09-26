@@ -10,14 +10,14 @@ mapvotepanel
     right: -50px;
     top: -50px;
     bottom: -50px;
-    font-family: "Tahoma";
+    font-family: "Trebuchet MS";
     pointer-events: all;
     z-index: 99;
 }
 
 mapvotepanel > .inner
 {
-    margin: 150px 250px;
+    margin: 96px 128px;
     flex-direction: column;
     flex-grow: 1;
 }

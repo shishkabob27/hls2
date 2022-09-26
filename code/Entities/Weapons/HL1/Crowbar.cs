@@ -98,8 +98,6 @@ partial class Crowbar : HLWeapon
 				if ( hitEntity.LifeState == LifeState.Dead )
 					TimeSincePrimaryAttack = 5f;
 
-				Log.Info( hitEntity );
-
 				var trace = Trace.Ray( GetFiringPos(), GetFiringPos() + forward * 70 * 2 )
 					.WorldOnly()
 					.Ignore( this )

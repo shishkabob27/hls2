@@ -1,14 +1,12 @@
 ﻿partial class HLGame : Game
 {
-    public static GameStates CurrentState => ( Current as HLGame )?.GameState ?? GameStates.Warmup;
+    public static GameStates CurrentState => ( Current as HLGame )?.GameState ?? GameStates.Live;
 
     [Net]
     public RealTimeUntil StateTimer { get; set; } = 0f;
 
     [Net]
-    public GameStates GameState { get; set; } = GameStates.Warmup;
-    [Net]
-    public string NextMap { get; set; } = "facepunch.datacore";
+    public GameStates GameState { get; set; } = GameStates.Live;
 
     [ConCmd.Admin]
     public static void SkipStage()
@@ -31,12 +29,8 @@
 
     private async Task GameLoopAsync()
     {
-        GameState = GameStates.Warmup;
-        StateTimer = 5;
-        await WaitStateTimer();
-
         GameState = GameStates.Live;
-        StateTimer = 5 * 60;
+        StateTimer = HLGame.hl_dm_time * 60;
         FreshStart();
         await WaitStateTimer();
 
@@ -77,7 +71,6 @@
 
     public enum GameStates
     {
-        Warmup,
         Live,
         GameEnd,
         MapVote

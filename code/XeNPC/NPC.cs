@@ -67,7 +67,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	}
 	public override void Spawn()
 	{
-		if ( SpawnSettings.HasFlag( Flags.NotInDeathmatch ) && HLGame.hl_gamemode == "deathmatch" && IsServer )
+		if ( SpawnSettings.HasFlag( Flags.NotInDeathmatch ) && HLGame.GameIsMultiplayer() && IsServer )
 		{
 			Delete();
 		}

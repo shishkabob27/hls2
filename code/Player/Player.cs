@@ -70,11 +70,8 @@
 			}
 		}
 	}
-	public override void Respawn()
+	public void SetPlayerModel()
 	{
-
-		//SetModel("models/citizen/citizen.vmdl");
-
 		var pm = "";
 		switch ( Client.GetClientData( "hl_pm" ) )
 		{
@@ -88,10 +85,28 @@
 			case "robo": pm = "models/hl1/player/robo.vmdl"; break;
 			case "scientist": pm = "models/hl1/player/scientist.vmdl"; break;
 			case "zombie": pm = "models/hl1/player/zombie.vmdl"; break;
+			case "freeman": pm = "freeman"; break;
 			default: pm = "models/hl1/player/player.vmdl"; break;
 		}
+		if ( pm == "freeman" )
+		{
+			SetModel( "models/hl1/player/player.vmdl" );
+			SetBodyGroup( "head", 0 );
+		}
+		else
+		{
+			SetBodyGroup( "head", 1 );
+			SetModel( pm );
+		}
 
-		SetModel( pm );
+	}
+	public override void Respawn()
+	{
+
+		//SetModel("models/citizen/citizen.vmdl");
+
+		SetPlayerModel();
+
 
 		SetAnimGraph( "animgraphs/player.vanmgrph" );
 
@@ -117,7 +132,7 @@
 		Health = 100;
 		Armour = 0;
 
-		if ( HLGame.hl_gamemode == "deathmatch" )
+		if ( HLGame.GameIsMultiplayer() )
 		{
 			HasHEV = true;
 
@@ -200,7 +215,7 @@
 		base.OnKilled();
 		DeleteHands();
 		RemoveFlashlight();
-		if ( HLGame.hl_gamemode == "deathmatch" )
+		if ( HLGame.GameIsMultiplayer() )
 		{
 			var coffin = new Coffin();
 			coffin.Position = Position + Vector3.Up * 30;
@@ -345,7 +360,7 @@
 		}
 	}
 
-	public void Deafen( float strength )
+	new public void Deafen( float strength )
 	{
 		//Audio.SetEffect("flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength);
 	}

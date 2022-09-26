@@ -4,7 +4,7 @@
 public partial class func_pushable : HLMovementBrush
 {
     [Property]
-    public float Health { get; set; } = 0;
+    new public float Health { get; set; } = 0;
     // stub
     [Property]
     public float friction { get; set; } = 80;

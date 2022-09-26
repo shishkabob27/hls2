@@ -96,7 +96,7 @@ partial class Egon : HLWeapon
             {
                 tr.Entity.TakeDamage( DamageInfo.Generic( 14 ) );
             }
-            if ( HLGame.hl_gamemode == "deathmatch" )
+            if ( HLGame.GameIsMultiplayer() )
             {
                 // multiplayer uses 1 ammo every 1/10th second
                 if ( Time.Now >= AmmoUseTime )

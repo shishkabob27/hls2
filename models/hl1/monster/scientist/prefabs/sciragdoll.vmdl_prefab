@@ -308,7 +308,7 @@
 					},
 					{
 						_class = "PhysicsJointConical"
-						parent_body = "bip01_pelvis"
+						parent_body = "bip02_pelvis"
 						child_body = "bip02_l_leg"
 						anchor_origin = [ -0.000011, 0.000008, 4.427395 ]
 						anchor_angles = [ -87.001442, 174.269211, -179.998795 ]
