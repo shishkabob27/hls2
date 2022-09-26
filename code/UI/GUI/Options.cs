@@ -59,7 +59,7 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
 		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
 		ConsoleSystem.Run( "hl_hud_style " + Shudstyle );
-		ConsoleSystem.Run( "hl_updatepm" );
+		updtasync();
 
 		/*
 		WalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
@@ -78,7 +78,11 @@ public class Options : GUIPanel
 		HLGame.hl_hud_style = Shudstyle;
 		*/
 	}
-
+	public async void updtasync()
+	{
+		await GameTask.DelaySeconds( 0.1f );
+		ConsoleSystem.Run( "hl_updatepm" );
+	}
 
 	[Event.BuildInput]
 	public void ProcessClientInput( InputBuilder input )
