@@ -42,7 +42,7 @@
             </tab>
 
             <tab tabName="mp" slot="tab" tabtext="Multiplayer">
-                <div class="maincontent" style="padding: 40px;">
+                <div class="maincontent" style="padding: 40px; width: 300px;">
                     <text>Spraypaint image</text>
                     <select @value="bSsprayIcon" style="width:128px;">
                         <option value="8ball1">8ball1</option>
@@ -85,6 +85,12 @@
                         <option value="freeman">player head</option>
 
                     </select>
+
+                    <text>Primary Colour</text>
+                    <SliderScaleEntry min="0" max="100" step="1" mintext="0.00" maxtext="100" @value="fCpmColour1"></SliderScaleEntry>
+
+                    <text>Secondary Colour</text>
+                    <SliderScaleEntry min="0" max="100" step="1" mintext="0.00" maxtext="100" @value="fCpmColour2"></SliderScaleEntry>
                 </div>
             </tab>
 

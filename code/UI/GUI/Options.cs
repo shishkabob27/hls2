@@ -12,6 +12,8 @@ public class Options : GUIPanel
 	public bool bCragdolls { get; set; }
 	public bool bColdTorch { get; set; }
 	public float fChudScale { get; set; }
+	public float fCpmColour1 { get; set; }
+	public float fCpmColour2 { get; set; }
 	public bool bColdexplosion { get; set; }
 
 	public string bSplayerModel { get; set; } = "player";
@@ -58,6 +60,8 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_spray_icon " + bSsprayIcon );
 		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
 		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
+		ConsoleSystem.Run( "hl_pm_colour1 " + fCpmColour1 );
+		ConsoleSystem.Run( "hl_pm_colour2 " + fCpmColour2 );
 		ConsoleSystem.Run( "hl_hud_style " + Shudstyle );
 		updtasync();
 
