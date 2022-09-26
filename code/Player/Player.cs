@@ -85,10 +85,20 @@
 			case "robo": pm = "models/hl1/player/robo.vmdl"; break;
 			case "scientist": pm = "models/hl1/player/scientist.vmdl"; break;
 			case "zombie": pm = "models/hl1/player/zombie.vmdl"; break;
+			case "freeman": pm = "freeman"; break;
 			default: pm = "models/hl1/player/player.vmdl"; break;
 		}
+		if ( pm == "freeman" )
+		{
+			SetModel( "models/hl1/player/player.vmdl" );
+			SetBodyGroup( "head", 0 );
+		}
+		else
+		{
+			SetBodyGroup( "head", 1 );
+			SetModel( pm );
+		}
 
-		SetModel( pm );
 	}
 	public override void Respawn()
 	{

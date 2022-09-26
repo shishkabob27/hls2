@@ -177,7 +177,7 @@
 					},
 					{
 						_class = "RenderMeshFile"
-						name = "head"
+						name = "face"
 						filename = "models/hl1decomp/player/player_template_biped(gordon_head)1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
@@ -4131,6 +4131,20 @@
 							point1 = [ 3.08826, 0.0, 0.0 ]
 						}
 					},
+					{
+						_class = "GenericGameData"
+						game_class = "prop_data"
+						game_keys = 
+						{
+							bakelighting = true
+							spawn_motion_disabled = false
+							health = -1.0
+							min_impact_damage_speed = -1.0
+							impact_damage = -1.0
+							parent_bodygroup_name = ""
+							parent_bodygroup_value = 0
+						}
+					},
 				]
 			},
 			{
@@ -4183,7 +4197,7 @@
 								_class = "BodyGroupChoice"
 								meshes = 
 								[
-									"head",
+									"face",
 								]
 							},
 						]
