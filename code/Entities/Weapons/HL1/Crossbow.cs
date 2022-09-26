@@ -109,6 +109,4 @@ partial class Crossbow : HLWeapon
 		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Crossbow ); // TODO this is shit
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
-	TimeSince timeSinceZoomed;
-
 }

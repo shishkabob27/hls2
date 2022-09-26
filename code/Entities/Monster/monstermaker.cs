@@ -9,7 +9,7 @@ public class monstermaker : Entity
     
 
     [Input]
-	public void Spawn()
+	new public void Spawn()
 	{
         var entityType = TypeLibrary.GetTypeByName<Entity>( monstertype );
         if ( entityType == null )

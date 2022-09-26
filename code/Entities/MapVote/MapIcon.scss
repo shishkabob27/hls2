@@ -4,7 +4,6 @@ $orange: #f70;
 
 mapicon
 {
-    background-color: red;
     margin: 10px;
     background-position: center;
     background-size: cover;
@@ -13,7 +12,7 @@ mapicon
     cursor: pointer;
     opacity: 0.7;
     color: $yellow;
-    text-shadow: 0px 0px 10px $orange;
+    text-shadow: 0px 0px 2px $yellow;
 
     &:hover
     {

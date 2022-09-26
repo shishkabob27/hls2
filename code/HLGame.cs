@@ -18,10 +18,6 @@ public partial class HLGame : Game
 	HudPanel Hud { get; set; }
 	HLGUI GUI { get; set; }
 
-	StandardPostProcess postProcess;
-
-
-
 	public HLGame()
 	{
 		//

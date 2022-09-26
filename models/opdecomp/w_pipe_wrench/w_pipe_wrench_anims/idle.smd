@@ -1,0 +1,8 @@
+version 1
+nodes
+  0 "w_pipe_wrench" -1
+end
+skeleton
+  time 0
+    0 0.000000 0.000000 0.000000 -0.000002 -1.518437 -1.570795
+end
