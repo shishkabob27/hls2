@@ -49,6 +49,6 @@ Layer0
 
 	DynamicParams
 	{
-		g_vColorTint "\nclTintR = 1;\nclTintG = 1;\nclTintB = 1;\nreturn float4(clTintR,clTintG,clTintB,0);"
+		g_vColorTint "return float4(clTintR/100,clTintG/100,clTintB/100,0);"
 	}
 }
