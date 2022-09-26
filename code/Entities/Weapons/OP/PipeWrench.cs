@@ -14,6 +14,7 @@ partial class PipeWrench : HLWeapon
 	public override int Bucket => 0;
 
 	public override string InventoryIcon => "/ui/weapons/op/weapon_pipewrench.png";
+	public override string InventoryIconSelected => "/ui/weapons/op/weapon_pipewrench_selected.png";
 	public override void Spawn()
 	{
 		base.Spawn();
