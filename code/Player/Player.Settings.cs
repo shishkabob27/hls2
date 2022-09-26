@@ -20,4 +20,6 @@ public class PlayerSettingsData
 	public string PlayerModel { get; set; }
 	public float PlayerModelColour1 { get; set; }
 	public float PlayerModelColour2 { get; set; }
+	public string SprayImage { get; set; }
+	public string SprayColour { get; set; }
 }
