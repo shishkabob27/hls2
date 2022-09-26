@@ -350,7 +350,7 @@
 		}
 	}
 
-	public void Deafen( float strength )
+	new public void Deafen( float strength )
 	{
 		//Audio.SetEffect("flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength);
 	}

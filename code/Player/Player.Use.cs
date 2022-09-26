@@ -1,11 +1,11 @@
 ﻿public partial class HLPlayer
 {
-	public Entity Using { get; protected set; }
+	new public Entity Using { get; protected set; }
 
 	/// <summary>
 	/// This should be called somewhere in your player's tick to allow them to use entities
 	/// </summary>
-	protected virtual void TickPlayerUse()
+	new protected virtual void TickPlayerUse()
 	{
 		// This is serverside only
 		if ( !Host.IsServer ) return;
@@ -53,7 +53,7 @@
 	/// Player tried to use something but there was nothing there.
 	/// Tradition is to give a dissapointed boop.
 	/// </summary>
-	protected virtual void UseFail()
+	new protected virtual void UseFail()
 	{
 		PlaySound( "player_use_fail" );
 	}
@@ -61,7 +61,7 @@
 	/// <summary>
 	/// If we're using an entity, stop using it
 	/// </summary>
-	protected virtual void StopUsing()
+	new protected virtual void StopUsing()
 	{
 		Using = null;
 	}
@@ -69,7 +69,7 @@
 	/// <summary>
 	/// Returns if the entity is a valid usaable entity
 	/// </summary>
-	protected bool IsValidUseEntity( Entity e )
+	new protected bool IsValidUseEntity( Entity e )
 	{
 		if ( e == null ) return false;
 		if ( e is not IUse use ) return false;

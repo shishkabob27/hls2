@@ -4,7 +4,7 @@
 public partial class func_breakable : BrushEntity
 {
     [Property]
-    public float Health { get; set; } = 0;
+    new public float Health { get; set; } = 0;
     public bool Invincible { get; set; } = false;
     // stub
     public override void Spawn()

@@ -43,7 +43,7 @@ public partial class func_train : BrushEntity
     /// Enables the entity.
     /// </summary>
     [Input]
-    public void Enable()
+    new public void Enable()
     {
         Enabled = true;
     }
@@ -52,7 +52,7 @@ public partial class func_train : BrushEntity
     /// Disables the entity, so that it would not fire any outputs.
     /// </summary>
     [Input]
-    public void Disable()
+    new public void Disable()
     {
         Enabled = false;
     }
@@ -61,7 +61,7 @@ public partial class func_train : BrushEntity
     /// Toggles the enabled state of the entity.
     /// </summary>
     [Input]
-    public void Toggle()
+    new public void Toggle()
     {
         Enabled = !Enabled;
     }
