@@ -10,7 +10,7 @@ partial class TripmineWeapon : HLWeapon
 	public override float SecondaryRate => 100.0f;
 	public override float ReloadTime => 0.0f;
 	public override AmmoType AmmoType => AmmoType.Tripmine;
-	public override int ClipSize => 1;
+	public override int ClipSize => -1;
 	public override int Bucket => 4;
 	public override int BucketWeight => 3;
 	public override string AmmoIcon => "ui/ammo12.png";

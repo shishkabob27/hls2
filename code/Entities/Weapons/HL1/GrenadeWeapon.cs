@@ -10,7 +10,7 @@ partial class GrenadeWeapon : HLWeapon
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 0.0f;
 	public override AmmoType AmmoType => AmmoType.Grenade;
-	public override int ClipSize => 1;
+	public override int ClipSize => -1;
 	public override int Bucket => 4;
 	public override int BucketWeight => 1;
 	public override string AmmoIcon => "ui/ammo9.png";
