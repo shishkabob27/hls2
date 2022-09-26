@@ -218,6 +218,32 @@ public partial class HLGame : Game
         sci.Spawn();
     }
 
+    [ConCmd.Server( "give" )]
+    public static void GiveEntity( string entName )
+    {
+        var owner = ConsoleSystem.Caller.Pawn as Player;
+
+        if ( owner == null )
+            return;
+
+        var entityType = TypeLibrary.GetTypeByName<Entity>( entName );
+        if ( entityType == null )
+
+            if ( !TypeLibrary.Has<SpawnableAttribute>( entityType ) )
+                return;
+
+        var ent = TypeLibrary.Create<Entity>( entityType );
+        if ( ent is BaseCarriable && owner.Inventory != null )
+        {
+            if ( owner.Inventory.Add( ent, true ) )
+                return;
+        }
+
+        ent.Position = owner.Position;
+        ent.Rotation = Rotation.From( new Angles( 0, owner.EyeRotation.Angles().yaw, 0 ) );
+
+        //Log.Info( $"ent: {ent}" );
+    }
 
     [ConCmd.Server( "hl_updatepm", Help = "Update the player model of the caller" )]
     public static void updatePM()
