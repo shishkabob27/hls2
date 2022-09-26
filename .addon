@@ -223,6 +223,16 @@
         "DisplayName": "Enable Bunnyhopping",
         "DefaultValue": "true",
         "Description": ""
+      },
+      "hl_dm_time": {
+        "DisplayType": "Integer",
+        "Choices": [],
+        "ConVarName": "hl_dm_time",
+        "DisplayName": "Time Limit",
+        "DefaultValue": "10",
+        "Description": "",
+        "Minimum": 1,
+        "Maximum": 60
       }
     }
   }

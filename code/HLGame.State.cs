@@ -36,7 +36,7 @@
         await WaitStateTimer();
 
         GameState = GameStates.Live;
-        StateTimer = 5 * 60;
+        StateTimer = HLGame.hl_dm_time * 60;
         FreshStart();
         await WaitStateTimer();
 
