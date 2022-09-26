@@ -8,7 +8,7 @@
     [Net]
     public GameStates GameState { get; set; } = GameStates.Warmup;
     [Net]
-    public string NextMap { get; set; } = "facepunch.datacore";
+    public string NextMap { get; set; } = "shishkabob.crossfire";
 
     [ConCmd.Admin]
     public static void SkipStage()
