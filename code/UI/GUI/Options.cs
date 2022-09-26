@@ -1,7 +1,7 @@
 using Sandbox.UI;
 
 [UseTemplate( "/resource/templates/options.html" )]
-public class Options : GUIPanel
+public class Options : GUI
 {
 	public bool bCviewroll { get; set; }
 	public bool bCsubtitle { get; set; }

@@ -16,7 +16,7 @@ public partial class HLGame : Game
 {
 	[Net]
 	HudPanel Hud { get; set; }
-	HLGUI GUI { get; set; }
+	GUIPanel GUI { get; set; }
 
 	StandardPostProcess postProcess;
 
@@ -30,9 +30,9 @@ public partial class HLGame : Game
 		//
 		if ( IsServer )
 		{
-			GUI = new HLGUI();
+			GUI = new GUIPanel();
 
-			HudRootPanel.Current.Focus();
+
 			if ( Global.IsDedicatedServer )
 			{
 				hl_gamemode = "deathmatch";
@@ -159,7 +159,7 @@ public partial class HLGame : Game
 		Hud.Delete();
 		Hud = new HudPanel();
 		GUI.Delete();
-		GUI = new HLGUI();
+		GUI = new GUIPanel();
 	}
 
 	[ConCmd.Server( "resetplayer", Help = "resets player" )]
