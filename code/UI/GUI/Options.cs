@@ -46,6 +46,20 @@ public class Options : GUIPanel
 	}
 	public void updateCvars()
 	{
+		ConsoleSystem.Run( "cl_rollangle " + ( bCviewroll ? 2 : 0 ) );
+		ConsoleSystem.Run( "hl_hud_scale " + fChudScale );
+		ConsoleSystem.Run( "cc_subtitles " + ( bCsubtitle ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_gui_rescale " + ( bCguiscale ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_pixelfont " + ( bCpixelfont ? 1 : 0 ) );
+		ConsoleSystem.Run( "cl_himodels " + ( bChimodels ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_vr_pointer " + ( bCvrpointer ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_classic_flashlight " + ( bColdTorch ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_classic_explosion " + ( bColdexplosion ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_spray_icon " + bSsprayIcon );
+		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
+		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
+
+		/*
 		WalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
 		HLGame.hl_hud_scale = fChudScale;
 		HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
@@ -60,6 +74,7 @@ public class Options : GUIPanel
 		HLGame.hl_spray_colour = bSsprayColour;
 		HLPlayer.hl_pm = bSplayerModel;
 		HLGame.hl_hud_style = Shudstyle;
+		*/
 	}
 
 
