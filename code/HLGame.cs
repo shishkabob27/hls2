@@ -31,8 +31,6 @@ public partial class HLGame : Game
 		if ( IsServer )
 		{
 			GUI = new HLGUI();
-
-			HudRootPanel.Current.Focus();
 			if ( Global.IsDedicatedServer )
 			{
 				hl_gamemode = "deathmatch";
