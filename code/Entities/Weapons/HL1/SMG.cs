@@ -128,3 +128,7 @@ partial class SMG : HLWeapon
 	}
 
 }
+
+[Library( "weapon_9mmAR" ), HammerEntity]
+partial class weapon_9mmAR : SMG
+{}
