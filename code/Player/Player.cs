@@ -70,11 +70,8 @@
 			}
 		}
 	}
-	public override void Respawn()
+	public void SetPlayerModel()
 	{
-
-		//SetModel("models/citizen/citizen.vmdl");
-
 		var pm = "";
 		switch ( Client.GetClientData( "hl_pm" ) )
 		{
@@ -92,6 +89,14 @@
 		}
 
 		SetModel( pm );
+	}
+	public override void Respawn()
+	{
+
+		//SetModel("models/citizen/citizen.vmdl");
+
+		SetPlayerModel();
+
 
 		SetAnimGraph( "animgraphs/player.vanmgrph" );
 

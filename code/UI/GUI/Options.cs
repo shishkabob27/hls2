@@ -58,6 +58,7 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_spray_icon " + bSsprayIcon );
 		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
 		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
+		ConsoleSystem.Run( "hl_updatepm" );
 
 		/*
 		WalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
