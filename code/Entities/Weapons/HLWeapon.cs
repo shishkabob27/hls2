@@ -448,7 +448,7 @@
 	/// <summary>
 	/// Shoot a single bullet
 	/// </summary>
-	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1 )
+	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1, bool tracer = true )
 	{
 		var player = Local.Pawn as HLPlayer;
 
@@ -478,7 +478,7 @@
 				tr.Surface.DoHLBulletImpact( tr );
 
 
-				if ( tr.Distance > 200 && !hl_sfmmode )
+				if ( tr.Distance > 200 && !hl_sfmmode && tracer )
 				{
 					CreateTracerEffect( tr.EndPosition );
 				}
