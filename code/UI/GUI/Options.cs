@@ -11,6 +11,7 @@ public class Options : GUIPanel
 	public bool bCliveupdate { get; set; } = false;
 	public bool bCragdolls { get; set; }
 	public bool bColdTorch { get; set; }
+	public bool bColdGibs { get; set; }
 	public float fChudScale { get; set; }
 	public float fCpmColour1 { get; set; }
 	public float fCpmColour2 { get; set; }
@@ -44,6 +45,7 @@ public class Options : GUIPanel
 		bCvrpointer = HLGame.hl_vr_pointer;
 		bCragdolls = HLGame.hl_ragdoll;
 		bColdTorch = HLGame.hl_classic_flashlight;
+		bColdGibs = HLGame.hl_classic_gibs;
 		bColdexplosion = HLGame.hl_classic_explosion;
 		bSsprayIcon = HLGame.hl_spray_icon;
 		bSsprayColour = HLGame.hl_spray_colour;
@@ -79,6 +81,7 @@ public class Options : GUIPanel
 		HLGame.hl_ragdoll = bCragdolls;
 		HLGame.hl_classic_flashlight = bColdTorch;
 		HLGame.hl_classic_explosion = bColdexplosion;
+		HLGame.hl_classic_gibs = bColdGibs;
 		HLGame.hl_spray_icon = bSsprayIcon;
 		HLGame.hl_spray_colour = bSsprayColour;
 		HLPlayer.hl_pm = bSplayerModel;
@@ -95,6 +98,7 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_vr_pointer " + ( bCvrpointer ? 1 : 0 ) );
 		ConsoleSystem.Run( "hl_classic_flashlight " + ( bColdTorch ? 1 : 0 ) );
 		ConsoleSystem.Run( "hl_classic_explosion " + ( bColdexplosion ? 1 : 0 ) );
+		ConsoleSystem.Run( "hl_classic_gibs " + ( bColdGibs ? 1 : 0 ) );
 		ConsoleSystem.Run( "hl_spray_icon " + bSsprayIcon );
 		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
 		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
