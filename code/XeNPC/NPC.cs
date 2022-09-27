@@ -450,6 +450,18 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		TakeDamage( info, false );
 
 	}
+
+	const int HITGROUP_GENERIC = 0;
+	const int HITGROUP_HEAD = 1;
+	const int HITGROUP_CHEST = 2;
+	const int HITGROUP_STOMACH = 3;
+	const int HITGROUP_LEFTARM = 4;
+	const int HITGROUP_RIGHTARM = 5;
+	const int HITGROUP_LEFTLEG = 6;
+	const int HITGROUP_RIGHTLEG = 7;
+	const int HITGROUP_GEAR = 10;
+	const int HITGROUP_SPECIAL = 11;
+
 	public void TakeDamage( DamageInfo info, bool alwaysgib = false )
 	{
 		if ( LifeState == LifeState.Alive )
@@ -467,6 +479,32 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 		LastAttacker = info.Attacker;
 		LastAttackerWeapon = info.Weapon;
+
+		switch ( GetHitboxGroup( info.HitboxIndex ) )
+		{
+			case HITGROUP_GENERIC:
+				break;
+			case HITGROUP_HEAD:
+				info.Damage *= 3;
+				break;
+			case HITGROUP_CHEST:
+				info.Damage *= 1;
+				break;
+			case HITGROUP_STOMACH:
+				info.Damage *= 1;
+				break;
+			case HITGROUP_LEFTARM:
+			case HITGROUP_RIGHTARM:
+				info.Damage *= 1;
+				break;
+			case HITGROUP_LEFTLEG:
+			case HITGROUP_RIGHTLEG:
+				info.Damage *= 1;
+				break;
+			default:
+				break;
+		}
+
 		if ( IsServer )
 		{
 			Health -= info.Damage;
