@@ -4,27 +4,7 @@ partial class HLExplosion
 	{
 		// Effects
 		Sound.FromWorld( "explode", position );
-		if ( HLGame.hl_classic_explosion )
-		{
-			switch ( type )
-			{
-				case "grenade": Particles.Create( "particles/explosion.vpcf", position ); break;
-				case "tripmine": Particles.Create( "particles/explosion_tripmine.vpcf", position ); break;
-				case "electro": Particles.Create( "particles/gauss_impact.vpcf", position ); break;
-				default: Particles.Create( "particles/explosion.vpcf", position ); break;
-			}
-		}
-		else
-		{
-			switch ( type )
-			{
-				case "grenade": Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
-				case "tripmine": Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
-				case "electro": Particles.Create( "particles/gauss_impact.vpcf", position ); break;
-				default: Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
-			}
-		}
-
+		ExplosionParticle( position, type );
 		// Damage, etc
 		var overlaps = Entity.FindInSphere( position, radius );
 
@@ -66,6 +46,32 @@ partial class HLExplosion
 				.WithAttacker( owner );
 
 			ent.TakeDamage( damageInfo );
+		}
+	}
+
+	[ClientRpc]
+	public static void ExplosionParticle( Vector3 position, string type )
+	{
+
+		if ( HLGame.hl_classic_explosion )
+		{
+			switch ( type )
+			{
+				case "grenade": Particles.Create( "particles/explosion.vpcf", position ); break;
+				case "tripmine": Particles.Create( "particles/explosion_tripmine.vpcf", position ); break;
+				case "electro": Particles.Create( "particles/gauss_impact.vpcf", position ); break;
+				default: Particles.Create( "particles/explosion.vpcf", position ); break;
+			}
+		}
+		else
+		{
+			switch ( type )
+			{
+				case "grenade": Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
+				case "tripmine": Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
+				case "electro": Particles.Create( "particles/gauss_impact.vpcf", position ); break;
+				default: Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
+			}
 		}
 	}
 }
