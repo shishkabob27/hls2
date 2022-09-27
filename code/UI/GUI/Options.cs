@@ -3,7 +3,7 @@ using Sandbox.UI;
 [UseTemplate( "/resource/templates/options.html" )]
 public class Options : GUIPanel
 {
-	public bool bCviewroll { get; set; }
+	public bool bCviewroll { get; set; } = false;
 	public bool bCsubtitle { get; set; }
 	public bool bChimodels { get; set; }
 	public bool bCguiscale { get; set; } = true;
@@ -35,7 +35,7 @@ public class Options : GUIPanel
 	}
 	void getCvars()
 	{
-		bCviewroll = WalkController.cl_rollangle != 0;
+		bCviewroll = HLGame.hl_viewroll;
 		fChudScale = HLGame.hl_hud_scale;
 		bCsubtitle = HLGame.cc_subtitles == 1;
 		bCguiscale = HLGame.hl_gui_rescale;
@@ -54,7 +54,6 @@ public class Options : GUIPanel
 	}
 	public override void Close()
 	{
-		getCvars();
 		MenuOpen = !MenuOpen;
 	}
 	public override void Tick()
@@ -70,7 +69,24 @@ public class Options : GUIPanel
 	}
 	public void updateCvars()
 	{
-		ConsoleSystem.Run( "cl_rollangle " + ( bCviewroll ? 2 : 0 ) );
+		HLGame.hl_viewroll = bCviewroll;
+		HLGame.hl_hud_scale = fChudScale;
+		HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
+		HLGame.hl_gui_rescale = bCguiscale;
+		HLGame.hl_pixelfont = bCpixelfont;
+		HLGame.cl_himodels = bChimodels;
+		HLGame.hl_vr_pointer = bCvrpointer;
+		HLGame.hl_ragdoll = bCragdolls;
+		HLGame.hl_classic_flashlight = bColdTorch;
+		HLGame.hl_classic_explosion = bColdexplosion;
+		HLGame.hl_spray_icon = bSsprayIcon;
+		HLGame.hl_spray_colour = bSsprayColour;
+		HLPlayer.hl_pm = bSplayerModel;
+		HLGame.hl_pm_colour1 = (int)fCpmColour1;
+		HLGame.hl_pm_colour2 = (int)fCpmColour2;
+		HLGame.hl_hud_style = Shudstyle;
+
+		ConsoleSystem.Run( "hl_viewroll " + bCviewroll );
 		ConsoleSystem.Run( "hl_hud_scale " + fChudScale );
 		ConsoleSystem.Run( "cc_subtitles " + ( bCsubtitle ? 1 : 0 ) );
 		ConsoleSystem.Run( "hl_gui_rescale " + ( bCguiscale ? 1 : 0 ) );
@@ -88,20 +104,6 @@ public class Options : GUIPanel
 		updtasync();
 
 		/*
-		WalkController.cl_rollangle = ( bCviewroll ? 2 : 0 );
-		HLGame.hl_hud_scale = fChudScale;
-		HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
-		HLGame.hl_gui_rescale = bCguiscale;
-		HLGame.hl_pixelfont = bCpixelfont;
-		HLGame.cl_himodels = bChimodels;
-		HLGame.hl_vr_pointer = bCvrpointer;
-		HLGame.hl_ragdoll = bCragdolls;
-		HLGame.hl_classic_flashlight = bColdTorch;
-		HLGame.hl_classic_explosion = bColdexplosion;
-		HLGame.hl_spray_icon = bSsprayIcon;
-		HLGame.hl_spray_colour = bSsprayColour;
-		HLPlayer.hl_pm = bSplayerModel;
-		HLGame.hl_hud_style = Shudstyle;
 		*/
 	}
 	public async void updtasync()
