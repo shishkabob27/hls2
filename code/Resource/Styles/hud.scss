@@ -25,7 +25,6 @@ HudRootPanel
 vitals
 {
     font-size: 64px;
-    color: #ff0;
     mix-blend-mode: lighten;
     font-family: "Trebuchet MS";
 
@@ -344,3 +343,35 @@ Subtitle {
     }
 }
 
+FlagUI{
+    position: absolute;
+    bottom: 72px;
+    left: 16px;
+    mix-blend-mode: lighten;
+    width: 256px;
+
+    .flags
+    {
+
+       // width: 256px;
+
+        .flag
+        {
+            width: 12px;
+            padding: 4px;
+
+            img
+            {
+            min-width: 38px;
+            min-height: 38px;
+            margin-right: 32px;
+            }
+        }
+    }
+
+    Text{
+        color: orange;
+        font-size: 40px;
+    }
+ 
+}

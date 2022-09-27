@@ -41,7 +41,10 @@ public class HudPanel : HudEntity<HudRootPanel>
             RootPanel.AddChild<VoiceSpeaker>();
             RootPanel.AddChild<Subtitle>();
 
-
+        if ( HLGame.hl_gamemode == "ctf" )
+        {
+            RootPanel.AddChild<FlagUI>();
+        }
 
         }
     }
