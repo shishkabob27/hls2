@@ -65,7 +65,7 @@ partial class CrossbowBolt : ModelEntity
 			// Surface impact effect
 			//
 			tr.Normal = Rotation.Forward * -1;
-			tr.Surface.DoBulletImpact( tr );
+			tr.Surface.DoHLBulletImpact( tr );
 			velocity = default;
 
 			// delete self in 60 seconds
