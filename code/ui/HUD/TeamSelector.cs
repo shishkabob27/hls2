@@ -9,8 +9,11 @@ public class TeamSelector : Panel
 	{
 	}
 
-	void SelectTeam(string team){
-		var p = Local.Pawn as Player;
+	public void SelectTeam(string team){
+		var p = Local.Pawn as HLPlayer;
+
+		p.team = team;
+		Delete();
 	}
 
 }
