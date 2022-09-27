@@ -105,6 +105,7 @@ public class Options : GUIPanel
 	{
 		await GameTask.DelaySeconds( 0.1f );
 		ConsoleSystem.Run( "hl_updatepm" );
+		ConsoleSystem.Run( "hl_savecvar" );
 	}
 
 	[Event.BuildInput]
