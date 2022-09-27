@@ -247,6 +247,20 @@
 	}
 
 	[ConCmd.Server]
+	public static void GiveEverything()
+	{
+		//give all weapons, should auto update no matter what.
+		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
+		var weptype = typeof( HLWeapon );
+		var weptypes = TypeLibrary.GetTypes( weptype );
+		foreach ( var weapontype in weptypes )
+		{
+			var ent = TypeLibrary.Create<Entity>( weapontype );
+			ply.Inventory.Add( ent );
+		}
+	}
+
+	[ConCmd.Server]
 	public static void GiveAll()
 	{
 		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
