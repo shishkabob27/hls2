@@ -34,11 +34,7 @@ public partial class WalkController : BasePlayerController
     [ConVar.Replicated] public static float sv_defaultspeed { get; set; } = 320.0f;
 
     [ConVar.Client] public static float cl_rollspeed { get; set; } = 200.0f;
-
-    /// <summary>
-    /// set to 2 for the original WON half-life default. 0 is disabled (default)
-    /// </summary>
-    [ConVar.Client] public static float cl_rollangle { get; set; } = 0.0f;
+    [ConVar.Client] public static float cl_rollangle { get; set; } = 2.0f;
 
     [ConVar.Replicated] public static bool sv_use_sbox_movehelper { get; set; } = true;
     [ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
@@ -472,6 +468,7 @@ public partial class WalkController : BasePlayerController
     }
     public virtual float CalculateRoll( Rotation angles, Vector3 velocity, float rollangle, float rollspeed )
     {
+        if ( !HLGame.hl_viewroll ) return 0.0f;
         float sign;
         float side;
         float value;

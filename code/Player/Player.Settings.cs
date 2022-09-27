@@ -21,12 +21,15 @@
         try
         {
             var a = HLPlayer.LoadSettings();
+            HLGame.hl_viewroll = a.ViewRoll;
             HLGame.hl_spray_icon = a.SprayImage;
             HLGame.hl_spray_colour = a.SprayColour;
             HLPlayer.hl_pm = a.PlayerModel;
             HLGame.hl_pm_colour1 = a.PlayerModelColour1;
             HLGame.hl_pm_colour2 = a.PlayerModelColour2;
 
+
+            ConsoleSystem.Run( "hl_viewroll " + ( a.ViewRoll ? 2 : 0 ) );
             ConsoleSystem.Run( "hl_spray_icon " + a.SprayImage );
             ConsoleSystem.Run( "hl_spray_colour " + a.SprayColour );
             ConsoleSystem.Run( "hl_pm " + a.PlayerModel );
@@ -55,6 +58,7 @@
         Log.Info( "Saved Convars!" );
         var a = new PlayerSettingsData()
         {
+            ViewRoll = ConsoleSystem.Caller.GetClientData( "hl_viewroll" ).ToBool(),
             SprayImage = ConsoleSystem.Caller.GetClientData( "hl_spray_icon" ),
             SprayColour = ConsoleSystem.Caller.GetClientData( "hl_spray_colour" ),
             PlayerModel = ConsoleSystem.Caller.GetClientData( "hl_pm" ),
