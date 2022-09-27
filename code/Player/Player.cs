@@ -48,7 +48,8 @@
 
 	public HLPlayer()
 	{
-		updateCvar();
+
+		ConsoleSystem.Run( "hl_updatecvar" );
 		Inventory = new HLInventory( this );
 	}
 
