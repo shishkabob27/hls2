@@ -49,7 +49,7 @@ partial class Crossbow : HLWeapon
 		if ( Zoomed )
 		{
 
-			ShootBullet( 0.0f, 1, 50.0f, 2.0f, 1, false );
+			ShootBullet( 0.0f, 1, 50.0f, 1.0f, 1, false );
 			return;
 		}
 
