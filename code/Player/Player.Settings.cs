@@ -31,6 +31,7 @@
             ConsoleSystem.Run( "hl_pm " + a.PlayerModel );
             ConsoleSystem.Run( "hl_pm_colour1 " + a.PlayerModelColour1 );
             ConsoleSystem.Run( "hl_pm_colour2 " + a.PlayerModelColour2 );
+            Log.Info( "Loaded Convars!" );
         }
         catch { }
 
@@ -45,6 +46,7 @@
     [ConCmd.Client( "hl_savecvar", Help = "Update the cvars of the caller" )]
     public void saveCvar()
     {
+        Log.Info( "Saved Convars!" );
         var a = new PlayerSettingsData()
         {
 
