@@ -685,7 +685,7 @@
 	}
 	m_previewModels = 
 	[
-		"models/of/weapons/view/v_pipe_wrench.vmdl",
+		"models/op4/weapons/view/v_pipe_wrench.vmdl",
 	]
 	m_boneMergeModels = [  ]
 }
