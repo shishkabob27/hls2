@@ -32,9 +32,13 @@
             ConsoleSystem.Run( "hl_pm " + a.PlayerModel );
             ConsoleSystem.Run( "hl_pm_colour1 " + a.PlayerModelColour1 );
             ConsoleSystem.Run( "hl_pm_colour2 " + a.PlayerModelColour2 );
+            ConsoleSystem.Run( "hl_updatepm" );
             Log.Info( "Loaded Convars!" );
         }
-        catch { }
+        catch
+        {
+
+        }
 
     }
 
@@ -45,18 +49,17 @@
         ConsoleSystem.Run( "hl_savecvar" );
     }
 
-    [ConCmd.Client( "hl_savecvar", Help = "Update the cvars of the caller" )]
+    [ConCmd.Server( "hl_savecvar", Help = "Update the cvars of the caller" )]
     public static void saveCvar()
     {
         Log.Info( "Saved Convars!" );
         var a = new PlayerSettingsData()
         {
-
-            SprayImage = HLGame.hl_spray_icon,
-            SprayColour = HLGame.hl_spray_colour,
+            SprayImage = ConsoleSystem.Caller.GetClientData( "hl_spray_icon" ),
+            SprayColour = ConsoleSystem.Caller.GetClientData( "hl_spray_colour" ),
             PlayerModel = ConsoleSystem.Caller.GetClientData( "hl_pm" ),
-            PlayerModelColour1 = HLGame.hl_pm_colour1,
-            PlayerModelColour2 = HLGame.hl_pm_colour2
+            PlayerModelColour1 = ConsoleSystem.Caller.GetClientData( "hl_pm_colour1" ).ToInt(),
+            PlayerModelColour2 = ConsoleSystem.Caller.GetClientData( "hl_pm_colour2" ).ToInt()
         };
         SaveSettings( a );
     }

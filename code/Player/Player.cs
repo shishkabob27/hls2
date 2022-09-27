@@ -49,7 +49,6 @@
 	public HLPlayer()
 	{
 
-		loadCvars( To.Single( this ) );
 
 		Inventory = new HLInventory( this );
 	}
@@ -174,6 +173,7 @@
 	public override void Respawn()
 	{
 
+
 		//SetModel("models/citizen/citizen.vmdl");
 
 		SetPlayerModel();
@@ -219,8 +219,14 @@
 			CreateHands();
 		}
 		base.Respawn();
-	}
+		updtasync();
 
+	}
+	public async void updtasync()
+	{
+		await GameTask.DelaySeconds( 0.1f );
+		loadCvars( To.Single( this ) );
+	}
 	private void CreateHands()
 	{
 		DeleteHands();
