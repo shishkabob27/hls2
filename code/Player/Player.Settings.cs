@@ -12,10 +12,11 @@
     [ClientRpc]
     public void loadCvars()
     {
-        loadCvar();
+
+        ConsoleSystem.Run( "hl_loadcvar" );
     }
     [ConCmd.Client( "hl_loadcvar", Help = "Update the cvars of the caller" )]
-    public void loadCvar()
+    public static void loadCvar()
     {
         try
         {
@@ -40,11 +41,12 @@
     [ClientRpc]
     public void saveCvars()
     {
-        saveCvar();
+
+        ConsoleSystem.Run( "hl_savecvar" );
     }
 
     [ConCmd.Client( "hl_savecvar", Help = "Update the cvars of the caller" )]
-    public void saveCvar()
+    public static void saveCvar()
     {
         Log.Info( "Saved Convars!" );
         var a = new PlayerSettingsData()
@@ -52,7 +54,7 @@
 
             SprayImage = HLGame.hl_spray_icon,
             SprayColour = HLGame.hl_spray_colour,
-            PlayerModel = Client.GetClientData( "hl_pm" ),
+            PlayerModel = ConsoleSystem.Caller.GetClientData( "hl_pm" ),
             PlayerModelColour1 = HLGame.hl_pm_colour1,
             PlayerModelColour2 = HLGame.hl_pm_colour2
         };
