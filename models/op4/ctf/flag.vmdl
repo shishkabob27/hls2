@@ -25,6 +25,22 @@
 						use_global_default = false
 						global_default_material = ""
 					},
+					{
+						_class = "MaterialGroup"
+						name = "of"
+						remaps = [  ]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "bm"
+						remaps = 
+						[
+							{
+								from = "materials/op4/ctf/flag/usmil_flag.vmat"
+								to = "materials/op4/ctf/flag/bmciv_flag.vmat"
+							},
+						]
+					},
 				]
 			},
 			{
