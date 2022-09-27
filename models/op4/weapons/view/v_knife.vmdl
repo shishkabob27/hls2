@@ -14,24 +14,39 @@
 						remaps = 
 						[
 							{
-								from = "hand.vmat"
-								to = "materials/op4/weapons/view/pipe_wrench/hand.vmat"
-							},
-							{
 								from = "skin.vmat"
 								to = "materials/op4/weapons/view/pipe_wrench/skin.vmat"
 							},
 							{
-								from = "v_pipe_wrench.vmat"
-								to = "materials/op4/weapons/view/pipe_wrench/v_pipe_wrench.vmat"
+								from = "hand.vmat"
+								to = "materials/op4/weapons/view/pipe_wrench/hand.vmat"
 							},
 							{
-								from = "v_pipe_wrench_ring.vmat"
-								to = "materials/op4/weapons/view/pipe_wrench/v_pipe_wrench_ring.vmat"
+								from = "knife_blade.vmat"
+								to = "materials/op4/weapons/view/knife/knife_blade.vmat"
+							},
+							{
+								from = "fatigues.vmat"
+								to = "materials/op4/weapons/view/knife/fatigues.vmat"
 							},
 						]
 						use_global_default = false
 						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "AttachmentList"
+				children = 
+				[
+					{
+						_class = "Attachment"
+						name = "muzzle"
+						parent_bone = "knife"
+						relative_origin = [ -0.573271, 0.141267, 9.581532 ]
+						relative_angles = [ 4.062706, -80.611755, 11.969829 ]
+						weight = 1.0
+						ignore_rotation = false
 					},
 				]
 			},
@@ -41,7 +56,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_reference.smd"
+						filename = "models/op4decomp/v_knife/v_knife_reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -54,7 +69,7 @@
 							exclude_by_default = true
 							exception_list = 
 							[
-								"v_pipe_wrench_reference",
+								"v_knife_reference",
 							]
 						}
 					},
@@ -66,19 +81,40 @@
 				[
 					{
 						_class = "AnimFile"
-						name = "attack1hit"
+						name = "draw"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attack1hit.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/draw.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "attack1"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/attack1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -91,15 +127,36 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attack1miss.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/attack1miss.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "attack2"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/attack2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -112,15 +169,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attack2hit.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/attack2hit.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -129,19 +186,19 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "attack2miss"
+						name = "attack3"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attack2miss.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/attack3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -154,15 +211,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attack3hit.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/attack3hit.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -171,124 +228,19 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "attack3miss"
+						name = "charge"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attack3miss.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "attackbighit"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attackbighit.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "attackbigloop"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
-						looping = true
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attackbigloop.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "attackbigmiss"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attackbigmiss.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "attackbigwind"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/attackbigwind.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "draw"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/draw.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/charge.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -301,15 +253,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/holster.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -322,15 +274,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/idle1.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -343,15 +295,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/idle2.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -364,15 +316,36 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/op4decomp/v_pipe_wrench/v_pipe_wrench_anims/idle3.smd"
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/idle3.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "stab"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/op4decomp/v_knife/v_knife_anims/stab.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -382,25 +355,10 @@
 				]
 				default_root_bone_name = ""
 			},
-			{
-				_class = "AttachmentList"
-				children = 
-				[
-					{
-						_class = "Attachment"
-						name = "muzzle"
-						parent_bone = "bip01_r_hand"
-						relative_origin = [ 5.550804, 0.843707, 17.971907 ]
-						relative_angles = [ -0.0, 0.0, 0.0 ]
-						weight = 1.0
-						ignore_rotation = false
-					},
-				]
-			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = "animgraphs/v_pipe_wrench.vanmgrph"
+		anim_graph_name = "animgraphs/v_knife.vanmgrph"
 		base_model_name = ""
 	}
 }
