@@ -48,7 +48,25 @@
 
 	public HLPlayer()
 	{
+		updateCvar();
 		Inventory = new HLInventory( this );
+	}
+
+	[ConCmd.Client( "hl_updatecvar", Help = "Update the cvars of the caller" )]
+	public static void updateCvar()
+	{
+		var a = HLPlayer.LoadSettings();
+		HLGame.hl_spray_icon = a.SprayImage;
+		HLGame.hl_spray_colour = a.SprayColour;
+		HLPlayer.hl_pm = a.PlayerModel;
+		HLGame.hl_pm_colour1 = a.PlayerModelColour1;
+		HLGame.hl_pm_colour2 = a.PlayerModelColour2;
+
+		ConsoleSystem.Run( "hl_spray_icon " + a.SprayImage );
+		ConsoleSystem.Run( "hl_spray_colour " + a.SprayColour );
+		ConsoleSystem.Run( "hl_pm " + a.PlayerModel );
+		ConsoleSystem.Run( "hl_pm_colour1 " + a.PlayerModelColour1 );
+		ConsoleSystem.Run( "hl_pm_colour2 " + a.PlayerModelColour2 );
 	}
 
 	public void DoHLPlayerNoclip( Client player )
@@ -460,9 +478,9 @@
 
 	public override void PostCameraSetup( ref CameraSetup setup )
 	{
-		if (HLGame.CurrentState == HLGame.GameStates.GameEnd )
+		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 			return;
-			
+
 		base.PostCameraSetup( ref setup );
 
 		setup.ZNear = 1;
