@@ -12,6 +12,7 @@ partial class PipeWrench : HLWeapon
 	public override AmmoType AmmoType => AmmoType.None;
 	public override int ClipSize => 0;
 	public override int Bucket => 0;
+	public override int BucketWeight => 2;
 
 	public override string InventoryIcon => "/ui/op4/weapons/weapon_pipewrench.png";
 	public override string InventoryIconSelected => "/ui/op4/weapons/weapon_pipewrench_selected.png";
