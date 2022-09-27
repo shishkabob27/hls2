@@ -80,18 +80,16 @@
 	[ConCmd.Client( "hl_savecvar", Help = "Update the cvars of the caller" )]
 	public static void saveCvar()
 	{
-		try
+		var a = new PlayerSettingsData()
 		{
-			var a = HLPlayer.LoadSettings();
-			a.SprayImage = HLGame.hl_spray_icon;
-			a.SprayColour = HLGame.hl_spray_colour;
-			a.PlayerModel = HLPlayer.hl_pm;
-			a.PlayerModelColour1 = HLGame.hl_pm_colour1;
-			a.PlayerModelColour2 = HLGame.hl_pm_colour2;
-			HLPlayer.SaveSettings( a );
-		}
-		catch { }
 
+			SprayImage = HLGame.hl_spray_icon,
+			SprayColour = HLGame.hl_spray_colour,
+			PlayerModel = HLPlayer.hl_pm,
+			PlayerModelColour1 = HLGame.hl_pm_colour1,
+			PlayerModelColour2 = HLGame.hl_pm_colour2
+		};
+		HLPlayer.SaveSettings( a );
 	}
 
 	public void DoHLPlayerNoclip( Client player )
