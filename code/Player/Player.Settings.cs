@@ -27,6 +27,7 @@
             HLPlayer.hl_pm = a.PlayerModel;
             HLGame.hl_pm_colour1 = a.PlayerModelColour1;
             HLGame.hl_pm_colour2 = a.PlayerModelColour2;
+            HLGame.hl_classic_explosion = a.ClassicExplosions;
 
 
             ConsoleSystem.Run( "hl_viewroll " + ( a.ViewRoll ? 2 : 0 ) );
@@ -35,6 +36,7 @@
             ConsoleSystem.Run( "hl_pm " + a.PlayerModel );
             ConsoleSystem.Run( "hl_pm_colour1 " + a.PlayerModelColour1 );
             ConsoleSystem.Run( "hl_pm_colour2 " + a.PlayerModelColour2 );
+            ConsoleSystem.Run( "hl_classic_explosion " + a.ClassicExplosions );
             ConsoleSystem.Run( "hl_updatepm" );
             Log.Info( "Loaded Convars!" );
         }
@@ -63,7 +65,8 @@
             SprayColour = ConsoleSystem.Caller.GetClientData( "hl_spray_colour" ),
             PlayerModel = ConsoleSystem.Caller.GetClientData( "hl_pm" ),
             PlayerModelColour1 = ConsoleSystem.Caller.GetClientData( "hl_pm_colour1" ).ToInt(),
-            PlayerModelColour2 = ConsoleSystem.Caller.GetClientData( "hl_pm_colour2" ).ToInt()
+            PlayerModelColour2 = ConsoleSystem.Caller.GetClientData( "hl_pm_colour2" ).ToInt(),
+            ClassicExplosions = ConsoleSystem.Caller.GetClientData( "hl_classic_explosion" ).ToBool()
         };
         SaveSettings( a );
     }
