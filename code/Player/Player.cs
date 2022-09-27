@@ -256,7 +256,16 @@
 		foreach ( var weapontype in weptypes )
 		{
 			var ent = TypeLibrary.Create<Entity>( weapontype );
-			ply.Inventory.Add( ent );
+			ent.Position = ConsoleSystem.Caller.Pawn.Position;
+			( ent as HLWeapon ).DeleteIfNotCarriedAfter( 0.1f );
+		}
+		var ammtype = typeof( BaseAmmo );
+		var ammtypes = TypeLibrary.GetTypes( ammtype );
+		foreach ( var ammotype in ammtypes )
+		{
+			var ent = TypeLibrary.Create<Entity>( ammotype );
+			ent.Position = ConsoleSystem.Caller.Pawn.Position;
+			ent.DeleteAsync( 0.1f );
 		}
 	}
 
@@ -267,20 +276,20 @@
 
 
 
-		ply.Inventory.Add( new Crowbar() );
-		ply.Inventory.Add( new Pistol() );
-		ply.Inventory.Add( new Python() );
-		ply.Inventory.Add( new Shotgun() );
-		ply.Inventory.Add( new SMG() );
-		ply.Inventory.Add( new RPG() );
-		ply.Inventory.Add( new Crossbow() );
-		ply.Inventory.Add( new GrenadeWeapon() );
-		ply.Inventory.Add( new TripmineWeapon() );
-		ply.Inventory.Add( new Gauss() );
-		ply.Inventory.Add( new Egon() );
-		ply.Inventory.Add( new HornetGun() );
-		ply.Inventory.Add( new SnarkWeapon() );
-		ply.Inventory.Add( new SatchelWeapon() );
+		Givewep( new Crowbar() );
+		Givewep( new Pistol() );
+		Givewep( new Python() );
+		Givewep( new Shotgun() );
+		Givewep( new SMG() );
+		Givewep( new RPG() );
+		Givewep( new Crossbow() );
+		Givewep( new GrenadeWeapon() );
+		Givewep( new TripmineWeapon() );
+		Givewep( new Gauss() );
+		Givewep( new Egon() );
+		Givewep( new HornetGun() );
+		Givewep( new SnarkWeapon() );
+		Givewep( new SatchelWeapon() );
 
 		ply.GiveAmmo( AmmoType.Pistol, 17 );
 		ply.GiveAmmo( AmmoType.Python, 6 );
@@ -298,10 +307,17 @@
 		var battery = new Battery();
 		battery.Position = ConsoleSystem.Caller.Pawn.Position;
 		battery.Spawn();
+		battery.DeleteAsync( 0.1f );
 
 		var suit = new Suit();
 		suit.Position = ConsoleSystem.Caller.Pawn.Position;
 		suit.Spawn();
+		suit.DeleteAsync( 0.1f );
+	}
+	static void Givewep( HLWeapon wep )
+	{
+		wep.Position = ConsoleSystem.Caller.Pawn.Position;
+		wep.DeleteIfNotCarriedAfter( 0.1f );
 	}
 
 	public override void OnKilled()

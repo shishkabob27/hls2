@@ -108,6 +108,13 @@
 
 		IsReloading = false;
 	}
+
+	public async void DeleteIfNotCarriedAfter( float time )
+	{
+		await GameTask.DelaySeconds( time );
+		if ( Owner is not HLPlayer ) Delete();
+	}
+
 	public override void ActiveEnd( Entity ent, bool dropped )
 	{
 		//
