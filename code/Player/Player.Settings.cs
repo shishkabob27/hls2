@@ -1,6 +1,6 @@
 ﻿partial class HLPlayer
 {
-	public static void SaveSettings( PlayerData data )
+	public static void SaveSettings( PlayerSettingsData data )
 	{
 		FileSystem.Data.WriteJson( "player_settings.json", data );
 	}
