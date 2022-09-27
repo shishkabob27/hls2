@@ -97,18 +97,23 @@
 		if ( pm == "freeman" )
 		{
 			SetModel( "models/hl1/player/player.vmdl" );
-			SetBodyGroup( "head", 0 );
+			updBDG( "head", 0 );
 		}
 		else
 		{
-			SetBodyGroup( "head", 1 );
+			updBDG( "head", 1 );
 			SetModel( pm );
 		}
 		updateColours();
 
 
 	}
+	async void updBDG( String bdg, int i )
+	{
 
+		await GameTask.DelaySeconds( 0.1f );
+		SetBodyGroup( bdg, i );
+	}
 	[ClientRpc]
 	void updateColours()
 	{
