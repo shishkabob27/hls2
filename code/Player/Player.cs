@@ -46,6 +46,9 @@
 
 	[ConVar.ClientData] public static string hl_pm { get; set; } = "player";
 
+	[Net]
+	public string team { get; set; } = "";
+
 	public HLPlayer()
 	{
 
