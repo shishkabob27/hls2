@@ -9,10 +9,16 @@ public class TeamSelector : Panel
 	{
 	}
 
-	public void SelectTeam(int team){
+	public void SelectTeam(string team){
 		var p = Local.Pawn as HLPlayer;
 
-		p.team = team;
+		switch (team)
+		{
+			case "bm": p.team = 1; break;
+			case "op": p.team = 2; break;
+			default: p.team = 0; break;
+		}
+
 		Delete();
 	}
 
