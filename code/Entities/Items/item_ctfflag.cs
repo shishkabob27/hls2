@@ -1,5 +1,5 @@
 [Library( "item_ctfflag" ), HammerEntity]
-[EditorModel( "models/op/ctf/flag.vmdl" )]
+[EditorModel( "models/of/ctf/flag.vmdl" )]
 [Title(  "item_ctfflag" ), Category("Capture The Flag")]
 partial class item_ctfflag : ModelEntity
 {
@@ -7,7 +7,7 @@ partial class item_ctfflag : ModelEntity
 	{
 		base.Spawn();
 
-		Model = Model.Load( "models/op/ctf/flag.vmdl" );
+		Model = Model.Load( "models/of/ctf/flag.vmdl" );
 
 		UsePhysicsCollision = true;
 	}
