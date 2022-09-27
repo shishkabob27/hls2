@@ -27,7 +27,6 @@ public class InventoryColumn : Panel
 			Icons.Add( icon );
 		}
 
-
 	}
 
 	internal void TickSelection( HLWeapon selectedWeapon )
@@ -49,5 +48,9 @@ public class InventoryColumn : Panel
 			return 0;
 		} );
 
+		if ( Column >= 5 )
+		{
+			SetClass( "invisible", !( Icons.Count > 0 ) );
+		}
 	}
 }

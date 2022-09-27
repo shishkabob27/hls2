@@ -1,12 +1,14 @@
-﻿[Library("weapon_gibweapon")]
+﻿[Library( "weapon_gibweapon" )]
 [EditorModel( "models/hl1/weapons/world/glock.vmdl" )]
-[Title("GibWeapon"), Category( "Weapons" )]
+[Title( "GibWeapon" ), Category( "Weapons" )]
 partial class GibWeapon : HLWeapon
 {
-	public static readonly Model WorldModel = Model.Load("models/hl1/weapons/world/glock.vmdl");
+	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/glock.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";
 	public override float PrimaryRate => 16;
 
+	public override int Bucket => 1;
+	public override int BucketWeight => 100;
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -22,12 +24,12 @@ partial class GibWeapon : HLWeapon
 	public override void AttackPrimary()
 	{
 
-        if (IsServer)
-        {
-			HLCombat.CreateGibs(Owner.Position, Owner.Position, 0, new BBox(new Vector3(-16, -16, 0), new Vector3(16, 16, 72)));
+		if ( IsServer )
+		{
+			HLCombat.CreateGibs( Owner.Position, Owner.Position, 0, new BBox( new Vector3( -16, -16, 0 ), new Vector3( 16, 16, 72 ) ) );
 
 		}
 
-		(Owner as AnimatedEntity).SetAnimParameter("b_attack", true);
+		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 	}
 }

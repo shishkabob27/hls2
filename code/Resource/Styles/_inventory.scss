@@ -45,6 +45,10 @@ inventorycolumn {
 
 	opacity: 0.4;
 
+	&.invisible {
+		opacity: 0;
+	}
+
 	&.active {
 		opacity: 1;
 
@@ -115,6 +119,10 @@ inventoryicon {
 		.icon {
 			background-color: #f50;
 		}
+	}
+
+	&.invisible {
+		opacity: 0;
 	}
 }
 

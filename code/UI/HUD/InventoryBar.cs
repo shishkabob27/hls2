@@ -10,14 +10,12 @@ public class InventoryBar : Panel
 
 	public bool IsOpen;
 	HLWeapon SelectedWeapon;
+	int invslots = 7;
+
 
 	public InventoryBar()
 	{
-		var invslots = 5;
-		if (HLGame.hl_gamemode == "ctf")
-		{
-			invslots = 7;
-		}
+
 		for ( int i = 0; i < invslots; i++ )
 		{
 			var icon = new InventoryColumn( i, this );
@@ -51,21 +49,22 @@ public class InventoryBar : Panel
 	public void ProcessClientInput( InputBuilder input )
 	{
 		if ( HLGame.CurrentState != HLGame.GameStates.Live ) return;
-		
+
 		bool wantOpen = IsOpen;
 		var localPlayer = Local.Pawn as Player;
 
 		// If we're not open, maybe this input has something that will 
 		// make us want to start being open?
 		wantOpen = wantOpen || input.MouseWheel != 0;
-		wantOpen = wantOpen || input.Pressed(InputButton.SlotNext) || Input.VR.RightHand.Joystick.Value.y < -0.5;
-		wantOpen = wantOpen || input.Pressed(InputButton.SlotPrev) || Input.VR.RightHand.Joystick.Value.y > 0.5;
+		wantOpen = wantOpen || input.Pressed( InputButton.SlotNext ) || Input.VR.RightHand.Joystick.Value.y < -0.5;
+		wantOpen = wantOpen || input.Pressed( InputButton.SlotPrev ) || Input.VR.RightHand.Joystick.Value.y > 0.5;
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot1 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot2 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot3 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot4 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot5 );
-		//wantOpen = wantOpen || input.Pressed( InputButton.Slot6 );
+		wantOpen = wantOpen || input.Pressed( InputButton.Slot6 );
+		wantOpen = wantOpen || input.Pressed( InputButton.Slot7 );
 
 		if ( Weapons.Count == 0 )
 		{
@@ -79,7 +78,7 @@ public class InventoryBar : Panel
 			SelectedWeapon = localPlayer?.ActiveChild as HLWeapon;
 			IsOpen = true;
 
-			Sound.FromScreen("dm.ui_open");
+			Sound.FromScreen( "dm.ui_open" );
 		}
 
 		// Not open fuck it off
@@ -94,10 +93,9 @@ public class InventoryBar : Panel
 			input.ActiveChild = SelectedWeapon;
 			IsOpen = false;
 			Sound.FromScreen( "dm.ui_select" );
-			Sound.FromScreen("dm.ui_close");
+			Sound.FromScreen( "dm.ui_close" );
 			return;
 		}
-
 		var sortedWeapons = Weapons.OrderBy( x => x.Order ).ToList();
 
 		// get our current index
@@ -108,25 +106,25 @@ public class InventoryBar : Panel
 		// forward if mouse wheel was pressed
 		SelectedIndex -= input.MouseWheel;
 
-		if (input.Pressed(InputButton.SlotNext) || (Input.VR.RightHand.Joystick.Value.y < -0.5 && SinceSelectedWeapon > 3))
+		if ( input.Pressed( InputButton.SlotNext ) || ( Input.VR.RightHand.Joystick.Value.y < -0.5 && SinceSelectedWeapon > 3 ) )
 		{
 			SinceSelectedWeapon = 0;
-            SelectedIndex ++;
+			SelectedIndex++;
 		}
-		if (input.Pressed(InputButton.SlotPrev) || (Input.VR.RightHand.Joystick.Value.y > 0.5 && SinceSelectedWeapon > 3))
-        {
-            SinceSelectedWeapon = 0;
-            SelectedIndex --;
-		}
-		if (Input.VR.RightHand.Joystick.Value.y.AlmostEqual(0))
+		if ( input.Pressed( InputButton.SlotPrev ) || ( Input.VR.RightHand.Joystick.Value.y > 0.5 && SinceSelectedWeapon > 3 ) )
 		{
-            SinceSelectedWeapon = 3;
-        }
+			SinceSelectedWeapon = 0;
+			SelectedIndex--;
+		}
+		if ( Input.VR.RightHand.Joystick.Value.y.AlmostEqual( 0 ) )
+		{
+			SinceSelectedWeapon = 3;
+		}
 		SelectedIndex = SelectedIndex.UnsignedMod( Weapons.Count );
 
 		SelectedWeapon = sortedWeapons[SelectedIndex];
 
-		for ( int i = 0; i < 5; i++ )
+		for ( int i = 0; i < invslots; i++ )
 		{
 			columns[i].TickSelection( SelectedWeapon );
 		}
@@ -148,7 +146,8 @@ public class InventoryBar : Panel
 		if ( input.Pressed( InputButton.Slot3 ) ) columninput = 2;
 		if ( input.Pressed( InputButton.Slot4 ) ) columninput = 3;
 		if ( input.Pressed( InputButton.Slot5 ) ) columninput = 4;
-		//if ( input.Pressed( InputButton.Slot6 ) ) columninput = 5;
+		if ( input.Pressed( InputButton.Slot6 ) ) columninput = 5;
+		if ( input.Pressed( InputButton.Slot7 ) ) columninput = 6;
 
 		if ( columninput == -1 ) return SelectedIndex;
 
