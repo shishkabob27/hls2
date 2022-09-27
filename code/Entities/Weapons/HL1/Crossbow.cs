@@ -46,7 +46,12 @@ partial class Crossbow : HLWeapon
 		PlaySound( "crossbow_shot" );
 
 		// TODO - if zoomed in then instant hit, no travel, 120 damage
+		if ( Zoomed )
+		{
 
+			ShootBullet( 0.0f, 1, 50.0f, 2.0f, 1, false );
+			return;
+		}
 
 		if ( IsServer )
 		{
