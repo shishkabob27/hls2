@@ -13,7 +13,12 @@ public class InventoryBar : Panel
 
 	public InventoryBar()
 	{
-		for ( int i = 0; i < 5; i++ )
+		var invslots = 5;
+		if (HLGame.hl_gamemode == "ctf")
+		{
+			invslots = 7;
+		}
+		for ( int i = 0; i < invslots; i++ )
 		{
 			var icon = new InventoryColumn( i, this );
 			columns.Add( icon );
