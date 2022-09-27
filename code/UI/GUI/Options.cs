@@ -29,8 +29,8 @@ public class Options : GUIPanel
 		Style.Right = 0;
 		Style.Top = 0;
 		Style.Bottom = 0;
-		getCvars();
 
+		getCvars();
 		Focus();
 	}
 	void getCvars()
@@ -48,10 +48,13 @@ public class Options : GUIPanel
 		bSsprayIcon = HLGame.hl_spray_icon;
 		bSsprayColour = HLGame.hl_spray_colour;
 		bSplayerModel = HLPlayer.hl_pm;
+		fCpmColour1 = HLGame.hl_pm_colour1;
+		fCpmColour2 = HLGame.hl_pm_colour2;
 		Shudstyle = HLGame.hl_hud_style;
 	}
 	public override void Close()
 	{
+		getCvars();
 		MenuOpen = !MenuOpen;
 	}
 	public override void Tick()
@@ -113,6 +116,7 @@ public class Options : GUIPanel
 	{
 		if ( input.Pressed( InputButton.Menu ) )
 		{
+			getCvars();
 			Position.x = ( Screen.Width / 2 ) - ( Box.Rect.Width / 2 );
 			Position.y = ( Screen.Height / 2 ) - ( Box.Rect.Height / 2 );
 			MenuOpen = !MenuOpen;
