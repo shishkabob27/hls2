@@ -49,48 +49,11 @@
 	public HLPlayer()
 	{
 
-		loadCvar( To.Single( this ) );
+		loadCvars( To.Single( this ) );
 
 		Inventory = new HLInventory( this );
 	}
-	[ClientRpc]
-	[ConCmd.Client( "hl_loadcvar", Help = "Update the cvars of the caller" )]
-	public void loadCvar()
-	{
-		try
-		{
-			var a = HLPlayer.LoadSettings();
-			HLGame.hl_spray_icon = a.SprayImage;
-			HLGame.hl_spray_colour = a.SprayColour;
-			HLPlayer.hl_pm = a.PlayerModel;
-			HLGame.hl_pm_colour1 = a.PlayerModelColour1;
-			HLGame.hl_pm_colour2 = a.PlayerModelColour2;
 
-			ConsoleSystem.Run( "hl_spray_icon " + a.SprayImage );
-			ConsoleSystem.Run( "hl_spray_colour " + a.SprayColour );
-			ConsoleSystem.Run( "hl_pm " + a.PlayerModel );
-			ConsoleSystem.Run( "hl_pm_colour1 " + a.PlayerModelColour1 );
-			ConsoleSystem.Run( "hl_pm_colour2 " + a.PlayerModelColour2 );
-		}
-		catch { }
-
-	}
-
-	[ClientRpc]
-	[ConCmd.Client( "hl_savecvar", Help = "Update the cvars of the caller" )]
-	public void saveCvar()
-	{
-		var a = new PlayerSettingsData()
-		{
-
-			SprayImage = HLGame.hl_spray_icon,
-			SprayColour = HLGame.hl_spray_colour,
-			PlayerModel = Client.GetClientData( "hl_pm" ),
-			PlayerModelColour1 = HLGame.hl_pm_colour1,
-			PlayerModelColour2 = HLGame.hl_pm_colour2
-		};
-		HLPlayer.SaveSettings( a );
-	}
 
 	public void DoHLPlayerNoclip( Client player )
 	{
