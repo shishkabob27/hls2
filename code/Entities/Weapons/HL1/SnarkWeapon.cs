@@ -21,6 +21,7 @@ partial class SnarkWeapon : HLWeapon
 
         Model = WorldModel;
         AmmoClip = 0;
+        WeaponIsAmmoAmount = 5;
         WeaponIsAmmo = true;
     }
     public override void AttackPrimary()
