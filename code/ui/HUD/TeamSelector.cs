@@ -9,7 +9,7 @@ public class TeamSelector : Panel
 	{
 	}
 
-	public void SelectTeam(string team){
+	public void SelectTeam(int team){
 		var p = Local.Pawn as HLPlayer;
 
 		p.team = team;
