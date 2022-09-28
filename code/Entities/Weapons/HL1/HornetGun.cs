@@ -60,7 +60,6 @@ partial class HornetGun : HLWeapon
 
         var vecSrc = GetFiringPos() + GetFiringRotation().Forward * 16 + GetFiringRotation().Right * 8 + GetFiringRotation().Up * -12;
         ViewModelEntity?.SetAnimParameter( "fire", true );
-        ViewPunch( 0, Rand.Float( -2, 2 ) );
         if ( IsServer )
         {
             var hornet = new Hornet();
@@ -69,6 +68,7 @@ partial class HornetGun : HLWeapon
             hornet.Owner = Owner;
             hornet.Velocity = GetFiringRotation().Forward * 300;
         }
+        ViewPunch( 0, Rand.Float( -2, 2 ) );
     }
 
     public override void AttackSecondary()

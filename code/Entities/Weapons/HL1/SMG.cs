@@ -50,7 +50,6 @@ partial class SMG : HLWeapon
 		// Tell the clients to play the shoot effects
 		//
 		ShootEffects();
-		ViewPunch( 0, Rand.Float( -2, 2 ) );
 
 		PlaySound( "hks" );
 
@@ -58,6 +57,7 @@ partial class SMG : HLWeapon
 		// Shoot the bullets
 		//
 		ShootBullet( 0.1f, 1.5f, 5.0f, 3.0f );
+		ViewPunch( 0, Rand.Float( -2, 2 ) );
 
 	}
 
