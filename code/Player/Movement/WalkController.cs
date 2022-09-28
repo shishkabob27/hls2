@@ -33,8 +33,6 @@ public partial class WalkController : BasePlayerController
     [ConVar.Replicated] public static float sv_walkspeed { get; set; } = 150.0f;
     [ConVar.Replicated] public static float sv_defaultspeed { get; set; } = 320.0f;
 
-    [ConVar.Client] public static float cl_rollspeed { get; set; } = 200.0f;
-    [ConVar.Client] public static float cl_rollangle { get; set; } = 2.0f;
 
     [ConVar.Replicated] public static bool sv_use_sbox_movehelper { get; set; } = true;
     [ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
@@ -130,7 +128,6 @@ public partial class WalkController : BasePlayerController
         base.FrameSimulate();
         EyeRotation = Input.Rotation;
         if ( Client.IsUsingVr ) EyeRotation = Input.VR.Head.Rotation;
-        EyeRotation = EyeRotation.Angles().WithRoll( CalculateRoll( EyeRotation, Velocity, cl_rollangle, cl_rollspeed ) ).ToRotation();
     }
     public virtual void StartGravity()
     {
@@ -465,37 +462,6 @@ public partial class WalkController : BasePlayerController
         StepMove();
         Velocity -= BaseVelocity;
         StayOnGround();
-    }
-    public virtual float CalculateRoll( Rotation angles, Vector3 velocity, float rollangle, float rollspeed )
-    {
-        if ( !HLGame.hl_viewroll ) return 0.0f;
-        float sign;
-        float side;
-        float value;
-        //QAngle a = angles; //.AngleVectors(out var forward, out var right, out var up);
-        //a.AngleVectors(out var forward, out var right, out var up);
-        var forward = angles.Forward;
-        var right = angles.Right;
-        var up = angles.Up;
-
-        side = velocity.Dot( right );
-
-        sign = side < 0 ? -1 : 1;
-
-        side = Math.Abs( side );
-
-        value = rollangle;
-
-        if ( side < rollspeed )
-        {
-            side = side * value / rollspeed;
-        }
-        else
-        {
-            side = value;
-        }
-
-        return side * sign;
     }
 
     public virtual void StepMove()

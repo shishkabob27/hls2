@@ -48,6 +48,8 @@
 
 	[Net]
 	public int team { get; set; } = 1;
+	[Net]
+	public Vector3 punchangle { get; set; } = Vector3.Zero;
 
 	public HLPlayer()
 	{
@@ -392,7 +394,9 @@
 		}
 		else
 		{
+
 			base.FrameSimulate( cl );
+
 		}
 	}
 
@@ -414,6 +418,7 @@
 	{
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 			return;
+		ViewPunchThink();
 		base.Simulate( cl );
 		Forward = Input.Forward;
 		Left = Input.Left;
@@ -482,6 +487,7 @@
 		}
 
 		FallDamageThink();
+
 	}
 	Vector3 prevVel = Vector3.Zero;
 	Vector3 prevVel2 = Vector3.Zero;
@@ -492,17 +498,20 @@
 	const int PLAYER_MIN_BOUNCE_SPEED = 200;
 	const float PLAYER_FALL_PUNCH_THRESHHOLD = (float)350; // won't punch player's screen/make scrape noise unless player falling at least this fast.
 
+	[ConVar.ClientData] public static bool hl_won_fall_damage_sound { get; set; } = false;
+
 	void FallDamageThink()
 	{
 		if ( IsClient ) return;
 		var FallSpeed = -prevVel.z;
 		if ( GroundEntity != null && FallSpeed >= PLAYER_FALL_PUNCH_THRESHHOLD )
 		{
-
+			float fvol = 0;
+			var b = punchangle;
 			if ( FallSpeed > PLAYER_MAX_SAFE_FALL_SPEED )
 			{
-				FallSpeed -= PLAYER_MAX_SAFE_FALL_SPEED;
-				float flFallDamage = FallSpeed * DAMAGE_FOR_FALL_SPEED;
+				var FallSpeed2 = FallSpeed - PLAYER_MAX_SAFE_FALL_SPEED;
+				float flFallDamage = FallSpeed2 * DAMAGE_FOR_FALL_SPEED;
 
 				if ( flFallDamage > Health )
 				{
@@ -511,6 +520,8 @@
 
 				if ( flFallDamage > 0 )
 				{
+					// original hl1 dll had a bug that played these two sounds and the same time so i guess we can have it here if above won cvar is on
+					if ( Client.GetClientData( "hl_won_fall_damage_sound" ).ToBool() ) Sound.FromWorld( "pl_fallpain2", Position );
 					Sound.FromWorld( "pl_fallpain", Position );
 					var a = new DamageInfo
 					{
@@ -518,14 +529,55 @@
 
 					};
 					TakeDamage( a );
-					//punchangle.x = 0;
+					fvol = 1;
+					b.x = 0;
 				}
 			}
+			if ( fvol > 0.0 )
+			{
+				b.z = FallSpeed * 0.013f;   // punch z axis
+
+				if ( b[0] > 8 )
+				{
+					b[0] = 8;
+				}
+			}
+			punchangle = b;
 		}
 		prevVel3 = prevVel2;
 		prevVel2 = prevVel;
 		prevVel = Velocity;
 	}
+	void ViewPunchThink()
+	{
+		float len;
+		//len = punchangle.Length;
+		//Log.Info( "1: " + len );
+		//len -= ( 10.0f + len * 0.5f ) * 0f;
+		//Log.Info( "2: " + len );
+		//len = Math.Max( len, 0.0f );
+		//Log.Info( "3: " + len );
+		punchangle = punchangle.LerpTo( Vector3.Zero, Time.Delta );
+	}
+	float VectorNormalize( Vector3 v )
+	{
+		float length, ilength;
+
+		length = v.x * v.x + v.y * v.y + v.z * v.z;
+		length = (float)Math.Sqrt( length );        // FIXME
+
+		if ( length > 0 )
+		{
+			ilength = 1 / length;
+			v[0] *= ilength;
+			v[1] *= ilength;
+			v[2] *= ilength;
+		}
+
+		return length;
+
+	}
+
 	new public void Deafen( float strength )
 	{
 		//Audio.SetEffect("flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength);
@@ -598,7 +650,9 @@
 
 		setup.FieldOfView += fov;
 
+
 	}
+
 
 	DamageInfo LastDamage;
 
@@ -679,6 +733,11 @@
 				OnKilled();
 			}
 		}
+
+
+		var b = punchangle;
+		b.x = -2;
+		punchangle = b;
 
 		if ( info.Attacker is HLPlayer attacker )
 		{

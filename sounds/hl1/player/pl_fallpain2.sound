@@ -10,7 +10,7 @@
 		Decibels = 70
 		Sounds = 
 		[
-			resource:"sounds/hl1/player/pl_fallpain3.vsnd",
+			resource:"sounds/hl1/player/pl_fallpain2.vsnd",
 		]
 		SelectionMode = "Random"
 		MaximumDistance = 1143.9335
