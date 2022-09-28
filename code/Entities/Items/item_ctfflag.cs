@@ -24,6 +24,8 @@ partial class item_ctfflag : ModelEntity
 		UsePhysicsCollision = true;
 		PhysicsEnabled = false;
 
+		Tags.Add("weapon");
+
 		switch (skin)
 		{
 			case 0: SetMaterialGroup(1); break;
@@ -34,9 +36,10 @@ partial class item_ctfflag : ModelEntity
 
 	public override void StartTouch( Entity other )
 	{
+		base.StartTouch( other );
 		if ( other is not HLPlayer player ) return;
 		if (player.team != goal_no) GiveFlagToPlayer(player);
-		base.StartTouch( other );
+		
 	}
 
 	public void GiveFlagToPlayer(Entity player){
