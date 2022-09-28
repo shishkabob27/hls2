@@ -512,8 +512,7 @@
 			var b = punchangle;
 			if ( FallSpeed > PLAYER_MAX_SAFE_FALL_SPEED )
 			{
-				var FallSpeed2 = FallSpeed - PLAYER_MAX_SAFE_FALL_SPEED;
-				float flFallDamage = FallSpeed2 * DAMAGE_FOR_FALL_SPEED;
+				float flFallDamage = ( FallSpeed - PLAYER_MAX_SAFE_FALL_SPEED ) * DAMAGE_FOR_FALL_SPEED;
 
 				if ( flFallDamage > Health )
 				{
@@ -658,6 +657,10 @@
 
 	}
 
+	const float ARMOUR_RATIO = 0.2f;
+	const float ARMOUR_BONUS = 0.5f;
+
+
 
 	DamageInfo LastDamage;
 
@@ -709,19 +712,37 @@
 		LastAttacker = info.Attacker;
 		LastAttackerWeapon = info.Weapon;
 
-		if ( IsServer && Armour > 0 )
-		{
-			Armour -= info.Damage;
+		var flBonus = ARMOUR_BONUS;
+		var flRatio = ARMOUR_RATIO;
 
-			if ( Armour < 0 )
+		if ( info.Flags.HasFlag( DamageFlags.Blast ) && HLGame.GameIsMultiplayer() )
+		{
+			// blasts damage armor more.
+			flBonus *= 2;
+		}
+
+
+		// Armor. 
+		if ( !info.Flags.HasFlag( DamageFlags.Fall ) && !info.Flags.HasFlag( DamageFlags.Drown ) )// armor doesn't protect against fall or drown damage!
+		{
+			float flNew = info.Damage * flRatio;
+
+			float flArmor;
+
+			flArmor = ( info.Damage - flNew ) * flBonus;
+
+			// Does this use more armour than we have?
+			if ( flArmor > Armour )
 			{
-				info.Damage = Armour * -1;
+				flArmor = Armour;
+				flArmor *= ( 1 / flBonus );
+				flNew = info.Damage - flArmor;
 				Armour = 0;
 			}
 			else
-			{
-				info.Damage = 0;
-			}
+				Armour -= flArmor;
+
+			info.Damage = flNew;
 		}
 
 		if ( info.Flags.HasFlag( DamageFlags.Blast ) )
