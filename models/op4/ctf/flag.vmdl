@@ -180,6 +180,21 @@
 				]
 				default_root_bone_name = ""
 			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeBox"
+						parent_bone = ""
+						surface_prop = "default"
+						collision_tags = "solid"
+						origin = [ -2.54423, 13.215903, 25.310955 ]
+						angles = [ 0.0, 0.0, 0.0 ]
+						dimensions = [ 27.069653, 54.731403, 79.29879 ]
+					},
+				]
+			},
 		]
 		model_archetype = ""
 		primary_associated_entity = ""

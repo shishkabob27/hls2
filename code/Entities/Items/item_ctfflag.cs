@@ -9,6 +9,12 @@ partial class item_ctfflag : ModelEntity
 	[Property, Title("Team")]
 	public int goal_no {get; set;} = 1;
 
+	public bool Carried = false;
+
+	public bool Loose = false;
+
+	public TouchTrigger PickupTrigger { get; protected set; }
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -16,6 +22,7 @@ partial class item_ctfflag : ModelEntity
 		Model = Model.Load( "models/op4/ctf/flag.vmdl" );
 
 		UsePhysicsCollision = true;
+		PhysicsEnabled = false;
 
 		switch (skin)
 		{
@@ -27,6 +34,12 @@ partial class item_ctfflag : ModelEntity
 
 	public override void StartTouch( Entity other )
 	{
+		if ( other is not HLPlayer player ) return;
+		if (player.team != goal_no) GiveFlagToPlayer(player);
 		base.StartTouch( other );
+	}
+
+	public void GiveFlagToPlayer(Entity player){
+		Delete(); //test
 	}
 }
