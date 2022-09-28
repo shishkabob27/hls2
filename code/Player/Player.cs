@@ -513,6 +513,11 @@
 			{
 				float flFallDamage = ( FallSpeed - PLAYER_MAX_SAFE_FALL_SPEED ) * DAMAGE_FOR_FALL_SPEED;
 
+				if ( HLGame.GameIsMultiplayer() && mp_falldamage == 0 )
+				{
+					flFallDamage = 10;
+				}
+
 				if ( flFallDamage > Health )
 				{
 					Sound.FromWorld( "bodysplat", Position );
@@ -528,10 +533,6 @@
 						Damage = flFallDamage,
 
 					};
-					if ( HLGame.GameIsMultiplayer() && mp_falldamage == 0 )
-					{
-						a.Damage = 10;
-					}
 					TakeDamage( a );
 					fvol = 1;
 					b.x = 0;
