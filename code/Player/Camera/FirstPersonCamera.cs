@@ -33,6 +33,14 @@
         Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + pawn.punchangle.z ).ToRotation();
         Rotation = Rotation.Angles().WithPitch( Rotation.Angles().pitch + pawn.punchangle.x ).ToRotation();
         Rotation = Rotation.Angles().WithYaw( Rotation.Angles().yaw + pawn.punchangle.y ).ToRotation();
+
+
+        Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + pawn.punchanglecl.z ).ToRotation();
+        Rotation = Rotation.Angles().WithPitch( Rotation.Angles().pitch + pawn.punchanglecl.x ).ToRotation();
+        Rotation = Rotation.Angles().WithYaw( Rotation.Angles().yaw + pawn.punchanglecl.y ).ToRotation();
+
+
+        pawn.punchanglecl = pawn.punchanglecl.LerpTo( Vector3.Zero, Time.Delta * 10 );
         //Log.Info( pawn.punchangle );
 
         lastPos = Position;

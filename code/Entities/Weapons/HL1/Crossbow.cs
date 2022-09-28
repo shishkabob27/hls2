@@ -31,6 +31,7 @@ partial class Crossbow : HLWeapon
 
 	public override void AttackPrimary()
 	{
+		if ( Owner is not HLPlayer player ) return;
 		if ( !TakeAmmo( 1 ) )
 		{
 			DryFire();
@@ -52,6 +53,8 @@ partial class Crossbow : HLWeapon
 			ShootBullet( 0.0f, 1, 50.0f, 1.0f, 1, false );
 			return;
 		}
+
+		player.punchanglecl.x = -2;
 
 		if ( IsServer )
 		{

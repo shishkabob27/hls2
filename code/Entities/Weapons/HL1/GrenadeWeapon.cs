@@ -65,7 +65,7 @@ partial class GrenadeWeapon : HLWeapon
 			{
 
 
-				Vector3 angThrow = new Vector3( player.EyeRotation.Angles().pitch, player.EyeRotation.Angles().yaw, player.EyeRotation.Angles().roll ) + 0; // todo punchangle
+				Vector3 angThrow = new Vector3( player.EyeRotation.Angles().pitch, player.EyeRotation.Angles().yaw, player.EyeRotation.Angles().roll ) + owner.punchangle; // todo punchangle
 
 				if ( angThrow.x < 0 )
 					angThrow.x = -10 + angThrow.x * ( ( 90 - 10 ) / 90.0f );

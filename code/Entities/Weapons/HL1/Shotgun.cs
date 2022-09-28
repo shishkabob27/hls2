@@ -40,6 +40,7 @@ partial class Shotgun : HLWeapon
 
 	public override void AttackPrimary()
 	{
+		if ( Owner is not HLPlayer player ) return;
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
@@ -61,6 +62,7 @@ partial class Shotgun : HLWeapon
 		//
 		ShootEffects();
 		PlaySound( "shotgun_shot" );
+		player.punchanglecl.x = -5;
 
 		//
 		// Shoot the bullets
@@ -70,6 +72,7 @@ partial class Shotgun : HLWeapon
 
 	public override void AttackSecondary()
 	{
+		if ( Owner is not HLPlayer player ) return;
 		TimeSincePrimaryAttack = -0.5f;
 		TimeSinceSecondaryAttack = -0.5f;
 
@@ -87,6 +90,7 @@ partial class Shotgun : HLWeapon
 		DoubleShootEffects();
 		PlaySound( "shotgun_shot_double" );
 
+		player.punchanglecl.x = -10;
 		//
 		// Shoot the bullets
 		//

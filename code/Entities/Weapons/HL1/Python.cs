@@ -34,6 +34,7 @@ partial class Python : HLWeapon
 
 	public override void AttackPrimary()
 	{
+		if ( Owner is not HLPlayer player ) return;
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
@@ -53,6 +54,7 @@ partial class Python : HLWeapon
 		//
 		ShootEffects();
 		PlaySound( "357_shot" );
+		player.punchanglecl.x = -10;
 
 		//
 		// Shoot the bullets

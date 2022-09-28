@@ -30,6 +30,7 @@ partial class SMG : HLWeapon
 
 	public override void AttackPrimary()
 	{
+		if ( Owner is not HLPlayer player ) return;
 		TimeSincePrimaryAttack = 0;
 
 		if ( !TakeAmmo( 1 ) )
@@ -49,6 +50,8 @@ partial class SMG : HLWeapon
 		// Tell the clients to play the shoot effects
 		//
 		ShootEffects();
+		player.punchanglecl.x = Rand.Float( -2, 2 );
+
 		PlaySound( "hks" );
 
 		//
@@ -77,6 +80,8 @@ partial class SMG : HLWeapon
 		PlaySound( "glauncher" );
 
 		Rand.SetSeed( Time.Tick );
+
+		player.punchanglecl.x = -10;
 
 		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 		ViewModelEntity?.SetAnimParameter( "fire_grenade", true );

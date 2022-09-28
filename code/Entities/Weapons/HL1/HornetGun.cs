@@ -60,6 +60,7 @@ partial class HornetGun : HLWeapon
 
         var vecSrc = GetFiringPos() + GetFiringRotation().Forward * 16 + GetFiringRotation().Right * 8 + GetFiringRotation().Up * -12;
         ViewModelEntity?.SetAnimParameter( "fire", true );
+        player.punchanglecl.x = Rand.Float( -2, 2 );
         if ( IsServer )
         {
             var hornet = new Hornet();

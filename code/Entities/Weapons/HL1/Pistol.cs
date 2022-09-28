@@ -32,6 +32,7 @@ partial class Pistol : HLWeapon
 
 	public override void AttackPrimary()
 	{
+		if ( Owner is not HLPlayer player ) return;
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
 
@@ -52,7 +53,7 @@ partial class Pistol : HLWeapon
 		//
 		ShootEffects();
 		PlaySound( "pistol_shot" );
-
+		player.punchanglecl.x = -2;
 		//
 		// Shoot the bullets
 		//
@@ -63,6 +64,7 @@ partial class Pistol : HLWeapon
 
 	public override void AttackSecondary()
 	{
+		if ( Owner is not HLPlayer player ) return;
 		base.AttackSecondary();
 
 		TimeSincePrimaryAttack = 0;
@@ -80,6 +82,7 @@ partial class Pistol : HLWeapon
 		ShootEffects();
 		PlaySound( "pistol_shot" );
 
+		player.punchanglecl.x = -2;
 		//
 		// Shoot the bullets
 		//

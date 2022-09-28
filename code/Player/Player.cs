@@ -51,6 +51,8 @@
 	[Net]
 	public Vector3 punchangle { get; set; } = Vector3.Zero;
 
+	public Vector3 punchanglecl = Vector3.Zero;
+
 	public HLPlayer()
 	{
 
@@ -550,7 +552,7 @@
 	}
 	void ViewPunchThink()
 	{
-		float len;
+		//float len;
 		//len = punchangle.Length;
 		//Log.Info( "1: " + len );
 		//len -= ( 10.0f + len * 0.5f ) * 0f;
