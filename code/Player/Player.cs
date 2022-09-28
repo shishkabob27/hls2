@@ -499,6 +499,7 @@
 	const float PLAYER_FALL_PUNCH_THRESHHOLD = (float)350; // won't punch player's screen/make scrape noise unless player falling at least this fast.
 
 	[ConVar.ClientData] public static bool hl_won_fall_damage_sound { get; set; } = false;
+	[ConVar.Replicated] public static int mp_falldamage { get; set; } = 0;
 
 	void FallDamageThink()
 	{
@@ -527,6 +528,10 @@
 						Damage = flFallDamage,
 
 					};
+					if ( HLGame.GameIsMultiplayer() && mp_falldamage == 0 )
+					{
+						a.Damage = 10;
+					}
 					TakeDamage( a );
 					fvol = 1;
 					b.x = 0;
