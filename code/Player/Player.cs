@@ -565,7 +565,7 @@
 		//Log.Info( "3: " + len );
 		//punchangle = punchangle.LerpTo( Vector3.Zero, Time.Delta );
 
-		punchangle = punchangle.Approach( 0, Time.Delta * 10 );
+		punchangle = punchangle.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
 	}
 	/*
 	float VectorNormalize( Vector3 v )

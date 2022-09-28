@@ -40,7 +40,7 @@
         Rotation = Rotation.Angles().WithYaw( Rotation.Angles().yaw + pawn.punchanglecl.y ).ToRotation();
 
 
-        pawn.punchanglecl = pawn.punchanglecl.Approach( 0, Time.Delta * 10 );
+        pawn.punchanglecl = pawn.punchanglecl.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
         //Log.Info( pawn.punchangle );
 
         lastPos = Position;
