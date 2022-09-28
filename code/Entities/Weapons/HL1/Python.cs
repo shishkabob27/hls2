@@ -54,7 +54,7 @@ partial class Python : HLWeapon
 		//
 		ShootEffects();
 		PlaySound( "357_shot" );
-		player.punchanglecl.x = -10;
+		ViewPunch( 0, -10 );
 
 		//
 		// Shoot the bullets

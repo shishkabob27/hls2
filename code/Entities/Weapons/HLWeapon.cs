@@ -421,7 +421,10 @@
 	public virtual Rotation GetFiringRotation()
 	{
 		if ( Client.IsUsingVr ) return (Rotation)VRWeaponModel.GetAttachment( "muzzle" )?.Rotation;
-		return Owner.EyeRotation;
+
+		if ( Owner is not HLPlayer player ) return Owner.EyeRotation;
+		var rot = player.CameraMode.Rotation;
+		return rot;
 	}
 	public IEnumerable<TraceResult> TraceBullet( Vector3 start, Vector3 end, float radius = 2.0f )
 	{
@@ -448,7 +451,13 @@
 		// Another trace, bullet going through thin material, penetrating water surface?
 		//
 	}
-
+	public void ViewPunch( int axis, float amount )
+	{
+		if ( Owner is not HLPlayer player ) return;
+		var a = player.punchangle;
+		a[axis] = amount;
+		player.punchangle = a;
+	}
 
 	/// <summary>
 	/// Shoot a single bullet

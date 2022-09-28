@@ -62,7 +62,7 @@ partial class Shotgun : HLWeapon
 		//
 		ShootEffects();
 		PlaySound( "shotgun_shot" );
-		player.punchanglecl.x = -5;
+		ViewPunch( 0, -5 );
 
 		//
 		// Shoot the bullets
@@ -90,7 +90,7 @@ partial class Shotgun : HLWeapon
 		DoubleShootEffects();
 		PlaySound( "shotgun_shot_double" );
 
-		player.punchanglecl.x = -10;
+		ViewPunch( 0, -10 );
 		//
 		// Shoot the bullets
 		//

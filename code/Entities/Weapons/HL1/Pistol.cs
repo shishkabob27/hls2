@@ -82,7 +82,7 @@ partial class Pistol : HLWeapon
 		ShootEffects();
 		PlaySound( "pistol_shot" );
 
-		player.punchanglecl.x = -2;
+		ViewPunch( 0, -2 );
 		//
 		// Shoot the bullets
 		//

@@ -130,7 +130,7 @@ partial class Gauss : HLWeapon
 
         Rand.SetSeed( Time.Tick ); // same random seed across client and server
         PlayAftershock = Time.Now + Rand.Float( 0.3f, 0.8f );
-        player.punchanglecl.x = -2;
+        ViewPunch( 0, -2 );
 
     }
 

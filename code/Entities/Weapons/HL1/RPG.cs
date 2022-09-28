@@ -39,7 +39,7 @@ partial class RPG : HLWeapon
 
 		ShootEffects();
 		PlaySound( "rocketfire1" );
-		player.punchanglecl.x = -5;
+		ViewPunch( 0, -5 );
 
 		// TODO - if zoomed in then instant hit, no travel, 120 damage
 

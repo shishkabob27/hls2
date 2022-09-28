@@ -54,7 +54,7 @@ partial class Crossbow : HLWeapon
 			return;
 		}
 
-		player.punchanglecl.x = -2;
+		ViewPunch( 0, -2 );
 
 		if ( IsServer )
 		{
@@ -71,9 +71,9 @@ partial class Crossbow : HLWeapon
 		base.Simulate( cl );
 
 		if ( Input.Pressed( InputButton.SecondaryAttack ) )
-        {
-            Zoomed = !Zoomed;
-        }
+		{
+			Zoomed = !Zoomed;
+		}
 	}
 
 	public override void PostCameraSetup( ref CameraSetup camSetup )
