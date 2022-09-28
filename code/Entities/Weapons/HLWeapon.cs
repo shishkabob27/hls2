@@ -143,6 +143,7 @@
 
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
 		EnableTouch = false;
+		PhysicsEnabled = false;
 		Tags.Add( "weapon" );
 
 		PickupTrigger = new TouchTrigger();
