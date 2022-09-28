@@ -70,7 +70,10 @@ partial class Crossbow : HLWeapon
 	{
 		base.Simulate( cl );
 
-		Zoomed = Input.Down( InputButton.SecondaryAttack );
+		if ( Input.Pressed( InputButton.SecondaryAttack ) )
+        {
+            Zoomed = !Zoomed;
+        }
 	}
 
 	public override void PostCameraSetup( ref CameraSetup camSetup )
