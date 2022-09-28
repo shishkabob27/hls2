@@ -4,7 +4,7 @@
 partial class SniperRifle : HLWeapon
 {
 	public override string ViewModelPath => "models/op4/weapons/view/v_m40a1.vmdl";
-    public override float PrimaryRate => 1.33f;
+    public override float PrimaryRate => 2f;
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 2.5f;
     public override AmmoType AmmoType => AmmoType.Sniper;
