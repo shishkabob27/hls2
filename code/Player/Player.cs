@@ -345,13 +345,11 @@
 
 		Inventory.DeleteContents();
 
-		if ( LastDamage.Flags.HasFlag( DamageFlags.Blast ) )
-		{
-			using ( Prediction.Off() )
-			{
-				HLCombat.CreateGibs( CollisionWorldSpaceCenter, LastDamage.Position, Health, this.CollisionBounds );
 
-			}
+		if ( Health < -20 )
+		{
+			HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds, 0 );
+
 		}
 		else
 		{
@@ -642,7 +640,7 @@
 	private void AddCameraEffects( ref CameraSetup setup )
 	{
 		if ( Client.IsUsingVr ) return;
-		if ( Health == 0 ) return;
+		if ( Health <= 0 ) return;
 		var speed = Velocity.WithZ( 0 ).Length.LerpInverse( 0, 2 );
 		var up = setup.Rotation.Up;
 
@@ -755,7 +753,7 @@
 			Health -= info.Damage;
 			if ( Health <= 0 )
 			{
-				Health = 0;
+				//Health = 0;
 				OnKilled();
 			}
 		}
