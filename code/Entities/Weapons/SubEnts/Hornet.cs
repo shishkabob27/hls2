@@ -193,6 +193,11 @@ partial class Hornet : NPC, ICombat
 
 		if ( tr.Hit )
 		{
+			if ( tr.Entity.Tags.Has( "trigger" ) )
+			{
+				Position = end;
+				return;
+			}
 			if ( tr.Entity == Owner )
 			{
 				Position = end;
