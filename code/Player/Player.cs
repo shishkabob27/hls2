@@ -334,6 +334,7 @@
 		base.OnKilled();
 		DeleteHands();
 		RemoveFlashlight();
+		HasHEV = false;
 		if ( HLGame.GameIsMultiplayer() )
 		{
 			var coffin = new Coffin();
