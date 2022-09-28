@@ -6,6 +6,9 @@ partial class item_ctfflag : ModelEntity
 	[Property]
 	public int skin {get; set;} = 1;
 
+	[Property, Title("Team")]
+	public int goal_no {get; set;} = 1;
+
 	public override void Spawn()
 	{
 		base.Spawn();
