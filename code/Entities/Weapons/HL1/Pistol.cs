@@ -8,8 +8,8 @@ partial class Pistol : HLWeapon
 	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";
 
 	public override int ClipSize => 17;
-	public override float PrimaryRate => 3.3f;
-	public override float SecondaryRate => 5f;
+	public override float PrimaryRate => 0.3f;
+	public override float SecondaryRate => 0.2f;
 	public override float ReloadTime => 1.4f;
 
 	public override string InventoryIcon => "/ui/weapons/weapon_pistol.png";
@@ -53,13 +53,13 @@ partial class Pistol : HLWeapon
 		//
 		ShootEffects();
 		PlaySound( "pistol_shot" );
-		player.punchanglecl.x = -2;
 		//
 		// Shoot the bullets
 		//
 		ShootBullet( 0.05f, 1, 8.0f, 2.0f );
 
 		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
+		ViewPunch( 0, -2 );
 	}
 
 	public override void AttackSecondary()
@@ -82,13 +82,13 @@ partial class Pistol : HLWeapon
 		ShootEffects();
 		PlaySound( "pistol_shot" );
 
-		ViewPunch( 0, -2 );
 		//
 		// Shoot the bullets
 		//
 		ShootBullet( 0.4f, 1.5f, 8.0f, 3.0f );
 
 		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
+		ViewPunch( 0, -2 );
 	}
 
 }

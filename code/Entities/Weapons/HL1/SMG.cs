@@ -9,7 +9,7 @@ partial class SMG : HLWeapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/mp5.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_mp5.vmdl";
 
-	public override float PrimaryRate => 10.0f;
+	public override float PrimaryRate => 0.1f;
 	public override float SecondaryRate => 1.0f;
 	public override int ClipSize => 50;
 	public override float ReloadTime => 1.5f;

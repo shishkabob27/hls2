@@ -4,17 +4,17 @@
 partial class SniperRifle : HLWeapon
 {
 	public override string ViewModelPath => "models/op4/weapons/view/v_m40a1.vmdl";
-    public override float PrimaryRate => 1.33f;
+	public override float PrimaryRate => 0.75f;
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 2.5f;
-    public override AmmoType AmmoType => AmmoType.Sniper;
+	public override AmmoType AmmoType => AmmoType.Sniper;
 	public override int ClipSize => 5;
-    public override int Bucket => 5;
-    public override int BucketWeight => 3;
-    public override string InventoryIcon => "/ui/op4/weapons/weapon_sniperrifle.png";
-    public override string InventoryIconSelected => "/ui/op4/weapons/weapon_sniperrifle_selected.png";
-    
-    [Net, Predicted]
+	public override int Bucket => 5;
+	public override int BucketWeight => 3;
+	public override string InventoryIcon => "/ui/op4/weapons/weapon_sniperrifle.png";
+	public override string InventoryIconSelected => "/ui/op4/weapons/weapon_sniperrifle_selected.png";
+
+	[Net, Predicted]
 	public bool Zoomed { get; set; } = false;
 
 	private float? LastFov;
@@ -25,7 +25,7 @@ partial class SniperRifle : HLWeapon
 		base.Spawn();
 
 		AmmoClip = 5;
-		Model = Model.Load("models/op4/weapons/world/m40a1.vmdl");
+		Model = Model.Load( "models/op4/weapons/world/m40a1.vmdl" );
 	}
 
 	public override void AttackPrimary()
@@ -47,7 +47,7 @@ partial class SniperRifle : HLWeapon
 
 
 		ShootBullet( 0.0f, 1f, 100.0f, 2.0f );
-	
+
 
 		player.punchanglecl.x = -2;
 
@@ -58,9 +58,9 @@ partial class SniperRifle : HLWeapon
 		base.Simulate( cl );
 
 		if ( Input.Pressed( InputButton.SecondaryAttack ) )
-        {
-            Zoomed = !Zoomed;
-        }
+		{
+			Zoomed = !Zoomed;
+		}
 		//Zoomed = Input.Down( InputButton.SecondaryAttack );
 	}
 

@@ -14,8 +14,8 @@ partial class HornetGun : HLWeapon
     public override string InventoryIcon => "/ui/weapons/weapon_hornetgun.png";
     public override string InventoryIconSelected => "/ui/weapons/weapon_hornetgun_selected.png";
     public override int ClipSize => -1;
-    public override float PrimaryRate => 4;
-    public override float SecondaryRate => 9.5f;
+    public override float PrimaryRate => 0.25f;
+    public override float SecondaryRate => 0.1f;
 
     int tickammoregen = 0;
     int FirePhase = 0;

@@ -6,8 +6,8 @@ partial class TripmineWeapon : HLWeapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/tripmine.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_tripmine.vmdl";
 
-	public override float PrimaryRate => 100.0f;
-	public override float SecondaryRate => 100.0f;
+	public override float PrimaryRate => 0.3f;
+	public override float SecondaryRate => 0.3f;
 	public override float ReloadTime => 0.0f;
 	public override AmmoType AmmoType => AmmoType.Tripmine;
 	public override int ClipSize => -1;
@@ -73,7 +73,7 @@ partial class TripmineWeapon : HLWeapon
 				Owner = Owner
 			};
 
-			_ = grenade.Arm( 1.0f );
+			_ = grenade.Arm( 2.5f );
 		}
 
 		if ( IsServer && player.AmmoCount( AmmoType.Tripmine ) == 0 )

@@ -10,8 +10,8 @@ partial class SatchelWeapon : HLWeapon
 
     public override int Bucket => 4;
     public override int BucketWeight => 2;
-    public override float PrimaryRate => 3.0f;
-    public override float SecondaryRate => 3.0f;
+    public override float PrimaryRate => 0.5f;
+    public override float SecondaryRate => 0.5f;
     public override AmmoType AmmoType => AmmoType.Satchel;
     public override string AmmoIcon => "ui/ammo10.png";
     public override string InventoryIcon => "/ui/weapons/weapon_satchel.png";

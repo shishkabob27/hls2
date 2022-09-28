@@ -5,8 +5,8 @@
 
 	[Net, Predicted]
 	public AnimatedEntity VRWeaponModel { get; set; }
-	public virtual float PrimaryRate => 5.0f;
-	public virtual float SecondaryRate => 15.0f;
+	public virtual float PrimaryRate => 0.2f;
+	public virtual float SecondaryRate => 0.05f;
 
 	public virtual AmmoType AmmoType => AmmoType.Pistol;
 	public virtual AmmoType AltAmmoType => AmmoType.SMGGrenade;
@@ -327,7 +327,7 @@
 		var rate = PrimaryRate;
 		if ( rate <= 0 ) return true;
 
-		return TimeSincePrimaryAttack > ( 1 / rate );
+		return TimeSincePrimaryAttack > rate;
 	}
 
 	public virtual void AttackPrimary()
@@ -351,7 +351,7 @@
 		var rate = SecondaryRate;
 		if ( rate <= 0 ) return true;
 
-		return TimeSinceSecondaryAttack > ( 1 / rate );
+		return TimeSinceSecondaryAttack > rate;
 	}
 
 	public virtual void AttackSecondary()
@@ -423,7 +423,10 @@
 		if ( Client.IsUsingVr ) return (Rotation)VRWeaponModel.GetAttachment( "muzzle" )?.Rotation;
 
 		if ( Owner is not HLPlayer player ) return Owner.EyeRotation;
-		var rot = player.CameraMode.Rotation;
+		var rot = player.EyeRotation;
+		rot = rot.Angles().WithRoll( rot.Angles().roll + player.punchangle.z ).ToRotation();
+		rot = rot.Angles().WithPitch( rot.Angles().pitch + player.punchangle.x ).ToRotation();
+		rot = rot.Angles().WithYaw( rot.Angles().yaw + player.punchangle.y ).ToRotation();
 		return rot;
 	}
 	public IEnumerable<TraceResult> TraceBullet( Vector3 start, Vector3 end, float radius = 2.0f )

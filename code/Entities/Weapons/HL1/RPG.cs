@@ -6,7 +6,7 @@ partial class RPG : HLWeapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/rpg.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_rpg.vmdl";
 
-	public override float PrimaryRate => 1.333f;
+	public override float PrimaryRate => 1.5f;
 	public override int Bucket => 3;
 	public override int BucketWeight => 1;
 	public override AmmoType AmmoType => AmmoType.RPG;
@@ -39,7 +39,6 @@ partial class RPG : HLWeapon
 
 		ShootEffects();
 		PlaySound( "rocketfire1" );
-		ViewPunch( 0, -5 );
 
 		// TODO - if zoomed in then instant hit, no travel, 120 damage
 
@@ -57,6 +56,7 @@ partial class RPG : HLWeapon
 
 			player.SwitchToBestWeapon();
 		}
+		ViewPunch( 0, -5 );
 	}
 
 	public override void Simulate( Client cl )

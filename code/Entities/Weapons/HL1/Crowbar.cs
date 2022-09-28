@@ -6,7 +6,7 @@ partial class Crowbar : HLWeapon
 	public static Model WorldModel = Model.Load( "models/hl1/weapons/world/crowbar.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_crowbar.vmdl";
 
-	public override float PrimaryRate => 2.0f;
+	public override float PrimaryRate => 0.5f;
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 3.0f;
 	public override AmmoType AmmoType => AmmoType.None;
@@ -31,8 +31,6 @@ partial class Crowbar : HLWeapon
 	Entity hitEntity;
 	public override void AttackPrimary()
 	{
-		TimeSincePrimaryAttack = 0;
-		TimeSinceSecondaryAttack = 0;
 
 		// woosh sound
 		// screen shake
@@ -86,11 +84,12 @@ partial class Crowbar : HLWeapon
 		if ( !didHit )
 		{
 			PlaySound( "sounds/hl1/weapons/cbar_miss.sound" );
+			TimeSincePrimaryAttack = 0;
 		}
 		else
 		{
+			TimeSincePrimaryAttack = 0.25f;
 			PlaySound( "sounds/hl1/weapons/cbar_miss.sound" );
-			TimeSincePrimaryAttack = 0.26f;
 			ViewModelEntity?.SetAnimParameter( "attack_has_hit", true );
 
 			if ( hitEntity != this && hitEntity is NPC && IsServer )

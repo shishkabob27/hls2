@@ -7,8 +7,8 @@ partial class Python : HLWeapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/python.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_python.vmdl";
 
-	public override float PrimaryRate => 1.5f;
-	public override float SecondaryRate => 1.0f;
+	public override float PrimaryRate => 0.75f;
+	public override float SecondaryRate => 0.5f;
 	public override float ReloadTime => 2.4f;
 	public override int ClipSize => 6;
 	public override AmmoType AmmoType => AmmoType.Python;
@@ -54,12 +54,12 @@ partial class Python : HLWeapon
 		//
 		ShootEffects();
 		PlaySound( "357_shot" );
-		ViewPunch( 0, -10 );
 
 		//
 		// Shoot the bullets
 		//
 		ShootBullet( 0.01f, 1.5f, 40.0f, 2.0f );
+		ViewPunch( 0, -10 );
 	}
 	[ClientRpc]
 	protected override void ShootEffectsRPC()

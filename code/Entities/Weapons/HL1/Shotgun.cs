@@ -5,8 +5,8 @@ partial class Shotgun : HLWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/shotgun.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_shotgun.vmdl";
-	public override float PrimaryRate => 1;
-	public override float SecondaryRate => 1;
+	public override float PrimaryRate => 0.75f;
+	public override float SecondaryRate => 1.5f;
 	public override AmmoType AmmoType => AmmoType.Buckshot;
 	public override int ClipSize => 8;
 	public override float ReloadTime => 0.5f;
@@ -62,19 +62,19 @@ partial class Shotgun : HLWeapon
 		//
 		ShootEffects();
 		PlaySound( "shotgun_shot" );
-		ViewPunch( 0, -5 );
 
 		//
 		// Shoot the bullets
 		//
 		ShootBullet( 0.2f, 0.3f, 20.0f, 2.0f, 4 );
+		ViewPunch( 0, -5 );
 	}
 
 	public override void AttackSecondary()
 	{
 		if ( Owner is not HLPlayer player ) return;
-		TimeSincePrimaryAttack = -0.5f;
-		TimeSinceSecondaryAttack = -0.5f;
+		TimeSincePrimaryAttack = -1.5f + PrimaryRate;
+		TimeSinceSecondaryAttack = 0f;
 
 		if ( !TakeAmmo( 2 ) )
 		{
@@ -90,11 +90,11 @@ partial class Shotgun : HLWeapon
 		DoubleShootEffects();
 		PlaySound( "shotgun_shot_double" );
 
-		ViewPunch( 0, -10 );
 		//
 		// Shoot the bullets
 		//
 		ShootBullet( 0.4f, 0.3f, 20.0f, 2.0f, 8 );
+		ViewPunch( 0, -10 );
 	}
 
 	[ClientRpc]
