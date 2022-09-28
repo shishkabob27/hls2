@@ -89,6 +89,8 @@
 			case AmmoType.Tripmine: return 5;
 			case AmmoType.Snark: return 15;
 			case AmmoType.Hornet: return 8;
+
+			case AmmoType.Sniper: return 15;
 		}
 
 		return 0;
@@ -109,5 +111,7 @@ public enum AmmoType
 	Snark,
 	RPG,
 	Uranium,
-	Hornet
+	Hornet,
+	//Opposing Force ammo types
+	Sniper
 }
