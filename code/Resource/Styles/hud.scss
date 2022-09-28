@@ -367,6 +367,15 @@ FlagUI{
             margin-right: 32px;
             }
         }
+
+        .of
+        {
+            > Text
+            {
+                color: green;
+            }
+            
+        }
     }
 
     Text{
