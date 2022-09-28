@@ -54,7 +54,7 @@
 	[Net, Predicted]
 	public TimeSince TimeSinceDeployed { get; set; }
 
-	public PickupTrigger PickupTrigger { get; protected set; }
+	public TouchTrigger PickupTrigger { get; protected set; }
 
 	public virtual void OnPickup()
 	{
@@ -142,8 +142,12 @@
 		base.Spawn();
 
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
-		PhysicsEnabled = false;
+		EnableTouch = false;
 		Tags.Add( "weapon" );
+
+		PickupTrigger = new TouchTrigger();
+		PickupTrigger.Parent = this;
+		PickupTrigger.Position = Position;
 	}
 
 	public void Reload()
@@ -632,5 +636,25 @@
 		if ( AmmoClip > 0 ) return true;
 		if ( AmmoType == AmmoType.None ) return true;
 		return AvailableAmmo() > 0;
+	}
+
+	public override void OnCarryStart( Entity carrier )
+	{
+		base.OnCarryStart( carrier );
+
+		if ( PickupTrigger.IsValid() )
+		{
+			PickupTrigger.EnableTouch = false;
+		}
+	}
+
+	public override void OnCarryDrop( Entity dropper )
+	{
+		base.OnCarryDrop( dropper );
+
+		if ( PickupTrigger.IsValid() )
+		{
+			PickupTrigger.EnableTouch = true;
+		}
 	}
 }

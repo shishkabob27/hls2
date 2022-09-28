@@ -503,7 +503,21 @@
 	{
 		if ( timeSinceDropped < 1 ) return;
 
-		base.StartTouch( other );
+		if ( IsClient ) return;
+
+		if ( other is TouchTrigger )
+		{
+			StartTouch( other.Parent );
+			return;
+		}
+
+		if ( other is PickupTrigger )
+		{
+			StartTouch( other.Parent );
+			return;
+		}
+
+		Inventory?.Add( other, Inventory.Active == null );
 	}
 
 	public override void PostCameraSetup( ref CameraSetup setup )
