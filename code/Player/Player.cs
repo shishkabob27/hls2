@@ -480,8 +480,37 @@
 		{
 			SwitchToBestWeapon();
 		}
-	}
+		FallDamageThink();
 
+	}
+	const int PLAYER_FATAL_FALL_SPEED = 1024;// approx 60 feet
+	const int PLAYER_MAX_SAFE_FALL_SPEED = 580;// approx 20 feet
+	const float DAMAGE_FOR_FALL_SPEED = (float)100 / ( PLAYER_FATAL_FALL_SPEED - PLAYER_MAX_SAFE_FALL_SPEED );// damage per unit per second.
+	const int PLAYER_MIN_BOUNCE_SPEED = 200;
+	const float PLAYER_FALL_PUNCH_THRESHHOLD = (float)350; // won't punch player's screen/make scrape noise unless player falling at least this fast.
+
+	void FallDamageThink()
+	{
+		if ( GroundEntity != null && Velocity.z >= PLAYER_FALL_PUNCH_THRESHHOLD )
+		{
+			float flFallDamage = Velocity.z * DAMAGE_FOR_FALL_SPEED;
+			if ( flFallDamage > Health )
+			{
+				Sound.FromWorld( "bodysplat", Position );
+			}
+
+			if ( flFallDamage > 0 )
+			{
+				var a = new DamageInfo
+				{
+					Damage = flFallDamage,
+
+				};
+				TakeDamage( a );
+				//punchangle.x = 0;
+			}
+		}
+	}
 	new public void Deafen( float strength )
 	{
 		//Audio.SetEffect("flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength);
