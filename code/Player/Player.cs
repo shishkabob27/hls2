@@ -559,8 +559,11 @@
 		//Log.Info( "2: " + len );
 		//len = Math.Max( len, 0.0f );
 		//Log.Info( "3: " + len );
-		punchangle = punchangle.LerpTo( Vector3.Zero, Time.Delta );
+		//punchangle = punchangle.LerpTo( Vector3.Zero, Time.Delta );
+
+		punchangle = punchangle.Approach( 0, Time.Delta * 10 );
 	}
+	/*
 	float VectorNormalize( Vector3 v )
 	{
 		float length, ilength;
@@ -579,7 +582,7 @@
 		return length;
 
 	}
-
+	*/
 	new public void Deafen( float strength )
 	{
 		//Audio.SetEffect("flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength);

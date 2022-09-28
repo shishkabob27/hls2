@@ -40,7 +40,7 @@
         Rotation = Rotation.Angles().WithYaw( Rotation.Angles().yaw + pawn.punchanglecl.y ).ToRotation();
 
 
-        pawn.punchanglecl = pawn.punchanglecl.LerpTo( Vector3.Zero, Time.Delta * 10 );
+        pawn.punchanglecl = pawn.punchanglecl.Approach( 0, Time.Delta * 10 );
         //Log.Info( pawn.punchangle );
 
         lastPos = Position;
