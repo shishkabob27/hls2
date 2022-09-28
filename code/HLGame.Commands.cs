@@ -217,7 +217,16 @@ public partial class HLGame : Game
         sci.Position = ConsoleSystem.Caller.Pawn.Position;
         sci.Spawn();
     }
-
+    /// <summary>
+    /// Kills the calling player with generic damage
+    /// </summary>
+    [ConCmd.Server( "kill" )]
+    static void KillCommand()
+    {
+        var target = ( ConsoleSystem.Caller.Pawn as HLPlayer );
+        if ( target == null ) return;
+        target.TakeDamage( DamageInfo.Generic( target.Health + target.Armour + 30 ) );
+    }
     [ConCmd.Server( "give" )]
     public static void GiveEntity( string entName )
     {
