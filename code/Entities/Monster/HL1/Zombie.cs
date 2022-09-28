@@ -25,6 +25,7 @@ internal class Zombie : NPC
 
     }
     public TimeSince TimeSinceLastSound = new TimeSince();
+    public TimeSince TimeSinceLastSound2 = new TimeSince();
     public override void Think()
     {
 
@@ -63,6 +64,11 @@ internal class Zombie : NPC
         else if ( rel > 0 && ent.Position.Distance( Position ) < 60 )
         {
             animHelper.Attack = true;
+            if ( TimeSinceLastSound2 > 2 )
+            {
+                PlaySound( "zo_attack" );
+                TimeSinceLastSound2 = 0;
+            }
         }
     }
     public override void TakeDamage( DamageInfo info )
@@ -100,6 +106,14 @@ internal class Zombie : NPC
                     b.z = a;
                     b.x = 5;
                     player.punchangle = b;
+                }
+                if ( tr.Entity is ICombat )
+                {
+                    PlaySound( "claw_strike" );
+                }
+                else
+                {
+                    PlaySound( "claw_miss" );
                 }
             }
         }
