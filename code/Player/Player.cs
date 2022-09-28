@@ -480,9 +480,12 @@
 		{
 			SwitchToBestWeapon();
 		}
-		FallDamageThink();
 
+		FallDamageThink();
 	}
+	Vector3 prevVel = Vector3.Zero;
+	Vector3 prevVel2 = Vector3.Zero;
+	Vector3 prevVel3 = Vector3.Zero;
 	const int PLAYER_FATAL_FALL_SPEED = 1024;// approx 60 feet
 	const int PLAYER_MAX_SAFE_FALL_SPEED = 580;// approx 20 feet
 	const float DAMAGE_FOR_FALL_SPEED = (float)100 / ( PLAYER_FATAL_FALL_SPEED - PLAYER_MAX_SAFE_FALL_SPEED );// damage per unit per second.
@@ -491,25 +494,37 @@
 
 	void FallDamageThink()
 	{
-		if ( GroundEntity != null && Velocity.z >= PLAYER_FALL_PUNCH_THRESHHOLD )
+		if ( IsClient ) return;
+		var FallSpeed = -prevVel.z;
+		if ( GroundEntity != null && FallSpeed >= PLAYER_FALL_PUNCH_THRESHHOLD )
 		{
-			float flFallDamage = Velocity.z * DAMAGE_FOR_FALL_SPEED;
-			if ( flFallDamage > Health )
-			{
-				Sound.FromWorld( "bodysplat", Position );
-			}
 
-			if ( flFallDamage > 0 )
+			if ( FallSpeed > PLAYER_MAX_SAFE_FALL_SPEED )
 			{
-				var a = new DamageInfo
+				FallSpeed -= PLAYER_MAX_SAFE_FALL_SPEED;
+				float flFallDamage = FallSpeed * DAMAGE_FOR_FALL_SPEED;
+
+				if ( flFallDamage > Health )
 				{
-					Damage = flFallDamage,
+					Sound.FromWorld( "bodysplat", Position );
+				}
 
-				};
-				TakeDamage( a );
-				//punchangle.x = 0;
+				if ( flFallDamage > 0 )
+				{
+					Sound.FromWorld( "pl_fallpain", Position );
+					var a = new DamageInfo
+					{
+						Damage = flFallDamage,
+
+					};
+					TakeDamage( a );
+					//punchangle.x = 0;
+				}
 			}
 		}
+		prevVel3 = prevVel2;
+		prevVel2 = prevVel;
+		prevVel = Velocity;
 	}
 	new public void Deafen( float strength )
 	{
