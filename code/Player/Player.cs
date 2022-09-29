@@ -237,6 +237,12 @@
 		updtasync();
 
 	}
+
+	[ConCmd.Client]
+	public void ChangeTeam(){
+		var _ = new TeamSelector();
+	}
+
 	public async void updtasync()
 	{
 		await GameTask.DelaySeconds( 0.1f );
