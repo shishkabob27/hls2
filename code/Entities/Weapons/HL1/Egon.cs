@@ -75,7 +75,7 @@ partial class Egon : HLWeapon
         var tr = Trace.Ray( startPos, startPos + dir * 4096 )
         .UseHitboxes()
             .Ignore( owner, false )
-            .WithAnyTags( "solid", "npc" )
+            .WithAnyTags( "solid", "npc", "player" )
             .Run();
         if ( Beam == null )
         {
@@ -89,13 +89,9 @@ partial class Egon : HLWeapon
         if ( Time.Now > dmgtime )
         {
             dmgtime = Time.Now + 0.1f;
-            if ( tr.Entity is NPC )
+            if ( tr.Entity != null && IsServer )
             {
-                ( tr.Entity as NPC ).TakeDamage( DamageInfo.Generic( 14 ).WithFlag( DamageFlags.AlwaysGib ) );
-            }
-            else if ( tr.Entity != null )
-            {
-                tr.Entity.TakeDamage( DamageInfo.Generic( 14 ) );
+                tr.Entity.TakeDamage( DamageInfo.Generic( 14 ).WithFlag( DamageFlags.AlwaysGib ) );
             }
             if ( HLGame.GameIsMultiplayer() )
             {
