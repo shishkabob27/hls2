@@ -320,9 +320,9 @@ public partial class HLGame : Game
     }
 
     [ConCmd.Server( "Gib" )]
-    public static void Gib()
+    public static void Gib( float dmg )
     {
-        HLCombat.CreateGibs( ConsoleSystem.Caller.Pawn.Position, ConsoleSystem.Caller.Pawn.Position, 0, new BBox( new Vector3( -16, -16, 0 ), new Vector3( 16, 16, 72 ) ) );
+        HLCombat.CreateGibs( ConsoleSystem.Caller.Pawn.Position, ConsoleSystem.Caller.Pawn.Position, 0 - dmg, new BBox( new Vector3( -16, -16, 0 ), new Vector3( 16, 16, 72 ) ) );
     }
 
     [ConCmd.Server( "ply_closestto" )]
