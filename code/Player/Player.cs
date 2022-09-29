@@ -522,7 +522,12 @@
 		{
 			float fvol = 0;
 			var b = punchangle;
-			if ( FallSpeed > PLAYER_MAX_SAFE_FALL_SPEED )
+
+			if ( WaterEntity != null || WaterLevel > 0 )
+			{
+
+			}
+			else if ( FallSpeed > PLAYER_MAX_SAFE_FALL_SPEED )
 			{
 				float flFallDamage = ( FallSpeed - PLAYER_MAX_SAFE_FALL_SPEED ) * DAMAGE_FOR_FALL_SPEED;
 
