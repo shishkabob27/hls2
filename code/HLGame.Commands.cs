@@ -225,7 +225,7 @@ public partial class HLGame : Game
     {
         var target = ( ConsoleSystem.Caller.Pawn as HLPlayer );
         if ( target == null ) return;
-        target.TakeDamage( DamageInfo.Generic( target.Health + target.Armour + 30 ) );
+        target.TakeDamage( DamageInfo.Generic( ( target.Health + ( target.Armour ) * 2 ) + 30 ) );
     }
     [ConCmd.Server( "give" )]
     public static void GiveEntity( string entName )
