@@ -50,5 +50,19 @@
 		&.weapon_hornetgun {
 			background-image: url("/ui/crosshairs/crosshair7.png");
 		}
+
+		//Opposing Force
+
+		&.weapon_eagle {
+			background-image: url("/ui/crosshairs/crosshair2.png");
+		}
+
+		&.weapon_m249 {
+			background-image: url("/ui/crosshairs/crosshair1.png");
+		}
+
+		&.weapon_sniperrifle {
+			background-image: url("/ui/crosshairs/crosshair1.png");
+		}
 	}
 }
