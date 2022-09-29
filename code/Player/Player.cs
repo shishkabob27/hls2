@@ -11,6 +11,9 @@
 	public bool HasHEV { get; set; } = false;
 
 	[Net]
+	public bool GodMode { get; set; } = false;
+
+	[Net]
 	public float MaxHealth { get; set; } = 100;
 
 	[Net]
@@ -755,7 +758,7 @@
 			Deafen( To.Single( Client ), info.Damage.LerpInverse( 0, 60 ) );
 		}
 
-		if ( Health > 0 && info.Damage > 0 )
+		if ( Health > 0 && info.Damage > 0 && !GodMode )
 		{
 			Health -= info.Damage;
 			if ( Health <= 0 )

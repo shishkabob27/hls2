@@ -227,6 +227,26 @@ public partial class HLGame : Game
         if ( target == null ) return;
         target.TakeDamage( DamageInfo.Generic( ( target.Health + ( target.Armour ) * 2 ) + 30 ) );
     }
+    /// <summary>
+    /// Kills the calling player with generic damage
+    /// </summary>
+    [ConCmd.Admin( "god" )]
+    static void GodCommand()
+    {
+        var target = ( ConsoleSystem.Caller.Pawn as HLPlayer );
+        if ( target == null ) return;
+
+        target.GodMode = !target.GodMode;
+        if ( target.GodMode )
+        {
+            Log.Info( "godmode ON" );
+        }
+        else
+        {
+            Log.Info( "godmode OFF" );
+        }
+    }
+
     [ConCmd.Server( "give" )]
     public static void GiveEntity( string entName )
     {
