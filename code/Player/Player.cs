@@ -542,14 +542,11 @@
 					b.x = 0;
 				}
 			}
-			if ( fvol > 0.0 )
-			{
-				b.z = FallSpeed * 0.013f;   // punch z axis
+			b.z = FallSpeed * 0.013f;   // punch z axis
 
-				if ( b[0] > 8 )
-				{
-					b[0] = 8;
-				}
+			if ( b[0] > 8 )
+			{
+				b[0] = 8;
 			}
 			punchangle = b;
 		}
