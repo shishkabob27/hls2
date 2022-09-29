@@ -303,15 +303,15 @@ partial class Gauss : HLWeapon
 
         if ( FirstBeam )
         {
-            Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
+            if ( ( EffectEntity.GetAttachment( "muzzle" ) != null ) && ( Beam != null ) ) Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
         }
         else
         {
-            Beam.SetPosition( 0, startPos );
+            if ( Beam != null ) Beam.SetPosition( 0, startPos );
         }
-        if ( Client.IsUsingVr ) Beam.SetEntityAttachment( 0, VRWeaponModel, "muzzle", true );
-        Beam.SetPosition( 2, beamcolour );
-        Beam.SetPosition( 3, new Vector3( 2, 1, 0 ) );
+        if ( Client.IsUsingVr && ( Beam != null ) ) Beam.SetEntityAttachment( 0, VRWeaponModel, "muzzle", true );
+        if ( Beam != null ) Beam.SetPosition( 2, beamcolour );
+        if ( Beam != null ) Beam.SetPosition( 3, new Vector3( 2, 1, 0 ) );
 
         //Beam.SetPosition(0, Position);
         //var pos = tr.StartPosition;
@@ -319,8 +319,8 @@ partial class Gauss : HLWeapon
         //if (a != null)
         //pos = (a ?? default).Position;
         //Beam.SetPosition(0, pos);
-        Beam.SetPosition( 1, tr.EndPosition );
-        Beam.Destroy();
+        if ( Beam != null ) Beam.SetPosition( 1, tr.EndPosition );
+        if ( Beam != null ) Beam.Destroy();
 
         Particles.Create( "particles/gauss_impact.vpcf", tr.EndPosition );
     }

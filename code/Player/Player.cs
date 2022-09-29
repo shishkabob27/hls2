@@ -51,7 +51,7 @@
 
 	[Net]
 	public int team { get; set; } = 1;
-	[Net]
+	[Net, Predicted]
 	public Vector3 punchangle { get; set; } = Vector3.Zero;
 
 	public Vector3 punchanglecl = Vector3.Zero;
