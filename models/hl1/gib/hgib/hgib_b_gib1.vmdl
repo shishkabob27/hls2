@@ -29,11 +29,21 @@
 				[
 					{
 						_class = "PhysicsHullFromRender"
+						disabled = true
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
 						faceMergeAngle = 20.0
 						maxHullVertices = 32
+					},
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = ""
+						surface_prop = "flesh"
+						collision_tags = "solid"
+						radius = 5.4993
+						point0 = [ -0.228022, -4.11161, 5.42627 ]
+						point1 = [ -0.308043, -2.66331, -7.78198 ]
 					},
 				]
 			},
@@ -74,8 +84,8 @@
 						{
 							bonename = ""
 							radius = 5.499302
-							point0 = [ -0.317704, -0.771605, 7.629538 ]
-							point1 = [ -0.757832, 0.380904, -5.578719 ]
+							point0 = [ -0.228022, -4.11161, 5.42627 ]
+							point1 = [ -0.308043, -2.66331, -7.78198 ]
 						}
 					},
 				]
