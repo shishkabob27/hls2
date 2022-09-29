@@ -91,7 +91,7 @@ partial class Egon : HLWeapon
             dmgtime = Time.Now + 0.1f;
             if ( tr.Entity is NPC )
             {
-                ( tr.Entity as NPC ).TakeDamage( DamageInfo.Generic( 14 ), true );
+                ( tr.Entity as NPC ).TakeDamage( DamageInfo.Generic( 14 ).WithFlag( DamageFlags.AlwaysGib ) );
             }
             else if ( tr.Entity != null )
             {

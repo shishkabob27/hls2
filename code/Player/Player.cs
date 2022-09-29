@@ -239,7 +239,8 @@
 	}
 
 	[ConCmd.Client]
-	public void ChangeTeam(){
+	public void ChangeTeam()
+	{
 		var _ = new TeamSelector();
 	}
 
@@ -337,8 +338,12 @@
 		wep.Position = ConsoleSystem.Caller.Pawn.Position;
 		wep.DeleteIfNotCarriedAfter( 0.1f );
 	}
-
 	public override void OnKilled()
+	{
+		OnKilled( true );
+	}
+
+	public void OnKilled( bool corpse = true )
 	{
 		base.OnKilled();
 		DeleteHands();
@@ -356,12 +361,8 @@
 		Inventory.DeleteContents();
 
 
-		if ( Health < -20 )
-		{
-			HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds, 0 );
 
-		}
-		else
+		if ( corpse )
 		{
 			CreateCorpse( Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone( LastDamage.HitboxIndex ), this );
 		}
@@ -760,14 +761,29 @@
 		{
 			Deafen( To.Single( Client ), info.Damage.LerpInverse( 0, 60 ) );
 		}
+		bool docorpse = true;
 
 		if ( Health > 0 && info.Damage > 0 && !GodMode )
 		{
 			Health -= info.Damage;
 			if ( Health <= 0 )
 			{
+
+				if ( Health < -20 && !info.Flags.HasFlag( DamageFlags.DoNotGib ) )
+				{
+					HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds, 0 );
+					docorpse = false;
+				}
+
+				if ( info.Flags.HasFlag( DamageFlags.AlwaysGib ) && docorpse )
+				{
+					HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, 0 );
+					docorpse = false;
+				}
 				//Health = 0;
-				OnKilled();
+				OnKilled( docorpse );
+
+
 			}
 		}
 
