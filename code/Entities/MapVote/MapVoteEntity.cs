@@ -8,7 +8,7 @@ partial class MapVoteEntity : Entity
 	public IDictionary<Client, string> Votes { get; set; }
 
 	[Net]
-	public string WinningMap { get; set; } = "facepunch.datacore";
+	public string WinningMap { get; set; } = "shishkabob.crossfire";
 
 	[Net]
 	public RealTimeUntil VoteTimeLeft { get; set; } = 30;
