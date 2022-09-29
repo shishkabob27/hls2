@@ -722,13 +722,13 @@
 
 		if ( info.Flags.HasFlag( DamageFlags.Blast ) && HLGame.GameIsMultiplayer() )
 		{
-			// blasts damage armor more.
+			// blasts damage armour more.
 			flBonus *= 2;
 		}
 
 
-		// Armor. 
-		if ( !info.Flags.HasFlag( DamageFlags.Fall ) && !info.Flags.HasFlag( DamageFlags.Drown ) )// armor doesn't protect against fall or drown damage!
+		// Armour. 
+		if ( !info.Flags.HasFlag( DamageFlags.Fall ) && !info.Flags.HasFlag( DamageFlags.Drown ) ) // armour doesn't protect against fall or drown damage!
 		{
 			float flNew = info.Damage * flRatio;
 
