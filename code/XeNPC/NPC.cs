@@ -445,11 +445,6 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 
 	DamageInfo LastDamage;
-	public override void TakeDamage( DamageInfo info )
-	{
-		TakeDamage( info, false );
-
-	}
 
 	const int HITGROUP_GENERIC = 0;
 	const int HITGROUP_HEAD = 1;
@@ -462,7 +457,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	const int HITGROUP_GEAR = 10;
 	const int HITGROUP_SPECIAL = 11;
 
-	public void TakeDamage( DamageInfo info, bool alwaysgib = false )
+	public override void TakeDamage( DamageInfo info )
 	{
 		if ( LifeState == LifeState.Alive )
 			targetRotation = Rotation.From( ( ( Position - info.Position ) * -360 ).EulerAngles.WithRoll( 0 ).WithPitch( 0 ) );
@@ -513,7 +508,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				if ( LifeState == LifeState.Alive )
 				{
 					OnKilled();
-					if ( alwaysgib )
+					if ( info.Flags.HasFlag( DamageFlags.AlwaysGib ) )
 					{
 						HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, BloodColour );
 						Delete();
@@ -530,7 +525,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			LifeState = LifeState.Dead;
 			//Delete();
 		}
-		if ( Health < -20 )
+		if ( Health < -20 && !info.Flags.HasFlag( DamageFlags.DoNotGib ) )
 		{
 			HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, BloodColour );
 			Delete();
