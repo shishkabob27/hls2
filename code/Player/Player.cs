@@ -239,7 +239,7 @@
 	}
 
 	[ConCmd.Client]
-	public void ChangeTeam()
+	public static void ChangeTeam()
 	{
 		var _ = new TeamSelector();
 	}
