@@ -432,7 +432,6 @@
 
 		base.Simulate( cl );
 
-
 		punchangle = punchangle.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
 
 		Forward = Input.Forward;
@@ -462,6 +461,8 @@
 		//
 		// Input requested a weapon switch
 		//
+
+		FallDamageThink();
 
 		if ( LeftHand != null && RightHand != null )
 		{
@@ -501,14 +502,11 @@
 			SwitchToBestWeapon();
 		}
 
-		FallDamageThink();
 
 	}
 	Vector3 prevVel = Vector3.Zero;
-	Vector3 prevVel2 = Vector3.Zero;
-	Vector3 prevVel3 = Vector3.Zero;
-	const int PLAYER_FATAL_FALL_SPEED = 1024;// approx 60 feet
-	const int PLAYER_MAX_SAFE_FALL_SPEED = 580;// approx 20 feet
+	const int PLAYER_FATAL_FALL_SPEED = 1024;// approx 20 metres
+	const int PLAYER_MAX_SAFE_FALL_SPEED = 580;// approx 5 metres
 	const float DAMAGE_FOR_FALL_SPEED = (float)100 / ( PLAYER_FATAL_FALL_SPEED - PLAYER_MAX_SAFE_FALL_SPEED );// damage per unit per second.
 	const int PLAYER_MIN_BOUNCE_SPEED = 200;
 	const float PLAYER_FALL_PUNCH_THRESHHOLD = (float)350; // won't punch player's screen/make scrape noise unless player falling at least this fast.
@@ -561,8 +559,6 @@
 			}
 			punchangle = b;
 		}
-		prevVel3 = prevVel2;
-		prevVel2 = prevVel;
 		prevVel = Velocity;
 	}
 	void ViewPunchThink()
