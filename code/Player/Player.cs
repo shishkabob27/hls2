@@ -532,7 +532,7 @@
 					var a = new DamageInfo
 					{
 						Damage = flFallDamage,
-
+						Flags = DamageFlags.Fall,
 					};
 					TakeDamage( a );
 					fvol = 1;
