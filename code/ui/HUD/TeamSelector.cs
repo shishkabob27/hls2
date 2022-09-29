@@ -15,7 +15,7 @@ public class TeamSelector : Panel
 		switch (team)
 		{
 			case "bm": p.team = 1; break;
-			case "op": p.team = 2; break;
+			case "of": p.team = 2; break;
 			default: p.team = 0; break;
 		}
 
