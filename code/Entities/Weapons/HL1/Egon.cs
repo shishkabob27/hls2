@@ -91,7 +91,7 @@ partial class Egon : HLWeapon
             dmgtime = Time.Now + 0.1f;
             if ( tr.Entity != null && IsServer )
             {
-                tr.Entity.TakeDamage( DamageInfo.Generic( 14 ).WithFlag( DamageFlags.AlwaysGib ) );
+                tr.Entity.TakeDamage( DamageInfo.Generic( 14 ).WithFlag( DamageFlags.AlwaysGib ).WithAttacker( this ) );
             }
             if ( HLGame.GameIsMultiplayer() )
             {
