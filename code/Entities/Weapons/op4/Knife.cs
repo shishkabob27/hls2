@@ -6,7 +6,7 @@ partial class Knife : HLWeapon
 	public static Model WorldModel = Model.Load( "models/op4/weapons/world/knife.vmdl" );
 	public override string ViewModelPath => "models/op4/weapons/view/v_knife.vmdl";
 
-	public override float PrimaryRate => 0.2f;
+	public override float PrimaryRate => 0.8f;
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 3.0f;
 	public override AmmoType AmmoType => AmmoType.None;
