@@ -368,8 +368,20 @@ FlagUI{
             }
         }
 
+        .bm
+        {
+           img{
+            background-image-tint: $orange;
+           }
+        }
+
         .of
         {
+            img
+            {
+                background-image-tint: rgb(0, 255, 0);
+            }
+
             > Text
             {
                 color: green;
