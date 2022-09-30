@@ -16,7 +16,7 @@ partial class M249 : HLWeapon
 	{
 		base.Spawn();
 
-		Model = Model.Load( "models/op4/weapons/world/mp5.vmdl" );
+		Model = Model.Load( "models/op4/weapons/world/w_saw.vmdl" );
 		AmmoClip = 50;
 	}
 
