@@ -9,10 +9,10 @@
     public GameStates GameState { get; set; } = GameStates.Live;
 
     [Net]
-    public int ScoreTeamBM { get; set; } = 0;
+    public static int ScoreTeamBM { get; set; } = 0;
 
     [Net]
-    public int ScoreTeamOF { get; set; } = 0;
+    public static int ScoreTeamOF { get; set; } = 0;
 
     [ConCmd.Admin]
     public static void SkipStage()

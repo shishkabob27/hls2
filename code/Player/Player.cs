@@ -51,6 +51,10 @@
 
 	[Net]
 	public int team { get; set; } = 1;
+
+	[Net]
+	public bool IsCarryingFlag { get; set; } = false;
+
 	[Net, Predicted]
 	public Vector3 punchangle { get; set; } = Vector3.Zero;
 
