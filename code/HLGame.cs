@@ -51,6 +51,37 @@ public partial class HLGame : Game
 		ItemRespawn.Init();
 	}
 
+	/// <summary>
+	/// The player wants to enable the devcam. Probably shouldn't allow this
+	/// unless you're in a sandbox mode or they're a dev.
+	/// </summary>
+	public override void DoPlayerDevCam( Client client )
+	{
+		Host.AssertServer();
+
+		if ( !client.HasPermission( "devcam" ) )
+			return;
+
+		var camera = client.Components.Get<DevCamera>( true );
+
+		if ( camera == null )
+		{
+			camera = new DevCamera();
+			client.Components.Add( camera );
+			return;
+		}
+
+		camera.Enabled = !camera.Enabled;
+		RPCHIDE( To.Single( client ), camera.Enabled );
+	}
+	[ClientRpc]
+	void RPCHIDE( bool enabled )
+	{
+
+		GUIRootPanel.Current?.SetClass( "devcamera", enabled );
+		HudRootPanel.Current?.SetClass( "devcamera", enabled );
+	}
+
 	public override void ClientJoined( Client cl )
 	{
 		base.ClientJoined( cl );

@@ -387,4 +387,14 @@ public partial class HLGame : Game
             HLPlayer.Spray();
         }
     }
+    /// <summary>
+    /// Enables the devcam. Input to the player will stop and you'll be able to freefly around.
+    /// </summary>
+    [ConCmd.Server( "devcam" )]
+    static void DevcamCommand()
+    {
+        if ( ConsoleSystem.Caller == null ) return;
+
+        ( Current as HLGame )?.DoPlayerDevCam( ConsoleSystem.Caller );
+    }
 }

@@ -1,6 +1,10 @@
 //@import "/styles/base.scss";
 //@import "/styles/form.scss";
-
+GUIRootPanel {
+    &.devcamera {
+        display: none;
+    }
+}
 // GUI Panel
 .root {
     opacity: 0;
