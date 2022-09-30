@@ -1,5 +1,5 @@
 ﻿[Library( "weapon_sniperrifle" ), HammerEntity]
-[EditorModel( "models/op4/weapons/world/knife.vmdl" )]
+[EditorModel( "models/op4/weapons/world/w_m40a1.vmdl" )]
 [Title( "weapon_sniperrifle" ), Category( "Weapons" )]
 partial class SniperRifle : HLWeapon
 {
@@ -25,7 +25,7 @@ partial class SniperRifle : HLWeapon
 		base.Spawn();
 
 		AmmoClip = 5;
-		Model = Model.Load( "models/op4/weapons/world/m40a1.vmdl" );
+		Model = Model.Load( "models/op4/weapons/world/w_m40a1.vmdl" );
 	}
 
 	public override void AttackPrimary()
