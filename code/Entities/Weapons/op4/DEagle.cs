@@ -19,7 +19,7 @@ class DEagle : HLWeapon
 	{
 		base.Spawn();
 
-		Model = Model.Load( "models/op4/weapons/world/desert_eagle.vmdl" );
+		Model = Model.Load( "models/op4/weapons/world/w_desert_eagle.vmdl" );
 		AmmoClip = 7;
 	}
 
