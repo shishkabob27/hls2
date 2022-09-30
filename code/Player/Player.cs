@@ -661,12 +661,12 @@
 		if ( Health <= 0 ) return;
 		var speed = Velocity.WithZ( 0 ).Length.LerpInverse( 0, 2 );
 		var up = setup.Rotation.Up;
-
-		if ( GroundEntity != null )
-		{
-			walkBob += Time.Delta * 12f * speed;
-		}
-		setup.Position += up * MathF.Sin( walkBob ) * speed * 2;
+		//
+		//if ( GroundEntity != null )
+		//{
+		//walkBob += Time.Delta * 12f * speed;
+		//}
+		//setup.Position += up * MathF.Sin( walkBob ) * speed * 2;
 
 		setup.FieldOfView += fov;
 

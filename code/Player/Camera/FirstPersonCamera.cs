@@ -4,6 +4,9 @@
 
     [ConVar.Client] public static float cl_rollspeed { get; set; } = 200.0f;
     [ConVar.Client] public static float cl_rollangle { get; set; } = 2.0f;
+    [ConVar.Client] public static float cl_bob { get; set; } = 0.01f;
+    [ConVar.Client] public static float cl_bobcycle { get; set; } = 0.8f;
+    [ConVar.Client] public static float cl_bobup { get; set; } = 0.5f;
 
     public override void Activated()
     {
@@ -26,6 +29,10 @@
         var eyePos = pawn.EyePosition;
 
         Position = eyePos;
+        var bob = V_CalcBob();
+        var a = Position;
+        a.z += bob;
+        Position = a;
 
         Rotation = pawn.EyeRotation;
 
@@ -76,4 +83,48 @@
 
         return side * sign;
     }
+    double bobtime;
+    float bob;
+    float cycle;
+    float lasttime;
+    float V_CalcBob()
+    {
+        Vector3 vel;
+        if ( Local.Pawn is not HLPlayer player ) return 0;
+
+        if ( player.GroundEntity == null || Time.Now == lasttime )
+        {
+            // just use old value
+            return bob;
+        }
+
+        lasttime = Time.Now;
+
+        bobtime += Time.Delta;
+        cycle = (float)( bobtime - (int)( bobtime / cl_bobcycle ) * cl_bobcycle );
+        cycle /= cl_bobcycle;
+
+        if ( cycle < cl_bobup )
+        {
+            cycle = (float)Math.PI * cycle / cl_bobup;
+        }
+        else
+        {
+            cycle = (float)Math.PI + (float)Math.PI * ( cycle - cl_bobup ) / ( 1.0f - cl_bobup );
+        }
+
+        // bob is proportional to simulated velocity in the xy plane
+        // (don't count Z, or jumping messes it up)
+        //VectorCopy( pparams->simvel, vel );
+        vel = player.Velocity.WithZ( 0 );
+        //vel[2] = 0;
+
+        bob = (float)Math.Sqrt( vel[0] * vel[0] + vel[1] * vel[1] ) * cl_bob;
+        bob = bob * 0.3f + bob * 0.7f * (float)Math.Sin( cycle );
+        bob = Math.Min( bob, 4 );
+        bob = Math.Max( bob, -7 );
+        return bob;
+
+    }
+
 }
