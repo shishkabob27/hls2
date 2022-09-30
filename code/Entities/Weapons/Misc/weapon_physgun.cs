@@ -145,7 +145,7 @@ partial class PhysGun : HLWeapon
     {
         var tr = Trace.Ray( eyePos, eyePos + eyeDir * MaxTargetDistance )
             .UseHitboxes()
-            .WithAnyTags( "solid", "player" )
+            .WithAnyTags( "solid", "player", "npc", "monster" )
             .Ignore( this )
             .Run();
 
@@ -168,8 +168,8 @@ partial class PhysGun : HLWeapon
         //
         // Don't move keyframed, unless it's a player, NPC or Door
         //
-        if ( body.BodyType == PhysicsBodyType.Keyframed && rootEnt is not Player or NPC or DoorEntity )
-            return;
+        //if ( body.BodyType == PhysicsBodyType.Keyframed && ( rootEnt is not Player && rootEnt is not NPC && rootEnt is not DoorEntity && rootEnt is not DoorRotatingEntity ) )
+        //    return;
 
         //
         // Unfreeze
@@ -330,6 +330,10 @@ partial class PhysGun : HLWeapon
         if ( GrabbedEntity is Player )
             return;
 
+
+        if ( GrabbedEntity is NPC )
+            return;
+
         var velocity = heldBody.Velocity;
         Vector3.SmoothDamp( heldBody.Position, holdPos, ref velocity, 0.075f, Time.Delta );
         heldBody.Velocity = velocity;
@@ -352,6 +356,16 @@ partial class PhysGun : HLWeapon
             Vector3.SmoothDamp( player.Position, holdPos, ref velocity, 0.075f, Time.Delta );
             player.Velocity = velocity;
             player.GroundEntity = null;
+
+            return;
+        }
+
+        if ( GrabbedEntity is NPC npc )
+        {
+            var velocity = npc.Velocity;
+            Vector3.SmoothDamp( npc.Position, holdPos, ref velocity, 0.075f, Time.Delta );
+            npc.Velocity = velocity;
+            npc.GroundEntity = null;
 
             return;
         }
