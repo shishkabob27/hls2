@@ -400,7 +400,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = "animgraphs/v_pipe_wrench.vanmgrph"
+		anim_graph_name = "animgraphs/hl1/weapons/v_pipe_wrench.vanmgrph"
 		base_model_name = ""
 	}
 }

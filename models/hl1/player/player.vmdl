@@ -4208,7 +4208,7 @@
 		]
 		model_archetype = "jointed_physics_model"
 		primary_associated_entity = "prop_ragdoll"
-		anim_graph_name = "animgraphs/player.vanmgrph"
+		anim_graph_name = "animgraphs/hl1/player.vanmgrph"
 		base_model_name = ""
 	}
 }

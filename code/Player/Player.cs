@@ -198,7 +198,7 @@
 		SetPlayerModel();
 
 
-		SetAnimGraph( "animgraphs/player.vanmgrph" );
+		SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
 
 		Controller = new WalkController();
 

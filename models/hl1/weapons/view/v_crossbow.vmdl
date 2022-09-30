@@ -423,7 +423,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = "animgraphs/v_crossbow.vanmgrph"
+		anim_graph_name = "animgraphs/hl1/weapons/v_crossbow.vanmgrph"
 		base_model_name = ""
 	}
 }
