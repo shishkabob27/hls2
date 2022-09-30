@@ -75,7 +75,7 @@ partial class SniperRifle : HLWeapon
 
 		if ( Zoomed )
 		{
-			targetFov = 20.0f;
+			targetFov = 18.0f;
 			targetViewmodelFov = 0.0f;
 		}
 
