@@ -8,6 +8,7 @@
     [ConVar.Client] public static float cl_bobcycle { get; set; } = 0.8f;
     [ConVar.Client] public static float cl_bobup { get; set; } = 0.5f;
     [ConVar.Client] public static bool hl_won_viewbob { get; set; } = false;
+    [ConVar.Client] public static bool hl_fix_mystery_viewbob_code { get; set; } = false;
 
     public override void Activated()
     {
@@ -75,7 +76,7 @@
                     b[i] += bob * 0.4f * Rotation.Forward[i];
                 }
 
-                //b.z += bob; // I don't understand, this is in the hl1 code but hl1 doesnt have this? is it broken in the original? i'll just comment it out...
+                if ( hl_fix_mystery_viewbob_code ) b.z += bob; // I don't understand, this is in the hl1 code but hl1 doesnt have this? is it broken in the original? i'll just comment it out...
 
                 // pushing the view origin down off of the same X/Z plane as the ent's origin will give the
                 // gun a very nice 'shifting' effect when the player looks up/down. If there is a problem
