@@ -7,7 +7,7 @@ internal class Barney : NPC
     public Barney()
     {
 
-        NPCAnimGraph = "animgraphs/scientist.vanmgrph";
+        NPCAnimGraph = "animgraphs/hl1/monster/scientist.vanmgrph";
     }
     public override int Classify()
     {

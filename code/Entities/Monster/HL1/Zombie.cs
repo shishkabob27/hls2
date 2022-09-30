@@ -6,7 +6,7 @@ internal class Zombie : NPC
     // Stub NPC, this does nothing yet
     public Zombie()
     {
-        NPCAnimGraph = "animgraphs/zombie.vanmgrph";
+        NPCAnimGraph = "animgraphs/hl1/monster/zombie.vanmgrph";
         SetAnimGraph( NPCAnimGraph );
         Health = 20;
         WalkSpeed = 30;

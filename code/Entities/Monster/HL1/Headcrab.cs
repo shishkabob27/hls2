@@ -11,7 +11,7 @@ public class Headcrab : NPC
     {
         base.Spawn();
         Health = 20;
-        NPCAnimGraph = "animgraphs/headcrab.vanmgrph";
+        NPCAnimGraph = "animgraphs/hl1/monster/headcrab.vanmgrph";
         SetAnimGraph( NPCAnimGraph );
         SetModel( "models/hl1/monster/headcrab.vmdl" );
         SetupPhysicsFromAABB( PhysicsMotionType.Keyframed, new Vector3( -12, -12, 0 ), new Vector3( 12, 12, 24 ) );

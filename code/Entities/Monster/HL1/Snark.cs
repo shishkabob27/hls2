@@ -22,7 +22,7 @@ public class Snark : NPC
         EyeHeight = 5;
         SetupPhysicsFromOBB( PhysicsMotionType.Keyframed, new Vector3( -4f, -4f, 0f ), new Vector3( 4f, 4f, 8f ) );
         Model = WorldModel;
-        NPCAnimGraph = "animgraphs/squeak_npc.vanmgrph";
+        NPCAnimGraph = "animgraphs/hl1/monster/squeak_npc.vanmgrph";
         SetAnimGraph( NPCAnimGraph );
         Die = Time.Now + SQUEEK_DETONATE_DELAY;
         GroundBounce = 1;

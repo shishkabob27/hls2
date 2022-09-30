@@ -7,7 +7,7 @@ public class Gman : NPC
     
     public Gman()
     {
-        NPCAnimGraph = "animgraphs/gman.vanmgrph";
+        NPCAnimGraph = "animgraphs/hl1/monster/gman.vanmgrph";
     }
     public override void Spawn()
     {

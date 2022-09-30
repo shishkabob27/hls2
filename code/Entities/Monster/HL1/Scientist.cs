@@ -19,7 +19,7 @@ public partial class Scientist : NPC
 
     public Scientist()
     {
-        NPCAnimGraph = "animgraphs/scientist.vanmgrph";
+        NPCAnimGraph = "animgraphs/hl1/monster/scientist.vanmgrph";
         Health = 20;
         Speed = 60;
         WalkSpeed = 60;
@@ -32,7 +32,7 @@ public partial class Scientist : NPC
     }
     public override void Spawn()
     {
-        NPCAnimGraph = "animgraphs/scientist.vanmgrph";
+        NPCAnimGraph = "animgraphs/hl1/monster/scientist.vanmgrph";
         base.Spawn();
         EnableTouch = true;
         if ( Body > 3 )
@@ -257,7 +257,7 @@ public class ScientistSitting : NPC
 
         SetupPhysicsFromOBB( PhysicsMotionType.Static, new Vector3( -16, -16, 0 ), new Vector3( 16, 16, 72 ) );
         base.Spawn();
-        //SetAnimGraph("animgraphs/scientist.vanmgrph");
+        //SetAnimGraph("animgraphs/hl1/monster/scientist.vanmgrph");
         Health = 20;
         if ( Body > 3 )
         {
