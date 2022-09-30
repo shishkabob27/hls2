@@ -1,5 +1,5 @@
 ﻿[Library( "weapon_eagle" ), HammerEntity]
-[EditorModel( "models/op4/weapons/world/knife.vmdl" )]
+[EditorModel( "models/op4/weapons/world/w_desert_eagle.vmdl" )]
 [Title( "weapon_eagle" ), Category( "Weapons" )]
 class DEagle : HLWeapon
 {

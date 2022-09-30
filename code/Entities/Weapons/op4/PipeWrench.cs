@@ -1,11 +1,9 @@
 ﻿[Library( "weapon_pipewrench" ), HammerEntity]
-[EditorModel( "models/hl1/weapons/world/pipe_wrench.vmdl" )]
+[EditorModel( "models/op4/weapons/world/w_pipe_wrench.vmdl" )]
 [Title( "weapon_pipewrench" ), Category( "Weapons" )]
 partial class PipeWrench : HLWeapon
 {
-	public static Model WorldModel = Model.Load( "models/op4/weapons/world/pipe_wrench.vmdl" );
 	public override string ViewModelPath => "models/op4/weapons/view/v_pipe_wrench.vmdl";
-
 	public override float PrimaryRate => 0.75f;
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 3.0f;
@@ -20,7 +18,7 @@ partial class PipeWrench : HLWeapon
 	{
 		base.Spawn();
 
-		Model = WorldModel;
+		Model = Model.Load( "models/op4/weapons/world/w_pipe_wrench.vmdl" );
 		AmmoClip = 0;
 	}
 

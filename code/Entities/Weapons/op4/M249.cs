@@ -1,5 +1,5 @@
 ﻿[Library( "weapon_m249" ), HammerEntity]
-[EditorModel( "models/op4/weapons/world/m249.vmdl" )]
+[EditorModel( "models/op4/weapons/world/w_saw.vmdl" )]
 [Title( "weapon_m249" ), Category( "Weapons" )]
 partial class M249 : HLWeapon
 {
