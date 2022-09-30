@@ -47,7 +47,7 @@
 					m_tagSpans = [  ]
 					m_sequenceName = "idle1"
 					m_playbackSpeed = 1.0
-					m_bLoop = true
+					m_bLoop = false
 				}
 			},
 			{
@@ -69,7 +69,7 @@
 					m_tagSpans = [  ]
 					m_sequenceName = "idle3"
 					m_playbackSpeed = 1.0
-					m_bLoop = true
+					m_bLoop = false
 				}
 			},
 			{
@@ -197,6 +197,74 @@
 						{
 							m_id = 4294967295
 						}
+					}
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 854123736
+				}
+				value = 
+				{
+					_class = "CSelectorAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -16.0, 224.0 ]
+					m_nNodeID = 
+					{
+						m_id = 854123736
+					}
+					m_networkMode = "ServerAuthoritative"
+					m_sNote = ""
+					m_children = 
+					[
+						{
+							m_nodeID = 
+							{
+								m_id = 1204403690
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+						{
+							m_nodeID = 
+							{
+								m_id = 1837177710
+							}
+							m_outputID = 
+							{
+								m_id = 4294967295
+							}
+						},
+					]
+					m_tags = 
+					[
+						{
+							m_id = 4294967295
+						},
+						{
+							m_id = 4294967295
+						},
+					]
+					m_selectionSource = "SelectionSource_Bool"
+					m_boolParamID = 
+					{
+						m_id = 225564390
+					}
+					m_enumParamID = 
+					{
+						m_id = 4294967295
+					}
+					m_blendDuration = 0.2
+					m_tagBehavior = "SelectorTagBehavior_OffWhenFinished"
+					m_bResetOnChange = true
+					m_bSyncCyclesOnChange = false
+					m_blendCurve = 
+					{
+						m_vControlPoint1 = [ 0.5, 0.0 ]
+						m_vControlPoint2 = [ 0.5, 1.0 ]
 					}
 				}
 			},
@@ -364,7 +432,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1837177710
+									m_id = 854123736
 								}
 								m_outputID = 
 								{
@@ -488,6 +556,27 @@
 			{
 				key = 
 				{
+					m_id = 1204403690
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -208.0, 352.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1204403690
+					}
+					m_networkMode = "ClientSimulate"
+					m_sNote = ""
+					m_sequenceName = "idle1"
+					m_nFrameIndex = 0
+					m_tagSpans = [  ]
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1229061874
 				}
 				value = 
@@ -526,7 +615,7 @@
 					m_tagSpans = [  ]
 					m_sequenceName = "idle2"
 					m_playbackSpeed = 1.0
-					m_bLoop = true
+					m_bLoop = false
 				}
 			},
 			{
@@ -538,7 +627,7 @@
 				{
 					_class = "CChoiceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -272.0, 240.0 ]
+					m_vecPosition = [ -240.0, 224.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1837177710
@@ -598,12 +687,33 @@
 					]
 					m_seed = 215840879
 					m_choiceMethod = "WeightedRandomNoRepeat"
-					m_choiceChangeMethod = "OnCycleEnd"
+					m_choiceChangeMethod = "OnResetOrCycleEnd"
 					m_blendMethod = "SingleBlendTime"
 					m_blendTime = 0.2
 					m_bCrossFade = false
 					m_bResetChosen = true
 					m_bDontResetSameSelection = false
+				}
+			},
+			{
+				key = 
+				{
+					m_id = 1924449829
+				}
+				value = 
+				{
+					_class = "CSingleFrameAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -128.0, 432.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1924449829
+					}
+					m_networkMode = "ClientSimulate"
+					m_sNote = ""
+					m_sequenceName = "idle1"
+					m_nFrameIndex = 0
+					m_tagSpans = [  ]
 				}
 			},
 		]
@@ -636,6 +746,20 @@
 				}
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
 				m_bNetwork = false
+				m_bUseMostRecentValue = false
+				m_bAutoReset = false
+				m_bPredicted = false
+				m_bDefaultValue = false
+			},
+			{
+				_class = "CBoolAnimParameter"
+				m_name = "doidle"
+				m_id = 
+				{
+					m_id = 225564390
+				}
+				m_previewButton = "ANIMPARAM_BUTTON_NONE"
+				m_bNetwork = true
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bPredicted = false
