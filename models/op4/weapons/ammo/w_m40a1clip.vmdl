@@ -15,7 +15,7 @@
 						[
 							{
 								from = "sniper_ammo.vmat"
-								to = "materials/op4/weapons/ammo/sniper_ammo.vmat"
+								to = "materials/op4/weapons/ammo/m40a1clip/sniper_ammo.vmat"
 							},
 						]
 						use_global_default = false

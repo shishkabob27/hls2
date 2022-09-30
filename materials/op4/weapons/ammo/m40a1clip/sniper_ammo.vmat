@@ -12,7 +12,7 @@ Layer0
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "materials/op4/weapons/ammo/sniper_ammo.png"
+	TextureColor "materials/op4/weapons/ammo/m40a1clip/sniper_ammo.png"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
