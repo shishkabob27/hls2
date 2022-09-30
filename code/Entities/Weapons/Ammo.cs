@@ -187,11 +187,22 @@ partial class AmmoSMGGrenade : BaseAmmo
 
 [Library( "ammo_762" ), HammerEntity]
 [EditorModel( "models/op4/weapons/ammo/w_m40a1clip.vmdl" )]
-[Title( "Sniper ammo" ), Category( "Ammo" )]
+[Title( "Sniper Ammo" ), Category( "Ammo" )]
 partial class AmmoSniper : BaseAmmo
 {
 	public override AmmoType AmmoType => AmmoType.Sniper;
 	public override int AmmoAmount => 5;
+
+	public override Model WorldModel => Model.Load( "models/op4/weapons/ammo/w_m40a1clip.vmdl" );
+}
+
+[Library( "ammo_556" ), HammerEntity]
+[EditorModel( "models/op4/weapons/ammo/w_m40a1clip.vmdl" )]
+[Title( "Sniper Ammo" ), Category( "Ammo" )]
+partial class AmmoM249 : BaseAmmo
+{
+	public override AmmoType AmmoType => AmmoType.M249;
+	public override int AmmoAmount => 50;
 
 	public override Model WorldModel => Model.Load( "models/op4/weapons/ammo/w_m40a1clip.vmdl" );
 }
