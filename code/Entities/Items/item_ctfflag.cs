@@ -7,11 +7,13 @@ partial class item_ctfflag : ModelEntity
 	public int skin {get; set;} = 1;
 
 	[Property, Title("Team")]
-	public int goal_no {get; set;} = 1;
+	public int goal_no {get; set;}
 
 	public bool Carried = false;
 
 	public bool Loose = false;
+
+	public HLPlayer CurrentPlayer { get; set;}
 
 	public TouchTrigger PickupTrigger { get; protected set; }
 
@@ -42,7 +44,11 @@ partial class item_ctfflag : ModelEntity
 		
 	}
 
-	public void GiveFlagToPlayer(Entity player){
-		Delete(); //test
+	public void GiveFlagToPlayer(HLPlayer player){
+		player.IsCarryingFlag = true;
+		CurrentPlayer = player;
+		EnableDrawing = false;
+
+		Log.Info(player.Parent.Name+" has taken the flag!");
 	}
 }
