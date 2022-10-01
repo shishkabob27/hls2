@@ -135,7 +135,7 @@
 		}
 	}
 
-	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";
 
 	public override void Spawn()
 	{
