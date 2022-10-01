@@ -5,14 +5,14 @@ public class ChapterText : Panel
 {
 
     public Label text;
-    
+
     RealTimeSince OutroTime = new RealTimeSince();
-	public ChapterText()
+    public ChapterText()
     {
         OutroTime = 0;
         var mapname = Global.MapName;
         var translated = "";
-        switch (mapname)
+        switch ( mapname )
         {
             case "shishkabob.hls2_t0": translated = "#chaptertext.hz"; break;
             case "shishkabob.hls2_c1p0": translated = "#chaptertext.c1"; break;
@@ -34,21 +34,22 @@ public class ChapterText : Panel
             case "shishkabob.hls2_c17p0": translated = "#chaptertext.c17"; break;
             case "shishkabob.hls2_c18p0": translated = "#chaptertext.c18"; break;
             case "shishkabob.hls2_c19p0": translated = "#chaptertext.c19"; break;
-            default: translated = "ERROR"; break;
+            default: translated = mapname; break;
+                // we should probably default to the asset.party name of the map so custom maps can get their map title in.
         }
-        text = Add.Label(translated);
+        text = Add.Label( translated );
 
-        text.AddClass("intro");
-	}
+        text.AddClass( "intro" );
+    }
 
-	public override void Tick()
-	{
+    public override void Tick()
+    {
         base.Tick();
 
-        if (OutroTime.Relative > 5f)
+        if ( OutroTime.Relative > 5f )
         {
-            text.RemoveClass("intro");
-            text.AddClass("outro");
+            text.RemoveClass( "intro" );
+            text.AddClass( "outro" );
         }
     }
 
