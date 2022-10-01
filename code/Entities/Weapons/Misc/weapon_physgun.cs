@@ -1,11 +1,13 @@
-﻿
+﻿using Sandbox.Component;
 
 [Library( "weapon_physgun" )]
 partial class PhysGun : HLWeapon
 {
     public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
+    public override string InventoryIcon => "/ui/weapons/weapon_gauss.png";
+    public override string InventoryIconSelected => "/ui/weapons/weapon_gauss_selected.png";
     public override int Bucket => 0;
-    public override int BucketWeight => 300;
+    public override int BucketWeight => 1000;
 
     protected PhysicsBody heldBody;
     protected Vector3 heldPos;
@@ -21,22 +23,18 @@ partial class PhysGun : HLWeapon
     protected virtual float LinearDampingRatio => 1.0f;
     protected virtual float AngularFrequency => 20.0f;
     protected virtual float AngularDampingRatio => 1.0f;
-    protected virtual float TargetDistanceSpeed => 50.0f;
-    protected virtual float RotateSpeed => 1.0f;
+    protected virtual float TargetDistanceSpeed => 25.0f;
+    protected virtual float RotateSpeed => 0.125f;
     protected virtual float RotateSnapAt => 45.0f;
 
-    private const string grabbedTag = "grabbed";
+    public const string GrabbedTag = "grabbed";
 
-    public override string InventoryIcon => "/ui/weapons/weapon_gauss.png";
     [Net] public bool BeamActive { get; set; }
     [Net] public Entity GrabbedEntity { get; set; }
     [Net] public int GrabbedBone { get; set; }
     [Net] public Vector3 GrabbedPos { get; set; }
 
     public PhysicsBody HeldBody => heldBody;
-
-    private Vector3 rotateInput;
-    private Vector3 lastRotateInput;
 
     public override void Spawn()
     {
@@ -144,8 +142,6 @@ partial class PhysGun : HLWeapon
     private void TryStartGrab( Vector3 eyePos, Rotation eyeRot, Vector3 eyeDir )
     {
         var tr = Trace.Ray( eyePos, eyePos + eyeDir * MaxTargetDistance )
-            .UseHitboxes()
-            .WithAnyTags( "solid", "player", "npc", "monster" )
             .Ignore( this )
             .Run();
 
@@ -166,10 +162,10 @@ partial class PhysGun : HLWeapon
             return;
 
         //
-        // Don't move keyframed, unless it's a player, NPC or Door
+        // Don't move keyframed, unless it's a player
         //
-        //if ( body.BodyType == PhysicsBodyType.Keyframed && ( rootEnt is not Player && rootEnt is not NPC && rootEnt is not DoorEntity && rootEnt is not DoorRotatingEntity ) )
-        //    return;
+        //if ( body.BodyType == PhysicsBodyType.Keyframed && rootEnt is not Player )
+        //return;
 
         //
         // Unfreeze
@@ -179,13 +175,14 @@ partial class PhysGun : HLWeapon
             body.BodyType = PhysicsBodyType.Dynamic;
         }
 
-        if ( rootEnt.Tags.Has( grabbedTag ) )
+        if ( rootEnt.Tags.Has( GrabbedTag ) )
             return;
 
         GrabInit( body, eyePos, tr.EndPosition, eyeRot );
 
         GrabbedEntity = rootEnt;
-        GrabbedEntity.Tags.Add( grabbedTag );
+        GrabbedEntity.Tags.Add( GrabbedTag );
+        GrabbedEntity.Tags.Add( $"{GrabbedTag}{Client.PlayerId}" );
 
         GrabbedPos = body.Transform.PointToLocal( tr.EndPosition );
         GrabbedBone = body.GroupIndex;
@@ -219,14 +216,8 @@ partial class PhysGun : HLWeapon
 
         if ( rotating )
         {
-            DoRotate( eyeRot, Input.Cursor.Direction - lastRotateInput );
-            lastRotateInput = Input.Cursor.Direction;
-
+            DoRotate( eyeRot, Input.MouseDelta * RotateSpeed );
             snapping = Input.Down( InputButton.Run );
-        }
-        else
-        {
-            lastRotateInput = 0;
         }
 
         GrabMove( eyePos, eyeDir, eyeRot, snapping );
@@ -247,7 +238,7 @@ partial class PhysGun : HLWeapon
             GrabEnd();
         }
 
-        rotateInput = 0;
+        KillEffects();
     }
 
     public override void ActiveStart( Entity ent )
@@ -308,14 +299,13 @@ partial class PhysGun : HLWeapon
 
         if ( GrabbedEntity.IsValid() )
         {
-            GrabbedEntity.Tags.Remove( grabbedTag );
+            GrabbedEntity.Tags.Remove( GrabbedTag );
+            GrabbedEntity.Tags.Remove( $"{GrabbedTag}{Client.PlayerId}" );
             GrabbedEntity = null;
         }
 
         heldBody = null;
         grabbing = false;
-
-        lastRotateInput = 0;
     }
 
     [Event.Physics.PreStep]
@@ -327,11 +317,7 @@ partial class PhysGun : HLWeapon
         if ( !heldBody.IsValid() )
             return;
 
-        if ( GrabbedEntity is Player )
-            return;
-
-
-        if ( GrabbedEntity is NPC )
+        if ( GrabbedEntity is Player || GrabbedEntity is NPC )
             return;
 
         var velocity = heldBody.Velocity;
@@ -345,32 +331,36 @@ partial class PhysGun : HLWeapon
 
     private void GrabMove( Vector3 startPos, Vector3 dir, Rotation rot, bool snapAngles )
     {
-        if ( !heldBody.IsValid() )
-            return;
+
 
         holdPos = startPos - heldPos * heldBody.Rotation + dir * holdDistance;
 
-        if ( GrabbedEntity is Player player )
-        {
-            var velocity = player.Velocity;
-            Vector3.SmoothDamp( player.Position, holdPos, ref velocity, 0.075f, Time.Delta );
-            player.Velocity = velocity;
-            player.GroundEntity = null;
-
-            return;
-        }
-
-        if ( GrabbedEntity is NPC npc )
-        {
-            var velocity = npc.Velocity;
-            Vector3.SmoothDamp( npc.Position, holdPos, ref velocity, 0.075f, Time.Delta );
-            npc.Velocity = velocity;
-            npc.GroundEntity = null;
-
-            return;
-        }
-
         holdRot = rot * heldRot;
+
+        if ( !heldBody.IsValid() )
+        {
+            GrabbedEntity.Position = holdPos;
+            GrabbedEntity.Rotation = holdRot;
+            return;
+        }
+        if ( GrabbedEntity is DoorEntity || GrabbedEntity is DoorRotatingEntity || GrabbedEntity is DoorEntity )
+        {
+            GrabbedEntity.Position = holdPos;
+            GrabbedEntity.Rotation = holdRot;
+            return;
+
+        }
+        if ( GrabbedEntity is Player || GrabbedEntity is NPC || GrabbedEntity is func_train || GrabbedEntity is func_wall )
+        {
+            var velocity = GrabbedEntity.Velocity;
+            Vector3.SmoothDamp( GrabbedEntity.Position, holdPos, ref velocity, 0.075f, Time.Delta );
+            GrabbedEntity.Velocity = velocity;
+            GrabbedEntity.GroundEntity = null;
+
+            return;
+        }
+
+
 
         if ( snapAngles )
         {
@@ -406,22 +396,143 @@ partial class PhysGun : HLWeapon
              !owner.Down( InputButton.PrimaryAttack ) ||
              !GrabbedEntity.IsValid() )
         {
-            rotateInput = Vector3.Zero;
-
             return;
         }
-
-        rotateInput.x += -owner.AnalogLook.yaw;
-        rotateInput.y += owner.AnalogLook.pitch;
-
-        //
-        // We need to get accumulated look delta to the server so put it into something we don't use
-        //
-        owner.Cursor.Direction = rotateInput;
 
         //
         // Lock view angles
         //
         owner.ViewAngles = owner.OriginalViewAngles;
+    }
+
+    //public override bool IsUsable( Entity user )
+    //{
+    //return Owner == null || HeldBody.IsValid();
+    //}
+
+    Particles Beam;
+    Particles EndNoHit;
+
+    Vector3 lastBeamPos;
+    ModelEntity lastGrabbedEntity;
+
+    [Event.Frame]
+    public void OnFrame()
+    {
+        UpdateEffects();
+    }
+
+    protected virtual void KillEffects()
+    {
+        Beam?.Destroy( true );
+        Beam = null;
+        BeamActive = false;
+
+        EndNoHit?.Destroy( false );
+        EndNoHit = null;
+
+        if ( lastGrabbedEntity.IsValid() )
+        {
+            foreach ( var child in lastGrabbedEntity.Children.OfType<ModelEntity>() )
+            {
+                if ( child is Player )
+                    continue;
+
+                if ( child.Components.TryGet<Glow>( out var childglow ) )
+                {
+                    childglow.Enabled = false;
+                }
+            }
+
+            if ( lastGrabbedEntity.Components.TryGet<Glow>( out var glow ) )
+            {
+                glow.Enabled = false;
+            }
+
+            lastGrabbedEntity = null;
+        }
+    }
+
+    protected virtual void UpdateEffects()
+    {
+        var owner = Owner as Player;
+
+        if ( owner == null || !BeamActive || owner.ActiveChild != this )
+        {
+            KillEffects();
+            return;
+        }
+
+        var startPos = owner.EyePosition;
+        var dir = owner.EyeRotation.Forward;
+
+        var tr = Trace.Ray( startPos, startPos + dir * MaxTargetDistance )
+            .UseHitboxes()
+            .Ignore( owner, false )
+            .WithAllTags( "solid" )
+            .Run();
+
+        if ( Beam == null )
+        {
+            Beam = Particles.Create( "particles/physgun_beam.vpcf", tr.EndPosition );
+        }
+
+        Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
+
+        if ( GrabbedEntity.IsValid() && !GrabbedEntity.IsWorld )
+        {
+            var physGroup = GrabbedEntity.PhysicsGroup;
+
+            if ( physGroup != null && GrabbedBone >= 0 )
+            {
+                var physBody = physGroup.GetBody( GrabbedBone );
+                if ( physBody != null )
+                {
+                    Beam.SetPosition( 1, physBody.Transform.PointToWorld( GrabbedPos ) );
+                }
+            }
+            else
+            {
+                Beam.SetEntity( 1, GrabbedEntity, GrabbedPos, true );
+            }
+
+            lastBeamPos = GrabbedEntity.Position + GrabbedEntity.Rotation * GrabbedPos;
+
+            EndNoHit?.Destroy( false );
+            EndNoHit = null;
+
+            if ( GrabbedEntity is ModelEntity modelEnt )
+            {
+                lastGrabbedEntity = modelEnt;
+
+                var glow = modelEnt.Components.GetOrCreate<Glow>();
+                glow.Enabled = true;
+                glow.RangeMin = 0;
+                glow.RangeMax = 1000;
+                glow.Color = new Color( 4f, 50.0f, 70.0f, 1.0f );
+
+                foreach ( var child in lastGrabbedEntity.Children.OfType<ModelEntity>() )
+                {
+                    if ( child is Player )
+                        continue;
+
+                    glow = child.Components.GetOrCreate<Glow>();
+                    glow.Enabled = true;
+                    glow.RangeMin = 0;
+                    glow.RangeMax = 1000;
+                    glow.Color = new Color( 0.1f, 1.0f, 1.0f, 1.0f );
+                }
+            }
+        }
+        else
+        {
+            lastBeamPos = tr.EndPosition;// Vector3.Lerp( lastBeamPos, tr.EndPosition, Time.Delta * 10 );
+            Beam.SetPosition( 1, lastBeamPos );
+
+            if ( EndNoHit == null )
+                EndNoHit = Particles.Create( "particles/physgun_end_nohit.vpcf", lastBeamPos );
+
+            EndNoHit.SetPosition( 0, lastBeamPos );
+        }
     }
 }
