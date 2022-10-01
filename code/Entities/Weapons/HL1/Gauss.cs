@@ -55,7 +55,7 @@ partial class Gauss : HLWeapon
         }
         else
         {
-            float pitch = ( Time.Now - startspin ) * ( 150 / GetFullChargeTime() ) + 100;
+            float pitch = (Time.Now - startspin) * (150 / GetFullChargeTime()) + 100;
             if ( pitch > 250 )
                 pitch = 250;
 
@@ -72,7 +72,7 @@ partial class Gauss : HLWeapon
 
         var owner2 = Owner as HLPlayer;
 
-        if ( ( !( Input.Down( InputButton.SecondaryAttack ) ) && spinning ) || ( ( player.AmmoCount( AmmoType.Uranium ) <= 0 ) && spinning ) || ( !EnableDrawing && spinning ) )
+        if ( (!(Input.Down( InputButton.SecondaryAttack )) && spinning) || ((player.AmmoCount( AmmoType.Uranium ) <= 0) && spinning) || (!EnableDrawing && spinning) )
         {
             var dmg = 200.0f;
             if ( Time.Now - startspin > GetFullChargeTime() )
@@ -81,7 +81,7 @@ partial class Gauss : HLWeapon
             }
             else
             {
-                dmg = 200 * ( ( Time.Now - startspin ) / GetFullChargeTime() );
+                dmg = 200 * ((Time.Now - startspin) / GetFullChargeTime());
             }
             if ( dmg < 10 ) return; // wait until we have a bit of charge
             ViewModelEntity?.SetAnimParameter( "spinning", false );
@@ -215,7 +215,7 @@ partial class Gauss : HLWeapon
 
                         // lose energy
                         if ( n == 0 ) n = 0.1f;
-                        DMG = DMG * ( 1 - n );
+                        DMG = DMG * (1 - n);
                     }
                     else
                     {
@@ -227,7 +227,7 @@ partial class Gauss : HLWeapon
                             if ( !trace.StartedSolid )
                             {
                                 var trace2 = Trace.Ray( trace.EndPosition, tr.EndPosition ).Run();
-                                float n2 = ( trace2.EndPosition - trace2.EndPosition ).Length;
+                                float n2 = (trace2.EndPosition - trace2.EndPosition).Length;
 
                                 if ( n2 < DMG )
                                 {
@@ -303,13 +303,13 @@ partial class Gauss : HLWeapon
 
         if ( FirstBeam )
         {
-            if ( ( EffectEntity.GetAttachment( "muzzle" ) != null ) && ( Beam != null ) ) Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
+            if ( (EffectEntity.GetAttachment( "muzzle" ) != null) && (Beam != null) ) Beam.SetEntityAttachment( 0, EffectEntity, "muzzle", true );
         }
         else
         {
             if ( Beam != null ) Beam.SetPosition( 0, startPos );
         }
-        if ( Client.IsUsingVr && ( Beam != null ) ) Beam.SetEntityAttachment( 0, VRWeaponModel, "muzzle", true );
+        if ( Client.IsUsingVr && (Beam != null) ) Beam.SetEntityAttachment( 0, VRWeaponModel, "muzzle", true );
         if ( Beam != null ) Beam.SetPosition( 2, beamcolour );
         if ( Beam != null ) Beam.SetPosition( 3, new Vector3( 2, 1, 0 ) );
 
