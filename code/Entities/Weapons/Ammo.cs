@@ -136,7 +136,7 @@ partial class AmmoUranium : BaseAmmo
 	public override AmmoType AmmoType => AmmoType.Uranium;
 	public override int AmmoAmount => 5;
 
-	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_rpgammo.vmdl" );
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_gaussammo.vmdl" );
 }
 
 [Library( "ammo_gaussclip" ), HammerEntity]
@@ -147,7 +147,7 @@ partial class AmmoGaussClip : BaseAmmo
 	public override AmmoType AmmoType => AmmoType.Uranium;
 	public override int AmmoAmount => 5;
 
-	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_rpgammo.vmdl" );
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_gaussammo.vmdl" );
 }
 
 [Library( "ammo_rockets" ), HammerEntity]
