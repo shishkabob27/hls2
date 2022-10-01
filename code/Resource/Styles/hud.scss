@@ -396,3 +396,37 @@ FlagUI{
     }
  
 }
+
+ChapterText
+{
+    position: absolute;
+    bottom: 256px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //transform: translate(-50%,-50%);
+
+    Label
+    {
+        color: rgba(255, 255, 255, 0.75);
+        font-family: 'Trebuchet MS';
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 18px;
+        transition: all 1s linear;
+        opacity: 0;
+    }
+
+    .intro
+	{
+        transition: all 1s linear;
+		opacity: 1;
+	}
+
+	.outro
+	{
+		transition: all 1s linear;
+        opacity: 0;
+	}
+}
