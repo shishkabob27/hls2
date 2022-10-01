@@ -658,16 +658,8 @@
 		if ( PickupTrigger.IsValid() )
 		{
 			PickupTrigger.EnableTouch = false;
+			PickupTrigger.Delete();
 		}
 	}
 
-	public override void OnCarryDrop( Entity dropper )
-	{
-		base.OnCarryDrop( dropper );
-
-		if ( PickupTrigger.IsValid() )
-		{
-			PickupTrigger.EnableTouch = true;
-		}
-	}
 }
