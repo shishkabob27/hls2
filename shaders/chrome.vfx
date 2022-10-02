@@ -72,11 +72,16 @@ PS
 	// Main
 	//
 
+float ChromeOffsetX < UiType( Slider ); Default1(0.0); Range( 0.0f, 8.0f ); UiGroup( "Chrome,10/20" ); >;
+float ChromeOffsetY < UiType( Slider ); Default1(0.0); Range( 0.0f, 8.0f ); UiGroup( "Chrome,10/20" ); >;
+		
+		
+
 	//CreateInputTexture2D( ChromeMapTexture, Srgb, 8, "", "",  "Shader Vars,10/10", Default3( 1, 1, 1) );
     CreateTexture2D( ChromeMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
 	TextureAttribute( ChromeMap, ChromeMap );
 
-	PixelOutput MainPs( PixelInput i )
+	float4 MainPs( PixelInput i ) : SV_Target0
 	{
 		ShadingModelValveStandard sm;
 		Material m = GatherMaterial( i );
@@ -96,8 +101,8 @@ PS
 
 		float3 pos = float3(vTangentViewVector * 0.3 + (i.vTextureCoords * 0.02), 1 );
 
-		float n1 = pos.x + 0.35;
-		float n2 = pos.y + 0.35;
+		float n1 = pos.x + 0.35 + ChromeOffsetX;
+		float n2 = pos.y + 0.35 + ChromeOffsetY;
 		float2 reflectUV = float2(n1,n2) * 1.3;
 		
 		
@@ -105,7 +110,7 @@ PS
 		float4 chrome = Tex2D( ChromeMap, reflectUV.xy );
 
 		m.Albedo.rgb = chrome.rgb; 
-		PixelOutput p = FinalizePixelMaterial( i, m, sm );
+		float4 p = FinalizePixelMaterial( i, m, sm );
 		return p;
 	}
 }

@@ -86,7 +86,7 @@ PS
     RenderState(BlendEnable, true);
 
 
-	PixelOutput MainPs( PixelInput i )
+	float4 MainPs( PixelInput i ) : SV_Target0
 	{
 		ShadingModelValveStandard sm;
 
@@ -107,8 +107,8 @@ PS
 		float4 wave = Tex2D( WaveTexMap, uv.xy );
 
 		m.Albedo.rgb = wave.rgb; 
-		PixelOutput p = FinalizePixelMaterial( i, m, sm );
-		p.vColor.a = WaveAlpha;
+		float4 p = FinalizePixelMaterial( i, m, sm );
+		p.a = WaveAlpha;
 		return p;
 	}
 }
