@@ -816,7 +816,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -400.0, -176.0 ]
+					m_vecPosition = [ -400.0, -192.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1833900622
@@ -825,7 +825,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "attack1miss"
-					m_playbackSpeed = 0.5
+					m_playbackSpeed = 1.0
 					m_bLoop = false
 				}
 			},
