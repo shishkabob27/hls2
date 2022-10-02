@@ -970,7 +970,7 @@
 					m_id = 225564390
 				}
 				m_previewButton = "ANIMPARAM_BUTTON_NONE"
-				m_bNetwork = true
+				m_bNetwork = false
 				m_bUseMostRecentValue = false
 				m_bAutoReset = false
 				m_bPredicted = false

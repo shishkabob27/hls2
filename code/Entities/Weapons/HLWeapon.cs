@@ -19,7 +19,7 @@
 	public virtual int BucketWeight => 100;
 
 	public virtual bool HasAltAmmo => false;
-	public virtual int Order => ( Bucket * 10000 ) + BucketWeight;
+	public virtual int Order => (Bucket * 10000) + BucketWeight;
 
 	public virtual string AmmoIcon => "ui/ammo1.png";
 	public virtual string AltAmmoIcon => "ui/ammo3.png";
@@ -172,7 +172,7 @@
 
 		IsReloading = true;
 
-		( Owner as AnimatedEntity ).SetAnimParameter( "b_reload", true );
+		(Owner as AnimatedEntity).SetAnimParameter( "b_reload", true );
 
 		StartReloadEffects();
 	}
@@ -211,6 +211,8 @@
 
 	public override void Simulate( Client owner )
 	{
+
+		ViewModelEntity?.SetAnimParameter( "doidle", HLGame.hl_viewmodel_idle_fix );
 		if ( IsReloadingAlt && TimeSinceAltReload > AltReloadTime )
 		{
 			OnAltReloadFinish();
@@ -317,7 +319,7 @@
 	{
 		if ( Client.IsUsingVr )
 		{
-			if ( !Owner.IsValid() || !( Input.VR.RightHand.Trigger.Value > 0.2 ) ) return false;
+			if ( !Owner.IsValid() || !(Input.VR.RightHand.Trigger.Value > 0.2) ) return false;
 		}
 		else
 		{
@@ -340,7 +342,7 @@
 	{
 		if ( Client.IsUsingVr )
 		{
-			if ( !Owner.IsValid() || !( Input.VR.LeftHand.Trigger.Value > 0.2 ) ) return false;
+			if ( !Owner.IsValid() || !(Input.VR.LeftHand.Trigger.Value > 0.2) ) return false;
 		}
 		else
 		{
@@ -483,7 +485,7 @@
 			var BForward = GetFiringRotation().Forward;
 			var BPosition = GetFiringPos();
 
-			BForward += ( Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random ) * spread * 0.25f;
+			BForward += (Vector3.Random + Vector3.Random + Vector3.Random + Vector3.Random) * spread * 0.25f;
 			BForward = BForward.Normal;
 
 			//
@@ -516,7 +518,7 @@
 					.Ignore( this )
 					.Size( 1.0f )
 					.Run();
-					if ( ( tr.Entity as NPC ).BloodColour == NPC.BLOOD_COLOUR_RED )
+					if ( (tr.Entity as NPC).BloodColour == NPC.BLOOD_COLOUR_RED )
 					{
 						if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
 						{
@@ -589,8 +591,8 @@
 		VRWeaponModel = new AnimatedEntity();
 		VRWeaponModel.Position = Position;
 		VRWeaponModel.Owner = Owner;
-		VRWeaponModel.SetParent( ( Client.Pawn as HLPlayer ).RightHand, true );
-		( Client.Pawn as HLPlayer ).RightHand.RenderColor = Color.Transparent;
+		VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).RightHand, true );
+		(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
 		var wmodel = ViewModelPath;
 		wmodel = ViewModelPath.Replace( "view/v_", "vr/" ); // get vr model
 		var vrmodel = wmodel;
