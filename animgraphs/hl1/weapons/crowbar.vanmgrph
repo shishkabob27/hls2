@@ -81,7 +81,7 @@
 				{
 					_class = "CChoiceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -176.0, -48.0 ]
+					m_vecPosition = [ -176.0, -64.0 ]
 					m_nNodeID = 
 					{
 						m_id = 327269582
@@ -111,7 +111,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1802854968
+									m_id = 1889835038
 								}
 								m_outputID = 
 								{
@@ -127,7 +127,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1889835038
+									m_id = 1759869229
 								}
 								m_outputID = 
 								{
@@ -766,13 +766,35 @@
 			{
 				key = 
 				{
+					m_id = 1759869229
+				}
+				value = 
+				{
+					_class = "CSequenceAnimNode"
+					m_sName = "Unnamed"
+					m_vecPosition = [ -400.0, -16.0 ]
+					m_nNodeID = 
+					{
+						m_id = 1759869229
+					}
+					m_networkMode = "ClientSimulate"
+					m_sNote = ""
+					m_tagSpans = [  ]
+					m_sequenceName = "attack4"
+					m_playbackSpeed = 1.0
+					m_bLoop = false
+				}
+			},
+			{
+				key = 
+				{
 					m_id = 1802854968
 				}
 				value = 
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -576.0, -48.0 ]
+					m_vecPosition = [ -400.0, -112.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1802854968
@@ -794,7 +816,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -576.0, -96.0 ]
+					m_vecPosition = [ -400.0, -176.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1833900622
@@ -803,7 +825,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "attack1miss"
-					m_playbackSpeed = 1.0
+					m_playbackSpeed = 0.5
 					m_bLoop = false
 				}
 			},
@@ -893,7 +915,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -576.0, 0.0 ]
+					m_vecPosition = [ -400.0, -64.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1889835038
