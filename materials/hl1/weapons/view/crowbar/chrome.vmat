@@ -4,6 +4,10 @@ Layer0
 {
 	shader "chrome.vfx"
 
+	//---- Chrome ----
+	ChromeOffsetX "0.595"
+	ChromeOffsetY "0.160"
+
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
@@ -31,6 +35,6 @@ Layer0
 	g_nScaleTexCoordUByModelScaleAxis "0"
 	g_nScaleTexCoordVByModelScaleAxis "0"
 	g_vTexCoordOffset "[0.000 0.000]"
-	g_vTexCoordScale "[1.000 1.000]"
+	g_vTexCoordScale "[13.000 13.000]"
 	g_vTexCoordScrollSpeed "[0.000 0.000]"
 }

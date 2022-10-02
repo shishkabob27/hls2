@@ -4,6 +4,10 @@ Layer0
 {
 	shader "chrome.vfx"
 
+	//---- Chrome ----
+	ChromeOffsetX "0.000"
+	ChromeOffsetY "0.000"
+
 	//---- Color ----
 	g_flModelTintAmount "1.000"
 	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
