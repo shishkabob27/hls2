@@ -38,8 +38,8 @@ partial class HLExplosion
 
 			var distanceMul = 1.0f - Math.Clamp( dist / radius, 0.0f, 1.0f );
 			var dmg = damage * distanceMul;
-			var force = ( forceScale * distanceMul ) * ent.PhysicsBody.Mass;
-			var forceDir = ( targetPos - position ).Normal;
+			var force = (forceScale * distanceMul) * ent.PhysicsBody.Mass;
+			var forceDir = (targetPos - position).Normal;
 
 			var damageInfo = DamageInfo.Explosion( position, forceDir * force, dmg )
 				.WithWeapon( weapon )
@@ -73,5 +73,6 @@ partial class HLExplosion
 				default: Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
 			}
 		}
+		// TODO: Sparkshower.
 	}
 }
