@@ -104,7 +104,6 @@ public partial class HL1GameMovement
 			WishVelocity *= MaxSpeed / wishspeed;
 			wishspeed = MaxSpeed;
 		}
-
 		var acceleration = sv_accelerate;
 
 		// if our wish speed is too low, we must increase acceleration or we'll never overcome friction
