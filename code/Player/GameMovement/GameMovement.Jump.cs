@@ -49,7 +49,7 @@
 		return true;
 	}
 
-	public virtual float JumpImpulse => 100;
+	public virtual float JumpImpulse => 268;
 
 	public virtual void OnJump( float velocity )
 	{
