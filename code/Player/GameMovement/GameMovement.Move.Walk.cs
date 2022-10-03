@@ -126,6 +126,7 @@ public partial class HL1GameMovement
 		{
 			Velocity = 0;
 			Velocity -= BaseVelocity;
+			StayOnGround();
 			return;
 		}
 

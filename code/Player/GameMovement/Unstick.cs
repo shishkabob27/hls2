@@ -38,16 +38,16 @@
 		//if ( Host.IsClient )
 		//return true;
 
-		int AttemptsPerTick = 20;
+		int AttemptsPerTick = 100;
 
 		for ( int i = 0; i < AttemptsPerTick; i++ )
 		{
 			var pos = Controller.Position + Vector3.Random.Normal * (((float)StuckTries) / 2.0f);
 
 			// First try the up direction for moving platforms
-			if ( i < 10 )
+			if ( i < 32 )
 			{
-				pos = Controller.Position + Vector3.Up * (6 * i);
+				pos = Controller.Position + Vector3.Up * (2f * i);
 			}
 
 			result = Controller.TraceBBox( pos, pos );
