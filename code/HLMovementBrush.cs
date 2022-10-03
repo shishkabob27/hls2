@@ -27,7 +27,7 @@
 		//SetupPhysicsFromOBB(PhysicsMotionType.Static, CollisionBounds.Mins, CollisionBounds.Maxs);
 		EnableAllCollisions = true;
 		EnableTouch = true;
-		Tags.Add( "funcpush", "solid" );
+		Tags.Add( "funcpush", "solid", "playerclip" );
 	}
 	[Event.Tick.Server]
 	void Tick()
@@ -46,11 +46,14 @@
 		Move();
 	}
 
+	float sizeAdd = 0.064f;
 	public void Move()
 	{
 
 		var mib = CollisionBounds.Mins;
 		var mab = CollisionBounds.Maxs;
+		var emins = new Vector3( mib.x - sizeAdd, mib.y - sizeAdd, mib.z - sizeAdd );
+		var emaxs = new Vector3( mab.x + sizeAdd, mab.y + sizeAdd, mab.z + sizeAdd );
 		mins = new Vector3( mib.x, mib.y, mib.z );
 		maxs = new Vector3( mab.x, mab.y, mab.z );
 		NewMoveHelper mover = new NewMoveHelper( Position, Velocity );
@@ -60,7 +63,6 @@
 		mover.GroundBounce = GroundBounce;
 		mover.WallBounce = WallBounce;
 		mover.TryMoveWithStep( Time.Delta, 18 );
-		//mover.TryUnstuck();
 
 		//lastTouch = mover.HitEntity;
 		Position = mover.Position;
@@ -79,16 +81,16 @@
 
 		var mib = CollisionBounds.Mins;
 		var mab = CollisionBounds.Maxs;
-		float sizeAdd = 0.064f;
 		var emins = new Vector3( mib.x - sizeAdd, mib.y - sizeAdd, mib.z - sizeAdd );
 		var emaxs = new Vector3( mab.x + sizeAdd, mab.y + sizeAdd, mab.z + sizeAdd );
 		var tr = Trace.Ray( Position, Position )
 					.Size( emins, emaxs )
 					.EntitiesOnly()
+					.WithAnyTags( "player" )
 					.Ignore( this )
 					.Run();
 
-		if ( tr.Entity is not null )
+		if ( tr.Entity is not null && tr.Entity.GroundEntity != this )
 		{
 			Touch( tr.Entity );
 
@@ -99,10 +101,13 @@
 		if ( IsClient ) return;
 		var temp = Velocity;
 		bool playerTouch = false;
-		if ( lastTouch is HLPlayer ply && lastTouch.GroundEntity != this )
+		if ( lastTouch is not HLPlayer ply )
+			return;
+		if ( ply.Controller is not BasePlayerController playerMover )
+			return;
+		if ( playerMover.GroundEntity != this )
 		{
-			if ( ply.Controller is not BasePlayerController playerMover )
-				return;
+			if ( playerMover.Velocity.z != 0 ) return;
 			var IN_USE = (lastTouch as HLPlayer).IN_USE;
 			var IN_FORWARD = (lastTouch as HLPlayer).IN_FORWARD;
 			var factor = 2.0f;
@@ -123,7 +128,7 @@
 				temp.y = (temp.y * (400 - frictionmv) / length);
 			}
 
-			Velocity = temp;
+			Velocity = temp.WithZ( Velocity.z );
 
 			if ( playerTouch )
 			{

@@ -3,6 +3,7 @@
 public partial class HL1GameMovement : BasePlayerController
 {
 	HLPlayer Player { get; set; }
+	public Unstick Unstuck;
 	protected float MaxSpeed { get; set; }
 	protected float FallVelocity { get; set; }
 	bool IsTouchingLadder = false;
@@ -35,6 +36,10 @@ public partial class HL1GameMovement : BasePlayerController
 	/// Local eye position that is not modified by any of view punches.
 	/// </summary>
 	protected Vector3 PureLocalEyePosition { get; set; }
+	public HL1GameMovement()
+	{
+		Unstuck = new Unstick( this );
+	}
 
 	public override void FrameSimulate()
 	{
@@ -57,7 +62,8 @@ public partial class HL1GameMovement : BasePlayerController
 			PawnChanged( newPlayer, Player );
 			Player = newPlayer;
 		}
-
+		if ( Unstuck.TestAndFix() )
+			return;
 		ProcessMovement();
 		ShowDebugOverlay();
 	}
@@ -131,7 +137,6 @@ public partial class HL1GameMovement : BasePlayerController
 		SimulateDucking();
 		UpdateViewOffset();
 		//Player.SimulateFootsteps( Position, Velocity );
-
 		if ( IsAlive )
 		{
 			if ( !LadderMove() && Player.IsOnLadder )
