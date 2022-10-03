@@ -7,7 +7,7 @@
 	[ConVar.Client] public static float cl_bob { get; set; } = 0.01f;
 	[ConVar.Client] public static float cl_bobcycle { get; set; } = 0.8f;
 	[ConVar.Client] public static float cl_bobup { get; set; } = 0.5f;
-	[ConVar.Client] public static float cl_vsmoothing { get; set; } = 0.05f;
+	[ConVar.Client] public static float cl_vsmoothing { get; set; } = 0f;
 	[ConVar.Client] public static bool hl_won_viewbob { get; set; } = false;
 	[ConVar.Client] public static bool hl_fix_mystery_viewbob_code { get; set; } = false;
 
