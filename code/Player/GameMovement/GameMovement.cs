@@ -1,6 +1,6 @@
 ﻿
 
-public partial class Source1GameMovement : BasePlayerController
+public partial class HL1GameMovement : BasePlayerController
 {
 	HLPlayer Player { get; set; }
 	protected float MaxSpeed { get; set; }
@@ -80,9 +80,26 @@ public partial class Source1GameMovement : BasePlayerController
 		Up = Input.Rotation.Up;
 
 		var speed = MaxSpeed;
+
+
+		if ( Input.Down( InputButton.Walk ) ) speed = sv_sprintspeed;
+		if ( Input.Down( InputButton.Run ) ) speed = sv_walkspeed;
+
+
+
 		ForwardMove = Input.Forward * speed;
 		RightMove = -Input.Left * speed;
 		UpMove = Input.Up * speed;
+
+		if ( Client.IsUsingVr )
+		{
+			ForwardMove = Input.VR.LeftHand.Joystick.Value.y * speed;
+			RightMove = Input.VR.LeftHand.Joystick.Value.x * speed;
+			EyeRotation = Input.VR.Head.Rotation;
+			Forward = Input.VR.Head.Rotation.Forward;
+			Right = Input.VR.Head.Rotation.Right;
+			Up = Input.VR.Head.Rotation.Up;
+		}
 
 		ReduceTimers();
 		CheckParameters();
@@ -256,7 +273,7 @@ public partial class Source1GameMovement : BasePlayerController
 		if ( !CanAccelerate() )
 			return;
 
-		var speedCap = GetAirSpeedCap();
+		var speedCap = sv_airspeedcap;
 
 		var wishSpeedCapped = wishSpeed;
 		if ( wishSpeedCapped > speedCap )
@@ -281,8 +298,6 @@ public partial class Source1GameMovement : BasePlayerController
 
 		Velocity += accelspeed * wishdir;
 	}
-
-	public virtual float GetAirSpeedCap() => 30;
 
 	/// <summary>
 	/// Remove ground friction from velocity

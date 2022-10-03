@@ -1,7 +1,8 @@
 ﻿[Library]
 public partial class WalkController : BasePlayerController
 {
-	[ConVar.Replicated] public static float sv_gravity { get; set; } = 800;
+	/*
+		[ConVar.Replicated] public static float sv_gravity { get; set; } = 800;
 	[ConVar.Replicated] public static float sv_stopspeed { get; set; } = 100;
 	[ConVar.Replicated] public static float sv_noclip_accelerate { get; set; } = 5;
 	[ConVar.Replicated] public static float sv_noclip_speed { get; set; } = 5;
@@ -37,6 +38,43 @@ public partial class WalkController : BasePlayerController
 	[ConVar.Replicated] public static bool sv_use_sbox_movehelper { get; set; } = true;
 	[ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
 	[ConVar.Replicated, Net] public static bool sv_autojump { get; set; } = false;
+	 */
+	public static float sv_gravity { get; set; } = 800;
+	public static float sv_stopspeed { get; set; } = 100;
+	public static float sv_noclip_accelerate { get; set; } = 5;
+	public static float sv_noclip_speed { get; set; } = 5;
+	public static float sv_spectator_accelerate { get; set; } = 5;
+	public static float sv_spectator_speed { get; set; } = 3;
+	public static bool sv_spectator_noclip { get; set; } = true;
+
+	public static float sv_maxspeed { get; set; } = 320;
+	public static float sv_accelerate { get; set; } = 10;
+
+	public static float sv_airaccelerate { get; set; } = 10;
+	public static float sv_aircontrol { get; set; } = 100;
+	public static float sv_airspeedcap { get; set; } = 30;
+	public static float sv_wateraccelerate { get; set; } = 10;
+	public static float sv_waterfriction { get; set; } = 1;
+	public static float sv_maxnonjumpvelocity { get; set; } = 250;
+	public static float sv_maxstandableangle { get; set; } = 50;
+
+	public static float sv_friction { get; set; } = 4;
+
+	public static float sv_bounce { get; set; } = 0;
+	public static float sv_maxvelocity { get; set; } = 3500;
+	public static float sv_stepsize { get; set; } = 18;
+	public static float sv_backspeed { get; set; } = 0.6f;
+	public static float sv_waterdist { get; set; } = 12;
+
+
+	public static float sv_sprintspeed { get; set; } = 320.0f;
+	public static float sv_walkspeed { get; set; } = 150.0f;
+	public static float sv_defaultspeed { get; set; } = 320.0f;
+
+
+	public static bool sv_use_sbox_movehelper { get; set; } = true;
+	public static bool sv_enablebunnyhopping { get; set; } = true;
+	public static bool sv_autojump { get; set; } = false;
 
 	[Net] public float BodyGirth { get; set; } = 32.0f;
 	[Net] public float BodyHeight { get; set; } = 72.0f;

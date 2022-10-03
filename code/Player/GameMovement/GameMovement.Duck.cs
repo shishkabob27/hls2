@@ -1,5 +1,5 @@
 ﻿
-partial class Source1GameMovement
+partial class HL1GameMovement
 {
 	[ConVar.Replicated] public static bool sv_debug_duck { get; set; }
 

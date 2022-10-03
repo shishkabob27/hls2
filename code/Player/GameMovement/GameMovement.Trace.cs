@@ -1,5 +1,5 @@
 ﻿
-partial class Source1GameMovement
+partial class HL1GameMovement
 {
 	/// <summary>
 	/// Traces the current bbox and returns the result.

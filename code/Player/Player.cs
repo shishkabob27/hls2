@@ -221,7 +221,7 @@
 
 		SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
 
-		Controller = new Source1GameMovement();
+		Controller = new HL1GameMovement();
 
 		Animator = new HLPlayerAnimator();
 

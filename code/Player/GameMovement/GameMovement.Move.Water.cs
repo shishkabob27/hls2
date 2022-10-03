@@ -7,7 +7,7 @@ public enum WaterLevelType
 	Eyes
 }
 
-public partial class Source1GameMovement
+public partial class HL1GameMovement
 {
 	protected float WaterJumpTime { get; set; }
 	protected Vector3 WaterJumpVelocity { get; set; }

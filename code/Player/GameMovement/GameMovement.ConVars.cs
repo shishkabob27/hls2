@@ -1,5 +1,5 @@
 ﻿
-partial class Source1GameMovement
+partial class HL1GameMovement
 {
 	[ConVar.Replicated] public static float sv_gravity { get; set; } = 800;
 	[ConVar.Replicated] public static float sv_stopspeed { get; set; } = 100;
@@ -35,4 +35,7 @@ partial class Source1GameMovement
 	[ConVar.Replicated] public static float sv_sprintspeed { get; set; } = 320.0f;
 	[ConVar.Replicated] public static float sv_walkspeed { get; set; } = 150.0f;
 	[ConVar.Replicated] public static float sv_defaultspeed { get; set; } = 320.0f;
+	[ConVar.Replicated] public static bool sv_autojump { get; set; } = false;
+	[ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
+
 }

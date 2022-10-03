@@ -1,5 +1,5 @@
 ﻿
-public partial class Source1GameMovement
+public partial class HL1GameMovement
 {
 	public virtual void FullNoClipMove( float factor, float maxacceleration )
 	{

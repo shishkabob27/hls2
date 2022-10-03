@@ -1,5 +1,5 @@
 ﻿
-partial class Source1GameMovement
+partial class HL1GameMovement
 {
 	public virtual Vector3 GetPlayerMins( bool ducked ) { return Player.GetPlayerMinsScaled( ducked ); }
 	public virtual Vector3 GetPlayerMaxs( bool ducked ) { return Player.GetPlayerMaxsScaled( ducked ); }

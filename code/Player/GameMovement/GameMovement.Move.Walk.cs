@@ -1,8 +1,7 @@
 ﻿
 
-public partial class Source1GameMovement
+public partial class HL1GameMovement
 {
-	public float AirAccelMultiplier = 1.0f;
 	public virtual void FullWalkMove()
 	{
 		if ( !InWater() )
@@ -87,7 +86,6 @@ public partial class Source1GameMovement
 		// Take specified amount of fall damage when landed.
 		//Player.OnLanded( velocity );
 	}
-
 	public virtual void WalkMove()
 	{
 		var oldGround = GroundEntity;
@@ -180,7 +178,7 @@ public partial class Source1GameMovement
 			wishspeed = MaxSpeed;
 		}
 
-		AirAccelerate( wishdir, wishspeed, sv_airaccelerate * AirAccelMultiplier );
+		AirAccelerate( wishdir, wishspeed, sv_airaccelerate );
 
 		Velocity += BaseVelocity;
 		TryPlayerMove();

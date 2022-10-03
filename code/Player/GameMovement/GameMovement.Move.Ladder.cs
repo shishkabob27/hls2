@@ -1,4 +1,4 @@
-﻿partial class Source1GameMovement
+﻿partial class HL1GameMovement
 {
 	protected Vector3 LadderNormal { get; set; }
 	public virtual float LadderDistance => 2;
