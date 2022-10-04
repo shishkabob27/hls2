@@ -426,6 +426,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			else
 			{
 				GroundEntity = null;
+				if ( InScriptedSequence && ScriptedSequenceOverrideAi ) return;
 				move.Velocity += Vector3.Down * 800 * timeDelta;
 				//XeNPC.Debug.Draw.Once.WithColor( Color.Red ).Circle( Position, Vector3.Up, 10.0f );
 			}

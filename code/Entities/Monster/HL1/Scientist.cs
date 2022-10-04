@@ -13,7 +13,7 @@ public partial class Scientist : NPC
 	};
 
 	[Property]
-	public float Body { get; set; } = 5;
+	public float Body { get; set; } = -1;
 	public float VoicePitch = 100;
 
 
