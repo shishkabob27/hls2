@@ -52,7 +52,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float WalkSpeed = 80;
 	public float RunSpeed = 200;
 	public float entFOV = 0.5f;
-	public float EntDist = 1024;
+	public float entDist = 512;
+	public float SleepDist = 1024;
 	public float EyeHeight = 64;
 
 	public string NPCAnimGraph = "";
@@ -112,7 +113,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public void Tick()
 	{
 
-		if ( HLUtils.PlayerInRangeOf( Position, EntDist ) == false && DontSleep == false )
+		if ( HLUtils.PlayerInRangeOf( Position, SleepDist ) == false && DontSleep == false )
 			return;
 
 		if ( NoNav )
@@ -288,27 +289,20 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		TargetEntity = a.Entity;
 		*/
+		var allents = Entity.All.OfType<ICombat>().ToList().OrderBy( o => ((o as Entity).Position.Distance( Position )) ).ToList(); // sort by closest
+		allents.RemoveAll( o => ((o as Entity).Position.Distance( Position )) > entDist ); // Remove everything further away than entDist
+		allents.RemoveAll( o => o == this ); // Remove ourselves
+		allents.RemoveAll( o => !InViewCone( (o as Entity) ) ); // Remove anything not in our view code.
 
-		var allents = Entity.All.OfType<ICombat>().ToList().OrderBy( o => ((o as Entity).Position.Distance( Position )) );
-
-		int i = 0;
-		foreach ( Entity ent in allents )
+		foreach ( Entity ent in allents.Take( 16 ) ) // iterate through the first 16 at MOST.
 		{
-			i++;
-			if ( i > 16 ) continue;
-			if ( !InViewCone( ent ) )
-			{
-				continue;
-			}
-			var b = Trace.Ray( (Position + Vector3.Up * EyeHeight), ent.Position )
-				.Ignore( this )
+			var b = Trace.Ray( EyePosition, ent.EyePosition )
+				.WithoutTags( "monster", "npc", "player" )
 				.Run();
-			if ( b.Entity != ent )
+			if ( b.Fraction != 1 )
 			{
 				continue;
 			}
-
-
 			ProcessEntity( ent, GetRelationship( ent ) );
 		}
 	}
