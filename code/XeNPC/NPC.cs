@@ -6,6 +6,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 {
 	public bool InScriptedSequence = false;
 	public bool InPriorityScriptedSequence = false;
+	public bool ScriptedSequenceOverrideAi = false;
 	public bool DontSleep = false;
 	public bool NoNav = false;
 	public float GroundBounce = 0;
@@ -36,7 +37,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 
 	[Property( "spawnsetting", Title = "Spawn Settings" )]
-	public Flags SpawnSettings { get; set; }
+	public Flags spawnflags { get; set; }
 
 	[ConVar.Replicated]
 	public static bool nav_drawpath { get; set; }
@@ -69,11 +70,15 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	}
 	public override void Spawn()
 	{
-		if ( SpawnSettings.HasFlag( Flags.NotInDeathmatch ) && HLGame.GameIsMultiplayer() && IsServer )
+		if ( spawnflags.HasFlag( Flags.NotInDeathmatch ) && HLGame.GameIsMultiplayer() && IsServer )
 		{
 			Delete();
 		}
-
+		if ( spawnflags.HasFlag( Flags.WaitForScript ) )
+		{
+			InScriptedSequence = true;
+			ScriptedSequenceOverrideAi = true;
+		}
 		Tags.Add( "npc", "playerclip" );
 		base.Spawn();
 		animHelper = new HLAnimationHelper( this );
@@ -112,7 +117,6 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	[Event.Tick.Server]
 	public void Tick()
 	{
-
 		if ( HLUtils.PlayerInRangeOf( Position, SleepDist ) == false && DontSleep == false )
 			return;
 
@@ -264,6 +268,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 	public virtual void See()
 	{
+		if ( InScriptedSequence && ScriptedSequenceOverrideAi ) return;
 		TargetEntity = null;
 		TargetEntityRel = 0;
 		// todo, trace a cone maybe...
