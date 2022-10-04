@@ -126,7 +126,10 @@ public partial class HL1GameMovement
 		{
 			Velocity = 0;
 			Velocity -= BaseVelocity;
-			StayOnGround();
+			if ( Velocity.z <= 0 )
+			{
+				StayOnGround();
+			}
 			return;
 		}
 
@@ -158,7 +161,6 @@ public partial class HL1GameMovement
 		StepMove( dest );
 		Velocity -= BaseVelocity;
 
-		StayOnGround();
 	}
 
 	public virtual void AirMove()
