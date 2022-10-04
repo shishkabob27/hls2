@@ -13,7 +13,10 @@
 
 	public virtual bool TestAndFix()
 	{
-		var result = Controller.TraceBBox( Controller.Position, Controller.Position );
+		var result = Controller.SetupBBoxTrace( Controller.Position, Controller.Position )
+			.WithoutTags( "npc", "monster" )
+			.Run();
+		// we cannot get stuck in npcs, fixes npcs that touch you pushing you around
 
 		// Not stuck, we cool
 		if ( !result.StartedSolid )
