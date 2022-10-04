@@ -52,6 +52,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float WalkSpeed = 80;
 	public float RunSpeed = 200;
 	public float entFOV = 0.5f;
+	public float EntDist = 1024;
 	public float EyeHeight = 64;
 
 	public string NPCAnimGraph = "";
@@ -110,6 +111,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	[Event.Tick.Server]
 	public void Tick()
 	{
+
+		if ( HLUtils.PlayerInRangeOf( Position, EntDist ) == false && DontSleep == false )
+			return;
+
 		if ( NoNav )
 		{
 			See();
@@ -118,8 +123,6 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			return;
 		}
 
-		if ( HLUtils.PlayerInRangeOf( Position, 1024 ) == false && DontSleep == false )
-			return;
 		using var _a = Profile.Scope( "NpcTest::Tick" );
 
 
@@ -199,7 +202,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		{
 			var closestENTs = Entity.All.OfType<ICombat>().OfType<Entity>().ToList();
 			closestENTs.Remove( this );
-			var ck = closestENTs.OrderBy( o => ( o.Position.Distance( Position ) ) );
+			var ck = closestENTs.OrderBy( o => (o.Position.Distance( Position )) );
 			var closestENT = ck.First();
 
 			var a = Rotation.LookAt( closestENT.Position.WithZ( 0 ) - Position.WithZ( 0 ), Vector3.Up ).Yaw();//HLUtils.VecToYaw(closestENT.Position.WithZ(0) - Position.WithZ(0));
@@ -209,7 +212,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			var d = a - c;
 			//if (a > 0) d = a - c;
 			//if (a < 0) d = a + c;
-			var b = ( d / 90 ) * -1;
+			var b = (d / 90) * -1;
 
 			if ( b > 1 ) b -= 2;
 			if ( b < -1 ) b += 2;
@@ -286,7 +289,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		TargetEntity = a.Entity;
 		*/
 
-		var allents = Entity.All.OfType<ICombat>().ToList().OrderBy( o => ( ( o as Entity ).Position.Distance( Position ) ) );
+		var allents = Entity.All.OfType<ICombat>().ToList().OrderBy( o => ((o as Entity).Position.Distance( Position )) );
 
 		int i = 0;
 		foreach ( Entity ent in allents )
@@ -297,7 +300,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			{
 				continue;
 			}
-			var b = Trace.Ray( ( Position + Vector3.Up * EyeHeight ), ent.Position )
+			var b = Trace.Ray( (Position + Vector3.Up * EyeHeight), ent.Position )
 				.Ignore( this )
 				.Run();
 			if ( b.Entity != ent )
@@ -316,7 +319,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	{
 		if ( ent is ICombat )
 		{
-			var trgt = ( ent as ICombat );
+			var trgt = (ent as ICombat);
 			return HLCombat.ClassMatrix[Classify(), trgt.Classify()];
 		}
 		else
@@ -330,7 +333,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		float flDot;
 
 
-		var e = ( ent.WorldSpaceBounds.Center - ( Position + Vector3.Up * EyeHeight ) );
+		var e = (ent.WorldSpaceBounds.Center - (Position + Vector3.Up * EyeHeight));
 		vec2LOS = new Vector2( e.x, e.y );
 		vec2LOS = vec2LOS.Normal;
 
@@ -405,7 +408,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 				if ( !tr.StartedSolid )
 				{
-					//move.Position = tr.EndPosition;
+					move.Position = tr.EndPosition;
 				}
 
 				if ( InputVelocity.Length > 0 )
@@ -460,8 +463,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public override void TakeDamage( DamageInfo info )
 	{
 		if ( LifeState == LifeState.Alive )
-			targetRotation = Rotation.From( ( ( Position - info.Position ) * -360 ).EulerAngles.WithRoll( 0 ).WithPitch( 0 ) );
-		var trace = Trace.Ray( EyePosition, EyePosition + ( ( Position - info.Position ) * 70 ) * 2 )
+			targetRotation = Rotation.From( ((Position - info.Position) * -360).EulerAngles.WithRoll( 0 ).WithPitch( 0 ) );
+		var trace = Trace.Ray( EyePosition, EyePosition + ((Position - info.Position) * 70) * 2 )
 			.WorldOnly()
 			.Ignore( this )
 			.Size( 1.0f )
