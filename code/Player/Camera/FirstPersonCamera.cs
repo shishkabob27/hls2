@@ -8,6 +8,7 @@
 	[ConVar.Client] public static float cl_bobcycle { get; set; } = 0.8f;
 	[ConVar.Client] public static float cl_bobup { get; set; } = 0.5f;
 	[ConVar.Client] public static float cl_vsmoothing { get; set; } = 0f;
+	[ConVar.Client] public static float cl_stepsmooth { get; set; } = 1f;
 	[ConVar.Client] public static bool hl_won_viewbob { get; set; } = false;
 	[ConVar.Client] public static bool hl_fix_mystery_viewbob_code { get; set; } = false;
 
@@ -17,6 +18,8 @@
 
 	Vector3 lastorg = Vector3.Zero;
 
+	static float oldz = 0;
+	float lasttime;
 
 
 	public override void Activated()
@@ -106,6 +109,39 @@
 
 			}
 		}
+		Vector3 wepchange = Vector3.Zero;
+		if ( cl_stepsmooth > 0 && pawn.GroundEntity != null && simorg[2] - oldz > 0 )
+		{
+			float steptime;
+
+			steptime = Time.Now - lasttime;
+			if ( steptime < 0 )
+				//FIXME		I_Error ("steptime < 0");
+				steptime = 0;
+
+			oldz += steptime * 150;
+			if ( oldz > simorg[2] )
+				oldz = simorg[2];
+			if ( simorg[2] - oldz > 18 )
+				oldz = simorg[2] - 18;
+			if ( pawn.ActiveChild is HLWeapon )
+			{
+
+				var wep = pawn.ActiveChild as HLWeapon;
+				// Weapon position
+				if ( wep.ViewModelEntity is Entity )
+				{
+
+					wep.ViewModelEntity.Position = wep.ViewModelEntity.Position.WithZ( wep.ViewModelEntity.Position.z + oldz - simorg[2] );
+				}
+			}
+			Position = Position.WithZ( Position.z + oldz - simorg[2] );
+		}
+		else
+		{
+			oldz = simorg[2];
+		}
+
 		Vector3 delta2;
 
 		//VectorSubtract( pparams->simorg, lastorg, delta );
@@ -186,7 +222,18 @@
 				}
 			}
 		}
+		if ( pawn.ActiveChild is HLWeapon )
+		{
 
+			var wep = pawn.ActiveChild as HLWeapon;
+			// Weapon position
+			if ( wep.ViewModelEntity is Entity )
+			{
+
+				wep.ViewModelEntity.Position += wepchange;
+			}
+		}
+		lasttime = Time.Now;
 	}
 	public virtual float CalculateRoll( Rotation angles, Vector3 velocity, float rollangle, float rollspeed )
 	{
@@ -221,32 +268,32 @@
 	}
 	double bobtime;
 	float bob;
-	float cycle;
-	float lasttime;
+	float bobcycle;
+	float lasttimebob;
 	float V_CalcBob()
 	{
 		Vector3 vel;
 		if ( Local.Pawn is not HLPlayer player ) return 0;
 
-		if ( player.GroundEntity == null || Time.Now == lasttime )
+		if ( player.GroundEntity == null || Time.Now == lasttimebob )
 		{
 			// just use old value
 			return bob;
 		}
 
-		lasttime = Time.Now;
+		lasttimebob = Time.Now;
 
 		bobtime += Time.Delta;
-		cycle = (float)(bobtime - (int)(bobtime / cl_bobcycle) * cl_bobcycle);
-		cycle /= cl_bobcycle;
+		bobcycle = (float)(bobtime - (int)(bobtime / cl_bobcycle) * cl_bobcycle);
+		bobcycle /= cl_bobcycle;
 
-		if ( cycle < cl_bobup )
+		if ( bobcycle < cl_bobup )
 		{
-			cycle = (float)Math.PI * cycle / cl_bobup;
+			bobcycle = (float)Math.PI * bobcycle / cl_bobup;
 		}
 		else
 		{
-			cycle = (float)Math.PI + (float)Math.PI * (cycle - cl_bobup) / (1.0f - cl_bobup);
+			bobcycle = (float)Math.PI + (float)Math.PI * (bobcycle - cl_bobup) / (1.0f - cl_bobup);
 		}
 
 		// bob is proportional to simulated velocity in the xy plane
@@ -256,7 +303,7 @@
 		//vel[2] = 0;
 
 		bob = (float)Math.Sqrt( vel[0] * vel[0] + vel[1] * vel[1] ) * cl_bob;
-		bob = bob * 0.3f + bob * 0.7f * (float)Math.Sin( cycle );
+		bob = bob * 0.3f + bob * 0.7f * (float)Math.Sin( bobcycle );
 		bob = Math.Min( bob, 4 );
 		bob = Math.Max( bob, -7 );
 		return bob;
