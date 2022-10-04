@@ -408,7 +408,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 				if ( !tr.StartedSolid )
 				{
-					move.Position = tr.EndPosition;
+					//move.Position = tr.EndPosition;
 				}
 
 				if ( InputVelocity.Length > 0 )
