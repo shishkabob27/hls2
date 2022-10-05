@@ -27,7 +27,9 @@ public class Cockroach : NPC
 		SetupPhysicsFromAABB( PhysicsMotionType.Keyframed, new Vector3( -1, -1, 0 ), new Vector3( 1, 1, 2 ) );
 		SetModel( "models/hl1/monster/roach.vmdl" );
 		entFOV = 0.5f;
-		SleepDist = 100;
+		SleepDist = 128;
+		DontSee = true;
+		CannotBeSeen = true;
 		EnableHitboxes = true;
 		Tags.Add( "npc" );
 	}
