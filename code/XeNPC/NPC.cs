@@ -1,5 +1,6 @@
 ﻿namespace XeNPC;
 
+using Sandbox;
 using System;
 using XeNPC.Debug;
 
@@ -285,6 +286,12 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 	TimeSince nextSee;
 	float SeeDelay = 0.1f;
+
+	/// <summary>
+	/// green = visible
+	/// red = not visible but still in viewcone
+	/// yellow = cached trace, neither entities have moved so assume it's the same
+	/// </summary>
 	[ConVar.Replicated] public static bool npc_debug_los { get; set; } = false;
 	public virtual void See()
 	{
