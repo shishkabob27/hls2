@@ -9,6 +9,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public bool ScriptedSequenceOverrideAi = false;
 	public bool DontSleep = false;
 	public bool DontSee = false;
+	public bool CannotBeSeen = false;
 	public bool NoNav = false;
 	public float GroundBounce = 0;
 	public float WallBounce = 0;

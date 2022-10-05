@@ -28,6 +28,8 @@ public class Cockroach : NPC
 		SetModel( "models/hl1/monster/roach.vmdl" );
 		entFOV = 0.5f;
 		SleepDist = 128;
+		DontSee = true;
+		CannotBeSeen = true;
 		EnableHitboxes = true;
 		Tags.Add( "npc" );
 	}
