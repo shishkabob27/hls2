@@ -51,10 +51,15 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			npc.Delete();
 	}
 
+	const float VIEW_FIELD_FULL = -1.0f; // +-180 degrees
+	const float VIEW_FIELD_WIDE = -0.7f; // +-135 degrees 0.1 // +-85 degrees, used for full FOV checks 
+	const float VIEW_FIELD_NARROW = 0.7f; // +-45 degrees, more narrow check used to set up ranged attacks
+	const float VIEW_FIELD_ULTRA_NARROW = 0.9f; // +-25 degrees, more narrow check used to set up ranged attacks
+
 	public float Speed;
 	public float WalkSpeed = 80;
 	public float RunSpeed = 200;
-	public float entFOV = 0.5f;
+	public float entFOV = VIEW_FIELD_WIDE;
 	public float entDist = 512;
 	public float SleepDist = 1024;
 	public float EyeHeight = 64;
@@ -268,6 +273,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		*/
 	}
 
+	[ConVar.Replicated] public static bool npc_debug_los { get; set; } = false;
 	public virtual void See()
 	{
 		if ( DontSee ) return;
@@ -308,10 +314,13 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			var b = Trace.Ray( EyePosition, ent.EyePosition )
 				.WithoutTags( "monster", "npc", "player" )
 				.Run();
+
 			if ( b.Fraction != 1 )
 			{
+				if ( npc_debug_los ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Red, 0, false );
 				continue;
 			}
+			if ( npc_debug_los ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Green, 0, false );
 			ProcessEntity( ent, GetRelationship( ent ) );
 		}
 	}
