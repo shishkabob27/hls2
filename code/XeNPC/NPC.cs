@@ -301,6 +301,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		allents.RemoveAll( o => ((o as Entity).Position.Distance( Position )) > entDist ); // Remove everything further away than entDist
 		allents.RemoveAll( o => o == this ); // Remove ourselves
 		allents.RemoveAll( o => !InViewCone( (o as Entity) ) ); // Remove anything not in our view code.
+		allents.RemoveAll( o => !EntityShouldBeSeen( (o as Entity) ) ); // Remove anything not in our view code.
 
 		foreach ( Entity ent in allents.Take( 16 ) ) // iterate through the first 16 at MOST.
 		{
@@ -329,6 +330,16 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			return 0;
 		}
 	}
+
+	public bool EntityShouldBeSeen( Entity ent )
+	{
+		if ( ent is NPC enpc )
+		{
+			if ( enpc.CannotBeSeen ) return false;
+		}
+		return true;
+	}
+
 	public bool InViewCone( Entity ent )
 	{
 		Vector2 vec2LOS;
