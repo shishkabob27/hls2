@@ -29,6 +29,15 @@ GUIRootPanel {
     overflow: hidden;
 }
 
+.panelicon {
+    margin-top: 4px;
+    background-image: url("ui/icon_hlicon1.png");
+    width: 16px;
+    height: 16px;
+    background-size: contain;
+}
+
+
 .root.active {
     opacity: 1;
     pointer-events: all;
