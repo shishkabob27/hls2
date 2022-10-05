@@ -47,10 +47,12 @@ KillFeedEntry
 
 	.icon
 	{
-		width: 100px;
-		height: 100px;
-		background-size: 100%;
-		background-image-tint: red;
+		width: 48px;
+		height: 48px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-image-tint: $orange;
+		
 	}
 
 	.left, .right
@@ -86,4 +88,108 @@ KillFeedEntry
 	{
 		display: none;
 	}
+
+	&.died{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/suicide.png");
+		}
+	}
+
+	&.weapon_crowbar{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_crowbar.png");
+		}
+	}
+	
+	&.weapon_9mmhandgun{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_glock.png");
+		}
+	}
+
+	&.weapon_357{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_python.png");
+		}
+	}
+
+	&.weapon_mp5{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_mp5.png");
+		}
+	}
+
+	&.smggrenade{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_grenade.png");
+		}
+	}
+
+	&.weapon_shotgun{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_shotgun.png");
+		}
+	}
+
+	&.hl_crossbow_bolt{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_crossbow.png");
+		}
+	}
+	
+	&.hl_rpg_rocket{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_rpg.png");
+		}
+	}
+
+	&.weapon_gauss{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_gauss.png");
+		}
+	}
+
+	&.weapon_gauss{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_gauss.png");
+		}
+	}
+
+	&.weapon_egon{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_egon.png");
+		}
+	}
+
+	&.hl_hornet{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_hgun.png");
+		}
+	}
+
+	&.ggrenade{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_grenade.png");
+		}
+	}
+
+	&.monster_satchel{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_satchel.png");
+		}
+	}
+
+	&.monster_tripmine{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_tripmine.png");
+		}
+	}
+
+	&.monster_snark{
+		.icon{
+			background-image: url("/ui/weapons/killfeed/weapon_snark.png");
+		}
+	}
+
+	
 }
