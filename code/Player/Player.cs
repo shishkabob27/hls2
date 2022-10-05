@@ -258,7 +258,26 @@
 		{
 			CreateHands();
 		}
-		base.Respawn();
+
+		Host.AssertServer();
+
+		LifeState = LifeState.Alive;
+		Health = 100;
+		Velocity = Vector3.Zero;
+		WaterLevel = 0;
+
+		CreateHull();
+
+		switch (HLGame.hl_gamemode)
+		{
+			case "campagin": Game.Current?.MoveToSpawnpoint( this ); break;
+			case "deathmatch": HLGame.MoveToDMSpawnpoint( this ); break;
+			case "ctf": Game.Current?.MoveToSpawnpoint( this ); break;
+			default: Game.Current?.MoveToSpawnpoint( this ); break;
+		}
+
+		ResetInterpolation();
+
 		updtasync();
 
 	}
