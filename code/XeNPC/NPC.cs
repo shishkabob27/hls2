@@ -1,4 +1,6 @@
 ﻿namespace XeNPC;
+
+using System;
 using XeNPC.Debug;
 
 [Library( "monster_test" ), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
@@ -21,6 +23,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public const int BLOOD_COLOUR_YELLOW = 1;
 	public const int BLOOD_COLOUR_GREEN = BLOOD_COLOUR_YELLOW;
 	public int BloodColour = BLOOD_COLOUR_RED;
+
 
 	[Flags]
 	public enum Flags
@@ -273,13 +276,26 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		*/
 	}
 
+	int posinarray = 0;
+	Vector3 lastTraceStart = Vector3.Zero;
+	Vector3 lastTraceEnd = Vector3.Zero;
+	TraceResult lastTraceResult;
+	Trace[] LastTraces = new Trace[32];
+	TraceResult[] LastTracesResults = new TraceResult[32];
+
+	TimeSince nextSee;
+	float SeeDelay = 0.1f;
 	[ConVar.Replicated] public static bool npc_debug_los { get; set; } = false;
 	public virtual void See()
 	{
+		if ( IsClient ) return;
 		if ( DontSee ) return;
 		if ( InScriptedSequence && ScriptedSequenceOverrideAi ) return;
 		TargetEntity = null;
 		TargetEntityRel = 0;
+		if ( nextSee <= SeeDelay ) return;
+		nextSee = 0;
+		//return;
 		// todo, trace a cone maybe...
 
 		/*
@@ -303,25 +319,53 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		TargetEntity = a.Entity;
 		*/
-		var allents = Entity.All.OfType<ICombat>().ToList().OrderBy( o => ((o as Entity).Position.Distance( Position )) ).ToList(); // sort by closest
-		allents.RemoveAll( o => ((o as Entity).Position.Distance( Position )) > entDist ); // Remove everything further away than entDist
-		allents.RemoveAll( o => o == this ); // Remove ourselves
-		allents.RemoveAll( o => !InViewCone( (o as Entity) ) ); // Remove anything not in our view code.
-		allents.RemoveAll( o => !EntityShouldBeSeen( (o as Entity) ) ); // Remove anything that doesn't want to be seen.
-
+		Vector3 delta = new Vector3( entDist, entDist, entDist );
+		var allents = Entity.FindInBox( new BBox( Position - delta, Position + delta ) ).OfType<ICombat>().OrderBy( o => ((o as Entity).Position.Distance( Position )) );
+		/*
+		allents.RemoveAll( o =>
+			((o as Entity).Position.Distance( Position )) > entDist || // Remove everything further away than entDist
+			o == this || // Remove ourselves
+			!InViewCone( (o as Entity) ) || // Remove anything not in our view code.
+			!EntityShouldBeSeen( (o as Entity) ) // Remove anything that doesn't want to be seen.
+		); */
+		//allents = allents; // sort by closest
 		foreach ( Entity ent in allents.Take( 16 ) ) // iterate through the first 16 at MOST.
 		{
-			var b = Trace.Ray( EyePosition, ent.EyePosition )
-				.WithoutTags( "monster", "npc", "player" )
-				.Run();
+			if ( ent == this ) continue;
+			//if ( ent.Position.Distance( Position ) > entDist ) continue; // Ignore everything further away than entDist
+			if ( !InViewCone( ent ) ) continue; // Ignore anything not in our view cone.
+			if ( !EntityShouldBeSeen( ent ) ) continue; // Ignore anything that doesn't want to be seen.
+			var REL = GetRelationship( ent );
+			if ( REL == 0 ) continue; // Ignore anything that we don't care about.
+			bool hasdrawn = false;
+			var a = Trace.Ray( EyePosition, ent.EyePosition )
+				.WithoutTags( "monster", "npc", "player" );
+
+			TraceResult b;
+			if ( LastTraces.Contains( a ) )
+			{
+				b = LastTracesResults[Array.IndexOf( LastTraces, a )];
+				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Yellow, SeeDelay, false );
+			}
+			else
+			{
+				if ( posinarray >= LastTraces.Length ) posinarray = 0;
+				b = a.Run();
+				//Array.Copy( LastTracesResults, 1, LastTracesResults, 0, LastTracesResults.Length - 1 );
+				LastTracesResults[posinarray] = b;
+				//Array.Copy( LastTraces, 1, LastTraces, 0, LastTraces.Length - 1 );
+				LastTraces[posinarray] = a;
+				posinarray++;
+			}
+
 
 			if ( b.Fraction != 1 )
 			{
-				if ( npc_debug_los ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Red, 0, false );
+				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Red, SeeDelay, false );
 				continue;
 			}
-			if ( npc_debug_los ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Green, 0, false );
-			ProcessEntity( ent, GetRelationship( ent ) );
+			if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Green, SeeDelay, false );
+			ProcessEntity( ent, REL );
 		}
 	}
 	public virtual void ProcessEntity( Entity ent, int rel )
