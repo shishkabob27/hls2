@@ -89,7 +89,7 @@
 		// If we're the local player (clientside) create viewmodel
 		// and any HUD elements that this weapon wants
 		//
-		SetModel( ViewModelPath.Replace( "view/v_", "world_player/w_" ) ); //temp solution to change to correct world model when player picks the weapon up
+		SetModel( ViewModelPath.Replace( "view/v_", "player/p_" ) ); //temp solution to change to correct world model when player picks the weapon up
 
 		if ( IsLocalPawn )
 		{
