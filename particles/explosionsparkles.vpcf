@@ -432,7 +432,7 @@
 			{
 				m_nType = "PF_TYPE_LITERAL"
 				m_nMapType = "PF_MAP_TYPE_DIRECT"
-				m_flLiteralValue = 0.4
+				m_flLiteralValue = 0.2
 				m_nControlPoint = 0
 				m_nScalarAttribute = 3
 				m_nVectorAttribute = 6
@@ -796,7 +796,7 @@
 					m_vDomainMaxs = [ 0.0, 0.0 ]
 				}
 			}
-			m_hTexture = resource:"materials/particles/glow_simple_01.vtex"
+			m_hTexture = resource:"materials/hl1/sprites/blob.vtex"
 		},
 	]
 }
