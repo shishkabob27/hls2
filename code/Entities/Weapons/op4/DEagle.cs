@@ -79,7 +79,7 @@ partial class DEagle : HLWeapon
 	{
 		Log.Info( "Gaming" );
 		base.AttackSecondary();
-		if ( Dot == null && IsServer )
+		if ( !isLaserOn && IsServer )
 		{
 			Dot = new LaserDot();
 			isLaserOn = true;
@@ -103,6 +103,18 @@ partial class DEagle : HLWeapon
 				.Ignore( this )
 				.Run()
 				.EndPosition - ply.EyeRotation.Forward * 1;
+		}
+	}
+
+	public override void ActiveEnd( Entity ent, bool dropped )
+	{
+		base.ActiveEnd( ent, dropped );
+
+		if ( isLaserOn && IsServer )
+		{
+			Dot.Delete();
+			Dot = null;
+			isLaserOn = false;
 		}
 	}
 }
