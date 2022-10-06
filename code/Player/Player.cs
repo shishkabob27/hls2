@@ -316,18 +316,18 @@
 		//give all weapons, should auto update no matter what.
 		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
 		var weptype = typeof( HLWeapon );
-		var weptypes = TypeLibrary.GetTypes( weptype );
+		var weptypes = TypeLibrary.GetDescriptions( weptype );
 		foreach ( var weapontype in weptypes )
 		{
-			var ent = TypeLibrary.Create<Entity>( weapontype );
+			var ent = weapontype.Create<Entity>();
 			ent.Position = ConsoleSystem.Caller.Pawn.Position;
 			(ent as HLWeapon).DeleteIfNotCarriedAfter( 0.1f );
 		}
 		var ammtype = typeof( BaseAmmo );
-		var ammtypes = TypeLibrary.GetTypes( ammtype );
+		var ammtypes = TypeLibrary.GetDescriptions( ammtype );
 		foreach ( var ammotype in ammtypes )
 		{
-			var ent = TypeLibrary.Create<Entity>( ammotype );
+			var ent = ammotype.Create<Entity>();
 			ent.Position = ConsoleSystem.Caller.Pawn.Position;
 			ent.DeleteAsync( 0.1f );
 		}

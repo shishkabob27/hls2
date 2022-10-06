@@ -14,7 +14,7 @@ class DEagle : HLWeapon
 	public override string AmmoIcon => "ui/ammo2.png";
 	public override string InventoryIcon => "/ui/op4/weapons/weapon_eagle.png";
 	public override string InventoryIconSelected => "/ui/op4/weapons/weapon_eagle_selected.png";
-
+	LaserDot Dot;
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -56,7 +56,30 @@ class DEagle : HLWeapon
 		//
 		ShootBullet( 0.25f, 1, 34.0f, 2.0f );
 
-		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
+		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
+	}
+	public override void AttackSecondary()
+	{
+		Log.Info( "Gaming" );
+		base.AttackSecondary();
+		if ( Dot == null && IsServer )
+		{
+			Dot = new LaserDot();
+		}
+		else if ( IsServer )
+		{
+			Dot.Delete();
+			Dot = null;
+		}
 	}
 
+	public override void Simulate( Client owner )
+	{
+		base.Simulate( owner );
+		if ( Owner is not HLPlayer ply ) return;
+		if ( Dot != null && IsServer )
+		{
+			Dot.Position = Trace.Ray( ply.EyePosition, ply.EyePosition + ply.EyeRotation.Forward * 10 ).WithoutTags( "player" ).Run().EndPosition;
+		}
+	}
 }
