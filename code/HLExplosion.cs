@@ -1,10 +1,10 @@
 partial class HLExplosion
 {
-	public static void Explosion( Entity weapon, Entity owner, Vector3 position, float radius, float damage, float forceScale, string type )
+	public static void Explosion( Entity weapon, Entity owner, Vector3 position, float radius, float damage, float forceScale, string type, bool sparkshower = true )
 	{
 		// Effects
 		Sound.FromWorld( "explode", position );
-		ExplosionParticle( position, type );
+		ExplosionParticle( position, type, sparkshower );
 		// Damage, etc
 		var overlaps = Entity.FindInSphere( position, radius );
 
@@ -50,7 +50,7 @@ partial class HLExplosion
 	}
 
 	[ClientRpc]
-	public static void ExplosionParticle( Vector3 position, string type )
+	public static void ExplosionParticle( Vector3 position, string type, bool sparkshower = true )
 	{
 
 		if ( HLGame.hl_classic_explosion )
@@ -72,6 +72,10 @@ partial class HLExplosion
 				case "electro": Particles.Create( "particles/gauss_impact.vpcf", position ); break;
 				default: Particles.Create( "particles/explosion/barrel_explosion/explosion_barrel.vpcf", position ); break;
 			}
+		}
+		if ( sparkshower )
+		{
+			Particles.Create( "particles/sparkshower.vpcf", position );
 		}
 		// TODO: Sparkshower.
 	}
