@@ -75,7 +75,13 @@ partial class HLExplosion
 		}
 		if ( sparkshower )
 		{
-			Particles.Create( "particles/sparkshower.vpcf", position );
+			Vector3 offset = new Vector3( 0, 0, 10 );
+			var a = new Sparkshower();
+			var b = new Sparkshower();
+			//var c = new Sparkshower();
+			a.Position = position + offset;
+			b.Position = position + offset;
+			//c.Position = position + offset;
 		}
 		// TODO: Sparkshower.
 	}
