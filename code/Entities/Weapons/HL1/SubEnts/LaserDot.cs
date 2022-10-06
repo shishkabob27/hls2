@@ -1,14 +1,28 @@
 ﻿
 partial class LaserDot : Entity
 {
+	Particles spritep;
 	public override void Spawn()
 	{
-		sprite();
+		Transmit = TransmitType.Always;
 		base.Spawn();
+		sprite();
 	}
-	[ClientRpc]
 	void sprite()
 	{
-		Particles.Create( "particles/laserdot.vpcf", this, true );
+		using ( Prediction.Off() )
+		{
+
+			spritep = Particles.Create( "particles/laserdot.vpcf", this, true );
+		}
+	}
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+		if ( spritep != null )
+		{
+			spritep.Destroy( true );
+			spritep.Dispose();
+		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_eagle" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/w_desert_eagle.vmdl" )]
 [Title( "weapon_eagle" ), Category( "Weapons" )]
-class DEagle : HLWeapon
+partial class DEagle : HLWeapon
 {
 	public override string ViewModelPath => "models/op4/weapons/view/v_desert_eagle.vmdl";
 	public override float PrimaryRate => 0.22f;
@@ -15,6 +15,9 @@ class DEagle : HLWeapon
 	public override string InventoryIcon => "/ui/op4/weapons/weapon_eagle.png";
 	public override string InventoryIconSelected => "/ui/op4/weapons/weapon_eagle_selected.png";
 	LaserDot Dot;
+
+	[Net]
+	public bool isLaserOn { get; set; } = false;
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -30,8 +33,15 @@ class DEagle : HLWeapon
 
 	public override void AttackPrimary()
 	{
+
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0;
+		if ( isLaserOn )
+		{
+
+			TimeSincePrimaryAttack = -0.6f;
+			TimeSinceSecondaryAttack = 0;
+		}
 
 		if ( !TakeAmmo( 1 ) )
 		{
@@ -54,7 +64,14 @@ class DEagle : HLWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.25f, 1, 34.0f, 2.0f );
+		if ( isLaserOn )
+		{
+			ShootBullet( 0, 1, 34.0f, 2.0f );
+		}
+		else
+		{
+			ShootBullet( 0.25f, 1, 34.0f, 2.0f );
+		}
 
 		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
 	}
@@ -65,11 +82,13 @@ class DEagle : HLWeapon
 		if ( Dot == null && IsServer )
 		{
 			Dot = new LaserDot();
+			isLaserOn = true;
 		}
 		else if ( IsServer )
 		{
 			Dot.Delete();
 			Dot = null;
+			isLaserOn = false;
 		}
 	}
 
@@ -79,7 +98,11 @@ class DEagle : HLWeapon
 		if ( Owner is not HLPlayer ply ) return;
 		if ( Dot != null && IsServer )
 		{
-			Dot.Position = Trace.Ray( ply.EyePosition, ply.EyePosition + ply.EyeRotation.Forward * 10 ).WithoutTags( "player" ).Run().EndPosition;
+			Dot.Position = Trace.Ray( ply.EyePosition, ply.EyePosition + ply.EyeRotation.Forward * 10000 )
+				.WithoutTags( "player" )
+				.Ignore( this )
+				.Run()
+				.EndPosition - ply.EyeRotation.Forward * 1;
 		}
 	}
 }
