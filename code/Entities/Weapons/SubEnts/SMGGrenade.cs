@@ -1,6 +1,6 @@
 ﻿partial class SMGGrenade : BasePhysics
 {
-public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade_mp5.vmdl" );
+	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade_mp5.vmdl" );
 
 	public override void Spawn()
 	{
@@ -29,7 +29,9 @@ public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/
 
 	public void BlowUp()
 	{
-		HLExplosion.Explosion( this, Owner, Position, 250, 100, 24.0f, "grenade");
+
+		Sound.FromWorld( "debris", Position );
+		HLExplosion.Explosion( this, Owner, Position, 250, 100, 24.0f, "grenade" );
 		Delete();
 	}
 }

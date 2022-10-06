@@ -268,7 +268,7 @@
 
 		CreateHull();
 
-		switch (HLGame.hl_gamemode)
+		switch ( HLGame.hl_gamemode )
 		{
 			case "campagin": Game.Current?.MoveToSpawnpoint( this ); break;
 			case "deathmatch": HLGame.MoveToDMSpawnpoint( this ); break;
@@ -279,6 +279,7 @@
 		ResetInterpolation();
 
 		updtasync();
+
 
 	}
 
@@ -545,7 +546,6 @@
 		{
 			SwitchToBestWeapon();
 		}
-
 
 	}
 	Vector3 prevVel = Vector3.Zero;
@@ -893,6 +893,13 @@
 		{
 			ply.TookDamage( ply.Position + ply.EyeRotation.Forward * 100.0f );
 		}
+	}
+
+	public void Explode()
+	{
+		var target = (ConsoleSystem.Caller.Pawn as HLPlayer);
+		if ( target == null ) return;
+		target.TakeDamage( DamageInfo.Generic( (target.Health + (target.Armour) * 2) + 30 ) );
 	}
 
 	TimeSince timeSinceLastFootstep = 0;

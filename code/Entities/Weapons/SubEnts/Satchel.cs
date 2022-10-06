@@ -21,6 +21,8 @@ partial class Satchel : HLMovement
 	}
 	public void Explode()
 	{
+
+		Sound.FromWorld( "debris", Position );
 		HLExplosion.Explosion( this, Owner, Position, 256, 100, 24.0f, "grenade" );
 		Delete();
 	}
