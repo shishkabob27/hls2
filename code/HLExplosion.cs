@@ -76,12 +76,12 @@ partial class HLExplosion
 		if ( sparkshower )
 		{
 			Vector3 offset = new Vector3( 0, 0, 10 );
-			var a = new Sparkshower();
-			var b = new Sparkshower();
-			//var c = new Sparkshower();
-			a.Position = position + offset;
-			b.Position = position + offset;
-			//c.Position = position + offset;
+			int randSparks = Rand.Int( 1, 3 );
+			for ( int i = 0; i < randSparks; i++ )
+			{
+				var a = new Sparkshower();
+				a.Position = position + offset;
+			}
 		}
 		// TODO: Sparkshower.
 	}
