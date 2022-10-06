@@ -20,6 +20,7 @@ partial class HandGrenade : HLMovement
 	{
 		await Task.DelaySeconds( seconds );
 
+		Sound.FromWorld( "debris", Position );
 		HLExplosion.Explosion( this, Owner, Position, 256, 100, 24.0f, "grenade" );
 		Delete();
 	}
