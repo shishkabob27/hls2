@@ -10,6 +10,7 @@ public partial class env_spark : Entity
 
 	bool Active = false;
 	TimeSince LastSpark;
+	float NextSpark;
 	// stub
 	[Input]
 	void SparkOnce()
@@ -39,7 +40,11 @@ public partial class env_spark : Entity
 	void Tick()
 	{
 		if ( !Active ) return;
-		if ( LastSpark > MaxDelay ) SparkOnce();
+		if ( LastSpark > MaxDelay || LastSpark > NextSpark )
+		{
+			SparkOnce();
+			NextSpark = Rand.Float( MaxDelay );
+		}
 
 	}
 
