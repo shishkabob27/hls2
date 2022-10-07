@@ -24,6 +24,16 @@ public partial class env_spark : Entity
 	bool Active = false;
 	TimeSince LastSpark;
 	float NextSpark;
+
+	public override void Spawn()
+	{
+		base.Spawn();
+		if ( spawnflags.HasFlag( Flags.StartON ) )
+		{
+			StartSpark();
+		}
+	}
+
 	// stub
 	[Input]
 	void SparkOnce()
