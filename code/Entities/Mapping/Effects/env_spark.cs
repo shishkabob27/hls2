@@ -28,6 +28,7 @@ public partial class env_spark : Entity
 	public override void Spawn()
 	{
 		base.Spawn();
+		if ( MaxDelay == 0 ) MaxDelay = 1;
 		if ( spawnflags.HasFlag( Flags.StartON ) )
 		{
 			StartSpark();
