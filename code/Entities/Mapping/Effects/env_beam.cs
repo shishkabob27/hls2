@@ -67,6 +67,10 @@ public partial class env_beam : Entity
 	[Input]
 	void TurnOff()
 	{
+		Remove();
+	}
+	void Remove()
+	{
 		rpcremove();
 		if ( Beam != null )
 		{
@@ -92,11 +96,7 @@ public partial class env_beam : Entity
 		}
 		else
 		{
-			if ( Beam != null )
-			{
-				Beam.Destroy();
-				Beam = null;
-			}
+			TurnOff();
 		}
 	}
 	void UpdateBeam()
@@ -134,19 +134,11 @@ public partial class env_beam : Entity
 	{
 		base.OnDestroy();
 
-		rpcremove();
-		if ( Beam != null )
-		{
-			Beam.Destroy();
-			Beam = null;
-		}
+		Remove();
 	}
 	public override void OnKilled()
 	{
-		base.OnKilled(); if ( Beam != null )
-		{
-			Beam.Destroy();
-			Beam = null;
-		}
+		base.OnKilled();
+		Remove();
 	}
 }
