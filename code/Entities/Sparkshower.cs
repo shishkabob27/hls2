@@ -23,7 +23,7 @@ class Sparkshower : HLMovement
 	{
 		for ( int i = 0; i < 16; i++ )
 		{
-			Particles.Create( "particles/sparkshower.vpcf", Position );
+			Particles.Create( "particles/spark.vpcf", Position );
 			await GameTask.DelaySeconds( 0.1f );
 		}
 		this.Delete();
