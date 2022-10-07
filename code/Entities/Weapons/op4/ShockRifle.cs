@@ -7,6 +7,7 @@ class ShockRifle : HLWeapon
     public override int Bucket => 6;
     public override int BucketWeight => 2;
 	public override AmmoType AmmoType => AmmoType.Plasma;
+	public override string AmmoIcon => "/ui/op4/ammo_plasma.png";
     public override string InventoryIcon => "/ui/op4/weapons/weapon_shockrifle.png";
     public override string InventoryIconSelected => "/ui/op4/weapons/weapon_shockrifle_selected.png";
 	public override int ClipSize => -1;
