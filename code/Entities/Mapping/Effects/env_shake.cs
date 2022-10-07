@@ -14,13 +14,20 @@ public partial class env_shake : Entity
 	[Property( "duration" )]
 	public float Duration { get; set; } = 1;
 
+
 	[Property( "frequency" )]
 	public float Frequency { get; set; } = 2.5f;
+
+
+	[Property( "radius" )]
+	public float EffectRadius { get; set; } = 500f;
 
 	[Input]
 	void StartShake()
 	{
-		ShakeRPC();
+		var a = Client.All.ToList();
+		a.RemoveAll( ply => ply.Pawn.Position.Distance( Position ) > EffectRadius * 2 );
+		ShakeRPC( To.Multiple( a ) );
 
 	}
 
@@ -40,7 +47,7 @@ public partial class env_shake : Entity
 		plycam.Shake_AMPLITUDE = Math.Max( Amplitude, plycam.Shake_AMPLITUDE ); // avoid setting this lower if there is a stronger shake already active
 		plycam.Shake_DURATION = Math.Max( Duration, plycam.Shake_DURATION ); // avoid setting this lower if there is a stronger shake already active
 		plycam.Shake_FREQUENCY = Math.Max( Frequency, plycam.Shake_FREQUENCY ); // avoid setting this lower if there is a stronger shake already active
-		plycam.Shake_ENDTIME = Time.Now + plycam.Shake_DURATION;
+		plycam.Shake_ENDTIME = Time.Now + Math.Max( plycam.Shake_DURATION, 0.01f );
 	}
 	[ClientRpc]
 	void StopShakeRPC()
