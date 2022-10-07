@@ -2,7 +2,7 @@
 {
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
-	m_flConstantLifespan = 0.05
+	m_flConstantLifespan = 0.16
 	m_controlPointConfigurations = 
 	[
 		{
@@ -167,6 +167,15 @@
 		},
 		{
 			_class = "C_OP_PinParticleToCP"
+		},
+		{
+			_class = "C_OP_FadeInSimple"
+			m_flFadeInTime = 0.5
+			m_bDisableOperator = true
+		},
+		{
+			_class = "C_OP_FadeOutSimple"
+			m_flFadeOutTime = 1.0
 		},
 	]
 	m_Renderers = 
