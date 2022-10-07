@@ -78,8 +78,6 @@
 
 	public Vector3 punchanglecl = Vector3.Zero;
 
-	public TraceResult GeneralPurposeEyeTrace { get; set; } = new TraceResult();
-
 	public HLPlayer()
 	{
 
@@ -479,7 +477,6 @@
 
 		base.Simulate( cl );
 
-
 		punchangle = punchangle.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
 
 		Forward = Input.Forward;
@@ -549,10 +546,6 @@
 		{
 			SwitchToBestWeapon();
 		}
-
-		GeneralPurposeEyeTrace = Trace.Ray( EyePosition, EyePosition + EyeRotation.Forward * 10000 )
-				.Ignore( this )
-				.Run();
 
 	}
 	Vector3 prevVel = Vector3.Zero;

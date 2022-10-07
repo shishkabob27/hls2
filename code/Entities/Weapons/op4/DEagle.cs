@@ -96,9 +96,12 @@ partial class DEagle : HLWeapon
 	{
 		base.Simulate( owner );
 		if ( Owner is not HLPlayer ply ) return;
-		if ( Dot != null )
+		if ( Dot != null && IsServer )
 		{
-			Dot.Position = ply.GeneralPurposeEyeTrace
+			Dot.Position = Trace.Ray( ply.EyePosition, ply.EyePosition + ply.EyeRotation.Forward * 10000 )
+				.WithoutTags( "player" )
+				.Ignore( this )
+				.Run()
 				.EndPosition - ply.EyeRotation.Forward * 1;
 		}
 	}
