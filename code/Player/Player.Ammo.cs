@@ -92,6 +92,7 @@
 
 			case AmmoType.Sniper: return 15;
 			case AmmoType.M249: return 200;
+			case AmmoType.Plasma: return 10;
 		}
 
 		return 0;
@@ -115,5 +116,6 @@ public enum AmmoType
 	Hornet,
 	//Opposing Force ammo types
 	Sniper,
-	M249
+	M249,
+	Plasma
 }
