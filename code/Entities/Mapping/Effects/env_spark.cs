@@ -3,7 +3,20 @@
 [Title( "env_spark" ), Category( "Legacy" ), Icon( "volume_up" )]
 public partial class env_spark : Entity
 {
+	[Flags]
+	public enum Flags
+	{
+		StartON = 64,
+		Glow = 128,
+		Silent = 256,
+		Directional = 512,
+	}
 
+	/// <summary>
+	/// Settings that are only applicable when the entity spawns
+	/// </summary>
+	[Property( "spawnflags", Title = "Spawn Settings" )]
+	public Flags spawnflags { get; set; } = Flags.StartON;
 
 	[Property( "MaxDelay" )]
 	public float MaxDelay { get; set; } = 1;
