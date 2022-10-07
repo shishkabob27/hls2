@@ -475,7 +475,6 @@
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 			return;
 
-		base.Simulate( cl );
 
 		punchangle = punchangle.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
 
@@ -502,6 +501,7 @@
 			IN_RIGHT = Input.Down( InputButton.Right );
 			IN_BACKWARD = Input.Down( InputButton.Back );
 		}
+		base.Simulate( cl );
 		SimulateFlashlight( cl );
 		//
 		// Input requested a weapon switch
