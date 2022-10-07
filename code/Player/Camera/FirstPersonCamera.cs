@@ -1,7 +1,7 @@
 ﻿public class FirstPersonCamera : CameraMode
 {
 	Vector3 lastPos;
-
+	public Vector3 ShakeOffset;
 	[ConVar.Client] public static float cl_rollspeed { get; set; } = 200.0f;
 	[ConVar.Client] public static float cl_rollangle { get; set; } = 2.0f;
 	[ConVar.Client] public static float cl_bob { get; set; } = 0.01f;
@@ -234,6 +234,7 @@
 			}
 		}
 		lasttime = Time.Now;
+		Position += ShakeOffset;
 	}
 	public virtual float CalculateRoll( Rotation angles, Vector3 velocity, float rollangle, float rollspeed )
 	{
