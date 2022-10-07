@@ -414,7 +414,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = "animgraphs/v_glock.vanmgrph"
+		anim_graph_name = "animgraphs/hl1/weapons/v_glock.vanmgrph"
 		base_model_name = ""
 	}
 }
