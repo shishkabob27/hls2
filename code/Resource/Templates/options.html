@@ -24,7 +24,7 @@
                     <check class="crollangle" @checked="bCviewroll">Enable HL1 WON Viewroll</check>
                     <check class="coldtorch" @checked="bColdTorch">Enable classic Torch</check>
                     <check class="coldexplosion" @checked="bColdexplosion">Enable classic explosion effect</check>
-                    <check class="chimodel" @checked="bChimodels">Enable HD models</check>
+                    <check class="chimodel" @checked="bChimodels">#GameUI_HDModels</check>
                     <check class="clowviolence">Enable Low Violence</check>
                     <check class="csubtitle" @checked="bCsubtitle">Enable Subtitles</check>
                     <text>HUD style</text>
@@ -43,9 +43,9 @@
                 </div>
             </tab>
 
-            <tab tabName="mp" slot="tab" tabtext="Multiplayer">
+            <tab tabName="mp" slot="tab" tabtext="#GameUI_Multiplayer">
                 <div class="maincontent" style="padding: 40px; width: 300px;">
-                    <text>Spraypaint image</text>
+                    <text>#GameUI_SpraypaintImage</text>
                     <select @value="bSsprayIcon" style="width:128px;">
                         <option value="8ball1">8ball1</option>
                         <option value="andre">andre</option>
@@ -72,7 +72,7 @@
                         <option value="dkgray">Dkgray</option>
                     </select>
 
-                    <text>Player model</text>
+                    <text>#GameUI_PlayerModel</text>
                     <select @value="bSplayerModel" style="width:128px;">
                         <option value="barney">barney</option>
                         <option value="gina">gina</option>
@@ -88,10 +88,10 @@
 
                     </select>
 
-                    <text>Primary Colour</text>
+                    <text>#GameUI_PrimaryColor</text>
                     <SliderScaleEntry min="0" max="360" step="1" mintext="0.00" maxtext="360" @value="fCpmColour1"></SliderScaleEntry>
 
-                    <text>Secondary Colour</text>
+                    <text>#GameUI_SecondaryColor</text>
                     <SliderScaleEntry min="0" max="360" step="1" mintext="0.00" maxtext="360" @value="fCpmColour2"></SliderScaleEntry>
                 </div>
             </tab>
@@ -133,8 +133,8 @@
 
         </tabcontrol>
         <div style="margin: 4px; justify-content: flex-end;">
-            <button onclick="OK()" style="margin-left: 8px;">OK</button>
-            <button onclick="Close()" style="margin-left: 8px;">Cancel</button>
-            <button onclick="updateCvars()" style="margin-left: 8px;">Apply</button>
+            <button onclick="OK()" style="margin-left: 8px;">#PropertyDialog_OK</button>
+            <button onclick="Close()" style="margin-left: 8px;">#PropertyDialog_Cancel</button>
+            <button onclick="updateCvars()" style="margin-left: 8px;">#PropertyDialog_Apply</button>
         </div>
 </root>

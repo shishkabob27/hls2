@@ -21,6 +21,18 @@
   "chaptertext.c18": "NIHILANTH",
   "chaptertext.c19": "ENDGAME",
 
+  //options
+  "PropertyDialog_OK": "OK",
+  "PropertyDialog_Cancel": "Cancel",
+  "PropertyDialog_Apply": "Apply",
+
+  "GameUI_HDModels": "Enable HD models if available",
+  "GameUI_Multiplayer": "Multiplayer",
+  "GameUI_PrimaryColor": "Primary color",
+  "GameUI_SecondaryColor": "Secondary color",
+  "GameUI_PlayerModel": "Player model",
+  "GameUI_SpraypaintImage": "Spraypaint image",
+
 
   //c1p0 - Barney
   "BA_LATE": "Morning, Mr. Freeman. Looks like you're running late.",
