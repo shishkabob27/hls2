@@ -16,16 +16,13 @@ public partial class TextureToggle : Entity
 	[ClientRpc]
 	void inctextindex()
 	{
-		Log.Info( TargetEntity );
 		if ( Entity.FindAllByName( TargetEntity ).First() is BrushEntity b )
 		{
-			Log.Info( Entity.FindAllByName( TargetEntity ).First() );
 			curFrame++;
 			b.SceneObject.Attributes.Set( "frame", curFrame );
 		}
 		else if ( Entity.FindAllByName( TargetEntity ).First() is ModelEntity m )
 		{
-			Log.Info( Entity.FindAllByName( TargetEntity ).First() );
 			curFrame++;
 			m.SceneObject.Attributes.Set( "frame", curFrame );
 		}
