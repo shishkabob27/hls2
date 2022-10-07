@@ -40,6 +40,10 @@ public partial class env_spark : Entity
 	void SparkOnce()
 	{
 		Particles.Create( "particles/spark.vpcf", Position );
+		if ( spawnflags.HasFlag( Flags.Silent ) == false )
+		{
+			Sound.FromWorld( "spark", Position );
+		}
 		LastSpark = 0;
 		OnSpark.Fire( this );
 	}
