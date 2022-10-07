@@ -3,7 +3,6 @@
 	_class = "CParticleSystemDefinition"
 	m_nBehaviorVersion = 10
 	m_flConstantRadius = 2.0
-	m_flConstantLifespan = 100.0
 	m_controlPointConfigurations = 
 	[
 		{
@@ -447,9 +446,11 @@
 		{
 			_class = "C_OP_FadeOutSimple"
 			m_flFadeOutTime = 0.0
+			m_bDisableOperator = true
 		},
 		{
 			_class = "C_OP_Decay"
+			m_nOpEndCapState = 1
 		},
 		{
 			_class = "C_OP_RemapCPtoScalar"
