@@ -6,7 +6,7 @@ public partial class func_tracktrain : BrushEntity
 	Vector3 PrevPos;
 	[Property( "target" ), FGDType( "target_destination" )]
 	public string Target { get; set; } = "";
-	float speed = 0;
+	public float speed = 0;
 
 
 	[Property( "orientationtype" )]
@@ -17,50 +17,45 @@ public partial class func_tracktrain : BrushEntity
 	}
 
 	[Event.Tick.Server]
-	void tick()
+	public void tick()
 	{
-		if ( Enabled )
+		try
 		{
-			try
+			var a = (Entity.FindAllByName( Target ).First() as path_track);
+			if ( a.Speed != 0 )
 			{
-				var a = (Entity.FindAllByName( Target ).First() as path_track);
-				if ( a.Speed != 0 )
+				speed = a.Speed;
+			}
+			if ( speed <= 0 )
+			{
+				Position = a.Position;
+			}
+			else
+			{
+				Velocity = (((Position - a.Position).Normal * speed)) * -1;
+				Position += Velocity * Time.Delta;
+				if ( OrientationType != 0 ) Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 2.4f );
+				foreach ( var child in Children )
 				{
-					speed = a.Speed;
-				}
-				if ( speed <= 0 )
-				{
-					Position = a.Position;
-				}
-				else
-				{
-					Velocity = (((Position - a.Position).Normal * speed)) * -1;
-					Position += Velocity * Time.Delta;
-					if ( OrientationType != 0 ) Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 2.4f );
-					foreach ( var child in Children )
-					{
-						child.Velocity = Velocity;
-						//child.Position += child.Velocity;
-						//if ( OrientationType != 0 ) child.Rotation = Rotation.Lerp( child.Rotation, Rotation.LookAt( child.Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
-					}
-				}
-				if ( Position.AlmostEqual( a.Position, 16 ) )
-				{
-					a.OnPass.Fire( this );
-					Velocity = Vector3.Zero;
-					foreach ( var child in Children )
-					{
-						child.Velocity = Vector3.Zero;
-						//child.Position += child.Velocity;
-						//if ( OrientationType != 0 ) child.Rotation = Rotation.Lerp( child.Rotation, Rotation.LookAt( child.Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
-					}
-					Target = a.Target;
+					child.Velocity = Velocity;
+					//child.Position += child.Velocity;
+					//if ( OrientationType != 0 ) child.Rotation = Rotation.Lerp( child.Rotation, Rotation.LookAt( child.Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
 				}
 			}
-			catch { }
-
-
+			if ( Position.AlmostEqual( a.Position, 16 ) )
+			{
+				a.OnPass.Fire( this );
+				Velocity = Vector3.Zero;
+				foreach ( var child in Children )
+				{
+					child.Velocity = Vector3.Zero;
+					//child.Position += child.Velocity;
+					//if ( OrientationType != 0 ) child.Rotation = Rotation.Lerp( child.Rotation, Rotation.LookAt( child.Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
+				}
+				Target = a.Target;
+			}
 		}
+		catch { }
 	}
 	/// <summary>
 	/// Enables the entity.
@@ -68,7 +63,7 @@ public partial class func_tracktrain : BrushEntity
 	[Input]
 	public void StartForward()
 	{
-		Enabled = true;
+		speed = 10;
 	}
 	/// <summary>
 	/// Enables the entity.
