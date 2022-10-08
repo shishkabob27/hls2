@@ -34,8 +34,8 @@ public partial class func_tracktrain : BrushEntity
 				}
 				else
 				{
-					Velocity = (((Position - a.Position).Normal * speed) * Time.Delta) * -1;
-					Position += Velocity;
+					Velocity = (((Position - a.Position).Normal * speed)) * -1;
+					Position += Velocity * Time.Delta;
 					if ( OrientationType != 0 ) Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
 					foreach ( var child in Children )
 					{
