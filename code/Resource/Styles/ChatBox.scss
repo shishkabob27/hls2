@@ -1,0 +1,102 @@
+﻿chat
+{
+	position: absolute;
+	bottom: 200px;
+	left: 32px;
+	z-index: 100;
+	flex-direction: column;
+	width: 500px;
+	font-family: 'Trebuchet MS';
+	font-size: 16px;
+
+	textentry
+	{
+		//background-color: black;
+		opacity: 0;
+		color: rgb(255, 201, 22);
+		padding: 15px;
+		//background-color: rgba( black, 0.5 );
+		font-size: 16px;
+		flex-shrink: 0;
+		flex-grow: 0;
+		width: 100%;
+	}
+
+	.chat_canvas
+	{
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	&.open
+	{
+		textentry
+		{
+			opacity: 1;
+			//backdrop-filter: blur( 10px );
+		}
+	}
+}
+
+chatent
+{
+	//background-color: rgba( black, 0.7 );
+	color: rgb(255, 201, 22);
+	transition: all 0.1s ease-out;
+	opacity: 1;
+	max-height: 200px;
+	flex-shrink: 0;
+	flex-grow: 0;
+	padding: 12px;
+	padding-left: 45px;
+	min-height: 18px;
+	max-width: 100%;
+	//backdrop-filter: blur( 5px );
+
+
+	&:outro
+	{
+		opacity: 0;
+		transition: all 0.1s linear;
+	}
+
+	image
+	{
+		width: 32px;
+		height: 32px;
+		min-height: 32px;
+		border-radius: 100px;
+		position: absolute;
+		left: 0px;
+		top: 5px;
+	}
+
+	.message
+	{
+		color: rgb(255, 201, 22);
+		font-size: 16px;
+		flex-grow: 1;
+	}
+
+	&.noname .name
+	{
+		display: none;
+	}
+
+	&.noavatar image
+	{
+		display: none;
+	}
+
+	&.is-lobby
+	{
+		.name
+		{
+			color: #ff80f5;
+		}
+	}
+}
+
+.label{
+	text-shadow: 0px 2px 0px black;
+}

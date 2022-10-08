@@ -34,7 +34,7 @@ public class HudPanel : HudEntity<HudRootPanel>
             RootPanel.AddChild<InventoryBar>();
             RootPanel.AddChild<PickupFeed>();
             RootPanel.AddChild<FlashlightUI>();
-            RootPanel.AddChild<ChatBox>();
+            RootPanel.AddChild<Chat>();
             RootPanel.AddChild<KillFeed>();
             Scoreboard = RootPanel.AddChild<Scoreboard>();
             RootPanel.AddChild<VoiceList>();
