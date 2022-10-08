@@ -1,0 +1,172 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "MaterialGroupList"
+				children = 
+				[
+					{
+						_class = "DefaultMaterialGroup"
+						remaps = 
+						[
+							{
+								from = "osprey_overall1.vmat"
+								to = "materials/hl1/monster/osprey/osprey_overall1.vmat"
+							},
+							{
+								from = "osprey_overall2.vmat"
+								to = "materials/hl1/monster/osprey/osprey_overall2.vmat"
+							},
+						]
+						use_global_default = false
+						global_default_material = ""
+					},
+				]
+			},
+			{
+				_class = "HitboxSetList"
+				children = 
+				[
+					{
+						_class = "HitboxSet"
+						name = "default"
+						children = 
+						[
+							{
+								_class = "Hitbox"
+								name = "osprey"
+								parent_bone = "osprey"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -88.336449, -360.66864, -106.774628 ]
+								hitbox_maxs = [ 83.612305, 360.668579, 27.898239 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "propr"
+								parent_bone = "propr"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -242.166077, -210.62384, -23.245579 ]
+								hitbox_maxs = [ 242.165619, 210.623474, 23.245716 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "enginer"
+								parent_bone = "enginer"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -24.780029, -42.620598, -89.40065 ]
+								hitbox_maxs = [ 24.779755, 42.620064, 89.400528 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "propl"
+								parent_bone = "propl"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -242.165985, -210.623291, -23.2456 ]
+								hitbox_maxs = [ 242.165619, 210.624084, 23.245607 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "enginel"
+								parent_bone = "enginel"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -24.779816, -42.620026, -89.400642 ]
+								hitbox_maxs = [ 24.779816, 42.620636, 89.400536 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "right_wing"
+								parent_bone = "osprey"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ 15.242062, 25.918587, 7.322792 ]
+								hitbox_maxs = [ 322.911499, 171.67038, 33.390808 ]
+							},
+							{
+								_class = "Hitbox"
+								name = "left_wing"
+								parent_bone = "osprey"
+								surface_property = ""
+								translation_only = false
+								group_id = 0
+								hitbox_mins = [ -338.945404, 25.864616, 7.322792 ]
+								hitbox_maxs = [ -31.27597, 171.616409, 33.390808 ]
+							},
+						]
+					},
+				]
+			},
+			{
+				_class = "RenderMeshList"
+				children = 
+				[
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/osprey/osprey_reference_smalltx.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"osprey_reference_smalltx",
+							]
+						}
+					},
+				]
+			},
+			{
+				_class = "AnimationList"
+				children = 
+				[
+					{
+						_class = "AnimFile"
+						name = "rotor"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1decomp/osprey/osprey_anims/rotor.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+				]
+				default_root_bone_name = ""
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}
