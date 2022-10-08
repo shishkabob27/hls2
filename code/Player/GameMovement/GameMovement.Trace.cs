@@ -31,7 +31,7 @@ partial class HL1GameMovement
 	{
 		var tr = Trace.Ray( start + TraceOffset, end + TraceOffset )
 			.Size( mins, maxs )
-			.WithAnyTags( "solid", "playerclip", "passbullets", "player", "funcpush" )
+			.WithAnyTags( "solid", "playerclip", "passbullets", "player", "funcpush", "clip" )
 			.Ignore( Pawn );
 		return tr;//Trace.Ray( start, end )
 				  //.Size( mins, maxs )
