@@ -30,13 +30,13 @@
 					newName = "surface/hl_concrete.surface";
 					break;
 				case "glass":
-					newName = "surface/hl_tile.surface";
+					newName = "surface/hl_glass.surface";
 					break;
 				case "glass.pane":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_glass.surface";
 					break;
 				case "glass.shard":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_glass.surface";
 					break;
 				case "dirt":
 					newName = "surface/hl_dirt.surface";
@@ -45,31 +45,31 @@
 					newName = "surface/hl_concrete.surface";
 					break;
 				case "mud":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_slosh.surface";
 					break;
 				case "plaster":
 					newName = "surface/hl_concrete.surface";
 					break;
 				case "plastic":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_tile.surface";
 					break;
 				case "plastic.sheet":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_tile.surface";
 					break;
 				case "plastic.sheet.watercontainer":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_tile.surface";
 					break;
 				case "rubber":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_tile.surface";
 					break;
 				case "sand":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_dirt.surface";
 					break;
 				case "slippy_wheels":
 					newName = "surface/hl_concrete.surface";
 					break;
 				case "water":
-					newName = "surface/hl_concrete.surface";
+					newName = "surface/hl_slosh.surface";
 					break;
 				case "watermelon":
 					newName = "surface/hl_concrete.surface";
