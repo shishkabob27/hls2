@@ -34,7 +34,7 @@
 					{
 						_class = "PhysicsShapeBox"
 						parent_bone = ""
-						surface_prop = "default"
+						surface_prop = "hl_computer"
 						collision_tags = "solid"
 						origin = [ 2.4, 0.0, 0.0 ]
 						angles = [ 0.0, 0.0, 0.0 ]

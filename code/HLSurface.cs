@@ -149,13 +149,24 @@
 			//surf = tr.Surface;
 
 
-			if ( Particle == false )
-				return default;
+
 
 			if ( surf == null )
 			{
 				surf = tr.Surface;
 			}
+
+
+
+			if ( Particle == false )
+			{
+				if ( surf.ResourceName == "hl_computer" )
+				{
+					new spark( tr.EndPosition );
+				}
+				return default;
+			}
+
 			string particleName = Rand.FromArray( surf.ImpactEffects.Bullet );
 			if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( self.ImpactEffects.Regular );
 

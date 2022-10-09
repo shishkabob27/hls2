@@ -1,14 +1,16 @@
 ﻿class spark : Entity
 {
-	public virtual bool DoSound => true;
-	public override void Spawn()
+	public spark( Vector3 position, bool doSound = true )
 	{
+		Position = position;
 		Particles.Create( "particles/spark.vpcf", Position );
-		if ( DoSound )
+		if ( doSound )
 		{
 			Sound.FromWorld( "spark", Position );
 		}
-		base.Spawn();
-		Delete();
+	}
+	public spark()
+	{
+		Particles.Create( "particles/spark.vpcf", Position );
 	}
 }
