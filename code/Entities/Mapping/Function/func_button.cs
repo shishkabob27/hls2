@@ -238,6 +238,12 @@ public partial class ButtonEntity : KeyframeEntity, IUse
 		}
 	}
 
+	[Input]
+	public void Kill()
+	{
+		if (IsServer) Delete();
+	}
+
 	/// <summary>
 	/// Fired when the button is pressed by any means. This is not the same as button reaching its pressed in position.
 	/// </summary>
