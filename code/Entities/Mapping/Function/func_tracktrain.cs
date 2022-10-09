@@ -22,16 +22,10 @@ public partial class func_tracktrain : BrushEntity
 		try
 		{
 			var a = (Entity.FindAllByName( Target ).First() as path_track);
-			if ( a.Speed != 0 )
+
+			if ( speed != 0 )
 			{
-				speed = a.Speed;
-			}
-			if ( speed <= 0 )
-			{
-				Position = a.Position;
-			}
-			else
-			{
+
 				Velocity = (((Position - a.Position).Normal * speed)) * -1;
 				Position += Velocity * Time.Delta;
 				if ( OrientationType != 0 ) Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 2.4f );
@@ -44,6 +38,10 @@ public partial class func_tracktrain : BrushEntity
 			}
 			if ( Position.AlmostEqual( a.Position, 16 ) )
 			{
+				if ( a.Speed != 0 )
+				{
+					speed = a.Speed;
+				}
 				a.OnPass.Fire( this );
 				Velocity = Vector3.Zero;
 				foreach ( var child in Children )
@@ -63,7 +61,18 @@ public partial class func_tracktrain : BrushEntity
 	[Input]
 	public void StartForward()
 	{
-		speed = 10;
+		try
+		{
+			var a = (Entity.FindAllByName( Target ).First() as path_track);
+			if ( a.Speed != 0 )
+			{
+				speed = a.Speed;
+			}
+		}
+		catch
+		{
+
+		}
 	}
 	/// <summary>
 	/// Enables the entity.
@@ -72,6 +81,16 @@ public partial class func_tracktrain : BrushEntity
 	new public void Enable()
 	{
 		Enabled = true;
+	}
+
+	/// <summary>
+	/// Enables the entity.
+	/// </summary>
+	[Input]
+	public void TeleportToPathTrack( string PathTrack )
+	{
+		var a = (Entity.FindAllByName( PathTrack ).First() as path_track);
+		Position = a.Position;
 	}
 
 	/// <summary>
@@ -90,6 +109,12 @@ public partial class func_tracktrain : BrushEntity
 	new public void Toggle()
 	{
 		Enabled = !Enabled;
+	}
+
+	[Input]
+	public void SetSpeed( float spd )
+	{
+		speed = spd;
 	}
 	// stub
 }
