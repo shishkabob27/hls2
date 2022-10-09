@@ -1,5 +1,5 @@
-using Sandbox.UI.Construct;
 using Sandbox.UI;
+using Sandbox.UI.Construct;
 
 public partial class Chat : Panel
 {
@@ -48,7 +48,6 @@ public partial class Chat : Panel
 	void Submit()
 	{
 		Close();
-
 		var msg = Input.Text.Trim();
 		Input.Text = "";
 
@@ -62,6 +61,7 @@ public partial class Chat : Panel
 	{
 		var e = Canvas.AddChild<ChatEnt>();
 
+		PlaySound( "talk" );
 		e.Message.Text = message;
 		e.NameLabel.Text = name + ": ";
 		e.Avatar.SetTexture( avatar );
