@@ -13,6 +13,7 @@ public partial class func_tracktrain : BrushEntity
 	public float OrientationType { get; set; } = 1;
 	public override void Spawn()
 	{
+		Tags.Clear();
 		base.Spawn();
 	}
 
@@ -38,10 +39,7 @@ public partial class func_tracktrain : BrushEntity
 			}
 			if ( Position.AlmostEqual( a.Position, 16 ) )
 			{
-				if ( a.Speed != 0 )
-				{
-					speed = a.Speed;
-				}
+
 				a.OnPass.Fire( this );
 				Velocity = Vector3.Zero;
 				foreach ( var child in Children )
@@ -51,6 +49,8 @@ public partial class func_tracktrain : BrushEntity
 					//if ( OrientationType != 0 ) child.Rotation = Rotation.Lerp( child.Rotation, Rotation.LookAt( child.Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
 				}
 				Target = a.Target;
+				var b = (Entity.FindAllByName( Target ).First() as path_track);
+				speed = b.Speed;
 			}
 		}
 		catch { }
