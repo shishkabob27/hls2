@@ -63,7 +63,7 @@ using SandboxEditor;
 		}
 
 		[Input]
-		void Kill()
+		public void Kill()
 		{
 			if (IsServer)
 				Delete();
