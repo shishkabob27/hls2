@@ -50,7 +50,10 @@ public partial class func_tracktrain : BrushEntity
 				}
 				Target = a.Target;
 				var b = (Entity.FindAllByName( Target ).First() as path_track);
-				speed = b.Speed;
+				if ( b.Speed != 0 )
+				{
+					speed = b.Speed;
+				}
 			}
 		}
 		catch { }
