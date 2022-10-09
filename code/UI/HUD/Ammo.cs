@@ -44,14 +44,14 @@ public class Ammo : Panel
 		if ( weapon == null ) return;
 
 		var inv = weapon.AvailableAmmo();
-		Inventory.SetClass( "invisible", weapon.ClipSize == 0 || Inventory.Text == "0" );
+		Inventory.SetClass( "invisible", weapon.ClipSize == 0 );
 		Inventory.Text = $"{inv}";
 
 		var clip = weapon.AmmoClip;
 		AmmoCount.Text = $"{clip}";
 		AmmoCount.SetClass( "active", clip >= 0 );
 
-		Seperator.SetClass( "invisible", weapon.ClipSize == 0 || Inventory.Text == "0" );
+		Seperator.SetClass( "invisible", weapon.ClipSize == 0 );
 
 		AmmoIcon1.SetClass( "invisible", weapon.ClipSize == 0 );
 		if ( weapon.ClipSize <= 0 )
