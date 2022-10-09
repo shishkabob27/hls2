@@ -13,7 +13,10 @@
 		BounceThreshold = 40
 		ImpactEffects = 
 		{
-			Regular = [  ]
+			Regular = 
+			[
+				resource:"particles/hlimpact.vpcf",
+			]
 			Bullet = 
 			[
 				resource:"particles/hlimpact.vpcf",
