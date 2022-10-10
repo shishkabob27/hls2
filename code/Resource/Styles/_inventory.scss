@@ -50,6 +50,14 @@ inventorycolumn {
 	}
 
 	&.active {
+		.ammocountf {
+			opacity: 0.8;
+		}
+
+		.ammocounte {
+			opacity: 1;
+		}
+
 		opacity: 1;
 
 		inventoryicon {
@@ -69,6 +77,14 @@ inventorycolumn {
 			}
 
 			&.empty {
+				.ammocountf {
+					opacity: 0;
+				}
+
+				.ammocounte {
+					opacity: 0;
+				}
+
 				opacity: 0.5;
 				background-color: rgba(204,0,68,0.03);
 				color: #f002;
@@ -102,6 +118,23 @@ inventoryicon {
 		position: absolute;
 	}
 
+
+	.ammocountf {
+		background-color: #00FF00;
+		height: 4px;
+		top: -32px;
+		left: -68px;
+		opacity: 0;
+	}
+
+	.ammocounte {
+		background-color: #fa02;
+		height: 4px;
+		top: -32px;
+		left: -68px;
+		opacity: 0;
+	}
+
 	&.active {
 		opacity: 1;
 		background-image: url("/ui/weapons/weapon_selected_overlay.png");
@@ -126,6 +159,15 @@ inventoryicon {
 	}
 
 	&.invisible {
+
+		.ammocountf {
+			opacity: 0;
+		}
+
+		.ammocounte {
+			opacity: 0;
+		}
+
 		opacity: 0;
 	}
 }

@@ -4,11 +4,15 @@ class InventoryIcon : Panel
 {
 	public HLWeapon Weapon;
 	public Panel Icon;
+	public Panel AmmoCountFull;
+	public Panel AmmoCountEmpty;
 
 	public InventoryIcon( HLWeapon weapon )
 	{
 		Weapon = weapon;
 		Icon = Add.Panel( "icon" );
+		AmmoCountFull = Add.Panel( "ammocountf" );
+		AmmoCountEmpty = Add.Panel( "ammocounte" );
 		Icon.Style.SetBackgroundImage( weapon.InventoryIcon );
 	}
 
@@ -32,5 +36,13 @@ class InventoryIcon : Panel
 
 		if ( !Weapon.IsValid() || Weapon.Owner != Local.Pawn )
 			Delete( true );
+
+		if ( Local.Pawn is HLPlayer ply && ply.MaxAmmo( Weapon.AmmoType ) != 0 )
+		{
+			float a = ((float)ply.AmmoCount( Weapon.AmmoType ) / (float)ply.MaxAmmo( Weapon.AmmoType ));
+			float b = 1 - ((float)ply.AmmoCount( Weapon.AmmoType ) / (float)ply.MaxAmmo( Weapon.AmmoType ));
+			AmmoCountFull.Style.Width = a * 24;
+			AmmoCountEmpty.Style.Width = b * 24;
+		}
 	}
 }
