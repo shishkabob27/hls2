@@ -125,6 +125,11 @@ inventoryicon {
 		top: -32px;
 		left: -68px;
 		opacity: 0;
+
+		&.alt {
+			margin-left: -24px;
+			left: -38px;
+		}
 	}
 
 	.ammocounte {
@@ -133,6 +138,10 @@ inventoryicon {
 		top: -32px;
 		left: -68px;
 		opacity: 0;
+
+		&.alt {
+			left: -38px;
+		}
 	}
 
 	&.active {

@@ -6,6 +6,8 @@ class InventoryIcon : Panel
 	public Panel Icon;
 	public Panel AmmoCountFull;
 	public Panel AmmoCountEmpty;
+	public Panel AltAmmoCountFull;
+	public Panel AltAmmoCountEmpty;
 
 	public InventoryIcon( HLWeapon weapon )
 	{
@@ -13,6 +15,15 @@ class InventoryIcon : Panel
 		Icon = Add.Panel( "icon" );
 		AmmoCountFull = Add.Panel( "ammocountf" );
 		AmmoCountEmpty = Add.Panel( "ammocounte" );
+		if ( Weapon.HasAltAmmo )
+		{
+
+			AltAmmoCountFull = Add.Panel( "ammocountf" );
+			AltAmmoCountEmpty = Add.Panel( "ammocounte" );
+			AltAmmoCountFull.SetClass( "alt", true );
+			AltAmmoCountEmpty.SetClass( "alt", true );
+		}
+
 		Icon.Style.SetBackgroundImage( weapon.InventoryIcon );
 	}
 
@@ -43,6 +54,13 @@ class InventoryIcon : Panel
 			float b = 1 - ((float)ply.AmmoCount( Weapon.AmmoType ) / (float)ply.MaxAmmo( Weapon.AmmoType ));
 			AmmoCountFull.Style.Width = a * 24;
 			AmmoCountEmpty.Style.Width = b * 24;
+			if ( ply.MaxAmmo( Weapon.AltAmmoType ) != 0 && Weapon.HasAltAmmo )
+			{
+				float c = ((float)ply.AmmoCount( Weapon.AltAmmoType ) / (float)ply.MaxAmmo( Weapon.AltAmmoType ));
+				float d = 1 - ((float)ply.AmmoCount( Weapon.AltAmmoType ) / (float)ply.MaxAmmo( Weapon.AltAmmoType ));
+				AltAmmoCountFull.Style.Width = c * 24;
+				AltAmmoCountEmpty.Style.Width = d * 24;
+			}
 		}
 	}
 }
