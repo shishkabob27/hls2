@@ -105,7 +105,8 @@ inventoryicon {
 	&.active {
 		opacity: 1;
 		background-image: url("/ui/weapons/weapon_selected_overlay.png");
-		background-size: contain;
+		background-size: cover;
+		background-repeat: no-repeat;
 		background-image-tint: #ffd919;
 
 		.icon {
