@@ -329,6 +329,11 @@
 			ent.Position = ConsoleSystem.Caller.Pawn.Position;
 			ent.DeleteAsync( 0.1f );
 		}
+
+		var suit = new Suit();
+		suit.Position = ConsoleSystem.Caller.Pawn.Position;
+		suit.Spawn();
+		suit.DeleteAsync( 0.1f );
 	}
 
 	[ConCmd.Server]
