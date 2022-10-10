@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_sniperrifle" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/w_m40a1.vmdl" )]
-[Title( "weapon_sniperrifle" ), Category( "Weapons" )]
+[Title( "Sniper Rifle" ), Category( "Weapons" )]
 partial class SniperRifle : HLWeapon
 {
 	public override string ViewModelPath => "models/op4/weapons/view/v_m40a1.vmdl";

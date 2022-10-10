@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_pipewrench" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/w_pipe_wrench.vmdl" )]
-[Title( "weapon_pipewrench" ), Category( "Weapons" )]
+[Title( "Pipe Wrench" ), Category( "Weapons" )]
 partial class PipeWrench : HLWeapon
 {
 	public override string ViewModelPath => "models/op4/weapons/view/v_pipe_wrench.vmdl";

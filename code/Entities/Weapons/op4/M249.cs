@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_m249" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/w_saw.vmdl" )]
-[Title( "weapon_m249" ), Category( "Weapons" )]
+[Title( "M249" ), Category( "Weapons" )]
 partial class M249 : HLWeapon
 {
     public override string ViewModelPath => "models/op4/weapons/view/v_saw.vmdl";

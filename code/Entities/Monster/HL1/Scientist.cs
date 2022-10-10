@@ -229,7 +229,7 @@ public partial class Scientist : NPC
 
 [Library( "monster_sitting_scientist" ), HammerEntity]
 [EditorModel( "models/dev/scientist_sitting.vmdl" )]
-[Title( "Scientist" ), Category( "Monsters" ), Icon( "person" )]
+[Title( "Sitting Scientist" ), Category( "Monsters" ), Icon( "person" )]
 public class ScientistSitting : NPC
 {
 	// Stub NPC, this does nothing yet

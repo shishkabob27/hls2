@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_displacer" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/knife.vmdl" )]
-[Title( "weapon_displacer" ), Category( "Weapons" )]
+[Title( "Displacer Cannon" ), Category( "Weapons" )]
 class Displacer : HLWeapon
 {
 
