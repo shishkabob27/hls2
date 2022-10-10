@@ -26,11 +26,11 @@ public class InventoryBar : Panel
 	public override void Tick()
 	{
 		base.Tick();
-
+		var player = Local.Pawn as HLPlayer;
 		SetClass( "active", IsOpen );
 
-		var player = Local.Pawn as Player;
 		if ( player == null ) return;
+		if ( !player.HasHEV ) return;
 
 		Weapons.Clear();
 		Weapons.AddRange( player.Children.Select( x => x as HLWeapon ).Where( x => x.IsValid() && x.IsUsable() ) );
@@ -51,7 +51,9 @@ public class InventoryBar : Panel
 		if ( HLGame.CurrentState != HLGame.GameStates.Live ) return;
 
 		bool wantOpen = IsOpen;
-		var localPlayer = Local.Pawn as Player;
+		var localPlayer = Local.Pawn as HLPlayer;
+
+		if ( !localPlayer.HasHEV ) return;
 
 		// If we're not open, maybe this input has something that will 
 		// make us want to start being open?
@@ -106,12 +108,12 @@ public class InventoryBar : Panel
 		// forward if mouse wheel was pressed
 		SelectedIndex -= input.MouseWheel;
 
-		if ( input.Pressed( InputButton.SlotNext ) || ( Input.VR.RightHand.Joystick.Value.y < -0.5 && SinceSelectedWeapon > 3 ) )
+		if ( input.Pressed( InputButton.SlotNext ) || (Input.VR.RightHand.Joystick.Value.y < -0.5 && SinceSelectedWeapon > 3) )
 		{
 			SinceSelectedWeapon = 0;
 			SelectedIndex++;
 		}
-		if ( input.Pressed( InputButton.SlotPrev ) || ( Input.VR.RightHand.Joystick.Value.y > 0.5 && SinceSelectedWeapon > 3 ) )
+		if ( input.Pressed( InputButton.SlotPrev ) || (Input.VR.RightHand.Joystick.Value.y > 0.5 && SinceSelectedWeapon > 3) )
 		{
 			SinceSelectedWeapon = 0;
 			SelectedIndex--;

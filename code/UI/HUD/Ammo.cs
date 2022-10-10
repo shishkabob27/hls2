@@ -34,9 +34,11 @@ public class Ammo : Panel
 		AltAmmoInventory.Text = "";
 
 		Seperator.SetClass( "invisible", true );
+		AmmoIcon1.SetClass( "invisible", true );
 
-		var player = Local.Pawn as Player;
+		var player = Local.Pawn as HLPlayer;
 		if ( player == null ) return;
+		if ( !player.HasHEV ) return;
 
 		var weapon = player.ActiveChild as HLWeapon;
 		SetClass( "active", weapon != null );

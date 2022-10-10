@@ -16,13 +16,16 @@ public class Crosshair : Panel
 	{
 		base.Tick();
 
-		var p = Local.Pawn as HLPlayer;
-		
+		Icon.Classes = "";
 
-		if ( p.ActiveChild is HLWeapon weapon && prevWeapon != weapon.ClassName)
+		var p = Local.Pawn as HLPlayer;
+		if ( !p.HasHEV ) return;
+
+
+		if ( p.ActiveChild is HLWeapon weapon && prevWeapon != weapon.ClassName )
 		{
-			Icon.RemoveClass(prevWeapon);
-			Icon.AddClass(weapon.ClassName);
+			Icon.RemoveClass( prevWeapon );
+			Icon.AddClass( weapon.ClassName );
 			prevWeapon = weapon.ClassName;
 		}
 	}
