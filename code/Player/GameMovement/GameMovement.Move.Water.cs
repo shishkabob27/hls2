@@ -171,7 +171,7 @@ public partial class HL1GameMovement
 		var newspeed = 0f;
 		if ( speed != 0 )
 		{
-			newspeed = speed - Time.Delta * speed * sv_friction * Player.SurfaceFriction;
+			newspeed = speed - Time.Delta * speed * sv_waterfriction * Player.SurfaceFriction;
 			if ( newspeed < 0.1f ) newspeed = 0;
 			Velocity *= newspeed / speed;
 		}
@@ -188,7 +188,7 @@ public partial class HL1GameMovement
 			{
 				WishVelocity = WishVelocity.Normal;
 
-				var accelspeed = sv_accelerate * wishspeed * Time.Delta * Player.SurfaceFriction;
+				var accelspeed = sv_wateraccelerate * wishspeed * Time.Delta * Player.SurfaceFriction;
 				if ( accelspeed > addspeed ) accelspeed = addspeed;
 
 				Velocity += accelspeed * WishVelocity;

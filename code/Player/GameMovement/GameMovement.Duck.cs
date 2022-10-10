@@ -182,9 +182,9 @@ partial class HL1GameMovement
 	{
 		if ( IsDucked && IsGrounded )
 		{
-			ForwardMove *= Player.DuckingSpeedMultiplier;
-			RightMove *= Player.DuckingSpeedMultiplier;
-			UpMove *= Player.DuckingSpeedMultiplier;
+			ForwardMove *= sv_duckkeyspeed;
+			RightMove *= sv_duckkeyspeed;
+			UpMove *= sv_duckkeyspeed;
 		}
 	}
 }

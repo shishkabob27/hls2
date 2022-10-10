@@ -87,11 +87,11 @@ public partial class HL1GameMovement : BasePlayerController
 
 		var speed = MaxSpeed;
 
-
-		if ( Input.Down( InputButton.Walk ) ) speed = sv_sprintspeed;
-		if ( Input.Down( InputButton.Run ) ) speed = sv_walkspeed;
+		speed = sv_forwardspeed;
 
 
+
+		if ( GroundEntity != null && Input.Down( InputButton.Run ) ) speed *= sv_movespeedkey;
 
 		ForwardMove = Input.Forward * speed;
 		RightMove = -Input.Left * speed;
@@ -110,7 +110,7 @@ public partial class HL1GameMovement : BasePlayerController
 		ReduceTimers();
 		CheckParameters();
 
-		if ( GroundEntity != null && Input.Down( InputButton.Use ) ) Velocity *= 0.3f;
+		if ( GroundEntity != null && Input.Down( InputButton.Use ) ) Velocity *= sv_movespeedkey;
 
 		if ( !Player.CanMove() )
 		{

@@ -14,8 +14,6 @@
 	public WaterLevelType WaterLevelType { get; internal set; }
 
 
-	public virtual float DuckingSpeedMultiplier => 0.33f;
-
 	public bool IsObserver = false;
 	public bool IsNoclipping = false;
 
