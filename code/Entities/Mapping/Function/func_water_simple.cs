@@ -32,7 +32,17 @@ public partial class func_water_simple : BrushEntity
 		Tags.Clear();
 		Tags.Add( "water" );
 		CreatePhysics();
-		RenderColor = RenderColor.WithAlpha( Math.Min( RenderColor.a, 0.95f ) );
+		RenderColor = RenderColor.WithAlpha( Math.Min( RenderColor.a, 0.99f ) );
+		colourset();
+		this.RenderDirty();
+	}
+	[ClientRpc]
+	void colourset()
+	{
+
+		RenderColor = RenderColor.WithAlpha( Math.Min( RenderColor.a, 0.99f ) );
+		SceneObject.ColorTint = RenderColor;
+		this.RenderDirty();
 	}
 	protected override void OnDestroy()
 	{
