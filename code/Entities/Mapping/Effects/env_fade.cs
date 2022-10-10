@@ -19,6 +19,13 @@ public partial class env_fade : Entity
 
 	float TimeCurrent;
 	FadeRenderHook hook;
+
+	public override void Spawn()
+	{
+		Transmit = TransmitType.Always;
+		base.Spawn();
+	}
+
 	[Input]
 	public void Fade()
 	{
