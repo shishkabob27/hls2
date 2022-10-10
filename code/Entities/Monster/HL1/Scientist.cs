@@ -211,7 +211,7 @@ public partial class Scientist : NPC
 	{
 		if ( rel > 0 )
 		{
-			targetRotation = Rotation.From( ((Position - ent.Position) * -360).EulerAngles );
+			targetRotation = Rotation.From( ((Position.WithZ( 0 ) - ent.Position.WithZ( 0 )) * -360).EulerAngles );
 			if ( TimeSinceSeen > 5 )
 			{
 
