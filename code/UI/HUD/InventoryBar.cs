@@ -11,7 +11,7 @@ public class InventoryBar : Panel
 	public bool IsOpen;
 	HLWeapon SelectedWeapon;
 	int invslots = 7;
-
+	Sound CurrentSound;
 
 	public InventoryBar()
 	{
@@ -68,6 +68,16 @@ public class InventoryBar : Panel
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot6 );
 		wantOpen = wantOpen || input.Pressed( InputButton.Slot7 );
 
+		bool wantOpen2 = IsOpen;
+
+		wantOpen2 = wantOpen2 || input.Pressed( InputButton.Slot1 );
+		wantOpen2 = wantOpen2 || input.Pressed( InputButton.Slot2 );
+		wantOpen2 = wantOpen2 || input.Pressed( InputButton.Slot3 );
+		wantOpen2 = wantOpen2 || input.Pressed( InputButton.Slot4 );
+		wantOpen2 = wantOpen2 || input.Pressed( InputButton.Slot5 );
+		wantOpen2 = wantOpen2 || input.Pressed( InputButton.Slot6 );
+		wantOpen2 = wantOpen2 || input.Pressed( InputButton.Slot7 );
+
 		if ( Weapons.Count == 0 )
 		{
 			IsOpen = false;
@@ -78,9 +88,8 @@ public class InventoryBar : Panel
 		if ( IsOpen != wantOpen )
 		{
 			SelectedWeapon = localPlayer?.ActiveChild as HLWeapon;
+			if ( wantOpen2 ) SelectedWeapon = null;
 			IsOpen = true;
-
-			Sound.FromScreen( "dm.ui_open" );
 		}
 
 		// Not open fuck it off
@@ -94,8 +103,8 @@ public class InventoryBar : Panel
 			input.SuppressButton( InputButton.PrimaryAttack );
 			input.ActiveChild = SelectedWeapon;
 			IsOpen = false;
-			Sound.FromScreen( "dm.ui_select" );
-			Sound.FromScreen( "dm.ui_close" );
+			CurrentSound.Stop();
+			CurrentSound = Sound.FromScreen( "wpn_select" );
 			return;
 		}
 		var sortedWeapons = Weapons.OrderBy( x => x.Order ).ToList();
@@ -133,10 +142,6 @@ public class InventoryBar : Panel
 
 		input.MouseWheel = 0;
 
-		if ( oldSelected != SelectedWeapon )
-		{
-			Sound.FromScreen( "dm.ui_tap" );
-		}
 	}
 
 	int SlotPressInput( InputBuilder input, int SelectedIndex, List<HLWeapon> sortedWeapons )
@@ -158,6 +163,8 @@ public class InventoryBar : Panel
 			return NextInBucket( sortedWeapons );
 		}
 
+		CurrentSound.Stop();
+		CurrentSound = Sound.FromScreen( "wpn_hudon" );
 		// Are we already selecting a weapon with this column?
 		var firstOfColumn = sortedWeapons.Where( x => x.Bucket == columninput ).FirstOrDefault();
 		if ( firstOfColumn == null )
@@ -173,6 +180,9 @@ public class InventoryBar : Panel
 	{
 		Assert.NotNull( SelectedWeapon );
 
+		CurrentSound.Stop();
+		CurrentSound = Sound.FromScreen( "wpn_moveselect" );
+
 		HLWeapon first = null;
 		HLWeapon prev = null;
 		foreach ( var weapon in sortedWeapons.Where( x => x.Bucket == SelectedWeapon.Bucket ) )
@@ -181,6 +191,7 @@ public class InventoryBar : Panel
 			if ( prev == SelectedWeapon ) return sortedWeapons.IndexOf( weapon );
 			prev = weapon;
 		}
+
 
 		return sortedWeapons.IndexOf( first );
 	}
