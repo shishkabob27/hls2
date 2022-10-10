@@ -21,3 +21,4 @@ Properties/launchSettings.json
 *.vanmgrph_c
 *.decal_c
 *.surface_c
+*.DS_Store
