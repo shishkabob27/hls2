@@ -30,6 +30,15 @@ public partial class HurtVolumeEntity : BaseTrigger
 	[Property( "damage", Title = "Damage" )]
 	public float Damage { get; set; } = 10.0f;
 
+	[Property( "StartDisabled", Title = "Start Disabled" )]
+	public bool StartDisabled { get; set; } = false;
+
+	public override void Spawn()
+	{
+		base.Spawn();
+		if ( StartDisabled ) Enabled = false;
+	}
+
 	/// <summary>
 	/// Fired when a player gets hurt by this trigger
 	/// </summary>
