@@ -20,7 +20,7 @@ partial class HL1GameMovement
 	[ConVar.Replicated] public static float sv_rollspeed { get; set; } = 200;
 	[ConVar.Replicated] public static float sv_rollangle { get; set; } = 0;
 	[ConVar.Replicated] public static float sv_maxnonjumpvelocity { get; set; } = 180;
-	[ConVar.Replicated] public static float sv_maxstandableangle { get; set; } = 45;
+	[ConVar.Replicated] public static float sv_maxstandableangle { get; set; } = 45.5734f;
 
 	[ConVar.Replicated] public static float sv_friction { get; set; } = 4;
 
