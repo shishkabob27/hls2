@@ -992,7 +992,12 @@
 			.Run();
 
 		if ( !tr.Hit ) return;
-		tr.Surface.DoHLFootstep( this, tr, foot, volume );
+		var txtnm = "concrete";
+		if ( tr.Entity is WorldEntity mdl )
+		{
+			//get texture name
+		}
+		tr.Surface.DoHLFootstep( this, tr, foot, volume, txtnm );
 	}
 	public void OnJump( Vector3 pos )
 	{

@@ -7,7 +7,8 @@
 	{
 
 		[ConVar.Replicated] public static bool hl_debug_printsurface { get; set; } = false;
-		public static Surface ReplaceSurface( this Surface self )
+		[ConVar.Replicated] public static bool hl_debug_printmat { get; set; } = false;
+		public static Surface ReplaceSurface( this Surface self, string texturename = "concrete" )
 		{
 			var surf = self;
 			var newName = self.ResourceName;
@@ -87,7 +88,7 @@
 					newName = "surface/hl_wood.surface";
 					break;
 				case "default":
-					newName = "surface/hl_concrete.surface";
+					newName = trysmarttexturesurfreplacement( texturename );
 					break;
 				default:
 					newName = surf.ResourceName;
@@ -97,11 +98,29 @@
 			{
 				Log.Info( $"{surf.ResourceName} => {newName}" );
 			}
+			if ( hl_debug_printmat )
+			{
+				Log.Info( $"{texturename} => {newName}" );
+			}
 			if ( ResourceLibrary.TryGet<Surface>( newName, out var surfNew ) )
 			{
 				surf = surfNew;
 			}
 			return surf;
+		}
+		public static string trysmarttexturesurfreplacement( string texturename = "concrete" )
+		{
+			if ( texturename.Contains( "concrete" ) )
+				return "surface/hl_concrete.surface";
+			if ( texturename.Contains( "metal" ) )
+				return "surface/hl_metal.surface";
+			if ( texturename.Contains( "metal" ) )
+				return "surface/hl_metal.surface";
+			if ( texturename.Contains( "metal" ) )
+				return "surface/hl_metal.surface";
+			if ( texturename.Contains( "metal" ) )
+				return "surface/hl_metal.surface";
+			return "surface/hl_concrete.surface";
 		}
 		public static float GetFootstepVolumeOffset( this Surface self )
 		{
@@ -143,7 +162,7 @@
 		/// <summary>
 		/// Create a particle effect and play an impact sound for this surface being hit by a bullet
 		/// </summary>
-		public static Particles DoHLBulletImpact( this Surface self, TraceResult tr, bool Particle = true )
+		public static Particles DoHLBulletImpact( this Surface self, TraceResult tr, bool Particle = true, string texturename = "concrete" )
 		{
 			//
 			// No effects on resimulate
@@ -158,7 +177,7 @@
 			//
 			var decalPath = "decals/bullet_hole.decal";
 
-			var surf = ReplaceSurface( self );
+			var surf = ReplaceSurface( self, texturename );
 
 
 			while ( string.IsNullOrWhiteSpace( decalPath ) && surf != null )
@@ -243,10 +262,10 @@
 		/// <summary>
 		/// Create a footstep effect
 		/// </summary>
-		public static void DoHLFootstep( this Surface self, Entity ent, TraceResult tr, int foot, float volume )
+		public static void DoHLFootstep( this Surface self, Entity ent, TraceResult tr, int foot, float volume, string texturename = "concrete" )
 		{
 
-			self = ReplaceSurface( self );
+			self = ReplaceSurface( self, texturename );
 
 			var sound = foot == 0 ? self.Sounds.FootLeft : self.Sounds.FootRight;
 			var offset = GetFootstepVolumeOffset( self );
@@ -264,9 +283,9 @@
 		/// <summary>
 		/// Create a jump effect
 		/// </summary>
-		public static void DoHLJump( this Surface self, Entity ent, TraceResult tr, float volume )
+		public static void DoHLJump( this Surface self, Entity ent, TraceResult tr, float volume, string texturename = "concrete" )
 		{
-			self = ReplaceSurface( self );
+			self = ReplaceSurface( self, texturename );
 
 			var sound = self.Sounds.FootLaunch;
 
@@ -283,9 +302,9 @@
 		//
 		// Summary:
 		//     Returns a random gib taking into account base surface.
-		public static string GetRandomGib( this Surface self )
+		public static string GetRandomGib( this Surface self, string texturename = "concrete" )
 		{
-			var surf = ReplaceSurface( self );
+			var surf = ReplaceSurface( self, texturename );
 			string text = Rand.FromArray( surf.Breakables.GenericGibs );
 			while ( string.IsNullOrWhiteSpace( text ) && self.GetBaseSurface() != null )
 			{
@@ -294,9 +313,9 @@
 
 			return text;
 		}
-		public static void GetBounceSound( this Surface self, Vector3 pos, float volume = 1 )
+		public static void GetBounceSound( this Surface self, Vector3 pos, float volume = 1, string texturename = "concrete" )
 		{
-			self = ReplaceSurface( self );
+			self = ReplaceSurface( self, texturename );
 
 			var sound = self.Sounds.ImpactHard;
 
@@ -305,9 +324,9 @@
 				Sound.FromWorld( sound, pos ).SetVolume( volume );
 			}
 		}
-		public static void GetBustSound( this Surface self, Vector3 pos, float volume = 1 )
+		public static void GetBustSound( this Surface self, Vector3 pos, float volume = 1, string texturename = "concrete" )
 		{
-			self = ReplaceSurface( self );
+			self = ReplaceSurface( self, texturename );
 
 			var sound = self.Breakables.BreakSound;
 
