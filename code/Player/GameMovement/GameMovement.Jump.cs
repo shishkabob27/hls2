@@ -10,6 +10,10 @@
 
 	public virtual bool CanJump()
 	{
+
+		if ( sv_wings )
+			return true;
+
 		if ( IsInAir )
 			return false;
 

@@ -35,4 +35,6 @@ partial class HL1GameMovement
 	[ConVar.Replicated] public static bool sv_autojump { get; set; } = false;
 	[ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
 
+	[ConVar.Replicated] public static bool sv_wings { get; set; } = false;
+
 }
