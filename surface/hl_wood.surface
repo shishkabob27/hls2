@@ -25,8 +25,8 @@
 		}
 		Sounds = 
 		{
-			FootLeft = resource:"sounds/hl1/player/pl_step.sound"
-			FootRight = resource:"sounds/hl1/player/pl_step.sound"
+			FootLeft = resource:"sounds/hl1/player/footsteps/concrete-left.sound"
+			FootRight = resource:"sounds/hl1/player/footsteps/concrete-right.sound"
 			FootLand = resource:"sounds/hl1/player/pl_step.sound"
 			ImpactHard = resource:"sounds/hl1/debris/wood.sound"
 		}

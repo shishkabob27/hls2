@@ -28,8 +28,8 @@
 		}
 		Sounds = 
 		{
-			FootLeft = resource:"sounds/hl1/player/pl_metal.sound"
-			FootRight = resource:"sounds/hl1/player/pl_metal.sound"
+			FootLeft = resource:"sounds/hl1/player/footsteps/metal-left.sound"
+			FootRight = resource:"sounds/hl1/player/footsteps/metal-right.sound"
 			FootLaunch = resource:"sounds/hl1/player/pl_metal.sound"
 		}
 		Breakables = 

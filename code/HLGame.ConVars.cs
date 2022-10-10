@@ -45,6 +45,11 @@
 	[ConVar.ClientData] public static int hl_pm_colour1 { get; set; } = 32;
 	[ConVar.ClientData] public static int hl_pm_colour2 { get; set; } = 32;
 	[ConVar.ClientData] public static bool hl_viewroll { get; set; } = false;
+	[ConVar.Replicated] public static bool hl_legacyfootsteps { get; set; } = true;
+
+
+	// FIXES
 	[ConVar.Client] public static bool hl_viewmodel_idle_fix { get; set; } = false;
+	[ConVar.Replicated] public static bool hl_fix_ducking_footsteps { get; set; } = false;
 
 }

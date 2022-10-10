@@ -90,6 +90,43 @@
 			}
 			return surf;
 		}
+		public static float GetFootstepVolumeOffset( this Surface self )
+		{
+			var surf = self;
+			var voldoff = 0.0f;
+			switch ( surf.ResourceName )
+			{
+				case "hl_concrete":
+					voldoff = 0;
+					break;
+				case "hl_metal":
+					voldoff = 0;
+					break;
+				case "hl_dirt":
+					voldoff = 0.05f;
+					break;
+				case "hl_vent":
+					voldoff = 0.2f;
+					break;
+				case "hl_grate":
+					voldoff = 0;
+					break;
+				case "hl_tile":
+					voldoff = 0;
+					break;
+				case "hl_slosh":
+					voldoff = 0;
+					break;
+				case "default":
+					voldoff = 0;
+					break;
+				default:
+					voldoff = 0;
+					break;
+			}
+			return voldoff;
+		}
+
 		/// <summary>
 		/// Create a particle effect and play an impact sound for this surface being hit by a bullet
 		/// </summary>
@@ -199,15 +236,16 @@
 			self = ReplaceSurface( self );
 
 			var sound = foot == 0 ? self.Sounds.FootLeft : self.Sounds.FootRight;
-
+			var offset = GetFootstepVolumeOffset( self );
+			var vol = (volume + offset) * 3;
 			if ( !string.IsNullOrWhiteSpace( sound ) )
 			{
-				Sound.FromWorld( sound, tr.EndPosition ).SetVolume( volume );
+				Sound.FromWorld( sound, tr.EndPosition ).SetVolume( vol );
 			}
 			else if ( self.GetBaseSurface() != null )
 			{
 				// Give base surface a chance
-				self.GetBaseSurface().DoFootstep( ent, tr, foot, volume );
+				self.GetBaseSurface().DoFootstep( ent, tr, foot, vol );
 			}
 		}
 		/// <summary>

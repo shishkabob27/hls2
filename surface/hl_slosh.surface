@@ -20,8 +20,8 @@
 		}
 		Sounds = 
 		{
-			FootLeft = resource:"sounds/hl1/player/pl_slosh.sound"
-			FootRight = resource:"sounds/hl1/player/pl_slosh.sound"
+			FootLeft = resource:"sounds/hl1/player/footsteps/slosh-left.sound"
+			FootRight = resource:"sounds/hl1/player/footsteps/slosh-right.sound"
 		}
 		Breakables = 
 		{

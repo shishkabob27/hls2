@@ -20,8 +20,8 @@
 		}
 		Sounds = 
 		{
-			FootLeft = resource:"sounds/hl1/player/pl_duct.sound"
-			FootRight = resource:"sounds/hl1/player/pl_duct.sound"
+			FootLeft = resource:"sounds/hl1/player/footsteps/duct-left.sound"
+			FootRight = resource:"sounds/hl1/player/footsteps/duct-right.sound"
 		}
 		Breakables = 
 		{

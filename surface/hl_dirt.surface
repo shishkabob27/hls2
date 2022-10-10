@@ -17,11 +17,15 @@
 			[
 				resource:"particles/hlimpact.vpcf",
 			]
+			Bullet = 
+			[
+				resource:"particles/hlimpact.vpcf",
+			]
 		}
 		Sounds = 
 		{
-			FootLeft = resource:"sounds/hl1/player/pl_dirt.sound"
-			FootRight = resource:"sounds/hl1/player/pl_dirt.sound"
+			FootLeft = resource:"sounds/hl1/player/footsteps/dirt-left.sound"
+			FootRight = resource:"sounds/hl1/player/footsteps/dirt-right.sound"
 			FootLaunch = resource:"sounds/hl1/player/pl_dirt.sound"
 		}
 		Breakables = 
