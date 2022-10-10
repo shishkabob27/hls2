@@ -5,10 +5,13 @@
 	/// </summary>
 	public static partial class HLSurface
 	{
+
+		[ConVar.Replicated] public static bool hl_debug_printsurface { get; set; } = false;
 		public static Surface ReplaceSurface( this Surface self )
 		{
 			var surf = self;
 			var newName = self.ResourceName;
+
 			switch ( surf.ResourceName )
 			{
 				case "flesh":
@@ -21,6 +24,12 @@
 					newName = "surface/hl_tile.surface";
 					break;
 				case "metal":
+					newName = "surface/hl_metal.surface";
+					break;
+				case "metal.sheet":
+					newName = "surface/hl_metal.surface";
+					break;
+				case "metal.weapon":
 					newName = "surface/hl_metal.surface";
 					break;
 				case "grate":
@@ -83,6 +92,10 @@
 				default:
 					newName = surf.ResourceName;
 					break;
+			}
+			if ( hl_debug_printsurface )
+			{
+				Log.Info( $"{surf.ResourceName} => {newName}" );
 			}
 			if ( ResourceLibrary.TryGet<Surface>( newName, out var surfNew ) )
 			{
