@@ -190,7 +190,7 @@
 					frac = (t - ViewInterp.OriginTime[foundidx & ORIGIN_MASK]) / dt;
 					frac = Math.Min( 1.0f, frac );
 					//VectorSubtract( ViewInterp.Origins[(foundidx + 1) & ORIGIN_MASK], ViewInterp.Origins[foundidx & ORIGIN_MASK], delta );
-					delta = ViewInterp.Origins[(foundidx + 1) & ORIGIN_MASK] - ViewInterp.Origins[(foundidx + 1) & ORIGIN_MASK];
+					delta = ViewInterp.Origins[(foundidx + 1) & ORIGIN_MASK] - ViewInterp.Origins[foundidx & ORIGIN_MASK];
 					neworg = VectorMA( ViewInterp.Origins[foundidx & ORIGIN_MASK], frac, delta );
 
 					// Dont interpolate large changes
