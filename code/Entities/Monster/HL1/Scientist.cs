@@ -300,3 +300,84 @@ public class ScientistSitting : NPC
 	}
 
 }
+
+[Library( "monster_scientist_dead" ), HammerEntity]
+[EditorModel( "models/hl1/monster/scientist/scientist_01.vmdl" )]
+[Title( "Dead Scientist" ), Category( "Monsters" ), Icon( "person" )]
+public class ScientistDead : NPC
+{
+
+	List<string> ScientistMDLList = new List<string>{
+		"models/hl1/monster/scientist/scientist_01.vmdl",
+		"models/hl1/monster/scientist/scientist_02.vmdl",
+		"models/hl1/monster/scientist/scientist_03.vmdl",
+		"models/hl1/monster/scientist/scientist_04.vmdl",
+	};
+
+	List<string> SittingAnims = new List<string>{
+		"sitting2",
+		"sitting3",
+	};
+
+	[Property]
+	public float Body { get; set; } = -1;
+
+	[Property]
+	public int pose { get; set; } = 0;
+
+	public override void Spawn()
+	{
+
+		TraceResult beans = Trace.Ray( Position, Position - new Vector3( 0, 0, 500 ) ).Run();
+		Position = beans.EndPosition + new Vector3( 0, 0, 19 );
+		NoNav = true;
+
+		SetupPhysicsFromOBB( PhysicsMotionType.Static, new Vector3( -16, -16, 0 ), new Vector3( 16, 16, 72 ) );
+		base.Spawn();
+
+		Health = 20;
+		if ( Body > 3 )
+		{
+			Body = Rand.Int( 0, 3 );
+		}
+		SetModel( SetScientistModel() );
+		
+		switch (pose)
+		{
+			case 0: CurrentSequence.Name = "lying_on_back"; break;
+			case 1: CurrentSequence.Name = "lying_on_stomach"; break;
+			case 2: CurrentSequence.Name = "dead_sitting"; break;
+			case 3: CurrentSequence.Name = "lying_on_back"; break;
+			case 4: CurrentSequence.Name = "dead_table1"; break;
+			case 5: CurrentSequence.Name = "dead_table2"; break;
+			case 6: CurrentSequence.Name = "dead_table3"; break;
+			default: CurrentSequence.Name = "lying_on_back"; break;
+		}
+
+		UseAnimGraph = false;
+		PhysicsEnabled = false;
+		EnableHitboxes = true;
+
+		Tags.Add( "npc", "playerclip" );
+
+	}
+
+	public string SetScientistModel()
+	{
+		switch ( Body )
+		{
+			case 0: return "models/hl1/monster/scientist/scientist_01.vmdl";
+			case 1: return "models/hl1/monster/scientist/scientist_02.vmdl";
+			case 2: return "models/hl1/monster/scientist/scientist_03.vmdl";
+			case 3: return "models/hl1/monster/scientist/scientist_04.vmdl";
+			default: return Rand.FromList<string>( ScientistMDLList );
+		}
+	}
+
+	float tick = 0;
+	public override void Think()
+	{
+		
+	}
+
+}
