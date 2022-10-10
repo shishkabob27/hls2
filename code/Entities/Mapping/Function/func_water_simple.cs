@@ -7,7 +7,7 @@
 [HideProperty( "enable_shadows" )]
 [HideProperty( "SetColor" )]
 [Title( "Water HL1" ), Category( "Gameplay" ), Icon( "water" )]
-public partial class func_water_simple : Water
+public partial class func_water_simple : BrushEntity
 {
 	public override void Spawn()
 	{
