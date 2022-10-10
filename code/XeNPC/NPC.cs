@@ -24,7 +24,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public const int BLOOD_COLOUR_YELLOW = 1;
 	public const int BLOOD_COLOUR_GREEN = BLOOD_COLOUR_YELLOW;
 	public int BloodColour = BLOOD_COLOUR_RED;
-
+	Color MyDebugColour = Color.Random;
 
 	[Flags]
 	public enum Flags
@@ -352,7 +352,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			if ( LastTraces.Contains( a ) )
 			{
 				b = LastTracesResults[Array.IndexOf( LastTraces, a )];
-				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Yellow, SeeDelay, false );
+				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Yellow, SeeDelay + Time.Delta, false );
 			}
 			else
 			{
@@ -368,10 +368,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 			if ( b.Fraction != 1 )
 			{
-				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Red, SeeDelay, false );
+				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Red, SeeDelay + Time.Delta, false );
 				continue;
 			}
-			if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Green, SeeDelay, false );
+			if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Green, SeeDelay + Time.Delta, false );
 			ProcessEntity( ent, REL );
 		}
 	}
@@ -400,6 +400,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		return true;
 	}
 
+	[ConVar.Replicated] public static bool npc_draw_cone { get; set; } = false;
 	public bool InViewCone( Entity ent )
 	{
 		Vector2 vec2LOS;
@@ -412,6 +413,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 		flDot = (float)Vector2.Dot( vec2LOS, new Vector2( Rotation.Forward.x, Rotation.Forward.y ) );
 
+		if ( npc_draw_cone ) DrawViewCone();
+
 		if ( flDot > entFOV )
 		{
 			return true;
@@ -422,6 +425,29 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 	}
 
+	public void DrawViewCone()
+	{
+		Vector3[] rots = {
+			new Vector3( 0, 0, 1 ),
+			new Vector3( 0, 1, 0 ),
+		};
+		Vector3 LastConePos1 = (((Position + Vector3.Up * EyeHeight) + Rotation.RotateAroundAxis( rots.Last(), (MathF.Acos( entFOV ) * (180 / MathF.PI)) ).Forward * 1000));
+		Vector3 LastConePos2 = (((Position + Vector3.Up * EyeHeight) + Rotation.RotateAroundAxis( rots.Last(), (MathF.Acos( -entFOV ) * (180 / MathF.PI)) ).Forward * -1000));
+		foreach ( Vector3 rot in rots )
+		{
+			Vector3 Pos1 = (((Position + Vector3.Up * EyeHeight) + Rotation.RotateAroundAxis( rot, (MathF.Acos( entFOV ) * (180 / MathF.PI)) ).Forward * -1000));
+			Vector3 Pos2 = (((Position + Vector3.Up * EyeHeight) + Rotation.RotateAroundAxis( rot * -1, (MathF.Acos( entFOV ) * (180 / MathF.PI)) ).Forward * -1000));
+			DebugOverlay.Line( (Position + Vector3.Up * EyeHeight), Pos1, MyDebugColour, SeeDelay + Time.Delta );
+			DebugOverlay.Line( (Position + Vector3.Up * EyeHeight), Pos2, MyDebugColour, SeeDelay + Time.Delta );
+
+			DebugOverlay.Line( Pos1, LastConePos1, MyDebugColour, SeeDelay + Time.Delta );
+			DebugOverlay.Line( Pos2, LastConePos2, MyDebugColour, SeeDelay + Time.Delta );
+			DebugOverlay.Line( Pos1, LastConePos2, MyDebugColour, SeeDelay + Time.Delta );
+			DebugOverlay.Line( Pos2, LastConePos1, MyDebugColour, SeeDelay + Time.Delta );
+			LastConePos1 = Pos1;
+			LastConePos2 = Pos2;
+		}
+	}
 	public virtual void Think()
 	{
 
