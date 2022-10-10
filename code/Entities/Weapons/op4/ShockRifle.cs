@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_shockrifle" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/knife.vmdl" )]
-[Title( "weapon_shockrifle" ), Category( "Weapons" )]
+[Title( "Shock Roach" ), Category( "Weapons" )]
 class ShockRifle : HLWeapon
 {
 	public override string ViewModelPath => "models/op4/weapons/view/v_shock.vmdl";

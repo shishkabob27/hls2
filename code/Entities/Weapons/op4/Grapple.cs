@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_grapple" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/knife.vmdl" )]
-[Title( "weapon_grapple" ), Category( "Weapons" )]
+[Title( "Barnacle Grapple" ), Category( "Weapons" )]
 class Grapple : HLWeapon
 {
 

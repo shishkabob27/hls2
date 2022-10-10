@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_knife" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/w_knife.vmdl" )]
-[Title( "weapon_knife" ), Category( "Weapons" )]
+[Title( "Knife" ), Category( "Weapons" )]
 partial class Knife : HLWeapon
 {
 	public static Model WorldModel = Model.Load( "models/op4/weapons/world/w_knife.vmdl" );

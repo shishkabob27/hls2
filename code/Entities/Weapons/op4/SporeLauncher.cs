@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_sporelauncher" ), HammerEntity]
 [EditorModel( "models/op4/weapons/world/knife.vmdl" )]
-[Title( "weapon_sporelauncher" ), Category( "Weapons" )]
+[Title( "Spore Launcher" ), Category( "Weapons" )]
 class SporeLauncher : HLWeapon
 {
 
