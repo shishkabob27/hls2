@@ -14,7 +14,8 @@ public partial class Scientist : NPC
 
 	[Property]
 	public float Body { get; set; } = -1;
-	public float VoicePitch = 100;
+	[Net]
+	public float VoicePitch { get; set } = 100;
 
 
 	public Scientist()
