@@ -15,14 +15,10 @@
 
 			switch ( surf.ResourceName )
 			{
+
+				//-------------------------- BASE SURFACE --------------------------//
 				case "flesh":
 					newName = "surface/hl_flesh.surface";
-					break;
-				case "flesh_yellow":
-					newName = "surface/hl_flesh_yellow.surface";
-					break;
-				case "tile":
-					newName = "surface/hl_tile.surface";
 					break;
 				case "metal":
 					newName = "surface/hl_metal.surface";
@@ -87,11 +83,58 @@
 				case "wood":
 					newName = "surface/hl_wood.surface";
 					break;
+				//-------------------------- NON VANILLA --------------------------//
+				case "brick":
+					newName = "surface/hl_tile.surface";
+					break;
+				case "flesh_yellow":
+					newName = "surface/hl_flesh_yellow.surface";
+					break;
+				case "tile":
+					newName = "surface/hl_tile.surface";
+					break;
+				//-------------------------- HL DEFAULTS --------------------------//
+				case "hl_computer":
+					newName = "surface/hl_computer.surface";
+					break;
+				case "hl_concrete":
+					newName = "surface/hl_concrete.surface";
+					break;
+				case "hl_dirt":
+					newName = "surface/hl_dirt.surface";
+					break;
+				case "hl_flesh":
+					newName = "surface/hl_flesh.surface";
+					break;
+				case "hl_flesh_yellow":
+					newName = "surface/hl_flesh_yellow.surface";
+					break;
+				case "hl_glass":
+					newName = "surface/hl_glass.surface";
+					break;
+				case "hl_grate":
+					newName = "surface/hl_grate.surface";
+					break;
+				case "hl_metal":
+					newName = "surface/hl_metal.surface";
+					break;
+				case "hl_slosh":
+					newName = "surface/hl_slosh.surface";
+					break;
+				case "hl_tile":
+					newName = "surface/hl_tile.surface";
+					break;
+				case "hl_vent":
+					newName = "surface/hl_vent.surface";
+					break;
+				case "hl_wood":
+					newName = "surface/hl_wood.surface";
+					break;
 				case "default":
 					newName = trysmarttexturesurfreplacement( texturename );
 					break;
 				default:
-					newName = surf.ResourceName;
+					newName = "surface/hl_concrete.surface";
 					break;
 			}
 			if ( hl_debug_printsurface )
