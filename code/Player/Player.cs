@@ -164,7 +164,7 @@
 
 		CreateHull();
 
-		switch ( HLGame.gamemode )
+		switch ( HLGame.sv_gamemode )
 		{
 			case "campagin": Game.Current?.MoveToSpawnpoint( this ); break;
 			case "deathmatch": HLGame.MoveToDMSpawnpoint( this ); break;

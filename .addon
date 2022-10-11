@@ -174,7 +174,7 @@
       "Gamepad": true
     },
     "GameSettings": {
-      "gamemode": {
+      "sv_gamemode": {
         "DisplayType": "Choice",
         "Choices": [
           {
@@ -190,7 +190,7 @@
             "Name": "Capture the Flag (Opposing Force)"
           }
         ],
-        "ConVarName": "gamemode",
+        "ConVarName": "sv_gamemode",
         "DisplayName": "Gamemode",
         "DefaultValue": "campaign",
         "Description": ""

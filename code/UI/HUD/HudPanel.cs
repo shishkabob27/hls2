@@ -41,12 +41,12 @@ public class HudPanel : HudEntity<HudRootPanel>
             RootPanel.AddChild<VoiceSpeaker>();
             RootPanel.AddChild<Subtitle>();
 
-            if ( HLGame.gamemode == "ctf" )
+            if ( HLGame.sv_gamemode == "ctf" )
             {
                 RootPanel.AddChild<FlagUI>();
             }
 
-            if (HLGame.gamemode == "campaign") RootPanel.AddChild<ChapterText>();
+            if (HLGame.sv_gamemode == "campaign") RootPanel.AddChild<ChapterText>();
 
 
         }

@@ -7,7 +7,7 @@ global using System.Threading.Tasks;
 global using XeNPC;
 
 /// <summary>
-/// This is the heart of the gamemode. It's responsible
+/// This is the heart of the sv_gamemode. It's responsible
 /// for creating the player and stuff.
 /// </summary>
 public partial class HLGame : Game
@@ -27,9 +27,9 @@ public partial class HLGame : Game
 			GUI = new HLGUI();
 			if ( Host.IsDedicatedServer )
 			{
-				gamemode = "deathmatch";
+				sv_gamemode = "deathmatch";
 			}
-			if ( gamemode == "deathmatch" || gamemode == "ctf" )
+			if ( sv_gamemode == "deathmatch" || sv_gamemode == "ctf" )
 			{
 				_ = GameLoopAsync();
 			}
