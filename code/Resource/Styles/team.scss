@@ -1,14 +1,13 @@
-TeamSelector{
+TeamSelector {
+    pointer-events: all;
     position: absolute;
     width: 100%;
     height: 100%;
     padding: 0px;
     background-color: rgba(0, 0, 0, 0.75);
-    pointer-events: all;
 
-    > text
-    {
-    padding: 54px;
+    > text {
+        padding: 54px;
     }
 }
 
