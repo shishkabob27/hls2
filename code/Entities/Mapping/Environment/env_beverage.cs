@@ -4,6 +4,8 @@
 public partial class env_beverage : Entity
 {
 
+	int Activated;
+
     /// <summary>
 	/// 0: Coca-Cola
     /// 1: Sprite
@@ -20,12 +22,17 @@ public partial class env_beverage : Entity
     public int health { get; set; } = 0;
     // stub
     [Input]
-    void Activate()
+    public void Activate()
     {
-        var soda = new item_sodacan{
-            health = health,
+		if (health != Activated)
+		{
+			var soda = new item_sodacan{
             type = beveragetype,
-            Position = Position
-        };
+            Position = Position,
+			Rotation = Rotation
+        	};
+
+			Activated++;
+		}
     }
 }
