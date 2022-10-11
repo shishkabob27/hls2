@@ -42,30 +42,34 @@
 		var eyePos = pawn.EyePosition;
 
 		Position = eyePos;
+		Rotation = pawn.EyeRotation;
+		
+		// View Bob
 		var bob = V_CalcBob();
 		var a = Position;
 		a.z += bob;
 		Position = a;
 
-		Rotation = pawn.EyeRotation;
-
+		// View Roll 
 		Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + CalculateRoll( Rotation, pawn.Velocity, cl_rollangle, cl_rollspeed ) ).ToRotation();
+		
+		// Apply punchangles
 		Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + pawn.punchangle.z ).ToRotation();
 		Rotation = Rotation.Angles().WithPitch( Rotation.Angles().pitch + pawn.punchangle.x ).ToRotation();
 		Rotation = Rotation.Angles().WithYaw( Rotation.Angles().yaw + pawn.punchangle.y ).ToRotation();
 
-
+		// Apply client side punchangles
 		Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + pawn.punchanglecl.z ).ToRotation();
 		Rotation = Rotation.Angles().WithPitch( Rotation.Angles().pitch + pawn.punchanglecl.x ).ToRotation();
 		Rotation = Rotation.Angles().WithYaw( Rotation.Angles().yaw + pawn.punchanglecl.y ).ToRotation();
 
-
+		// Drop client side punchangles (server side is handled in Player.cs, should move maybe?)
 		pawn.punchanglecl = pawn.punchanglecl.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
 																				 //Log.Info( pawn.punchangle );
 
 		lastPos = Position;
 
-
+		// Handle Viewmodel Setup, this was in Viewmodel.cs but I moved it to match HL1 and because we want access to the cameras view bobbing
 		if ( pawn.ActiveChild is HLWeapon )
 		{
 
@@ -108,7 +112,10 @@
 
 			}
 		}
+		
 		Vector3 wepchange = Vector3.Zero;
+		
+		// Smooth out stairs
 		if ( cl_stepsmooth > 0 && pawn.GroundEntity != null && simorg[2] - oldz > 0 )
 		{
 			float steptime;
@@ -140,7 +147,10 @@
 		{
 			oldz = simorg[2];
 		}
-
+		
+		
+		// cl_vsmoothing, was originally trying this to smooth out elevators but I think I did something wrong, it's kinda shit.
+		
 		Vector3 delta2;
 
 		//VectorSubtract( pparams->simorg, lastorg, delta );
