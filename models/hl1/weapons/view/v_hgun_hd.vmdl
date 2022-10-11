@@ -14,20 +14,16 @@
 						remaps = 
 						[
 							{
-								from = "hgun_back1.vmat"
-								to = "materials/hl1/weapons/view/hgun/hgun_back1.vmat"
+								from = "hive_chrome.vmat"
+								to = "materials/hl1/weapons/vr/hgun/hive_chrome.vmat"
 							},
 							{
-								from = "hgun_bottom1.vmat"
-								to = "materials/hl1/weapons/view/hgun/hgun_bottom1.vmat"
+								from = "hive pincers.vmat"
+								to = "materials/hl1/weapons/vr/hgun/hive_pincers.vmat"
 							},
 							{
-								from = "hgun_cheek1.vmat"
-								to = "materials/hl1/weapons/view/hgun/hgun_cheek1.vmat"
-							},
-							{
-								from = "hgun_horn1.vmat"
-								to = "materials/hl1/weapons/view/hgun/hgun_horn1.vmat"
+								from = "hive body.vmat"
+								to = "materials/hl1/weapons/vr/hgun/hive_body.vmat"
 							},
 						]
 						use_global_default = false
@@ -56,7 +52,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_hgun/v_Hgun_Template_Biped1.smd"
+						filename = "models/hl1hddecomp/v_hgun/v_Hgun_Template_Biped1.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -66,11 +62,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"v_hgun_template_biped1",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -79,27 +72,6 @@
 				_class = "AnimationList"
 				children = 
 				[
-					{
-						_class = "AnimFile"
-						name = "up"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/up.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
 					{
 						_class = "AnimFile"
 						name = "down"
@@ -114,7 +86,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/down.smd"
+						source_filename = "models/hl1hddecomp/v_hgun/v_hgun_anims/down.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -135,7 +107,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/fidgetShake.smd"
+						source_filename = "models/hl1hddecomp/v_hgun/v_hgun_anims/fidgetShake.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -156,7 +128,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/fidgetSway.smd"
+						source_filename = "models/hl1hddecomp/v_hgun/v_hgun_anims/fidgetSway.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -177,7 +149,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/idle1.smd"
+						source_filename = "models/hl1hddecomp/v_hgun/v_hgun_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -198,7 +170,28 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_hgun/v_hgun_anims/Shoot.smd"
+						source_filename = "models/hl1hddecomp/v_hgun/v_hgun_anims/Shoot.smd"
+						start_frame = -1
+						end_frame = -1
+						framerate = -1.0
+						take = 0
+						reverse = false
+					},
+					{
+						_class = "AnimFile"
+						name = "up"
+						activity_name = ""
+						activity_weight = 1
+						weight_list_name = ""
+						fade_in_time = 0.2
+						fade_out_time = 0.2
+						looping = false
+						delta = false
+						worldSpace = false
+						hidden = false
+						anim_markup_ordered = false
+						disable_compression = false
+						source_filename = "models/hl1hddecomp/v_hgun/v_hgun_anims/up.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
