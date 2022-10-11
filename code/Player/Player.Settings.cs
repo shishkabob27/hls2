@@ -70,6 +70,12 @@
         };
         SaveSettings( a );
     }
+	 
+	public async void updtasync()
+	{
+		await GameTask.DelaySeconds( 0.1f );
+		loadCvars( To.Single( this ) );
+	}
 }
 
 public class PlayerSettingsData
