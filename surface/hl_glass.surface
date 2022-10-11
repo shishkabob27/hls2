@@ -25,6 +25,16 @@
 		}
 		Breakables = 
 		{
+			GenericGibs = 
+			[
+				resource:"models/hl1/gib/glass/shard1.vmdl",
+				resource:"models/hl1/gib/glass/shard2.vmdl",
+				resource:"models/hl1/gib/glass/shard3.vmdl",
+				resource:"models/hl1/gib/glass/shard4.vmdl",
+				resource:"models/hl1/gib/glass/shard5.vmdl",
+				resource:"models/hl1/gib/glass/shard6.vmdl",
+				resource:"models/hl1/gib/glass/shard7.vmdl",
+			]
 		}
 	}
 }
