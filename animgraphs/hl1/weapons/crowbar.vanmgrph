@@ -780,29 +780,7 @@
 					m_networkMode = "ClientSimulate"
 					m_sNote = ""
 					m_tagSpans = [  ]
-					m_sequenceName = "attack4"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1802854968
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -400.0, -112.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1802854968
-					}
-					m_networkMode = "ClientSimulate"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "attack2"
+					m_sequenceName = "attack3"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
 				}
@@ -816,7 +794,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -400.0, -192.0 ]
+					m_vecPosition = [ -400.0, -112.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1833900622
@@ -923,7 +901,7 @@
 					m_networkMode = "ClientSimulate"
 					m_sNote = ""
 					m_tagSpans = [  ]
-					m_sequenceName = "attack3"
+					m_sequenceName = "attack2"
 					m_playbackSpeed = 1.0
 					m_bLoop = false
 				}
