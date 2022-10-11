@@ -1,6 +1,6 @@
 partial class HLPlayer
 {
-TimeSince lastFootStep;
+	TimeSince lastFootStep;
 	bool StepLeft;
 	void FootstepSounds()
 	{
