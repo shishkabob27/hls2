@@ -13,6 +13,7 @@
 		if ( spawnpoint == null )
 		{
 			Log.Warning( $"Couldn't find spawnpoint for {pawn}!" );
+			(HLGame.Current as HLGame).MoveToSpawnpoint( pawn );
 			return;
 		}
 
@@ -30,7 +31,7 @@
 			if ( client.Pawn == pawn ) continue;
 			if ( client.Pawn.LifeState != LifeState.Alive ) continue;
 
-			var spawnDist = ( spawnpoint.Position - client.Pawn.Position ).Length;
+			var spawnDist = (spawnpoint.Position - client.Pawn.Position).Length;
 			distance = MathF.Max( distance, spawnDist );
 		}
 
