@@ -31,167 +31,6 @@
 					},
 					{
 						_class = "MaterialGroup"
-						name = "sprite"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/sprite.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "genericsoda5"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/genericsoda5.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda1"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda2"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda2.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda3"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda3.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda4"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda4.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda5"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda5.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda6"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda6.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "moxie"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/moxie.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "side"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/side.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "surge"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/surge.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
 						name = "coke"
 						remaps = 
 						[
@@ -202,6 +41,21 @@
 							{
 								from = "materials/hl1/items/can/gensoda1.vmat"
 								to = "materials/hl1/items/can/coke.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "sprite"
+						remaps = 
+						[
+							{
+								from = "materials/hl1/items/can/cantop.vmat"
+								to = "materials/hl1/items/can/cantop.vmat"
+							},
+							{
+								from = "materials/hl1/items/can/gensoda1.vmat"
+								to = "materials/hl1/items/can/sprite.vmat"
 							},
 						]
 					},
@@ -232,6 +86,36 @@
 							{
 								from = "materials/hl1/items/can/gensoda1.vmat"
 								to = "materials/hl1/items/can/mmaid.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "surge"
+						remaps = 
+						[
+							{
+								from = "materials/hl1/items/can/cantop.vmat"
+								to = "materials/hl1/items/can/cantop.vmat"
+							},
+							{
+								from = "materials/hl1/items/can/gensoda1.vmat"
+								to = "materials/hl1/items/can/surge.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "moxie"
+						remaps = 
+						[
+							{
+								from = "materials/hl1/items/can/cantop.vmat"
+								to = "materials/hl1/items/can/cantop.vmat"
+							},
+							{
+								from = "materials/hl1/items/can/gensoda1.vmat"
+								to = "materials/hl1/items/can/moxie.vmat"
 							},
 						]
 					},
