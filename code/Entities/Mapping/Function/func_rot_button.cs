@@ -41,7 +41,7 @@ public partial class ButtonEntityRot : KeyframeEntity, IUse
 	/// Movement type of the button.
 	/// </summary>
 	[Property( "movedir_type", Title = "Movement Type" )]
-	public ButtonMoveType MoveDirType { get; set; } = ButtonMoveType.NotMoving;
+	public ButtonMoveType MoveDirType { get; set; } = ButtonMoveType.Rotating;
 
 	/// <summary>
 	/// Moving button: The amount, in inches, of the button to leave sticking out of the wall it recedes into when pressed. Negative values make the button recede even further into the wall.
