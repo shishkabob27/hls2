@@ -16,7 +16,7 @@ partial class item_sodacan : ModelEntity
     /// 5: Moxie
     /// 6: Random
 	/// </summary>
-	public int type { get; set; } = 0;
+	public int type { get; set; } = 6;
 
 	public override void Spawn()
 	{
@@ -28,6 +28,18 @@ partial class item_sodacan : ModelEntity
 		UsePhysicsCollision = true;
 
 		Tags.Add("weapon");
+
+		switch (type)
+		{
+			case 0: SetMaterialGroup(1); break;
+			case 1: SetMaterialGroup(2); break;
+			case 2: SetMaterialGroup(3); break;
+			case 3: SetMaterialGroup(4); break;
+			case 4: SetMaterialGroup(5); break;
+			case 5: SetMaterialGroup(6); break;
+			case 6: SetMaterialGroup(Rand.Int(1,6)); break;
+			default: SetMaterialGroup(Rand.Int(1,6)); break;
+		}
 	}
 
 	public override void StartTouch( Entity other )
