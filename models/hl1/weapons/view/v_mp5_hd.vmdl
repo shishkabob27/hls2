@@ -18,52 +18,16 @@
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 							{
-								from = "player_forearm1.vmat"
-								to = "materials/hl1/player/player_forearm1.vmat"
+								from = "gordon_glove.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_glove.vmat"
 							},
 							{
-								from = "player_cuff1.vmat"
-								to = "materials/hl1/player/player_cuff1.vmat"
+								from = "gordon_sleeve.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_sleeve.vmat"
 							},
 							{
-								from = "buttstockrear.vmat"
-								to = "materials/hl1/weapons/view/mp5/buttstockrear.vmat"
-							},
-							{
-								from = "clip.vmat"
-								to = "materials/hl1/weapons/view/mp5/clip.vmat"
-							},
-							{
-								from = "glback.vmat"
-								to = "materials/hl1/weapons/view/mp5/glback.vmat"
-							},
-							{
-								from = "gunbodyrear.vmat"
-								to = "materials/hl1/weapons/view/mp5/gunbodyrear.vmat"
-							},
-							{
-								from = "gunsidemap.vmat"
-								to = "materials/hl1/weapons/view/mp5/gunsidemap.vmat"
-							},
-							{
-								from = "handleback.vmat"
-								to = "materials/hl1/weapons/view/mp5/handleback.vmat"
-							},
-							{
-								from = "hk_chrome.vmat"
-								to = "materials/hl1/weapons/view/mp5/hk_chrome.vmat"
-							},
-							{
-								from = "sighttop.vmat"
-								to = "materials/hl1/weapons/view/mp5/sighttop.vmat"
-							},
-							{
-								from = "silencerback.vmat"
-								to = "materials/hl1/weapons/view/mp5/silencerback.vmat"
-							},
-							{
-								from = "player_chrome2.vmat"
-								to = "materials/hl1/player/player_chrome1.vmat"
+								from = "m4_reference.vmat"
+								to = "materials/hl1/weapons/vr/mp5/m4_reference.vmat"
 							},
 						]
 						use_global_default = false
@@ -101,8 +65,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_9mmar/mp5sd.smd"
-						import_translation = [ 8.0, -2.0, -8.0 ]
+						filename = "models/hl1hddecomp/v_9mmar/m4_view_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -111,11 +75,24 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"mp5sd",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1hddecomp/v_9mmar/v_gordon_hands_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -130,18 +107,18 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_9mmar/v_9mmar_anims/deploy.smd"
+						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/deploy.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = 15.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
@@ -151,18 +128,18 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_9mmar/v_9mmar_anims/grenade.smd"
+						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/grenade.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = 60.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
@@ -172,18 +149,18 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_9mmar/v_9mmar_anims/idle1.smd"
+						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = 20.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
@@ -193,66 +170,39 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_9mmar/v_9mmar_anims/longidle.smd"
+						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/longidle.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = 15.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
 						name = "reload"
-						children = 
-						[
-							{
-								_class = "AnimEvent"
-								event_class = "AE_CL_PLAYSOUND"
-								event_frame = 10
-								event_keys = 
-								{
-									name = "cliprelease1"
-									stop_on_seq_change = false
-									use_layer_sequence = false
-									tags = ""
-								}
-							},
-							{
-								_class = "AnimEvent"
-								event_class = "AE_CL_PLAYSOUND"
-								event_frame = 30
-								event_keys = 
-								{
-									name = "clipinsert1"
-									stop_on_seq_change = false
-									use_layer_sequence = false
-									tags = ""
-								}
-							},
-						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_9mmar/v_9mmar_anims/reload.smd"
+						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = 60.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
@@ -262,60 +212,60 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_9mmar/v_9mmar_anims/shoot.smd"
+						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/shoot.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = 10.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
-						name = "shoot2"
+						name = "shoot_2"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_9mmar/v_9mmar_anims/shoot2.smd"
+						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/shoot_2.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = 10.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
-						name = "shoot3"
+						name = "shoot_3"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_9mmar/v_9mmar_anims/shoot3.smd"
+						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/shoot_3.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = 10.0
+						framerate = -1.0
 						take = 0
 						reverse = false
 					},
