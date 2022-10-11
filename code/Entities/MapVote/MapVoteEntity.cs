@@ -27,8 +27,8 @@ partial class MapVoteEntity : Entity
 
 		Current = this;
 		Panel = new MapVotePanel();
-		GUIRootPanel.Current.AddChild( Panel );
-		GUIRootPanel.Current.OverrideScale = HudRootPanel.Current.Scale;
+		HudRootPanel.Current.AddChild( Panel );
+		//GUIRootPanel.Current.OverrideScale = HudRootPanel.Current.Scale;
 	}
 
 	protected override void OnDestroy()
