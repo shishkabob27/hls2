@@ -19,6 +19,7 @@ public class Headcrab : NPC
 		BloodColour = BLOOD_COLOUR_YELLOW;
 		entFOV = 0.5f;
 		EnableHitboxes = true;
+		SticktoFloor = false;
 		Tags.Add( "npc", "playerclip" );
 
 	}

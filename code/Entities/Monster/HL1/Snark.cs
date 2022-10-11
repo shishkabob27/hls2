@@ -29,6 +29,7 @@ public class Snark : NPC
 		WallBounce = 1;
 		HasFriction = false;
 		Unstick = true;
+		SticktoFloor = false;
 		PlaySound( "sqk_throw" );
 		entFOV = 0; // 180 degrees
 		Tags.Clear();
@@ -68,6 +69,8 @@ public class Snark : NPC
 
 			// ALERT( at_console, "%.0f %.2f %.2f %.2f\n", flVel, m_vecTarget.x, m_vecTarget.y, m_vecTarget.z );
 
+			GroundEntity = null;
+			Position += new Vector3( 0, 0, 1 );
 			Velocity = Velocity * flAdj + vecTarget * 300;
 
 		}

@@ -19,6 +19,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public Entity WallEntity;
 	public bool HasFriction = true;
 	public bool Unstick = true;
+	public bool SticktoFloor = true;
 
 	public const int BLOOD_COLOUR_RED = 0;
 	public const int BLOOD_COLOUR_YELLOW = 1;
@@ -507,7 +508,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 				if ( !tr.StartedSolid )
 				{
-					//move.Position = tr.EndPosition;
+					if ( SticktoFloor ) move.Position = tr.EndPosition;
 				}
 
 				if ( InputVelocity.Length > 0 )
