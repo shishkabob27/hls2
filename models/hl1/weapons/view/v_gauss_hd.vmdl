@@ -14,84 +14,16 @@
 						remaps = 
 						[
 							{
-								from = "glove_handpak.vmat"
-								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
+								from = "gausschrome.vmat"
+								to = "materials/hl1/weapons/vr/gauss/gausschrome.vmat"
 							},
 							{
-								from = "gloved_knuckle.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_knuckle.vmat"
+								from = "glow.vmat"
+								to = "materials/hl1/weapons/vr/gauss/glow.vmat"
 							},
 							{
-								from = "gloved_sleeve.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_sleeve.vmat"
-							},
-							{
-								from = "rubberglovechrome.vmat"
-								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
-							},
-							{
-								from = "barrelchrome.vmat"
-								to = "materials/hl1/weapons/view/gauss/barrelchrome.vmat"
-							},
-							{
-								from = "battery.vmat"
-								to = "materials/hl1/weapons/view/gauss/battery.vmat"
-							},
-							{
-								from = "batterybox.vmat"
-								to = "materials/hl1/weapons/view/gauss/batterybox.vmat"
-							},
-							{
-								from = "batteryend.vmat"
-								to = "materials/hl1/weapons/view/gauss/batteryend.vmat"
-							},
-							{
-								from = "bottle.vmat"
-								to = "materials/hl1/weapons/view/gauss/bottle.vmat"
-							},
-							{
-								from = "boxrear.vmat"
-								to = "materials/hl1/weapons/view/gauss/boxrear.vmat"
-							},
-							{
-								from = "boxsidea.vmat"
-								to = "materials/hl1/weapons/view/gauss/boxsidea.vmat"
-							},
-							{
-								from = "boxsideb.vmat"
-								to = "materials/hl1/weapons/view/gauss/boxsideb.vmat"
-							},
-							{
-								from = "boxsidec.vmat"
-								to = "materials/hl1/weapons/view/gauss/boxsidec.vmat"
-							},
-							{
-								from = "boxtopa.vmat"
-								to = "materials/hl1/weapons/view/gauss/boxtopa.vmat"
-							},
-							{
-								from = "boxtopb.vmat"
-								to = "materials/hl1/weapons/view/gauss/boxtopb.vmat"
-							},
-							{
-								from = "nuspinner.vmat"
-								to = "materials/hl1/weapons/view/gauss/nuspinner.vmat"
-							},
-							{
-								from = "nuspinner2.vmat"
-								to = "materials/hl1/weapons/view/gauss/nuspinner2.vmat"
-							},
-							{
-								from = "spinner_rear.vmat"
-								to = "materials/hl1/weapons/view/gauss/spinner_rear.vmat"
-							},
-							{
-								from = "spinnerbright.vmat"
-								to = "materials/hl1/weapons/view/gauss/spinnerbright.vmat"
-							},
-							{
-								from = "wire_chrome.vmat"
-								to = "materials/hl1/weapons/view/gauss/wire_chrome.vmat"
+								from = "v_gauss_reference.vmat"
+								to = "materials/hl1hd/weapons/view/gauss/v_gauss_reference.vmat"
 							},
 						]
 						use_global_default = false
@@ -107,7 +39,7 @@
 						_class = "Attachment"
 						name = "muzzle"
 						parent_bone = "gauss_master"
-						relative_origin = [ 16.992996, -0.936653, -0.100412 ]
+						relative_origin = [ 0.0, 0.0, 0.0 ]
 						relative_angles = [ -0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
@@ -120,8 +52,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_gauss/gauss_gun.smd"
-						import_translation = [ 0.0, 0.0, -68.0 ]
+						filename = "models/hl1hddecomp/v_gauss/v_gauss_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -130,32 +62,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"reference_guass",
-								"gauss_gun",
-							]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_gauss/gauss_hand.smd"
-						import_translation = [ 0.0, 0.0, -68.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"reference_guass",
-								"gauss_hand",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -178,7 +86,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/draw.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -199,7 +107,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/fidget.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/fidget.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -220,7 +128,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/fire.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/fire.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -241,7 +149,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/fire2.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/fire2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -262,7 +170,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/holster.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -283,7 +191,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/idle.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -304,7 +212,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/idle2.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -325,7 +233,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/spin.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/spin.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -346,7 +254,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_gauss/v_gauss_anims/spinup.smd"
+						source_filename = "models/hl1hddecomp/v_gauss/v_gauss_anims/spinup.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
