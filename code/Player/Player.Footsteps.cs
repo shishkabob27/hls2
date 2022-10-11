@@ -1,4 +1,4 @@
-parital class HLPlayer
+partial class HLPlayer
 {
 TimeSince lastFootStep;
 	bool StepLeft;
