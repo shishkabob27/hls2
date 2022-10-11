@@ -1,6 +1,8 @@
 //@import "/styles/base.scss";
 //@import "/styles/form.scss";
 GUIRootPanel {
+    pointer-events: none;
+
     &.devcamera {
         display: none;
     }

@@ -10,14 +10,13 @@ $orange: #ffd300;
 @import "_pickupfeed.scss";
 @import "_scoreboard.scss";
 
-HudRootPanel
-{
+HudRootPanel {
+    pointer-events: none;
     background-color: rgba( #333, 0 );
     transition: background-color 0.2s ease-in;
     transform-origin: 50% 50%;
 
-    &.devcamera
-    {
+    &.devcamera {
         display: none;
     }
 }
