@@ -100,7 +100,6 @@
 			HLCombat.GibFadingCount += 1;
 		}
 	}
-	public new Vector3 Velocity;
 
 	public new Angles AngularVelocity;
 
@@ -197,7 +196,7 @@
 			HLCombat.GibFadingCount = 0;
 		}
 
-		if ( ( ( HLCombat.GibCount - HLCombat.GibFadingCount ) > HLCombat.max_gibs ) )
+		if ( ((HLCombat.GibCount - HLCombat.GibFadingCount) > HLCombat.max_gibs) )
 		{
 			toDeletefromMax = true;
 		}
@@ -210,7 +209,7 @@
 
 		if ( toDelete || toDeletefromMax )
 		{
-			alpha = alpha.LerpTo( 0, ( ( ( HLCombat.GibCount - HLCombat.max_gibs ).Clamp( 0, HLCombat.max_gibs ) * 0.1f ) ).Clamp( 1, 100 ) * Time.Delta );
+			alpha = alpha.LerpTo( 0, (((HLCombat.GibCount - HLCombat.max_gibs).Clamp( 0, HLCombat.max_gibs ) * 0.1f)).Clamp( 1, 100 ) * Time.Delta );
 			RenderColor = RenderColor.WithAlpha( alpha );
 			if ( alpha.AlmostEqual( 0, 0.2f ) )
 			{
@@ -245,7 +244,7 @@
 		if ( RotAngles != SleepAngles )
 			RotAngles += AngularVelocity * Time.Delta;
 		Rotation = RotAngles.ToRotation();
-		if ( ( Position == prevTickPos ) || ( Velocity.WithZ( 0 ).IsNearlyZero( 6 ) && Position.AlmostEqual( prevTickPos, 1f ) && GroundEntity != null && ( GroundEntity is not HLPlayer ) ) )
+		if ( (Position == prevTickPos) || (Velocity.WithZ( 0 ).IsNearlyZero( 6 ) && Position.AlmostEqual( prevTickPos, 1f ) && GroundEntity != null && (GroundEntity is not HLPlayer)) )
 		{
 			sleepytime += 1;
 			if ( AlternateLandingRotation )
@@ -433,7 +432,7 @@
 
 		// Bleed off some speed, but if we have less than the bleed
 		//  threshold, bleed the threshold amount.
-		float control = ( speed < gStopSpeed ) ? gStopSpeed : speed;
+		float control = (speed < gStopSpeed) ? gStopSpeed : speed;
 
 		// Add the amount to the drop amount.
 		var drop = control * Time.Delta * frictionAmount;
@@ -460,7 +459,7 @@
 		//AngularVelocity = Angles.Zero;
 		base.StartTouch( other );
 
-		if ( ( this.PhysicsBody != null && ( this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh" || this.PhysicsBody.GetDominantSurface() == "flesh_yellow" || this.PhysicsBody.GetDominantSurface() == "hl_flesh_yellow" ) ) )
+		if ( (this.PhysicsBody != null && (this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh" || this.PhysicsBody.GetDominantSurface() == "flesh_yellow" || this.PhysicsBody.GetDominantSurface() == "hl_flesh_yellow")) )
 		{
 			if ( BloodColour == NPC.BLOOD_COLOUR_RED )
 			{
