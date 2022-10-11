@@ -21,21 +21,22 @@ inventorycolumn {
 	align-items: flex-start; // align to the left, don't stretch
 
 	.slot-number {
-		background-color: #fa02;
-		padding: 18px 0px 0px 26px;
-		font-size: 16px;
-		font-family: Trebuchet MS;
+		background-color: rgba(255,160,0,0.3);
+		padding: 8px 0px 0px 14px;
+		font-size: 12px;
+		font-family: Tahoma;
 		font-weight: normal;
 		font-style: normal;
-		width: 40px;
-		height: 40px;
+		width: 24px;
+		height: 24px;
 	}
 
 	inventoryicon {
 		opacity: 1;
 		padding: 25px 15px 10px 2px;
-		width: 40px;
-		height: 40px;
+		padding-bottom: 0px;
+		width: 24px;
+		height: 24px;
 		overflow: hidden;
 
 		.icon {
