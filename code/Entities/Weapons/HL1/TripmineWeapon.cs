@@ -49,6 +49,8 @@ partial class TripmineWeapon : HLWeapon
 		{
 			return;
 		}
+
+		ShootEffects();
 		// woosh sound
 		// screen shake
 
@@ -80,6 +82,14 @@ partial class TripmineWeapon : HLWeapon
 		{
 			player.SwitchToBestWeapon();
 		}
+	}
+
+	[ClientRpc]
+	protected override void ShootEffectsRPC()
+	{
+		Host.AssertClient();
+
+		ViewModelEntity?.SetAnimParameter( "attack", true );
 	}
 
 	public override void SimulateAnimator( PawnAnimator anim )
