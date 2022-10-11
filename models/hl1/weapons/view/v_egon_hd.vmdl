@@ -14,88 +14,20 @@
 						remaps = 
 						[
 							{
-								from = "glove_handpak.vmat"
-								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
-							},
-							{
-								from = "gloved_knuckle.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_knuckle.vmat"
-							},
-							{
-								from = "gloved_sleeve.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_sleeve.vmat"
-							},
-							{
 								from = "rubberglovechrome.vmat"
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 							{
-								from = "bluechrome.vmat"
-								to = "materials/hl1/weapons/view/egon/bluechrome.vmat"
+								from = "v_egon_reference.vmat"
+								to = "materials/hl1/weapons/vr/egon/v_egon_reference.vmat"
 							},
 							{
-								from = "bracket.vmat"
-								to = "materials/hl1/weapons/view/egon/bracket.vmat"
+								from = "gordon_sleeve.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_sleeve.vmat"
 							},
 							{
-								from = "butt_work.vmat"
-								to = "materials/hl1/weapons/view/egon/butt_work.vmat"
-							},
-							{
-								from = "collarbutt_work.vmat"
-								to = "materials/hl1/weapons/view/egon/collarbutt_work.vmat"
-							},
-							{
-								from = "collarsides_work.vmat"
-								to = "materials/hl1/weapons/view/egon/collarsides_work.vmat"
-							},
-							{
-								from = "collartops_work.vmat"
-								to = "materials/hl1/weapons/view/egon/collartops_work.vmat"
-							},
-							{
-								from = "collarwork.vmat"
-								to = "materials/hl1/weapons/view/egon/collarwork.vmat"
-							},
-							{
-								from = "controls_work.vmat"
-								to = "materials/hl1/weapons/view/egon/controls_work.vmat"
-							},
-							{
-								from = "egonchrome2.vmat"
-								to = "materials/hl1/weapons/view/egon/egonchrome2.vmat"
-							},
-							{
-								from = "handle.vmat"
-								to = "materials/hl1/weapons/view/egon/handle.vmat"
-							},
-							{
-								from = "nose_work.vmat"
-								to = "materials/hl1/weapons/view/egon/nose_work.vmat"
-							},
-							{
-								from = "ring_attach_work.vmat"
-								to = "materials/hl1/weapons/view/egon/ring_attach_work.vmat"
-							},
-							{
-								from = "ring_work.vmat"
-								to = "materials/hl1/weapons/view/egon/ring_work.vmat"
-							},
-							{
-								from = "ringchrome.vmat"
-								to = "materials/hl1/weapons/view/egon/ringchrome.vmat"
-							},
-							{
-								from = "ringend.vmat"
-								to = "materials/hl1/weapons/view/egon/ringend.vmat"
-							},
-							{
-								from = "vf_back.vmat"
-								to = "materials/hl1/weapons/view/egon/vf_back.vmat"
-							},
-							{
-								from = "vf_blanksides.vmat"
-								to = "materials/hl1/weapons/view/egon/vf_blanksides.vmat"
+								from = "gordon_glove.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_glove.vmat"
 							},
 						]
 						use_global_default = false
@@ -110,9 +42,9 @@
 					{
 						_class = "Attachment"
 						name = "muzzle"
-						parent_bone = "gauss"
-						relative_origin = [ -14.218995, -0.035233, -0.049614 ]
-						relative_angles = [ -0.000019, 0.0, 0.0 ]
+						parent_bone = "handle"
+						relative_origin = [ 0.000775, 0.001082, 5.309586 ]
+						relative_angles = [ -0.0, 0.0, 0.0 ]
 						weight = 1.0
 						ignore_rotation = false
 					},
@@ -124,8 +56,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_egon/egon_newgun.smd"
-						import_translation = [ 0.0, 0.0, -68.0 ]
+						filename = "models/hl1hddecomp/v_egon/v_egon_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -134,17 +66,14 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"egon_newgun",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_egon/egon_hands.smd"
-						import_translation = [ 0.0, 0.0, -68.0 ]
+						filename = "models/hl1hddecomp/v_egon/v_gordon_hands_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -153,12 +82,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"egon_newgun",
-								"egon_hands",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -181,7 +106,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/altfirecycle.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/altfirecycle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -202,7 +127,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/altfireoff.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/altfireoff.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -223,7 +148,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/altfireon.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/altfireon.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -244,7 +169,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/draw.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -265,7 +190,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fidget1.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -286,7 +211,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fire1.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/fire1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -307,7 +232,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fire2.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/fire2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -328,7 +253,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fire3.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/fire3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -349,7 +274,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/fire4.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/fire4.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -370,7 +295,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/holster.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -391,7 +316,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_egon/v_egon_anims/idle1.smd"
+						source_filename = "models/hl1hddecomp/v_egon/v_egon_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
