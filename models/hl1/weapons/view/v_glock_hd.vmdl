@@ -43,11 +43,11 @@
 							},
 							{
 								from = "v_beretta_bottom.vmat"
-								to = "materials/hl1hd/weapons/view/9mmhandgun/v_beretta_bottom.vmat"
+								to = "materials/hl1/weapons/vr/glock/v_beretta_bottom.vmat"
 							},
 							{
 								from = "v_beretta_main.vmat"
-								to = "materials/hl1hd/weapons/view/9mmhandgun/v_beretta_main.vmat"
+								to = "materials/hl1/weapons/vr/glock/v_beretta_main.vmat"
 							},
 						]
 						use_global_default = false
