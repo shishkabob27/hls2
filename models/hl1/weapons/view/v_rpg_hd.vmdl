@@ -14,100 +14,32 @@
 						remaps = 
 						[
 							{
-								from = "glove_handpak.vmat"
-								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
-							},
-							{
-								from = "gloved_knuckle.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_knuckle.vmat"
-							},
-							{
-								from = "gloved_sleeve.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_sleeve.vmat"
-							},
-							{
 								from = "rubberglovechrome.vmat"
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 							{
-								from = "join.vmat"
-								to = "materials/hl1/weapons/view/rpg/join.vmat"
+								from = "gordon_glove.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_glove.vmat"
 							},
 							{
-								from = "m10cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m10cl.vmat"
+								from = "gordon_sleeve.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_sleeve.vmat"
 							},
 							{
-								from = "m11cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m11cl.vmat"
+								from = "v_rpg_monitor_reference.vmat"
+								to = "materials/hl1/weapons/vr/rpg/v_rpg_monitor_reference.vmat"
 							},
 							{
-								from = "m12cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m12cl.vmat"
+								from = "v_rpg_primer.vmat"
+								to = "materials/hl1/weapons/vr/rpg/v_rpg_primer.vmat"
 							},
 							{
-								from = "m13cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m13cl.vmat"
+								from = "v_rpg_reference.vmat"
+								to = "materials/hl1hd/weapons/view/rpg/v_rpg_reference.vmat"
 							},
 							{
-								from = "m16cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m16cl.vmat"
-							},
-							{
-								from = "m17cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m17cl.vmat"
-							},
-							{
-								from = "m18cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m18cl.vmat"
-							},
-							{
-								from = "m1cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m1cl.vmat"
-							},
-							{
-								from = "m2cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m2cl.vmat"
-							},
-							{
-								from = "m3cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m3cl.vmat"
-							},
-							{
-								from = "m4cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m4cl.vmat"
-							},
-							{
-								from = "m5cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m5cl.vmat"
-							},
-							{
-								from = "m6cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m6cl.vmat"
-							},
-							{
-								from = "m7cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m7cl.vmat"
-							},
-							{
-								from = "m8cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m8cl.vmat"
-							},
-							{
-								from = "m9cl.vmat"
-								to = "materials/hl1/weapons/view/rpg/m9cl.vmat"
-							},
-							{
-								from = "rocket.vmat"
-								to = "materials/hl1/weapons/view/rpg/rocket.vmat"
-							},
-							{
-								from = "rocketmotor.vmat"
-								to = "materials/hl1/weapons/view/rpg/rocketmotor.vmat"
-							},
-							{
-								from = "sboxback.vmat"
-								to = "materials/hl1/weapons/view/rpg/sboxback.vmat"
+								from = "v_rpg_rocket.vmat"
+								to = "materials/hl1/weapons/vr/rpg/v_rpg_rocket.vmat"
 							},
 						]
 						use_global_default = false
@@ -121,8 +53,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_rpg/rpg_hand.smd"
-						import_translation = [ 0.0, 0.0, -60.0 ]
+						filename = "models/hl1hddecomp/v_rpg/v_gordon_hands_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -131,17 +63,14 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"rpg_hand",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_rpg/rpg_rocket.smd"
-						import_translation = [ 0.0, 0.0, -60.0 ]
+						filename = "models/hl1hddecomp/v_rpg/v_rpg_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -150,35 +79,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"rpg_hand",
-								"reference_rpg",
-								"rpg_rocket",
-							]
-						}
-					},
-					{
-						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_rpg/blowpipe.smd"
-						import_translation = [ 0.0, 0.0, -60.0 ]
-						import_rotation = [ 0.0, 0.0, 0.0 ]
-						import_scale = 1.0
-						align_origin_x_type = "None"
-						align_origin_y_type = "None"
-						align_origin_z_type = "None"
-						parent_bone = ""
-						import_filter = 
-						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"rpg_hand",
-								"reference_rpg",
-								"rpg_rocket",
-								"blowpipe",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -193,15 +95,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/draw1.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/draw1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -214,15 +116,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/draw2.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/draw2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -235,36 +137,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/fidget.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-					{
-						_class = "AnimFile"
-						name = "fidget2"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
-						looping = false
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/fidget2.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/fidget.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -277,15 +158,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/fire.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/fire.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -298,15 +179,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/holster1.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/holster1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -319,15 +200,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/holster2.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/holster2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -340,15 +221,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/idle.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -361,15 +242,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/idle2.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -382,15 +263,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.0
-						fade_out_time = 0.0
+						fade_in_time = 0.2
+						fade_out_time = 0.2
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_rpg/v_rpg_anims/reload.smd"
+						source_filename = "models/hl1hddecomp/v_rpg/v_rpg_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
