@@ -17,6 +17,8 @@
 		if ( Local.Pawn.LifeState == LifeState.Dead )
 			return;
 
+		camSetup.ViewModel.ZNear = 4;
+
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 			return;
 
