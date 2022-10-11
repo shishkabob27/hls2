@@ -61,7 +61,15 @@ partial class Shotgun : HLWeapon
 		// Tell the clients to play the shoot effects
 		//
 		ShootEffects();
-		PlaySound( "shotgun_shot" );
+
+		if (!HLGame.cl_himodels)
+		{
+			PlaySound( "sounds/hl1/weapons/shotgun_shot.sound" );
+		}
+		else
+		{
+			PlaySound( "sounds/hl1hd/weapons/sbarrel1.sound" );
+		}
 
 		//
 		// Shoot the bullets
@@ -88,7 +96,14 @@ partial class Shotgun : HLWeapon
 		// Tell the clients to play the shoot effects
 		//
 		DoubleShootEffects();
-		PlaySound( "shotgun_shot_double" );
+		if (!HLGame.cl_himodels)
+		{
+			PlaySound( "sounds/hl1/weapons/shotgun_shot_double.sound" );
+		}
+		else
+		{
+			PlaySound( "sounds/hl1hd/weapons/dbarrel1.sound" );
+		}
 
 		//
 		// Shoot the bullets

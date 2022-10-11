@@ -51,7 +51,15 @@ partial class SMG : HLWeapon
 		//
 		ShootEffects();
 
-		PlaySound( "hks" );
+		if (!HLGame.cl_himodels)
+		{
+			PlaySound( "sounds/hl1/weapons/hks.sound" );
+		}
+		else
+		{
+			PlaySound( "sounds/hl1hd/weapons/hks.sound" );
+		}
+		
 
 		//
 		// Shoot the bullets
