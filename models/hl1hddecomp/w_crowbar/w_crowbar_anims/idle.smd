@@ -1,0 +1,8 @@
+version 1
+nodes
+  0 "Crowbar" -1
+end
+skeleton
+  time 0
+    0 0.202270 2.865825 1.861222 1.570796 0.000000 0.000000
+end
