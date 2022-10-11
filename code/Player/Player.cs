@@ -184,12 +184,7 @@
 	{
 		var _ = new TeamSelector();
 	}
-
-	public async void updtasync()
-	{
-		await GameTask.DelaySeconds( 0.1f );
-		loadCvars( To.Single( this ) );
-	}
+	
 	private void CreateHands()
 	{
 		DeleteHands();
