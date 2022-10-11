@@ -14,40 +14,32 @@
 						remaps = 
 						[
 							{
-								from = "gloved_knuckle.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_knuckle.vmat"
-							},
-							{
-								from = "glove_handpak.vmat"
-								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
-							},
-							{
-								from = "gloved_sleeve.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_sleeve.vmat"
-							},
-							{
 								from = "rubberglovechrome.vmat"
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 							{
-								from = "bucklechrome.vmat"
-								to = "materials/hl1/weapons/view/satchel/bucklechrome.vmat"
+								from = "gordon_glove.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_glove.vmat"
 							},
 							{
-								from = "expl.vmat"
-								to = "materials/hl1/weapons/view/satchel/expl.vmat"
+								from = "gordon_sleeve.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_sleeve.vmat"
 							},
 							{
-								from = "radioside.vmat"
-								to = "materials/hl1/weapons/view/satchel/radioside.vmat"
+								from = "brass_chrome.vmat"
+								to = "materials/hl1/weapons/vr/satchel/brass_chrome.vmat"
 							},
 							{
-								from = "satchel_body.vmat"
-								to = "materials/hl1/weapons/view/satchel/satchel_body.vmat"
+								from = "psx_v_satchel.vmat"
+								to = "materials/hl1/weapons/vr/satchel/psx_v_satchel.vmat"
 							},
 							{
-								from = "strap.vmat"
-								to = "materials/hl1/weapons/view/satchel/strap.vmat"
+								from = "psx_v_satchel2.vmat"
+								to = "materials/hl1/weapons/vr/satchel/psx_v_satchel2.vmat"
+							},
+							{
+								from = "psx_v_satchel3.vmat"
+								to = "materials/hl1/weapons/vr/satchel/psx_v_satchel3.vmat"
 							},
 						]
 						use_global_default = false
@@ -61,8 +53,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_satchel/satchel_charge.smd"
-						import_translation = [ 0.0, 0.0, -68.0 ]
+						filename = "models/hl1hddecomp/v_satchel/gordon_hands.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -71,17 +63,14 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"satchel_charge",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_satchel/satchel_hand_fix.smd"
-						import_translation = [ 0.0, 0.0, -68.0 ]
+						filename = "models/hl1hddecomp/v_satchel/satchel_charge.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -90,12 +79,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"satchel_charge",
-								"satchel_hand_fix",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -110,15 +95,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel/v_satchel_anims/draw.smd"
+						source_filename = "models/hl1hddecomp/v_satchel/v_satchel_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -131,15 +116,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel/v_satchel_anims/drop.smd"
+						source_filename = "models/hl1hddecomp/v_satchel/v_satchel_anims/drop.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -152,15 +137,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel/v_satchel_anims/fidget1.smd"
+						source_filename = "models/hl1hddecomp/v_satchel/v_satchel_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -173,15 +158,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel/v_satchel_anims/idle1.smd"
+						source_filename = "models/hl1hddecomp/v_satchel/v_satchel_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
