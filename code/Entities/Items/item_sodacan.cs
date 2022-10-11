@@ -5,7 +5,7 @@ partial class item_sodacan : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/items/can.vmdl" );
 
-	public int health { get; set; } = 0;
+	public int health { get; set; } = 1;
 
 	/// <summary>
 	/// 0: Coca-Cola
