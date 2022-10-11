@@ -14,40 +14,24 @@
 						remaps = 
 						[
 							{
-								from = "xbow_sleeve.vmat"
-								to = "materials/hl1/weapons/view/crossbow/xbow_sleeve.vmat"
-							},
-							{
 								from = "rubberglovechrome.vmat"
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 							{
-								from = "gloved_knuckle.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_knuckle.vmat"
+								from = "gordon_sleeve.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_sleeve.vmat"
 							},
 							{
-								from = "glove_handpak.vmat"
-								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
+								from = "gordon_glove.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_glove.vmat"
 							},
 							{
-								from = "det_front.vmat"
-								to = "materials/hl1/weapons/view/satchel_radio/det_front.vmat"
+								from = "det_chrome.vmat"
+								to = "materials/hl1/weapons/vr/satchel_radio/det_chrome.vmat"
 							},
 							{
-								from = "det_side.vmat"
-								to = "materials/hl1/weapons/view/satchel_radio/det_side.vmat"
-							},
-							{
-								from = "detbutn_bright.vmat"
-								to = "materials/hl1/weapons/view/satchel_radio/detbutn_bright.vmat"
-							},
-							{
-								from = "dettop.vmat"
-								to = "materials/hl1/weapons/view/satchel_radio/dettop.vmat"
-							},
-							{
-								from = "flapchrome.vmat"
-								to = "materials/hl1/weapons/view/satchel_radio/flapchrome.vmat"
+								from = "detonata\'  bod.vmat"
+								to = "materials/hl1/weapons/vr/satchel_radio/detonata_bod.vmat"
 							},
 						]
 						use_global_default = false
@@ -61,8 +45,8 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_satchel_radio/satchel_radio_detonator.smd"
-						import_translation = [ 0.0, 0.0, -68.0 ]
+						filename = "models/hl1hddecomp/v_satchel_radio/satchel_radio_detonator.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -71,17 +55,14 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"satchel_radio_detonator",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_satchel_radio/satchel_radio_hand.smd"
-						import_translation = [ 0.0, 0.0, -68.0 ]
+						filename = "models/hl1hddecomp/v_satchel_radio/v_gordon_hands_reference.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
 						align_origin_x_type = "None"
@@ -90,12 +71,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"satchel_radio_detonator",
-								"satchel_radio_hand",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -118,7 +95,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/draw.smd"
+						source_filename = "models/hl1hddecomp/v_satchel_radio/v_satchel_radio_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -139,7 +116,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/fidget1.smd"
+						source_filename = "models/hl1hddecomp/v_satchel_radio/v_satchel_radio_anims/fidget1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -160,7 +137,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/fire.smd"
+						source_filename = "models/hl1hddecomp/v_satchel_radio/v_satchel_radio_anims/fire.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -181,7 +158,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/holster.smd"
+						source_filename = "models/hl1hddecomp/v_satchel_radio/v_satchel_radio_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -202,7 +179,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_satchel_radio/v_satchel_radio_anims/idle1.smd"
+						source_filename = "models/hl1hddecomp/v_satchel_radio/v_satchel_radio_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
