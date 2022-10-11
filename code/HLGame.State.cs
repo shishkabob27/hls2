@@ -30,7 +30,7 @@
     private async Task GameLoopAsync()
     {
         GameState = GameStates.Live;
-        StateTimer = HLGame.hl_dm_time * 60;
+        StateTimer = hl_dm_time * 60;
         FreshStart();
         await WaitStateTimer();
 
