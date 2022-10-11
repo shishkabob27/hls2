@@ -284,6 +284,7 @@ public partial class HLGame : Game
 	public static void RespawnEntities()
 	{
 		Map.Reset( DefaultCleanupFilter );
+		ConsoleSystem.Run( "resetgui" );
 	}
 
 	[ConCmd.Server( "ent_create" )]

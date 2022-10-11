@@ -120,15 +120,17 @@ public partial class HLGame : Game
 	[ConCmd.Server( "resetgui", Help = "resets gui" )]
 	public static void resetgui()
 	{
-		( HLGame.Current as HLGame ).resetgui2();
+		(HLGame.Current as HLGame).resetgui2();
 	}
 
 	public void resetgui2()
 	{
-		Hud.Delete();
-		Hud = new HudPanel();
 		GUI.Delete();
 		GUI = new HLGUI();
+		Hud.Delete();
+		Hud = new HudPanel();
+
+
 	}
 
 	[ConCmd.Server( "resetplayer", Help = "resets player" )]
