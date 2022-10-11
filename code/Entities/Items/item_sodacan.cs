@@ -5,8 +5,6 @@ partial class item_sodacan : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/items/can.vmdl" );
 
-	public int health { get; set; } = 1;
-
 	/// <summary>
 	/// 0: Coca-Cola
     /// 1: Sprite
@@ -18,6 +16,8 @@ partial class item_sodacan : ModelEntity
 	/// </summary>
 	public int type { get; set; } = 6;
 
+	public TouchTrigger PickupTrigger { get; protected set; }
+
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -26,6 +26,10 @@ partial class item_sodacan : ModelEntity
 
 		PhysicsEnabled = true;
 		UsePhysicsCollision = true;
+
+		PickupTrigger = new TouchTrigger();
+		PickupTrigger.Parent = this;
+		PickupTrigger.Position = Position;
 
 		Tags.Add("weapon");
 
@@ -49,7 +53,7 @@ partial class item_sodacan : ModelEntity
 		if ( other is not HLPlayer player ) return;
 		if ( player.Health >= 100 ) return;
 
-		var newhealth = player.Health + health;
+		var newhealth = player.Health + 1;
 
 		newhealth = newhealth.Clamp( 0, 100 );
 
