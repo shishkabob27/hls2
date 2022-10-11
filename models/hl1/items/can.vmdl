@@ -31,167 +31,6 @@
 					},
 					{
 						_class = "MaterialGroup"
-						name = "sprite"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/sprite.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "genericsoda5"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/genericsoda5.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda1"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda2"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda2.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda3"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda3.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda4"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda4.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda5"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda5.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "gensoda6"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/gensoda6.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "moxie"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/moxie.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "side"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/side.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
-						name = "surge"
-						remaps = 
-						[
-							{
-								from = "materials/hl1/items/can/cantop.vmat"
-								to = "materials/hl1/items/can/cantop.vmat"
-							},
-							{
-								from = "materials/hl1/items/can/gensoda1.vmat"
-								to = "materials/hl1/items/can/surge.vmat"
-							},
-						]
-					},
-					{
-						_class = "MaterialGroup"
 						name = "coke"
 						remaps = 
 						[
@@ -202,6 +41,21 @@
 							{
 								from = "materials/hl1/items/can/gensoda1.vmat"
 								to = "materials/hl1/items/can/coke.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "sprite"
+						remaps = 
+						[
+							{
+								from = "materials/hl1/items/can/cantop.vmat"
+								to = "materials/hl1/items/can/cantop.vmat"
+							},
+							{
+								from = "materials/hl1/items/can/gensoda1.vmat"
+								to = "materials/hl1/items/can/sprite.vmat"
 							},
 						]
 					},
@@ -235,6 +89,36 @@
 							},
 						]
 					},
+					{
+						_class = "MaterialGroup"
+						name = "surge"
+						remaps = 
+						[
+							{
+								from = "materials/hl1/items/can/cantop.vmat"
+								to = "materials/hl1/items/can/cantop.vmat"
+							},
+							{
+								from = "materials/hl1/items/can/gensoda1.vmat"
+								to = "materials/hl1/items/can/surge.vmat"
+							},
+						]
+					},
+					{
+						_class = "MaterialGroup"
+						name = "moxie"
+						remaps = 
+						[
+							{
+								from = "materials/hl1/items/can/cantop.vmat"
+								to = "materials/hl1/items/can/cantop.vmat"
+							},
+							{
+								from = "materials/hl1/items/can/gensoda1.vmat"
+								to = "materials/hl1/items/can/moxie.vmat"
+							},
+						]
+					},
 				]
 			},
 			{
@@ -242,13 +126,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeCylinder"
+						_class = "PhysicsHullFromRender"
 						parent_bone = ""
 						surface_prop = "default"
 						collision_tags = "solid"
-						radius = 2.971098
-						point0 = [ -6.37958, -0.510126, 3.529682 ]
-						point1 = [ 4.218449, -0.50496, 3.635522 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},
@@ -277,34 +160,6 @@
 						}
 					},
 				]
-			},
-			{
-				_class = "AnimationList"
-				children = 
-				[
-					{
-						_class = "AnimFile"
-						name = "idle"
-						activity_name = ""
-						activity_weight = 1
-						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
-						looping = true
-						delta = false
-						worldSpace = false
-						hidden = false
-						anim_markup_ordered = false
-						disable_compression = false
-						source_filename = "models/hl1decomp/can/can_anims/idle.smd"
-						start_frame = -1
-						end_frame = -1
-						framerate = -1.0
-						take = 0
-						reverse = false
-					},
-				]
-				default_root_bone_name = ""
 			},
 		]
 		model_archetype = ""
