@@ -69,8 +69,10 @@ public class Options : GUIPanel
 		}
 		SetClass( "active", MenuOpen );
 	}
+	bool oldhimdl = false;
 	public void updateCvars()
 	{
+		oldhimdl = HLGame.cl_himodels;
 		HLGame.hl_viewroll = bCviewroll;
 		HLGame.hl_hud_scale = fChudScale;
 		HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
@@ -91,14 +93,14 @@ public class Options : GUIPanel
 
 		ConsoleSystem.Run( "hl_viewroll " + bCviewroll );
 		ConsoleSystem.Run( "hl_hud_scale " + fChudScale );
-		ConsoleSystem.Run( "cc_subtitles " + ( bCsubtitle ? 1 : 0 ) );
-		ConsoleSystem.Run( "hl_gui_rescale " + ( bCguiscale ? 1 : 0 ) );
-		ConsoleSystem.Run( "hl_pixelfont " + ( bCpixelfont ? 1 : 0 ) );
-		ConsoleSystem.Run( "cl_himodels " + ( bChimodels ? 1 : 0 ) );
-		ConsoleSystem.Run( "hl_vr_pointer " + ( bCvrpointer ? 1 : 0 ) );
-		ConsoleSystem.Run( "hl_classic_flashlight " + ( bColdTorch ? 1 : 0 ) );
-		ConsoleSystem.Run( "hl_classic_explosion " + ( bColdexplosion ? 1 : 0 ) );
-		ConsoleSystem.Run( "hl_classic_gibs " + ( bColdGibs ? 1 : 0 ) );
+		ConsoleSystem.Run( "cc_subtitles " + (bCsubtitle ? 1 : 0) );
+		ConsoleSystem.Run( "hl_gui_rescale " + (bCguiscale ? 1 : 0) );
+		ConsoleSystem.Run( "hl_pixelfont " + (bCpixelfont ? 1 : 0) );
+		ConsoleSystem.Run( "cl_himodels " + (bChimodels ? 1 : 0) );
+		ConsoleSystem.Run( "hl_vr_pointer " + (bCvrpointer ? 1 : 0) );
+		ConsoleSystem.Run( "hl_classic_flashlight " + (bColdTorch ? 1 : 0) );
+		ConsoleSystem.Run( "hl_classic_explosion " + (bColdexplosion ? 1 : 0) );
+		ConsoleSystem.Run( "hl_classic_gibs " + (bColdGibs ? 1 : 0) );
 		ConsoleSystem.Run( "hl_spray_icon " + bSsprayIcon );
 		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
 		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
@@ -115,6 +117,14 @@ public class Options : GUIPanel
 		await GameTask.DelaySeconds( 0.1f );
 		ConsoleSystem.Run( "hl_updatepm" );
 		ConsoleSystem.Run( "hl_savecvar" );
+
+		if ( oldhimdl != bChimodels )
+		{
+			if ( Local.Pawn is not HLPlayer pl ) return;
+
+			if ( pl.ActiveChild is not HLWeapon wp ) return;
+			wp.ActiveStart( pl );
+		}
 	}
 
 	[Event.BuildInput]
@@ -123,8 +133,8 @@ public class Options : GUIPanel
 		if ( input.Pressed( InputButton.Menu ) )
 		{
 			getCvars();
-			Position.x = ( Screen.Width / 2 ) - ( Box.Rect.Width / 2 );
-			Position.y = ( Screen.Height / 2 ) - ( Box.Rect.Height / 2 );
+			Position.x = (Screen.Width / 2) - (Box.Rect.Width / 2);
+			Position.y = (Screen.Height / 2) - (Box.Rect.Height / 2);
 			MenuOpen = !MenuOpen;
 		}
 	}
@@ -136,6 +146,6 @@ public class Options : GUIPanel
 	public void openTestdialog()
 	{
 		var a = Parent.AddChild<Advanced>();
-		( a as Advanced ).MenuOpen = true;
+		(a as Advanced).MenuOpen = true;
 	}
 }
