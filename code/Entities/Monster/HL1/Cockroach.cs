@@ -50,7 +50,6 @@ public class Cockroach : NPC
 
 	public override void Think()
 	{
-		Random random = new Random();
 
 		switch ( m_iMode )
 		{
@@ -58,18 +57,18 @@ public class Cockroach : NPC
 			case "ROACH_EAT":
 				{
 					// if not moving, sample environment to see if anything scary is around. Do a radius search 'look' at random.
-					if ( random.Next( 0, 3 ) == 1 )
+					if ( Rand.Int( 0, 3 ) == 1 )
 					{
 						Look( 150 );
 						if ( COND_SEE_FEAR )
 						{
 							// if see something scary
 							//ALERT ( at_aiconsole, "Scared\n" );
-							Eat( 30 + (random.Next( 0, 14 )) );// roach will ignore food for 30 to 45 seconds
+							Eat( 30 + (Rand.Int( 0, 14 )) );// roach will ignore food for 30 to 45 seconds
 							PickNewDest( "ROACH_SCARED_BY_ENT" );
 							SetActivity( "ACT_WALK" );
 						}
-						else if ( random.Next( 0, 149 ) == 1 )
+						else if ( Rand.Int( 0, 149 ) == 1 )
 						{
 							// if roach doesn't see anything, there's still a chance that it will move. (boredom)
 							//ALERT ( at_aiconsole, "Bored\n" );
@@ -79,7 +78,7 @@ public class Cockroach : NPC
 							if ( m_iMode == "ROACH_EAT" )
 							{
 								// roach will ignore food for 30 to 45 seconds if it got bored while eating. 
-								Eat( 30 + (random.Next( 0, 14 )) );
+								Eat( 30 + (Rand.Int( 0, 14 )) );
 							}
 						}
 					}

@@ -594,25 +594,12 @@
 		}
 	}
 
-	float walkBob = 0;
-	float fov = 0;
-
 	private void AddCameraEffects( ref CameraSetup setup )
 	{
 		if ( Client.IsUsingVr ) return;
 		if ( Health <= 0 ) return;
 		var speed = Velocity.WithZ( 0 ).Length.LerpInverse( 0, 2 );
 		var up = setup.Rotation.Up;
-		//
-		//if ( GroundEntity != null )
-		//{
-		//walkBob += Time.Delta * 12f * speed;
-		//}
-		//setup.Position += up * MathF.Sin( walkBob ) * speed * 2;
-
-		setup.FieldOfView += fov;
-
-
 	}
 
 	const float ARMOUR_RATIO = 0.2f;

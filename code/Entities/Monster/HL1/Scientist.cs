@@ -374,7 +374,6 @@ public class ScientistDead : NPC
 		}
 	}
 
-	float tick = 0;
 	public override void Think()
 	{
 		

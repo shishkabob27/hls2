@@ -50,7 +50,7 @@ public partial class env_fade : Entity
 [SceneCamera.AutomaticRenderHook]
 public partial class FadeRenderHook : RenderHook
 {
-	RenderAttributes attributes = new RenderAttributes();
+	RenderAttributes attributes = new();
 	public Color MyColor { get; set; }
 
 	public float DurationF;

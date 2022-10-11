@@ -26,11 +26,10 @@
     public bool DontSleep = false;
 
     Entity lastTouch;
-    Entity lastHit;
     Vector3 lastHitNormal;
 
     [Event.Tick]
-    void Tick()
+    public void Tick()
     {
         Simulate();
     }
@@ -65,7 +64,7 @@
         {
             maxs = maxsOverride;
         }
-        NewMoveHelper mover = new NewMoveHelper( Position, Velocity );
+        NewMoveHelper mover = new( Position, Velocity );
 
         mover.Trace = mover.Trace
             .Size( mins, maxs )
@@ -215,7 +214,7 @@
         // Not on ground - no friction
         if ( GroundEntity == null )
             return;
-        frictionAmount = frictionAmount + ( Friction - 1 );
+        frictionAmount += ( Friction - 1 );
 
         // Calculate speed
         var speed = Velocity.Length;
@@ -249,7 +248,7 @@
         // Not on ground - no friction
         if ( GroundEntity == null )
             return;
-        frictionAmount = frictionAmount + ( Friction - 1 );
+        frictionAmount += ( Friction - 1 );
 
         // Calculate speed
         var speed = AngularVelocity.Length;

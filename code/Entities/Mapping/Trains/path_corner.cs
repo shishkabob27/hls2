@@ -4,7 +4,7 @@
 public partial class path_corner : path_track
 {
 	[Property( "target" ), FGDType( "target_destination" )]
-	public string Target { get; set; } = "";
+	new public string Target { get; set; } = "";
 
 	// stub
 	[Input]
