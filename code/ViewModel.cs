@@ -1,7 +1,5 @@
 ﻿partial class HLViewModel : BaseViewModel
 {
-	float walkBob = 0;
-
 
 	public override void PostCameraSetup( ref CameraSetup camSetup )
 	{
