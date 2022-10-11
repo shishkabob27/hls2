@@ -143,6 +143,7 @@ public partial class HLPlayer
             (Light as SpotLightEntity).InnerConeAngle = 20;
             (Light as SpotLightEntity).OuterConeAngle = 40;
             (Light as SpotLightEntity).FogStrength = 1.0f;
+			(Light as SpotLightEntity).EnableViewmodelRendering = true;
             (Light as SpotLightEntity).Owner = this;
 
             (Light as SpotLightEntity).Enabled = true;
