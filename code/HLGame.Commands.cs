@@ -1,5 +1,4 @@
-﻿
-public partial class HLGame : Game
+﻿public partial class HLGame : Game
 {
 	// TODO: CheatCmd
 	[ConCmd.Admin]
@@ -285,6 +284,32 @@ public partial class HLGame : Game
 	{
 		Map.Reset( DefaultCleanupFilter );
 		ConsoleSystem.Run( "resetgui" );
+	}
+
+	[ConCmd.Admin( "reset_game" )]
+	public static void ResetGame()
+	{
+		// Delete everything except the clients and the world
+		var ents = Entity.All.ToList();
+		ents.RemoveAll( e => e is Client );
+		ents.RemoveAll( e => e is WorldEntity );
+		foreach ( Entity ent in ents )
+		{
+			ent.Delete();
+		}
+
+		// Reset the map
+		Map.Reset( DefaultCleanupFilter );
+
+		// Create a brand new game
+		HLGame.Current = new HLGame();
+
+		// Tell our new game that all clients have just joined to set them all back up.
+		foreach ( Client cl in Client.All )
+		{
+			cl.Components.RemoveAll();
+			(HLGame.Current as HLGame).ClientJoined( cl );
+		}
 	}
 
 	[ConCmd.Server( "ent_create" )]
