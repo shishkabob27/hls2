@@ -14,32 +14,20 @@
 						remaps = 
 						[
 							{
-								from = "glove_handpak.vmat"
-								to = "materials/hl1/weapons/view/hand/glove_handpak.vmat"
-							},
-							{
-								from = "gloved_knuckle.vmat"
-								to = "materials/hl1/weapons/view/hand/gloved_knuckle.vmat"
-							},
-							{
 								from = "rubberglovechrome.vmat"
 								to = "materials/hl1/weapons/view/hand/rubberglovechrome.vmat"
 							},
 							{
-								from = "xbow_sleeve.vmat"
-								to = "materials/hl1/weapons/view/crossbow/xbow_sleeve.vmat"
+								from = "gordon_glove.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_glove.vmat"
 							},
 							{
-								from = "grenade3.vmat"
-								to = "materials/hl1/weapons/view/grenade_hand/grenade3.vmat"
+								from = "gordon_sleeve.vmat"
+								to = "materials/hl1hd/weapons/view/hand/gordon_sleeve.vmat"
 							},
 							{
-								from = "grenchrome.vmat"
-								to = "materials/hl1/weapons/view/grenade_hand/grenchrome.vmat"
-							},
-							{
-								from = "spoont.vmat"
-								to = "materials/hl1/weapons/view/grenade_hand/spoont.vmat"
+								from = "grenade s.vmat"
+								to = "materials/hl1/weapons/vr/grenade/grenade s.vmat"
 							},
 						]
 						use_global_default = false
@@ -53,7 +41,7 @@
 				[
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_grenade/grenade_hand.smd"
+						filename = "models/hl1hddecomp/v_grenade/grenade.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -63,16 +51,13 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"grenade_hand",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 					{
 						_class = "RenderMeshFile"
-						filename = "models/hl1decomp/v_grenade/grenade.smd"
+						filename = "models/hl1hddecomp/v_grenade/v_gordon_hands_Reference.smd"
 						import_translation = [ 0.0, 0.0, 0.0 ]
 						import_rotation = [ 0.0, 0.0, 0.0 ]
 						import_scale = 1.0
@@ -82,12 +67,8 @@
 						parent_bone = ""
 						import_filter = 
 						{
-							exclude_by_default = true
-							exception_list = 
-							[
-								"grenade_hand",
-								"grenade",
-							]
+							exclude_by_default = false
+							exception_list = [  ]
 						}
 					},
 				]
@@ -102,15 +83,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_grenade/v_grenade_anims/draw.smd"
+						source_filename = "models/hl1hddecomp/v_grenade/v_grenade_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -123,15 +104,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_grenade/v_grenade_anims/fidget.smd"
+						source_filename = "models/hl1hddecomp/v_grenade/v_grenade_anims/fidget.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -144,15 +125,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_grenade/v_grenade_anims/holster.smd"
+						source_filename = "models/hl1hddecomp/v_grenade/v_grenade_anims/holster.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -165,15 +146,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = true
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_grenade/v_grenade_anims/idle.smd"
+						source_filename = "models/hl1hddecomp/v_grenade/v_grenade_anims/idle.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -186,15 +167,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_grenade/v_grenade_anims/pinpull.smd"
+						source_filename = "models/hl1hddecomp/v_grenade/v_grenade_anims/pinpull.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -207,15 +188,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_grenade/v_grenade_anims/throw1.smd"
+						source_filename = "models/hl1hddecomp/v_grenade/v_grenade_anims/throw1.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -228,15 +209,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_grenade/v_grenade_anims/throw2.smd"
+						source_filename = "models/hl1hddecomp/v_grenade/v_grenade_anims/throw2.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
@@ -249,15 +230,15 @@
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
-						fade_in_time = 0.2
-						fade_out_time = 0.2
+						fade_in_time = 0.0
+						fade_out_time = 0.0
 						looping = false
 						delta = false
 						worldSpace = false
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
-						source_filename = "models/hl1decomp/v_grenade/v_grenade_anims/throw3.smd"
+						source_filename = "models/hl1hddecomp/v_grenade/v_grenade_anims/throw3.smd"
 						start_frame = -1
 						end_frame = -1
 						framerate = -1.0
