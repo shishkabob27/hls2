@@ -2,13 +2,13 @@
 {
 	// this can be accessed from anywhere!
 
-	[ConVar.Replicated] public static string hl_skill { get; set; } = "medium";
-	[ConVar.Replicated] public static string hl_gamemode { get; set; } = "campaign";
+	[ConVar.Replicated] public static string skill { get; set; } = "medium";
+	[ConVar.Replicated] public static string gamemode { get; set; } = "campaign";
 	[ConVar.Replicated] public static int hl_dm_time { get; set; } = 10;
 	public static bool GameIsMultiplayer()
 	{
 		var a = true;
-		switch ( hl_gamemode )
+		switch ( gamemode )
 		{
 			case "campaign":
 				a = false;

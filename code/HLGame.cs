@@ -4,8 +4,6 @@ global using System;
 global using System.Collections.Generic;
 global using System.Linq;
 global using System.Threading.Tasks;
-
-
 global using XeNPC;
 
 /// <summary>
@@ -29,19 +27,13 @@ public partial class HLGame : Game
 			GUI = new HLGUI();
 			if ( Host.IsDedicatedServer )
 			{
-				hl_gamemode = "deathmatch";
+				gamemode = "deathmatch";
 			}
-			if ( hl_gamemode == "deathmatch" || hl_gamemode == "ctf" )
+			if ( gamemode == "deathmatch" || gamemode == "ctf" )
 			{
 				_ = GameLoopAsync();
 			}
 			Hud = new HudPanel();
-		}
-
-		if ( IsClient )
-		{
-			//postProcess = new StandardPostProcess();
-			//PostProcess.Add( postProcess );
 		}
 	}
 
@@ -74,10 +66,10 @@ public partial class HLGame : Game
 		camera.Enabled = !camera.Enabled;
 		RPCHIDE( To.Single( client ), camera.Enabled );
 	}
+
 	[ClientRpc]
 	void RPCHIDE( bool enabled )
 	{
-
 		GUIRootPanel.Current?.SetClass( "devcamera", enabled );
 		HudRootPanel.Current?.SetClass( "devcamera", enabled );
 	}
@@ -91,16 +83,6 @@ public partial class HLGame : Game
 
 		player.Respawn();
 	}
-
-
-	public override void OnKilled( Client client, Entity pawn )
-	{
-		base.OnKilled( client, pawn );
-
-		//Hud.OnPlayerDied( To.Everyone, pawn as HLPlayer);
-	}
-
-
 
 	[ClientRpc]
 	public override void OnKilledMessage( long leftid, string left, long rightid, string right, string method )
@@ -127,17 +109,20 @@ public partial class HLGame : Game
 			localPawn.RenderHud( screenSize );
 		}
 	}
+
 	[Event.Entity.PostCleanup]
 	void onclean()
 	{
 		HLCombat.GibCount = 0;
 		HLCombat.GibFadingCount = 0;
 	}
+
 	[ConCmd.Server( "resetgui", Help = "resets gui" )]
 	public static void resetgui()
 	{
 		( HLGame.Current as HLGame ).resetgui2();
 	}
+
 	public void resetgui2()
 	{
 		Hud.Delete();

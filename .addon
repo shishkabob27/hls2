@@ -174,7 +174,7 @@
       "Gamepad": true
     },
     "GameSettings": {
-      "hl_gamemode": {
+      "gamemode": {
         "DisplayType": "Choice",
         "Choices": [
           {
@@ -190,12 +190,12 @@
             "Name": "Capture the Flag (Opposing Force)"
           }
         ],
-        "ConVarName": "hl_gamemode",
+        "ConVarName": "gamemode",
         "DisplayName": "Gamemode",
         "DefaultValue": "campaign",
         "Description": ""
       },
-      "hl_difficulty": {
+      "skill": {
         "DisplayType": "Choice",
         "Choices": [
           {
@@ -211,7 +211,7 @@
             "Name": "Hard"
           }
         ],
-        "ConVarName": "hl_difficulty",
+        "ConVarName": "skill",
         "DisplayName": "Difficulty",
         "DefaultValue": "easy",
         "Description": ""
