@@ -6,26 +6,34 @@ MenuRootPanel {
     flex-direction: column;
     font-family: 'Trebuchet MS';
     color: white;
-    padding-left: 175px;
-    padding-top: 175px;
+    padding-top: 156px;
     height: 100%;
+}
+.img {
+    background-image: url("ui/logo.png");
+    background-size: cover;
+    width: 100%;
+    height: 224px;
+    background-repeat: no-repeat;
+    margin-bottom: 28px;
 }
 .title {
     font-size:128px;
-    padding-bottom: 80px;
+    padding-bottom: 86px;
 }
 .controls {
-    flex-direction:column;
+    padding-left: 170px;
+    flex-direction: column;
 }
 .sub {
-    font-size: 25px;
+    font-size: 24.5px;
     bottom: 0px;
     margin-top: 8px;
-    color: grey;
+    color: dimgrey;
 }
 .button {
     min-width: 360px;
-    font-size: 37px;
+    font-size: 37.5px;
     color: #FFBA08;
     transition: all 0.7s linear;
     margin-bottom: 25px;
