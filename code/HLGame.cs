@@ -26,6 +26,12 @@ public partial class HLGame : Game
 		//
 		if ( IsServer )
 		{
+			if ( Global.MapName == String.Empty || Global.MapName == "" || Global.MapName == "<empty>" || Global.MapName.Length == 0 )
+			{
+				new MenuGame();
+				this.Delete();
+				return;
+			}
 			GUI = new HLGUI();
 			if ( Host.IsDedicatedServer )
 			{
