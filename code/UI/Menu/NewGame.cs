@@ -10,15 +10,18 @@ class NewGame : BaseMenuScreen
 
 	public void Easy( Panel p )
 	{
-		BaseButtonClick();
+		ConsoleSystem.Run( "skill 0" );
+		ConsoleSystem.Run( "chnglvlad shishkabob.hls2_c1p0" );
 	}
 	public void Medium( Panel p )
 	{
-		BaseButtonClick();
+		ConsoleSystem.Run( "skill 1" );
+		ConsoleSystem.Run( "chnglvlad shishkabob.hls2_c1p0" );
 	}
 	public void Difficult( Panel p )
 	{
-		BaseButtonClick();
+		ConsoleSystem.Run( "skill 2" );
+		ConsoleSystem.Run( "chnglvlad shishkabob.hls2_c1p0" );
 	}
 	public void Cancel( Panel p )
 	{

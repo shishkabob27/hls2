@@ -20,9 +20,12 @@ public class BaseMenuScreen : Panel
 		await GameTask.DelaySeconds( 0.2f );
 	}
 
-	[ConCmd.Admin]
+	[ConCmd.Server]
 	static void chnglvlad( string MAP )
 	{
-		Global.ChangeLevel( MAP );
+		if ( ConsoleSystem.Caller.IsListenServerHost )
+		{
+			Global.ChangeLevel( MAP );
+		}
 	}
 }
