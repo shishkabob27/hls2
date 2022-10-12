@@ -594,13 +594,16 @@
 		VRWeaponModel.Owner = Owner;
 		VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).RightHand, true );
 		(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
-		var wmodel = ViewModelPath;
-		wmodel = ViewModelPath.Replace( "view/v_", "vr/" ); // get vr model
-		var vrmodel = wmodel;
-		if ( HLGame.cl_himodels )
+		var vrmodel = ViewModelPath;
+		if ( HLGame.cl_himodels && HasHDModel )
 		{
-			vrmodel = wmodel.Replace( ".vmdl", "_hd.vmdl" );
+			vrmodel = vrmodel.Replace( ".vmdl", "_hd.vmdl" ).Replace( "view/v_", "vr/" );
 		}
+		else
+		{
+			vrmodel = vrmodel.Replace( "view/v_", "vr/" );
+		}
+		
 		VRWeaponModel.SetModel( vrmodel );
 		VRWeaponModel.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 
