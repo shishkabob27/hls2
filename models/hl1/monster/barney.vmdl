@@ -93,6 +93,10 @@
 								from = "bx_tounge.vmat"
 								to = "materials/hl1/monster/barney/bx_tounge.vmat"
 							},
+							{
+								from = "bx_guntip1.vmat"
+								to = "materials/hl1/monster/barney/bx_guntip1.vmat"
+							},
 						]
 						use_global_default = false
 						global_default_material = ""
@@ -119,6 +123,26 @@
 							exception_list = 
 							[
 								"barney_x_template_biped1",
+							]
+						}
+					},
+					{
+						_class = "RenderMeshFile"
+						filename = "models/hl1decomp/barney/barney-x_template_biped(gun-hlstr)1.smd"
+						import_translation = [ 0.0, 0.0, 0.0 ]
+						import_rotation = [ 0.0, 0.0, 0.0 ]
+						import_scale = 1.0
+						align_origin_x_type = "None"
+						align_origin_y_type = "None"
+						align_origin_z_type = "None"
+						parent_bone = ""
+						import_filter = 
+						{
+							exclude_by_default = true
+							exception_list = 
+							[
+								"barney_x_template_biped1",
+								"barney_x_template_biped_gun_hlstr_1",
 							]
 						}
 					},
