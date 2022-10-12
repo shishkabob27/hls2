@@ -5,7 +5,7 @@ partial class TripmineWeapon : HLWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/tripmine.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_tripmine.vmdl";
-
+	public override bool HasHDModel => true;
 	public override float PrimaryRate => 0.3f;
 	public override float SecondaryRate => 0.3f;
 	public override float ReloadTime => 0.0f;

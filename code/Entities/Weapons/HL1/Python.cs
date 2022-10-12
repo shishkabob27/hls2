@@ -6,7 +6,7 @@ partial class Python : HLWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/python.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_python.vmdl";
-
+	public override bool HasHDModel => true;
 	public override float PrimaryRate => 0.75f;
 	public override float SecondaryRate => 0.5f;
 	public override float ReloadTime => 2.4f;

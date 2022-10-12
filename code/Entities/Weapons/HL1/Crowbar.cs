@@ -13,6 +13,7 @@ partial class Crowbar : HLWeapon
 	public override int ClipSize => 0;
 	public override int Bucket => 0;
 	public override int BucketWeight => 1;
+	public override bool HasHDModel => true;
 	public override string InventoryIcon => "/ui/weapons/weapon_crowbar.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_crowbar_selected.png";
 	public override void Spawn()

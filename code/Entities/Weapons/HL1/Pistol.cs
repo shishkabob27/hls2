@@ -14,6 +14,7 @@ partial class Pistol : HLWeapon
 
 	public override string InventoryIcon => "/ui/weapons/weapon_pistol.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_pistol_selected.png";
+	public override bool HasHDModel => true;
 	public override int Bucket => 1;
 	public override int BucketWeight => 1;
 
@@ -89,6 +90,31 @@ partial class Pistol : HLWeapon
 
 		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 		ViewPunch( 0, -2 );
+	}
+
+	[ClientRpc]
+	protected override void ShootEffectsRPC()
+	{
+		Host.AssertClient();
+
+		if ( Client.IsUsingVr )
+		{
+			Particles.Create( "particles/muzflash.vpcf", VRWeaponModel, "muzzle" );
+		}
+		else
+		{
+			Particles.Create( "particles/muzflash.vpcf", EffectEntity, "muzzle" );
+		}
+		if ( Client.IsUsingVr )
+		{
+			Particles.Create( "particles/pistol_ejectbrass.vpcf", VRWeaponModel, "ejection_point" );
+		}
+		else
+		{
+			Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
+		}
+
+		ViewModelEntity?.SetAnimParameter( "fire", true );
 	}
 
 }

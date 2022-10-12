@@ -11,6 +11,7 @@ partial class Crossbow : HLWeapon
 	public override int BucketWeight => 3;
 	public override AmmoType AmmoType => AmmoType.Crossbow;
 	public override int ClipSize => 5;
+	public override bool HasHDModel => true;
 	public override string AmmoIcon => "ui/ammo5.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_crossbow.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_crossbow_selected.png";

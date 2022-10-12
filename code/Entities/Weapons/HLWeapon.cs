@@ -19,6 +19,7 @@
 	public virtual int BucketWeight => 100;
 
 	public virtual bool HasAltAmmo => false;
+	public virtual bool HasHDModel => false;
 	public virtual int Order => (Bucket * 10000) + BucketWeight;
 
 	public virtual string AmmoIcon => "ui/ammo1.png";
@@ -591,15 +592,28 @@
 		VRWeaponModel = new AnimatedEntity();
 		VRWeaponModel.Position = Position;
 		VRWeaponModel.Owner = Owner;
-		VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).RightHand, true );
-		(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
-		var wmodel = ViewModelPath;
-		wmodel = ViewModelPath.Replace( "view/v_", "vr/" ); // get vr model
-		var vrmodel = wmodel;
-		if ( HLGame.cl_himodels )
+
+		if (HLGame.cl_righthand)
 		{
-			vrmodel = wmodel.Replace( ".vmdl", "_hd.vmdl" );
+			VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).RightHand, true );
+			(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
 		}
+		else
+		{
+			VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).LeftHand, true );
+			(Client.Pawn as HLPlayer).LeftHand.RenderColor = Color.Transparent;
+		}
+		
+		var vrmodel = ViewModelPath;
+		if ( HLGame.cl_himodels && HasHDModel )
+		{
+			vrmodel = vrmodel.Replace( ".vmdl", "_hd.vmdl" ).Replace( "view/v_", "vr/" );
+		}
+		else
+		{
+			vrmodel = vrmodel.Replace( "view/v_", "vr/" );
+		}
+		
 		VRWeaponModel.SetModel( vrmodel );
 		VRWeaponModel.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 
@@ -632,7 +646,7 @@
 			ViewModelEntity.Owner = Owner;
 			ViewModelEntity.EnableViewmodelRendering = true;
 			var wmodel = ViewModelPath;
-			if ( HLGame.cl_himodels )
+			if ( HLGame.cl_himodels && HasHDModel )
 			{
 				wmodel = ViewModelPath.Replace( ".vmdl", "_hd.vmdl" ); // get hd model
 			}

@@ -1,0 +1,17 @@
+
+voicespeaker 
+{
+    position: absolute;
+    bottom: 128px;
+    right: 16px;
+    opacity: 0.0;
+    font-family: "material icons";
+    font-size: 48px;
+    color: #FAB002;
+    text-shadow: 1px 1px 4px rgba( black, 0.25 );
+
+    &.active
+    {
+        opacity: 1.0;
+    }
+}

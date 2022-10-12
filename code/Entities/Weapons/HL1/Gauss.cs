@@ -10,6 +10,7 @@ partial class Gauss : HLWeapon
 	public override int BucketWeight => 2;
 	public override float PrimaryRate => 0.15f;
 	public override float SecondaryRate => 0f;
+	public override bool HasHDModel => true;
 	public override AmmoType AmmoType => AmmoType.Uranium;
 	public override string AmmoIcon => "ui/ammo7.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_gauss.png";
