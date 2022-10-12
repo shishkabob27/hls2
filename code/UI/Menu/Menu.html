@@ -1,37 +1,41 @@
 ﻿﻿<link href="/UI/Menu/Menu.scss" rel="stylesheet" >
-<root> 
+<root class="root"> 
 	<logo class="img"></logo> 
 	<div class="controls">
 		<div>
-			<button>New game</button>
+			<button onmousedown="ClickDown()" onclick="NewGame(this)">New game</button>
 			<label class="sub">Start a new game.</label>
 		</div>
 		<div>
-			<button>Hazard course</button>
+			<button onmousedown="ClickDown()" onclick="HazardCourse(this)">Hazard course</button>
 			<label class="sub">Learn how to play Half-Life</label>
 		</div>
 		<div>
-			<button>Configuration</button>
+			<button onmousedown="ClickDown()" onclick="Config(this)">Configuration</button>
 			<label class="sub">Change game settings, configure controls.</label>
 		</div>
 		<div>
-			<button>Load game</button>
+			<button onmousedown="ClickDown()" onclick="LoadGame(this)">Load game</button>
 			<label class="sub">Load a previously saved game.</label>
 		</div>
 		<div>
-			<button>Multiplayer</button>
+			<button onmousedown="ClickDown()" onclick="Multiplayer(this)">Multiplayer</button>
 			<label class="sub">Search for Half-Life servers, chat with other players, configure character.</label>
 		</div>
 		<div>
-			<button>View Readme.txt</button>
+			<button onmousedown="ClickDown()" onclick="CustomGame(this)">Custom game</button>
+			<label class="sub">Select a custom game, search the Internet for custom games.</label>
+		</div>
+		<div>
+			<button onmousedown="ClickDown()" onclick="ViewReadme(this)">View Readme.txt</button>
 			<label class="sub">View the Readme.txt file.</label>
 		</div>
 		<div>
-			<button>Previews</button>
+			<button onmousedown="ClickDown()" onclick="Previews(this)">Previews</button>
 			<label class="sub">View product previews, including Team Fortress.</label>
 		</div>
 		<div>
-			<button>Quit</button>
+			<button onmousedown="ClickDown()" onclick="Quit(this)">Quit</button>
 			<label class="sub">Quit playing Half-Life.</label>
 		</div>
 	</div>

@@ -3,10 +3,23 @@ MenuRootPanel {
     background-image: url("ui/splash.png");
     background-size: cover;
     pointer-events: all;
+    margin: 0px;
+    padding: 0px;
+}
+.root {
+    width: 100%;
     flex-direction: column;
     font-family: 'Trebuchet MS';
     color: white;
     padding-top: 156px;
+    height: 100%;
+}
+.rootscreen {
+    width: 100%;
+    flex-direction: column;
+    font-family: 'Trebuchet MS';
+    color: white;
+    padding-top: 118px;
     height: 100%;
 }
 .img {
@@ -21,8 +34,21 @@ MenuRootPanel {
     font-size:128px;
     padding-bottom: 86px;
 }
+.titlescreen {
+    color: yellow;
+    filter: blur(2px);
+    text-shadow: 0px 0px 6px orange, 0px 0px 5px orange, 0px 0px 4px orange, 0px 0px 3px orange, 0px 0px 2px orange, 0px 0px 1px orange, 0px 0px 7px orange, 0px 0px 8px orange, 0px 0px 9px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 10px red, 0px 0px 3px yellow, 0px 0px 1px yellow, 0px 0px 1px yellow;
+    filter: blur(7px);
+    padding-left: 128px;
+    font-size: 128px;
+    padding-bottom: 50px;
+}
 .controls {
     padding-left: 170px;
+    flex-direction: column;
+}
+.controlsscreen {
+    padding-left: 128px;
     flex-direction: column;
 }
 .sub {
@@ -47,5 +73,12 @@ MenuRootPanel {
     &:active {
         color: black;
     }
+
+    &.justcl {
+        transition: all 0.2s linear;
+        transform: scale(4);
+        top: -300px;
+        left: 550px;
+    }
 }
- 
+

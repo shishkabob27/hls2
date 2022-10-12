@@ -1,13 +1,15 @@
 ﻿using Sandbox.UI;
 
 
-[UseTemplate( "/UI/Menu/Menu.html" )]
+
 public class MenuRootPanel : RootPanel
 {
 	public static MenuRootPanel Current;
 	public MenuRootPanel()
 	{
+		StyleSheet.Load( "UI/Menu/Menu.scss" );
 		Current = this;
+		AddChild<Menu>();
 	}
 	protected override void UpdateScale( Rect screenSize )
 	{
