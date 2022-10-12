@@ -11,7 +11,7 @@ MenuRootPanel {
     flex-direction: column;
     font-family: 'Trebuchet MS';
     color: white;
-    padding-top: 156px;
+    padding-top: 157px;
     height: 100%;
 }
 .rootscreen {
@@ -26,7 +26,8 @@ MenuRootPanel {
     background-image: url("ui/logo.png");
     background-size: 100%;
     width: 100%;
-    height: 224px;
+    height: 223px;
+    opacity: 1;
     background-repeat: no-repeat;
     margin-bottom: 28px;
 }
