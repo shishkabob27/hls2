@@ -16,6 +16,8 @@ public partial class HLGame : Game
 	HudPanel Hud { get; set; }
 	HLGUI GUI { get; set; }
 
+	MenuPanel Menu { get; set; }
+
 	public HLGame()
 	{
 		//
@@ -129,6 +131,27 @@ public partial class HLGame : Game
 		GUI = new HLGUI();
 		Hud.Delete();
 		Hud = new HudPanel();
+
+
+	}
+
+	[ConCmd.Server( "menu", Help = "resets gui" )]
+	public static void menu1()
+	{
+		(HLGame.Current as HLGame).menu2();
+	}
+
+	public void menu2()
+	{
+		if ( Menu == null )
+		{
+			Menu = new MenuPanel();
+		}
+		else
+		{
+			Menu.Delete();
+			Menu = null;
+		}
 
 
 	}
