@@ -256,7 +256,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "shoot_2"
+						name = "shoot2"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -277,7 +277,7 @@
 					},
 					{
 						_class = "AnimFile"
-						name = "shoot_3"
+						name = "shoot3"
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
