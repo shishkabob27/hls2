@@ -13,6 +13,7 @@ partial class HornetGun : HLWeapon
     public override string AmmoIcon => "ui/ammo8.png";
     public override string InventoryIcon => "/ui/weapons/weapon_hornetgun.png";
     public override string InventoryIconSelected => "/ui/weapons/weapon_hornetgun_selected.png";
+	public override bool HasHDModel => true;
     public override int ClipSize => -1;
     public override float PrimaryRate => 0.25f;
     public override float SecondaryRate => 0.1f;

@@ -14,6 +14,7 @@ partial class Pistol : HLWeapon
 
 	public override string InventoryIcon => "/ui/weapons/weapon_pistol.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_pistol_selected.png";
+	public override bool HasHDModel => true;
 	public override int Bucket => 1;
 	public override int BucketWeight => 1;
 

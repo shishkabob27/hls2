@@ -17,6 +17,7 @@ partial class Egon : HLWeapon
     Sound currentsound;
     float rundelay;
     bool hasStartedrun;
+	public override bool HasHDModel => true;
     public override string InventoryIcon => "/ui/weapons/weapon_egon.png";
     public override string InventoryIconSelected => "/ui/weapons/weapon_egon_selected.png";
 

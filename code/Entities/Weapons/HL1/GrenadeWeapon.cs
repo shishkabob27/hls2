@@ -13,6 +13,7 @@ partial class GrenadeWeapon : HLWeapon
 	public override int ClipSize => -1;
 	public override int Bucket => 4;
 	public override int BucketWeight => 1;
+	public override bool HasHDModel => true;
 	public override string AmmoIcon => "ui/ammo9.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_grenade.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_grenade_selected.png";
