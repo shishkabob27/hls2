@@ -592,8 +592,18 @@
 		VRWeaponModel = new AnimatedEntity();
 		VRWeaponModel.Position = Position;
 		VRWeaponModel.Owner = Owner;
-		VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).RightHand, true );
-		(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
+
+		if (HLGame.cl_righthand)
+		{
+			VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).RightHand, true );
+			(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
+		}
+		else
+		{
+			VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).LeftHand, true );
+			(Client.Pawn as HLPlayer).LeftHand.RenderColor = Color.Transparent;
+		}
+		
 		var vrmodel = ViewModelPath;
 		if ( HLGame.cl_himodels && HasHDModel )
 		{
