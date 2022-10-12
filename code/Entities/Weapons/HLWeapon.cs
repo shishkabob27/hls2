@@ -19,6 +19,7 @@
 	public virtual int BucketWeight => 100;
 
 	public virtual bool HasAltAmmo => false;
+	public virtual bool HasHDModel => false;
 	public virtual int Order => (Bucket * 10000) + BucketWeight;
 
 	public virtual string AmmoIcon => "ui/ammo1.png";
@@ -632,7 +633,7 @@
 			ViewModelEntity.Owner = Owner;
 			ViewModelEntity.EnableViewmodelRendering = true;
 			var wmodel = ViewModelPath;
-			if ( HLGame.cl_himodels )
+			if ( HLGame.cl_himodels && HasHDModel )
 			{
 				wmodel = ViewModelPath.Replace( ".vmdl", "_hd.vmdl" ); // get hd model
 			}
