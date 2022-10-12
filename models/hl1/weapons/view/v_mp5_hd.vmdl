@@ -193,7 +193,7 @@
 							{
 								_class = "AnimEvent"
 								event_class = "AE_CL_PLAYSOUND"
-								event_frame = 8
+								event_frame = 7
 								event_keys = 
 								{
 									name = "cliprelease1"
@@ -229,7 +229,7 @@
 						source_filename = "models/hl1hddecomp/v_9mmar/v_9mmar_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 60.0
 						take = 0
 						reverse = false
 					},
