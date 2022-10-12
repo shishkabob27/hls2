@@ -56,16 +56,23 @@ public class Options : GUIPanel
 	}
 	public override void Close()
 	{
-		MenuOpen = !MenuOpen;
+		Delete();
 	}
+	bool oldm = false;
 	public override void Tick()
 	{
 		base.Tick();
 		Drag();
 
-		if ( MenuOpen && bCliveupdate )
+		if ( MenuOpen )
 		{
-			updateCvars();
+			if ( oldm != MenuOpen && Box.Rect.Width != 0 )
+			{
+				oldm = MenuOpen;
+				Position.x = (Screen.Width / 2) - (Box.Rect.Width / 2);
+				Position.y = (Screen.Height / 2) - (Box.Rect.Height / 2);
+			}
+			if ( bCliveupdate ) updateCvars();
 		}
 		SetClass( "active", MenuOpen );
 	}
@@ -127,17 +134,6 @@ public class Options : GUIPanel
 		}
 	}
 
-	[Event.BuildInput]
-	public void ProcessClientInput( InputBuilder input )
-	{
-		if ( input.Pressed( InputButton.Menu ) )
-		{
-			getCvars();
-			Position.x = (Screen.Width / 2) - (Box.Rect.Width / 2);
-			Position.y = (Screen.Height / 2) - (Box.Rect.Height / 2);
-			MenuOpen = !MenuOpen;
-		}
-	}
 	public void OK()
 	{
 		updateCvars();

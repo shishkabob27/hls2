@@ -13,7 +13,6 @@ public class GUIRootPanel : RootPanel
 		Current = this;
 		StyleSheet.Load( "resource/styles/GUI.scss" );
 		Style.ZIndex = 100;
-		AddChild<Options>();
 		Focus();
 	}
 
@@ -39,7 +38,27 @@ public class GUIRootPanel : RootPanel
 	{
 		if ( input.Pressed( InputButton.Menu ) )
 		{
-			MenuOpen = !MenuOpen;
+
+			ConsoleSystem.Run( "open_options" );
+		}
+	}
+	[ConCmd.Client]
+	static void open_options()
+	{
+		if ( Current.Children.OfType<Options>().Count() == 0 )
+		{
+			var a = Current.AddChild<Options>();
+			a.MenuOpen = true;
+			a.Focus();
+
+			// create it offscreen, it'll fix itself, this is so we do not see it snap into place.
+			a.Position.x = (Screen.Width * 3);
+			a.Position.y = (Screen.Height * 3);
+
+		}
+		else
+		{
+			Current.Children.OfType<Options>().First().Delete();
 		}
 	}
 }

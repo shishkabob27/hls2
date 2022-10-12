@@ -6,18 +6,18 @@ public class BaseMenuScreen : Panel
 	{
 		PlaySound( "launch_select2" );
 	}
-	public async Task BaseButtonClickDown( Panel p )
+	public async Task BaseButtonClickDown( Panel p, bool doanim = true )
 	{
 		PlaySound( "launch_dnmenu1" );
-		AddClass( "justcldwn" );
-		await GameTask.DelaySeconds( 0.2f );
+		if ( doanim ) AddClass( "justcldwn" );
+		if ( doanim ) await GameTask.DelaySeconds( 0.2f );
 	}
 
-	public async Task BaseButtonClickUp( Panel p )
+	public async Task BaseButtonClickUp( Panel p, bool doanim = true )
 	{
 		PlaySound( "launch_upmenu1" );
-		p.AddClass( "justcl" );
-		await GameTask.DelaySeconds( 0.2f );
+		if ( doanim ) p.AddClass( "justcl" );
+		if ( doanim ) await GameTask.DelaySeconds( 0.2f );
 	}
 
 	[ConCmd.Server]

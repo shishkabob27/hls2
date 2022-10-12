@@ -20,7 +20,9 @@ class Menu : BaseMenuScreen
 	}
 	public async void Config( Panel p )
 	{
-		await BaseButtonClickUp( p );
+		await BaseButtonClickUp( p, false );
+
+		ConsoleSystem.Run( "open_options" );
 	}
 	public async void LoadGame( Panel p )
 	{
@@ -46,5 +48,4 @@ class Menu : BaseMenuScreen
 	{
 		BaseButtonClick();
 	}
-
 }
