@@ -92,4 +92,29 @@ partial class Pistol : HLWeapon
 		ViewPunch( 0, -2 );
 	}
 
+	[ClientRpc]
+	protected override void ShootEffectsRPC()
+	{
+		Host.AssertClient();
+
+		if ( Client.IsUsingVr )
+		{
+			Particles.Create( "particles/muzflash.vpcf", VRWeaponModel, "muzzle" );
+		}
+		else
+		{
+			Particles.Create( "particles/muzflash.vpcf", EffectEntity, "muzzle" );
+		}
+		if ( Client.IsUsingVr )
+		{
+			Particles.Create( "particles/pistol_ejectbrass.vpcf", VRWeaponModel, "ejection_point" );
+		}
+		else
+		{
+			Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
+		}
+
+		ViewModelEntity?.SetAnimParameter( "fire", true );
+	}
+
 }
