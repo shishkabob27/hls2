@@ -6,17 +6,17 @@ class NewGame : BaseMenuScreen
 	public void Easy( Panel p )
 	{
 		ConsoleSystem.Run( "skill 0" );
-		ConsoleSystem.Run( "chnglvlad shishkabob.hls2_c1p0" );
+		ConsoleSystem.Run( "chnglvlad "+ GameInfo.startmap );
 	}
 	public void Medium( Panel p )
 	{
 		ConsoleSystem.Run( "skill 1" );
-		ConsoleSystem.Run( "chnglvlad shishkabob.hls2_c1p0" );
+		ConsoleSystem.Run( "chnglvlad "+ GameInfo.startmap );
 	}
 	public void Difficult( Panel p )
 	{
 		ConsoleSystem.Run( "skill 2" );
-		ConsoleSystem.Run( "chnglvlad shishkabob.hls2_c1p0" );
+		ConsoleSystem.Run( "chnglvlad "+ GameInfo.startmap );
 	}
 	public void Cancel( Panel p )
 	{
