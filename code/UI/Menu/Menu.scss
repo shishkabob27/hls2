@@ -128,3 +128,76 @@ MenuRootPanel {
     }
 }
 
+.checkbox {
+    min-width: 24px;
+    height: 19px;
+    margin-bottom: 6px;
+    cursor: pointer;
+
+    .checkpanel, iconpanel {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border: 3px solid rgba(103,100,88,255);
+        border-radius: 1px;
+        margin-right: 8px;
+        color: white;
+
+        .checklabel {
+            transform: translate(-3 -5);
+            font-family: Webdings;
+            font-size: 22px;
+            color: transparent;
+        }
+    }
+
+    .label {
+        margin-right: 10px;
+        color: #cfd6ca;
+    }
+
+    > .checkmark {
+        padding: 1px;
+        font-size: 32px;
+        //border: 3px solid $primary;
+        border-radius: 2px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        color: transparent;
+        min-height: 32px;
+        margin-right: 10px;
+        pointer-events: none;
+        cursor: pointer;
+    }
+
+    &.checked {
+
+        .label {
+            margin-right: 10px;
+            color: #c4b550;
+        }
+
+        > .checkpanel, .iconpanel {
+            .checklabel {
+                font-family: Webdings;
+                font-size: 34px;
+                color: white;
+            }
+        }
+
+        > .checkmark {
+            //color: $primary-alt;
+            color: white;
+            background-color: transparent;
+        }
+    }
+
+    &:active {
+        color: gray;
+        transform: scale(1);
+    }
+
+    &:hover {
+    }
+}
