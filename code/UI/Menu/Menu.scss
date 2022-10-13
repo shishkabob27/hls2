@@ -215,7 +215,8 @@ MenuRootPanel {
 
     .sprays{
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
+        align-items: center;
         background-color: #393839;
         height: 278px;
         width: 222px;
@@ -228,10 +229,11 @@ MenuRootPanel {
 
         .butt{
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
+            width: 95%;
 
             .button{
-                margin-bottom: 0%;
+                margin-bottom: 3px;
                 padding-bottom: 0%;
                 min-width: auto;
             }
