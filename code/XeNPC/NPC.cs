@@ -56,17 +56,50 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			npc.Delete();
 	}
 
-	const float VIEW_FIELD_FULL = -1.0f; // +-180 degrees
-	const float VIEW_FIELD_WIDE = -0.7f; // +-135 degrees 0.1 // +-85 degrees, used for full FOV checks 
-	const float VIEW_FIELD_NARROW = 0.7f; // +-45 degrees, more narrow check used to set up ranged attacks
-	const float VIEW_FIELD_ULTRA_NARROW = 0.9f; // +-25 degrees, more narrow check used to set up ranged attacks
+	/// <summary>
+	///  +-180 degrees
+	/// </summary>
+	const float VIEW_FIELD_FULL = -1.0f;
+	/// <summary>
+	/// +-135 degrees 0.1 // +-85 degrees, used for full FOV checks 
+	/// </summary>
+	const float VIEW_FIELD_WIDE = -0.7f;
+	/// <summary>
+	/// +-45 degrees, more narrow check used to set up ranged attacks
+	/// </summary>
+	const float VIEW_FIELD_NARROW = 0.7f;
+	/// <summary>
+	/// +-25 degrees, more narrow check used to set up ranged attacks
+	/// </summary>
+	const float VIEW_FIELD_ULTRA_NARROW = 0.9f;
 
+	/// <summary>
+	/// NPC's current movement speed.
+	/// </summary>
 	public float Speed;
+	/// <summary>
+	/// The speed of the NPC in the walking state.
+	/// </summary>
 	public float WalkSpeed = 80;
+	/// <summary>
+	/// The speed of the NPC in the running state.
+	/// </summary>
 	public float RunSpeed = 200;
+	/// <summary>
+	/// The NPCs Field of View as a dot product.
+	/// </summary>
 	public float entFOV = VIEW_FIELD_WIDE;
+	/// <summary>
+	/// The distance (in hammer units) the NPC can see.
+	/// </summary>
 	public float entDist = 512;
+	/// <summary>
+	/// The distance (in hammer units) the NPC will require a player to be within to be active.
+	/// </summary>
 	public float SleepDist = 1024;
+	/// <summary>
+	/// The height of the NPCs eyes, decides where they should see from.
+	/// </summary>
 	public float EyeHeight = 64;
 
 	public string NPCAnimGraph = "";
@@ -74,8 +107,16 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	XeNPC.NavPath Path;
 	public NavSteer Steer;
 
+	/// <summary>
+	/// Specifies an Entity to follow or target.
+	/// </summary>
 	public Entity TargetEntity;
 	public int TargetEntityRel = 0;
+
+	/// <summary>
+	/// Classify an NPC in the relationship matrix.
+	/// </summary>
+	/// <returns></returns>
 	public virtual int Classify()
 	{
 		return (int)HLCombat.Class.CLASS_NONE;
@@ -119,9 +160,15 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	Vector3 InputVelocity;
 
 	Vector3 LookDir;
+	/// <summary>
+	/// The rotation in which our NPC should look.
+	/// </summary>
 	public Rotation targetRotation;
 
 	public Nullable<Rotation> targetRotationOVERRIDE;
+	/// <summary>
+	/// The NPCs current sound, we have one so talking NPCs can't say multiple things at once.
+	/// </summary>
 	public Sound CurrentSound;
 	public HLAnimationHelper animHelper;
 	float neck = 0.0f;
@@ -262,6 +309,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 	}
 
+	/// <summary>
+	/// Find some cover from an area and walk to it (unfinished but works)
+	/// </summary>
+	/// <param name="fromPos"></param>
 	public virtual void FindCover( Vector3 fromPos )
 	{
 		var MyNode = NavMesh.GetClosestPoint( Position );
@@ -294,6 +345,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	/// yellow = cached trace, neither entities have moved so assume it's the same
 	/// </summary>
 	[ConVar.Replicated] public static bool npc_debug_los { get; set; } = false;
+
+	/// <summary>
+	/// Process what other NPCs/Players we can see and call ProcessEntity() for each
+	/// </summary>
 	public virtual void See()
 	{
 		if ( IsClient ) return;
@@ -376,9 +431,20 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			ProcessEntity( ent, REL );
 		}
 	}
+
+	/// <summary>
+	/// Called for every NPC/Player we can see
+	/// </summary>
+	/// <param name="ent">The Entity we have seen</param>
+	/// <param name="rel">Our relationship with said entity, refer to HLCombat.cs (TODO MOVE OUT OF HLS2 SPECIFIC CODE)</param>
 	public virtual void ProcessEntity( Entity ent, int rel )
 	{
 	}
+	/// <summary>
+	/// Get our relationship with another NPC/Player
+	/// </summary>
+	/// <param name="ent"></param>
+	/// <returns>The relationship, refer to HLCombat.cs (TODO MOVE OUT OF HLS2 SPECIFIC CODE)</returns>
 	public int GetRelationship( Entity ent )
 	{
 		if ( ent is ICombat )
@@ -402,6 +468,11 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	}
 
 	[ConVar.Replicated] public static bool npc_draw_cone { get; set; } = false;
+	/// <summary>
+	/// Check if an Entity is in our view cone, This does NOT check if they're behind walls.
+	/// </summary>
+	/// <param name="ent">The Entity to check</param>
+	/// <returns></returns>
 	public bool InViewCone( Entity ent )
 	{
 		Vector2 vec2LOS;
@@ -449,20 +520,35 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			LastConePos2 = Pos2;
 		}
 	}
+
+	/// <summary>
+	/// Put all NPC thinking logic in here
+	/// </summary>
 	public virtual void Think()
 	{
 
 	}
+	/// <summary>
+	/// Process all hearable sounds, TODO
+	/// </summary>
 	public virtual void Hear()
 	{
 		ProcessSound(); // TODO: all of this.
 	}
 
+	/// <summary>
+	/// Called for every sound we can hear.
+	/// </summary>
 	public virtual void ProcessSound()
 	{
 
 	}
 
+	/// <summary>
+	/// Called when a player presses their use key on the NPC
+	/// </summary>
+	/// <param name="user">The player who pressed their USE key on us</param>
+	/// <returns></returns>
 	public virtual bool OnUse( Entity user )
 	{
 		if ( LifeState == LifeState.Dead )
@@ -470,6 +556,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		return true;
 	}
 
+	/// <summary>
+	/// All movement, todo use HLMovement maybe?
+	/// </summary>
+	/// <param name="timeDelta"></param>
 	protected virtual void Move( float timeDelta )
 	{
 		if ( LifeState == LifeState.Dead )
@@ -560,7 +650,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	const int HITGROUP_RIGHTLEG = 7;
 	const int HITGROUP_GEAR = 10;
 	const int HITGROUP_SPECIAL = 11;
-
+	/// <summary>
+	/// Called when we take damage
+	/// </summary>
+	/// <param name="info"></param>
 	public override void TakeDamage( DamageInfo info )
 	{
 		if ( LifeState == LifeState.Alive )
@@ -647,7 +740,11 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 
 	}
-
+	/// <summary>
+	/// Speak a sound out of the NPC's mouth, if they have one.
+	/// </summary>
+	/// <param name="sound"></param>
+	/// <param name="pitch"></param>
 	public void SpeakSound( string sound, float pitch = 100 )
 	{
 		if ( IsServer )
@@ -701,6 +798,13 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		return true;
 	}
 
+	/// <summary>
+	/// Trace a bullet.
+	/// </summary>
+	/// <param name="start"></param>
+	/// <param name="end"></param>
+	/// <param name="radius"></param>
+	/// <returns></returns>
 	public IEnumerable<TraceResult> TraceBullet( Vector3 start, Vector3 end, float radius = 2.0f )
 	{
 		bool underWater = Trace.TestPoint( start, "water" );
@@ -743,6 +847,9 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		base.OnAnimEventGeneric( name, intData, floatData, vectorData, stringData );
 	}
 
+	/// <summary>
+	/// Turn into a ragdoll
+	/// </summary>
 	[Input]
 	public void Ragdoll()
 	{
@@ -764,6 +871,9 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		this.Delete();
 	}
 
+	/// <summary>
+	/// Turn into Gibs
+	/// </summary>
 	[Input]
 	public void Gib()
 	{
@@ -771,12 +881,17 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		this.Delete();
 	}
 
+	/// <summary>
+	/// Synonymous with Gib()
+	/// </summary>
 	[Input]
 	public void Break()
 	{
 		Gib();
 	}
-
+	/// <summary>
+	/// Die
+	/// </summary>
 	[Input]
 	public void Kill()
 	{
