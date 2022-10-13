@@ -1,11 +1,11 @@
 using Sandbox;
 using Sandbox.UI;
 
-public class VoiceSpeaker : Label
+public class VoiceSpeak : Label
 {
 	private float VoiceLevel = 0.0f;
 
-	public VoiceSpeaker()
+	public VoiceSpeak()
 	{
 		StyleSheet.Load( "/code/Resource/Styles/VoiceSpeaker.scss" );
 
