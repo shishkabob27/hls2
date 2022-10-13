@@ -38,14 +38,12 @@ class Menu : BaseMenuScreen
 	}
 	public void ViewReadme( Panel p )
 	{
-		BaseButtonClick();
 	}
 	public async void Previews( Panel p )
 	{
-		BaseButtonClick();
 	}
 	public void Quit()
 	{
-		BaseButtonClick();
+		Local.Client.Kick();
 	}
 }
