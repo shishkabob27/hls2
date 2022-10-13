@@ -78,6 +78,7 @@ MenuRootPanel {
     &.justcl {
         transition: all 0.2s linear;
         transform: scale(3.415);
+        text-shadow: 0px 0px 6px orange, 0px 0px 5px orange, 0px 0px 3px yellow, 0px 0px 3px yellow, 0px 0px 2px yellow;
     }
 
     &.justcldwn {
