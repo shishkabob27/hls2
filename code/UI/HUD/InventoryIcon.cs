@@ -52,14 +52,14 @@ class InventoryIcon : Panel
 		{
 			float a = ((float)ply.AmmoCount( Weapon.AmmoType ) / (float)ply.MaxAmmo( Weapon.AmmoType ));
 			float b = 1 - ((float)ply.AmmoCount( Weapon.AmmoType ) / (float)ply.MaxAmmo( Weapon.AmmoType ));
-			AmmoCountFull.Style.Width = a * 24;
-			AmmoCountEmpty.Style.Width = b * 24;
+			AmmoCountFull.Style.Width = a * 20;
+			AmmoCountEmpty.Style.Width = b * 20;
 			if ( ply.MaxAmmo( Weapon.AltAmmoType ) != 0 && Weapon.HasAltAmmo )
 			{
 				float c = ((float)ply.AmmoCount( Weapon.AltAmmoType ) / (float)ply.MaxAmmo( Weapon.AltAmmoType ));
 				float d = 1 - ((float)ply.AmmoCount( Weapon.AltAmmoType ) / (float)ply.MaxAmmo( Weapon.AltAmmoType ));
-				AltAmmoCountFull.Style.Width = c * 24;
-				AltAmmoCountEmpty.Style.Width = d * 24;
+				AltAmmoCountFull.Style.Width = c * 20;
+				AltAmmoCountEmpty.Style.Width = d * 20;
 			}
 		}
 	}
