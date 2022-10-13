@@ -8,9 +8,11 @@ class Config : BaseMenuScreen
 		BaseButtonClick();
 	}
 
-	public void Audio( Panel p )
+	public async void Audio( Panel p )
 	{
-
+		await BaseButtonClickUp( p );
+		Parent.AddChild<Audio>();
+		Delete();
 	}
 	public async void Video( Panel p )
 	{
