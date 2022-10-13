@@ -33,7 +33,7 @@ inventorycolumn {
 
 	inventoryicon {
 		opacity: 1;
-		padding: 0px 15px 10px 2px;
+		padding: 25px 15px 10px 2px;
 		padding-bottom: 0px;
 		width: 20px;
 		height: 20px;
@@ -135,12 +135,12 @@ inventoryicon {
 	.ammocounte {
 		background-color: #fa02;
 		height: 4px;
-		top: -32px;
-		left: -62px;
+		top: -33px;
+		left: -59px;
 		opacity: 0;
 
 		&.alt {
-			left: -38px;
+			left: -30px;
 		}
 	}
 
