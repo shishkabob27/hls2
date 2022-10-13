@@ -65,7 +65,7 @@ public class BaseMenuScreen : Panel
 	}
 
 	[ConVar.Client]
-	public static float menu_offsetX { get; set; } = 390;
+	public static float menu_offsetX { get; set; } = 395;
 	[ConVar.Client]
 	public static float menu_offsetY { get; set; } = -605;
 	public void CoolAnimation( Panel p, bool anim = true )
