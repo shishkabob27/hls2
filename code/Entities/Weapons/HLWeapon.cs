@@ -60,18 +60,32 @@
 	public virtual void OnPickup()
 	{
 	}
+	/// <summary>
+	/// Gets the amount of ammo in the Holders ammo reserve
+	/// </summary>
+	/// <returns></returns>
 	public int AvailableAmmo()
 	{
 		var owner = Owner as HLPlayer;
 		if ( owner == null ) return 0;
 		return owner.AmmoCount( AmmoType );
 	}
+
+	/// <summary>
+	/// Gets the amount of alt ammo in the Holders ammo reserve
+	/// </summary>
+	/// <returns></returns>
 	public int AvailableAltAmmo()
 	{
 		var owner = Owner as HLPlayer;
 		if ( owner == null ) return 0;
 		return owner.AmmoCount( AltAmmoType );
 	}
+
+	/// <summary>
+	/// Called when the weapon is switched to
+	/// </summary>
+	/// <param name="ent"></param>
 	public override void ActiveStart( Entity ent )
 	{
 
@@ -110,12 +124,21 @@
 		IsReloading = false;
 	}
 
+	/// <summary>
+	/// Used for evil Impulse 101 hack.
+	/// </summary>
+	/// <param name="time"></param>
 	public async void DeleteIfNotCarriedAfter( float time )
 	{
 		await GameTask.DelaySeconds( time );
 		if ( Owner is not HLPlayer ) Delete();
 	}
 
+	/// <summary>
+	/// Called when the weapon is switched from
+	/// </summary>
+	/// <param name="ent"></param>
+	/// <param name="dropped"></param>
 	public override void ActiveEnd( Entity ent, bool dropped )
 	{
 		//
@@ -152,6 +175,9 @@
 		PickupTrigger.Position = Position;
 	}
 
+	/// <summary>
+	/// Reload our weapon, uses our specified AmmoType
+	/// </summary>
 	public void Reload()
 	{
 		if ( IsReloading )
@@ -177,7 +203,9 @@
 
 		StartReloadEffects();
 	}
-
+	/// <summary>
+	/// Reload our weapon's alt ammo, uses our specified AltAmmoType. This isn't used but is here for modding purposes and just in case.
+	/// </summary>
 	public void AltReload()
 	{
 		if ( IsReloadingAlt )
@@ -269,6 +297,10 @@
 
 	}
 
+	/// <summary>
+	/// Can we reload? By default is TRUE when reload button is down
+	/// </summary>
+	/// <returns></returns>
 	public virtual bool CanReload()
 	{
 		if ( !Owner.IsValid() || !Input.Down( InputButton.Reload ) ) return false;
@@ -276,6 +308,9 @@
 		return true;
 	}
 
+	/// <summary>
+	/// Called when the weapon is finished reloading
+	/// </summary>
 	public virtual void OnReloadFinish()
 	{
 		IsReloading = false;
@@ -290,6 +325,9 @@
 		}
 	}
 
+	/// <summary>
+	/// Called when the weapon's alt is finished reloading
+	/// </summary>
 	public virtual void OnAltReloadFinish()
 	{
 		IsReloadingAlt = false;
@@ -316,6 +354,10 @@
 		// TODO - player third person model reload
 	}
 
+	/// <summary>
+	/// Can we primary attack? By default TRUE if mouse 1 is down.
+	/// </summary>
+	/// <returns></returns>
 	public virtual bool CanPrimaryAttack()
 	{
 		if ( Client.IsUsingVr )
@@ -333,12 +375,19 @@
 		return TimeSincePrimaryAttack > rate;
 	}
 
+	/// <summary>
+	/// Put your primary attack code here.
+	/// </summary>
 	public virtual void AttackPrimary()
 	{
 		TimeSincePrimaryAttack = 0;
 		TimeSinceSecondaryAttack = 0; // what???? why is secondary reset?
 	}
 
+	/// <summary>
+	/// Can we secondary attack? By default TRUE if mouse 2 is down.
+	/// </summary>
+	/// <returns></returns>
 	public virtual bool CanSecondaryAttack()
 	{
 		if ( Client.IsUsingVr )
@@ -357,6 +406,10 @@
 		return TimeSinceSecondaryAttack > rate;
 	}
 
+
+	/// <summary>
+	/// Put your secondary attack code here.
+	/// </summary>
 	public virtual void AttackSecondary()
 	{
 
@@ -457,6 +510,12 @@
 		// Another trace, bullet going through thin material, penetrating water surface?
 		//
 	}
+
+	/// <summary>
+	/// Punch the screen up
+	/// </summary>
+	/// <param name="axis">The axis to punch on</param>
+	/// <param name="amount">how much punch to apply</param>
 	public void ViewPunch( int axis, float amount )
 	{
 		if ( Owner is not HLPlayer player ) return;
@@ -593,7 +652,7 @@
 		VRWeaponModel.Position = Position;
 		VRWeaponModel.Owner = Owner;
 
-		if (HLGame.cl_righthand)
+		if ( HLGame.cl_righthand )
 		{
 			VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).RightHand, true );
 			(Client.Pawn as HLPlayer).RightHand.RenderColor = Color.Transparent;
@@ -603,7 +662,7 @@
 			VRWeaponModel.SetParent( (Client.Pawn as HLPlayer).LeftHand, true );
 			(Client.Pawn as HLPlayer).LeftHand.RenderColor = Color.Transparent;
 		}
-		
+
 		var vrmodel = ViewModelPath;
 		if ( HLGame.cl_himodels && HasHDModel )
 		{
@@ -613,7 +672,7 @@
 		{
 			vrmodel = vrmodel.Replace( "view/v_", "vr/" );
 		}
-		
+
 		VRWeaponModel.SetModel( vrmodel );
 		VRWeaponModel.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 
