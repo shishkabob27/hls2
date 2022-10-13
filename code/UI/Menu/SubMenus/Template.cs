@@ -1,6 +1,6 @@
 ﻿using Sandbox.UI;
 
-[UseTemplate( "/UI/Menu/NewGame.html" )]
+[UseTemplate( "/UI/Menu/SubMenus/Template.html" )]
 class Template : BaseMenuScreen
 {
 	public void ClickDown()

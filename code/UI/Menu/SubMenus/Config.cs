@@ -1,6 +1,6 @@
 ﻿using Sandbox.UI;
 
-[UseTemplate( "/UI/Menu/Config.html" )]
+[UseTemplate( "/UI/Menu/SubMenus/Config.html" )]
 class Config : BaseMenuScreen
 {
 	public void ClickDown()
@@ -18,8 +18,8 @@ class Config : BaseMenuScreen
 	}
 	public void Done( Panel p )
 	{
-		BaseButtonClickDown( p );
-		Parent.AddChild<Menu>();
 		Delete();
+		var a = Parent.AddChild<Menu>();
+		BaseButtonClickDown( p, a, true, "Configuration" );
 	}
 }
