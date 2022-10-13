@@ -84,8 +84,14 @@ public class BaseMenuScreen : Panel
 			{
 				p.RemoveClass( "justcldwn" );
 				p.AddClass( "justcl" );
+				if ( p.Parent.Parent.HasClass( "controlsscreen" ) ) // we're in a submenu so fix up our x offset
+				{
+					offsetX += 42;
+				}
 			}
 		}
+
+
 
 		var scale = 3.451f;
 		var scale2 = MenuRootPanel.Current.Scale;
