@@ -16,7 +16,7 @@ class Menu : BaseMenuScreen
 	}
 	public void HazardCourse( Panel p )
 	{
-		ConsoleSystem.Run( "chnglvlad shishkabob.hls2_t0" );
+		ConsoleSystem.Run( "chnglvlad " + GameInfo.trainmap );
 	}
 	public async void Config( Panel p )
 	{
