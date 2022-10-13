@@ -3,11 +3,6 @@
 [UseTemplate( "/UI/Menu/SubMenus/NewGame.html" )]
 class NewGame : BaseMenuScreen
 {
-	public void ClickDown()
-	{
-		BaseButtonClick();
-	}
-
 	public void Easy( Panel p )
 	{
 		ConsoleSystem.Run( "skill 0" );

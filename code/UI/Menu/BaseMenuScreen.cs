@@ -2,15 +2,30 @@
 [UseTemplate( "/UI/Menu/NewGame.html" )]
 public class BaseMenuScreen : Panel
 {
+	Sound CurrentSound;
+
+	Sound MenuPlaySound( string snd )
+	{
+		CurrentSound.Stop();
+		if ( !string.IsNullOrEmpty( snd ) )
+		{
+			Vector2 vector = Box.Rect.Center / Screen.Size;
+			vector -= (Vector2)0.5;
+			vector *= 2f;
+			Vector3 position = new Vector3( 1f, 0f - vector.x, 0f - vector.y );
+			CurrentSound = Sound.FromWorld( snd, position ).SetVolume( 0.5f );
+		}
+		return CurrentSound;
+	}
 	public void BaseButtonClick()
 	{
-		PlaySound( "launch_select2" );
+		MenuPlaySound( "launch_select2" );
 	}
 	public async void BaseButtonClickDown( Panel p, Panel prev, bool doanim = true, string buttonText = "d" )
 	{
 		var offsetY = menu_offsetY;
 		var offsetX = menu_offsetX;
-		PlaySound( "launch_dnmenu1" );
+		MenuPlaySound( "launch_dnmenu1" );
 		if ( doanim )
 		{
 			Button c = null;
@@ -108,7 +123,7 @@ public class BaseMenuScreen : Panel
 	}
 	public async Task BaseButtonClickUp( Panel p, bool doanim = true )
 	{
-		PlaySound( "launch_upmenu1" );
+		MenuPlaySound( "launch_upmenu1" );
 		if ( doanim )
 		{
 			CoolAnimation( p );

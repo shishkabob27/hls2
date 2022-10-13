@@ -3,11 +3,6 @@
 [UseTemplate( "/UI/Menu/SubMenus/Template.html" )]
 class Template : BaseMenuScreen
 {
-	public void ClickDown()
-	{
-		BaseButtonClick();
-	}
-
 	public void One( Panel p )
 	{
 		ConsoleSystem.Run( "skill 0" );
