@@ -12,9 +12,11 @@ class Config : BaseMenuScreen
 	{
 
 	}
-	public void Video( Panel p )
+	public async void Video( Panel p )
 	{
-
+		await BaseButtonClickUp( p );
+		Parent.AddChild<Video>();
+		Delete();
 	}
 	public void Done( Panel p )
 	{
