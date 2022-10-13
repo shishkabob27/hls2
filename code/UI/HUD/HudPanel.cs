@@ -38,7 +38,7 @@ public class HudPanel : HudEntity<HudRootPanel>
 			RootPanel.AddChild<KillFeed>();
 			Scoreboard = RootPanel.AddChild<Scoreboard>();
 			RootPanel.AddChild<VoiceList>();
-			RootPanel.AddChild<VoiceSpeaker>();
+			RootPanel.AddChild<VoiceSpeak>();
 			RootPanel.AddChild<Subtitle>();
 
 			if ( HLGame.sv_gamemode == "ctf" )
