@@ -29,6 +29,7 @@ public class BaseMenuScreen : Panel
 		if ( doanim )
 		{
 			Button c = null;
+			// Find the button that we are clicked into, this is probably the most shit way to do this.
 			foreach ( var child in prev.Children )
 			{
 				foreach ( var child2 in child.Children )
@@ -97,6 +98,7 @@ public class BaseMenuScreen : Panel
 
 		var scale = 3.451f;
 		var scale2 = MenuRootPanel.Current.Scale;
+		// this math sucks but it's supposed to find a way to consistantly get our button to the same spot no matter the position of the button and the resolution or aspect ratio of the screen. 
 		var a = (0) + ((MenuRootPanel.Current.Box.Rect.Height / scale2) - (p.Box.Rect.Position.y / scale2)) - ((p.Box.Rect.Height / scale2) * (scale * 2));
 		var b = (0);
 		//Log.Info( a );
@@ -105,6 +107,8 @@ public class BaseMenuScreen : Panel
 		//Log.Info( $"SizY: {p.Box.Rect.Height}" );
 		//Log.Info( $"Scl1: {scale}" );
 		//Log.Info( $"Scl2: {scale2}" );
+
+		// I chose these offsets through guessing, they're convars to make changing and previewing adjustments easier  
 		p.Style.Top = a + offsetY;
 		p.Style.Left = b + offsetX;
 	}
