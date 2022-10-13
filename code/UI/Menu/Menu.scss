@@ -79,5 +79,9 @@ MenuRootPanel {
         transition: all 0.2s linear;
         transform: scale(3.415);
     }
+
+    &.justcldwn {
+        transition: all 0.2s linear;
+    }
 }
 
