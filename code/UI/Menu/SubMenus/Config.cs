@@ -8,13 +8,17 @@ class Config : BaseMenuScreen
 		BaseButtonClick();
 	}
 
-	public void Audio( Panel p )
+	public async void Audio( Panel p )
 	{
-
+		await BaseButtonClickUp( p );
+		Parent.AddChild<Audio>();
+		Delete();
 	}
-	public void Video( Panel p )
+	public async void Video( Panel p )
 	{
-
+		await BaseButtonClickUp( p );
+		Parent.AddChild<Video>();
+		Delete();
 	}
 	public void Done( Panel p )
 	{
