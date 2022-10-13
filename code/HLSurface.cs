@@ -8,6 +8,13 @@
 
 		[ConVar.Replicated] public static bool hl_debug_printsurface { get; set; } = false;
 		[ConVar.Replicated] public static bool hl_debug_printmat { get; set; } = false;
+
+		/// <summary>
+		/// Replace any base surface with our HL1 equivelents, so we get our crispy footstep noises on any surface on any map.
+		/// </summary>
+		/// <param name="self"></param>
+		/// <param name="texturename"></param>
+		/// <returns></returns>
 		public static Surface ReplaceSurface( this Surface self, string texturename = "concrete" )
 		{
 			var surf = self;
@@ -342,9 +349,13 @@
 				self.GetBaseSurface().DoFootstep( ent, tr, 1, volume );
 			}
 		}
-		//
-		// Summary:
-		//     Returns a random gib taking into account base surface.
+
+		/// <summary>
+		/// Returns a random gib taking into account base surface.
+		/// </summary>
+		/// <param name="self"></param>
+		/// <param name="texturename"></param>
+		/// <returns></returns>
 		public static string GetRandomGib( this Surface self, string texturename = "concrete" )
 		{
 			var surf = ReplaceSurface( self, texturename );
@@ -356,6 +367,13 @@
 
 			return text;
 		}
+		/// <summary>
+		/// Get the sound used when a gib bounces.
+		/// </summary>
+		/// <param name="self"></param>
+		/// <param name="pos"></param>
+		/// <param name="volume"></param>
+		/// <param name="texturename"></param>
 		public static void GetBounceSound( this Surface self, Vector3 pos, float volume = 1, string texturename = "concrete" )
 		{
 			self = ReplaceSurface( self, texturename );
@@ -367,6 +385,13 @@
 				Sound.FromWorld( sound, pos ).SetVolume( volume );
 			}
 		}
+		/// <summary>
+		/// Get the sound used when a surface bursts into gibs.
+		/// </summary>
+		/// <param name="self"></param>
+		/// <param name="pos"></param>
+		/// <param name="volume"></param>
+		/// <param name="texturename"></param>
 		public static void GetBustSound( this Surface self, Vector3 pos, float volume = 1, string texturename = "concrete" )
 		{
 			self = ReplaceSurface( self, texturename );
