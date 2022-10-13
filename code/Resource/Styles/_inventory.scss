@@ -1,15 +1,15 @@
 ﻿inventorybar
 {
 	position: absolute;
-	left: 16px;
-	top: 16px;
+	left: 10px;
+	top: 10px;
 	font-family: Trebuchet MS;
 	opacity: 0;
 	mix-blend-mode: lighten;
 
 	&.active
 	{
-		top: 16px;
+		//top: 16px;
 		opacity: 1;
 	}
 }
@@ -21,22 +21,22 @@ inventorycolumn {
 	align-items: flex-start; // align to the left, don't stretch
 
 	.slot-number {
-		background-color: rgba(255,160,0,0.3);
+		background-color: rgba(255, 162, 0, 0.199);
 		padding: 8px 0px 0px 14px;
-		font-size: 12px;
+		font-size: 9px;
 		font-family: Tahoma;
 		font-weight: normal;
 		font-style: normal;
-		width: 24px;
-		height: 24px;
+		width: 20px;
+		height: 20px;
 	}
 
 	inventoryicon {
 		opacity: 1;
-		padding: 25px 15px 10px 2px;
+		padding: 0px 15px 10px 2px;
 		padding-bottom: 0px;
-		width: 24px;
-		height: 24px;
+		width: 20px;
+		height: 20px;
 		overflow: hidden;
 
 		.icon {
@@ -64,8 +64,8 @@ inventorycolumn {
 		inventoryicon {
 			opacity: 1;
 			display: flex;
-			width: 200px;
-			height: 52px;
+			width: 170px;
+			height: 45px;
 			background-color: rgba(255,170,2,0.01);
 
 			.icon {
@@ -100,20 +100,19 @@ inventorycolumn {
 }
 
 inventoryicon {
-	margin-top: 5px;
+	margin-bottom: 5px;
 	mix-blend-mode: lighten;
 	color: #fc0;
-	background-color: #fa02;
+	background-color: rgba(255, 162, 0, 0.644);
 	font-size: 40px;
 	font-weight: lighter;
-	padding: 10px;
 	align-items: center;
 	justify-content: center;
 	overflow: hidden;
 
 	.icon {
-		width: 200px;
-		height: 52px;
+		width: 170px;
+		height: 45px;
 		background-size: 100%;
 		background-image-tint: #ffd300;
 		position: absolute;
@@ -123,13 +122,13 @@ inventoryicon {
 	.ammocountf {
 		background-color: #00FF00;
 		height: 4px;
-		top: -32px;
-		left: -68px;
+		top: -33px;
+		left: -59px;
 		opacity: 0;
 
 		&.alt {
 			margin-left: -24px;
-			left: -38px;
+			left: -30px;
 		}
 	}
 
@@ -137,7 +136,7 @@ inventoryicon {
 		background-color: #fa02;
 		height: 4px;
 		top: -32px;
-		left: -68px;
+		left: -62px;
 		opacity: 0;
 
 		&.alt {
