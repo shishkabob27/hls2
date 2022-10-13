@@ -16,7 +16,7 @@ public class HealthHud : Panel
 
 	public override void Tick()
 	{
-		this.Style.Width = 1050 + (Screen.Height / Screen.Width) * -1200 ;
+		this.Style.Width = 1049 + (Screen.Height / Screen.Width) * -1250;
 		var player = Local.Pawn as HLPlayer;
 		if ( player == null ) return;
 
@@ -25,11 +25,13 @@ public class HealthHud : Panel
 		SetClass( "low", player.Health < 40.0f );
 		SetClass( "empty", player.Health <= 0.0f );
 
-		if (!player.HasHEV || player.Health <= 0){
-			SetClass( "invisible", true);
+		if ( !player.HasHEV || player.Health <= 0 )
+		{
+			SetClass( "invisible", true );
 		}
-		else{
-			SetClass( "invisible", false);
+		else
+		{
+			SetClass( "invisible", false );
 		}
 	}
 }
@@ -46,15 +48,15 @@ public class ArmourHud : Panel
 
 	public ArmourHud()
 	{
-		IconContainer = Add.Panel("iconcontainer");
-		
+		IconContainer = Add.Panel( "iconcontainer" );
+
 		IconEmpty = Add.Icon( string.Empty, "iconempty" );
 		IconFull = Add.Icon( string.Empty, "iconfull" );
 
 		Value = Add.Label( "0", "label" );
 
-		IconContainer.AddChild(IconEmpty);
-		IconContainer.AddChild(IconFull);
+		IconContainer.AddChild( IconEmpty );
+		IconContainer.AddChild( IconFull );
 	}
 
 	public override void Tick()
@@ -67,11 +69,13 @@ public class ArmourHud : Panel
 		IconEmpty.Style.Height = 100 - player.Armour;
 		IconFull.Style.Height = player.Armour;
 
-		if (!player.HasHEV || player.Health <= 0){
-			SetClass( "invisible", true);
+		if ( !player.HasHEV || player.Health <= 0 )
+		{
+			SetClass( "invisible", true );
 		}
-		else{
-			SetClass( "invisible", false);
+		else
+		{
+			SetClass( "invisible", false );
 		}
 	}
 }

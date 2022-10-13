@@ -190,7 +190,7 @@ iconpanel {
 {
     
     font-family: "Trebuchet MS";
-    font-size: 32px;
+    font-size: 31px;
     color: $orange;
     text-shadow: 0px 0px 1px $orange;
     min-width: 64px;
@@ -213,6 +213,7 @@ iconpanel {
 
 
 healthhud, armourhud {
+    overflow: hidden;
     //min-width: 150px;
     iconpanel {
         margin-right: 0px;
@@ -228,26 +229,24 @@ healthhud, armourhud {
     }
 
     label {
+        overflow: hidden;
         text-align: right;
         width: 52px;
-        letter-spacing: 1px;
+        letter-spacing: 3.2px;
+        white-space: nowrap;
     }
 }
 
-healthhud{
+healthhud {
 
-    .label
-    {
+    .label {
         opacity: 0.35;
     }
 
-    .icon
-    {    
+    .icon {
         opacity: 1;
         background-image: url("/ui/health.png");
     }
- 
-
 }
 
 
