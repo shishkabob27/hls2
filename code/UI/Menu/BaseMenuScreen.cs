@@ -37,8 +37,6 @@ public class BaseMenuScreen : Panel
 					b.RemoveAll( w => (w as Button).Text != buttonText );
 					if ( b.Count != 0 )
 					{
-
-						Log.Info( $"CBox: {b.First().Box.Rect.Position.y}" );
 						c = b.First();
 						break;
 					}
@@ -57,7 +55,6 @@ public class BaseMenuScreen : Panel
 		{
 
 			await GameTask.NextPhysicsFrame();//.DelaySeconds( 0.001f );
-			Log.Info( i );
 			i++;
 		}
 
