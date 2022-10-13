@@ -44,25 +44,15 @@ public class BaseMenuScreen : Panel
 			}
 			if ( c != null )
 			{
-				ISvYET( c );
+				PrepareBackAnimation( c );
 			}
 		}
 	}
-	public async Task isthis( Panel c )
+
+	public async void PrepareBackAnimation( Panel c )
 	{
-		int i = 0;
-		while ( c.Box.Rect.Position.y == 0 && i < 1000 )
-		{
 
-			await GameTask.NextPhysicsFrame();//.DelaySeconds( 0.001f );
-			i++;
-		}
-
-	}
-
-	public async void ISvYET( Panel c )
-	{
-		await isthis( c );
+		await GameTask.DelaySeconds( 0.001f ); // do this because panel c isn't ready yet for some stupid reason
 		var d = c.Transitions;
 		c.SkipTransitions();
 		c.AddClass( "justcl" );
@@ -71,7 +61,7 @@ public class BaseMenuScreen : Panel
 
 		CoolAnimation( c, false );
 
-		await GameTask.DelaySeconds( 0.001f );
+		await GameTask.DelaySeconds( 0.001f ); // do this because there's no way to turn off SkipTransitions for some stupid reason
 		c.Transitions.Entries = d.Entries;
 		CoolAnimation( c, true );
 	}
