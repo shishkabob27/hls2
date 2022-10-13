@@ -208,9 +208,11 @@ MenuRootPanel {
     //width: 100%;
     margin-left: auto;
     left: 520px;
-    bottom: 450px;
-    .label{
-        font-size: 28px;
+    bottom: 430px;
+    > .label{
+        font-size: 32px;
+        font-family: arial;
+        margin-bottom: 12px;
     }
 
     .sprays{
@@ -236,6 +238,8 @@ MenuRootPanel {
                 margin-bottom: 3px;
                 padding-bottom: 0%;
                 min-width: auto;
+                font-size: 28px;
+                font-family: arial;
             }
 
         }
