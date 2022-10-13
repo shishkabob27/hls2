@@ -20,9 +20,9 @@ class Menu : BaseMenuScreen
 	}
 	public async void Config( Panel p )
 	{
-		await BaseButtonClickUp( p, false );
-
-		ConsoleSystem.Run( "open_options" );
+		await BaseButtonClickUp( p );
+		Parent.AddChild<Config>();
+		Delete();
 	}
 	public async void LoadGame( Panel p )
 	{
