@@ -21,9 +21,13 @@
     "MapSelect": "Unrestricted",
     "MapList": [
       "\u003Cempty\u003E",
+      "shishkabob.hls2_t0",
+      "shishkabob.hls2_c1p0",
       "shishkabob.hls2_c2p0",
+      "shishkabob.hls2_c3p0",
       "shishkabob.hls2_c4p0",
-      "facepunch.datacore"
+      "shishkabob.hls2_c5p0",
+      "shishkabob.hls2_c6p0"
     ],
     "RankType": "None",
     "PerMapRanking": false,
