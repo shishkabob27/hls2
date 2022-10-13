@@ -83,5 +83,9 @@ MenuRootPanel {
     &.justcldwn {
         transition: all 0.2s linear;
     }
+
+    &.inst {
+        transition: all 0s linear;
+    }
 }
 
