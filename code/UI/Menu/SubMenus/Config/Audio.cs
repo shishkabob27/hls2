@@ -1,6 +1,6 @@
 ﻿using Sandbox.UI;
 
-[UseTemplate( "/UI/Menu/SubMenus/Audio.html" )]
+[UseTemplate( "/UI/Menu/SubMenus/Config/Audio.html" )]
 class Audio : BaseMenuScreen
 {
 	public void ClickDown()

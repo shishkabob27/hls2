@@ -1,6 +1,6 @@
 ﻿using Sandbox.UI;
 
-[UseTemplate( "/UI/Menu/SubMenus/Video.html" )]
+[UseTemplate( "/UI/Menu/SubMenus/Config/Video.html" )]
 class Video : BaseMenuScreen
 {
 	public void ClickDown()
