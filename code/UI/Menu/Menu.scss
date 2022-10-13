@@ -201,3 +201,41 @@ MenuRootPanel {
     &:hover {
     }
 }
+
+.spraysection{
+    flex-direction: column;
+    position: absolute;
+    //width: 100%;
+    margin-left: auto;
+    left: 520px;
+    bottom: 450px;
+    .label{
+        font-size: 28px;
+    }
+
+    .sprays{
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: #393839;
+        height: 278px;
+        width: 222px;
+        padding: 6px;
+
+        img{
+            width: 100%;
+            height: 208px;
+        }
+
+        .butt{
+            flex-direction: row;
+            justify-content: space-around;
+
+            .button{
+                margin-bottom: 0%;
+                padding-bottom: 0%;
+                min-width: auto;
+            }
+
+        }
+    }
+}

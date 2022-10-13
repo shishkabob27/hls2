@@ -31,6 +31,8 @@ class Menu : BaseMenuScreen
 	public async void Multiplayer( Panel p )
 	{
 		await BaseButtonClickUp( p );
+		Parent.AddChild<Multiplayer>();
+		Delete();
 	}
 	public async void CustomGame( Panel p )
 	{
