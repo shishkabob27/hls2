@@ -1,6 +1,6 @@
 [Library( "env_fade" )]
 [HammerEntity]
-[EditorSprite( "editor/snd_event.vmat" )]
+[EditorSprite( "editor/env_fade.vmat" )]
 [Title( "env_fade" ), Category( "Legacy" ), Icon( "toggle_on" )]
 public partial class env_fade : Entity
 {
