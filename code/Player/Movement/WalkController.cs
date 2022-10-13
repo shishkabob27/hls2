@@ -357,9 +357,11 @@ public partial class WalkController : BasePlayerController
 
 	public void GetWishSpeed()
 	{
-		QAngle a = Input.Rotation;
+		Rotation a = Input.Rotation;
 		if ( Client.IsUsingVr ) a = Input.VR.Head.Rotation;
-		a.AngleVectors( out var forward, out var right, out var up );
+		var forward = a.Forward;
+		var right = a.Right;
+		var up = a.Up;
 		var oldGround = GroundEntity;
 
 		var mvspeed = sv_defaultspeed; //0.0f;
