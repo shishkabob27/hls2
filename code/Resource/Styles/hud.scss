@@ -54,7 +54,7 @@ vitals
 {
     mix-blend-mode: lighten;
     position: absolute;
-    bottom: 16px;
+    bottom: 3px;
 }
 
 .top-middle {
@@ -86,8 +86,8 @@ iconpanel {
     mix-blend-mode: lighten;
     background-color: $orange;
     margin: 0px;
-    height: 48px;
-    width: 48px;
+    height: 40px;
+    width: 40px;
     background-repeat: no-repeat;
     background-size: contain;
     background-color: rgba(0, 0, 0, 0);
@@ -103,8 +103,10 @@ iconpanel {
 
 .seperator{
     opacity: 1;
-    height: 32px;
-    width: 32px;
+    height: 24px;
+    width: 2px;
+    padding-left:13px;
+    padding-right:13px;
     background-image: url("/ui/seperator.png");
     &.invisible
     {
@@ -188,7 +190,7 @@ iconpanel {
 {
     
     font-family: "Trebuchet MS";
-    font-size: 40px;
+    font-size: 32px;
     color: $orange;
     text-shadow: 0px 0px 1px $orange;
     min-width: 64px;
@@ -215,8 +217,8 @@ healthhud, armourhud {
     iconpanel {
         margin-right: 0px;
         text-align: left;
-        height: 48px;
-        width: 48px;
+        height: 32px;
+        width: 32px;
         background-repeat: no-repeat;
         background-size: contain;
         background-color: rgba(0, 0, 0, 0);
@@ -227,8 +229,8 @@ healthhud, armourhud {
 
     label {
         text-align: right;
-        width: 76px;
-        letter-spacing: 3px;
+        width: 52px;
+        letter-spacing: 1px;
     }
 }
 
@@ -261,13 +263,13 @@ armourhud
     .iconcontainer{
 
         flex-direction: column;
-        max-height: 48px;
+        max-height: 40px;
         background-size: cover;
 
         .iconempty{
             opacity: 1;
             background-image: url("/ui/armour_empty.png");
-            min-width: 45px;
+            min-width: 40px;
             background-size: cover;
             background-position-y: top;
         }
@@ -275,7 +277,7 @@ armourhud
         .iconfull{
             opacity: 1;
             background-image: url("/ui/armour_full.png");
-            min-width: 45px;
+            min-width: 40px;
             background-size: cover;
             background-position-y: bottom;
         }
