@@ -26,6 +26,7 @@ public partial class HLGame : Game
 		//
 		if ( IsServer )
 		{
+			// If we're on an empty map don't create a game but instead put us into the main menu.
 			if ( Global.MapName == String.Empty || Global.MapName == "" || Global.MapName == "<empty>" || Global.MapName.Length == 0 )
 			{
 				new MenuGame();
