@@ -22,15 +22,6 @@ public class MenuRootPanel : RootPanel
 		Current = this;
 		AddChild<Menu>();
 	}
-	[Event.BuildInput]
-	public void ProcessClientInput( InputBuilder input )
-	{
-		if ( input.Pressed( InputButton.Zoom ) )
-		{
-
-			ConsoleSystem.Run( "menu" );
-		}
-	}
 	protected override void UpdateScale( Rect screenSize )
 	{
 		if ( HLGame.hl_menu_lock_res )

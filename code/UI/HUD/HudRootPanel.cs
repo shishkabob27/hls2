@@ -22,4 +22,14 @@ public class HudRootPanel : RootPanel
 			if ( Screen.Width >= 2650 ) Scale = 1.50f;
 		}
 	}
+
+	[Event.BuildInput]
+	public void ProcessClientInput( InputBuilder input )
+	{
+		if ( input.Pressed( InputButton.Zoom ) )
+		{
+
+			ConsoleSystem.Run( "menu" );
+		}
+	}
 }
