@@ -32,6 +32,7 @@
 
 	public void Simulate()
 	{
+		if ( Entity.Owner is HLPlayer ) return;
 		if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
 			return;
 		try
