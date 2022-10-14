@@ -317,7 +317,7 @@ partial class PhysGun : HLWeapon
 		if ( !heldBody.IsValid() )
 			return;
 
-		if ( GrabbedEntity is Player || GrabbedEntity is NPC || GrabbedEntity is HLMovement || GrabbedEntity is HLMovementCarriable || GrabbedEntity is HLMovementBrush || GrabbedEntity is HLGib )
+		if ( GrabbedEntity is Player || GrabbedEntity is NPC || GrabbedEntity is HLMovementBrush || GrabbedEntity is HLGib || GrabbedEntity.Components.TryGet<Movement>( out _ ) )
 			return;
 
 		var velocity = heldBody.Velocity;
@@ -350,7 +350,7 @@ partial class PhysGun : HLWeapon
 			return;
 
 		}
-		if ( GrabbedEntity is Player || GrabbedEntity is NPC || GrabbedEntity is func_train || GrabbedEntity is func_wall || GrabbedEntity is HLMovement || GrabbedEntity is HLMovementCarriable || GrabbedEntity is HLMovementBrush || GrabbedEntity is HLGib )
+		if ( GrabbedEntity is Player || GrabbedEntity is NPC || GrabbedEntity is func_train || GrabbedEntity is func_wall || GrabbedEntity is HLMovementBrush || GrabbedEntity is HLGib || GrabbedEntity.Components.TryGet<Movement>( out _ ) )
 		{
 			var velocity = GrabbedEntity.Velocity;
 			Vector3.SmoothDamp( GrabbedEntity.Position, holdPos, ref velocity, 0.075f, Time.Delta );

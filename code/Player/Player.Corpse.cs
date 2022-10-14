@@ -1,44 +1,45 @@
 ﻿public partial class HLPlayer
 {
-    // TODO - make ragdolls one per entity
-    // TODO - make ragdolls dissapear after a load of seconds
+	// TODO - make ragdolls one per entity
+	// TODO - make ragdolls dissapear after a load of seconds
 
-    
+
 
 	[ClientRpc]
-    private void CreateCorpse(Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, int bone, Entity owner)
+	private void CreateCorpse( Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, int bone, Entity owner )
 	{
-		var ent = new HLMovement();
+		var ent = new AnimatedEntity();
+		var c = ent.Components.Create<Movement>();
 		ent.Parent = owner;
 		ent.EnableHideInFirstPerson = true;
-        ent.UseAnimGraph = false;
-        ent.Tags.Add("debris");
+		ent.UseAnimGraph = false;
+		ent.Tags.Add( "debris" );
 		ent.Position = Position;
 		ent.Rotation = Rotation;
 		ent.Scale = Scale;
-		ent.SetModel(GetModelName());
-		ent.CopyBonesFrom(this);
-		ent.CopyBodyGroups(this);
-		ent.CopyMaterialGroup(this);
-		ent.CopyMaterialOverrides(this);
-		ent.TakeDecalsFrom(this);
+		ent.SetModel( GetModelName() );
+		ent.CopyBonesFrom( this );
+		ent.CopyBodyGroups( this );
+		ent.CopyMaterialGroup( this );
+		ent.CopyMaterialOverrides( this );
+		ent.TakeDecalsFrom( this );
 		ent.RenderColor = RenderColor;
 		ent.Velocity = velocity;
-        List<string> DeathAnimList = new List<string>{
-        "headshot",
-        "gutshot",
-        "die_simple",
-        "die_forwards",
-        "die_backwards",
-        "die_backwards1",
-        "die_spin",
+		List<string> DeathAnimList = new List<string>{
+		"headshot",
+		"gutshot",
+		"die_simple",
+		"die_forwards",
+		"die_backwards",
+		"die_backwards1",
+		"die_spin",
 		};
-        ent.CurrentSequence.Name = Rand.FromList<string>(DeathAnimList);
-        ent.SetupPhysicsFromModel(PhysicsMotionType.Keyframed, false);
-		ent.Friction = 3;
-        ent.Spawn();
-        //ent.PhysicsEnabled = true;
-        /*
+		ent.CurrentSequence.Name = Rand.FromList<string>( DeathAnimList );
+		ent.SetupPhysicsFromModel( PhysicsMotionType.Keyframed, false );
+		c.Friction = 3;
+		ent.Spawn();
+		//ent.PhysicsEnabled = true;
+		/*
 		if (damageFlags.HasFlag(DamageFlags.Bullet) ||
 			 damageFlags.HasFlag(DamageFlags.PhysicsImpact))
 		{
@@ -65,8 +66,8 @@
 		}
 		*/
 
-        Corpse = ent;
+		Corpse = ent;
 
-		ent.DeleteAsync(5.0f);
+		ent.DeleteAsync( 5.0f );
 	}
 }

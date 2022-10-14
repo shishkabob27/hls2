@@ -1,4 +1,4 @@
-﻿class HLMovement : AnimatedEntity
+﻿class Movement : EntityComponent
 {
 
 	private Vector3 mins = Vector3.Zero;
@@ -7,7 +7,6 @@
 	public Vector3 minsOverride;
 	public Vector3 maxsOverride;
 
-	public new Vector3 AngularVelocity;
 	protected float SurfaceFriction;
 
 	// Config
@@ -37,17 +36,17 @@
 
 	public void Simulate()
 	{
-		if ( HLUtils.PlayerInRangeOf( Position, 2048 ) == false && !DontSleep )
+		if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
 			return;
 		try
 		{
-			Velocity += BaseVelocity;
+			Entity.Velocity += Entity.BaseVelocity;
 			CalcGroundEnt();
 			ApplyGravity();
 			ApplyFriction( sv_friction * SurfaceFriction );
 			ApplyAngularFriction( sv_friction * SurfaceFriction );
 			Move();
-			Velocity -= BaseVelocity;
+			Entity.Velocity -= Entity.BaseVelocity;
 		}
 		catch
 		{
@@ -66,11 +65,11 @@
 		{
 			maxs = maxsOverride;
 		}
-		NewMoveHelper mover = new NewMoveHelper( Position, Velocity );
+		NewMoveHelper mover = new NewMoveHelper( Entity.Position, Entity.Velocity );
 
 		mover.Trace = mover.Trace
 			.Size( mins, maxs )
-			.Ignore( this )
+			.Ignore( Entity )
 			.WithoutTags( "player" );
 		mover.GroundBounce = GroundBounce;
 		mover.WallBounce = WallBounce;
@@ -79,22 +78,22 @@
 		{
 			if ( mover.TraceResult.Normal != lastHitNormal )
 			{
-				this.Touch( this );
+				Entity.Touch( Entity );
 			}
 			lastHitNormal = mover.TraceResult.Normal;
 		}
 
 		lastTouch = mover.TraceResult.Entity;
-		Position = mover.Position;
-		Velocity = mover.Velocity;
-		Rotation = (Rotation.Angles() + (new Angles( AngularVelocity.x, AngularVelocity.y, AngularVelocity.z ) * Time.Delta)).ToRotation();
+		Entity.Position = mover.Position;
+		Entity.Velocity = mover.Velocity;
+		Entity.Rotation = (Entity.Rotation.Angles() + (new Angles( Entity.AngularVelocity.pitch, Entity.AngularVelocity.yaw, Entity.AngularVelocity.roll ) * Time.Delta)).ToRotation();
 	}
 	public void ApplyGravity()
 	{
-		Velocity -= new Vector3( 0, 0, (sv_gravity * Gravity) * 0.5f ) * Time.Delta;
-		Velocity += new Vector3( 0, 0, BaseVelocity.z ) * Time.Delta;
+		Entity.Velocity -= new Vector3( 0, 0, (sv_gravity * Gravity) * 0.5f ) * Time.Delta;
+		Entity.Velocity += new Vector3( 0, 0, Entity.BaseVelocity.z ) * Time.Delta;
 
-		BaseVelocity = BaseVelocity.WithZ( 0 );
+		Entity.BaseVelocity = Entity.BaseVelocity.WithZ( 0 );
 	}
 	public void CalcGroundEnt()
 	{
@@ -111,8 +110,8 @@
 			maxs = maxsOverride;
 		}
 		SurfaceFriction = 1.0f;
-		var point = Position - Vector3.Up * 2;
-		var vBumpOrigin = Position;
+		var point = Entity.Position - Vector3.Up * 2;
+		var vBumpOrigin = Entity.Position;
 		//if ( GroundEntity != null ) // and not underwater
 		//{
 		//bMoveToEndPos = true;
@@ -125,7 +124,7 @@
 		if ( pm.Entity == null || Vector3.GetAngle( Vector3.Up, pm.Normal ) > GroundAngle )
 		{
 			ClearGroundEntity();
-			if ( Velocity.z > 0 )
+			if ( Entity.Velocity.z > 0 )
 			{
 				SurfaceFriction = 0.25f;
 			}
@@ -154,7 +153,7 @@
 		var tr = Trace.Ray( start + TraceOffset, end + TraceOffset )
 					.Size( mins, maxs )
 					.WithAnyTags( "solid" )
-					.Ignore( this )
+					.Ignore( Entity )
 					.Run();
 
 		tr.EndPosition -= TraceOffset;
@@ -176,15 +175,15 @@
 		//if ( tr.Entity == GroundEntity ) return;
 
 		Vector3 oldGroundVelocity = default;
-		if ( GroundEntity != null ) oldGroundVelocity = GroundEntity.Velocity;
+		if ( Entity.GroundEntity != null ) oldGroundVelocity = Entity.GroundEntity.Velocity;
 
-		bool wasOffGround = GroundEntity == null;
+		bool wasOffGround = Entity.GroundEntity == null;
 
-		GroundEntity = tr.Entity;
+		Entity.GroundEntity = tr.Entity;
 
-		if ( GroundEntity != null )
+		if ( Entity.GroundEntity != null )
 		{
-			BaseVelocity = GroundEntity.Velocity;
+			Entity.BaseVelocity = Entity.GroundEntity.Velocity;
 		}
 		if ( wasOffGround )
 		{
@@ -200,9 +199,9 @@
 	public void ClearGroundEntity()
 	{
 
-		if ( GroundEntity == null ) return;
-		this.EndTouch( this );
-		GroundEntity = null;
+		if ( Entity.GroundEntity == null ) return;
+		Entity.EndTouch( Entity );
+		Entity.GroundEntity = null;
 		var GroundNormal = Vector3.Up;
 		SurfaceFriction = 1.0f;
 	}
@@ -214,12 +213,12 @@
 		//   return;
 
 		// Not on ground - no friction
-		if ( GroundEntity == null )
+		if ( Entity.GroundEntity == null )
 			return;
 		frictionAmount = frictionAmount + (Friction - 1);
 
 		// Calculate speed
-		var speed = Velocity.Length;
+		var speed = Entity.Velocity.Length;
 		if ( speed < 0.1f ) return;
 
 		// Bleed off some speed, but if we have less than the bleed
@@ -236,7 +235,7 @@
 		if ( newspeed != speed )
 		{
 			newspeed /= speed;
-			Velocity *= newspeed;
+			Entity.Velocity *= newspeed;
 		}
 
 		// mv->m_outWishVel -= (1.f-newspeed) * mv->m_vecVelocity;
@@ -248,12 +247,12 @@
 		//   return;
 
 		// Not on ground - no friction
-		if ( GroundEntity == null )
+		if ( Entity.GroundEntity == null )
 			return;
 		frictionAmount = frictionAmount + (Friction - 1);
 
 		// Calculate speed
-		var speed = AngularVelocity.Length;
+		var speed = Entity.AngularVelocity.Length;
 		if ( speed < 0.1f ) return;
 
 		// Bleed off some speed, but if we have less than the bleed
@@ -270,7 +269,7 @@
 		if ( newspeed != speed )
 		{
 			newspeed /= speed;
-			AngularVelocity *= newspeed;
+			Entity.AngularVelocity *= newspeed;
 		}
 
 		// mv->m_outWishVel -= (1.f-newspeed) * mv->m_vecVelocity;

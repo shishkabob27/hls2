@@ -1,5 +1,5 @@
 ﻿[Library( "ggrenade" )]
-partial class HandGrenade : HLMovement
+partial class HandGrenade : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade.vmdl" );
 	public override void Spawn()
@@ -7,12 +7,13 @@ partial class HandGrenade : HLMovement
 		base.Spawn();
 
 		Model = WorldModel;
+		var c = Components.Create<Movement>();
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
-		Friction = 0.8f;
-		Gravity = 0.5f;
+		c.Friction = 0.8f;
+		c.Gravity = 0.5f;
 
-		minsOverride = CollisionBounds.Mins;
-		maxsOverride = CollisionBounds.Maxs;
+		c.minsOverride = CollisionBounds.Mins;
+		c.maxsOverride = CollisionBounds.Maxs;
 
 	}
 

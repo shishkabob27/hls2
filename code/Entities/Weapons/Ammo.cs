@@ -1,4 +1,4 @@
-﻿partial class BaseAmmo : HLMovement, IRespawnableEntity
+﻿partial class BaseAmmo : ModelEntity, IRespawnableEntity
 {
 	public virtual AmmoType AmmoType => AmmoType.None;
 	public virtual int AmmoAmount => 17;
@@ -6,6 +6,9 @@
 
 	public override void Spawn()
 	{
+
+		Components.Create<Movement>();
+
 		base.Spawn();
 
 		Model = WorldModel;

@@ -1,18 +1,18 @@
 ﻿[Library( "monster_satchel" )]
-partial class Satchel : HLMovement
+partial class Satchel : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/satchel.vmdl" );
 	public override void Spawn()
 	{
 
 		base.Spawn();
-
-		Friction = 0.9f;
-		bHeight = 8;
+		var c = Components.Create<Movement>();
+		c.Friction = 0.9f;
+		c.bHeight = 8;
 		Model = WorldModel;
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
-		minsOverride = CollisionBounds.Mins;
-		maxsOverride = CollisionBounds.Maxs;
+		c.minsOverride = CollisionBounds.Mins;
+		c.maxsOverride = CollisionBounds.Maxs;
 	}
 	public override void Touch( Entity other )
 	{

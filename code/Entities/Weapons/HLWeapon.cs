@@ -1,4 +1,4 @@
-﻿partial class HLWeapon : HLMovementCarriable, IRespawnableEntity
+﻿partial class HLWeapon : BaseWeapon, IRespawnableEntity
 {
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
@@ -163,6 +163,9 @@
 
 	public override void Spawn()
 	{
+
+		var c = Components.GetOrCreate<Movement>();
+
 		base.Spawn();
 
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
@@ -237,10 +240,8 @@
 
 		//StartReloadEffects();
 	}
-
 	public override void Simulate( Client owner )
 	{
-
 		ViewModelEntity?.SetAnimParameter( "doidle", HLGame.hl_viewmodel_idle_fix );
 		if ( IsReloadingAlt && TimeSinceAltReload > AltReloadTime )
 		{

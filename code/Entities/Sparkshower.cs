@@ -1,5 +1,5 @@
 ﻿[Library( "spark_shower" )]
-class Sparkshower : HLMovement
+class Sparkshower : ModelEntity
 {
 	public override void Spawn()
 	{
@@ -14,8 +14,9 @@ class Sparkshower : HLMovement
 		else
 			a.z -= 200;
 		Velocity = a;
-		GroundBounce = 0.5f;
-		WallBounce = 0.5f;
+		var c = Components.Create<Movement>();
+		c.GroundBounce = 0.5f;
+		c.WallBounce = 0.5f;
 		base.Spawn();
 	}
 
