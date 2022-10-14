@@ -20,6 +20,12 @@ class Config : BaseMenuScreen
 		Parent.AddChild<Video>();
 		Delete();
 	}
+	public async void VR( Panel p )
+	{
+		await BaseButtonClickUp( p );
+		Parent.AddChild<VR>();
+		Delete();
+	}
 	public async void ContentControl( Panel p )
 	{
 		await BaseButtonClickUp( p );
