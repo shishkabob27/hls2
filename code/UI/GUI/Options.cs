@@ -16,6 +16,10 @@ public class Options : GUIPanel
 	public float fCpmColour1 { get; set; }
 	public float fCpmColour2 { get; set; }
 	public bool bColdexplosion { get; set; }
+	public bool bCFixCrouchFootstep { get; set; }
+	public bool bCFixMysteryViewbob { get; set; }
+	public bool bCFixViewmodelIdle { get; set; }
+	public bool bCWONWeaponBob { get; set; }
 
 	public string bSplayerModel { get; set; } = "player";
 	public string bSsprayColour { get; set; } = "orange";
@@ -53,6 +57,10 @@ public class Options : GUIPanel
 		fCpmColour1 = HLGame.hl_pm_colour1;
 		fCpmColour2 = HLGame.hl_pm_colour2;
 		Shudstyle = HLGame.hl_hud_style;
+		bCFixCrouchFootstep = HLGame.hl_fix_ducking_footsteps;
+		bCFixMysteryViewbob = FirstPersonCamera.hl_fix_mystery_viewbob_code;
+		bCFixViewmodelIdle = HLGame.hl_viewmodel_idle_fix;
+		bCWONWeaponBob = FirstPersonCamera.hl_won_viewbob;
 	}
 	public override void Close()
 	{
@@ -98,6 +106,11 @@ public class Options : GUIPanel
 		HLGame.hl_pm_colour2 = (int)fCpmColour2;
 		HLGame.hl_hud_style = Shudstyle;
 
+		FirstPersonCamera.hl_won_viewbob = bCWONWeaponBob;
+		HLGame.hl_fix_ducking_footsteps = bCFixCrouchFootstep;
+		FirstPersonCamera.hl_fix_mystery_viewbob_code = bCFixMysteryViewbob;
+		HLGame.hl_viewmodel_idle_fix = bCFixViewmodelIdle;
+
 		ConsoleSystem.Run( "hl_viewroll " + bCviewroll );
 		ConsoleSystem.Run( "hl_hud_scale " + fChudScale );
 		ConsoleSystem.Run( "cc_subtitles " + (bCsubtitle ? 1 : 0) );
@@ -114,6 +127,10 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_pm_colour1 " + fCpmColour1 );
 		ConsoleSystem.Run( "hl_pm_colour2 " + fCpmColour2 );
 		ConsoleSystem.Run( "hl_hud_style " + Shudstyle );
+		ConsoleSystem.Run( "hl_fix_ducking_footsteps " + bCFixCrouchFootstep );
+		ConsoleSystem.Run( "hl_fix_mystery_viewbob_code " + bCFixMysteryViewbob );
+		ConsoleSystem.Run( "hl_viewmodel_idle_fix " + bCFixViewmodelIdle );
+		ConsoleSystem.Run( "hl_won_viewbob " + bCWONWeaponBob );
 		updtasync();
 
 		/*
