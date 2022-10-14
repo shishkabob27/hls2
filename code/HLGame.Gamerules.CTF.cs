@@ -19,7 +19,7 @@
 		if ( spawnpoint == null )
 		{
 			Log.Warning( $"Couldn't find spawnpoint for {pawn}!" );
-			(HLGame.Current as HLGame).MoveToSpawnpoint( pawn );
+			HLGame.MoveToSpawnpoint( pawn );
 			return;
 		}
 

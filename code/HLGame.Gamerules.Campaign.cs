@@ -1,6 +1,6 @@
 ﻿public partial class HLGame : Game
 {
-	public override void MoveToSpawnpoint( Entity pawn )
+	public static void MoveToSpawnpoint( Entity pawn )
 	{
 		var spawnpoint = Entity.All
 								.OfType<SpawnPoint>()
@@ -23,7 +23,7 @@
 	/// <summary>
 	/// The higher the better
 	/// </summary>
-	public float SpawnpointWeight( Entity pawn, Entity spawnpoint )
+	public static float SpawnpointWeight( Entity pawn, Entity spawnpoint )
 	{
 		float distance = 0;
 

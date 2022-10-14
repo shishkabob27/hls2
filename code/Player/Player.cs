@@ -166,10 +166,10 @@
 
 		switch ( HLGame.sv_gamemode )
 		{
-			case "campagin": Game.Current?.MoveToSpawnpoint( this ); break;
+			case "campagin": HLGame.MoveToSpawnpoint( this ); break;
 			case "deathmatch": HLGame.MoveToDMSpawnpoint( this ); break;
-			case "ctf": Game.Current?.MoveToSpawnpoint( this ); break;
-			default: Game.Current?.MoveToSpawnpoint( this ); break;
+			case "ctf": HLGame.MoveToCTFSpawnpoint( this ); break;
+			default: HLGame.MoveToDMSpawnpoint( this ); break;
 		}
 
 		ResetInterpolation();
