@@ -12,11 +12,6 @@
 	{
 		if ( Light.IsValid() )
 		{
-			if ( Light is SpotLightEntity && Local.Pawn is HLPlayer Ply )
-			{
-
-				(Light as SpotLightEntity).EnableViewmodelRendering = (Ply.CameraMode is FirstPersonCamera && !Client.Components.Get<DevCamera>( true ).Enabled); // Do not viewmodel render in third person
-			}
 			if ( Client.GetClientData( "hl_classic_flashlight" ) == "1" )
 			{
 				var tr = Trace.Ray( EyePosition, EyePosition + EyeRotation.Forward * 1500 )
@@ -45,6 +40,16 @@
 					Light.Position = EyeLocalPosition;
 				}
 				Light.Rotation = Input.VR.Head.Rotation;
+			}
+
+			if ( Light is SpotLightEntity && Local.Pawn is HLPlayer Ply )
+			{
+				try
+				{
+					(Light as SpotLightEntity).EnableViewmodelRendering = (Ply.CameraMode is FirstPersonCamera && !Client.Components.Get<DevCamera>( true ).Enabled); // Do not viewmodel render in third person
+
+				}
+				catch { }
 			}
 		}
 	}
