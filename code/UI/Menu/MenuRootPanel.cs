@@ -22,7 +22,14 @@ public class MenuRootPanel : RootPanel
 		Current = this;
 		AddChild<Menu>();
 
-		if(Global.MapName != "<empty>") SetClass("ingame", true);
+		if(Global.MapName != "<empty>")
+		{
+			 SetClass("ingame", true);
+		}
+		else
+		{
+			SetClass("notingame", true);
+		}
 	}
 	protected override void UpdateScale( Rect screenSize )
 	{
