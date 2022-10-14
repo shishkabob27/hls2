@@ -26,6 +26,10 @@ class Config : BaseMenuScreen
 		Parent.AddChild<ContentControl>();
 		Delete();
 	}
+	public void Misc( Panel p )
+	{
+		ConsoleSystem.Run( "open_options" );
+	}
 	public void Done( Panel p )
 	{
 		Delete();
