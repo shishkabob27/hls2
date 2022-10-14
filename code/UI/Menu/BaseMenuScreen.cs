@@ -101,7 +101,7 @@ public class BaseMenuScreen : Panel
 		var scale = 3.451f;
 		var scale2 = MenuRootPanel.Current.Scale;
 		// this math sucks but it's supposed to find a way to consistantly get our button to the same spot no matter the position of the button and the resolution or aspect ratio of the screen. 
-		var a = (0) + ((MenuRootPanel.Current.Box.Rect.Height / scale2) - (p.Box.Rect.Position.y / scale2)) - ((p.Box.Rect.Height / scale2) * (scale * 2));
+		var a = -(MenuRootPanel.Current.Children.First().Box.Rect.Position.y / scale2) + ((MenuRootPanel.Current.Box.Rect.Height / scale2) - (p.Box.Rect.Position.y / scale2)) - ((p.Box.Rect.Height / scale2) * (scale * 2));
 		var b = (0);
 		//Log.Info( a );
 		//Log.Info( $"Height: {Screen.Height}" );
@@ -109,6 +109,7 @@ public class BaseMenuScreen : Panel
 		//Log.Info( $"SizY: {p.Box.Rect.Height}" );
 		//Log.Info( $"Scl1: {scale}" );
 		//Log.Info( $"Scl2: {scale2}" );
+		Log.Info( $"MPY: {MenuRootPanel.Current.Children.First().Box.Rect.Position.y}" );
 
 		// I chose these offsets through guessing, they're convars to make changing and previewing adjustments easier  
 		p.Style.Top = a + offsetY;
