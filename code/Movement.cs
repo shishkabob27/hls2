@@ -13,10 +13,6 @@
 	public float bGirth = 1 * 0.8f;
 	public float bHeight = 1;
 
-
-	[ConVar.Replicated] public static float sv_gravity { get; set; } = 800;
-	[ConVar.Replicated] public static float sv_friction { get; set; } = 4;
-	[ConVar.Replicated] public static float sv_stopspeed { get; set; } = 100;
 	public float Friction { get; set; } = 1.0f;
 	public float GroundBounce { get; set; } = 0.1f;
 	public float WallBounce { get; set; } = 0.1f;
@@ -43,8 +39,8 @@
 			Entity.Velocity += Entity.BaseVelocity;
 			CalcGroundEnt();
 			ApplyGravity();
-			ApplyFriction( sv_friction * SurfaceFriction );
-			ApplyAngularFriction( sv_friction * SurfaceFriction );
+			ApplyFriction( HL1GameMovement.sv_friction * SurfaceFriction );
+			ApplyAngularFriction( HL1GameMovement.sv_friction * SurfaceFriction );
 			Move();
 			Entity.Velocity -= Entity.BaseVelocity;
 		}
@@ -73,7 +69,7 @@
 			.WithoutTags( "player" );
 		mover.GroundBounce = GroundBounce;
 		mover.WallBounce = WallBounce;
-		mover.TryMove( Time.Delta );
+		mover.TryMoveWithStep( Time.Delta, HL1GameMovement.sv_stepsize );
 		if ( mover.HitWall || mover.HitFloor )
 		{
 			if ( mover.TraceResult.Normal != lastHitNormal )
@@ -90,7 +86,7 @@
 	}
 	public void ApplyGravity()
 	{
-		Entity.Velocity -= new Vector3( 0, 0, (sv_gravity * Gravity) * 0.5f ) * Time.Delta;
+		Entity.Velocity -= new Vector3( 0, 0, (HL1GameMovement.sv_gravity * Gravity) * 0.5f ) * Time.Delta;
 		Entity.Velocity += new Vector3( 0, 0, Entity.BaseVelocity.z ) * Time.Delta;
 
 		Entity.BaseVelocity = Entity.BaseVelocity.WithZ( 0 );
@@ -223,7 +219,7 @@
 
 		// Bleed off some speed, but if we have less than the bleed
 		//  threshold, bleed the threshold amount.
-		float control = (speed < sv_stopspeed) ? sv_stopspeed : speed;
+		float control = (speed < HL1GameMovement.sv_stopspeed) ? HL1GameMovement.sv_stopspeed : speed;
 
 		// Add the amount to the drop amount.
 		var drop = control * Time.Delta * frictionAmount;
@@ -257,7 +253,7 @@
 
 		// Bleed off some speed, but if we have less than the bleed
 		//  threshold, bleed the threshold amount.
-		float control = (speed < sv_stopspeed) ? sv_stopspeed : speed;
+		float control = (speed < HL1GameMovement.sv_stopspeed) ? HL1GameMovement.sv_stopspeed : speed;
 
 		// Add the amount to the drop amount.
 		var drop = control * Time.Delta * frictionAmount;

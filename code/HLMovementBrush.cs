@@ -9,10 +9,6 @@
 	public float bGirth = 1 * 0.8f;
 	public float bHeight = 1;
 
-
-	[ConVar.Replicated] public static float sv_gravity { get; set; } = 800;
-	[ConVar.Replicated] public static float sv_friction { get; set; } = 4;
-	[ConVar.Replicated] public static float sv_stopspeed { get; set; } = 100;
 	public float Friction { get; set; } = 1.0f;
 	public float GroundBounce { get; set; } = 0.1f;
 	public float WallBounce { get; set; } = 0.1f;
@@ -41,7 +37,7 @@
 			return;
 		FindTouching();
 		CalcGroundEnt();
-		ApplyFriction( sv_friction * SurfaceFriction );
+		ApplyFriction( HL1GameMovement.sv_friction * SurfaceFriction );
 		ApplyGravity();
 		Move();
 	}
@@ -70,7 +66,7 @@
 	}
 	public void ApplyGravity()
 	{
-		Velocity -= new Vector3( 0, 0, sv_gravity * 0.5f ) * Time.Delta;
+		Velocity -= new Vector3( 0, 0, HL1GameMovement.sv_gravity * 0.5f ) * Time.Delta;
 		Velocity += new Vector3( 0, 0, BaseVelocity.z ) * Time.Delta;
 
 
@@ -261,8 +257,8 @@
 
 		if ( GroundEntity != null )
 		{
-			var friction = sv_friction * SurfaceFriction;
-			var control = (speed < sv_stopspeed) ? sv_stopspeed : speed;
+			var friction = HL1GameMovement.sv_friction * SurfaceFriction;
+			var control = (speed < HL1GameMovement.sv_stopspeed) ? HL1GameMovement.sv_stopspeed : speed;
 
 			// Add the amount to the drop amount.
 			drop += control * friction * Time.Delta;
@@ -296,7 +292,7 @@
 
 		// Bleed off some speed, but if we have less than the bleed
 		//  threshold, bleed the threshold amount.
-		float control = (speed < sv_stopspeed) ? sv_stopspeed : speed;
+		float control = (speed < HL1GameMovement.sv_stopspeed) ? HL1GameMovement.sv_stopspeed : speed;
 
 		// Add the amount to the drop amount.
 		var drop = control * Time.Delta * frictionAmount;
