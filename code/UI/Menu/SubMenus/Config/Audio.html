@@ -2,7 +2,15 @@
 <root class="rootscreen"> 
 	<label class="titlescreen">Audio</label>
 	<div class="controlsscreen">
+		<div>
+			<check></check>
+			<label class="sub">Custom HD audio</label>
+		</div>
 
+		<div>
+			<check @checked="bCsubtitle"></check>
+			<label class="sub">Enable subtitles</label>
+		</div>
 		<div>
 			<button onmousedown="BaseButtonClick()"onclick="Done(this)">Done</button>
 			<label class="sub">Go back to the previous menu.</label>
