@@ -243,7 +243,7 @@ MenuRootPanel {
     position: absolute;
     //width: 100%;
     margin-left: auto;
-    left: 520px;
+    left: 480px;
     bottom: 430px;
     > .label{
         font-size: 32px;
@@ -270,6 +270,58 @@ MenuRootPanel {
             img{
                 height: 70%;
                 width: 70%;
+            }
+        }
+
+        .butt{
+            flex-direction: row;
+            justify-content: space-between;
+            width: 95%;
+
+            .button{
+                margin-bottom: 3px;
+                padding-bottom: 0%;
+                min-width: auto;
+                font-size: 28px;
+                font-family: arial;
+            }
+
+        }
+    }
+}
+
+.pmsection{
+    flex-direction: column;
+    position: absolute;
+    //width: 100%;
+    margin-left: auto;
+    right: 190px;
+    bottom: 216px;
+    > .label{
+        font-size: 32px;
+        font-family: arial;
+        margin-bottom: 12px;
+    }
+
+    .pm{
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #393839;
+        height: 495px;
+        width: 380px;
+        padding: 6px;
+
+        .pmholder{
+            width: 100%;
+            height: 420px;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+
+            img{
+                height: 90%;
+                width: 90%;
             }
         }
 
