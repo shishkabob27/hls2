@@ -11,7 +11,7 @@ class Config : BaseMenuScreen
 	public async void Audio( Panel p )
 	{
 		await BaseButtonClickUp( p );
-		Parent.AddChild<Audio>();
+		Parent.AddChild<AudioMenu>();
 		Delete();
 	}
 	public async void Video( Panel p )

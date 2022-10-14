@@ -8,12 +8,6 @@ class Multiplayer : BaseMenuScreen
 		BaseButtonClick();
 	}
 
-	public async void InternetGames( Panel p )
-	{
-		await BaseButtonClickUp( p );
-		Parent.AddChild<Audio>();
-		Delete();
-	}
 	public async void Customize( Panel p )
 	{
 		await BaseButtonClickUp( p );

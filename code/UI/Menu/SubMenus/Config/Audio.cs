@@ -1,7 +1,7 @@
 ﻿using Sandbox.UI;
 
 [UseTemplate( "/UI/Menu/SubMenus/Config/Audio.html" )]
-class Audio : BaseMenuScreen
+class AudioMenu : BaseMenuScreen
 {
 	public void ClickDown()
 	{
