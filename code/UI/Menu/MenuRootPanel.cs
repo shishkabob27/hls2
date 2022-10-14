@@ -21,6 +21,8 @@ public class MenuRootPanel : RootPanel
 		StyleSheet.Load( "UI/Menu/Menu.scss" );
 		Current = this;
 		AddChild<Menu>();
+
+		if(Global.MapName != "<empty>") SetClass("ingame", true);
 	}
 	protected override void UpdateScale( Rect screenSize )
 	{
