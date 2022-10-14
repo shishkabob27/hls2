@@ -28,7 +28,7 @@
 	Entity lastTouch;
 	Vector3 lastHitNormal;
 
-	[Event.Tick]
+	[Event.Tick.Server]
 	public void Tick()
 	{
 		Simulate();
