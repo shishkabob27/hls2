@@ -360,7 +360,9 @@ partial class PhysGun : HLWeapon
 			{
 				//holdRot = holdRot.Angles().WithPitch( 0 ).WithRoll( 0 ).ToRotation();
 			}
+			var PR = GrabbedEntity.Rotation.Angles();
 			GrabbedEntity.Rotation = holdRot;
+			GrabbedEntity.AngularVelocity = (PR - GrabbedEntity.Rotation.Angles()) * -10;
 
 			return;
 		}
