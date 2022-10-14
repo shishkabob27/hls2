@@ -149,6 +149,18 @@ MenuRootPanel {
         }
     }
 }
+
+*.ingame{
+    *.disableingame{
+        display: none;
+    }
+}
+
+*.notingame{
+    *.enableingame{
+        display: none;
+    }
+}
 .button {
     min-width: 360px;
     font-size: 37.5px;
