@@ -23,7 +23,6 @@ class Video : BaseMenuScreen
 	}
 
 	public bool bCviewroll { get; set; } = false;
-	public bool bCsubtitle { get; set; }
 	public bool bChimodels { get; set; }
 	public bool bCragdolls { get; set; }
 	public bool bColdTorch { get; set; }
@@ -34,7 +33,6 @@ class Video : BaseMenuScreen
 	void getCvars()
 	{
 		bCviewroll = HLGame.hl_viewroll;
-		bCsubtitle = HLGame.cc_subtitles == 1;
 		bChimodels = HLGame.cl_himodels;
 		bCragdolls = HLGame.hl_ragdoll;
 		bColdTorch = HLGame.hl_classic_flashlight;
@@ -48,7 +46,6 @@ class Video : BaseMenuScreen
 	{
 		oldhimdl = HLGame.cl_himodels;
 		HLGame.hl_viewroll = bCviewroll;
-		HLGame.cc_subtitles = bCsubtitle ? 1 : 0;
 		HLGame.cl_himodels = bChimodels;
 		HLGame.hl_ragdoll = bCragdolls;
 		HLGame.hl_classic_flashlight = bColdTorch;
@@ -56,16 +53,12 @@ class Video : BaseMenuScreen
 		HLGame.hl_classic_gibs = bColdGibs;
 
 		ConsoleSystem.Run( "hl_viewroll " + bCviewroll );
-		ConsoleSystem.Run( "cc_subtitles " + (bCsubtitle ? 1 : 0) );
 		ConsoleSystem.Run( "cl_himodels " + (bChimodels ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_flashlight " + (bColdTorch ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_explosion " + (bColdexplosion ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_gibs " + (bColdGibs ? 1 : 0) );
 		ConsoleSystem.Run( "hl_won_viewbob " + bCWONWeaponBob );
 		updtasync();
-
-		/*
-		*/
 	}
 	public async void updtasync()
 	{
