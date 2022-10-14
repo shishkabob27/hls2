@@ -6,6 +6,10 @@
 	</div>
 	<logo class="img"></logo> 
 	<div class="controls">
+		<div class="enableingame">
+			<button onmousedown="ClickDown()" onclick="Resume(this)">Resume game</button>
+			<label class="sub">Return to game.</label>
+		</div>
 		<div>
 			<button onmousedown="ClickDown()" onclick="NewGame(this)">New game</button>
 			<label class="sub">Start a new game.</label>
@@ -30,7 +34,7 @@
 			<button onmousedown="ClickDown()" onclick="CustomGame(this)">Custom game</button>
 			<label class="sub">Select a custom game, search the Internet for custom games.</label>
 		</div>
-		<div>
+		<div class="disableingame">
 			<button onmousedown="ClickDown()" onclick="ViewReadme(this)">View Readme.txt</button>
 			<label class="sub">View the Readme.txt file.</label>
 		</div>

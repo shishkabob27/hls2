@@ -1,4 +1,5 @@
-﻿using Sandbox.UI;
+﻿using System.ComponentModel;
+using Sandbox.UI;
 
 [UseTemplate( "/UI/Menu/Menu.html" )]
 class Menu : BaseMenuScreen
@@ -7,6 +8,11 @@ class Menu : BaseMenuScreen
 	public void ClickDown()
 	{
 		BaseButtonClick();
+	}
+
+	public void Resume( Panel p )
+	{
+		Parent.Delete();
 	}
 
 	public async void NewGame( Panel p )
