@@ -3,6 +3,7 @@
 [UseTemplate( "/UI/Menu/Menu.html" )]
 class Menu : BaseMenuScreen
 {
+	public bool checkAltButtonColour { get; set; } = false;
 	public void ClickDown()
 	{
 		BaseButtonClick();

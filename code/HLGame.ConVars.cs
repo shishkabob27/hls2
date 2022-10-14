@@ -50,7 +50,9 @@
 	[ConVar.ClientData] public static bool hl_viewroll { get; set; } = false;
 	[ConVar.Replicated] public static bool hl_legacyfootsteps { get; set; } = true;
 
+	// MENU
 	[ConVar.Client] public static bool hl_menu_newer_buttons { get; set; } = false;
+	[ConVar.Client] public static bool hl_menu_lock_res { get; set; } = false;
 
 	// FIXES
 	[ConVar.Client] public static bool hl_viewmodel_idle_fix { get; set; } = false;

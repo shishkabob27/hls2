@@ -1,26 +1,62 @@
 ﻿
 MenuRootPanel {
-    background-image: url("ui/splash.png");
     background-size: 100%;
     pointer-events: all;
     margin: 0px;
     padding: 0px;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+}
+.drawer {
+    flex-direction: column;
+    font-size: 24px;
+    position: absolute;
+    z-index: 3;
+    background-color: transparent;
+    width: 300px;
+    height: 500px;
+    top: -480px;
+    transition: top 0.2s linear, background-color 0.2s linear;
+
+    &:hover {
+        background-color: dimgrey;
+        top: 0px;
+    }
+}
+.LockRes {
+
+    .root {
+        width: 1440px;
+        height: 1080px;
+    }
+
+    .rootscreen {
+        width: 1440px;
+        height: 1080px;
+    }
 }
 .root {
+    background-size: 100%;
+    background-image: url("ui/splash.png");
     width: 100%;
     flex-direction: column;
     font-family: 'Trebuchet MS';
     color: white;
     padding-top: 157px;
     height: 100%;
+    overflow:hidden;
 }
 .rootscreen {
+    background-size: 100%;
+    background-image: url("ui/splash.png");
     width: 100%;
     flex-direction: column;
     font-family: 'Trebuchet MS';
     color: white;
     padding-top: 118px;
     height: 100%;
+    overflow: hidden;
 }
 .img {
     background-image: url("ui/logo.png");
@@ -76,6 +112,7 @@ MenuRootPanel {
     margin-top: 8px;
     color: dimgrey;
 }
+
 .WantsNewButton {
     .button {
         color: #F0B43F;
