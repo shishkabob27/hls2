@@ -83,7 +83,7 @@
 		lastTouch = mover.TraceResult.Entity;
 		Entity.Position = mover.Position;
 		Entity.Velocity = mover.Velocity;
-		Entity.Rotation = (Entity.Rotation.Angles() + (new Angles( Entity.AngularVelocity.pitch, Entity.AngularVelocity.yaw, Entity.AngularVelocity.roll ) * Time.Delta)).ToRotation();
+		Entity.Rotation = (Entity.Rotation.Angles() + (Entity.AngularVelocity * Time.Delta)).ToRotation();
 	}
 	public void ApplyGravity()
 	{
