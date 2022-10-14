@@ -4,14 +4,7 @@ public class BaseMenuScreen : Panel
 {
 	Sound CurrentSound;
 
-	[ConVar.Client]
-	public static bool hl_menu_newer_buttons { get; set; } = false;
 
-	[Event.Tick.Client]
-	void MenuTick()
-	{
-		SetClass( "WantsNewButton", hl_menu_newer_buttons );
-	}
 
 	Sound MenuPlaySound( string snd )
 	{
