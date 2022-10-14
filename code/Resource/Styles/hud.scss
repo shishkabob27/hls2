@@ -89,7 +89,7 @@ iconpanel {
     height: 40px;
     width: 40px;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-color: rgba(0, 0, 0, 0);
     background-position-x: center;
     background-position-y: center;
@@ -108,6 +108,7 @@ iconpanel {
     padding-left:13px;
     padding-right:13px;
     background-image: url("/ui/seperator.png");
+    background-size: contain;
     &.invisible
     {
         min-width: 0px;
@@ -221,7 +222,7 @@ healthhud, armourhud {
         height: 32px;
         width: 32px;
         background-repeat: no-repeat;
-        background-size: contain;
+        background-size: cover;
         background-color: rgba(0, 0, 0, 0);
         background-position-x: center;
         background-position-y: center;
