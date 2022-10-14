@@ -70,7 +70,6 @@ class Video : BaseMenuScreen
 	public async void updtasync()
 	{
 		await GameTask.DelaySeconds( 0.1f );
-		ConsoleSystem.Run( "hl_updatepm" );
 		ConsoleSystem.Run( "hl_savecvar" );
 
 		if ( oldhimdl != bChimodels )
