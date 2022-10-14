@@ -77,7 +77,6 @@ partial class DEagle : HLWeapon
 	}
 	public override void AttackSecondary()
 	{
-		Log.Info( "Gaming" );
 		base.AttackSecondary();
 		if ( !isLaserOn && IsServer )
 		{
