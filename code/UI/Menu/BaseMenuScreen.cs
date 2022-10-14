@@ -109,7 +109,7 @@ public class BaseMenuScreen : Panel
 		//Log.Info( $"SizY: {p.Box.Rect.Height}" );
 		//Log.Info( $"Scl1: {scale}" );
 		//Log.Info( $"Scl2: {scale2}" );
-		Log.Info( $"MPY: {MenuRootPanel.Current.Children.First().Box.Rect.Position.y}" );
+		//Log.Info( $"MPY: {MenuRootPanel.Current.Children.First().Box.Rect.Position.y}" );
 
 		// I chose these offsets through guessing, they're convars to make changing and previewing adjustments easier  
 		p.Style.Top = a + offsetY;
