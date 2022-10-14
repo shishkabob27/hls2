@@ -56,7 +56,6 @@ public class Options : GUIPanel
 		bSplayerModel = HLPlayer.hl_pm;
 		fCpmColour1 = HLGame.hl_pm_colour1;
 		fCpmColour2 = HLGame.hl_pm_colour2;
-		Shudstyle = HLGame.hl_hud_style;
 		bCFixCrouchFootstep = HLGame.hl_fix_ducking_footsteps;
 		bCFixMysteryViewbob = FirstPersonCamera.hl_fix_mystery_viewbob_code;
 		bCFixViewmodelIdle = HLGame.hl_viewmodel_idle_fix;
@@ -104,7 +103,6 @@ public class Options : GUIPanel
 		HLPlayer.hl_pm = bSplayerModel;
 		HLGame.hl_pm_colour1 = (int)fCpmColour1;
 		HLGame.hl_pm_colour2 = (int)fCpmColour2;
-		HLGame.hl_hud_style = Shudstyle;
 
 		FirstPersonCamera.hl_won_viewbob = bCWONWeaponBob;
 		HLGame.hl_fix_ducking_footsteps = bCFixCrouchFootstep;
