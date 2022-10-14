@@ -21,7 +21,15 @@ inventorycolumn {
 	align-items: flex-start; // align to the left, don't stretch
 
 	.slot-number {
-		background-color: rgba(255, 162, 0, 0.199);
+		overflow: hidden;
+		text-align: right;
+		white-space: nowrap;
+		background-tint: rgba(255, 220, 0);
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: 1;
+		mix-blend-mode: lighten;
+		background-color: rgba(255, 189, 0, 0.05);
 		padding: 8px 0px 0px 14px;
 		font-size: 9px;
 		font-family: Tahoma;
@@ -38,13 +46,14 @@ inventorycolumn {
 		width: 20px;
 		height: 20px;
 		overflow: hidden;
+		white-space: nowrap;
 
 		.icon {
 			opacity: 0;
 		}
 	}
 
-	opacity: 0.4;
+	opacity: 1;
 
 	&.invisible {
 		opacity: 0;
@@ -103,7 +112,7 @@ inventoryicon {
 	margin-bottom: 5px;
 	mix-blend-mode: lighten;
 	color: #fc0;
-	background-color: rgba(255, 162, 0, 0.644);
+	background-color: rgba(255, 162, 0, 0.32);
 	font-size: 40px;
 	font-weight: lighter;
 	align-items: center;

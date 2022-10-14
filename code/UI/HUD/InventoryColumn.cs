@@ -14,7 +14,18 @@ public class InventoryColumn : Panel
 	{
 		Parent = parent;
 		Column = i;
-		Header = Add.Label( $"{i + 1}", "slot-number" );
+		Header = Add.Label( "", "slot-number" );
+		var a = i + 1;
+		if ( a <= 16 )
+		{
+
+			Header.Style.SetBackgroundImage( $"/ui/{a}.png" );
+		}
+		else
+		{
+			Header.SetText( $"{a}" );
+		}
+
 	}
 
 	internal void UpdateWeapon( HLWeapon weapon )
@@ -50,7 +61,7 @@ public class InventoryColumn : Panel
 
 		if ( Column >= 5 )
 		{
-			SetClass( "invisible", !( Icons.Count > 0 ) );
+			SetClass( "invisible", !(Icons.Count > 0) );
 		}
 	}
 }
