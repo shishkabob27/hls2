@@ -32,9 +32,14 @@
 
 	public void Simulate()
 	{
-		if ( Entity.Owner is HLPlayer ) return;
-		if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
-			return;
+
+		try
+		{
+			if ( Entity.Owner is HLPlayer ) return;
+			if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
+				return;
+		}
+		catch { } // shit fix to work around hotloading being bitchy
 		try
 		{
 			Entity.Velocity += Entity.BaseVelocity;
