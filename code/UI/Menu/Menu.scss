@@ -313,10 +313,14 @@ MenuRootPanel {
 
     > .thumb {
         z-index: 1;
-        background-color: orange;
+        //background-color: orange;
+        background-image: url("/ui/thumb.png");
+        image-rendering: pixelated;
+        background-repeat: no-repeat;
+        background-size: cover;
         position: absolute;
-        width: 32px;
-        height: 16px;
+        width: 48px;
+        height: 18px;
         border-radius: 0px;
         box-shadow: 0px 0px 0px black;
         transition: all 0s ease-out;
@@ -361,8 +365,8 @@ MenuRootPanel {
     > .track {
         position: absolute;
         left: 0px;
-        right: 16px;
-        height: 18px;
+        right: 0px;
+        height: 16px;
         background-color: rgb(0, 0, 0);
         border-radius: 0px;
         border: 5px solid #424542;
@@ -381,6 +385,7 @@ MenuRootPanel {
         width: 48px;
         height: 24px;
         overflow: hidden;
+        margin-left: 8px;
         justify-content: center;
         align-items: center;
         border-bottom: 1px solid #889180;
@@ -388,7 +393,7 @@ MenuRootPanel {
         border-top: 1px solid #282e22;
         border-left: 1px solid #282e22;
         background-color: #3e4637;
-        font-size: 13px;
+        font-size: 12px;
     }
 }
 
