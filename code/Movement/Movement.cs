@@ -1,4 +1,4 @@
-﻿class Movement : EntityComponent
+﻿public partial class Movement : EntityComponent
 {
 
 	private Vector3 mins = Vector3.Zero;
@@ -44,7 +44,7 @@
 		{
 			Entity.Velocity += Entity.BaseVelocity;
 			CalcGroundEnt();
-			ApplyGravity();
+			StartGravity();
 			ApplyFriction( HL1GameMovement.sv_friction * SurfaceFriction );
 			ApplyAngularFriction( HL1GameMovement.sv_friction * SurfaceFriction );
 			Move();
@@ -89,13 +89,6 @@
 		Entity.Position = mover.Position;
 		Entity.Velocity = mover.Velocity;
 		Entity.Rotation = (Entity.Rotation.Angles() + (Entity.AngularVelocity * Time.Delta)).ToRotation();
-	}
-	public void ApplyGravity()
-	{
-		Entity.Velocity -= new Vector3( 0, 0, (HL1GameMovement.sv_gravity * Gravity) * 0.5f ) * Time.Delta;
-		Entity.Velocity += new Vector3( 0, 0, Entity.BaseVelocity.z ) * Time.Delta;
-
-		Entity.BaseVelocity = Entity.BaseVelocity.WithZ( 0 );
 	}
 	public void CalcGroundEnt()
 	{
