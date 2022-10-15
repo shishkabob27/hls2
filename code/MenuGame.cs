@@ -12,6 +12,13 @@ public partial class MenuGame : Game
 	{
 		if ( IsServer )
 		{
+			if ( Global.MapName != "<empty>" )
+			{
+				new HLGame();
+				this.Delete();
+				return;
+			}
+			
 			GUI = new HLGUI();
 			Menu = new MenuPanel();
 		}
