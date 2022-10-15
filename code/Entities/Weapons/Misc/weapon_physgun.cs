@@ -369,7 +369,6 @@ partial class PhysGun : HLWeapon
 				GrabbedEntity.AngularVelocity = Angles.Zero;
 			}
 
-			Log.Info( $"hi {holdRot.Angles()} - {oldRot.Angles()} - {GrabbedEntity.AngularVelocity}" );
 			GrabbedEntity.Rotation = holdRot;
 
 			oldRot = holdRot;
