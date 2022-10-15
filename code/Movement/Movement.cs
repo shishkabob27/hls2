@@ -48,13 +48,17 @@
 			ApplyFriction( HL1GameMovement.sv_friction * SurfaceFriction );
 			ApplyAngularFriction( HL1GameMovement.sv_friction * SurfaceFriction );
 			Move();
+			AngularMove();
 			Entity.Velocity -= Entity.BaseVelocity;
 		}
 		catch
 		{
 		}
 	}
-
+	public void AngularMove()
+	{
+		Entity.Rotation = (Entity.Rotation.Angles() + (Entity.AngularVelocity * Time.Delta)).ToRotation();
+	}
 	public void Move()
 	{
 		if ( !HL1GameMovement.sv_use_sbox_movehelper )
@@ -93,7 +97,6 @@
 		lastTouch = mover.TraceResult.Entity;
 		Entity.Position = mover.Position;
 		Entity.Velocity = mover.Velocity;
-		Entity.Rotation = (Entity.Rotation.Angles() + (Entity.AngularVelocity * Time.Delta)).ToRotation();
 	}
 	public void CalcGroundEnt()
 	{
