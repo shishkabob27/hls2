@@ -25,6 +25,7 @@
 		}
 		Breakables = 
 		{
+			BreakSound = resource:"sounds/hl1/debris/bustglass.sound"
 			GenericGibs = 
 			[
 				resource:"models/hl1/gib/glass/shard1.vmdl",
