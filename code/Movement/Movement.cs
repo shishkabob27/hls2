@@ -57,6 +57,11 @@
 
 	public void Move()
 	{
+		if ( !HL1GameMovement.sv_use_sbox_movehelper )
+		{
+			Move2();
+			return;
+		}
 		mins = new Vector3( -bGirth, -bGirth, 0 );
 		maxs = new Vector3( +bGirth, +bGirth, bHeight );
 		if ( minsOverride != Vector3.Zero )
