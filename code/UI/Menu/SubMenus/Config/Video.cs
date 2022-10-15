@@ -29,6 +29,7 @@ class Video : BaseMenuScreen
 	public bool bColdGibs { get; set; }
 	public bool bColdexplosion { get; set; }
 	public bool bCWONWeaponBob { get; set; }
+	public float fChudScale { get; set; }
 
 	void getCvars()
 	{
@@ -39,6 +40,7 @@ class Video : BaseMenuScreen
 		bColdGibs = HLGame.hl_classic_gibs;
 		bColdexplosion = HLGame.hl_classic_explosion;
 		bCWONWeaponBob = FirstPersonCamera.hl_won_viewbob;
+		fChudScale = HLGame.hl_hud_scale;
 	}
 
 	bool oldhimdl = false;
@@ -51,6 +53,7 @@ class Video : BaseMenuScreen
 		HLGame.hl_classic_flashlight = bColdTorch;
 		HLGame.hl_classic_explosion = bColdexplosion;
 		HLGame.hl_classic_gibs = bColdGibs;
+		HLGame.hl_hud_scale = fChudScale;
 
 		ConsoleSystem.Run( "hl_viewroll " + bCviewroll );
 		ConsoleSystem.Run( "cl_himodels " + (bChimodels ? 1 : 0) );
@@ -58,6 +61,7 @@ class Video : BaseMenuScreen
 		ConsoleSystem.Run( "hl_classic_explosion " + (bColdexplosion ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_gibs " + (bColdGibs ? 1 : 0) );
 		ConsoleSystem.Run( "hl_won_viewbob " + bCWONWeaponBob );
+		ConsoleSystem.Run( "hl_hud_scale " + fChudScale );
 		updtasync();
 	}
 	public async void updtasync()
