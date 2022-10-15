@@ -55,7 +55,6 @@ public partial class HurtVolumeEntity : BaseTrigger
 	[Event.Tick.Server]
 	protected virtual void DealDamagePerTick2()
 	{
-		Log.Info( "p" );
 		ActivationTags = "";
 		if ( !Enabled )
 			return;
