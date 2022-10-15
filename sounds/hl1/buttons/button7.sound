@@ -10,7 +10,7 @@
 		Decibels = 70
 		Sounds = 
 		[
-			resource:"sounds/hl1/butttons/button7.vsnd",
+			resource:"sounds/hl1/buttons/button7.vsnd",
 		]
 		SelectionMode = "Random"
 		MaximumDistance = 1143.9335
