@@ -10,7 +10,7 @@
 		Decibels = 70
 		Sounds = 
 		[
-			resource:"sounds/hl1/butttons/blip1.vsnd",
+			resource:"sounds/hl1/buttons/blip1.vsnd",
 		]
 		SelectionMode = "Random"
 		MaximumDistance = 1143.9335
