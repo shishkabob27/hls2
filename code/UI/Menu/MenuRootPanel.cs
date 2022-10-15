@@ -13,6 +13,7 @@ public class MenuRootPanel : RootPanel
 	{
 		SetClass( "WantsNewButton", HLGame.hl_menu_newer_buttons );
 		SetClass( "LockRes", HLGame.hl_menu_lock_res );
+		SetClass( "fourbythree", HLGame.hl_menu_fourbythree );
 
 
 	}
@@ -22,13 +23,13 @@ public class MenuRootPanel : RootPanel
 		Current = this;
 		AddChild<Menu>();
 
-		if(Global.MapName != "<empty>")
+		if ( Global.MapName != "<empty>" )
 		{
-			 SetClass("ingame", true);
+			SetClass( "ingame", true );
 		}
 		else
 		{
-			SetClass("notingame", true);
+			SetClass( "notingame", true );
 		}
 	}
 	protected override void UpdateScale( Rect screenSize )
