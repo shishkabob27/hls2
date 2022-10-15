@@ -17,6 +17,8 @@
 	public float GroundBounce { get; set; } = 0.1f;
 	public float WallBounce { get; set; } = 0.1f;
 	public float GroundAngle { get; set; } = 46.0f;
+
+	public bool SnapAngleToFloor { get; set; } = false;
 	public float Gravity { get; set; } = 1.0f;
 	public bool DontSleep = false;
 
@@ -93,11 +95,15 @@
 		mover.TryMoveWithStep( Time.Delta, HL1GameMovement.sv_stepsize );
 		if ( mover.HitWall || mover.HitFloor )
 		{
-			if ( mover.TraceResult.Normal != lastHitNormal )
+			if ( mover.NormalResult != lastHitNormal )
 			{
 				Entity.Touch( Entity );
 			}
-			lastHitNormal = mover.TraceResult.Normal;
+			if ( SnapAngleToFloor )
+			{
+				Entity.Rotation = Rotation.LookAt( mover.NormalResult ) * Rotation.From( new Angles( 90, 0, 0 ) );
+			}
+			lastHitNormal = mover.NormalResult;
 		}
 
 		lastTouch = mover.TraceResult.Entity;
