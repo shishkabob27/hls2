@@ -14,8 +14,7 @@ partial class HealthKit : ModelEntity, IRespawnableEntity
 
 		Model = WorldModel;
 
-		PhysicsEnabled = true;
-		UsePhysicsCollision = true;
+		var c = Components.GetOrCreate<Movement>();
 
 		Tags.Add("weapon");
 	}

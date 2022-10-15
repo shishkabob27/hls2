@@ -13,9 +13,7 @@ partial class Battery : ModelEntity, IRespawnableEntity
 		base.Spawn();
 
 		Model = WorldModel;
-
-		PhysicsEnabled = true;
-		UsePhysicsCollision = true;
+		var c = Components.GetOrCreate<Movement>();
 
 		Tags.Add("weapon");
 	}

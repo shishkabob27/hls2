@@ -14,10 +14,9 @@ public partial class Suit : ModelEntity
 
         SetModel("models/hl1/items/suit.vmdl");
 
-        PhysicsEnabled = true;
-		UsePhysicsCollision = true;
+		var c = Components.GetOrCreate<Movement>();
 
-        Tags.Add("weapon");
+		Tags.Add("weapon");
     }
 
     protected Output OnPlayerTouch { get; set; }

@@ -24,8 +24,7 @@ partial class item_sodacan : ModelEntity
 
 		Model = WorldModel;
 
-		PhysicsEnabled = true;
-		UsePhysicsCollision = true;
+		var c = Components.GetOrCreate<Movement>();
 
 		PickupTrigger = new TouchTrigger();
 		PickupTrigger.Parent = this;
