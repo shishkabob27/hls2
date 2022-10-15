@@ -328,13 +328,12 @@ partial class PhysGun : HLWeapon
 		Rotation.SmoothDamp( heldBody.Rotation, holdRot, ref angularVelocity, 0.075f, Time.Delta );
 		heldBody.AngularVelocity = angularVelocity;
 	}
-
+	Rotation oldRot;
 	private void GrabMove( Vector3 startPos, Vector3 dir, Rotation rot, bool snapAngles )
 	{
 
 
 		holdPos = startPos - heldPos * heldBody.Rotation + dir * holdDistance;
-
 		holdRot = rot * heldRot;
 
 		if ( !heldBody.IsValid() )
@@ -360,9 +359,20 @@ partial class PhysGun : HLWeapon
 			{
 				//holdRot = holdRot.Angles().WithPitch( 0 ).WithRoll( 0 ).ToRotation();
 			}
-			var PR = GrabbedEntity.Rotation.Angles();
+
+			if ( holdRot.Angles() != GrabbedEntity.Rotation.Angles() )
+			{
+				GrabbedEntity.AngularVelocity = ((holdRot.Angles() - oldRot.Angles()) / Time.Delta);
+			}
+			else
+			{
+				GrabbedEntity.AngularVelocity = Angles.Zero;
+			}
+
+			Log.Info( $"hi {holdRot.Angles()} - {oldRot.Angles()} - {GrabbedEntity.AngularVelocity}" );
 			GrabbedEntity.Rotation = holdRot;
-			GrabbedEntity.AngularVelocity = (PR - GrabbedEntity.Rotation.Angles()) * -10;
+
+			oldRot = holdRot;
 
 			return;
 		}
