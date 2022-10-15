@@ -38,7 +38,7 @@
 	[ConVar.Client] public static int cc_subtitles { get; set; } = 0;
 	[ConVar.Client] public static bool cl_himodels { get; set; } = false;
 	[ConVar.Client] public static bool cl_righthand { get; set; } = true;
-	[ConVar.ClientData] public static bool hl_classic_explosion { get; set; } = false;
+	[ConVar.ClientData] public static bool hl_classic_explosion { get; set; } = true;
 	[ConVar.Replicated] public static bool hl_classic_gibs { get; set; } = true;
 	[ConVar.Client] public static bool hl_vr_pointer { get; set; } = false;
 	[ConVar.ClientData] public static string hl_spray_icon { get; set; } = "lambda";
