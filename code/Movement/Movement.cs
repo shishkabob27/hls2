@@ -35,13 +35,9 @@
 	public void Simulate()
 	{
 
-		try
-		{
-			if ( Entity.Owner is HLPlayer ) return;
-			if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
-				return;
-		}
-		catch { Remove(); return; } // shit fix to work around hotloading being bitchy
+		if ( Entity.Owner is HLPlayer && Entity is HLWeapon ) return;
+		if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
+			return;
 		try
 		{
 			Entity.Velocity += Entity.BaseVelocity;
