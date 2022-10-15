@@ -228,18 +228,18 @@ MenuRootPanel {
 }
 
 .checkbox {
-    min-width: 24px;
+    min-width: 40px;
     height: 19px;
-    margin-bottom: 25px;
+    margin-bottom: 32px;
     cursor: pointer;
 
     .checkpanel, iconpanel {
         flex-shrink: 0;
-        width: 32px;
-        height: 32px;
-        border: 3px solid rgba(103,100,88,255);
+        width: 40px;
+        height: 40px;
+        border: 5px solid rgba(103,100,88,255);
         border-radius: 1px;
-        margin-right: 16px;
+        margin-right: 8px;
         color: white;
 
         .checklabel {
@@ -257,15 +257,15 @@ MenuRootPanel {
 
     > .checkmark {
         padding: 1px;
-        font-size: 32px;
+        font-size: 40px;
         //border: 3px solid $primary;
         border-radius: 2px;
         text-align: center;
         justify-content: center;
         align-items: center;
         color: transparent;
-        min-height: 32px;
-        margin-right: 10px;
+        min-height: 40px;
+        margin-right: 0px;
         pointer-events: none;
         cursor: pointer;
     }
@@ -280,7 +280,7 @@ MenuRootPanel {
         > .checkpanel, .iconpanel {
             .checklabel {
                 font-family: Webdings;
-                font-size: 34px;
+                font-size: 40px;
                 color: white;
             }
         }
@@ -402,5 +402,21 @@ MenuRootPanel {
             }
 
         }
+    }
+}
+
+.options{
+    flex-direction: column;
+    position: absolute;
+    left: 465px;
+
+    .checkbox{
+        
+    }
+
+    label{
+        font-family: Arial;
+        font-weight: 500;
+        color: #c6c3c6;
     }
 }

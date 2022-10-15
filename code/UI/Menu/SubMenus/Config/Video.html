@@ -2,30 +2,31 @@
 <root class="rootscreen"> 
 	<label class="titlescreen">Video</label>
 	<div class="controlsscreen">
-		<div>
-			<check @checked="bCviewroll"></check>
-			<label class="sub">Half-Life WON Viewroll</label>
-		</div>
-		<div>
-			<check @checked="bCWONWeaponBob"></check>
-			<label class="sub">Half-Life WON Weapon bob</label>
-		</div>
-		<div>
-			<check @checked="bColdTorch"></check>
-			<label class="sub">Classic Torch</label>
-		</div>
-		<div>
-			<check @checked="bColdexplosion"></check>
-			<label class="sub">Classic explosion effects</label>
-		</div>
-		<div>
-			<check @checked="bChimodels"></check>
-			<label class="sub">Enable HD models if Available</label>
+		<div class="options">
+			<div>
+				<check @checked="bCviewroll"></check>
+				<label class="sub">Half-Life WON Viewroll</label>
+			</div>
+			<div>
+				<check @checked="bCWONWeaponBob"></check>
+				<label class="sub">Half-Life WON Weapon bob</label>
+			</div>
+			<div>
+				<check @checked="bColdTorch"></check>
+				<label class="sub">Classic Torch</label>
+			</div>
+			<div>
+				<check @checked="bColdexplosion"></check>
+				<label class="sub">Classic explosion effects</label>
+			</div>
+			<div>
+				<check @checked="bChimodels"></check>
+				<label class="sub">Enable HD models if Available</label>
+			</div>
 		</div>
 
-		<div>
-			<button onmousedown="BaseButtonClick()"onclick="Done(this)">Done</button>
-			<label class="sub">Go back to the previous menu.</label>
+		<div style="max-width: 32px;">
+			<button onmousedown="BaseButtonClick()"onclick="Done(this)" style="min-width: 96px;">Done</button>
 		</div>
 	</div>
 </root>
