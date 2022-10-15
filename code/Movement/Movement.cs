@@ -39,7 +39,7 @@
 			if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
 				return;
 		}
-		catch { } // shit fix to work around hotloading being bitchy
+		catch { Remove(); return; } // shit fix to work around hotloading being bitchy
 		try
 		{
 			Entity.Velocity += Entity.BaseVelocity;
@@ -57,7 +57,13 @@
 	}
 	public void AngularMove()
 	{
-		Entity.Rotation = (Entity.Rotation.Angles() + (Entity.AngularVelocity * Time.Delta)).ToRotation();
+		//Entity.Rotation = (Entity.Rotation.Angles() + (Entity.AngularVelocity * Time.Delta)).ToRotation();
+		var scaledANGVEL = (Entity.AngularVelocity * Time.Delta);
+		//Entity.Rotation = Entity.Rotation + Rotation.FromPitch( scaledANGVEL.pitch );
+		Entity.Rotation = Entity.Rotation.RotateAroundAxis( new Vector3( 0, 0, 1 ), scaledANGVEL.yaw );
+		Entity.Rotation = Entity.Rotation.RotateAroundAxis( new Vector3( 0, 1, 0 ), scaledANGVEL.pitch );
+		Entity.Rotation = Entity.Rotation.RotateAroundAxis( new Vector3( 1, 0, 0 ), scaledANGVEL.roll );
+
 	}
 	public void Move()
 	{
