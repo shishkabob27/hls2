@@ -26,10 +26,37 @@
 	Entity lastHit;
 	Vector3 lastHitNormal;
 
+	bool ShouldSimulate = true;
+	protected override void OnActivate()
+	{
+
+		base.OnActivate();
+		try
+		{
+			if ( HLGame.sv_force_physics && Entity is ModelEntity mdl )
+			{
+				ShouldSimulate = false;
+
+				var a = Entity.Velocity;
+				var b = Entity.AngularVelocity;
+				mdl.PhysicsEnabled = true;
+				var phys = mdl.SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
+				mdl.EnableTouch = true;
+				mdl.Velocity = a;
+
+				if ( mdl.PhysicsBody != null )
+				{
+					mdl.PhysicsBody.Velocity = a * 2;
+					mdl.PhysicsBody.AngularVelocity = new Vector3( b.yaw, b.pitch, b.roll ) / 32;
+				}
+			}
+		}
+		catch { }
+	}
 	[Event.Tick]
 	void Tick()
 	{
-		Simulate();
+		if ( ShouldSimulate ) Simulate();
 	}
 
 	public void Simulate()

@@ -164,14 +164,15 @@
 	public override void Spawn()
 	{
 
-		var c = Components.GetOrCreate<Movement>();
 
 		base.Spawn();
 
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
 		EnableTouch = false;
 		PhysicsEnabled = false;
+		var c = Components.GetOrCreate<Movement>();
 		Tags.Add( "weapon" );
+
 
 		PickupTrigger = new TouchTrigger();
 		PickupTrigger.Parent = this;
