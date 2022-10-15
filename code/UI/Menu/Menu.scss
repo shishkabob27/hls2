@@ -301,6 +301,108 @@ MenuRootPanel {
     }
 }
 
+.slider {
+    flex-grow: 1;
+    cursor: pointer;
+    height: 16px;
+    width: 320px;
+    align-items: center;
+    padding-right: 48px;
+    margin: 0;
+    margin-bottom: 16px;
+
+    > .thumb {
+        z-index: 1;
+        background-color: rgba(76,88,68,255);
+        position: absolute;
+        width: 32px;
+        height: 16px;
+        border-radius: 0px;
+        box-shadow: 0px 0px 0px black;
+        transition: all 0s ease-out;
+
+        &:hover {
+            background-color: rgba(76,88,68,255);
+        }
+    }
+
+    &:active {
+        > .thumb {
+            background-color: rgba(76,88,68,255);
+        }
+    }
+
+    > .scalestepmin {
+        position: absolute;
+        z-index: -1;
+        flex-grow: 1;
+        top: 25px;
+        justify-content: flex-start;
+        color: #889180;
+        font-size: 9px;
+    }
+
+    > .scalestepmax {
+        position: absolute;
+        z-index: -1;
+        flex-grow: 1;
+        top: 25px;
+        right: 8px;
+        text-align: right;
+        font-size: 9px;
+        color: #889180;
+    }
+
+    > .scalesteps {
+        z-index: -1;
+        flex-grow: 1;
+        top: 17px;
+        left: 0px;
+        height: 10px;
+        justify-content: space-between;
+
+        > .step {
+            background-color: #7f8c7f;
+            width: 1px;
+            height: 5px;
+        }
+    }
+
+    > .track {
+        position: absolute;
+        left: 0px;
+        right: 16px;
+        height: 18px;
+        background-color: rgb(31, 31, 31);
+        border-radius: 0px;
+        border: 5px solid #424542;
+    }
+}
+
+.sliderentry {
+    > .slider {
+        flex-grow: 1;
+        flex-shrink: 0;
+    }
+
+    > .textentry:not( .one.two ) {
+        max-width: 48px;
+        min-width: 48px;
+        width: 48px;
+        height: 24px;
+        overflow: hidden;
+        margin-left: 10px;
+        border-bottom: 1px solid #889180;
+        border-right: 1px solid #889180;
+        border-top: 1px solid #282e22;
+        border-left: 1px solid #282e22;
+        background-color: #3e4637;
+        margin-left: 0px;
+        font-size: 13px;
+        margin-right: 8px;
+    }
+}
+
 .spraysection{
     flex-direction: column;
     position: absolute;
