@@ -166,7 +166,7 @@
 
 
 		base.Spawn();
-
+		SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
 		EnableTouch = false;
 		PhysicsEnabled = false;

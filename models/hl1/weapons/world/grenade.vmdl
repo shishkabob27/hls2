@@ -58,13 +58,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeCapsule"
+						_class = "PhysicsHullFromRender"
 						parent_bone = "line02"
-						surface_prop = "plastic.hollow"
+						surface_prop = "default"
 						collision_tags = "solid"
-						radius = 4.36261
-						point0 = [ -0.292969, -5.659778, 1.027456 ]
-						point1 = [ 0.26228, 2.903539, 0.916777 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},

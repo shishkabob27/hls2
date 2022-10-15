@@ -70,31 +70,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeBox"
+						_class = "PhysicsHullFromRender"
 						parent_bone = "line02"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 4.116492, 3.865901, 0.880227 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 34.12925, 9.601583, 2.429668 ]
-					},
-					{
-						_class = "PhysicsShapeBox"
-						parent_bone = "line02"
-						surface_prop = "default"
-						collision_tags = "solid"
-						origin = [ 1.276053, -4.30044, 0.978123 ]
-						angles = [ 0.0, -19.307486, 0.0 ]
-						dimensions = [ 3.671464, 13.106787, 1.707087 ]
-					},
-					{
-						_class = "PhysicsShapeBox"
-						parent_bone = "line02"
-						surface_prop = "default"
-						collision_tags = "solid"
-						origin = [ 13.34588, -2.104622, 0.927454 ]
-						angles = [ -0.0, 24.916283, 0.0 ]
-						dimensions = [ 3.614888, 7.644925, 2.208805 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},

@@ -40,6 +40,14 @@
 						angles = [ 0.0, 0.0, 0.0 ]
 						dimensions = [ 39.183266, 39.395218, 31.666904 ]
 					},
+					{
+						_class = "PhysicsHullFromRender"
+						parent_bone = "box02"
+						surface_prop = "default"
+						collision_tags = "solid"
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
+					},
 				]
 			},
 			{

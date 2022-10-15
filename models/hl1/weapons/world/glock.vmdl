@@ -102,22 +102,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeBox"
+						_class = "PhysicsHullFromRender"
 						parent_bone = "sides01"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ -6.568233, -1.41352, -2.842113 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 5.465956, 2.751941, 6.891706 ]
-					},
-					{
-						_class = "PhysicsShapeBox"
-						parent_bone = "sides01"
-						surface_prop = "default"
-						collision_tags = "solid"
-						origin = [ -1.835064, -1.567388, 1.847986 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 15.196225, 2.885243, 2.995062 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},
@@ -143,8 +133,8 @@
 						{
 							bonename = ""
 							radius = 1.72539
-							point0 = [ -1.12765, -0.115611, -3.49755 ]
-							point1 = [ 0.632702, -0.234132, 0.863603 ]
+							point0 = [ 8.79145, 5.32282, 1.94201 ]
+							point1 = [ 6.02186, -1.78886, 2.36587 ]
 						}
 					},
 				]

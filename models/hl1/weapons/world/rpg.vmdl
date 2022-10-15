@@ -41,22 +41,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeCapsule"
+						_class = "PhysicsHullFromRender"
 						parent_bone = "cylinder01"
 						surface_prop = "default"
 						collision_tags = "solid"
-						radius = 5.737674
-						point0 = [ 0.225688, 0.039441, 71.033356 ]
-						point1 = [ -0.222581, -0.329327, 1.949232 ]
-					},
-					{
-						_class = "PhysicsShapeBox"
-						parent_bone = "cylinder01"
-						surface_prop = "default"
-						collision_tags = "solid"
-						origin = [ -5.200858, -6.389993, 21.908527 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 7.417962, 7.972105, 10.424395 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},

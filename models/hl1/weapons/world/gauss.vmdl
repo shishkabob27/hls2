@@ -61,13 +61,12 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeBox"
-						parent_bone = "hold_R"
+						_class = "PhysicsHullFromRender"
+						parent_bone = "box02"
 						surface_prop = "default"
 						collision_tags = "solid"
-						origin = [ 9.701142, -2.114213, 2.285732 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 6.47657, 36.110973, 9.731937 ]
+						faceMergeAngle = 20.0
+						maxHullVertices = 32
 					},
 				]
 			},

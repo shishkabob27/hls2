@@ -103,6 +103,15 @@
 						point0 = [ -13.985236, 1.569741, -12.222603 ]
 						point1 = [ -13.528501, 1.773009, 12.349819 ]
 					},
+					{
+						_class = "PhysicsShapeCylinder"
+						parent_bone = "line01"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 2.269182
+						point0 = [ -11.412401, -8.340722, 1.150371 ]
+						point1 = [ -4.627405, 1.016499, 1.310385 ]
+					},
 				]
 			},
 			{
