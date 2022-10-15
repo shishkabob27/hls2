@@ -244,6 +244,12 @@
 	public override void Simulate( Client owner )
 	{
 		ViewModelEntity?.SetAnimParameter( "doidle", HLGame.hl_viewmodel_idle_fix );
+
+		if ( AmmoClip == 0 )
+		{
+			Reload();
+		}
+
 		if ( IsReloadingAlt && TimeSinceAltReload > AltReloadTime )
 		{
 			OnAltReloadFinish();
