@@ -142,6 +142,10 @@ iconpanel {
         .seperator 
         {
             right: 0px;
+
+            &.invisible{
+                display: none;
+            }
         }
     }
 }
