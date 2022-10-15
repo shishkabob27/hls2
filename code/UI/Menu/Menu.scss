@@ -313,23 +313,13 @@ MenuRootPanel {
 
     > .thumb {
         z-index: 1;
-        background-color: rgba(76,88,68,255);
+        background-color: orange;
         position: absolute;
         width: 32px;
         height: 16px;
         border-radius: 0px;
         box-shadow: 0px 0px 0px black;
         transition: all 0s ease-out;
-
-        &:hover {
-            background-color: rgba(76,88,68,255);
-        }
-    }
-
-    &:active {
-        > .thumb {
-            background-color: rgba(76,88,68,255);
-        }
     }
 
     > .scalestepmin {
@@ -373,7 +363,7 @@ MenuRootPanel {
         left: 0px;
         right: 16px;
         height: 18px;
-        background-color: rgb(31, 31, 31);
+        background-color: rgb(0, 0, 0);
         border-radius: 0px;
         border: 5px solid #424542;
     }
@@ -391,15 +381,14 @@ MenuRootPanel {
         width: 48px;
         height: 24px;
         overflow: hidden;
-        margin-left: 10px;
+        justify-content: center;
+        align-items: center;
         border-bottom: 1px solid #889180;
         border-right: 1px solid #889180;
         border-top: 1px solid #282e22;
         border-left: 1px solid #282e22;
         background-color: #3e4637;
-        margin-left: 0px;
         font-size: 13px;
-        margin-right: 8px;
     }
 }
 
