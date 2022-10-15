@@ -51,7 +51,6 @@ partial class item_sodacan : ModelEntity
 		base.StartTouch( other );
 
 		if ( other is not HLPlayer player ) return;
-		if ( player.Health >= 100 ) return;
 
 		var newhealth = player.Health + 1;
 
