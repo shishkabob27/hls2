@@ -116,11 +116,21 @@
 			maxs = maxsOverride;
 		}
 		NewMoveHelper mover = new NewMoveHelper( Entity.Position, Entity.Velocity );
-
+		
 		mover.Trace = mover.Trace
 			.Size( mins, maxs )
 			.Ignore( Entity )
 			.WithoutTags( "player" );
+		/*
+		if (Entity is ModelEntity mdl)
+		{
+			mover.Trace = Trace.Sweep( mdl.PhysicsBody, mdl.Transform )
+				.Ignore( Entity )
+				.WithoutTags( "player" );
+			mover.TryUnstuck();
+				
+		}
+		*/
 		mover.GroundBounce = GroundBounce;
 		mover.WallBounce = WallBounce;
 		mover.TryMoveWithStep( Time.Delta, HL1GameMovement.sv_stepsize );
