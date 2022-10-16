@@ -25,9 +25,12 @@ public class GUIPanel : Panel
     protected override void OnMouseDown( MousePanelEvent e )
     {
         base.OnMouseDown( e );
-        Focus();
-        Parent.SortChildren( x => x.HasFocus ? 1 : 0 );
-    }
+		if (!HasFocus)
+		{
+			Focus();
+		}
+		Parent.SortChildren( x => x.HasFocus ? 1 : 0 );
+	}
     public override void Tick()
     {
         Style.ZIndex = Parent.GetChildIndex( this );

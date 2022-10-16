@@ -165,6 +165,7 @@ IconPanel {
     background-color: #3e4637;
     font-size: 13px;
     align-items: center;
+    white-space:nowrap;
     padding: 5px;
 
     .placeholder {
@@ -178,11 +179,7 @@ IconPanel {
         .placeholder {
             display: flex;
             pointer-events: none;
-        }
-
-        .content-label {
-            display: none;
-        }
+        } 
     }
 }
 
