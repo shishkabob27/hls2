@@ -244,7 +244,7 @@
 	{
 		ViewModelEntity?.SetAnimParameter( "doidle", HLGame.hl_viewmodel_idle_fix );
 
-		if ( AmmoClip == 0 )
+		if ( AmmoClip == 0 && !IsReloading && ClipSize > 0 )
 		{
 			Reload();
 		}
