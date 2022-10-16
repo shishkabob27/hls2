@@ -34,6 +34,7 @@ partial class HL1GameMovement
 	[ConVar.Replicated] public static float sv_duckkeyspeed { get; set; } = 0.333f;
 	[ConVar.Replicated] public static bool sv_autojump { get; set; } = false;
 	[ConVar.Replicated] public static bool sv_enablebunnyhopping { get; set; } = true;
+	[ConVar.Replicated] public static bool sv_enablebackhopping { get; set; } = false;
 	[ConVar.Replicated] public static bool sv_use_sbox_movehelper { get; set; } = true;
 
 	[ConVar.Replicated] public static bool sv_wings { get; set; } = false;

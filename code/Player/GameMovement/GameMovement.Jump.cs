@@ -36,6 +36,10 @@
 
 		if ( !sv_enablebunnyhopping )
 			PreventBunnyJumping();
+
+		if ( sv_enablebackhopping )
+			AllowAcceleratedBackHopping();
+
 		ClearGroundEntity();
 
 
@@ -75,5 +79,28 @@
 		float fraction = (maxscaledspeed / spd);
 
 		Velocity *= fraction;
+	}
+	public virtual void AllowAcceleratedBackHopping()
+	{
+		// We give a certain percentage of the current forward movement as a bonus to the jump speed.  That bonus is clipped
+		// to not accumulate over time.
+		var forward = Rotation.Forward.WithZ( 0 ).Normal;
+		//float flSpeedBoostPerc = (!pMoveData->m_bIsSprinting && !player->m_Local.m_bDucked) ? 0.5f : 0.1f;
+		float flSpeedBoostPerc = (!Input.Down(InputButton.Run) && !IsDucking) ? 0.5f : 0.1f;
+		float flSpeedAddition = MathF.Abs( ForwardMove * flSpeedBoostPerc );
+		float flMaxSpeed = sv_maxspeed + (sv_maxspeed * flSpeedBoostPerc);
+		float flNewSpeed = (flSpeedAddition + Velocity.Length);
+
+		// If we're over the maximum, we want to only boost as much as will get us to the goal speed
+		if ( flNewSpeed > flMaxSpeed )
+		{
+			flSpeedAddition -= flNewSpeed - flMaxSpeed;
+		}
+
+		if ( ForwardMove < 0.0f )
+			flSpeedAddition *= -1.0f;
+		// Add it on
+		Velocity = Velocity + (forward * flSpeedAddition);
+
 	}
 }
