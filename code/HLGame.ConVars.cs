@@ -58,4 +58,8 @@
 	[ConVar.Client] public static bool hl_viewmodel_idle_fix { get; set; } = false;
 	[ConVar.Replicated] public static bool hl_fix_ducking_footsteps { get; set; } = false;
 
+	// TWEAKS 
+	[ConVar.Replicated] public static bool hl_dynamic_light { get; set; } = false;
+
+
 }
