@@ -231,14 +231,12 @@ MenuRootPanel {
     min-width: 40px;
     height: 19px;
     margin-bottom: 32px;
-    cursor: pointer;
 
     .checkpanel, iconpanel {
         flex-shrink: 0;
         width: 40px;
         height: 40px;
         border: 5px solid rgba(103,100,88,255);
-        border-radius: 1px;
         margin-right: 8px;
         color: white;
 
@@ -390,8 +388,8 @@ MenuRootPanel {
         align-items: center;
         border-bottom: 1px solid #8a8a8a;
         border-right: 1px solid #8a8a8a;
-        border-top: 1px solid #282e22;
-        border-left: 1px solid #282e22;
+        border-top: 1px solid #313131;
+        border-left: 1px solid #313131;
         background-color: #444444;
         font-size: 12px;
     }
