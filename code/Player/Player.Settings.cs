@@ -28,7 +28,10 @@
             HLGame.hl_pm_colour1 = a.PlayerModelColour1;
             HLGame.hl_pm_colour2 = a.PlayerModelColour2;
             HLGame.hl_classic_explosion = a.ClassicExplosions;
-
+			HLGame.hl_classic_gibs = a.ClassicGibs;
+			HLGame.hl_ragdoll = a.Ragdoll;
+			HLGame.hl_vr_pointer = a.VRPointer;
+			HLGame.cl_himodels = a.HDModels;
 
             ConsoleSystem.Run( "hl_viewroll " + ( a.ViewRoll ? 2 : 0 ) );
             ConsoleSystem.Run( "hl_spray_icon " + a.SprayImage );
@@ -37,6 +40,10 @@
             ConsoleSystem.Run( "hl_pm_colour1 " + a.PlayerModelColour1 );
             ConsoleSystem.Run( "hl_pm_colour2 " + a.PlayerModelColour2 );
             ConsoleSystem.Run( "hl_classic_explosion " + a.ClassicExplosions );
+			ConsoleSystem.Run( "hl_classic_gibs " + a.ClassicGibs );
+			ConsoleSystem.Run( "hl_ragdoll " + a.Ragdoll );
+			ConsoleSystem.Run( "hl_vr_pointer " + a.VRPointer );
+			ConsoleSystem.Run( "cl_himodels " + a.HDModels );
             ConsoleSystem.Run( "hl_updatepm" );
             Log.Info( "Loaded Convars!" );
         }
@@ -66,7 +73,11 @@
             PlayerModel = ConsoleSystem.Caller.GetClientData( "hl_pm" ),
             PlayerModelColour1 = ConsoleSystem.Caller.GetClientData( "hl_pm_colour1" ).ToInt(),
             PlayerModelColour2 = ConsoleSystem.Caller.GetClientData( "hl_pm_colour2" ).ToInt(),
-            ClassicExplosions = ConsoleSystem.Caller.GetClientData( "hl_classic_explosion" ).ToBool()
+            ClassicExplosions = ConsoleSystem.Caller.GetClientData( "hl_classic_explosion" ).ToBool(),
+			ClassicGibs = ConsoleSystem.Caller.GetClientData( "hl_classic_gibs" ).ToBool(),
+			Ragdoll = ConsoleSystem.Caller.GetClientData( "hl_ragdoll" ).ToBool(),
+			VRPointer = ConsoleSystem.Caller.GetClientData( "hl_vr_pointer" ).ToBool(),
+			HDModels = ConsoleSystem.Caller.GetClientData( "cl_himodels" ).ToBool()
         };
         SaveSettings( a );
     }
@@ -82,10 +93,14 @@ public class PlayerSettingsData
 {
     public bool ClassicTorch { get; set; }
     public bool ClassicExplosions { get; set; }
+	public bool ClassicGibs { get; set; }
     public bool ViewRoll { get; set; }
     public string PlayerModel { get; set; }
     public int PlayerModelColour1 { get; set; }
     public int PlayerModelColour2 { get; set; }
     public string SprayImage { get; set; }
     public string SprayColour { get; set; }
+	public bool Ragdoll { get; set; }
+	public bool VRPointer { get; set; }
+	public bool HDModels { get; set; }
 }
