@@ -8,11 +8,12 @@ partial class Battery : ModelEntity, IRespawnableEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/gameplay/battery.vmdl" );
 
-	[Property]
 	PointLightEntity Light { get; set; }
 	PointLightEntity Light2 { get; set; }
 	PointLightEntity Light3 { get; set; }
 	PointLightEntity Light4 { get; set; }
+	
+	bool isSetup = false;
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -52,18 +53,23 @@ partial class Battery : ModelEntity, IRespawnableEntity
 		Light4.DynamicShadows = true;
 		Light4.Enabled = HLGame.hl_dynamic_light;
 
+		isSetup = true;
+
 		Model = WorldModel;
 		var c = Components.GetOrCreate<Movement>();
 
 		Tags.Add("weapon");
 	}
-	[Event.Tick] 
+	[Event.Tick.Server] 
 	void tick()
 	{
-		Light.Enabled = HLGame.hl_dynamic_light;
-		Light2.Enabled = HLGame.hl_dynamic_light;
-		Light3.Enabled = HLGame.hl_dynamic_light;
-		Light4.Enabled = HLGame.hl_dynamic_light;
+		if (isSetup)
+		{
+			Light.Enabled = HLGame.hl_dynamic_light;
+			Light2.Enabled = HLGame.hl_dynamic_light;
+			Light3.Enabled = HLGame.hl_dynamic_light;
+			Light4.Enabled = HLGame.hl_dynamic_light;
+		}
 	}
 	public override void StartTouch( Entity other )
 	{
