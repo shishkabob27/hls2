@@ -332,8 +332,8 @@ MenuRootPanel {
         flex-grow: 1;
         top: 25px;
         justify-content: flex-start;
-        color: #889180;
-        font-size: 9px;
+        color: #8d8d8d;
+        font-size: 12px;
     }
 
     > .scalestepmax {
@@ -343,8 +343,8 @@ MenuRootPanel {
         top: 25px;
         right: 8px;
         text-align: right;
-        font-size: 9px;
-        color: #889180;
+        font-size: 12px;
+        color: #8d8d8d;
     }
 
     > .scalesteps {
@@ -356,7 +356,7 @@ MenuRootPanel {
         justify-content: space-between;
 
         > .step {
-            background-color: #7f8c7f;
+            background-color: #868686;
             width: 1px;
             height: 5px;
         }
@@ -369,7 +369,7 @@ MenuRootPanel {
         height: 16px;
         background-color: rgb(0, 0, 0);
         border-radius: 0px;
-        border: 5px solid #424542;
+        border: 5px solid #444444;
     }
 }
 
@@ -388,11 +388,11 @@ MenuRootPanel {
         margin-left: 8px;
         justify-content: center;
         align-items: center;
-        border-bottom: 1px solid #889180;
-        border-right: 1px solid #889180;
+        border-bottom: 1px solid #8a8a8a;
+        border-right: 1px solid #8a8a8a;
         border-top: 1px solid #282e22;
         border-left: 1px solid #282e22;
-        background-color: #3e4637;
+        background-color: #444444;
         font-size: 12px;
     }
 }
