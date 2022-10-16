@@ -474,6 +474,7 @@ IconPanel {
     }
 
 .popup-panel {
+    pointer-events: all;
     max-height: 134px;
     min-height: 24px;
     margin-top: 1px;
