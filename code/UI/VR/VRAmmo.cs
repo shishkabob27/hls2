@@ -20,8 +20,8 @@ public class VRAmmo : WorldPanel
 			//
 			// Offsets
 			//
-			Rotation *= new Angles(0, -90, 120).ToRotation();
-			Position += Rotation.Forward * 4 + Rotation.Up * 6 - Rotation.Left * 0;
+			Rotation *= new Angles(0, 90, 75).ToRotation();
+			Position += Rotation.Forward * 2 + Rotation.Up * 0 - Rotation.Left * 0;
 			WorldScale = 0.1f;
 			Scale = 5f;
 
