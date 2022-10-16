@@ -69,6 +69,7 @@
 	public void Simulate()
 	{
 
+		if ( Entity == null ) return;
 		if ( Entity.Owner is HLPlayer && Entity is HLWeapon ) return;
 		if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
 			return;
