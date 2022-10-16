@@ -35,6 +35,7 @@ public class Ammo : Panel
 
 		Seperator.SetClass( "invisible", true );
 		AmmoIcon1.SetClass( "invisible", true );
+		AmmoIcon2.SetClass( "invisible", true );
 
 		var player = Local.Pawn as HLPlayer;
 		if ( player == null ) return;
