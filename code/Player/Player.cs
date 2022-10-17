@@ -443,6 +443,7 @@
 			SwitchToBestWeapon();
 		}
 		FootstepSounds();
+		SimulateSuit();
 	}
 
 	void ViewPunchThink()
