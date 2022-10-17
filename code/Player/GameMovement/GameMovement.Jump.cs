@@ -82,6 +82,10 @@
 	}
 	public virtual void AllowAcceleratedBackHopping()
 	{
+		if (sv_enablebunnyhopping)
+		{
+			if ( !WishDuck() ) return;
+		}
 		// We give a certain percentage of the current forward movement as a bonus to the jump speed.  That bonus is clipped
 		// to not accumulate over time.
 		var forward = Rotation.Forward.WithZ( 0 ).Normal;
