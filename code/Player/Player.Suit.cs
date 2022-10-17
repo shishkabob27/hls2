@@ -25,7 +25,12 @@
 	{
 		CheckSuitUpdate();
 	}
-
+	void INITSUIT()
+	{
+		SuitPlayList = new string[CSUITPLAYLIST];
+		SuitNoRepeat = new string[CSUITNOREPEAT];
+		SuitNoRepeatTime = new float[CSUITNOREPEAT];
+	}
 	// add sentence to suit playlist queue. if fgroup is true, then
 	// name is a sentence group (HEV_AA), otherwise name is a specific
 	// sentence name ie: !HEV_AA0.  If iNoRepeat is specified in
@@ -77,6 +82,8 @@
 
 		for ( i = 0; i < CSUITNOREPEAT; i++ )
 		{
+
+			
 			if ( name == SuitNoRepeat[i] )
 			{
 				// this sentence or group is already in 
@@ -98,7 +105,10 @@
 			}
 			// keep track of empty slot
 			if ( SuitNoRepeat[i] == null )
+			{
 				iempty = i;
+				break;
+			}
 		}
 
 		// sentence is not in norepeat list, save if norepeat time was given
@@ -114,6 +124,7 @@
 		// find empty spot in queue, or overwrite last spot
 
 		SuitPlayList[SuitPlayNext++] = name;
+		Log.Info( name );
 		if ( SuitPlayNext == CSUITPLAYLIST )
 			SuitPlayNext = 0;
 
@@ -148,7 +159,7 @@
 			return;
 		}
 
-		if ( Time.Now >= SuitUpdate && SuitUpdate > 0 )
+		if ( Time.Now >= SuitUpdate )
 		{
 			// play a sentence off of the end of the queue
 			for ( i = 0; i < CSUITPLAYLIST; i++ )
@@ -162,8 +173,8 @@
 
 			if ( isentence != null )
 			{
-				SuitPlayList[isearch] = "";
-				if ( isentence != "" )
+				SuitPlayList[isearch] = null;
+				if ( isentence != null && SuitUpdate > 0 )
 				{
 					// play sentence number
 
@@ -171,7 +182,7 @@
 					//strcpy( sentence, "!" );
 					//strcat( sentence, gszallsentencenames[isentence] );
 					//EMIT_SOUND_SUIT( ENT( pev ), sentence );
-					PlaySoundFromScreen( isentence );
+					PlaySound( isentence );
 				}
 				else
 				{
@@ -184,5 +195,120 @@
 				// queue is empty, don't check 
 				SuitUpdate = 0;
 		}
+	}
+	void SuitTalkDamage(DamageInfo dmg)
+	{
+		bool ftrivial = (Health > 75 || LastDamage.Damage < 5);
+		bool fmajor = (LastDamage.Damage > 25);
+		bool fcritical = (Health < 30);
+
+		// handle all bits set in this damage message,
+		// let the suit give player the diagnosis
+
+		// UNDONE: add sounds for types of damage sustained (ie: burn, shock, slash )
+
+		// UNDONE: still need to record damage and heal messages for the following types
+
+		// DMG_BURN	
+		// DMG_FREEZE
+		// DMG_BLAST
+		// DMG_SHOCK
+		 
+
+			if ( dmg.Flags.HasFlag(DamageFlags.Blunt) )
+			{
+				if ( fmajor )
+					SetSuitUpdate( "HEV_DMG4", 0, SUIT_NEXT_IN_30SEC );    // minor fracture
+			}
+			if ( (dmg.Flags.HasFlag( DamageFlags.Fall ) | dmg.Flags.HasFlag( DamageFlags.Crush )) )
+			{
+				if ( fmajor )
+					SetSuitUpdate( "HEV_DMG5", 0, SUIT_NEXT_IN_30SEC );    // major fracture
+				else
+					SetSuitUpdate( "HEV_DMG4", 0, SUIT_NEXT_IN_30SEC );    // minor fracture
+			}
+
+			if ( dmg.Flags.HasFlag( DamageFlags.Bullet ) )
+			{
+				if ( LastDamage.Damage > 5 )
+					SetSuitUpdate( "HEV_DMG6", 0, SUIT_NEXT_IN_30SEC );    // blood loss detected
+																				//else
+																				//	SetSuitUpdate("!HEV_DMG0", FALSE, SUIT_NEXT_IN_30SEC);	// minor laceration
+			}
+
+			if ( dmg.Flags.HasFlag( DamageFlags.Slash ) )
+			{
+				if ( fmajor )
+					SetSuitUpdate( "HEV_DMG1", 0, SUIT_NEXT_IN_30SEC );    // major laceration
+				else
+					SetSuitUpdate( "HEV_DMG0", 0, SUIT_NEXT_IN_30SEC );    // minor laceration
+			}
+
+			if ( dmg.Flags.HasFlag( DamageFlags.Sonic ) )
+			{
+				if ( fmajor )
+					SetSuitUpdate( "HEV_DMG2", 0, SUIT_NEXT_IN_1MIN ); // internal bleeding
+			}
+
+			if ( (dmg.Flags.HasFlag( DamageFlags.Poison ) | dmg.Flags.HasFlag( DamageFlags.Paralyze )) )
+			{
+				SetSuitUpdate( "HEV_DMG3", 0, SUIT_NEXT_IN_1MIN ); // blood toxins detected
+			}
+
+			if ( dmg.Flags.HasFlag( DamageFlags.Acid ) )
+			{
+				SetSuitUpdate( "HEV_DET1", 0, SUIT_NEXT_IN_1MIN ); // hazardous chemicals detected
+			}
+
+			if ( dmg.Flags.HasFlag( DamageFlags.NerveGas ) )
+			{
+				SetSuitUpdate( "HEV_DET0", 0, SUIT_NEXT_IN_1MIN ); // biohazard detected
+			}
+
+			if ( dmg.Flags.HasFlag( DamageFlags.Radiation ) )
+			{
+				SetSuitUpdate( "HEV_DET2", 0, SUIT_NEXT_IN_1MIN ); // radiation detected
+			}
+			if ( dmg.Flags.HasFlag( DamageFlags.Shock ) )
+			{
+			}
+
+
+		if ( !ftrivial && fmajor && healthPrev >= 75 )
+		{
+			// first time we take major damage...
+			// turn automedic on if not on
+			SetSuitUpdate( "HEV_MED1", 0, SUIT_NEXT_IN_30MIN );    // automedic on
+
+			// give morphine shot if not given recently
+			SetSuitUpdate( "HEV_HEAL7", 0, SUIT_NEXT_IN_30MIN );   // morphine shot
+		}
+
+		if ( !ftrivial && fcritical && healthPrev < 75 )
+		{
+
+			// already took major damage, now it's critical...
+			if ( Health < 6 )
+				SetSuitUpdate( "HEV_HLTH3", 0, SUIT_NEXT_IN_10MIN );   // near death
+			else if ( Health < 20 )
+				SetSuitUpdate( "HEV_HLTH2", 0, SUIT_NEXT_IN_10MIN );   // health critical
+
+			// give critical health warnings
+			if ( !(Rand.Int( 0, 3 ) == 0) && healthPrev < 50 )
+				SetSuitUpdate( "HEV_DMG7", 0, SUIT_NEXT_IN_5MIN ); //seek medical attention
+		}
+
+		// if we're taking time based damage, warn about its continuing effects
+		if ( dmg.Flags.HasFlag( DamageFlags.Burn ) && healthPrev < 75 )
+		{
+			if ( Health < 50 )
+			{
+				if ( Rand.Int( 0, 3 ) != 0 )
+					SetSuitUpdate( "HEV_DMG7", 0, SUIT_NEXT_IN_5MIN ); //seek medical attention
+			}
+			else
+				SetSuitUpdate( "HEV_HLTH1", 0, SUIT_NEXT_IN_10MIN );   // health dropping
+		}
+
 	}
 }

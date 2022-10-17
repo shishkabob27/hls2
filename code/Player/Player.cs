@@ -544,6 +544,7 @@
 	const float ARMOUR_BONUS = 0.5f;
 
 
+	float healthPrev = 100;
 
 	DamageInfo LastDamage;
 
@@ -560,6 +561,7 @@
 
 	public override void TakeDamage( DamageInfo info )
 	{
+		healthPrev = Health;
 		if ( LifeState == LifeState.Dead )
 			return;
 
@@ -658,6 +660,7 @@
 			}
 		}
 
+		SuitTalkDamage( info );
 
 		var b = punchangle;
 		b.x = -2;
