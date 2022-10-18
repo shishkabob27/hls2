@@ -672,6 +672,19 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		LastAttacker = info.Attacker;
 		LastAttackerWeapon = info.Weapon;
 
+		if ( info.Hitbox.HasTag( "generic" ) )
+			info.Damage *= 1;
+		if ( info.Hitbox.HasTag( "head" ) )
+			info.Damage *= 3;
+		if ( info.Hitbox.HasTag( "chest" ) )
+			info.Damage *= 1;
+		if ( info.Hitbox.HasTag( "stomach" ) )
+			info.Damage *= 1;
+		if ( info.Hitbox.HasTag( "arm" ) )
+			info.Damage *= 1;
+		if ( info.Hitbox.HasTag( "leg" ) )
+			info.Damage *= 1;
+
 		switch ( GetHitboxGroup( info.HitboxIndex ) )
 		{
 			case HITGROUP_GENERIC:
