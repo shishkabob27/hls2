@@ -9,13 +9,13 @@ public class Options : GUIPanel
 	public bool bCguiscale { get; set; } = true;
 	public bool bCpixelfont { get; set; } = true;
 	public bool bCliveupdate { get; set; } = false;
-	public bool bCragdolls { get; set; } = false;
+	public bool bCragdolls { get; set; }
 	public bool bColdTorch { get; set; }
 	public bool bColdGibs { get; set; }
 	public float fChudScale { get; set; }
 	public float fCpmColour1 { get; set; }
 	public float fCpmColour2 { get; set; }
-	public bool bColdexplosion { get; set; } = true;
+	public bool bColdexplosion { get; set; }
 	public bool bCFixCrouchFootstep { get; set; }
 	public bool bCFixMysteryViewbob { get; set; }
 	public bool bCFixViewmodelIdle { get; set; }
@@ -116,7 +116,6 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_pixelfont " + (bCpixelfont ? 1 : 0) );
 		ConsoleSystem.Run( "cl_himodels " + (bChimodels ? 1 : 0) );
 		ConsoleSystem.Run( "hl_vr_pointer " + (bCvrpointer ? 1 : 0) );
-		ConsoleSystem.Run( "hl_ragdoll " + (bCragdolls ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_flashlight " + (bColdTorch ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_explosion " + (bColdexplosion ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_gibs " + (bColdGibs ? 1 : 0) );
