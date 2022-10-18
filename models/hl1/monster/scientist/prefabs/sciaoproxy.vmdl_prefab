@@ -1,0 +1,286 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:modeldoc29:version{3cec427c-1b0e-4d48-a90a-0436f33a6041} -->
+{
+	rootNode = 
+	{
+		_class = "RootNode"
+		children = 
+		[
+			{
+				_class = "GameDataList"
+				children = 
+				[
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_pelvis"
+							dimensions = [ 11.800291, 9.986214, 13.300847 ]
+							offset_origin = [ -0.775074, 0.177811, 0.182172 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 5.0
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 10.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_l_leg"
+							dimensions = [ 19.219671, 9.307997, 6.986276 ]
+							offset_origin = [ 9.109836, -1.036802, -0.060183 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 3.69043
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 10.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_l_leg1"
+							dimensions = [ 17.467281, 5.991176, 5.389153 ]
+							offset_origin = [ 8.233641, -0.781637, -0.279145 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 3.1
+							point0 = [ -2.0248, 0.0, 0.0 ]
+							point1 = [ 15.0864, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_l_foot"
+							dimensions = [ 4.126887, 10.472542, 4.6049 ]
+							offset_origin = [ 1.563444, 2.943253, -0.843081 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.0
+							point0 = [ 1.16682, -0.292291, -0.046619 ]
+							point1 = [ 2.12617, 5.64336, -0.755451 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_r_leg"
+							dimensions = [ 19.149687, 9.554454, 7.166857 ]
+							offset_origin = [ 9.074843, -1.188938, -0.189021 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 3.71052
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 10.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_r_leg1"
+							dimensions = [ 17.479456, 6.016066, 5.570403 ]
+							offset_origin = [ 8.239728, -0.846732, 0.200107 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 3.1
+							point0 = [ -2.21945, 0.0, 0.0 ]
+							point1 = [ 15.0768, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_r_foot"
+							dimensions = [ 4.11774, 10.472434, 4.37973 ]
+							offset_origin = [ 1.55887, 2.942248, 0.800403 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.0
+							point0 = [ 1.56558, -0.459124, -0.044028 ]
+							point1 = [ 2.64322, 5.64659, 0.673275 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_spine"
+							dimensions = [ 5.818531, 4.25425, 13.750667 ]
+							offset_origin = [ 2.409266, -1.227867, 0.043653 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 5.58051
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 10.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_spine1"
+							dimensions = [ 6.201839, 9.576366, 12.123322 ]
+							offset_origin = [ 2.600919, 0.884336, -0.143306 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 5.12283
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 8.68107, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_spine2"
+							dimensions = [ 9.681408, 8.593341, 11.425318 ]
+							offset_origin = [ 4.340704, 0.641255, -0.264211 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.22107
+							point0 = [ 7.24314, 1.28827, 0.235495 ]
+							point1 = [ 9.10682, 1.74298, 0.195173 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_head"
+							dimensions = [ 10.012499, 9.449645, 7.582356 ]
+							offset_origin = [ 4.506249, 1.506268, 0.323768 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 4.15015
+							point0 = [ 2.27734, 1.63142, 0.220239 ]
+							point1 = [ 5.77268, 1.63142, 0.220239 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_l_arm"
+							dimensions = [ 5.978314, 6.129437, 3.463455 ]
+							offset_origin = [ 2.489157, -0.112346, -0.146466 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.5
+							point0 = [ 0.768637, -0.260027, -1.04476 ]
+							point1 = [ 5.68222, -0.260027, -1.04476 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_l_arm1"
+							dimensions = [ 13.457428, 5.470519, 4.42068 ]
+							offset_origin = [ 6.228714, -0.670187, 0.255944 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.5
+							point0 = [ 0.173672, -0.682064, -0.054422 ]
+							point1 = [ 10.1737, -0.682064, -0.054422 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_l_arm2"
+							dimensions = [ 12.050413, 4.991443, 3.991544 ]
+							offset_origin = [ 5.525207, -0.38949, -0.289022 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.5
+							point0 = [ 0.034021, -0.65213, 0.139138 ]
+							point1 = [ 10.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_l_hand"
+							dimensions = [ 4.620747, 3.443766, 3.749276 ]
+							offset_origin = [ 1.810374, 0.072038, -0.09518 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.5
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 2.2194, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_r_arm"
+							dimensions = [ 6.396871, 6.067796, 3.904055 ]
+							offset_origin = [ 2.698436, -0.054072, 0.50491 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.5
+							point0 = [ -0.008971, 0.176346, 0.703856 ]
+							point1 = [ 5.39096, 0.176346, 0.703856 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_r_arm1"
+							dimensions = [ 13.420549, 5.753582, 4.830965 ]
+							offset_origin = [ 6.210275, -0.474743, -0.299482 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.5
+							point0 = [ 0.698109, -0.57515, 0.122199 ]
+							point1 = [ 10.6981, -0.57515, 0.122199 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_r_arm2"
+							dimensions = [ 11.755957, 5.176096, 4.43181 ]
+							offset_origin = [ 5.377978, -0.365522, 0.239656 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.5
+							point0 = [ -0.048013, -0.901412, -0.233707 ]
+							point1 = [ 10.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_capsule"
+						game_keys = 
+						{
+							bonename = "bip02_r_hand"
+							dimensions = [ 4.432102, 3.4524, 3.859198 ]
+							offset_origin = [ 1.716051, -0.127039, 0.15065 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+							radius = 2.2
+							point0 = [ 0.0, 0.0, 0.0 ]
+							point1 = [ 2.16211, 0.0, 0.0 ]
+						}
+					},
+				]
+			},
+		]
+		model_archetype = ""
+		primary_associated_entity = ""
+		anim_graph_name = ""
+		base_model_name = ""
+	}
+}

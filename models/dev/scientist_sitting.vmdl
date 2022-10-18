@@ -184,7 +184,7 @@
 								parent_bone = "bip02_pelvis"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -6.675219, -4.815296, -6.468251 ]
 								hitbox_maxs = [ 5.125072, 5.170918, 6.832596 ]
 							},
@@ -194,7 +194,7 @@
 								parent_bone = "bip02_l_leg"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 6
+								tags = ""
 								hitbox_mins = [ -0.5, -5.6908, -3.553321 ]
 								hitbox_maxs = [ 18.719671, 3.617196, 3.432955 ]
 							},
@@ -204,7 +204,7 @@
 								parent_bone = "bip02_l_leg1"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 6
+								tags = ""
 								hitbox_mins = [ -0.5, -3.777225, -2.973722 ]
 								hitbox_maxs = [ 16.967281, 2.213951, 2.415431 ]
 							},
@@ -214,7 +214,7 @@
 								parent_bone = "bip02_l_foot"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 6
+								tags = ""
 								hitbox_mins = [ -0.5, -2.293018, -3.145531 ]
 								hitbox_maxs = [ 3.626887, 8.179523, 1.459369 ]
 							},
@@ -224,7 +224,7 @@
 								parent_bone = "bip02_r_leg"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 7
+								tags = ""
 								hitbox_mins = [ -0.5, -5.966165, -3.772449 ]
 								hitbox_maxs = [ 18.649687, 3.588289, 3.394408 ]
 							},
@@ -234,7 +234,7 @@
 								parent_bone = "bip02_r_leg1"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 7
+								tags = ""
 								hitbox_mins = [ -0.5, -3.854765, -2.585094 ]
 								hitbox_maxs = [ 16.979456, 2.161301, 2.985309 ]
 							},
@@ -244,7 +244,7 @@
 								parent_bone = "bip02_r_foot"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 7
+								tags = ""
 								hitbox_mins = [ -0.5, -2.293969, -1.389462 ]
 								hitbox_maxs = [ 3.61774, 8.178465, 2.990268 ]
 							},
@@ -254,7 +254,7 @@
 								parent_bone = "bip02_spine"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 3
+								tags = ""
 								hitbox_mins = [ -0.5, -3.354992, -6.83168 ]
 								hitbox_maxs = [ 5.318531, 0.899258, 6.918987 ]
 							},
@@ -264,7 +264,7 @@
 								parent_bone = "bip02_spine1"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 2
+								tags = ""
 								hitbox_mins = [ -0.5, -3.903847, -6.204967 ]
 								hitbox_maxs = [ 5.701839, 5.672519, 5.918355 ]
 							},
@@ -274,7 +274,7 @@
 								parent_bone = "bip02_spine2"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 2
+								tags = ""
 								hitbox_mins = [ -0.5, -3.655415, -5.97687 ]
 								hitbox_maxs = [ 9.181408, 4.937926, 5.448448 ]
 							},
@@ -284,7 +284,7 @@
 								parent_bone = "bip02_head"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 1
+								tags = ""
 								hitbox_mins = [ -0.5, -3.218555, -3.46741 ]
 								hitbox_maxs = [ 9.512499, 6.23109, 4.114946 ]
 							},
@@ -294,7 +294,7 @@
 								parent_bone = "bip02_l_arm"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 4
+								tags = ""
 								hitbox_mins = [ -0.5, -3.177065, -1.878193 ]
 								hitbox_maxs = [ 5.478314, 2.952372, 1.585262 ]
 							},
@@ -304,7 +304,7 @@
 								parent_bone = "bip02_l_arm1"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 4
+								tags = ""
 								hitbox_mins = [ -0.5, -3.405446, -1.954396 ]
 								hitbox_maxs = [ 12.957428, 2.065073, 2.466284 ]
 							},
@@ -314,7 +314,7 @@
 								parent_bone = "bip02_l_arm2"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 4
+								tags = ""
 								hitbox_mins = [ -0.5, -2.885211, -2.284794 ]
 								hitbox_maxs = [ 11.550413, 2.106232, 1.70675 ]
 							},
@@ -324,7 +324,7 @@
 								parent_bone = "bip02_l_hand"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 4
+								tags = ""
 								hitbox_mins = [ -0.5, -1.649845, -1.969818 ]
 								hitbox_maxs = [ 4.120747, 1.793921, 1.779458 ]
 							},
@@ -334,7 +334,7 @@
 								parent_bone = "bip02_r_arm"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 7
+								tags = ""
 								hitbox_mins = [ -0.5, -3.08797, -1.447118 ]
 								hitbox_maxs = [ 5.896871, 2.979826, 2.456937 ]
 							},
@@ -344,7 +344,7 @@
 								parent_bone = "bip02_r_arm1"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 7
+								tags = ""
 								hitbox_mins = [ -0.5, -3.351534, -2.714964 ]
 								hitbox_maxs = [ 12.920549, 2.402048, 2.116001 ]
 							},
@@ -354,7 +354,7 @@
 								parent_bone = "bip02_r_arm2"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 7
+								tags = ""
 								hitbox_mins = [ -0.5, -2.95357, -1.976249 ]
 								hitbox_maxs = [ 11.255957, 2.222526, 2.455561 ]
 							},
@@ -364,11 +364,21 @@
 								parent_bone = "bip02_r_hand"
 								surface_property = "flesh"
 								translation_only = false
-								group_id = 7
+								tags = ""
 								hitbox_mins = [ -0.5, -1.853239, -1.778949 ]
 								hitbox_maxs = [ 3.932102, 1.599161, 2.080249 ]
 							},
 						]
+					},
+				]
+			},
+			{
+				_class = "PrefabList"
+				children = 
+				[
+					{
+						_class = "Prefab"
+						target_file = "models/hl1/monster/scientist/prefabs/sciaoproxy.vmdl_prefab"
 					},
 				]
 			},
