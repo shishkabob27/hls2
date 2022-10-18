@@ -10,7 +10,7 @@
 		Decibels = 70
 		Sounds = 
 		[
-			resource:"sounds/hl1/doors/doormove5.vsnd",
+			resource:"sounds/hl1/doors/doorstop1.vsnd",
 		]
 		SelectionMode = "Random"
 		MaximumDistance = 1143.9335
