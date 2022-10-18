@@ -116,6 +116,7 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_pixelfont " + (bCpixelfont ? 1 : 0) );
 		ConsoleSystem.Run( "cl_himodels " + (bChimodels ? 1 : 0) );
 		ConsoleSystem.Run( "hl_vr_pointer " + (bCvrpointer ? 1 : 0) );
+		ConsoleSystem.Run( "hl_ragdoll " + (bCragdolls ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_flashlight " + (bColdTorch ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_explosion " + (bColdexplosion ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_gibs " + (bColdGibs ? 1 : 0) );
