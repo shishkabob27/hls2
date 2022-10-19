@@ -367,7 +367,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_pelvis_0_mesh"
 						parent_bone = "bip01_pelvis"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -394,7 +394,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_spine2_0_mesh"
 						parent_bone = "bip01_spine2"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -421,7 +421,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_arm1_0_mesh"
 						parent_bone = "bip01_r_arm1"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -448,7 +448,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_arm2_0_mesh"
 						parent_bone = "bip01_r_arm2"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -475,7 +475,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_arm1_0_mesh"
 						parent_bone = "bip01_l_arm1"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -502,7 +502,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_arm2_0_mesh"
 						parent_bone = "bip01_l_arm2"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -529,7 +529,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_hand_0_mesh"
 						parent_bone = "bip01_l_hand"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -556,7 +556,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_hand_0_mesh"
 						parent_bone = "bip01_r_hand"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -583,7 +583,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_leg_0_mesh"
 						parent_bone = "bip01_r_leg"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -610,7 +610,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_leg1_0_mesh"
 						parent_bone = "bip01_r_leg1"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -637,7 +637,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_head_0_mesh"
 						parent_bone = "bip01_head"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -664,7 +664,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_leg_0_mesh"
 						parent_bone = "bip01_l_leg"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -691,7 +691,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_leg1_0_mesh"
 						parent_bone = "bip01_l_leg1"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -718,7 +718,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_foot_0_mesh"
 						parent_bone = "bip01_l_foot"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -745,7 +745,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_foot_0_mesh"
 						parent_bone = "bip01_r_foot"
-						surface_prop = "default"
+						surface_prop = "flesh"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
