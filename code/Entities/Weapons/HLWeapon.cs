@@ -588,7 +588,7 @@
 					tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2500000 * force) );
 					if ( tr.Body.GetDominantSurface().Contains("flesh") && tr.Body.GetDominantSurface().Contains( "yellow" ) )
 					{
-						var trace = Trace.Ray( BPosition, BPosition + BForward * 256 )
+						var trace = Trace.Ray( BPosition, BPosition + BForward * 512 )
 						.WorldOnly()
 						.Ignore( this )
 						.Size( 1.0f )
@@ -601,7 +601,7 @@
 					}
 					else if( tr.Body.GetDominantSurface().Contains( "flesh" ) )
 					{
-						var trace = Trace.Ray( BPosition, BPosition + BForward * 256 )
+						var trace = Trace.Ray( BPosition, BPosition + BForward * 512 )
 						.WorldOnly()
 						.Ignore( this )
 						.Size( 1.0f )
@@ -615,7 +615,7 @@
 				}
 				if ( tr.Entity is NPC )
 				{
-					var trace = Trace.Ray( BPosition, BPosition + BForward * 256 )
+					var trace = Trace.Ray( BPosition, BPosition + BForward * 512 )
 					.WorldOnly()
 					.Ignore( this )
 					.Size( 1.0f )
