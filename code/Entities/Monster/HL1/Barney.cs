@@ -31,7 +31,7 @@ internal class Barney : NPC
     {
         if (rel > 0)
         {
-            targetRotation = Rotation.From(((Position - ent.Position) * -360).EulerAngles);
+            targetRotation = Rotation.LookAt( (ent.Position - Position).Normal.WithZ( 0 ), Vector3.Up);
         }
     }
 

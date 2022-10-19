@@ -657,7 +657,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public override void TakeDamage( DamageInfo info )
 	{
 		if ( LifeState == LifeState.Alive )
-			targetRotation = Rotation.From( ((Position - info.Position) * -360).EulerAngles.WithRoll( 0 ).WithPitch( 0 ) );
+			targetRotation = Rotation.LookAt( (info.Position - Position).Normal.WithZ(0), Vector3.Up );
 		var trace = Trace.Ray( EyePosition, EyePosition + ((Position - info.Position) * 70) * 2 )
 			.WorldOnly()
 			.Ignore( this )

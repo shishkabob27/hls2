@@ -96,11 +96,11 @@ public class Snark : NPC
 		NextHunt = Time.Now + 2.0f;
 		if ( GroundEntity != null )
 		{
-			AngularVelocity = new Vector3( 0, 0, 0 ).EulerAngles;
+			AngularVelocity = Angles.Zero;
 		}
 		else
 		{
-			if ( AngularVelocity == new Vector3( 0, 0, 0 ).EulerAngles )
+			if ( AngularVelocity == Angles.Zero )
 			{
 				var a = AngularVelocity;
 				a.pitch = Rand.Float( -100, 100 );
@@ -159,7 +159,7 @@ public class Snark : NPC
 		NextHunt2 = Time.Now - 1;
 		RotAngles.pitch = 0;
 		RotAngles.roll = 0;
-		AngularVelocity = new Vector3( 0, 0, 0 ).EulerAngles;
+		AngularVelocity = Angles.Zero;
 		flpitch = (float)Math.Sqrt( (155.0f - 60.0f * ((Die - Time.Now) / SQUEEK_DETONATE_DELAY)) / 100 );
 		if ( other is ICombat && other is not Snark && Time.Now > NextSound2 )
 		{

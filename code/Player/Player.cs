@@ -371,7 +371,6 @@
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 			return;
 
-
 		punchangle = punchangle.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
 
 		Forward = Input.Forward;
