@@ -10,9 +10,15 @@
 		Decibels = 70
 		Sounds = 
 		[
+			resource:"sounds/hl1/fvox/boop.vsnd",
+			resource:"sounds/hl1/fvox/_comma.vsnd",
+			resource:"sounds/hl1/fvox/boop.vsnd",
+			resource:"sounds/hl1/fvox/_comma.vsnd",
+			resource:"sounds/hl1/fvox/boop.vsnd",
+			resource:"sounds/hl1/fvox/_comma.vsnd",
 			resource:"sounds/hl1/fvox/major_fracture.vsnd",
 		]
-		SelectionMode = "Random"
+		SelectionMode = "Forward"
 		MaximumDistance = 1143.9335
 		MinimumDistance = 57.196674
 	}
