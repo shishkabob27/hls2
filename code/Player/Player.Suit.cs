@@ -182,7 +182,8 @@
 					//strcpy( sentence, "!" );
 					//strcat( sentence, gszallsentencenames[isentence] );
 					//EMIT_SOUND_SUIT( ENT( pev ), sentence );
-					PlaySound( isentence );
+					//PlaySound( isentence );
+					Sentence.Play( isentence, this );
 				}
 				else
 				{
