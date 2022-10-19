@@ -8,6 +8,8 @@ partial class PhysGun : HLWeapon
 	public override string InventoryIconSelected => "/ui/weapons/weapon_gauss_selected.png";
 	public override int Bucket => 0;
 	public override int BucketWeight => 1000;
+	public override AmmoType AmmoType => AmmoType.None;
+	public override int ClipSize => 0;
 
 	protected PhysicsBody heldBody;
 	protected Vector3 heldPos;
