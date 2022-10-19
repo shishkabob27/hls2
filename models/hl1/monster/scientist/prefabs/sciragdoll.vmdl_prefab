@@ -12,7 +12,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_pelvis"
-						mass_override = 10.0
+						mass_override = 13.831768
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -22,7 +22,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_spine2"
-						mass_override = 10.0
+						mass_override = 32.53458
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -32,7 +32,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_r_arm1"
-						mass_override = 2.0
+						mass_override = 3.535479
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -42,7 +42,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_r_arm2"
-						mass_override = 2.0
+						mass_override = 2.52288
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -52,7 +52,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_l_arm1"
-						mass_override = 2.0
+						mass_override = 3.535455
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -62,7 +62,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_l_arm2"
-						mass_override = 2.0
+						mass_override = 2.5229
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -92,7 +92,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_r_leg"
-						mass_override = 8.0
+						mass_override = 12.339385
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -102,7 +102,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_r_leg1"
-						mass_override = 5.0
+						mass_override = 7.223018
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -112,7 +112,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_head"
-						mass_override = 10.0
+						mass_override = 9.209369
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 5.0
@@ -122,7 +122,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_l_leg"
-						mass_override = 8.0
+						mass_override = 12.339387
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -132,7 +132,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_l_leg1"
-						mass_override = 5.0
+						mass_override = 7.223115
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -142,7 +142,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_l_foot"
-						mass_override = 3.0
+						mass_override = 3.230259
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -152,7 +152,7 @@
 					{
 						_class = "PhysicsBodyMarkup"
 						target_body = "bip02_r_foot"
-						mass_override = 3.0
+						mass_override = 3.230277
 						inertia_scale = 10.0
 						linear_damping = 0.01
 						angular_damping = 1.5
@@ -367,7 +367,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_pelvis_0_mesh"
 						parent_bone = "bip02_pelvis"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -394,7 +394,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_spine2_0_mesh"
 						parent_bone = "bip02_spine2"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -421,7 +421,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_arm1_0_mesh"
 						parent_bone = "bip02_r_arm1"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -448,7 +448,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_arm2_0_mesh"
 						parent_bone = "bip02_r_arm2"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -475,7 +475,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_arm1_0_mesh"
 						parent_bone = "bip02_l_arm1"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -502,7 +502,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_arm2_0_mesh"
 						parent_bone = "bip02_l_arm2"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -529,7 +529,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_hand_0_mesh"
 						parent_bone = "bip02_l_hand"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -556,7 +556,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_hand_0_mesh"
 						parent_bone = "bip02_r_hand"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -583,7 +583,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_leg_0_mesh"
 						parent_bone = "bip02_r_leg"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -610,7 +610,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_leg1_0_mesh"
 						parent_bone = "bip02_r_leg1"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -637,7 +637,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_head_0_mesh"
 						parent_bone = "bip02_head"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -664,7 +664,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_leg_0_mesh"
 						parent_bone = "bip02_l_leg"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -691,7 +691,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_leg1_0_mesh"
 						parent_bone = "bip02_l_leg1"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -718,7 +718,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_l_foot_0_mesh"
 						parent_bone = "bip02_l_foot"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
@@ -745,7 +745,7 @@
 						_class = "PhysicsHullFile"
 						name = "bip01_r_foot_0_mesh"
 						parent_bone = "bip02_r_foot"
-						surface_prop = "flesh"
+						surface_prop = "default"
 						collision_tags = "solid"
 						recenter_on_parent_bone = true
 						offset_origin = [ 0.0, 0.0, 0.0 ]
