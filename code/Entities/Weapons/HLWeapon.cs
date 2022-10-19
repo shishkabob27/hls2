@@ -5,6 +5,8 @@
 
 	[Net, Predicted]
 	public AnimatedEntity VRWeaponModel { get; set; }
+	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";
+	public virtual string WorldModelPath => "models/hl1/weapons/world/glock.vmdl";
 	public virtual float PrimaryRate => 0.2f;
 	public virtual float SecondaryRate => 0.05f;
 
@@ -148,25 +150,28 @@
 		{
 			EnableDrawing = false;
 		}
+		/*
 		if ( Client.IsUsingVr )
 		{
 			DestroyVRModel();
 		}
+		*/
 		if ( IsClient )
 		{
 			DestroyViewModel();
-			DestroyHudElements();
+			DestroyHudElements();			
 		}
-	}
 
-	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";
+	}
 
 	public override void Spawn()
 	{
 
 
 		base.Spawn();
+		Model = Model.Load(WorldModelPath);
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
+
 		EnableTouch = false;
 		PhysicsEnabled = false;
 		var c = Components.GetOrCreate<Movement>();
@@ -740,7 +745,17 @@
 		if ( PickupTrigger.IsValid() )
 		{
 			PickupTrigger.EnableTouch = false;
-			PickupTrigger.Delete();
+		}
+	}
+
+	public override void OnCarryDrop( Entity dropper )
+	{
+		base.OnCarryDrop( dropper );
+		Model = Model.Load(WorldModelPath);
+
+		if ( PickupTrigger.IsValid() )
+		{
+			PickupTrigger.EnableTouch = true;
 		}
 	}
 
