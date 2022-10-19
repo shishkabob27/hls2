@@ -718,12 +718,16 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				if ( LifeState == LifeState.Alive )
 				{
 					OnKilled();
+					LifeState = LifeState.Dead;
 					if ( info.Flags.HasFlag( DamageFlags.AlwaysGib ) )
 					{
 						HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, BloodColour );
 						Delete();
 					}
-					LifeState = LifeState.Dead;
+					else if ( HLGame.hl_ragdoll )
+					{
+						Ragdoll( info.Force );
+					}
 					//Delete();
 				}
 			}
@@ -855,7 +859,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	{
 		if ( stringData == "ragdoll" && IsServer && HLGame.hl_ragdoll )
 		{
-			Ragdoll();
+			Ragdoll(Vector3.Zero);
 		}
 		base.OnAnimEventGeneric( name, intData, floatData, vectorData, stringData );
 	}
@@ -864,7 +868,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	/// Turn into a ragdoll
 	/// </summary>
 	[Input]
-	public void Ragdoll()
+	public void Ragdoll(Vector3 force)
 	{
 
 		var ent = new ModelEntity();
@@ -881,6 +885,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		ent.CopyFrom( this );
 		ent.CopyBonesFrom( this );
 		ent.SetRagdollVelocityFrom( this );
+		ent.PhysicsGroup.AddVelocity( force );
 		this.Delete();
 	}
 

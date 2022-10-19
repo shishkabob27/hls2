@@ -577,12 +577,16 @@
 				if ( !IsServer ) continue;
 				if ( !tr.Entity.IsValid() ) continue;
 
-				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, BForward * 100 * force, damage )
+				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, BForward * (100 * force), damage )
 					.UsingTraceResult( tr )
 					.WithAttacker( Owner )
 					.WithWeapon( this );
 
 				tr.Entity.TakeDamage( damageInfo );
+				if (tr.Entity is ModelEntity md && tr.Body != null)
+				{
+					tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2500000 * force) );
+				}
 				if ( tr.Entity is NPC )
 				{
 					var trace = Trace.Ray( BPosition, BPosition + BForward * 256 )
