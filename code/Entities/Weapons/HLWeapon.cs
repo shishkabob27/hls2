@@ -586,6 +586,32 @@
 				if (tr.Entity is ModelEntity md && tr.Body != null)
 				{
 					tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2500000 * force) );
+					if ( tr.Body.GetDominantSurface().Contains("flesh") && tr.Body.GetDominantSurface().Contains( "yellow" ) )
+					{
+						var trace = Trace.Ray( BPosition, BPosition + BForward * 256 )
+						.WorldOnly()
+						.Ignore( this )
+						.Size( 1.0f )
+						.Run();
+						if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/yellow_blood.decal", out var decal ) )
+						{
+							//Log.Info( "Splat!" );
+							Decal.Place( decal, trace );
+						}
+					}
+					else if( tr.Body.GetDominantSurface().Contains( "flesh" ) )
+					{
+						var trace = Trace.Ray( BPosition, BPosition + BForward * 256 )
+						.WorldOnly()
+						.Ignore( this )
+						.Size( 1.0f )
+						.Run();
+						if ( ResourceLibrary.TryGet<DecalDefinition>( "decals/red_blood.decal", out var decal ) )
+						{
+							//Log.Info( "Splat!" );
+							Decal.Place( decal, trace );
+						}
+					}
 				}
 				if ( tr.Entity is NPC )
 				{
