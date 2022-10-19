@@ -103,7 +103,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public float EyeHeight = 64;
 
 	public string NPCAnimGraph = "";
-	public string NPCSurface = "flesh";
+	public string NPCSurface = "hl_flesh";
 	XeNPC.NavPath Path;
 	public NavSteer Steer;
 
@@ -885,7 +885,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		ent.UsePhysicsCollision = true;
 		if ( NPCSurface != null && ent.PhysicsBody != null )
 		{
-			ent.PhysicsBody.SetSurface( NPCSurface );
+			//ent.PhysicsBody.SetSurface( NPCSurface );
 		}
 
 		ent.CopyFrom( this );
