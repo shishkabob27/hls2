@@ -7,6 +7,7 @@ partial class SatchelWeapon : HLWeapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/satchel.vmdl" );
 
 	public override string ViewModelPath => "models/hl1/weapons/view/v_satchel.vmdl";
+	public override string WorldModelPath => "models/hl1/weapons/world/satchel.vmdl";
 	public override bool HasHDModel => true;
 	public override int Bucket => 4;
 	public override int BucketWeight => 2;

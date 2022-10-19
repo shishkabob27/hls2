@@ -5,6 +5,7 @@ partial class GrenadeWeapon : HLWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_grenade.vmdl";
+	public override string WorldModelPath => "models/hl1/weapons/world/grenade.vmdl";
 
 	public override float PrimaryRate => 0.5f;
 	public override float SecondaryRate => 0.5f;

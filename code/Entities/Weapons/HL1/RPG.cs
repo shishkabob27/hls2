@@ -5,6 +5,7 @@ partial class RPG : HLWeapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/rpg.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_rpg.vmdl";
+	public override string WorldModelPath => "models/hl1/weapons/world/rpg.vmdl";
 	public override bool HasHDModel => true;
 	public override float PrimaryRate => 1.5f;
 	public override int Bucket => 3;
