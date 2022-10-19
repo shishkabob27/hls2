@@ -863,14 +863,20 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		}
 		base.OnAnimEventGeneric( name, intData, floatData, vectorData, stringData );
 	}
-
 	/// <summary>
 	/// Turn into a ragdoll
 	/// </summary>
 	[Input]
+	public void Ragdoll()
+	{
+		Ragdoll(Vector3.Zero);
+	}
+
+	/// <summary>
+	/// Turn into a ragdoll
+	/// </summary>
 	public void Ragdoll(Vector3 force)
 	{
-
 		var ent = new ModelEntity();
 		ent.SetModel( this.Model.Name );
 		ent.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
