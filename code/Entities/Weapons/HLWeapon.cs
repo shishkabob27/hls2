@@ -118,7 +118,6 @@
 
 		if ( Client.IsUsingVr )
 		{
-
 			CreateVRModel();
 		}
 		TimeSinceDeployed = 0;
@@ -153,7 +152,7 @@
 		/*
 		if ( Client.IsUsingVr )
 		{
-			DestroyVRModel();
+			DestroyVRModel();  //this breaks dropping weapons
 		}
 		*/
 		if ( IsClient )
@@ -782,6 +781,7 @@
 	{
 		base.OnCarryDrop( dropper );
 		Model = Model.Load(WorldModelPath);
+		Rotation = new();
 
 		if ( PickupTrigger.IsValid() )
 		{
