@@ -4,6 +4,7 @@
 class ShockRifle : HLWeapon
 {
 	public override string ViewModelPath => "models/op4/weapons/view/v_shock.vmdl";
+	public override string WorldModelPath => "models/op4/weapons/world/w_shock.vmdl";
     public override int Bucket => 6;
     public override int BucketWeight => 2;
 	public override AmmoType AmmoType => AmmoType.Plasma;
