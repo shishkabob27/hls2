@@ -149,12 +149,10 @@
 		{
 			EnableDrawing = false;
 		}
-		/*
 		if ( Client.IsUsingVr )
 		{
-			DestroyVRModel();  //this breaks dropping weapons
+			DestroyVRModel();  //this causes errors when dropping weapons but players shouldn't drop weapons soooo
 		}
-		*/
 		if ( IsClient )
 		{
 			DestroyViewModel();
