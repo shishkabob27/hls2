@@ -11,6 +11,8 @@ public class FlashlightUI : Panel
 	{
         var player = Local.Pawn as HLPlayer;
 
+		if ( player == null ) return;
+
         switch (player.FlashlightEnabled)
         {
             case true: SetClass("on", true); break;
