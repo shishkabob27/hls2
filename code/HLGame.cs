@@ -72,14 +72,20 @@ public partial class HLGame : Game
 			Map.Reset( DefaultCleanupFilter );
 
 			// Create a brand new game
-			MenuGame.Current = new MenuGame();
 
-			// Tell our new game that all clients have just joined to set them all back up.
-			foreach ( Client cl in Client.All )
+			if ( IsServer )
 			{
-				cl.Components.RemoveAll();
-				(MenuGame.Current as MenuGame).ClientJoined( cl );
+				if ( Global.MapName != "<empty>" )
+				{
+					new HLGame();
+					this.Delete();
+					return;
+				}
+
+				GUI = new HLGUI();
+				Menu = new MenuPanel();
 			}
+
 			return;
 		}
 

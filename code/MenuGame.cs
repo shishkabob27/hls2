@@ -1,6 +1,7 @@
 ﻿/// <summary>
 /// A simple version of the Game that loads just the menu and the GUI, used when the map is <empty
 /// </summary>
+/*
 public partial class MenuGame : Game
 {
 	[Net]
@@ -24,3 +25,4 @@ public partial class MenuGame : Game
 		}
 	}
 }
+*/ // this can temporarily go eat a dick.
