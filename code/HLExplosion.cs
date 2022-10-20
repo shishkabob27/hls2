@@ -39,6 +39,7 @@ partial class HLExplosion
 			var distanceMul = 1.0f - Math.Clamp( dist / radius, 0.0f, 1.0f );
 			var dmg = damage * distanceMul;
 			var force = (forceScale * distanceMul) * ent.PhysicsBody.Mass;
+			force /= 2;
 			var forceDir = (targetPos - position).Normal;
 
 			var damageInfo = DamageInfo.Explosion( position, forceDir * force, dmg )
@@ -46,6 +47,11 @@ partial class HLExplosion
 				.WithAttacker( owner );
 
 			ent.TakeDamage( damageInfo );
+			if ( ent is ModelEntity md && md.PhysicsBody != null )
+			{
+				//tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2000000 * force) );
+				md.PhysicsBody.ApplyForceAt( tr.EndPosition, forceDir * (150000 * force) );
+			}
 		}
 	}
 
