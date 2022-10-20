@@ -4,6 +4,7 @@
 partial class DEagle : HLWeapon
 {
 	public override string ViewModelPath => "models/op4/weapons/view/v_desert_eagle.vmdl";
+	public override string WorldModelPath => "models/op4/weapons/world/w_desert_eagle.vmdl";
 	public override float PrimaryRate => 0.22f;
 	public override float SecondaryRate => 0.2f;
 	public override float ReloadTime => 1.4f;

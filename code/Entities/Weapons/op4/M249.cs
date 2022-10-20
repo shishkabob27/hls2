@@ -4,6 +4,7 @@
 partial class M249 : HLWeapon
 {
     public override string ViewModelPath => "models/op4/weapons/view/v_saw.vmdl";
+	public override string WorldModelPath => "models/op4/weapons/world/w_saw.vmdl";
     public override float PrimaryRate => 0.067f;
 	public override int ClipSize => 50;
     public override AmmoType AmmoType => AmmoType.M249;
