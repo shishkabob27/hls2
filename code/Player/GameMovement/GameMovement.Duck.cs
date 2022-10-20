@@ -17,7 +17,7 @@ partial class HL1GameMovement
 	{
 		if (Client.IsUsingVr)
 		{
-			return Input.VR.Head.Position.z - Position.z <= 45;
+			return Input.VR.Head.Position.z - Position.z <= HLGame.hl_vr_crouch_height;
 		}
 		return Input.Down( InputButton.Duck ) || Input.VR.RightHand.ButtonB;
 	}
