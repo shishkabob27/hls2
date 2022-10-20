@@ -584,7 +584,7 @@
 				tr.Entity.TakeDamage( damageInfo );
 				if (tr.Entity is ModelEntity md && tr.Body != null)
 				{
-					tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2500000 * force) );
+					tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2000000 * force) );
 					if ( tr.Body.GetDominantSurface().Contains("flesh") && tr.Body.GetDominantSurface().Contains( "yellow" ) )
 					{
 						var trace = Trace.Ray( BPosition, BPosition + BForward * 512 )
