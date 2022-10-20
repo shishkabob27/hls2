@@ -50,6 +50,7 @@
 	[ConVar.Replicated] public static bool hl_legacyfootsteps { get; set; } = true;
 	[ConVar.Replicated] public static bool sv_force_physics { get; set; } = false;
 	[ConVar.Replicated] public static bool sv_classic_noclip{ get; set; } = false;
+	[ConVar.Replicated] public static int hl_vr_crouch_height{ get; set; } = 45;
 
 	// MENU
 	[ConVar.Client] public static bool hl_menu_newer_buttons { get; set; } = false;

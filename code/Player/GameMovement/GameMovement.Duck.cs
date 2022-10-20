@@ -15,6 +15,10 @@ partial class HL1GameMovement
 
 	public virtual bool WishDuck()
 	{
+		if (Client.IsUsingVr)
+		{
+			return Input.VR.Head.Position.z - Position.z <= HLGame.hl_vr_crouch_height;
+		}
 		return Input.Down( InputButton.Duck ) || Input.VR.RightHand.ButtonB;
 	}
 
