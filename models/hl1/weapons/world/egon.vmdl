@@ -32,15 +32,6 @@
 				children = 
 				[
 					{
-						_class = "PhysicsShapeBox"
-						parent_bone = ""
-						surface_prop = "default"
-						collision_tags = "solid"
-						origin = [ 15.204655, -9.298146, 16.426685 ]
-						angles = [ 0.0, 0.0, 0.0 ]
-						dimensions = [ 39.183266, 39.395218, 31.666904 ]
-					},
-					{
 						_class = "PhysicsHullFromRender"
 						parent_bone = "box02"
 						surface_prop = "default"

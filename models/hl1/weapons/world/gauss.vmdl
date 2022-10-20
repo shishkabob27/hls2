@@ -159,7 +159,7 @@
 								parent_bone = ""
 								surface_property = ""
 								translation_only = false
-								group_id = 0
+								tags = ""
 								hitbox_mins = [ -1.0, -1.0, -1.0 ]
 								hitbox_maxs = [ 1.0, 1.0, 1.0 ]
 							},

@@ -277,7 +277,7 @@
 	}
 	static void Givewep( HLWeapon wep )
 	{
-		wep.Position = ConsoleSystem.Caller.Pawn.Position;
+		wep.Position = (ConsoleSystem.Caller.Pawn as HLPlayer).CollisionWorldSpaceCenter;
 		wep.DeleteIfNotCarriedAfter( 0.1f );
 	}
 	public override void OnKilled()
