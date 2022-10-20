@@ -211,9 +211,7 @@
 		var weptypes = TypeLibrary.GetDescriptions( weptype );
 		foreach ( var weapontype in weptypes )
 		{
-			var ent = weapontype.Create<Entity>();
-			ent.Position = ConsoleSystem.Caller.Pawn.Position;
-			(ent as HLWeapon).DeleteIfNotCarriedAfter( 0.1f );
+			ply.GiveWeapon( weapontype.Create<HLWeapon>() );
 		}
 		var ammtype = typeof( BaseAmmo );
 		var ammtypes = TypeLibrary.GetDescriptions( ammtype );
@@ -237,20 +235,20 @@
 
 
 
-		Givewep( new Crowbar() );
-		Givewep( new Pistol() );
-		Givewep( new Python() );
-		Givewep( new Shotgun() );
-		Givewep( new SMG() );
-		Givewep( new RPG() );
-		Givewep( new Crossbow() );
-		Givewep( new GrenadeWeapon() );
-		Givewep( new TripmineWeapon() );
-		Givewep( new Gauss() );
-		Givewep( new Egon() );
-		Givewep( new HornetGun() );
-		Givewep( new SnarkWeapon() );
-		Givewep( new SatchelWeapon() );
+		ply.GiveWeapon( new Crowbar() );
+		ply.GiveWeapon( new Pistol() );
+		ply.GiveWeapon( new Python() );
+		ply.GiveWeapon( new Shotgun() );
+		ply.GiveWeapon( new SMG() );
+		ply.GiveWeapon( new RPG() );
+		ply.GiveWeapon( new Crossbow() );
+		ply.GiveWeapon( new GrenadeWeapon() );
+		ply.GiveWeapon( new TripmineWeapon() );
+		ply.GiveWeapon( new Gauss() );
+		ply.GiveWeapon( new Egon() );
+		ply.GiveWeapon( new HornetGun() );
+		ply.GiveWeapon( new SnarkWeapon() );
+		ply.GiveWeapon( new SatchelWeapon() );
 
 		ply.GiveAmmo( AmmoType.Pistol, 17 );
 		ply.GiveAmmo( AmmoType.Python, 6 );
@@ -275,9 +273,17 @@
 		suit.Spawn();
 		suit.DeleteAsync( 0.1f );
 	}
-	static void Givewep( HLWeapon wep )
-	{
-		wep.Position = (ConsoleSystem.Caller.Pawn as HLPlayer).CollisionWorldSpaceCenter;
+	public void GiveWeapon( HLWeapon wep )
+	{ 
+		if (HLGame.sv_force_physics)
+		{
+			wep.PhysicsEnabled = false;
+			wep.Position = Position;
+		}
+		else
+		{
+			wep.Position = CollisionWorldSpaceCenter;
+		}
 		wep.DeleteIfNotCarriedAfter( 0.1f );
 	}
 	public override void OnKilled()
