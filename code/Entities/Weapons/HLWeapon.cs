@@ -149,9 +149,9 @@
 		{
 			EnableDrawing = false;
 		}
-		if ( Client.IsUsingVr )
+		if ( Global.IsRunningInVR )
 		{
-			DestroyVRModel();  //this causes errors when dropping weapons but players shouldn't drop weapons soooo
+			DestroyVRModel();
 		}
 		if ( IsClient )
 		{
