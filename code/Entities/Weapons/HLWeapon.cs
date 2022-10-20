@@ -1,4 +1,4 @@
-﻿partial class HLWeapon : BaseWeapon, IRespawnableEntity
+﻿public partial class HLWeapon : BaseWeapon, IRespawnableEntity
 {
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
