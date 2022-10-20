@@ -59,7 +59,7 @@ partial class Python : HLWeapon
 		//
 		// Shoot the bullets
 		//
-		ShootBullet( 0.01f, 1.5f, 40.0f, 2.0f );
+		ShootBullet( 0.01f, 4.0f, 40.0f, 2.0f );
 		ViewPunch( 0, -10 );
 	}
 	[ClientRpc]
