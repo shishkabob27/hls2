@@ -45,10 +45,10 @@
 				mdl.EnableTouch = true;
 				mdl.Velocity = a;
 
-				if ( mdl.PhysicsBody != null )
+				if ( mdl.PhysicsGroup != null )
 				{
-					mdl.PhysicsBody.Velocity = a * 2;
-					mdl.PhysicsBody.AngularVelocity = new Vector3( b.yaw, b.pitch, b.roll ) / 32;
+					mdl.PhysicsGroup.Velocity = a * 2;
+					mdl.PhysicsGroup.AngularVelocity = new Vector3( b.pitch, b.yaw, b.roll ) / 32;
 				}
 			}
 			if (!HLGame.sv_force_physics && Entity is ModelEntity mdl2)
@@ -60,6 +60,29 @@
 		}
 		catch { }
 	}
+	public void SetVelocity( Vector3 vel )
+	{
+		Entity.Velocity = vel;
+		if ( HLGame.sv_force_physics && Entity is ModelEntity mdl )
+		{
+			if ( mdl.PhysicsGroup != null )
+			{
+				mdl.PhysicsGroup.Velocity = vel * 1.5f;
+			}
+		} 
+	}
+	public void SetAngularVelocity( Angles vel ) 
+	{
+		Entity.AngularVelocity = vel;
+		if ( HLGame.sv_force_physics && Entity is ModelEntity mdl )
+		{
+			if ( mdl.PhysicsGroup != null )
+			{
+				mdl.PhysicsGroup.AngularVelocity = new Vector3( vel.yaw, vel.pitch, vel.roll ) / 50;
+			}
+		}
+	}
+
 	[Event.Tick]
 	void Tick()
 	{

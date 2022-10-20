@@ -96,8 +96,8 @@ partial class SatchelWeapon : HLWeapon
 					Owner = Owner
 				};
 
-				satchel.Velocity = GetFiringRotation().Forward * 274 + Owner.Velocity;
-				satchel.AngularVelocity = new Angles( 0, 400, 0 );
+				satchel.c.SetVelocity(GetFiringRotation().Forward * 274 + Owner.Velocity);
+				satchel.c.SetAngularVelocity( new Angles( 0, 400, 0 ));
 				satchel.Rotation = (new Angles( 90, 0, 0 )).ToRotation();
 
 				//grenade.CollisionGroup = CollisionGroup.Debris;

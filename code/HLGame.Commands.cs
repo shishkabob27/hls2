@@ -206,8 +206,14 @@
 	public static void HLNoclipCommand()
 	{
 		if ( ConsoleSystem.Caller == null ) return;
-
-		(ConsoleSystem.Caller.Pawn as HLPlayer).IsNoclipping = !(ConsoleSystem.Caller.Pawn as HLPlayer).IsNoclipping;//DoHLPlayerNoclip( ConsoleSystem.Caller );
+		if ( sv_classic_noclip )
+		{
+			(ConsoleSystem.Caller.Pawn as HLPlayer).IsNoclipping = !(ConsoleSystem.Caller.Pawn as HLPlayer).IsNoclipping;
+		} else
+		{
+			(ConsoleSystem.Caller.Pawn as HLPlayer).DoHLPlayerNoclip( ConsoleSystem.Caller );
+		}
+		
 	}
 	[ConCmd.Server( "spawnScientist", Help = "Kills the calling player with generic damage" )]
 	public static void SpawnScientistCommand()

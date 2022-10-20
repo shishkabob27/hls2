@@ -49,6 +49,7 @@
 	[ConVar.ClientData] public static bool hl_viewroll { get; set; } = false;
 	[ConVar.Replicated] public static bool hl_legacyfootsteps { get; set; } = true;
 	[ConVar.Replicated] public static bool sv_force_physics { get; set; } = false;
+	[ConVar.Replicated] public static bool sv_classic_noclip{ get; set; } = false;
 
 	// MENU
 	[ConVar.Client] public static bool hl_menu_newer_buttons { get; set; } = false;

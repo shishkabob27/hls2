@@ -2,13 +2,14 @@
 partial class HandGrenade : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade.vmdl" );
+	public Movement c;
 	public override void Spawn()
 	{
 		base.Spawn();
 
 		Model = WorldModel;
-		var c = Components.Create<Movement>();
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+		c = Components.Create<Movement>();
 		c.Friction = 0.8f;
 		c.Gravity = 0.5f;
 

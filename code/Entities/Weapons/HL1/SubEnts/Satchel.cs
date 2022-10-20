@@ -2,15 +2,16 @@
 partial class Satchel : ModelEntity
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/satchel.vmdl" );
+	public Movement c;
 	public override void Spawn()
 	{
 
 		base.Spawn();
-		var c = Components.Create<Movement>();
-		c.Friction = 0.9f;
-		c.bHeight = 8;
 		Model = WorldModel;
 		SetupPhysicsFromModel( PhysicsMotionType.Keyframed );
+		c = Components.Create<Movement>();
+		c.Friction = 0.9f;
+		c.bHeight = 8;
 		c.minsOverride = CollisionBounds.Mins;
 		c.maxsOverride = CollisionBounds.Maxs;
 	}
