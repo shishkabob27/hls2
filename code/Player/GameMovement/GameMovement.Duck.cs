@@ -15,7 +15,7 @@ partial class HL1GameMovement
 
 	public virtual bool WishDuck()
 	{
-		return Input.Down( InputButton.Duck );
+		return Input.Down( InputButton.Duck ) || Input.VR.LeftHand.JoystickPress;
 	}
 
 	public virtual void SimulateDucking()
