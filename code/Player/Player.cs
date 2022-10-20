@@ -443,6 +443,22 @@
 		}
 		FootstepSounds();
 		SimulateSuit();
+		if ( Input.Pressed( InputButton.Drop ) )
+		{
+			var dropped = Inventory.DropActive();
+			if ( dropped != null )
+			{
+				if ( dropped.PhysicsGroup != null )
+				{
+					dropped.PhysicsGroup.Velocity = Velocity + (EyeRotation.Forward + EyeRotation.Up) * 300;
+				}
+
+				dropped.Velocity = Velocity + (EyeRotation.Forward + (EyeRotation.Up / 3)) * 255;
+
+				timeSinceDropped = 0;
+				SwitchToBestWeapon();
+			}
+		}
 	}
 
 	void ViewPunchThink()
