@@ -19,6 +19,7 @@ public class Crosshair : Panel
 		Icon.Classes = "";
 
 		var p = Local.Pawn as HLPlayer;
+		if ( p == null ) return;
 		if ( !p.HasHEV ) return;
 
 
