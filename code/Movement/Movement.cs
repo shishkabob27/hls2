@@ -42,7 +42,7 @@
 				mdl.PhysicsEnabled = true;
 				mdl.UsePhysicsCollision = true;
 				var phys = mdl.SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
-				mdl.EnableTouch = true;
+				//mdl.EnableTouch = true;
 				mdl.Velocity = a;
 
 				if ( mdl.PhysicsGroup != null )
