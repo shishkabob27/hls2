@@ -21,13 +21,20 @@
   "chaptertext.c18": "NIHILANTH",
   "chaptertext.c19": "ENDGAME",
 
+  "Menu_Resume": "Resume game",
+  "Menu_NewGame": "New game",
+  "Menu_Training": "Hazard course",
+  "Menu_Config": "Configuration",
+  "Menu_LoadGame": "Load game",
+  "Menu_Multiplayer": "Multiplayer",
+  "Menu_Quit": "Quit",
+
   //options
   "PropertyDialog_OK": "OK",
   "PropertyDialog_Cancel": "Cancel",
   "PropertyDialog_Apply": "Apply",
 
   "GameUI_HDModels": "Enable HD models if available",
-  "GameUI_Multiplayer": "Multiplayer",
   "GameUI_PrimaryColour": "Primary colour",
   "GameUI_SecondaryColour": "Secondary colour",
   "GameUI_PlayerModel": "Player model",
