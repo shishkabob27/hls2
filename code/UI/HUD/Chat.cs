@@ -12,7 +12,7 @@ public partial class Chat : Panel
 	{
 		Current = this;
 
-		StyleSheet.Load( "/code/Resource/Styles/ChatBox.scss" );
+		StyleSheet.Load( "/Resource/Styles/ChatBox.scss" );
 
 		Canvas = Add.Panel( "chat_canvas" );
 

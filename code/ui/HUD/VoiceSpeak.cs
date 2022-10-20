@@ -7,7 +7,7 @@ public class VoiceSpeak : Label
 
 	public VoiceSpeak()
 	{
-		StyleSheet.Load( "/code/Resource/Styles/VoiceSpeaker.scss" );
+		StyleSheet.Load( "/Resource/Styles/VoiceSpeaker.scss" );
 
 		Text = "mic";
 	}
