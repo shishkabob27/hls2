@@ -875,7 +875,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	/// <summary>
 	/// Turn into a ragdoll
 	/// </summary>
-	public void Ragdoll(Vector3 force)
+	public void Ragdoll(Vector3 force, PhysicsBody bdy = null)
 	{
 		var ent = new ModelEntity();
 		ent.SetModel( this.Model.Name );
@@ -891,7 +891,14 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		ent.CopyFrom( this );
 		ent.CopyBonesFrom( this );
 		ent.SetRagdollVelocityFrom( this );
-		ent.PhysicsGroup.AddVelocity( force );
+		if (bdy == null)
+		{
+
+			ent.PhysicsGroup.AddVelocity( force );
+		} else
+		{
+			bdy.ApplyForceAt(LastDamage.Position, force );
+		}
 		this.Delete();
 	}
 
