@@ -217,8 +217,16 @@
 		var ammtypes = TypeLibrary.GetDescriptions( ammtype );
 		foreach ( var ammotype in ammtypes )
 		{
-			var ent = ammotype.Create<Entity>();
-			ent.Position = ConsoleSystem.Caller.Pawn.Position;
+			var ent = ammotype.Create<ModelEntity>();
+			if ( HLGame.sv_force_physics )
+			{
+				ent.PhysicsEnabled = false;
+				ent.Position = ply.Position;
+			}
+			else
+			{
+				ent.Position = ply.CollisionWorldSpaceCenter;
+			}
 			ent.DeleteAsync( 0.1f );
 		}
 
