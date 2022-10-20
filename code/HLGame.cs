@@ -143,7 +143,7 @@ public partial class HLGame : Game
 
 	}
 
-	[ConCmd.Server( "menu", Help = "resets gui" )]
+	[ConCmd.Client( "menu", Help = "resets gui" )]
 	public static void menu1()
 	{
 		(HLGame.Current as HLGame).menu2();
