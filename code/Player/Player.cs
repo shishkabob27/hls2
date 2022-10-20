@@ -15,7 +15,8 @@
 
 
 	public bool IsObserver = false;
-	public bool IsNoclipping = false;
+	[Net]
+	public bool IsNoclipping { get; set; } = false;
 
 
 	[Net, Local] public VRHandLeft LeftHand { get; set; }

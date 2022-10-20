@@ -13,6 +13,7 @@
 
 	public virtual bool TestAndFix()
 	{
+		if ( (Controller.Pawn is HLPlayer ply) && (ply.IsNoclipping) ) return false;
 		var result = Controller.SetupBBoxTrace( Controller.Position, Controller.Position )
 			.WithoutTags( "npc", "monster" )
 			.Run();

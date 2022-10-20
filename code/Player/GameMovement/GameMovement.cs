@@ -146,7 +146,7 @@ public partial class HL1GameMovement : BasePlayerController
 				Player.IsOnLadder = false;
 			}
 		}
-		if ( Player.IsNoclipping && false )
+		if ( Player.IsNoclipping )
 		{
 			FullNoClipMove( sv_noclip_speed, sv_noclip_accelerate );
 

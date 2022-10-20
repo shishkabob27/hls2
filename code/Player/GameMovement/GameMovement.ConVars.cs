@@ -3,10 +3,10 @@ partial class HL1GameMovement
 {
 	[ConVar.Replicated] public static float sv_gravity { get; set; } = 800;
 	[ConVar.Replicated] public static float sv_stopspeed { get; set; } = 100;
-	[ConVar.Replicated] public static float sv_noclip_accelerate { get; set; } = 5;
-	[ConVar.Replicated] public static float sv_noclip_speed { get; set; } = 5;
-	[ConVar.Replicated] public static float sv_spectator_accelerate { get; set; } = 5;
-	[ConVar.Replicated] public static float sv_spectator_speed { get; set; } = 3;
+	[ConVar.Replicated] public static float sv_noclip_accelerate { get; set; } = 10;
+	[ConVar.Replicated] public static float sv_noclip_speed { get; set; } = 1;
+	[ConVar.Replicated] public static float sv_spectator_accelerate { get; set; } = 1;
+	[ConVar.Replicated] public static float sv_spectator_speed { get; set; } = 1;
 	[ConVar.Replicated] public static bool sv_spectator_noclip { get; set; } = true;
 
 	[ConVar.Replicated] public static float sv_maxspeed { get; set; } = 270;

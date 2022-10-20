@@ -25,6 +25,10 @@ public partial class HL1GameMovement
 		{
 			// Set pmove velocity
 			Accelerate( wishdir, wishspeed, maxacceleration );
+			if ( Velocity.Length < maxspeed + 10 )
+			{ 
+				StayOnGround();
+			}
 
 			float spd = Velocity.Length;
 			if ( spd < 1 )

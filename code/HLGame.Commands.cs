@@ -207,7 +207,7 @@
 	{
 		if ( ConsoleSystem.Caller == null ) return;
 
-		(ConsoleSystem.Caller.Pawn as HLPlayer).DoHLPlayerNoclip( ConsoleSystem.Caller );
+		(ConsoleSystem.Caller.Pawn as HLPlayer).IsNoclipping = !(ConsoleSystem.Caller.Pawn as HLPlayer).IsNoclipping;//DoHLPlayerNoclip( ConsoleSystem.Caller );
 	}
 	[ConCmd.Server( "spawnScientist", Help = "Kills the calling player with generic damage" )]
 	public static void SpawnScientistCommand()
