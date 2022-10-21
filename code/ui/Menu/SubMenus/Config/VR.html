@@ -4,8 +4,12 @@
 	<div class="controlsscreen">
 		<div class="options">
 			<div>
-				<check></check>
+				<check @checked="vrpointer"></check>
 				<label class="sub">Enable pointer</label>
+			</div>
+			<div style="flex-direction: column;">
+				<label class="sub" style="margin-top: 0; margin-bottom: 8px;">Crouch height</label>
+				<SliderScaleEntry min="16" max="64" step="1" mintext="16" maxtext="64" @value="vrcrouchheight"></SliderScaleEntry>
 			</div>
 		</div>
 		<div style="max-width: 32px;">
