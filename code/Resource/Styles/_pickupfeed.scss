@@ -1,7 +1,7 @@
 ﻿
 pickupfeed {
 	position: absolute;
-	right: 16px;
+	right: 0px;
 	bottom: 128px;
 	flex-direction: column;
 	text-align: right;
@@ -16,6 +16,11 @@ pickupfeed {
 		min-width: 300px;
 		font-size: 30px;
 		font-family: "Trebuchet MS";
+		background-size: contain;
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-image-tint: rgb(255, 206, 108);
+		margin-bottom: 5px;
 		//
 		// Pseudo class set for the last frame of its life
 		// (and keeps the panel alive until transition ends)
@@ -31,6 +36,7 @@ pickupfeed {
 			color: #fa0;
 			width: 100%;
 			text-align: right;
+			margin-right: 8px;
 		}
 
 		.icon {

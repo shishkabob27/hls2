@@ -74,7 +74,7 @@
 			var display = DisplayInfo.For( ent );
 
 			Sound.FromWorld( "dm.pickup_weapon", ent.Position );
-			PickupFeed.OnPickupWeapon( To.Single( player ), display.Name );
+			PickupFeed.OnPickupWeapon( To.Single( player ), weapon.InventoryIcon );
 		}
 
 		ItemRespawn.Taken( ent );

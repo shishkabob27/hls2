@@ -37,16 +37,17 @@ public partial class PickupFeed : Panel
 		var panel = Current.Add.Panel( "entry" );
 
 		panel.Add.Label( text );
-		await Task.DelayRealtimeSeconds( 2.0f );
+		await Task.DelayRealtimeSeconds( 322.0f );
 		panel.Delete();
 	}
 
 	private async Task AddWeaponEntry( string text )
 	{
 		var panel = Current.Add.Panel( "entry" );
+		panel.Style.SetBackgroundImage(text);
 		panel.AddClass( text ); ;
 		panel.Add.Panel( "icon" );
-		await Task.DelayRealtimeSeconds( 2.0f );
+		await Task.DelayRealtimeSeconds( 522.0f );
 		panel.Delete();
 	}
 }
