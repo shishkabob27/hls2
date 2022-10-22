@@ -23,7 +23,7 @@
 	public virtual bool HasAltAmmo => false;
 	public virtual bool HasHDModel => false;
 	public virtual int Order => (Bucket * 10000) + BucketWeight;
-
+	public virtual string CrosshairIcon => "/ui/crosshairs/crosshair2.png";
 	public virtual string AmmoIcon => "ui/ammo1.png";
 	public virtual string AltAmmoIcon => "ui/ammo3.png";
 	public virtual string InventoryIcon => "/ui/weapons/weapon_error.png";
