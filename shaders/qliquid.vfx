@@ -79,11 +79,11 @@ PS
 	// Main
 	//
 
-    	float WaveStrength < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
+    float WaveStrength < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
 		
-     float WaveSize < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
-     float WaveSpeed < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
-     float WaveAlpha < UiType( Slider ); Default1(1.0); Range( 0.0f, 1.0f ); UiGroup( "Color,10/20" ); >;
+    float WaveSize < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
+    float WaveSpeed < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
+    float WaveAlpha < UiType( Slider ); Default1(1.0); Range( 0.0f, 1.0f ); UiGroup( "Color,10/20" ); >;
 
     CreateTexture2D( WaveTexMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
 	TextureAttribute( WaveTexMap, WaveTexMap );
@@ -101,7 +101,7 @@ PS
 
 
 		
-         float2 uv = inputUV.xy + float2(sin(DeltaTime.x), sin(DeltaTime.y)) * (WaveStrength / 10);
+        float2 uv = inputUV.xy + float2(sin(DeltaTime.x), sin(DeltaTime.y)) * (WaveStrength / 10);
 
 
 		
