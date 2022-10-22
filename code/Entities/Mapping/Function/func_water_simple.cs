@@ -19,8 +19,7 @@ public partial class func_water_simple : BrushEntity
 
 		WaterController.WaterEntity = this;
 		EnableTouch = true;
-		EnableTouchPersists = true;
-		RenderColor = RenderColor.WithAlpha( Math.Min( RenderColor.a, 0.95f ) );
+		EnableTouchPersists = true; 
 	}
 
 	public override void Spawn()
@@ -31,16 +30,13 @@ public partial class func_water_simple : BrushEntity
 		Transmit = TransmitType.Always;
 		Tags.Clear();
 		Tags.Add( "water" );
-		CreatePhysics();
-		RenderColor = RenderColor.WithAlpha( Math.Min( RenderColor.a, 0.99f ) );
-		colourset();
+		CreatePhysics();  
 		this.RenderDirty();
 	}
 	[ClientRpc]
 	void colourset()
 	{
-
-		RenderColor = RenderColor.WithAlpha( Math.Min( RenderColor.a, 0.99f ) );
+		 
 		SceneObject.ColorTint = RenderColor;
 		this.RenderDirty();
 	}

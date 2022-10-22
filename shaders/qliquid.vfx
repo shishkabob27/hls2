@@ -29,7 +29,9 @@ MODES
 //=========================================================================================================================
 COMMON
 {
-	#include "common/shared.hlsl"
+    #include "common/shared.hlsl"
+    #define S_SPECULAR 1
+    #define S_SPECULAR_CUBE_MAP 1
 }
 
 //=========================================================================================================================
@@ -67,6 +69,10 @@ VS
 PS
 {
     #define BLEND_MODE_ALREADY_SET
+	RenderState( BlendEnable, true );
+	RenderState( SrcBlend, SRC_ALPHA );
+	RenderState( DstBlend, INV_SRC_ALPHA );
+	BoolAttribute( translucent, true );
     #include "common/pixel.hlsl"
 	
 	//
@@ -81,9 +87,6 @@ PS
 
     CreateTexture2D( WaveTexMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
 	TextureAttribute( WaveTexMap, WaveTexMap );
-
-
-    RenderState(BlendEnable, true);
 
 
 	float4 MainPs( PixelInput i ) : SV_Target0
