@@ -12,6 +12,7 @@ partial class RPG : HLWeapon
 	public override int BucketWeight => 1;
 	public override AmmoType AmmoType => AmmoType.RPG;
 	public override int ClipSize => 1;
+	public override string CrosshairIcon => "/ui/crosshairs/crosshair9.png";
 	public override string AmmoIcon => "ui/ammo6.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_rpg.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_rpg_selected.png";

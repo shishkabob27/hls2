@@ -12,6 +12,7 @@ partial class SnarkWeapon : HLWeapon
     public override int Bucket => 4;
     public override int BucketWeight => 4;
     public override AmmoType AmmoType => AmmoType.Snark;
+	public override string CrosshairIcon => "/ui/crosshairs/crosshair0.png";
     public override string AmmoIcon => "ui/ammo11.png";
     public override string InventoryIcon => "/ui/weapons/weapon_snark.png";
     public override string InventoryIconSelected => "/ui/weapons/weapon_snark_selected.png";

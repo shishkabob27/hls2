@@ -11,7 +11,7 @@ partial class Pistol : HLWeapon
 	public override float PrimaryRate => 0.3f;
 	public override float SecondaryRate => 0.2f;
 	public override float ReloadTime => 1.4f;
-
+	public override string CrosshairIcon => "/ui/crosshairs/crosshair2.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_pistol.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_pistol_selected.png";
 	public override bool HasHDModel => true;

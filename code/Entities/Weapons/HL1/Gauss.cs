@@ -13,6 +13,7 @@ partial class Gauss : HLWeapon
 	public override float SecondaryRate => 0f;
 	public override bool HasHDModel => true;
 	public override AmmoType AmmoType => AmmoType.Uranium;
+	public override string CrosshairIcon => "/ui/crosshairs/crosshair10.png";
 	public override string AmmoIcon => "ui/ammo7.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_gauss.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_gauss_selected.png";

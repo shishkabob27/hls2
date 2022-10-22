@@ -14,6 +14,7 @@ partial class SatchelWeapon : HLWeapon
 	public override float PrimaryRate => 0.5f;
 	public override float SecondaryRate => 0.5f;
 	public override AmmoType AmmoType => AmmoType.Satchel;
+	public override string CrosshairIcon => "/ui/crosshairs/crosshair0.png";
 	public override string AmmoIcon => "ui/ammo10.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_satchel.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_satchel_selected.png";

@@ -10,7 +10,8 @@ partial class HornetGun : HLWeapon
     public override int Bucket => 3;
     public override int BucketWeight => 4;
     public override AmmoType AmmoType => AmmoType.Hornet; // we do this so we can always select the weapon.
-    public override string AmmoIcon => "ui/ammo8.png";
+    public override string CrosshairIcon => "/ui/crosshairs/crosshair7.png";
+	public override string AmmoIcon => "ui/ammo8.png";
     public override string InventoryIcon => "/ui/weapons/weapon_hornetgun.png";
     public override string InventoryIconSelected => "/ui/weapons/weapon_hornetgun_selected.png";
 	public override bool HasHDModel => true;

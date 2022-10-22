@@ -14,7 +14,7 @@ partial class Shotgun : HLWeapon
 	public override float ReloadTime => 0.5f;
 	public override int Bucket => 2;
 	public override int BucketWeight => 2;
-
+	public override string CrosshairIcon => "/ui/crosshairs/crosshair6.png";
 	public override string AmmoIcon => "ui/ammo4.png";
 	public override string InventoryIcon => "/ui/weapons/weapon_shotgun.png";
 	public override string InventoryIconSelected => "/ui/weapons/weapon_shotgun_selected.png";
