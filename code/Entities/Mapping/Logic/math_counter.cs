@@ -1,21 +1,20 @@
-﻿[Library("math_counter")]
+﻿[Library( "math_counter" )]
 [HammerEntity]
-[EditorSprite("editor/math_counter.vmat")]
-[Title("math_counter"), Category("Legacy"), Icon("calculate")]
-public partial class MathCounter : Entity
+[EditorSprite( "editor/math_counter.vmat" )]
+[Title( "math_counter" ), Category( "Legacy" ), Icon( "calculate" )]
+public partial class math_counter : Entity
 {
-	// stub
 
 	[Property]
 	public bool Enabled { get; set; } = true;
 
-	[Property(Title = "Initial Value")]
+	[Property( Title = "Initial Value" )]
 	public float startvalue { get; set; } = 0;
 
-	[Property(Title = "Minimum Legal Value")]
+	[Property( Title = "Minimum Legal Value" )]
 	public float min { get; set; } = 0;
 
-	[Property(Title = "Maximum Legal Value")]
+	[Property( Title = "Maximum Legal Value" )]
 	public float max { get; set; } = 1;
 
 	public float currentValue;
@@ -23,44 +22,64 @@ public partial class MathCounter : Entity
 	public bool allowOutput = true;
 
 	protected Output OnHitMax { get; set; }
+	protected Output OnHitMin { get; set; }
+	protected Output<float> OutValue { get; set; }
+	protected Output<float> OnGetValue { get; set; }
 	public override void Spawn()
 	{
 		base.Spawn();
 		currentValue = startvalue;
 	}
 
-	[Event.Tick.Server]
-	public void Tick()
-    {
-		if (currentValue == max)
-        {
-			OnHitMax.Fire(this);
-        }
-    }
-	
 	[Input]
-	public void Add(float value)
+	public void Add( float value )
 	{
-		currentValue += value;
-		Log.Info("ADD");
+		SetValue( currentValue + value );
 	}
 
 	[Input]
-	public void Divide(float value)
+	public void Divide( float value )
 	{
-		currentValue /= value;
+		SetValue( currentValue / value );
 	}
 
 	[Input]
-	public void Multiply(float value)
+	public void Multiply( float value )
 	{
-		currentValue /= value;
+		SetValue( currentValue * value );
 	}
 
 	[Input]
-	public void SetValue(float value)
+	public void Subtract( float value )
 	{
+		SetValue( currentValue - value );
+	}
+
+	[Input]
+	public void SetValue( float value )
+	{
+		if ( currentValue > max ) return;
+		if ( currentValue < min ) return;
 		currentValue = value;
+
+		if ( currentValue >= max )
+		{
+			currentValue = max;
+			OnHitMax.Fire( this ); return;
+		}
+
+		if ( currentValue <= min )
+		{
+			currentValue = min;
+			OnHitMin.Fire( this ); return;
+		}
+		OutValue.Fire( this, currentValue );
+	}
+
+	[Input]
+	public void GetValue()
+	{
+		OnGetValue.Fire( this, currentValue );
 	}
 
 }
