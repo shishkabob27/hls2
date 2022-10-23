@@ -1,5 +1,6 @@
 ﻿[Library("scripted_sentence")]
 [HammerEntity]
+[EditorSprite( "editor/scripted_sentence.vmat" )]
 [Title("scripted_sentence"), Category("Choreo"), Icon("theater_comedy")]
 public partial class scripted_sentence : Entity
 {

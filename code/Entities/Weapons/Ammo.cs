@@ -186,6 +186,17 @@ partial class AmmoSMGGrenade : BaseAmmo
 	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_argrenade.vmdl" );
 }
 
+[Library( "ammo_mp5grenades" ), HammerEntity]
+[EditorModel( "models/hl1/weapons/ammo/w_argrenade.vmdl" )]
+[Title( "MP5 Grenades" ), Category( "Ammo" )]
+partial class AmmoMP5Grenade : BaseAmmo
+{
+	public override AmmoType AmmoType => AmmoType.SMGGrenade;
+	public override int AmmoAmount => 3;
+
+	public override Model WorldModel => Model.Load( "models/hl1/weapons/ammo/w_argrenade.vmdl" );
+}
+
 //Opposing Force
 
 [Library( "ammo_762" ), HammerEntity]
