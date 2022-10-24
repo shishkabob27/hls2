@@ -3,7 +3,7 @@
 	data = 
 	{
 		BaseSurface = null
-		AudioMaterial = null
+		AudioMaterial = resource:"surfaces/metal.audiomat"
 		Description = ""
 		Friction = 0.8
 		Elasticity = 0.25

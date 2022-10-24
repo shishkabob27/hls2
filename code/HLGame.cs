@@ -47,6 +47,8 @@ public partial class HLGame : Game
 			}
 			Hud = new HudPanel();
 		}
+		Audio.ReverbScale = 1f;
+		Audio.ReverbVolume = 1f;
 	}
 
 	public override void PostLevelLoaded()

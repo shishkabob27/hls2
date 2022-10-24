@@ -3,7 +3,7 @@
 	data = 
 	{
 		BaseSurface = null
-		AudioMaterial = resource:"surfaces/metal.audiomat"
+		AudioMaterial = resource:"surfaces/default.audiomat"
 		Description = ""
 		Friction = 0.8
 		Elasticity = 0.25
@@ -28,12 +28,18 @@
 		}
 		Sounds = 
 		{
-			FootLeft = resource:"sounds/hl1/player/footsteps/metal-left.sound"
-			FootRight = resource:"sounds/hl1/player/footsteps/metal-right.sound"
-			FootLaunch = resource:"sounds/hl1/player/pl_metal.sound"
+			FootLeft = resource:"sounds/hl1/player/footsteps/concrete-left.sound"
+			FootRight = resource:"sounds/hl1/player/footsteps/concrete-right.sound"
+			FootLaunch = resource:"sounds/hl1/player/pl_step.sound"
+			ImpactHard = resource:"sounds/hl1/debris/concrete.sound"
 		}
 		Breakables = 
 		{
+			BreakSound = resource:"sounds/hl1/debris/bustconcrete.sound"
+			GenericGibs = 
+			[
+				resource:"models/citizen_props/concreteroaddivider01/concreteroaddivider01_gib01_lod01.vmdl",
+			]
 		}
 	}
 }

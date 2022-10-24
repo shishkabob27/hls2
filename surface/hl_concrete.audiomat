@@ -1,0 +1,9 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	data = 
+	{
+		Absorption = "0.25,0.5,0.75"
+		Transmission = "0.1,0.05,0.03"
+		Scattering = 0.33
+	}
+}

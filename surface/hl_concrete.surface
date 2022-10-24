@@ -3,7 +3,7 @@
 	data = 
 	{
 		BaseSurface = null
-		AudioMaterial = null
+		AudioMaterial = resource:"surface/hl_concrete.audiomat"
 		Description = ""
 		Friction = 0.8
 		Elasticity = 0.25
