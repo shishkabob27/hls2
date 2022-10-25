@@ -5,3 +5,4 @@ public class GameInfo
 	public static string trainmap = "shishkabob.hls2_t0";
 	public static string type = "both"; //singleplayer_only, multiplayer_only, both
 }
+// JSON where? I saw it used to exist before 
