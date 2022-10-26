@@ -92,7 +92,7 @@ public partial class SoundEventEntity : Entity
     }
     public override void ClientSpawn()
     {
-        if (StartOnSpawn) // || SpawnSettings.HasFlag(Flags.StartSilent) == false) broken. fix later
+        if (StartOnSpawn  || !SpawnSettings.HasFlag(Flags.StartSilent)) //broken on c1a0!!!!!!!!!!!!
         {
             StartSound();
         }
@@ -142,10 +142,9 @@ public partial class SoundEventEntity : Entity
     [Event.Tick.Server]
     void tick()
     {
-        ticker += 1;
-        if (PlayingSound.Finished == true && PlayingSound.ElapsedTime != 0 && SpawnSettings.HasFlag(Flags.IsNOTLooped) == false & ticker > 5)
+		if (PlayingSound.ElapsedTime == 0) return;
+        if ( PlayingSound.Finished == true && SpawnSettings.HasFlag(Flags.IsNOTLooped) == false)
         {
-            ticker = 0;
             PlayingSound.Stop();
             PlayingSound = default;
             OnStartSound();
