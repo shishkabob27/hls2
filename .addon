@@ -241,6 +241,9 @@
         "Maximum": 60
       }
     },
-    "ParentPackage": "facepunch.dm98"
+    "ParentPackage": "",
+    "GeneralExtensions": true,
+    "TargettedExtensions": true,
+    "ExtensionApiVersion": 1001
   }
 }

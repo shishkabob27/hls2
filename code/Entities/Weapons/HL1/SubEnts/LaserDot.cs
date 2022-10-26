@@ -1,5 +1,5 @@
 ﻿
-partial class LaserDot : Entity
+public partial class LaserDot : Entity
 {
 	Particles spritep;
 	public override void Spawn()

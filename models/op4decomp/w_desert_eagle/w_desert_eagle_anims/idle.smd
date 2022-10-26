@@ -1,8 +1,0 @@
-version 1
-nodes
-  0 "w_desert_eagle" -1
-end
-skeleton
-  time 0
-    0 0.185504 -0.815127 0.960607 -1.570796 0.000000 1.570796
-end

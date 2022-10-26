@@ -1,8 +1,0 @@
-version 1
-nodes
-  0 "nuke_button" -1
-end
-skeleton
-  time 0
-    0 -1.451204 0.046540 19.517437 0.000000 0.000000 0.000000
-end
