@@ -3,7 +3,7 @@
   "Type": "game",
   "Org": "shishkabob",
   "Ident": "hls2",
-  "Tags": null,
+  "Tags": "",
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
@@ -240,6 +240,7 @@
         "Minimum": 1,
         "Maximum": 60
       }
-    }
+    },
+    "ParentPackage": "facepunch.dm98"
   }
 }
