@@ -1,4 +1,4 @@
-partial class HLExplosion
+public partial class HLExplosion
 {
 	public static void Explosion( Entity weapon, Entity owner, Vector3 position, float radius, float damage, float forceScale, string type, bool sparkshower = true )
 	{

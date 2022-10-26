@@ -89,7 +89,7 @@ public partial class SoundEventEntity : Entity
     {
         if (IsServer)
             Delete();
-    }
+    } 
     public override void ClientSpawn()
     {
         if (StartOnSpawn  || !SpawnSettings.HasFlag(Flags.StartSilent)) //broken on c1a0!!!!!!!!!!!!

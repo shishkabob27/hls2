@@ -3,7 +3,7 @@
   "Type": "game",
   "Org": "shishkabob",
   "Ident": "hls2",
-  "Tags": "",
+  "Tags": null,
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
@@ -21,9 +21,9 @@
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Unrestricted",
     "MapList": [
-      "shishkabob.hls2_c2p0",
-      "shishkabob.hls2_c1p0",
+      "\u003Cempty\u003E",
       "shishkabob.hls2_t0",
+      "shishkabob.hls2_c1p0",
       "shishkabob.hls2_c2p0",
       "shishkabob.hls2_c3p0",
       "shishkabob.hls2_c4p0",
@@ -240,10 +240,6 @@
         "Minimum": 1,
         "Maximum": 60
       }
-    },
-    "ParentPackage": "",
-    "GeneralExtensions": true,
-    "TargettedExtensions": true,
-    "ExtensionApiVersion": 1001
+    }
   }
 }
