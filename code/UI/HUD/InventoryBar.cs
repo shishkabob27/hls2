@@ -6,10 +6,10 @@
 public class InventoryBar : Panel
 {
 	List<InventoryColumn> columns = new();
-	List<HLWeapon> Weapons = new();
+	List<Weapon> Weapons = new();
 
 	public bool IsOpen;
-	HLWeapon SelectedWeapon;
+	Weapon SelectedWeapon;
 	int invslots = 7;
 	Sound CurrentSound;
 
@@ -33,7 +33,7 @@ public class InventoryBar : Panel
 		if ( !player.HasHEV ) return;
 
 		Weapons.Clear();
-		Weapons.AddRange( player.Children.Select( x => x as HLWeapon ).Where( x => x.IsValid() && x.IsUsable() ) );
+		Weapons.AddRange( player.Children.Select( x => x as Weapon ).Where( x => x.IsValid() && x.IsUsable() ) );
 
 		foreach ( var weapon in Weapons )
 		{
@@ -87,7 +87,7 @@ public class InventoryBar : Panel
 		// We're not open, but we want to be
 		if ( IsOpen != wantOpen )
 		{
-			SelectedWeapon = localPlayer?.ActiveChild as HLWeapon;
+			SelectedWeapon = localPlayer?.ActiveChild as Weapon;
 			if ( wantOpen2 ) SelectedWeapon = null;
 			IsOpen = true;
 		}
@@ -144,7 +144,7 @@ public class InventoryBar : Panel
 
 	}
 
-	int SlotPressInput( InputBuilder input, int SelectedIndex, List<HLWeapon> sortedWeapons )
+	int SlotPressInput( InputBuilder input, int SelectedIndex, List<Weapon> sortedWeapons )
 	{
 		var columninput = -1;
 
@@ -176,15 +176,15 @@ public class InventoryBar : Panel
 		return sortedWeapons.IndexOf( firstOfColumn );
 	}
 
-	int NextInBucket( List<HLWeapon> sortedWeapons )
+	int NextInBucket( List<Weapon> sortedWeapons )
 	{
 		Assert.NotNull( SelectedWeapon );
 
 		CurrentSound.Stop();
 		CurrentSound = Sound.FromScreen( "wpn_moveselect" );
 
-		HLWeapon first = null;
-		HLWeapon prev = null;
+		Weapon first = null;
+		Weapon prev = null;
 		foreach ( var weapon in sortedWeapons.Where( x => x.Bucket == SelectedWeapon.Bucket ) )
 		{
 			if ( first == null ) first = weapon;

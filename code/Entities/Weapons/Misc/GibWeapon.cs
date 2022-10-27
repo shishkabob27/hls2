@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_gibweapon" )]
 [EditorModel( "models/hl1/weapons/world/glock.vmdl" )]
 [Title( "GibWeapon" ), Category( "Weapons" )]
-partial class GibWeapon : HLWeapon
+partial class GibWeapon : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/glock.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";

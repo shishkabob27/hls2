@@ -4,10 +4,10 @@
 	{
 		if ( Local.Pawn is not HLPlayer pawn ) return;
 		// Handle Viewmodel Setup, this was in Viewmodel.cs but I moved it to match HL1 and because we want access to the cameras view bobbing
-		if ( pawn.ActiveChild is HLWeapon )
+		if ( pawn.ActiveChild is Weapon )
 		{
 
-			var wep = pawn.ActiveChild as HLWeapon;
+			var wep = pawn.ActiveChild as Weapon;
 			// Weapon position
 			if ( wep.ViewModelEntity is Entity )
 			{

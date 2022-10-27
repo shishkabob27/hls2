@@ -145,7 +145,7 @@ public class Options : GUIPanel
 		{
 			if ( Local.Pawn is not HLPlayer pl ) return;
 
-			if ( pl.ActiveChild is not HLWeapon wp ) return;
+			if ( pl.ActiveChild is not Weapon wp ) return;
 			wp.ActiveStart( pl );
 		}
 	}

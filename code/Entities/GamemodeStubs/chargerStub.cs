@@ -47,7 +47,7 @@ partial class LegacyChargerStation : KeyframeEntity, IUse
     public Vector3 Maxs { get; set; } = new Vector3( 48, 32, 32 );
     public bool SpawnCheck()
     {
-        var b = Entity.All.OfType<HLWeapon>().ToList();
+        var b = Entity.All.OfType<Weapon>().ToList();
         b.RemoveAll( x => ( x as Entity ).Tags.Has( "stubmade" ) );
         b.RemoveAll( x => ( x as Entity ).Owner is HLPlayer );
         Log.Info( b.Count() );

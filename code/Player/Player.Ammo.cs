@@ -54,7 +54,7 @@
 		var existing = Children.Where( x => x.ClassName == weaponName ).FirstOrDefault();
 		if ( existing != null ) return false;
 
-		var weapon = Entity.CreateByName<HLWeapon>( weaponName );
+		var weapon = Entity.CreateByName<Weapon>( weaponName );
 		if ( Inventory.Add( weapon ) )
 			return true;
 

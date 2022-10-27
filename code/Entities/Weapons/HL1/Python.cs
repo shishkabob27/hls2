@@ -2,7 +2,7 @@
 [Alias( "weapon_python" )]
 [EditorModel( "models/hl1/weapons/world/python.vmdl" )]
 [Title( ".357 Magnum Revolver" ), Category( "Weapons" )]
-partial class Python : HLWeapon
+partial class Python : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/python.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_python.vmdl";

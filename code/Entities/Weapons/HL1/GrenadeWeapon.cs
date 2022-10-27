@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_handgrenade" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/grenade.vmdl" )]
 [Title( "Grenade" ), Category( "Weapons" )]
-partial class GrenadeWeapon : HLWeapon
+partial class GrenadeWeapon : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/grenade.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_grenade.vmdl";

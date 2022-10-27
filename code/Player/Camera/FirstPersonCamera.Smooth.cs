@@ -24,10 +24,10 @@
 				oldz = simorg[2];
 			if ( simorg[2] - oldz > 18 )
 				oldz = simorg[2] - 18;
-			if ( pawn.ActiveChild is HLWeapon )
+			if ( pawn.ActiveChild is Weapon )
 			{
 
-				var wep = pawn.ActiveChild as HLWeapon;
+				var wep = pawn.ActiveChild as Weapon;
 				// Weapon position
 				if ( wep.ViewModelEntity is Entity )
 				{
@@ -115,10 +115,10 @@
 						simorg += delta;
 						//VectorAdd( pparams->vieworg, delta, pparams->vieworg );
 						//viewmodel.Position += delta;
-						if ( pawn.ActiveChild is HLWeapon )
+						if ( pawn.ActiveChild is Weapon )
 						{
 
-							var wep = pawn.ActiveChild as HLWeapon;
+							var wep = pawn.ActiveChild as Weapon;
 							// Weapon position
 							if ( wep.ViewModelEntity is Entity )
 							{

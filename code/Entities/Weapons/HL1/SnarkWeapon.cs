@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_snark" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/sqknest.vmdl" )]
 [Title( "Snark" ), Category( "Weapons" )]
-partial class SnarkWeapon : HLWeapon
+partial class SnarkWeapon : Weapon
 {
     //stub
     public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/sqknest.vmdl" );

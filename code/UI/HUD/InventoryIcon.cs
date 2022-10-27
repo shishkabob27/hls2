@@ -2,14 +2,14 @@
 
 class InventoryIcon : Panel
 {
-	public HLWeapon Weapon;
+	public Weapon Weapon;
 	public Panel Icon;
 	public Panel AmmoCountFull;
 	public Panel AmmoCountEmpty;
 	public Panel AltAmmoCountFull;
 	public Panel AltAmmoCountEmpty;
 
-	public InventoryIcon( HLWeapon weapon )
+	public InventoryIcon( Weapon weapon )
 	{
 		Weapon = weapon;
 		Icon = Add.Panel( "icon" );
@@ -27,7 +27,7 @@ class InventoryIcon : Panel
 		Icon.Style.SetBackgroundImage( weapon.InventoryIcon );
 	}
 
-	internal void TickSelection( HLWeapon selectedWeapon )
+	internal void TickSelection( Weapon selectedWeapon )
 	{
 		SetClass( "active", selectedWeapon == Weapon );
 		if ( selectedWeapon == Weapon )

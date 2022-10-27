@@ -41,7 +41,7 @@ public class Ammo : Panel
 		if ( player == null ) return;
 		if ( !player.HasHEV ) return;
 
-		var weapon = player.ActiveChild as HLWeapon;
+		var weapon = player.ActiveChild as Weapon;
 		SetClass( "active", weapon != null );
 
 		if ( weapon == null ) return;
@@ -59,7 +59,7 @@ public class Ammo : Panel
 		AmmoIcon1.SetClass( "invisible", weapon.ClipSize == 0 );
 		if ( weapon.ClipSize <= 0 )
 		{
-			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine TODO - Better way to do this? add a ShowClip bool in HLWeapon maybe?	   
+			AmmoCount.Text = $" "; // hide it, since it would be a grenade or a tripmine TODO - Better way to do this? add a ShowClip bool in Weapon maybe?	   
 
 			Seperator.SetClass( "invisible", true );
 		}

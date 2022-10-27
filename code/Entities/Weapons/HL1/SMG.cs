@@ -4,7 +4,7 @@
 [Alias( "weapon_9mmAR" )]
 [EditorModel( "models/hl1/weapons/world/mp5.vmdl" )]
 [Title( "SMG" ), Category( "Weapons" )]
-partial class SMG : HLWeapon
+partial class SMG : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/mp5.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_mp5.vmdl";

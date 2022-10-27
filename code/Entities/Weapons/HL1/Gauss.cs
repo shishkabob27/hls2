@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_gauss" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/gauss.vmdl" )]
 [Title( "Gauss" ), Category( "Weapons" )]
-partial class Gauss : HLWeapon
+partial class Gauss : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/gauss.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_gauss.vmdl";

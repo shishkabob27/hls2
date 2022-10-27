@@ -28,7 +28,7 @@ public class InventoryColumn : Panel
 
 	}
 
-	internal void UpdateWeapon( HLWeapon weapon )
+	internal void UpdateWeapon( Weapon weapon )
 	{
 		var icon = ChildrenOfType<InventoryIcon>().FirstOrDefault( x => x.Weapon == weapon );
 		if ( icon == null )
@@ -40,7 +40,7 @@ public class InventoryColumn : Panel
 
 	}
 
-	internal void TickSelection( HLWeapon selectedWeapon )
+	internal void TickSelection( Weapon selectedWeapon )
 	{
 		SetClass( "active", selectedWeapon?.Bucket == Column );
 

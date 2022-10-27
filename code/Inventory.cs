@@ -10,7 +10,7 @@
 	public override bool Add( Entity ent, bool makeActive = false )
 	{
 		var player = Owner as HLPlayer;
-		var weapon = ent as HLWeapon;
+		var weapon = ent as Weapon;
 		var notices = !player.SupressPickupNotices;
 
 		if ( weapon == null )

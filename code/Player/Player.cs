@@ -207,11 +207,11 @@
 	{
 		//give all weapons, should auto update no matter what.
 		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
-		var weptype = typeof( HLWeapon );
+		var weptype = typeof( Weapon );
 		var weptypes = TypeLibrary.GetDescriptions( weptype );
 		foreach ( var weapontype in weptypes )
 		{
-			ply.GiveWeapon( weapontype.Create<HLWeapon>() );
+			ply.GiveWeapon( weapontype.Create<Weapon>() );
 		}
 		var ammtype = typeof( BaseAmmo );
 		var ammtypes = TypeLibrary.GetDescriptions( ammtype );
@@ -281,7 +281,7 @@
 		suit.Spawn();
 		suit.DeleteAsync( 0.1f );
 	}
-	public void GiveWeapon( HLWeapon wep )
+	public void GiveWeapon( Weapon wep )
 	{ 
 		if (HLGame.sv_force_physics)
 		{
@@ -452,7 +452,7 @@
 		// If the current weapon is out of ammo and we last fired it over half a second ago
 		// lets try to switch to a better wepaon
 		//
-		if ( ActiveChild is HLWeapon weapon && !weapon.IsUsable() && weapon.TimeSincePrimaryAttack > 0.5f && weapon.TimeSinceSecondaryAttack > 0.5f )
+		if ( ActiveChild is Weapon weapon && !weapon.IsUsable() && weapon.TimeSincePrimaryAttack > 0.5f && weapon.TimeSinceSecondaryAttack > 0.5f )
 		{
 			SwitchToBestWeapon();
 		}
@@ -515,7 +515,7 @@
 
 	public void SwitchToBestWeapon()
 	{
-		var best = Children.Select( x => x as HLWeapon )
+		var best = Children.Select( x => x as Weapon )
 			.Where( x => x.IsValid() && x.IsUsable() )
 			.OrderByDescending( x => x.BucketWeight )
 			.FirstOrDefault();

@@ -23,7 +23,7 @@ public class Crosshair : Panel
 		if ( !p.HasHEV ) return;
 
 
-		if ( p.ActiveChild is HLWeapon weapon)
+		if ( p.ActiveChild is Weapon weapon )
 		{
 			Icon.Style.SetBackgroundImage(weapon.CrosshairIcon);
 		}

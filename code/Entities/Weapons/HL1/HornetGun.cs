@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_hornetgun" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/hgun.vmdl" )]
 [Title( "Hornet Gun" ), Category( "Weapons" )]
-partial class HornetGun : HLWeapon
+partial class HornetGun : Weapon
 {
     //stub
     public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/hgun.vmdl" );

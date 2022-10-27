@@ -22,7 +22,7 @@
 
 		foreach ( var child in player.Children.ToArray() )
 		{
-			if ( child is HLWeapon weapon )
+			if ( child is Weapon weapon )
 			{
 				Weapons.Add( weapon.ClassName );
 			}

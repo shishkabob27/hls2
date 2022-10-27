@@ -1,7 +1,7 @@
 ﻿using Sandbox.Component;
 
 [Library( "weapon_physgun" )]
-partial class PhysGun : HLWeapon
+partial class PhysGun : Weapon
 {
 	public override string ViewModelPath => "weapons/rust_pistol/v_rust_pistol.vmdl";
 	public override string InventoryIcon => "/ui/weapons/weapon_gauss.png";

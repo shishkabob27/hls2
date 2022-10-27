@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_crowbar" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/crowbar.vmdl" )]
 [Title( "Crowbar" ), Category( "Weapons" )]
-partial class Crowbar : HLWeapon
+partial class Crowbar : Weapon
 {
 	public static Model WorldModel = Model.Load( "models/hl1/weapons/world/crowbar.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_crowbar.vmdl";

@@ -2,7 +2,7 @@
 [Alias( "weapon_glock" )]
 [EditorModel( "models/hl1/weapons/world/glock.vmdl" )]
 [Title( "Pistol" ), Category( "Weapons" )]
-partial class Pistol : HLWeapon
+partial class Pistol : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/glock.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";

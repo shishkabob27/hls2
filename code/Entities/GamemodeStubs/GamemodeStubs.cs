@@ -2,7 +2,7 @@
 {
     public bool SpawnCheck()
     {
-        var b = Entity.All.OfType<HLWeapon>().ToList();
+        var b = Entity.All.OfType<Weapon>().ToList();
         b.RemoveAll( x => ( x as Entity ).Tags.Has( "stubmade" ) );
         b.RemoveAll( x => ( x as Entity ).Owner is HLPlayer );
         if ( b.Count() > 2 ) // If we find any of our base entities from this gamemode we should abort.

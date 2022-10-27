@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_egon" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/egon.vmdl" )]
 [Title( "Egon" ), Category( "Weapons" )]
-partial class Egon : HLWeapon
+partial class Egon : Weapon
 {
     //stub
     public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/egon.vmdl" );
