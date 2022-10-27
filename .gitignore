@@ -22,3 +22,4 @@ Properties/launchSettings.json
 *.decal_c
 *.surface_c
 *.DS_Store
+*.audiomat_c
