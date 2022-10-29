@@ -160,4 +160,9 @@ public class Options : GUIPanel
 		var a = Parent.AddChild<Advanced>();
 		(a as Advanced).MenuOpen = true;
 	}
+	public void openTestSPdialog()
+	{
+		var a = Parent.AddChild<SpawnMenuTest>();
+		(a as SpawnMenuTest).MenuOpen = true;
+	}
 }
