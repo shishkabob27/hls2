@@ -244,6 +244,6 @@
     "ParentPackage": "",
     "GeneralExtensions": true,
     "TargettedExtensions": true,
-    "ExtensionApiVersion": 1001
+    "ExtensionApiVersion": 1002
   }
 }
