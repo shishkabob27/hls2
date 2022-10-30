@@ -1,4 +1,4 @@
-﻿class BaseGamemodeStub : Entity
+﻿public class BaseGamemodeStub : Entity
 {
     public bool SpawnCheck()
     {
