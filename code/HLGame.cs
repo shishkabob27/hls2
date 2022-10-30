@@ -13,8 +13,8 @@ global using XeNPC;
 public partial class HLGame : Game
 {
 	[Net]
-	HudPanel Hud { get; set; }
-	HLGUI GUI { get; set; }
+	public HudPanel Hud { get; set; }
+	public HLGUI GUI { get; set; }
 
 	MenuPanel Menu { get; set; }
 
