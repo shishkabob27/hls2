@@ -3,7 +3,7 @@
 [Library( "weapon_mp5" ), HammerEntity]
 [Alias( "weapon_9mmAR" )]
 [EditorModel( "models/hl1/weapons/world/mp5.vmdl" )]
-[Title( "SMG" ), Category( "Weapons" )]
+[Title( "SMG" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class SMG : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/mp5.vmdl" );

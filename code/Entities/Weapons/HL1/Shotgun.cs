@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_shotgun" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/shotgun.vmdl" )]
-[Title( "Shotgun" ), Category( "Weapons" )]
+[Title( "Shotgun" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class Shotgun : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/shotgun.vmdl" );

@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_9mmhandgun" ), HammerEntity]
 [Alias( "weapon_glock" )]
 [EditorModel( "models/hl1/weapons/world/glock.vmdl" )]
-[Title( "Pistol" ), Category( "Weapons" )]
+[Title( "Pistol" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class Pistol : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/glock.vmdl" );

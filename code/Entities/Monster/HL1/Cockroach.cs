@@ -1,6 +1,6 @@
 [Library( "monster_cockroach" ), HammerEntity]
 [EditorModel( "models/hl1/monster/roach.vmdl" )]
-[Title( "Cockroach" ), Category( "Monsters" ), Icon( "person" )]
+[Title( "Cockroach" ), Category( "Monsters" ), Icon( "person" ), MenuCategory( "Animals" )]
 public class Cockroach : NPC
 {
 

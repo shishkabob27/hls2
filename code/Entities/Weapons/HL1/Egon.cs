@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_egon" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/egon.vmdl" )]
-[Title( "Egon" ), Category( "Weapons" )]
+[Title( "Egon" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class Egon : Weapon
 {
     //stub

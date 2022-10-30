@@ -1,6 +1,6 @@
 ﻿[Library( "monster_scientist" ), HammerEntity]
 [EditorModel( "models/hl1/monster/scientist/scientist_01.vmdl" )]
-[Title( "Scientist" ), Category( "Monsters" ), Icon( "person" )]
+[Title( "Scientist" ), Category( "Monsters" ), Icon( "person" ), MenuCategory( "Black Mesa" )]
 public partial class Scientist : NPC
 {
 	Entity FollowTarget;

@@ -1,6 +1,6 @@
 ﻿[Library( "monster_snark" ), HammerEntity]
 [EditorModel( "models/hl1/monster/snark.vmdl" )]
-[Title( "Snark" ), Category( "Monsters" ), Icon( "person" )]
+[Title( "Snark" ), Category( "Monsters" ), Icon( "person" ), MenuCategory( "Aliens" )]
 public class Snark : NPC
 {
 	const int SQUEEK_DETONATE_DELAY = 15;

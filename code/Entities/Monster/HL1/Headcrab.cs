@@ -1,6 +1,6 @@
 ﻿[Library( "monster_headcrab" ), HammerEntity]
 [EditorModel( "models/hl1/monster/headcrab.vmdl" )]
-[Title( "Headcrab" ), Category( "Monsters" ), Icon( "person" )]
+[Title( "Headcrab" ), Category( "Monsters" ), Icon( "person" ), MenuCategory( "Aliens" )]
 public class Headcrab : NPC
 {
 	float NextAttack;

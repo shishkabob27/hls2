@@ -1,4 +1,6 @@
-﻿public partial class HLUtils
+﻿using Sandbox.Internal;
+
+public partial class HLUtils
 {
     static public HLPlayer FindPlayerInBox(Vector3 Position, int AreaSize)
     {
@@ -53,4 +55,14 @@
             yaw += 360;
         return yaw;
     }
+
+}
+public class MenuCategory : Attribute
+{
+	public string Value { get; set; }
+
+	public MenuCategory( string value )
+	{
+		Value = value;
+	}
 }

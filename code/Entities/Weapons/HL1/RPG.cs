@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_rpg" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/rpg.vmdl" )]
-[Title( "RPG" ), Category( "Weapons" )]
+[Title( "RPG" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class RPG : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/rpg.vmdl" );

@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_satchel" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/satchel.vmdl" )]
-[Title( "Satchel" ), Category( "Weapons" )]
+[Title( "Satchel" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class SatchelWeapon : Weapon
 {
 	//stub

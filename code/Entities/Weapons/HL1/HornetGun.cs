@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_hornetgun" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/hgun.vmdl" )]
-[Title( "Hornet Gun" ), Category( "Weapons" )]
+[Title( "Hornet Gun" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class HornetGun : Weapon
 {
     //stub

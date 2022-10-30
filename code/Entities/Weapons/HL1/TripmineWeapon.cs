@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_tripmine" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/tripmine.vmdl" )]
-[Title( "Tripmine" ), Category( "Weapons" )]
+[Title( "Tripmine" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class TripmineWeapon : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/tripmine.vmdl" );

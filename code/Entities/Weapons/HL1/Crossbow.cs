@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_crossbow" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/crossbow.vmdl" )]
-[Title( "Crossbow" ), Category( "Weapons" )]
+[Title( "Crossbow" ), Category( "Weapons" ), MenuCategory("Half-Life")]
 partial class Crossbow : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/crossbow.vmdl" );

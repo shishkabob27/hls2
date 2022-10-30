@@ -1,6 +1,6 @@
 ﻿[Library("monster_barney"), HammerEntity]
 [EditorModel("models/hl1/monster/barney.vmdl")]
-[Title("Barney"), Category("Monsters"), Icon("person")]
+[Title("Barney"), Category("Monsters"), Icon("person"), MenuCategory( "Black Mesa" )]
 internal class Barney : NPC
 {
     // Stub NPC, this does nothing yet

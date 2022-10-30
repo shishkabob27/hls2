@@ -1,7 +1,7 @@
 ﻿[Library( "weapon_357" ), HammerEntity]
 [Alias( "weapon_python" )]
 [EditorModel( "models/hl1/weapons/world/python.vmdl" )]
-[Title( ".357 Magnum Revolver" ), Category( "Weapons" )]
+[Title( ".357 Magnum Revolver" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class Python : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/python.vmdl" );

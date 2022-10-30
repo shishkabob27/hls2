@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_snark" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/sqknest.vmdl" )]
-[Title( "Snark" ), Category( "Weapons" )]
+[Title( "Snark" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class SnarkWeapon : Weapon
 {
     //stub

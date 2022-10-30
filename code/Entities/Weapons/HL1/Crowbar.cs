@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_crowbar" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/crowbar.vmdl" )]
-[Title( "Crowbar" ), Category( "Weapons" )]
+[Title( "Crowbar" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class Crowbar : Weapon
 {
 	public static Model WorldModel = Model.Load( "models/hl1/weapons/world/crowbar.vmdl" );

@@ -1,6 +1,6 @@
 ﻿[Library( "monster_houndeye" ), HammerEntity]
 [EditorModel( "models/hl1/monster/houndeye.vmdl" )]
-[Title( "Houndeye" ), Category( "Monsters" ), Icon( "person" )]
+[Title( "Houndeye" ), Category( "Monsters" ), Icon( "person" ), MenuCategory( "Aliens" )]
 public class Houndeye : NPC
 {
     public override void Spawn()

@@ -1,6 +1,6 @@
 ﻿[Library( "weapon_gauss" ), HammerEntity]
 [EditorModel( "models/hl1/weapons/world/gauss.vmdl" )]
-[Title( "Gauss" ), Category( "Weapons" )]
+[Title( "Gauss" ), Category( "Weapons" ), MenuCategory( "Half-Life" )]
 partial class Gauss : Weapon
 {
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/gauss.vmdl" );
