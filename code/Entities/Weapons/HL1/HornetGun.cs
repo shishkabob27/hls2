@@ -7,8 +7,7 @@ partial class HornetGun : Weapon
     public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/hgun.vmdl" );
     public override string ViewModelPath => "models/hl1/weapons/view/v_hgun.vmdl";
 	public override string WorldModelPath => "models/hl1/weapons/world/hgun.vmdl";
-	public override string Category => "Half-Life";
-	public override int Bucket => 3;
+    public override int Bucket => 3;
     public override int BucketWeight => 4;
     public override AmmoType AmmoType => AmmoType.Hornet; // we do this so we can always select the weapon.
     public override string CrosshairIcon => "/ui/crosshairs/crosshair7.png";

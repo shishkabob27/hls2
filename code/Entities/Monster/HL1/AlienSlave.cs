@@ -3,10 +3,9 @@
 [Title( "Alien Slave" ), Category( "Monsters" ), Icon( "person" )]
 internal class AlienSlave : NPC
 {
-	// Stub NPC, this does nothing yet
+    // Stub NPC, this does nothing yet
 
-	public override string Category => "Aliens";
-	public override void Spawn()
+    public override void Spawn()
     {
         base.Spawn();
         Health = 20;

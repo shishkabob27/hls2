@@ -7,7 +7,6 @@
 	public AnimatedEntity VRWeaponModel { get; set; }
 	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";
 	public virtual string WorldModelPath => "models/hl1/weapons/world/glock.vmdl";
-	public virtual string Category => "Other";
 	public virtual float PrimaryRate => 0.2f;
 	public virtual float SecondaryRate => 0.05f;
 

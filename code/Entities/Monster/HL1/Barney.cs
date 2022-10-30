@@ -3,9 +3,8 @@
 [Title("Barney"), Category("Monsters"), Icon("person")]
 internal class Barney : NPC
 {
-	// Stub NPC, this does nothing yet
-	public override string Category => "Black Mesa";
-	public Barney()
+    // Stub NPC, this does nothing yet
+    public Barney()
     {
 
         NPCAnimGraph = "animgraphs/hl1/monster/scientist.vanmgrph";

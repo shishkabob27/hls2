@@ -3,8 +3,6 @@
 [Title( "Snark" ), Category( "Monsters" ), Icon( "person" )]
 public class Snark : NPC
 {
-	public override string Category => "Aliens";
-
 	const int SQUEEK_DETONATE_DELAY = 15;
 	float Die;
 	float flpitch;

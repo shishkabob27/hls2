@@ -9,7 +9,6 @@ partial class SMG : Weapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/mp5.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_mp5.vmdl";
 	public override string WorldModelPath => "models/hl1/weapons/world/mp5.vmdl";
-	public override string Category => "Half-Life";
 	public override bool HasHDModel => true;
 
 	public override float PrimaryRate => 0.1f;

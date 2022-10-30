@@ -6,7 +6,6 @@ partial class Crossbow : Weapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/crossbow.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_crossbow.vmdl";
 	public override string WorldModelPath => "models/hl1/weapons/world/crossbow.vmdl";
-	public override string Category => "Half-Life";
 	public override float PrimaryRate => 0.75f;
 	public override int Bucket => 2;
 	public override int BucketWeight => 3;

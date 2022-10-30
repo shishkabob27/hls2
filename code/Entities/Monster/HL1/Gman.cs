@@ -3,10 +3,9 @@
 [Title("Gman"), Category("Monsters"), Icon("person")]
 public class Gman : NPC
 {
-	// Stub NPC, this does nothing yet
-
-	public override string Category => "Black-Mesa";
-	public Gman()
+    // Stub NPC, this does nothing yet
+    
+    public Gman()
     {
         NPCAnimGraph = "animgraphs/hl1/monster/gman.vanmgrph";
     }

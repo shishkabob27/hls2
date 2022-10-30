@@ -20,7 +20,6 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public bool HasFriction = true;
 	public bool Unstick = true;
 	public bool SticktoFloor = true;
-	public virtual string Category => "Other";
 
 	public const int BLOOD_COLOUR_RED = 0;
 	public const int BLOOD_COLOUR_YELLOW = 1;

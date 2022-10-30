@@ -3,7 +3,6 @@
 [Title( "Scientist" ), Category( "Monsters" ), Icon( "person" )]
 public partial class Scientist : NPC
 {
-	public override string Category => "Black-Mesa";
 	Entity FollowTarget;
 
 	List<string> ScientistMDLList = new List<string>{
