@@ -3,7 +3,8 @@
 [Title( "Houndeye" ), Category( "Monsters" ), Icon( "person" )]
 public class Houndeye : NPC
 {
-    public override void Spawn()
+	public override string Category => "Aliens";
+	public override void Spawn()
     {
         base.Spawn();
         Health = 20;

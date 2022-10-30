@@ -6,6 +6,7 @@ partial class Gauss : Weapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/gauss.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_gauss.vmdl";
 	public override string WorldModelPath => "models/hl1/weapons/world/gauss.vmdl";
+	public override string Category => "Half-Life";
 
 	public override int Bucket => 3;
 	public override int BucketWeight => 2;

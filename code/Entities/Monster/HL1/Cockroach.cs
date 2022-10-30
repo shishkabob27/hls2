@@ -4,6 +4,7 @@
 public class Cockroach : NPC
 {
 
+	public override string Category => "Animals";
 	public new float EyeHeight = 1;
 	public new bool Unstick = false;
 

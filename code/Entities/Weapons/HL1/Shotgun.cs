@@ -6,6 +6,7 @@ partial class Shotgun : Weapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/shotgun.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_shotgun.vmdl";
 	public override string WorldModelPath => "models/hl1/weapons/world/shotgun.vmdl";
+	public override string Category => "Half-Life";
 	public override bool HasHDModel => true;
 	public override float PrimaryRate => 0.75f;
 	public override float SecondaryRate => 1.5f;

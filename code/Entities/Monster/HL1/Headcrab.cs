@@ -3,6 +3,7 @@
 [Title( "Headcrab" ), Category( "Monsters" ), Icon( "person" )]
 public class Headcrab : NPC
 {
+	public override string Category => "Aliens";
 	float NextAttack;
 	float NextIdleSound;
 	float NextAlertSound;

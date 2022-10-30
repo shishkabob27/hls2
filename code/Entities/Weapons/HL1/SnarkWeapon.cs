@@ -7,6 +7,7 @@ partial class SnarkWeapon : Weapon
     public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/sqknest.vmdl" );
     public override string ViewModelPath => "models/hl1/weapons/view/v_squeak.vmdl";
 	public override string WorldModelPath => "models/hl1/weapons/world/sqknest.vmdl";
+	public override string Category => "Half-Life";
 	public override bool HasHDModel => true;
     public override float PrimaryRate => 0.3f;
     public override int Bucket => 4;

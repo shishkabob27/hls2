@@ -7,6 +7,7 @@ partial class Pistol : Weapon
 	public static readonly Model WorldModel = Model.Load( "models/hl1/weapons/world/glock.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_glock.vmdl";
 	public override string WorldModelPath => "models/hl1/weapons/world/glock.vmdl";
+	public override string Category => "Half-Life";
 	public override int ClipSize => 17;
 	public override float PrimaryRate => 0.3f;
 	public override float SecondaryRate => 0.2f;

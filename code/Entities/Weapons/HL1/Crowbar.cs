@@ -6,6 +6,7 @@ partial class Crowbar : Weapon
 	public static Model WorldModel = Model.Load( "models/hl1/weapons/world/crowbar.vmdl" );
 	public override string ViewModelPath => "models/hl1/weapons/view/v_crowbar.vmdl";
 	public override string WorldModelPath => "models/hl1/weapons/world/crowbar.vmdl";
+	public override string Category => "Half-Life";
 	public override float PrimaryRate => 0.5f;
 	public override float SecondaryRate => 1.0f;
 	public override float ReloadTime => 3.0f;

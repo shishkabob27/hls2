@@ -3,8 +3,10 @@
 [Title( "Zombie" ), Category( "Monsters" ), Icon( "person" )]
 internal class Zombie : NPC
 {
-    // Stub NPC, this does nothing yet
-    public Zombie()
+	public override string Category => "Aliens";
+
+	// Stub NPC, this does nothing yet
+	public Zombie()
     {
         NPCAnimGraph = "animgraphs/hl1/monster/zombie.vanmgrph";
         SetAnimGraph( NPCAnimGraph );
