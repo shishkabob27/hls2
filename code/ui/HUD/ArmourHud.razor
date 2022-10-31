@@ -1,0 +1,40 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct;
+
+<root>
+	<panel class="iconcontainer">
+		<IconPanel @ref=IconEmpty class="iconempty"></IconPanel>
+		<IconPanel @ref=IconFull class="iconfull"></IconPanel>
+	</panel>
+    
+	<label @ref=Value class ="label"></label>
+</root>
+
+@code
+{
+	public Label Value;
+
+	public IconPanel IconFull;
+	public IconPanel IconEmpty;
+
+	public override void Tick()
+	{
+		var player = Local.Pawn as HLPlayer;
+		if (player == null) return;
+
+		Value.Text = $"{player.Armour.CeilToInt()}";
+
+		IconEmpty.Style.Height = 100 - player.Armour;
+		IconFull.Style.Height = player.Armour;
+
+		if (!player.HasHEV || player.Health <= 0)
+		{
+			SetClass("invisible", true);
+		}
+		else
+		{
+			SetClass("invisible", false);
+		}
+	}
+}
