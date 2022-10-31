@@ -73,22 +73,29 @@ public partial class scripted_sequence : Entity
 	}
 
 	protected Output OnEndSequence { get; set; }
-	public void EndSequence()
-	{
+	protected Output OnBeginSequence { get; set; } 
 
-	}
-	protected Output OnBeginSequence { get; set; }
-
+	/// <summary>
+	/// Summons an NPC to act out the scripted sequence.
+	/// </summary>
 	[Input]
 	public void BeginSequence()
 	{
 	
 	}
+
+	/// <summary>
+	/// Stops the scripted sequence. If fired after a sequence starts, this input will not take effect until the NPC finishes playing the scripted action animation.
+	/// </summary>
 	[Input]
 	void CancelSequence()
 	{
 
 	}
+
+	/// <summary>
+	/// Summons an NPC to the script location. They will play their scripted idle (or "ACT_IDLE" if none is specified) until "BeginSequence" is triggered.
+	/// </summary>
 	[Input]
 	void MoveToPosition()
 	{
@@ -100,4 +107,13 @@ public partial class scripted_sequence : Entity
 
 	}
 
+	// TODO: Script Events.
+	protected Output OnScriptEvent01 { get; set; }
+	protected Output OnScriptEvent02 { get; set; }
+	protected Output OnScriptEvent03 { get; set; }
+	protected Output OnScriptEvent04 { get; set; }
+	protected Output OnScriptEvent05 { get; set; }
+	protected Output OnScriptEvent06 { get; set; }
+	protected Output OnScriptEvent07 { get; set; }
+	protected Output OnScriptEvent08 { get; set; }
 }
