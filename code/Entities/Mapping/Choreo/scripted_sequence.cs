@@ -21,7 +21,7 @@ public partial class scripted_sequence : Entity
 		//StartUnbreakable = 524288,
 	}
 
-	public enum moveToMode
+	public enum MoveToMode
 	{
 		No,
 		Walk,
@@ -64,7 +64,7 @@ public partial class scripted_sequence : Entity
 	public bool LoopActionAnimation { get; set; } = false;
 
 	[Property( "m_fMoveTo" )]
-	public moveToMode MoveToMode { get; set; }
+	public MoveToMode MoveMode { get; set; }
 
 	public NPC TargetNPC;
 	public scripted_sequence()
@@ -74,6 +74,11 @@ public partial class scripted_sequence : Entity
 
 	protected Output OnEndSequence { get; set; }
 	protected Output OnBeginSequence { get; set; } 
+	void EndSequence()
+	{ 
+		TargetNPC.InScriptedSequence = false;
+		OnEndSequence.Fire( this );
+	}
 
 	/// <summary>
 	/// Summons an NPC to act out the scripted sequence.
@@ -81,7 +86,8 @@ public partial class scripted_sequence : Entity
 	[Input]
 	public void BeginSequence()
 	{
-	
+		MoveTo( MoveMode );
+		TargetNPC.InScriptedSequence = true;
 	}
 
 	/// <summary>
@@ -90,6 +96,7 @@ public partial class scripted_sequence : Entity
 	[Input]
 	void CancelSequence()
 	{
+		TargetNPC.InScriptedSequence = false;
 
 	}
 
@@ -99,12 +106,11 @@ public partial class scripted_sequence : Entity
 	[Input]
 	void MoveToPosition()
 	{
-
+		MoveTo( MoveMode );
 	}
 	public override void Spawn()
 	{
-
-
+		TargetNPC = FindByName( TargetEntity ) as NPC; 
 	}
 
 	// TODO: Script Events.
