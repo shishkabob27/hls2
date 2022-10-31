@@ -87,14 +87,15 @@ public partial class HLCombat
 	/// <param name="Health">The health the gibbing object was at when it gibbed, decides gib velocity. Greater than -50 has multiplier of 0.7, greater than -200 has a multiplier of 2, everything else has a multiplier of 4</param>
 	/// <param name="bbox">The BBox the gibs are spawned in.</param>
 	/// <param name="Colour">Gib colour, 0 = Red (HUMAN), 1 = Yellow (ALIEN)</param>
-	public static void CreateGibs( Vector3 Position, Vector3 DMGPos, float Health, BBox bbox, int Colour = 0 )
+	/// <param name="Count">Amount to spawn, 4 by default</param>
+	public static void CreateGibs( Vector3 Position, Vector3 DMGPos, float Health, BBox bbox, int Colour = 0, int Count = 4 )
 	{
 		Sound.FromWorld( "bodysplat", Position );
 
 		Vector3 attackDir = (DMGPos - new Vector3( 0, 0, 10 ) - Position).Normal;
 		if ( Colour == 0 ) CreateHeadGib( Position, DMGPos, Health ); // no heads for aliens :(
 
-		for ( int i = 0; i < 4; i++ )
+		for ( int i = 0; i < Count; i++ )
 		{
 			var gib = new HLGib();
 			gib.AngularVelocity = new Angles( Rand.Float( 100, 300 ), 0, Rand.Float( 100, 200 ) );
