@@ -1,6 +1,6 @@
 [Library("item_suit"), HammerEntity]
 [EditorModel("models/hl1/items/suit.vmdl")]
-[Title("HEV Suit"), Category("Items")]
+[Title("HEV Suit"), Category("Items"), MenuCategory( "Items" )]
 public partial class Suit : ModelEntity
 {
     [Flags]

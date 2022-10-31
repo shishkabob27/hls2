@@ -1,4 +1,5 @@
-﻿public partial class BaseAmmo : ModelEntity, IRespawnableEntity
+﻿[MenuCategory( "Ammo" )]
+public partial class BaseAmmo : ModelEntity, IRespawnableEntity
 {
 	public virtual AmmoType AmmoType => AmmoType.None;
 	public virtual int AmmoAmount => 17;

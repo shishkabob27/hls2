@@ -1,6 +1,6 @@
 [Library( "item_ctfbase" ), HammerEntity]
 [EditorModel( "models/op4/ctf/civ_stand.vmdl" )]
-[Title(  "item_ctfbase" ), Category("Capture The Flag")]
+[Title(  "item_ctfbase" ), Category("Capture The Flag"), MenuCategory( "Items" )]
 partial class item_ctfbase : ModelEntity
 {
 	[Property, Title("Team")]

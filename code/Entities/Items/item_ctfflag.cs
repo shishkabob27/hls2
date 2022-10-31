@@ -1,6 +1,6 @@
 [Library( "item_ctfflag" ), HammerEntity]
 [EditorModel( "models/op4/ctf/flag.vmdl" )]
-[Title(  "item_ctfflag" ), Category("Capture The Flag")]
+[Title(  "item_ctfflag" ), Category("Capture The Flag"), MenuCategory( "Items" )]
 partial class item_ctfflag : ModelEntity
 {
 	[Property]
