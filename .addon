@@ -241,7 +241,7 @@
         "Maximum": 60
       }
     },
-    "ParentPackage": "",
+    "ParentPackage": "facepunch.sandbox",
     "GeneralExtensions": true,
     "TargettedExtensions": true,
     "ExtensionApiVersion": 1002
