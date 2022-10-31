@@ -29,7 +29,7 @@ public partial class scripted_sequence : Entity
 		Custom_movement,
 		Instantaneous,
 		No_turn_to_face
-	} 
+	}
 
 	[Property( "spawnflags", Title = "Spawn Settings" )]
 	public Flags SpawnSettings { get; set; } = Flags.Repeatable;
@@ -73,9 +73,9 @@ public partial class scripted_sequence : Entity
 	}
 
 	protected Output OnEndSequence { get; set; }
-	protected Output OnBeginSequence { get; set; } 
+	protected Output OnBeginSequence { get; set; }
 	void EndSequence()
-	{ 
+	{
 		TargetNPC.InScriptedSequence = false;
 		OnEndSequence.Fire( this );
 	}
@@ -86,6 +86,7 @@ public partial class scripted_sequence : Entity
 	[Input]
 	public void BeginSequence()
 	{
+		TargetNPC = FindByName( TargetEntity ) as NPC;
 		MoveTo( MoveMode );
 		TargetNPC.InScriptedSequence = true;
 	}
@@ -106,11 +107,12 @@ public partial class scripted_sequence : Entity
 	[Input]
 	void MoveToPosition()
 	{
+		TargetNPC = FindByName( TargetEntity ) as NPC;
 		MoveTo( MoveMode );
 	}
 	public override void Spawn()
-	{
-		TargetNPC = FindByName( TargetEntity ) as NPC; 
+	{ 
+
 	}
 
 	// TODO: Script Events.
@@ -122,4 +124,14 @@ public partial class scripted_sequence : Entity
 	protected Output OnScriptEvent06 { get; set; }
 	protected Output OnScriptEvent07 { get; set; }
 	protected Output OnScriptEvent08 { get; set; }
+
+	[ConVar.Replicated]
+	public static bool npc_script_debug {get; set; } = false;
+	void DebugPrint(string toprint)
+	{
+		if (npc_script_debug)
+		{
+			Log.Info( $"[Scripted Sequence] {toprint}" );
+		}
+	}
 }

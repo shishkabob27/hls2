@@ -2,6 +2,7 @@
 {
 	public void MoveTo(MoveToMode moveMode)
 	{
+		DebugPrint( "Move to position started." );
 		switch (moveMode)
 		{
 			case MoveToMode.No:
@@ -22,7 +23,8 @@
 	}
 	void WalkTo(bool running = false)
 	{
+		DebugPrint( "Walking to position." );
 		TargetNPC.Steer.Target = Position;
-		TargetNPC.Speed = running ? TargetNPC.WalkSpeed : TargetNPC.RunSpeed;
+		TargetNPC.Speed = running ? TargetNPC.RunSpeed : TargetNPC.WalkSpeed;
 	}
 }
