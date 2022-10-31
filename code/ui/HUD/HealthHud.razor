@@ -1,0 +1,35 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct;
+
+<root>
+    <IconPanel class="icon"></IconPanel>
+	<label @ref=Value class ="label"></label>
+    <IconPanel class="seperator"></IconPanel>
+</root>
+
+@code
+{
+	public Label Value;
+
+	public override void Tick()
+	{
+		this.Style.Width = 1049 + (Screen.Height / Screen.Width) * -1250;
+		var player = Local.Pawn as HLPlayer;
+		if (player == null) return;
+
+		Value.Text = $"{player.Health.CeilToInt()}";
+
+		SetClass("low", player.Health < 40.0f);
+		SetClass("empty", player.Health <= 0.0f);
+
+		if ( !player.HasHEV || player.Health <= 0 )
+		{
+			SetClass( "invisible", true );
+		}
+		else
+		{
+			SetClass( "invisible", false );
+		}
+	}
+}

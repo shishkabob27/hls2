@@ -1,41 +1,6 @@
 ﻿using Sandbox.UI;
 using Sandbox.UI.Construct;
 
-public class HealthHud : Panel
-{
-	public IconPanel Icon;
-	public Label Value;
-	public IconPanel Seperator;
-
-	public HealthHud()
-	{
-		Icon = Add.Icon( string.Empty, "icon" );
-		Value = Add.Label( "0", "label" );
-		Seperator = Add.Icon( string.Empty, "seperator" );
-	}
-
-	public override void Tick()
-	{
-		this.Style.Width = 1049 + (Screen.Height / Screen.Width) * -1250;
-		var player = Local.Pawn as HLPlayer;
-		if ( player == null ) return;
-
-		Value.Text = $"{player.Health.CeilToInt()}";
-
-		SetClass( "low", player.Health < 40.0f );
-		SetClass( "empty", player.Health <= 0.0f );
-
-		if ( !player.HasHEV || player.Health <= 0 )
-		{
-			SetClass( "invisible", true );
-		}
-		else
-		{
-			SetClass( "invisible", false );
-		}
-	}
-}
-
 public class ArmourHud : Panel
 {
 	//public IconPanel ArmourBar;
