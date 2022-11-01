@@ -60,8 +60,10 @@ using SandboxEditor;
 		[Event.Entity.PostSpawn]
 		public void OnMapSpawnEvent()
 		{
+			if ( !Enabled ) return;
 			Log.Info("Activating logic auto");
 			OnMapSpawn.Fire( this );
+			Enabled = false;
 		}
 		[Event.Entity.PostCleanup]
         public void OnMapCleanupEvent()

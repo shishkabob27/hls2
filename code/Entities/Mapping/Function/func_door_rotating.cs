@@ -233,7 +233,10 @@ using System.Text.Json.Serialization;
 	public override void Spawn()
 	{
 		base.Spawn();
-
+		if (spawnflags.HasFlag(Flags.Toggle))
+		{
+			TimeBeforeReset = -1;
+		}
 		SetupPhysicsFromModel(PhysicsMotionType.Keyframed);
 
 		// DoorMoveType.Moving
@@ -470,6 +473,7 @@ using System.Text.Json.Serialization;
 	[Input]
 	public void Open(Entity activator = null)
 	{
+
 		if (Locked)
 		{
 			PlaySound(LockedSound);
@@ -523,6 +527,7 @@ using System.Text.Json.Serialization;
 	[Input]
 	public void Close(Entity activator = null)
 	{
+
 		if (Locked)
 		{
 			PlaySound(LockedSound);
