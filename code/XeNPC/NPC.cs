@@ -144,7 +144,6 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			Steer = new NavSteer();
 
 		}
-		SetModel( "models/citizen/citizen.vmdl" );
 		EyePosition = Position + Vector3.Up * EyeHeight;
 		if ( PhysicsBody == null ) SetupPhysicsFromCapsule( PhysicsMotionType.Keyframed, Capsule.FromHeightAndRadius( 72, 8 ) );
 
