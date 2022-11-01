@@ -112,6 +112,7 @@ using SandboxEditor;
 			if ( !Enabled ) return;
 
 			OnTrigger.Fire( this );
+			//Log.Error( "[HLS2] multi_manager in use! there might be some legacy keyvalue logic, please make sure you move all of these to hammer logic!" );
 		}
 
 		/*
