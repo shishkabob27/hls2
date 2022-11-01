@@ -124,7 +124,7 @@
 		// find empty spot in queue, or overwrite last spot
 
 		SuitPlayList[SuitPlayNext++] = name;
-		Log.Info( name );
+		//Log.Info( name );
 		if ( SuitPlayNext == CSUITPLAYLIST )
 			SuitPlayNext = 0;
 
