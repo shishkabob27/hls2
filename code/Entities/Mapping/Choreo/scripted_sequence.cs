@@ -159,7 +159,7 @@ public partial class scripted_sequence : Entity
 	}
 	public override void Spawn()
 	{ 
-		EnsureTargetNPC();  
+		EnsureTargetNPC();   
 	} 
 	[Event.Tick.Server]
 	void Tick()
@@ -168,12 +168,15 @@ public partial class scripted_sequence : Entity
 	}
 	void EnsureTargetNPC()
 	{
-		if (TargetNPC is not NPC || TargetNPC == null)
+		if ( TargetNPC == null)
 		{ 
 			TargetNPC = FindByName( TargetEntity ) as NPC;
-			if ( SpawnSettings.HasFlag( Flags.StartonSpawn ) )
+			if ( TargetNPC != null )
 			{
-				MoveToPosition();
+				if ( SpawnSettings.HasFlag( Flags.StartonSpawn ) )
+				{
+					MoveToPosition();
+				}
 			}
 		}
 	}
