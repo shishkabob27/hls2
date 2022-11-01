@@ -205,7 +205,7 @@
 		]
 		model_archetype = ""
 		primary_associated_entity = ""
-		anim_graph_name = ""
+		anim_graph_name = "animgraphs/hl1/monster/mrvalve.vanmgrph"
 		base_model_name = ""
 	}
 }
