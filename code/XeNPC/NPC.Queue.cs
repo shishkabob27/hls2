@@ -45,17 +45,21 @@ public class MoveToTask : NPCTask
 {
 	
 	Vector3 Position;
-	public MoveToTask(Vector3 pos)
+	bool Running;
+	public MoveToTask(Vector3 pos, bool run = false )
 	{
 		Position = pos;
+		Running = run;
 	}
-	public MoveToTask(Vector3 pos, scripted_sequence seq )
+	public MoveToTask(Vector3 pos, scripted_sequence seq, bool run = false )
 	{
 		Position = pos;
 		Sequence = seq;
+		Running = run;
 	}
 	public override async Task HandleTask( NPC owner )
 	{
+		owner.Speed = Running ? owner.RunSpeed : owner.WalkSpeed;
 		owner.Steer.Output.Finished = false;
 		owner.Steer.Target = Position;
 		while ( !owner.Steer.Output.Finished )
@@ -65,7 +69,7 @@ public class MoveToTask : NPCTask
 		OnEnd();
 		return;
 	}
-}
+}  
 public class RotateToTask : NPCTask
 {
 	Rotation Rotation; 

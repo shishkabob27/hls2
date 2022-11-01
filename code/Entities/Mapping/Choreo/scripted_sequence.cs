@@ -41,6 +41,10 @@ public partial class scripted_sequence : Entity
 	public string TargetLegacy { get; set; } = "";
 	public Entity TargetLegacyEnt;
 
+	[Property( "m_iszNextScript" ), FGDType( "target_destination" )]
+	public string NextScript { get; set; } = "";
+	public scripted_sequence NextScriptEnt;
+
 	[Property( "delay" )]
 	public float DelayLegacy { get; set; } = 0;
 
@@ -51,6 +55,9 @@ public partial class scripted_sequence : Entity
 	[Property( "m_iszEntity" ), FGDType( "target_destination" )]
 	public string TargetEntity { get; set; }
 
+	[Property( "m_iszEntry" )]
+	public string EntryAnimation { get; set; } = "null";
+	
 	[Property( "m_iszPlay" )]
 	public string ActionAnimation { get; set; } = "null";
 
@@ -69,15 +76,27 @@ public partial class scripted_sequence : Entity
 	public NPC TargetNPC;
 	public scripted_sequence()
 	{
-		TargetNPC = FindByName( TargetEntity ) as NPC;
+		EnsureTargetNPC();
 	}
 
 	protected Output OnEndSequence { get; set; }
 	protected Output OnBeginSequence { get; set; }
 	public void EndSequence()
 	{
-		TargetNPC.InScriptedSequence = false; 
+		TargetNPC.InScriptedSequence = false;
 		OnEndSequence.Fire( this );
+		if ( PostActionAnimation != null && PostActionAnimation != "null" )
+		{
+			TargetNPC.DirectPlayback.Play( PostActionAnimation );
+		}
+
+		if ( NextScript != null && NextScript != "" )
+		{ 
+			NextScriptEnt = FindByName( NextScript ) as scripted_sequence;
+			NextScriptEnt.TargetNPC = TargetNPC;
+			NextScriptEnt.TargetEntity = TargetEntity;
+			NextScriptEnt.BeginSequence();
+		}
 	}
 
 	/// <summary>
@@ -86,10 +105,16 @@ public partial class scripted_sequence : Entity
 	[Input]
 	public void BeginSequence()
 	{
+		EnsureTargetNPC();
 		OnBeginSequence.Fire( this );
-		TargetNPC = FindByName( TargetEntity ) as NPC;
 		MoveTo( MoveMode );
-		TargetNPC.InScriptedSequence = true; 
+		TargetNPC.InScriptedSequence = true;
+
+		if ( EntryAnimation != null && EntryAnimation != "null" && EntryAnimation != "")
+		{
+			TargetNPC.NPCTaskQueue.Enqueue( new PlayAnimTask( EntryAnimation ) );
+		}
+
 		TargetNPC.NPCTaskQueue.Enqueue( new PlayAnimTask( ActionAnimation, this ) );
 	}
 
@@ -99,8 +124,9 @@ public partial class scripted_sequence : Entity
 	[Input]
 	void CancelSequence()
 	{
+		EnsureTargetNPC();
 		TargetNPC.InScriptedSequence = false;
-
+		TargetNPC.NPCTaskQueue.Clear();
 	}
 
 	/// <summary>
@@ -109,12 +135,27 @@ public partial class scripted_sequence : Entity
 	[Input]
 	void MoveToPosition()
 	{
-		TargetNPC = FindByName( TargetEntity ) as NPC;
 		MoveTo( MoveMode );
+		if ( PreActionAnimation != null && PreActionAnimation != "null" )
+		{
+			TargetNPC.DirectPlayback.Play( PreActionAnimation );
+		}
 	}
 	public override void Spawn()
-	{ 
-
+	{
+		Log.Info( "SPAWNEDDDD!" );
+		EnsureTargetNPC(); 
+		if (SpawnSettings.HasFlag(Flags.StartonSpawn) )
+		{
+			MoveToPosition();
+		}
+	} 
+	void EnsureTargetNPC()
+	{
+		if (TargetNPC is not NPC)
+		{ 
+			TargetNPC = FindByName( TargetEntity ) as NPC;
+		}
 	}
 
 	// TODO: Script Events.
@@ -139,6 +180,7 @@ public partial class scripted_sequence : Entity
 
 	public void MoveTo( MoveToMode moveMode )
 	{
+		EnsureTargetNPC();
 		DebugPrint( "Move to position started." );
 		switch ( moveMode )
 		{
@@ -151,6 +193,7 @@ public partial class scripted_sequence : Entity
 				WalkTo( true );
 				break;
 			case MoveToMode.Custom_movement:
+				WalkTo();
 				break;
 			case MoveToMode.Instantaneous:
 				TargetNPC.Position = Position;
@@ -165,8 +208,9 @@ public partial class scripted_sequence : Entity
 	}
 	async Task WalkTo( bool running = false )
 	{
+		EnsureTargetNPC();
 		DebugPrint( "Walking to position." );
-		TargetNPC.NPCTaskQueue.Enqueue( new MoveToTask( Position ) );
+		TargetNPC.NPCTaskQueue.Enqueue( new MoveToTask( Position, running ) );
 		TargetNPC.NPCTaskQueue.Enqueue( new RotateToTask( Rotation ) );
 		//TargetNPC.Steer.Target = Position;
 		//TargetNPC.Speed = running ? TargetNPC.RunSpeed : TargetNPC.WalkSpeed;
