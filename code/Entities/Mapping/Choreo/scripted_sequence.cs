@@ -206,7 +206,7 @@ public partial class scripted_sequence : Entity
 				break;
 		}
 	}
-	async Task WalkTo( bool running = false )
+	void WalkTo( bool running = false )
 	{
 		EnsureTargetNPC();
 		DebugPrint( "Walking to position." );
