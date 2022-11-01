@@ -50,13 +50,18 @@ public class NavSteer
 		{
 			var objectRadius = 200.0f;
 			//var draw = XeNPC.Debug.Draw.ForSeconds( 1 );
-			//draw.WithColor( Color.Red.WithAlpha( 1 ) ).Circle( ent.Position, Vector3.Up, objectRadius * 0.25f );
+			//draw.WithColor( Color.Red.WithAlpha( 1 ) ).Circle( ent.Position, Vector3.Up, objectRadius * 0.5f );
 			if (!(ent is ModelEntity) ) continue; 
-			if ((ent is Weapon || ent is HLViewModel || ent is HLGib || ent is ButtonEntity || ent is ButtonEntityRot) ) continue;  
-			if (ent is ModelEntity) objectRadius = ((ent as ModelEntity).CollisionBounds.Size.Length * 1.25f) - 32;
-			if (ent is BrushEntity ) objectRadius = ((ent as BrushEntity).CollisionBounds.Size.Length * 1.25f) - 32; 
+			if (ent is Weapon) continue;  
+			if (ent is HLViewModel ) continue;  
+			if (ent is HLGib ) continue;  
+			if (ent is ButtonEntity ) continue;  
+			if (ent is ButtonEntityRot ) continue;
+			if ( ent.Tags.Has( "debris" ) ) continue;
+			if (ent is ModelEntity) objectRadius = ((ent as ModelEntity).CollisionBounds.Size.Length * 1);
+			if (ent is BrushEntity ) objectRadius = ((ent as BrushEntity).CollisionBounds.Size.Length * 1); 
 
-			//draw.WithColor( Color.White.WithAlpha( 1 ) ).Circle( ent.Position, Vector3.Up, objectRadius * 0.25f );
+			//draw.WithColor( Color.White.WithAlpha( 1 ) ).Circle( ent.Position, Vector3.Up, objectRadius * 0.5f );
 
 			var delta = (position - ent.Position).WithZ(0);
 			var closeness = delta.Length;
