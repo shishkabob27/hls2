@@ -21,10 +21,12 @@
 				break;
 		}
 	}
-	void WalkTo(bool running = false)
+	async Task WalkTo(bool running = false)
 	{
 		DebugPrint( "Walking to position." );
-		TargetNPC.Steer.Target = Position;
-		TargetNPC.Speed = running ? TargetNPC.RunSpeed : TargetNPC.WalkSpeed;
+		TargetNPC.NPCTaskQueue.Enqueue( new MoveToTask(Position, this ) );
+		TargetNPC.NPCTaskQueue.Enqueue( new RotateToTask(Rotation, this ) );
+		//TargetNPC.Steer.Target = Position;
+		//TargetNPC.Speed = running ? TargetNPC.RunSpeed : TargetNPC.WalkSpeed;
 	}
 }

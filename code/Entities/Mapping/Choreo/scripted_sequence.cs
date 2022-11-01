@@ -74,9 +74,9 @@ public partial class scripted_sequence : Entity
 
 	protected Output OnEndSequence { get; set; }
 	protected Output OnBeginSequence { get; set; }
-	void EndSequence()
+	public void EndSequence()
 	{
-		TargetNPC.InScriptedSequence = false;
+		TargetNPC.InScriptedSequence = false; 
 		OnEndSequence.Fire( this );
 	}
 
@@ -88,7 +88,8 @@ public partial class scripted_sequence : Entity
 	{
 		TargetNPC = FindByName( TargetEntity ) as NPC;
 		MoveTo( MoveMode );
-		TargetNPC.InScriptedSequence = true;
+		TargetNPC.InScriptedSequence = true; 
+		TargetNPC.NPCTaskQueue.Enqueue( new PlayAnimTask( ActionAnimation, this ) );
 	}
 
 	/// <summary>
