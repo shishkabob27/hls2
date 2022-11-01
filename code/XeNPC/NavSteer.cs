@@ -53,8 +53,8 @@ public class NavSteer
 			//draw.WithColor( Color.Red.WithAlpha( 1 ) ).Circle( ent.Position, Vector3.Up, objectRadius * 0.25f );
 			if (!(ent is ModelEntity) ) continue; 
 			if ((ent is Weapon || ent is HLViewModel || ent is HLGib || ent is ButtonEntity || ent is ButtonEntityRot) ) continue;  
-			if (ent is ModelEntity) objectRadius = ((ent as ModelEntity).CollisionBounds.Size.Length * 1.25f) + 0;
-			if (ent is BrushEntity ) objectRadius = ((ent as BrushEntity).CollisionBounds.Size.Length * 1.25f) + 0; 
+			if (ent is ModelEntity) objectRadius = ((ent as ModelEntity).CollisionBounds.Size.Length * 1.25f) - 32;
+			if (ent is BrushEntity ) objectRadius = ((ent as BrushEntity).CollisionBounds.Size.Length * 1.25f) - 32; 
 
 			//draw.WithColor( Color.White.WithAlpha( 1 ) ).Circle( ent.Position, Vector3.Up, objectRadius * 0.25f );
 
