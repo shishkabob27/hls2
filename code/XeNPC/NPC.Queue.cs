@@ -18,7 +18,7 @@ public partial class NPC
 
 				NPCTask CurrentTask = NPCTaskQueue.Dequeue();
 				await CurrentTask.HandleTask( this );
-				Log.Info( "Task Finished!" );
+				//Log.Info( "Task Finished!" );
 			}
 			await GameTask.NextPhysicsFrame();
 		}
