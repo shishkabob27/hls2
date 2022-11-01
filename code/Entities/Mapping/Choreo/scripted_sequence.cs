@@ -88,6 +88,14 @@ public partial class scripted_sequence : Entity
 		if ( PostActionAnimation != null && PostActionAnimation != "null" )
 		{
 			TargetNPC.DirectPlayback.Play( PostActionAnimation );
+			if ( SpawnSettings.HasFlag( Flags.LoopinPostIdle ) )
+			{
+				// Absolutely fucking flood the queue, TODO: Proper looping 
+				for ( var i = 0; i < 50; i++ )
+				{
+					TargetNPC.NPCTaskQueue.Enqueue( new PlayAnimTask( ActionAnimation, this ) );
+				}
+			}
 		}
 
 		if ( NextScript != null && NextScript != "" )
@@ -114,8 +122,16 @@ public partial class scripted_sequence : Entity
 		{
 			TargetNPC.NPCTaskQueue.Enqueue( new PlayAnimTask( EntryAnimation ) );
 		}
-
 		TargetNPC.NPCTaskQueue.Enqueue( new PlayAnimTask( ActionAnimation, this ) );
+
+		if ( LoopActionAnimation )
+		{
+			// Absolutely fucking flood the queue, TODO: Proper looping 
+			for ( var i = 0; i < 50; i++ )
+			{
+				TargetNPC.NPCTaskQueue.Enqueue( new PlayAnimTask( ActionAnimation, this ) );
+			}
+		}
 	}
 
 	/// <summary>
@@ -144,17 +160,22 @@ public partial class scripted_sequence : Entity
 	public override void Spawn()
 	{
 		Log.Info( "SPAWNEDDDD!" );
-		EnsureTargetNPC(); 
-		if (SpawnSettings.HasFlag(Flags.StartonSpawn) )
-		{
-			MoveToPosition();
-		}
+		EnsureTargetNPC();  
 	} 
+	[Event.Tick.Server]
+	void Tick()
+	{ 
+		EnsureTargetNPC();
+	}
 	void EnsureTargetNPC()
 	{
-		if (TargetNPC is not NPC)
+		if (TargetNPC is not NPC || TargetNPC == null)
 		{ 
 			TargetNPC = FindByName( TargetEntity ) as NPC;
+			if ( SpawnSettings.HasFlag( Flags.StartonSpawn ) )
+			{
+				MoveToPosition();
+			}
 		}
 	}
 
@@ -210,6 +231,8 @@ public partial class scripted_sequence : Entity
 	{
 		EnsureTargetNPC();
 		DebugPrint( "Walking to position." );
+		Log.Info( TargetNPC );
+		Log.Info( TargetNPC.NPCTaskQueue );
 		TargetNPC.NPCTaskQueue.Enqueue( new MoveToTask( Position, running ) );
 		TargetNPC.NPCTaskQueue.Enqueue( new RotateToTask( Rotation ) );
 		//TargetNPC.Steer.Target = Position;
