@@ -36,8 +36,8 @@
 		{
 			countMax = soundas2.Sounds.Count;
 		}
-		Log.Info( count );
-		Log.Info( countMax );
+		//Log.Info( count );
+		//Log.Info( countMax );
 		if ( count >= countMax )
 		{
 			Finished = true;
