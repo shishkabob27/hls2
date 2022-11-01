@@ -158,8 +158,7 @@ public partial class scripted_sequence : Entity
 		}
 	}
 	public override void Spawn()
-	{
-		Log.Info( "SPAWNEDDDD!" );
+	{ 
 		EnsureTargetNPC();  
 	} 
 	[Event.Tick.Server]
@@ -230,9 +229,7 @@ public partial class scripted_sequence : Entity
 	void WalkTo( bool running = false )
 	{
 		EnsureTargetNPC();
-		DebugPrint( "Walking to position." );
-		Log.Info( TargetNPC );
-		Log.Info( TargetNPC.NPCTaskQueue );
+		DebugPrint( "Walking to position." ); 
 		TargetNPC.NPCTaskQueue.Enqueue( new MoveToTask( Position, running ) );
 		TargetNPC.NPCTaskQueue.Enqueue( new RotateToTask( Rotation ) );
 		//TargetNPC.Steer.Target = Position;
