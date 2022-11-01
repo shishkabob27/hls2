@@ -1,0 +1,31 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct;
+
+<root>
+    <IconPanel @ref=Icon class="icon"></IconPanel>
+</root>
+
+@code
+{
+	public IconPanel Icon;
+
+	public override void Tick()
+	{
+		base.Tick();
+
+		var p = Local.Pawn as HLPlayer;
+		if (p == null) return;
+		if (!p.HasHEV) return;
+
+
+		if (p.ActiveChild is Weapon weapon)
+		{
+			Icon.Style.SetBackgroundImage(weapon.CrosshairIcon);
+		}
+		else
+		{
+			Icon.Style.SetBackgroundImage("");
+		}
+	}
+}
