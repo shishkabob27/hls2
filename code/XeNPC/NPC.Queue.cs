@@ -5,7 +5,7 @@ using System;
 using XeNPC.Debug;
 
 public partial class NPC  
-{
+{ 
 
 	public Queue<NPCTask> NPCTaskQueue = new Queue<NPCTask>();
 	 
@@ -20,8 +20,8 @@ public partial class NPC
 				await CurrentTask.HandleTask( this );
 				Log.Info( "Task Finished!" );
 			}
-			await GameTask.Delay( 1 );
-		} 
+			await GameTask.NextPhysicsFrame();
+		}
 	}
 } 
 public class NPCTask
@@ -60,7 +60,7 @@ public class MoveToTask : NPCTask
 		owner.Steer.Target = Position;
 		while ( !owner.Steer.Output.Finished )
 		{
-
+			await GameTask.NextPhysicsFrame();
 		}
 		OnEnd();
 		return;
@@ -105,7 +105,7 @@ public class PlayAnimTask : NPCTask
 		owner.DirectPlayback.Play( Animation );
 		while ( owner.DirectPlayback.Time < owner.DirectPlayback.Duration )
 		{
-
+			await GameTask.NextPhysicsFrame();
 		} 
 		owner.DirectPlayback.Cancel();
 		OnEnd();
