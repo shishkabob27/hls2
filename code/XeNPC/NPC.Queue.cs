@@ -5,8 +5,14 @@ using System;
 using XeNPC.Debug;
 
 public partial class NPC  
-{ 
+{
+	[SkipHotload]
 	public Queue<NPCTask> NPCTaskQueue = new Queue<NPCTask>();
+	[Event.Hotload]
+	void HotloadFix()
+	{
+		NPCTaskQueue = new Queue<NPCTask>();
+	}
 	 
 	async Task ProcessQueue()
 	{
