@@ -8,6 +8,7 @@ using XeNPC.Debug;
 public partial class NPC : AnimatedEntity, IUse, ICombat
 {
 	public bool InScriptedSequence = false;
+	public scripted_sequence CurrentScriptedSequence;
 	public bool InPriorityScriptedSequence = false;
 	public bool ScriptedSequenceOverrideAi = false;
 	public bool DontSleep = false;
@@ -153,8 +154,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			PhysicsBody.SetSurface( NPCSurface );
 		}
 		Speed = 50;
-	}
 
+		GameTask.RunInThreadAsync( ProcessQueue );
+	}
+	
 	public XeNPC.Debug.Draw Draw => XeNPC.Debug.Draw.Once;
 
 	Vector3 InputVelocity;
