@@ -11,15 +11,17 @@ public partial class NPC
 	 
 	async Task ProcessQueue()
 	{
-		if ( NPCTaskQueue.Count != 0 )
+		while (true)
 		{
+			if ( NPCTaskQueue.Count != 0 )
+			{
 
-			NPCTask CurrentTask = NPCTaskQueue.Dequeue();
-			await CurrentTask.HandleTask(this);
-			Log.Info( "Task Finished!" );
-		}
-		await GameTask.Delay( 1 );
-		ProcessQueue();
+				NPCTask CurrentTask = NPCTaskQueue.Dequeue();
+				await CurrentTask.HandleTask( this );
+				Log.Info( "Task Finished!" );
+			}
+			await GameTask.Delay( 1 );
+		} 
 	}
 } 
 public class NPCTask
@@ -36,7 +38,7 @@ public class NPCTask
 		if ( Sequence != null )
 		{
 			Sequence.EndSequence();
-		}
+		} 
 	}
 }
 public class MoveToTask : NPCTask
@@ -80,6 +82,7 @@ public class RotateToTask : NPCTask
 	{
 		owner.Steer.Output.Finished = false;
 		owner.targetRotation = Rotation;
+		owner.targetRotationOVERRIDE = Rotation;
 		OnEnd();
 		return;
 	}

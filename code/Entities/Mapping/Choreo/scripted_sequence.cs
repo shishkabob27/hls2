@@ -86,6 +86,7 @@ public partial class scripted_sequence : Entity
 	[Input]
 	public void BeginSequence()
 	{
+		OnBeginSequence.Fire( this );
 		TargetNPC = FindByName( TargetEntity ) as NPC;
 		MoveTo( MoveMode );
 		TargetNPC.InScriptedSequence = true; 
