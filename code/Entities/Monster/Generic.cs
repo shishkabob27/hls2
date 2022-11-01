@@ -12,9 +12,10 @@ public partial class GenericMonster : NPC
     {
         base.Spawn();
 
-       // SetModel(model);
-        SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
-        EnableHitboxes = true;
+		// SetModel(model);
+		SetupPhysicsFromModel( PhysicsMotionType.Keyframed, false );
+		//SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
+		EnableHitboxes = true;
         PhysicsEnabled = true;
         UsePhysicsCollision = true;
 
