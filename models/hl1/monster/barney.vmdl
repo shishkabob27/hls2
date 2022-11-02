@@ -156,7 +156,7 @@
 						_class = "AnimFile"
 						name = "idle1"
 						activity_name = ""
-						activity_weight = 1
+						activity_weight = 50
 						weight_list_name = ""
 						fade_in_time = 0.2
 						fade_out_time = 0.2
@@ -169,7 +169,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -190,7 +190,7 @@
 								motion_type = "Single"
 							},
 						]
-						activity_name = ""
+						activity_name = "ACT_WALK"
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -589,7 +589,7 @@
 								motion_type = "Single"
 							},
 						]
-						activity_name = ""
+						activity_name = "ACT_RUN"
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -603,7 +603,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/run.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 25.0
 						take = 0
 						reverse = false
 					},
@@ -771,7 +771,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/barney_dragvent.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -1177,6 +1177,28 @@
 					{
 						_class = "AnimFile"
 						name = "fence"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_FIRE_INPUT"
+								event_frame = 70
+								event_keys = null
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_GENERIC_EVENT"
+								event_frame = 70
+								event_keys = 
+								{
+									TypeName = ""
+									Int = 0
+									Float = 0.0
+									Vector = [ 0.0, 0.0, 0.0 ]
+									StringData = "lightning"
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -1191,7 +1213,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/fence.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 24.0
 						take = 0
 						reverse = false
 					},
@@ -1240,7 +1262,7 @@
 					{
 						_class = "AnimFile"
 						name = "idle2"
-						activity_name = ""
+						activity_name = "ACT_IDLE"
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -1254,7 +1276,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -1275,15 +1297,15 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/idle3.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
 						name = "idle4"
-						activity_name = ""
-						activity_weight = 1
+						activity_name = "ACT_IDLE"
+						activity_weight = 10
 						weight_list_name = ""
 						fade_in_time = 0.2
 						fade_out_time = 0.2
@@ -1296,13 +1318,64 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/idle4.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 12.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
 						name = "intropush"
+						children = 
+						[
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 15
+								event_keys = 
+								{
+									name = "sounds/hl1/buttons/blip1.sound"
+									stop_on_seq_change = false
+									use_layer_sequence = false
+									tags = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 24
+								event_keys = 
+								{
+									name = "sounds/hl1/buttons/blip1.sound"
+									stop_on_seq_change = false
+									use_layer_sequence = false
+									tags = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 34
+								event_keys = 
+								{
+									name = "sounds/hl1/buttons/blip1.sound"
+									stop_on_seq_change = false
+									use_layer_sequence = false
+									tags = ""
+								}
+							},
+							{
+								_class = "AnimEvent"
+								event_class = "AE_CL_PLAYSOUND"
+								event_frame = 44
+								event_keys = 
+								{
+									name = "sounds/hl1/buttons/blip1.sound"
+									stop_on_seq_change = false
+									use_layer_sequence = false
+									tags = ""
+								}
+							},
+						]
 						activity_name = ""
 						activity_weight = 1
 						weight_list_name = ""
@@ -1317,7 +1390,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/intropush.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 16.0
 						take = 0
 						reverse = false
 					},
@@ -1758,7 +1831,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/retina.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 20.0
 						take = 0
 						reverse = false
 					},
@@ -1884,7 +1957,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/sit1.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 20.0
 						take = 0
 						reverse = false
 					},
@@ -1926,7 +1999,7 @@
 						source_filename = "models/hl1decomp/barney/barney_anims/standing_idle.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
