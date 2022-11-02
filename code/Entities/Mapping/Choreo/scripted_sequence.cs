@@ -48,6 +48,9 @@ public partial class scripted_sequence : Entity
 	[Property( "delay" )]
 	public float DelayLegacy { get; set; } = 0;
 
+	[Property( "m_flRadius" )]
+	public float SearchRadius { get; set; } = 0;
+
 	[Property( "killtarget" ), FGDType( "target_destination" )]
 	public string KillTargetLegacy { get; set; } = "";
 	public Entity KillTargetLegacyEnt;
@@ -104,6 +107,10 @@ public partial class scripted_sequence : Entity
 			NextScriptEnt.TargetNPC = TargetNPC;
 			NextScriptEnt.TargetEntity = TargetEntity;
 			NextScriptEnt.BeginSequence();
+		}
+		if (!SpawnSettings.HasFlag(Flags.Repeatable))
+		{
+			Delete();
 		}
 	}
 
@@ -170,7 +177,13 @@ public partial class scripted_sequence : Entity
 	{
 		if ( TargetNPC == null)
 		{ 
-			TargetNPC = FindByName( TargetEntity ) as NPC;
+			if (SearchRadius != 0)
+			{
+				TargetNPC = FindInSphere( Position, SearchRadius ).Where(x => x.Name == TargetEntity && x is NPC ).First() as NPC;
+			} else
+			{
+				TargetNPC = FindByName( TargetEntity ) as NPC;
+			}
 			if ( TargetNPC != null )
 			{
 				if ( SpawnSettings.HasFlag( Flags.StartonSpawn ) )
