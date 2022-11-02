@@ -2,16 +2,12 @@
 using SandboxEditor;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-
-namespace ScareCo.Entities;
-
-//We'll keep this in one file because it's very simple
+using System.Linq;  
 
 [Library( "logic_case" )]
 [HammerEntity]
 [VisGroup( VisGroup.Logic )]
-[EditorSprite( "editor/ent_logic.vmat" )]
+[EditorSprite( "editor/logic_case.vmat" )]
 [Title( "logic_case" ), Category( "Logic" ), Icon( "calculate" )]
 public partial class logic_case : Entity
 {
