@@ -7,15 +7,16 @@ using SandboxEditor;
 	[Library( "multi_manager" )]
 	[HammerEntity]
 	[VisGroup( VisGroup.Logic )]
-	[EditorSprite( "editor/ent_logic.vmat" )]
-	[Title( "Logic Entity" ), Category( "Logic" ), Icon( "calculate" )]
-	public partial class LogicEntity : Entity
+	[EditorSprite( "editor/multi_manager.vmat" )]
+	[Title( "Logic Entity" ), Category( "Logic" ), Icon( "calculate" )] 
+public partial class LogicEntity : Entity
 	{
-		/// <summary>
-		/// The (initial) enabled state of the logic entity.
-		/// </summary>
-		[Property]
-		public bool Enabled { get; set; } = true;
+
+	/// <summary>
+	/// The (initial) enabled state of the logic entity.
+	/// </summary>
+	[Property]
+		public bool Enabled { get; set; } = true; 
 
 		/// <summary>
 		/// Enables the entity.

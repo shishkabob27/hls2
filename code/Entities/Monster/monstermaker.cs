@@ -1,4 +1,5 @@
 ﻿[Library("monstermaker"), HammerEntity]
+[EditorSprite( "editor/npc_maker.vmat" )]
 [Title("monstermaker"), Category("Monsters"), Icon("person")]
 public class monstermaker : Entity
 {

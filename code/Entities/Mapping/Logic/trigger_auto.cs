@@ -7,7 +7,7 @@ using SandboxEditor;
 	[Library( "trigger_auto" )]
 	[HammerEntity]
 	[VisGroup( VisGroup.Logic )]
-	[EditorSprite( "editor/ent_logic.vmat" )]
+	[EditorSprite( "editor/logic_auto.vmat" )]
 	[Title( "Trigger Auto" ), Category( "Logic" ), Icon( "calculate" )]
 	public partial class TriggerAuto : Entity
 	{
