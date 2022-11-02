@@ -120,7 +120,7 @@ public partial class scripted_sequence : Entity
 	[Input]
 	public void BeginSequence()
 	{
-		EnsureTargetNPC();
+		if ( !EnsureTargetNPC() ) return;
 		OnBeginSequence.Fire( this );
 		MoveTo( MoveMode );
 		TargetNPC.InScriptedSequence = true;
@@ -147,7 +147,7 @@ public partial class scripted_sequence : Entity
 	[Input]
 	void CancelSequence()
 	{
-		EnsureTargetNPC();
+		if ( !EnsureTargetNPC() ) return;
 		TargetNPC.InScriptedSequence = false;
 		TargetNPC.NPCTaskQueue.Clear();
 	}
@@ -173,14 +173,23 @@ public partial class scripted_sequence : Entity
 	{ 
 		EnsureTargetNPC();
 	}
-	void EnsureTargetNPC()
+	bool EnsureTargetNPC()
 	{
-		if ( TargetNPC == null)
-		{ 
-			if (SearchRadius != 0)
+		if ( TargetNPC == null )
+		{
+			if ( SearchRadius != 0 )
 			{
-				TargetNPC = FindInSphere( Position, SearchRadius ).Where(x => x.Name == TargetEntity && x is NPC ).First() as NPC;
-			} else
+				var a = FindInSphere( Position, SearchRadius ).OfType<NPC>();
+				if ( a.Where( x => x.Name == TargetEntity ).Count() > 0 && a.Where( x => x.Name == TargetEntity).First() is NPC newTarget )
+				{
+					TargetNPC = newTarget;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else
 			{
 				TargetNPC = FindByName( TargetEntity ) as NPC;
 			}
@@ -190,7 +199,16 @@ public partial class scripted_sequence : Entity
 				{
 					MoveToPosition();
 				}
+				return true;
 			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return true;
 		}
 	}
 
