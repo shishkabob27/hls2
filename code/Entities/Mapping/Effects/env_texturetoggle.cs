@@ -1,13 +1,11 @@
 [Library( "env_texturetoggle" )]
 [HammerEntity]
-[EditorSprite( "editor/snd_event.vmat" )]
 [Title( "env_texturetoggle" ), Category( "Legacy" ), Icon( "toggle_on" )]
 public partial class TextureToggle : Entity
 {
 	[Property( "target" ), Title( "Target" ), FGDType( "target_destination" ), Net]
 	public string TargetEntity { get; set; }
 	int curFrame = 0;
-
 	[Input]
 	public void IncrementTextureIndex()
 	{

@@ -7,7 +7,7 @@ using SandboxEditor;
 	[Library( "logic_relay" )]
 	[HammerEntity]
 	[VisGroup( VisGroup.Logic )]
-	[EditorSprite( "editor/ent_logic.vmat" )]
+	[EditorSprite( "editor/logic_relay.vmat" )]
 	[Title( "Logic Relay" ), Category( "Logic" ), Icon( "calculate" )]
 	public partial class LogicRelay : Entity
 	{

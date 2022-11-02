@@ -55,7 +55,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "run1"
-					m_playbackSpeed = 2.0
+					m_playbackSpeed = 1.0
 					m_bLoop = true
 				}
 			},
@@ -68,7 +68,7 @@
 				{
 					_class = "CSpeedScaleAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, -176.0 ]
+					m_vecPosition = [ 272.0, -368.0 ]
 					m_nNodeID = 
 					{
 						m_id = 181282783
@@ -521,7 +521,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 181282783
+									m_id = 1698220565
 								}
 								m_outputID = 
 								{
@@ -917,7 +917,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 689398965
+									m_id = 500671895
 								}
 								m_outputID = 
 								{
@@ -1147,7 +1147,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "run"
-					m_playbackSpeed = 2.0
+					m_playbackSpeed = 1.0
 					m_bLoop = true
 				}
 			},
@@ -1212,7 +1212,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "panic1"
-					m_playbackSpeed = 2.0
+					m_playbackSpeed = 1.0
 					m_bLoop = true
 				}
 			},
@@ -1490,7 +1490,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -96.0, -32.0 ]
+					m_vecPosition = [ 96.0, -32.0 ]
 					m_nNodeID = 
 					{
 						m_id = 500671895
@@ -1499,7 +1499,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "walk_scared"
-					m_playbackSpeed = 0.024
+					m_playbackSpeed = 1.0
 					m_bLoop = true
 				}
 			},
@@ -1667,7 +1667,7 @@
 				{
 					_class = "CSpeedScaleAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, -32.0 ]
+					m_vecPosition = [ 272.0, -304.0 ]
 					m_nNodeID = 
 					{
 						m_id = 689398965
@@ -1956,7 +1956,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 2018726370
+							m_id = 1157224920
 						}
 						m_outputID = 
 						{
@@ -2065,7 +2065,7 @@
 				{
 					_class = "CSequenceAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ -96.0, -176.0 ]
+					m_vecPosition = [ 96.0, -176.0 ]
 					m_nNodeID = 
 					{
 						m_id = 1698220565
@@ -2074,7 +2074,7 @@
 					m_sNote = ""
 					m_tagSpans = [  ]
 					m_sequenceName = "walk"
-					m_playbackSpeed = 0.024
+					m_playbackSpeed = 1.0
 					m_bLoop = true
 				}
 			},
@@ -2349,7 +2349,7 @@
 				{
 					_class = "CSpeedScaleAnimNode"
 					m_sName = "Unnamed"
-					m_vecPosition = [ 1600.0, 160.0 ]
+					m_vecPosition = [ 1584.0, 48.0 ]
 					m_nNodeID = 
 					{
 						m_id = 2018726370
@@ -2360,7 +2360,7 @@
 					{
 						m_nodeID = 
 						{
-							m_id = 1157224920
+							m_id = 4294967295
 						}
 						m_outputID = 
 						{
