@@ -18,6 +18,7 @@ public partial class SoundEventEntity : Entity
     }
 
 
+
 	[Property( "spawnflags", Title = "Spawn Settings" )]
 	public Flags SpawnSettings { get; set; } = (Flags)48;
     /// <summary>
@@ -25,6 +26,11 @@ public partial class SoundEventEntity : Entity
     /// </summary>
     [Property("message"), FGDType("sound")]
     [Net] public string message { get; set; }
+	/// <summary>
+	/// Volume of the sound
+	/// </summary>
+	[Property( "health" )]
+	[Net] public float Volume { get; set; } = 10;
 
     /// <summary>
     /// The entity to use as the origin of the sound playback. If not set, will play from this snd_event_point.
@@ -132,11 +138,11 @@ public partial class SoundEventEntity : Entity
 
 		if ( SpawnSettings.HasFlag( Flags.Playeverywhere ) )
 		{
-			PlayingSound = Sound.FromScreen( replacename );
+			PlayingSound = Sound.FromScreen( replacename ).SetVolume( Volume / 10 );
 		}
 		else
 		{
-			PlayingSound = Sound.FromWorld( replacename, Position );
+			PlayingSound = Sound.FromWorld( replacename, Position ).SetVolume( Volume / 10 );
 		}
 	}
     //[ClientRpc]
