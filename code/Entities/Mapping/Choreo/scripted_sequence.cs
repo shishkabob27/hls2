@@ -210,6 +210,7 @@ public partial class scripted_sequence : Entity
 			}
 			else
 			{
+				DebugWarn( "Scripted sequence with full search cannot find its NPC?" );
 				// Didn't find one, exit.
 				return false;
 			}
@@ -238,6 +239,13 @@ public partial class scripted_sequence : Entity
 		if (npc_script_debug)
 		{
 			Log.Info( $"[Scripted Sequence] {toprint}" );
+		}
+	}
+	void DebugWarn(string toprint)
+	{
+		if (npc_script_debug)
+		{
+			Log.Warning( $"[Scripted Sequence] {toprint}" );
 		}
 	}
 
