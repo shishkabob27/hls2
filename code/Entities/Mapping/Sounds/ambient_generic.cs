@@ -18,8 +18,8 @@ public partial class SoundEventEntity : Entity
     }
 
 
-    [Property("spawnflags", Title = "Spawn Settings")]
-    public Flags SpawnSettings { get; set; }
+	[Property( "spawnflags", Title = "Spawn Settings" )]
+	public Flags SpawnSettings { get; set; } = 48;
     /// <summary>
     /// Name of the sound to play.
     /// </summary>
