@@ -57,7 +57,7 @@ public partial class SoundEventEntity : Entity
     [Input]
     protected void PlaySound()
     {
-        OnStartSound();
+        OnPlaySound();
     }
 
     /// <summary>
@@ -81,7 +81,15 @@ public partial class SoundEventEntity : Entity
     [Input]
     protected void ToggleSound()
     {
-        OnStartSound();
+
+		if ( SpawnSettings.HasFlag( Flags.IsNOTLooped ) )
+		{
+			OnStartSound();
+			return;
+		}
+		if ( HasStartedPlaying )
+			OnStopSound();
+		else OnStartSound();
     }
 
     [Input]
@@ -101,19 +109,24 @@ public partial class SoundEventEntity : Entity
     protected void OnStartSound()
     {
 		HasStartedPlaying = true;
-        var source = FindByName(SourceEntityName, this);
+		OnPlaySound();
 
-        if (StopOnNew)
-        {
-            PlayingSound.Stop();
-            PlayingSound = default;
-        }
-        var replacename = message;
-        replacename = replacename.Replace("sounds/", "sounds/hl1/");
-        replacename = replacename.Replace(".vsnd", ".sound");
-        replacename = replacename.Replace("!", "");
-        Log.Info($"starting sound {replacename}");
-        //Sound.FromScreen(message);
+	}
+	void OnPlaySound()
+	{
+		var source = FindByName( SourceEntityName, this );
+
+		if ( StopOnNew )
+		{
+			PlayingSound.Stop();
+			PlayingSound = default;
+		}
+		var replacename = message;
+		replacename = replacename.Replace( "sounds/", "sounds/hl1/" );
+		replacename = replacename.Replace( ".vsnd", ".sound" );
+		replacename = replacename.Replace( "!", "" );
+		//Log.Info( $"starting sound {replacename}" );
+		//Sound.FromScreen(message);
 		//PlayingSound = Sound.FromEntity( message, source );
 		//EventSound = SoundFile.Load(replacename);
 
@@ -125,9 +138,7 @@ public partial class SoundEventEntity : Entity
 		{
 			PlayingSound = Sound.FromWorld( replacename, Position );
 		}
-
 	}
-
     //[ClientRpc]
     protected void OnStopSound()
 	{
@@ -140,9 +151,9 @@ public partial class SoundEventEntity : Entity
     void tick()
     {
 		if (!HasStartedPlaying) return;
-        if ( PlayingSound.Finished == true )
+		if ( SpawnSettings.HasFlag( Flags.IsNOTLooped ) ) return;
+		if ( PlayingSound.Finished == true )
         {
-			if ( SpawnSettings.HasFlag( Flags.IsNOTLooped ) ) return;
             PlayingSound = default;
             OnStartSound();
         }
