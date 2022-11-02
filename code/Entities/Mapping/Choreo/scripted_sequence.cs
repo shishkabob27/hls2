@@ -175,10 +175,13 @@ public partial class scripted_sequence : Entity
 	}
 	bool EnsureTargetNPC()
 	{
+		// Do we need to check for an npc? do we have one already?
 		if ( TargetNPC == null )
 		{
+			// Do we check in a radius?
 			if ( SearchRadius != 0 )
 			{
+				// Check in that radius.
 				var a = FindInSphere( Position, SearchRadius ).OfType<NPC>();
 				if ( a.Where( x => x.Name == TargetEntity ).Count() > 0 && a.Where( x => x.Name == TargetEntity).First() is NPC newTarget )
 				{
@@ -186,28 +189,34 @@ public partial class scripted_sequence : Entity
 				}
 				else
 				{
+					// Didn't find one, exit.
 					return false;
 				}
 			}
 			else
 			{
+				// Check everything
 				TargetNPC = FindByName( TargetEntity ) as NPC;
 			}
 			if ( TargetNPC != null )
 			{
+				// Should we start when we find our NPC?
 				if ( SpawnSettings.HasFlag( Flags.StartonSpawn ) )
 				{
 					MoveToPosition();
 				}
+				// Found one, return happily.
 				return true;
 			}
 			else
 			{
+				// Didn't find one, exit.
 				return false;
 			}
 		}
 		else
 		{
+			// We already have one, we're good.
 			return true;
 		}
 	}
