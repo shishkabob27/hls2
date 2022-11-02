@@ -40,28 +40,6 @@
 			{
 				key = 
 				{
-					m_id = 180139132
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, 16.0 ]
-					m_nNodeID = 
-					{
-						m_id = 180139132
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "run1"
-					m_playbackSpeed = 2.0
-					m_bLoop = true
-				}
-			},
-			{
-				key = 
-				{
 					m_id = 181282783
 				}
 				value = 
@@ -763,7 +741,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 320640448
+									m_id = 4294967295
 								}
 								m_outputID = 
 								{
@@ -895,7 +873,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 689398965
+									m_id = 4294967295
 								}
 								m_outputID = 
 								{
@@ -993,7 +971,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 180139132
+									m_id = 4294967295
 								}
 								m_outputID = 
 								{
@@ -1021,7 +999,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 542670311
+									m_id = 418483718
 								}
 								m_outputID = 
 								{
@@ -1084,7 +1062,7 @@
 							{
 								m_nodeID = 
 								{
-									m_id = 1047330709
+									m_id = 4294967295
 								}
 								m_outputID = 
 								{
@@ -1105,28 +1083,6 @@
 					]
 					m_bBlockWaningTags = false
 					m_bLockStateWhenWaning = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 320640448
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, -80.0 ]
-					m_nNodeID = 
-					{
-						m_id = 320640448
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "panic1"
-					m_playbackSpeed = 2.0
-					m_bLoop = true
 				}
 			},
 			{
@@ -1221,138 +1177,7 @@
 					m_tagSpans = [  ]
 					m_sequenceName = "idle"
 					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 500671895
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -96.0, -32.0 ]
-					m_nNodeID = 
-					{
-						m_id = 500671895
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "walk_scared"
-					m_playbackSpeed = 0.024
 					m_bLoop = true
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 542670311
-				}
-				value = 
-				{
-					_class = "CChoiceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, 64.0 ]
-					m_nNodeID = 
-					{
-						m_id = 542670311
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_children = 
-					[
-						{
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 1944122701
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_name = ""
-							m_weight = 0.0
-							m_blendTime = 0.2
-						},
-						{
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 1880794173
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_name = ""
-							m_weight = 0.0
-							m_blendTime = 0.2
-						},
-						{
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 1408912370
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_name = ""
-							m_weight = 0.0
-							m_blendTime = 0.2
-						},
-						{
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 1973941465
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_name = ""
-							m_weight = 0.0
-							m_blendTime = 0.2
-						},
-						{
-							m_inputConnection = 
-							{
-								m_nodeID = 
-								{
-									m_id = 1140579398
-								}
-								m_outputID = 
-								{
-									m_id = 4294967295
-								}
-							}
-							m_name = ""
-							m_weight = 0.0
-							m_blendTime = 0.2
-						},
-					]
-					m_seed = 689896312
-					m_choiceMethod = "WeightedRandom"
-					m_choiceChangeMethod = "OnReset"
-					m_blendMethod = "SingleBlendTime"
-					m_blendTime = 0.2
-					m_bCrossFade = false
-					m_bResetChosen = true
-					m_bDontResetSameSelection = false
 				}
 			},
 			{
@@ -1404,39 +1229,6 @@
 			{
 				key = 
 				{
-					m_id = 689398965
-				}
-				value = 
-				{
-					_class = "CSpeedScaleAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, -32.0 ]
-					m_nNodeID = 
-					{
-						m_id = 689398965
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_inputConnection = 
-					{
-						m_nodeID = 
-						{
-							m_id = 500671895
-						}
-						m_outputID = 
-						{
-							m_id = 4294967295
-						}
-					}
-					m_param = 
-					{
-						m_id = 1787578650
-					}
-				}
-			},
-			{
-				key = 
-				{
 					m_id = 828034454
 				}
 				value = 
@@ -1463,50 +1255,6 @@
 					}
 					m_bFinishEarly = false
 					m_bResetOnFinish = true
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1047330709
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ 96.0, 176.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1047330709
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "180_Left"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1140579398
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -96.0, 256.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1140579398
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "gutshot"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
 				}
 			},
 			{
@@ -1591,28 +1339,6 @@
 						m_fMinSpeed = 10.0
 						m_fMaxTension = 1000.0
 					}
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1408912370
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -96.0, 160.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1408912370
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "dieforward"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
 				}
 			},
 			{
@@ -1710,72 +1436,6 @@
 					m_bResetBase = true
 					m_bResetAdditive = true
 					m_bApplyChannelsSeparately = true
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1880794173
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -96.0, 112.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1880794173
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "diebackward"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1944122701
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -96.0, 64.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1944122701
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "diesimple"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
-				}
-			},
-			{
-				key = 
-				{
-					m_id = 1973941465
-				}
-				value = 
-				{
-					_class = "CSequenceAnimNode"
-					m_sName = "Unnamed"
-					m_vecPosition = [ -96.0, 208.0 ]
-					m_nNodeID = 
-					{
-						m_id = 1973941465
-					}
-					m_networkMode = "ServerAuthoritative"
-					m_sNote = ""
-					m_tagSpans = [  ]
-					m_sequenceName = "dieforward1"
-					m_playbackSpeed = 1.0
-					m_bLoop = false
 				}
 			},
 			{
