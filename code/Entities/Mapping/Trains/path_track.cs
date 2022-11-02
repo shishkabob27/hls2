@@ -1,6 +1,6 @@
 ﻿[Library( "path_track" )]
 [HammerEntity]
-[Title( "path_track" ), Category( "Legacy" ), Icon( "conversion_path" )]
+[Title( "path_track" ), Category( "Paths" ), Icon( "conversion_path" )]
 public partial class path_track : Entity
 {
 

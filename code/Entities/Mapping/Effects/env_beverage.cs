@@ -1,6 +1,6 @@
 ﻿[Library("env_beverage")]
 [HammerEntity]
-[Title("env_beverage"), Category("Legacy")]
+[Title("env_beverage"), Category( "Effects" )]
 public partial class env_beverage : Entity
 {
 

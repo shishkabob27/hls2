@@ -1,7 +1,7 @@
 ﻿[Library( "env_shake" )]
 [HammerEntity]
 [EditorSprite( "editor/env_shake.vmat" )]
-[Title( "env_shake" ), Category( "Legacy" ), Icon( "volume_up" )]
+[Title( "env_shake" ), Category( "Effects" ), Icon( "volume_up" )]
 public partial class env_shake : Entity
 {
 	[Net]

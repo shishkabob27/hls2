@@ -1,6 +1,6 @@
 ﻿[Library( "env_beam" )]
 [HammerEntity]
-[Title( "env_beam" ), Category( "Legacy" ), Icon( "volume_up" )]
+[Title( "env_beam" ), Category( "Effects" ), Icon( "volume_up" )]
 public partial class env_beam : Entity
 {
 	[Flags]

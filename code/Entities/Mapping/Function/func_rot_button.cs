@@ -6,7 +6,7 @@
 [DoorHelper( "movedir", "movedir_islocal", "movedir_type", "distance" )]
 [RenderFields, VisGroup( VisGroup.Dynamic )]
 [Model( Archetypes = ModelArchetype.animated_model | ModelArchetype.static_prop_model )]
-[Title( "func_button_rot" ), Category( "Legacy" ), Icon( "radio_button_checked" )]
+[Title( "func_button_rot" ), Category( "Brush Entities" ), Icon( "radio_button_checked" )]
 public partial class ButtonEntityRot : KeyframeEntity, IUse
 {
 	// TODO: Make sure only 1 player can be pressing a button

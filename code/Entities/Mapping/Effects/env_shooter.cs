@@ -1,7 +1,7 @@
 ﻿[Library("env_shooter")]
 [HammerEntity]
 [EditorSprite("editor/env_shooter.vmat")]
-[Title("env_shooter"), Category("Legacy"), Icon("dirty_lens")]
+[Title("env_shooter"), Category( "Effects" ), Icon("dirty_lens")]
 public partial class env_shooter : Entity
 {
     // stub

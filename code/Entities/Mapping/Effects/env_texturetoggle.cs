@@ -1,6 +1,6 @@
 [Library( "env_texturetoggle" )]
 [HammerEntity]
-[Title( "env_texturetoggle" ), Category( "Legacy" ), Icon( "toggle_on" )]
+[Title( "env_texturetoggle" ), Category( "Effects" ), Icon( "toggle_on" )]
 public partial class TextureToggle : Entity
 {
 	[Property( "target" ), Title( "Target" ), FGDType( "target_destination" ), Net]

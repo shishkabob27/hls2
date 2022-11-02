@@ -3,7 +3,7 @@
 /// </summary>
 [Library( "func_brush" )]
 [Solid, HammerEntity, RenderFields, VisGroup( VisGroup.Dynamic )]
-[Title( "Brush (Static)" ), Category( "Gameplay" ), Icon( "brush" )]
+[Title( "Brush (Static)" ), Category( "Brush Entities" ), Icon( "brush" )]
 [HideProperty("solid")] //PAINDAY: Delete me and this property
 public partial class BrushEntity : ModelEntity
 {

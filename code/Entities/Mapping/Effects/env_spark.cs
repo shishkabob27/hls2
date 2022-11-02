@@ -1,7 +1,7 @@
 ﻿[Library( "env_spark" )]
 [HammerEntity]
 [EditorSprite( "editor/env_spark.vmat" )]
-[Title( "env_spark" ), Category( "Legacy" ), Icon( "volume_up" )]
+[Title( "env_spark" ), Category( "Effects" ), Icon( "volume_up" )]
 public partial class env_spark : Entity
 {
 	[Flags]

@@ -1,7 +1,7 @@
 ﻿[Library( "math_counter" )]
 [HammerEntity]
 [EditorSprite( "editor/math_counter.vmat" )]
-[Title( "math_counter" ), Category( "Legacy" ), Icon( "calculate" )]
+[Title( "math_counter" ), Category( "Logic" ), Icon( "calculate" )]
 public partial class math_counter : Entity
 {
 

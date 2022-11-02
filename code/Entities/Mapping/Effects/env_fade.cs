@@ -1,7 +1,7 @@
 [Library( "env_fade" )]
 [HammerEntity]
 [EditorSprite( "editor/env_fade.vmat" )]
-[Title( "env_fade" ), Category( "Legacy" ), Icon( "toggle_on" )]
+[Title( "env_fade" ), Category( "Effects" ), Icon( "toggle_on" )]
 public partial class env_fade : Entity
 {
 	[Property( "rendercolor" ), Title( "Colour" ), Net]

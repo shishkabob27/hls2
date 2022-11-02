@@ -1,7 +1,7 @@
 [Library( "env_message" )]
 [HammerEntity]
 //[EditorSprite( "editor/env_message.vmat" )]
-[Title( "env_message" ), Category( "Legacy" ), Icon( "toggle_on" )]
+[Title( "env_message" ), Category( "Effects" ), Icon( "toggle_on" )]
 public partial class env_message : Entity
 {
 
