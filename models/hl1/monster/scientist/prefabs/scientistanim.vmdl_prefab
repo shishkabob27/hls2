@@ -12,8 +12,8 @@
 					{
 						_class = "AnimFile"
 						name = "idle1"
-						activity_name = ""
-						activity_weight = 1
+						activity_name = "ACT_IDLE"
+						activity_weight = 50
 						weight_list_name = ""
 						fade_in_time = 0.2
 						fade_out_time = 0.2
@@ -26,7 +26,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 18.0
 						take = 0
 						reverse = false
 					},
@@ -131,7 +131,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/run.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 25.0
 						take = 0
 						reverse = false
 					},
@@ -222,7 +222,7 @@
 								motion_type = "Single"
 							},
 						]
-						activity_name = ""
+						activity_name = "ACT_WALK"
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -236,7 +236,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/walk.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 20.0
 						take = 0
 						reverse = false
 					},
@@ -271,7 +271,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/walk_scared.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 20.0
 						take = 0
 						reverse = false
 					},
@@ -334,7 +334,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/180_Right.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -1259,7 +1259,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/flinch.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 20.0
 						take = 0
 						reverse = false
 					},
@@ -1280,7 +1280,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/flinch1.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 20.0
 						take = 0
 						reverse = false
 					},
@@ -1592,7 +1592,7 @@
 					{
 						_class = "AnimFile"
 						name = "idle3"
-						activity_name = ""
+						activity_name = "ACT_IDLE"
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -1606,15 +1606,15 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/idle3.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
 						name = "idle4"
-						activity_name = ""
-						activity_weight = 1
+						activity_name = "ACT_IDLE"
+						activity_weight = 2
 						weight_list_name = ""
 						fade_in_time = 0.2
 						fade_out_time = 0.2
@@ -1627,14 +1627,14 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/idle4.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
 						name = "idle5"
-						activity_name = ""
+						activity_name = "ACT_IDLE"
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -1648,14 +1648,14 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/idle5.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
 						name = "idle6"
-						activity_name = ""
+						activity_name = "ACT_IDLE"
 						activity_weight = 1
 						weight_list_name = ""
 						fade_in_time = 0.2
@@ -1669,15 +1669,15 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/idle6.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
 					{
 						_class = "AnimFile"
 						name = "idle7"
-						activity_name = ""
-						activity_weight = 1
+						activity_name = "ACT_IDLE"
+						activity_weight = 10
 						weight_list_name = ""
 						fade_in_time = 0.2
 						fade_out_time = 0.2
@@ -1690,7 +1690,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/idle7.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 10.0
 						take = 0
 						reverse = false
 					},
@@ -1753,7 +1753,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/laflinch.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -1795,7 +1795,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/llflinch.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -2299,7 +2299,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/raflinch.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
@@ -2383,7 +2383,7 @@
 						source_filename = "models/hl1decomp/scientist/scientist_anims/rlflinch.smd"
 						start_frame = -1
 						end_frame = -1
-						framerate = -1.0
+						framerate = 15.0
 						take = 0
 						reverse = false
 					},
