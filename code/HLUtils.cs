@@ -20,15 +20,15 @@ public partial class HLUtils
     
     static public HLPlayer ClosestPlayerTo(Vector3 pos)
     {
-        var plys = Entity.All.OfType<HLPlayer>().ToList().OrderBy(o => (o.Position.Distance(pos)));
-        return plys.First();
+        var plys = Client.All.ToList().OrderBy(o => (o.Pawn.Position.Distance(pos)));
+        return plys.First().Pawn as HLPlayer;
     }
     
     static public bool PlayerInRangeOf(Vector3 pos, float range = 1024)
     {
-        var plys = Entity.All.OfType<HLPlayer>().ToList();
-        plys.RemoveAll(ply => ply.Position.Distance(pos) > range);
-        return plys.Count() > 0;
+		var plys = Client.All.ToList();
+		plys.RemoveAll(ply => ply.Pawn.Position.Distance(pos) > range);
+		return plys.Count() > 0;
     }
     static public int AmountOf<T>()
     {
