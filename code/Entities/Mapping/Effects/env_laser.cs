@@ -27,11 +27,11 @@ public partial class env_laser : Entity
 
 
 	[Property( "LightningStart" ), FGDType( "target_destination" )]
-	public string LightningStart { get; set; } = "";
+	public EntityTarget LightningStart { get; set; }
 	[Property( "LightningEnd" ), FGDType( "target_destination" )]
-	public string LightningEnd { get; set; } = "";
+	public EntityTarget LightningEnd { get; set; }
 	[Property( "LaserTarget" ), FGDType( "target_destination" )]
-	public string LaserTarget { get; set; } = "";
+	public EntityTarget LaserTarget { get; set; }
 	[Property]
 	public string texture { get; set; } = "";
 	[Property]
@@ -54,8 +54,6 @@ public partial class env_laser : Entity
 			TurnOn();
 		}
 
-		StartEnt = Entity.FindAllByName( LightningStart ).First();
-		TargetEnt = Entity.FindAllByName( LaserTarget ).First();
 	}
 
 	[Input]
@@ -112,13 +110,11 @@ public partial class env_laser : Entity
 		{
 			if (StartEnt == null)
 			{
-				var c = Entity.FindAllByName( LightningStart );
-				if (c.Count() > 0) StartEnt = c.First();
+				StartEnt = LightningStart.GetTarget();
 			}
 			if (TargetEnt == null)
 			{
-				var c = Entity.FindAllByName( LaserTarget );
-				if ( c.Count() > 0 ) TargetEnt = c.First(); 
+				TargetEnt = LaserTarget.GetTarget();
 			}
 			try
 			{ 
