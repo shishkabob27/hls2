@@ -31,12 +31,12 @@ public partial class TextureToggle : Entity
 			if ( Entity.FindAllByName( TargetEntity ).First() is BrushEntity b )
 			{
 				curFrame++;
-				b.SceneObject.Attributes.Set( "frame", curFrame );
+				if (b.SceneObject != null) b.SceneObject.Attributes.Set( "frame", curFrame );
 			}
 			else if ( Entity.FindAllByName( TargetEntity ).First() is ModelEntity m )
 			{
 				curFrame++;
-				m.SceneObject.Attributes.Set( "frame", curFrame );
+				if ( m.SceneObject != null ) m.SceneObject.Attributes.Set( "frame", curFrame );
 			}
 		}
 		catch { }

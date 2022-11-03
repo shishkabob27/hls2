@@ -8,6 +8,9 @@ public partial class func_tracktrain : BrushEntity
 	public string Target { get; set; } = "";
 	public float speed = 0;
 
+	string prevcheck = "";
+	bool prevcheckfailed = false;
+	path_track TargetEnt;
 
 	[Property( "orientationtype" )]
 	public float OrientationType { get; set; } = 1;
@@ -20,10 +23,24 @@ public partial class func_tracktrain : BrushEntity
 	[Event.Tick.Server]
 	public void tick()
 	{
+		if ( speed == 0 ) return;
 		try
 		{
-			var a = (Entity.FindAllByName( Target ).First() as path_track);
-
+			if (TargetEnt == null && !(Target == prevcheck && prevcheckfailed))
+			{
+				prevcheck = Target;
+				var b = Entity.FindAllByName( Target );
+				if (b.Count() > 0) TargetEnt = (b.First() as path_track);
+				if (TargetEnt == null)
+				{
+					prevcheckfailed = true;
+				}
+				else
+				{
+					prevcheckfailed = false;
+				}
+			}
+			path_track a = TargetEnt;
 			if ( speed != 0 )
 			{
 
@@ -50,6 +67,7 @@ public partial class func_tracktrain : BrushEntity
 				}
 				Target = a.Target;
 				var b = (Entity.FindAllByName( Target ).First() as path_track);
+				TargetEnt = b;
 				if ( b.Speed != 0 )
 				{
 					speed = b.Speed;
@@ -64,6 +82,7 @@ public partial class func_tracktrain : BrushEntity
 	[Input]
 	public void StartForward()
 	{
+		speed = 20;
 		try
 		{
 			var a = (Entity.FindAllByName( Target ).First() as path_track);

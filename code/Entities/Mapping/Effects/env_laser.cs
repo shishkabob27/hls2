@@ -44,7 +44,8 @@ public partial class env_laser : Entity
 	Vector3 targetpoint { get; set; }
 	Particles Beam;
 	// stub
-
+	Entity StartEnt;
+	Entity TargetEnt;
 	public override void Spawn()
 	{
 		base.Spawn();
@@ -52,6 +53,9 @@ public partial class env_laser : Entity
 		{
 			TurnOn();
 		}
+
+		StartEnt = Entity.FindAllByName( LightningStart ).First();
+		TargetEnt = Entity.FindAllByName( LaserTarget ).First();
 	}
 
 	[Input]
@@ -106,11 +110,19 @@ public partial class env_laser : Entity
 	{
 		if ( Beam != null )
 		{
-			try
+			if (StartEnt == null)
 			{
-				var c = Entity.FindAllByName( LightningStart ).First();
-				var d = Entity.FindAllByName( LaserTarget ).First();
-				Beam.SetEntity( 0, c );
+				var c = Entity.FindAllByName( LightningStart );
+				if (c.Count() > 0) StartEnt = c.First();
+			}
+			if (TargetEnt == null)
+			{
+				var c = Entity.FindAllByName( LaserTarget );
+				if ( c.Count() > 0 ) TargetEnt = c.First(); 
+			}
+			try
+			{ 
+				Beam.SetEntity( 0, StartEnt );
 			}
 			catch
 			{
@@ -118,16 +130,8 @@ public partial class env_laser : Entity
 			}
 			var a = Position;
 			var b = targetpoint;
-
-			try
-			{
-				a = Entity.FindAllByName( LightningStart ).First().Position;
-				b = Entity.FindAllByName( LaserTarget ).First().Position;
-			}
-			catch
-			{
-
-			}
+			if ( StartEnt != null ) a = StartEnt.Position;
+			if ( TargetEnt != null ) b = TargetEnt.Position;
 			Beam.SetPosition( 0, a );
 			var tr = Trace.Ray( a, b ).Run();
 			Beam.SetPosition( 1, tr.HitPosition );
