@@ -5,7 +5,7 @@ public partial class func_tracktrain : BrushEntity
 {
 	Vector3 PrevPos;
 	[Property( "target" ), FGDType( "target_destination" )]
-	public string Target { get; set; } = "";
+	public EntityTarget Target { get; set; } //= "";
 	public float speed = 0;
 
 	string prevcheck = "";
@@ -19,16 +19,17 @@ public partial class func_tracktrain : BrushEntity
 		Tags.Clear();
 		base.Spawn();
 	}
-
+	path_track a;
 	[Event.Tick.Server]
 	public void tick()
 	{
 		if ( speed == 0 ) return;
 		try
 		{
-			if (TargetEnt == null && !(Target == prevcheck && prevcheckfailed))
-			{
-				prevcheck = Target;
+			if (a == null )//&& !(Target == prevcheck && prevcheckfailed))
+			{ 
+				a = Target.GetTarget() as path_track;
+				/*prevcheck = Target;
 				var b = Entity.FindAllByName( Target );
 				if (b.Count() > 0) TargetEnt = (b.First() as path_track);
 				if (TargetEnt == null)
@@ -38,9 +39,8 @@ public partial class func_tracktrain : BrushEntity
 				else
 				{
 					prevcheckfailed = false;
-				}
+				}*/
 			}
-			path_track a = TargetEnt;
 			if ( speed != 0 )
 			{
 
@@ -66,7 +66,8 @@ public partial class func_tracktrain : BrushEntity
 					//if ( OrientationType != 0 ) child.Rotation = Rotation.Lerp( child.Rotation, Rotation.LookAt( child.Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
 				}
 				Target = a.Target;
-				var b = (Entity.FindAllByName( Target ).First() as path_track);
+				var b = (Target.GetTarget() as path_track);
+				a = b;
 				TargetEnt = b;
 				if ( b.Speed != 0 )
 				{
@@ -85,7 +86,7 @@ public partial class func_tracktrain : BrushEntity
 		speed = 20;
 		try
 		{
-			var a = (Entity.FindAllByName( Target ).First() as path_track);
+			var a = (Target.GetTarget() as path_track);
 			if ( a.Speed != 0 )
 			{
 				speed = a.Speed;

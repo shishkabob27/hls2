@@ -7,7 +7,7 @@ public partial class path_track : Entity
 	public Output OnPass { get; set; }
 
 	[Property( "target" ), FGDType( "target_destination" )]
-	public string Target { get; set; } = "";
+	public EntityTarget Target { get; set; }// = "";
 
 
 	[Property( "speed" )]
