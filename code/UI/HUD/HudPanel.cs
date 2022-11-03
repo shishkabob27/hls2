@@ -47,8 +47,12 @@ public class HudPanel : HudEntity<HudRootPanel>
 				RootPanel.AddChild<TeamSelector>();
 			}
 
-			if ( HLGame.sv_gamemode == "campaign" ) RootPanel.AddChild<ChapterText>();
+			if ( HLGame.GameIsMultiplayer() )
+			{
+				RootPanel.AddChild<GameHud>();
+			}
 
+			if ( HLGame.sv_gamemode == "campaign" ) RootPanel.AddChild<ChapterText>();
 
 		}
 	}

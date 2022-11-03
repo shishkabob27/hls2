@@ -1,0 +1,23 @@
+﻿@using Sandbox.UI;
+
+<root>
+	<label class="game-state">@HLGame.CurrentState</label>
+	<label class="game-timer" @ref=Timer></label>
+</root>
+
+@code
+{
+	public Label Timer { get; set; }
+
+	public override void Tick()
+	{
+		var game = Game.Current as HLGame;
+		var span = TimeSpan.FromSeconds((game.StateTimer * 60).Clamp(0, float.MaxValue));
+		Timer.Text = span.ToString(@"hh\:mm\:ss");
+	}
+
+	protected override int BuildHash()
+	{
+		return HashCode.Combine(HLGame.CurrentState);
+	}
+}

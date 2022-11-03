@@ -3,7 +3,7 @@
   "Type": "game",
   "Org": "shishkabob",
   "Ident": "hls2",
-  "Tags": null,
+  "Tags": "",
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
@@ -21,9 +21,14 @@
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Unrestricted",
     "MapList": [
+      "\u003Cempty\u003E",
+      "shishkabob.hls2_t0",
+      "shishkabob.hls2_c1p0",
       "shishkabob.hls2_c2p0",
+      "shishkabob.hls2_c3p0",
       "shishkabob.hls2_c4p0",
-      "facepunch.datacore"
+      "shishkabob.hls2_c5p0",
+      "shishkabob.hls2_c6p0"
     ],
     "RankType": "None",
     "PerMapRanking": false,
@@ -175,7 +180,7 @@
       "Gamepad": true
     },
     "GameSettings": {
-      "hl_gamemode": {
+      "sv_gamemode": {
         "DisplayType": "Choice",
         "Choices": [
           {
@@ -191,12 +196,12 @@
             "Name": "Capture the Flag (Opposing Force)"
           }
         ],
-        "ConVarName": "hl_gamemode",
+        "ConVarName": "sv_gamemode",
         "DisplayName": "Gamemode",
         "DefaultValue": "campaign",
         "Description": ""
       },
-      "hl_difficulty": {
+      "skill": {
         "DisplayType": "Choice",
         "Choices": [
           {
@@ -212,7 +217,7 @@
             "Name": "Hard"
           }
         ],
-        "ConVarName": "hl_difficulty",
+        "ConVarName": "skill",
         "DisplayName": "Difficulty",
         "DefaultValue": "easy",
         "Description": ""
@@ -235,6 +240,10 @@
         "Minimum": 1,
         "Maximum": 60
       }
-    }
+    },
+    "ParentPackage": "facepunch.sandbox",
+    "GeneralExtensions": true,
+    "TargettedExtensions": true,
+    "ExtensionApiVersion": 1002
   }
 }
