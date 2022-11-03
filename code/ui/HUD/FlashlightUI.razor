@@ -1,0 +1,10 @@
+﻿@using Sandbox.UI;
+
+@code
+{
+	public override void Tick()
+	{
+		SetClass("on", ( Local.Pawn as HLPlayer ).FlashlightEnabled);
+		SetClass( "invisible", !( Local.Pawn as HLPlayer ).HasHEV || ( Local.Pawn as HLPlayer ).Health <= 0 );
+	}
+}
