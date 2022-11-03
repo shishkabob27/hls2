@@ -138,11 +138,11 @@ public partial class SoundEventEntity : Entity
 
 		if ( SpawnSettings.HasFlag( Flags.Playeverywhere ) )
 		{
-			PlayingSound = Sound.FromScreen( replacename ).SetVolume( Volume / 5 );
+			PlayingSound = Sound.FromScreen( replacename ).SetVolume( Volume * 0.1f );
 		}
 		else
 		{
-			PlayingSound = Sound.FromWorld( replacename, Position ).SetVolume( Volume / 5 );
+			PlayingSound = Sound.FromWorld( replacename, Position ).SetVolume( Volume * 0.1f );
 		}
 	}
     //[ClientRpc]
