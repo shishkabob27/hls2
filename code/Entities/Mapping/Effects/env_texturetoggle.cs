@@ -11,6 +11,12 @@ public partial class TextureToggle : Entity
 	{
 		inctextindex();
 	}
+	[Input]
+	public void SetTextureIndex(int i)
+	{
+		curFrame = i - 1;
+		inctextindex();
+	}
 	[ClientRpc]
 	void inctextindex()
 	{
