@@ -45,7 +45,7 @@
 	float sizeAdd = 0.064f;
 	public void Move()
 	{
-
+		if ( Velocity.Length == 0 ) return;
 		var mib = CollisionBounds.Mins;
 		var mab = CollisionBounds.Maxs;
 		var emins = new Vector3( mib.x - sizeAdd, mib.y - sizeAdd, mib.z - sizeAdd );
@@ -58,7 +58,7 @@
 			.Ignore( this );
 		mover.GroundBounce = GroundBounce;
 		mover.WallBounce = WallBounce;
-		mover.TryMoveWithStep( Time.Delta, 18 );
+		mover.TryMove( Time.Delta );
 
 		//lastTouch = mover.HitEntity;
 		Position = mover.Position;

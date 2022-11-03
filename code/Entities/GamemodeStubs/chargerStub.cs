@@ -172,12 +172,4 @@ partial class LegacyChargerStation : KeyframeEntity, IUse
             ChargerPower = DefaultChargerPower;
         }
     }
-
-    [Event.Tick.Client]
-    private void ClientTick()
-    {
-
-        SceneObject?.Attributes.Set( "PowerCharge", ( ChargerPower / DefaultChargerPower ) * .5f );
-    }
-
 }

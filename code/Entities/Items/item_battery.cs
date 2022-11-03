@@ -60,8 +60,8 @@ public partial class Battery : ModelEntity, IRespawnableEntity
 
 		Tags.Add("weapon");
 	}
-	[Event.Tick.Server] 
-	void tick()
+	//[Event.Tick.Server] 
+	/*void tick()
 	{
 		if (isSetup)
 		{
@@ -70,7 +70,7 @@ public partial class Battery : ModelEntity, IRespawnableEntity
 			Light3.Enabled = HLGame.hl_dynamic_light;
 			Light4.Enabled = HLGame.hl_dynamic_light;
 		}
-	}
+	}*/
 	public override void StartTouch( Entity other )
 	{
 		base.StartTouch( other );

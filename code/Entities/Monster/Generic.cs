@@ -28,4 +28,4 @@ public partial class GenericMonster : NPC
 	{
 
 	}
-	}
+}

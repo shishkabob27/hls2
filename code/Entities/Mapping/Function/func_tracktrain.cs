@@ -8,7 +8,7 @@ public partial class func_tracktrain : BrushEntity
 	public EntityTarget Target { get; set; } //= "";
 	public float speed = 0;
 
-	string prevcheck = "";
+	path_track prevcheck;
 	bool prevcheckfailed = false;
 	path_track TargetEnt;
 
@@ -26,13 +26,16 @@ public partial class func_tracktrain : BrushEntity
 		if ( speed == 0 ) return;
 		try
 		{
-			if (a == null )//&& !(Target == prevcheck && prevcheckfailed))
+			// this was so we don't cnstantly check unless we know anything as changed.
+			if (a == null)// && !(a == prevcheck && prevcheckfailed))
 			{ 
 				a = Target.GetTarget() as path_track;
+
 				/*prevcheck = Target;
 				var b = Entity.FindAllByName( Target );
 				if (b.Count() > 0) TargetEnt = (b.First() as path_track);
-				if (TargetEnt == null)
+				
+				if ( a == null)
 				{
 					prevcheckfailed = true;
 				}
