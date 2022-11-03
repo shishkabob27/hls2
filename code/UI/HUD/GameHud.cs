@@ -1,12 +1,12 @@
 ﻿using Sandbox.UI;
 using Sandbox.UI.Construct;
 
-internal class GameHud : Panel
+internal class GameHudd : Panel
 {
 	public Label Timer;
 	public Label State;
 
-	public GameHud()
+	public GameHudd()
 	{
 		if ( !HLGame.GameIsMultiplayer() ) return;
 		State = Add.Label( string.Empty, "game-state" );
