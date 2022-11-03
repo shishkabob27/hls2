@@ -26,8 +26,7 @@ public partial class env_shake : Entity
 	[Input]
 	void StartShake()
 	{
-		var a = Client.All.ToList();
-		a.RemoveAll( ply => ply.Pawn.Position.Distance( Position ) > EffectRadius * 2 );
+		var a = Client.All.Where( ply => ply.Pawn.Position.Distance( Position ) < EffectRadius * 2 );
 		ShakeRPC( To.Multiple( a ) );
 
 	}

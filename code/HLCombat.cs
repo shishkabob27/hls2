@@ -139,7 +139,7 @@ public partial class HLCombat
 		skullGib.Position = Position;
 		skullGib.Rotation = Rotation.LookAt( Vector3.Random.Normal );
 
-		var player = HLUtils.FindPlayerInBox( Position, 2048 );
+		var player = HLUtils.ClosestPlayerTo( Position );
 
 		// 5% chance head will be thrown at player's face.
 		if ( player is HLPlayer && Rand.Float( 0, 100 ) <= 5 )

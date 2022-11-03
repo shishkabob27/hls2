@@ -47,9 +47,9 @@ partial class LegacyChargerStation : KeyframeEntity, IUse
     public Vector3 Maxs { get; set; } = new Vector3( 48, 32, 32 );
     public bool SpawnCheck()
     {
-        var b = Entity.All.OfType<Weapon>().ToList();
-        b.RemoveAll( x => ( x as Entity ).Tags.Has( "stubmade" ) );
-        b.RemoveAll( x => ( x as Entity ).Owner is HLPlayer );
+        var b = Entity.All.OfType<Weapon>().Where( x => !x.Tags.Has("stubmade") && !(x.Owner is HLPlayer));
+        //b.RemoveAll( x => ( x as Entity ).Tags.Has( "stubmade" ) );
+        //b.RemoveAll( x => ( x as Entity ).Owner is HLPlayer );
         Log.Info( b.Count() );
         if ( b.Count() > 2 ) // If we find any of our base entities from this gamemode we should abort.
         {

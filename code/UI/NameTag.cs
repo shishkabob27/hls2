@@ -39,8 +39,9 @@ internal class NameTagComponent : EntityComponent<HLPlayer>
 	[Event.Frame]
 	public static void SystemUpdate()
 	{
-		foreach ( var player in Sandbox.Entity.All.OfType<HLPlayer>() )
+		foreach ( var client in Client.All )
 		{
+			var player = client.Pawn;
 			if ( player.IsLocalPawn && player.IsFirstPersonMode )
 			{
 				var c = player.Components.Get<NameTagComponent>();

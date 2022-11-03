@@ -266,11 +266,13 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			return;
 		if ( animHelper.VoiceLevel != 0 )
 		{
-			var closestENTs = Entity.All.OfType<ICombat>().OfType<Entity>().ToList();
-			closestENTs.Remove( this );
+			var closestENTs = Entity.All.OfType<ICombat>().OfType<Entity>();
 			var ck = closestENTs.OrderBy( o => (o.Position.Distance( Position )) );
 			var closestENT = ck.First();
-
+			if (closestENT == this)
+			{
+				closestENT = ck.ElementAt(1);
+			}
 			var a = Rotation.LookAt( closestENT.Position.WithZ( 0 ) - Position.WithZ( 0 ), Vector3.Up ).Yaw();//HLUtils.VecToYaw(closestENT.Position.WithZ(0) - Position.WithZ(0));
 
 			//Log.Info(closestENT.Position - Position);

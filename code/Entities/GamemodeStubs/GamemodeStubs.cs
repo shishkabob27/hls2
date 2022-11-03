@@ -1,11 +1,11 @@
 ﻿public class BaseGamemodeStub : Entity
 {
     public bool SpawnCheck()
-    {
-        var b = Entity.All.OfType<Weapon>().ToList();
-        b.RemoveAll( x => ( x as Entity ).Tags.Has( "stubmade" ) );
-        b.RemoveAll( x => ( x as Entity ).Owner is HLPlayer );
-        if ( b.Count() > 2 ) // If we find any of our base entities from this gamemode we should abort.
+	{
+		var b = Entity.All.OfType<Weapon>().Where( x => !x.Tags.Has( "stubmade" ) && !(x.Owner is HLPlayer) );
+		//b.RemoveAll( x => ( x as Entity ).Tags.Has( "stubmade" ) );
+		//b.RemoveAll( x => ( x as Entity ).Owner is HLPlayer );
+		if ( b.Count() > 2 ) // If we find any of our base entities from this gamemode we should abort.
         {
             Delete();
             return true;
