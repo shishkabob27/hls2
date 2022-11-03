@@ -14,22 +14,32 @@ public partial class TextureToggle : Entity
 	[Input]
 	public void SetTextureIndex(int i)
 	{
-		curFrame = i - 1;
-		inctextindex();
+		inctextindex(i);
 	}
 	[ClientRpc]
-	void inctextindex()
+	void inctextindex(int ovr = -255)
 	{
-		if ( Entity.FindAllByName( TargetEntity ).First() is BrushEntity b )
+		
+		if (ovr != -255)
 		{
-			curFrame++;
-			b.SceneObject.Attributes.Set( "frame", curFrame );
+
+			curFrame = ovr - 1;
 		}
-		else if ( Entity.FindAllByName( TargetEntity ).First() is ModelEntity m )
+		try
 		{
-			curFrame++;
-			m.SceneObject.Attributes.Set( "frame", curFrame );
+
+			if ( Entity.FindAllByName( TargetEntity ).First() is BrushEntity b )
+			{
+				curFrame++;
+				b.SceneObject.Attributes.Set( "frame", curFrame );
+			}
+			else if ( Entity.FindAllByName( TargetEntity ).First() is ModelEntity m )
+			{
+				curFrame++;
+				m.SceneObject.Attributes.Set( "frame", curFrame );
+			}
 		}
+		catch { }
 	}
 
 }

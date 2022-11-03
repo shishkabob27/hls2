@@ -28,8 +28,11 @@ public partial class func_rotating : KeyframeEntity
 	// stub
 	[Event.Tick.Server]
 	void Tick()
-	{ 
-		Rotation *= (Rotation.From(0,1,0) * Time.Delta) * Speed; 
+	{
+		var a = Rotation.From( 0, 1, 0 );
+		if (SpawnSettings.HasFlag(Flags.XAxis)) a = Rotation.From( 0, 0, 1 );
+		if (SpawnSettings.HasFlag(Flags.YAxis)) a = Rotation.From( 1, 0, 0 );
+		Rotation *= (a * Time.Delta) * Speed; 
 	}
 
 	[Input]
