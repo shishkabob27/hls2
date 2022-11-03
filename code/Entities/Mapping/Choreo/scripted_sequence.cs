@@ -203,6 +203,7 @@ public partial class scripted_sequence : Entity
 				// Should we start when we find our NPC?
 				if ( SpawnSettings.HasFlag( Flags.StartonSpawn ) )
 				{
+					TargetNPC.NPCTaskQueue.Clear();
 					MoveToPosition();
 				}
 				// Found one, return happily.
