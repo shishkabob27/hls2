@@ -2,36 +2,19 @@
 
 Layer0
 {
-	shader "complex.vfx"
-
-	//---- Ambient Occlusion ----
-	g_flAmbientOcclusionDirectDiffuse "0.000"
-	g_flAmbientOcclusionDirectSpecular "0.000"
-	TextureAmbientOcclusion "materials/default/default_ao.tga"
+	shader "unlit.vfx"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"
-	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "materials/hl1/sprites/glow04.png"
+	g_vColorTint "[0.952941 0.000000 0.000000 0.000000]"
 
 	//---- Fade ----
 	g_flFadeExponent "1.000"
 
-	//---- Fog ----
-	g_bFogEnabled "1"
-
-	//---- Lighting ----
-	g_flDirectionalLightmapMinZ "0.050"
-	g_flDirectionalLightmapStrength "1.000"
-
-	//---- Metalness ----
-	g_flMetalness "0.000"
-
-	//---- Normal ----
-	TextureNormal "materials/default/default_normal.tga"
-
-	//---- Roughness ----
-	TextureRoughness "[1.000000 1.000000 1.000000 0.000000]"
+	//---- Material ----
+	g_flTintColor "[1.000000 1.000000 1.000000 0.000000]"
+	TextureColor "materials/hl1/sprites/glow04.png"
+	TextureTintMask "materials/default/default.tga"
 
 	//---- Texture Coordinates ----
 	g_nScaleTexCoordUByModelScaleAxis "0"
@@ -39,4 +22,15 @@ Layer0
 	g_vTexCoordOffset "[0.000 0.000]"
 	g_vTexCoordScale "[1.000 1.000]"
 	g_vTexCoordScrollSpeed "[0.000 0.000]"
+
+	Attributes
+	{
+		rendercolor "0 0 0"
+	}
+
+	DynamicParams
+	{
+		g_vColorTint "return float4(rendercolor.r/255,rendercolor.g/255,rendercolor.b/255,0)"
+		g_flTintColor "return float4(rendercolor.x*1,rendercolor.y*1,rendercolor.z *1,0)"
+	}
 }
