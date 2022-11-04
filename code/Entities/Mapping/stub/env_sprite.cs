@@ -6,27 +6,33 @@ public partial class env_sprite : RenderEntity
 	[Property( "model" ), Net]
 	public string Sprite { get; set; } = "sprites/glow04.vmat";
 	public Material SpriteMaterial { get; set; } 
+	public Texture SpriteTex { get; set; } 
 
 	public float SpriteScale { get; set; } = 18f;
 
 	[Property("rendercolor"), Net]
 	Color SpriteColour { get; set; }
 	public bool Enabled { get; set; } = true;
+	[ConVar.Replicated]
+	static public bool hl_enable_expermental_sprites { get; set; } = false;
 	public override void Spawn()
 	{
 		base.Spawn();
+		//if ( !hl_enable_expermental_sprites ) Delete(); return;
 		Transmit = TransmitType.Always;
 	}
+	string SpritePrev;
 	public override void DoRender( SceneObject obj )
 	{
+		//if ( !hl_enable_expermental_sprites ) Delete(); return;
 		if ( !Enabled ) return;
-		//if (SpriteMaterial == null)
-		{
+		if (SpriteMaterial == null || Sprite != SpritePrev)
+		{ 
 			var a = Sprite;
-			if (!a.Contains( ".jpg" ) )
+			if (!a.Contains( ".png" ) )
 			{
-				if ( a.Contains( ".vmdl" ) ) a = a.Replace( ".vmdl", ".jpg" );
-				if ( a.Contains( ".vmat" ) ) a = a.Replace( ".vmat", ".jpg" );
+				if ( a.Contains( ".vmdl" ) ) a = a.Replace( ".vmdl", ".png" );
+				if ( a.Contains( ".vmat" ) ) a = a.Replace( ".vmat", ".png" );
 			}
 			if ( !a.Contains( "materials/" ) )
 			{
@@ -35,9 +41,9 @@ public partial class env_sprite : RenderEntity
 			//Log.Info( a );
 
 			SpriteMaterial = Material.FromShader( "envsprite.vfx" ); //Material.Load( a );
-			var b = Texture.Load( FileSystem.Mounted, a );
+			SpriteTex = Texture.Load( FileSystem.Mounted, a );
 			//Log.Info();
-			SpriteMaterial.OverrideTexture( "TextureColor", Texture.White );
+			SpriteMaterial.OverrideTexture( "Color", SpriteTex );
 		}
 		// Allow lights to affect the sprite
 		//Render.SetupLighting( obj );
@@ -58,6 +64,7 @@ public partial class env_sprite : RenderEntity
 
 		// Draw the sprite
 		Graphics.Attributes.Set( "rendercolor", SpriteColour );
-		vb.Draw( SpriteMaterial ); 
+		vb.Draw( SpriteMaterial );
+		SpritePrev = Sprite;
 	}
 }

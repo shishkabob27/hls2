@@ -89,7 +89,7 @@ public partial class func_tracktrain : BrushEntity
 		speed = 20;
 		try
 		{
-			var a = (Target.GetTarget() as path_track);
+			a = (Target.GetTarget() as path_track);
 			if ( a.Speed != 0 )
 			{
 				speed = a.Speed;
