@@ -20,19 +20,24 @@ public partial class env_sprite : RenderEntity
 	public override void DoRender( SceneObject obj )
 	{
 		if ( !Enabled ) return;
-		if (SpriteMaterial == null)
+		//if (SpriteMaterial == null)
 		{
 			var a = Sprite;
-			if (!a.Contains(".vmat"))
+			if (!a.Contains( ".jpg" ) )
 			{
-				a = a.Replace( ".vmdl", ".vmat" );
+				if ( a.Contains( ".vmdl" ) ) a = a.Replace( ".vmdl", ".jpg" );
+				if ( a.Contains( ".vmat" ) ) a = a.Replace( ".vmat", ".jpg" );
 			}
 			if ( !a.Contains( "materials/" ) )
 			{
 				a = a.Replace( "sprites/", "materials/hl1/sprites/" );
-			}
-			Log.Info( a );
-			SpriteMaterial = Material.Load( a );
+			} 
+			//Log.Info( a );
+
+			SpriteMaterial = Material.FromShader( "envsprite.vfx" ); //Material.Load( a );
+			var b = Texture.Load( FileSystem.Mounted, a );
+			//Log.Info();
+			SpriteMaterial.OverrideTexture( "TextureColor", Texture.White );
 		}
 		// Allow lights to affect the sprite
 		//Render.SetupLighting( obj );
@@ -44,7 +49,7 @@ public partial class env_sprite : RenderEntity
 
 		// Vertex buffers are in local space, so we need the camera position in local space too
 		var normal = CurrentView.Rotation.Backward;// Transform.PointToLocal( CurrentView.Position ).Normal;
-		var w = normal.Cross( Vector3.Down ).Normal;
+		var w = normal.Cross( Vector3.Up ).Normal;
 		var h = normal.Cross( w ).Normal;
 		float halfSpriteSize = SpriteScale;
 

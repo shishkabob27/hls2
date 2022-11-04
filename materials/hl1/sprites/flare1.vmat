@@ -2,7 +2,10 @@
 
 Layer0
 {
-	shader "unlit.vfx"
+	shader "envsprite.vfx"
+
+	//---- Blending ----
+	F_ADDITIVE_BLEND 1
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"

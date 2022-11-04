@@ -66,12 +66,18 @@ VS
 
 PS
 {
+    #define BLEND_MODE_ALREADY_SET
+	RenderState( BlendEnable, true );	
+	RenderState( SrcBlend, SRC_COLOR );
+	RenderState( DstBlend, INV_SRC_COLOR );
+	RenderState( BlendOp, ADD );
+	BoolAttribute( translucent, true );
     #include "common/pixel.hlsl"
-
+ 
 
 	float4 MainPs( PixelInput i ) : SV_Target0
 	{
 		Material m = GatherMaterial( i );
-		return float4( m.Albedo, 1.0 );;
+		return float4( m.Albedo, 1.0 );
 	}
 }
