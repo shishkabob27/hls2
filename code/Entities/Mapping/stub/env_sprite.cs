@@ -18,13 +18,13 @@ public partial class env_sprite : RenderEntity
 	public override void Spawn()
 	{
 		base.Spawn();
-		//if ( !hl_enable_expermental_sprites ) Delete(); return;
+		if ( !hl_enable_expermental_sprites ) Delete(); return;
 		Transmit = TransmitType.Always;
 	}
 	string SpritePrev;
 	public override void DoRender( SceneObject obj )
 	{
-		//if ( !hl_enable_expermental_sprites ) Delete(); return;
+		if ( !hl_enable_expermental_sprites ) Delete(); return;
 		if ( !Enabled ) return;
 		if (SpriteMaterial == null || Sprite != SpritePrev)
 		{ 
@@ -41,9 +41,9 @@ public partial class env_sprite : RenderEntity
 			//Log.Info( a );
 
 			SpriteMaterial = Material.FromShader( "envsprite.vfx" ); //Material.Load( a );
-			SpriteTex = Texture.Load( FileSystem.Mounted, a );
+			//SpriteTex = Texture.Load( FileSystem.Mounted, a );
 			//Log.Info();
-			SpriteMaterial.OverrideTexture( "Color", SpriteTex );
+			//SpriteMaterial.OverrideTexture( "Color", SpriteTex );
 		}
 		// Allow lights to affect the sprite
 		//Render.SetupLighting( obj );
