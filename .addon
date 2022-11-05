@@ -297,7 +297,7 @@
         "DisplayName": "Enable Bunnyhopping",
         "DefaultValue": "true",
         "Description": "",
-        "Group": ""
+        "Group": "Bunny Hopping"
       },
       {
         "DisplayType": "Integer",
@@ -308,6 +308,15 @@
         "Description": "",
         "Group": "",
         "Maximum": 60
+      },
+      {
+        "DisplayType": "Boolean",
+        "Choices": [],
+        "ConVarName": "sv_autojump",
+        "DisplayName": "Auto Bunnyhop",
+        "DefaultValue": "false",
+        "Description": "",
+        "Group": "Bunny Hopping"
       }
     ]
   }
