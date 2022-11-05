@@ -85,8 +85,8 @@ using System.Text.Json.Serialization;
 	/// <summary>
 	/// Settings that are only applicable when the entity spawns
 	/// </summary>
-	[Property("spawnflags", Title = "Spawn Settings")]
-	public Flags spawnflags { get; set; } = Flags.StartOpen;
+	[Property( "spawnflags", Title = "Spawn Settings" )]
+	public Flags spawnflags { get; set; } = 0;//Flags.StartOpen;
 
 	/// <summary>
 	/// The direction the door will move, when it opens.
