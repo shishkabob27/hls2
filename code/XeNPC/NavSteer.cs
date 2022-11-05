@@ -56,6 +56,8 @@ public class NavSteer
 			if (ent is HLViewModel ) continue;  
 			if (ent is HLGib ) continue;  
 			if (ent is ButtonEntity ) continue;  
+			if (ent is DoorEntity ) continue;
+			if (ent is DoorRotatingEntity ) continue;
 			if (ent is ButtonEntityRot ) continue;
 			if ( ent.Tags.Has( "debris" ) ) continue;
 			if (ent is ModelEntity) objectRadius = ((ent as ModelEntity).CollisionBounds.Size.Length * 1);
