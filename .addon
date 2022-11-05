@@ -179,68 +179,6 @@
       "VR": true,
       "Gamepad": true
     },
-    "GameSettings": {
-      "sv_gamemode": {
-        "DisplayType": "Choice",
-        "Choices": [
-          {
-            "Value": "campaign",
-            "Name": "Campaign"
-          },
-          {
-            "Value": "deathmatch",
-            "Name": "Deathmatch"
-          },
-          {
-            "Value": "ctf",
-            "Name": "Capture the Flag (Opposing Force)"
-          }
-        ],
-        "ConVarName": "sv_gamemode",
-        "DisplayName": "Gamemode",
-        "DefaultValue": "campaign",
-        "Description": ""
-      },
-      "skill": {
-        "DisplayType": "Choice",
-        "Choices": [
-          {
-            "Value": "easy",
-            "Name": "Easy"
-          },
-          {
-            "Value": "medium",
-            "Name": "Medium"
-          },
-          {
-            "Value": "hard",
-            "Name": "Hard"
-          }
-        ],
-        "ConVarName": "skill",
-        "DisplayName": "Difficulty",
-        "DefaultValue": "easy",
-        "Description": ""
-      },
-      "sv_enablebunnyhopping": {
-        "DisplayType": "Boolean",
-        "Choices": [],
-        "ConVarName": "sv_enablebunnyhopping",
-        "DisplayName": "Enable Bunnyhopping",
-        "DefaultValue": "true",
-        "Description": ""
-      },
-      "hl_dm_time": {
-        "DisplayType": "Integer",
-        "Choices": [],
-        "ConVarName": "hl_dm_time",
-        "DisplayName": "Time Limit",
-        "DefaultValue": "10",
-        "Description": "",
-        "Minimum": 1,
-        "Maximum": 60
-      }
-    },
     "ParentPackage": "facepunch.sandbox",
     "GeneralExtensions": true,
     "TargettedExtensions": true,
