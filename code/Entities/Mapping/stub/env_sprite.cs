@@ -1,7 +1,7 @@
-﻿[Library("env_sprite")]
+﻿[Library("env_sprite2")]
 [HammerEntity]
-[Title("env_sprite"), Category("Effects"), Icon("volume_up")] 
-public partial class env_sprite : RenderEntity
+[Title("env_sprite2"), Category("Effects"), Icon("volume_up")] 
+public partial class env_sprite2 : RenderEntity
 {
 	[Property( "model" ), Net]
 	public string Sprite { get; set; } = "sprites/glow04.vmat";
