@@ -3,8 +3,17 @@
 [Title("env_sprite"), Category("Effects"), Icon("volume_up")] 
 public partial class env_sprite : RenderEntity
 {
+	[Flags]
+	public enum Flags
+	{
+		Starton = 1,
+		PlayOnce = 2,
+	}
+	[Property( "spawnflags", Title = "Spawn Settings" )]
+	public Flags SpawnSettings { get; set; } = Flags.Starton;
+
 	[Property( "model" ), Net]
-	public string Sprite { get; set; } = "sprites/glow04.vmat";
+	public string Sprite { get; set; } = "";
 	public string SpriteActual = "";
 
 	public Material SpriteMaterial;
@@ -14,12 +23,14 @@ public partial class env_sprite : RenderEntity
 
 	[Property("rendercolor"), Net]
 	Color SpriteColour { get; set; }
-	public bool Enabled { get; set; } = true;
+	[Net]
+	public bool Enabled { get; set; } = false;
 	[ConVar.Replicated]
-	static public bool hl_enable_expermental_sprites { get; set; } = false;
+	static public bool hl_enable_expermental_sprites { get; set; } = true;
 	public override void Spawn()
 	{
 		base.Spawn();
+		if ( SpawnSettings.HasFlag( Flags.Starton ) ) Enabled = true;
 		//if ( !hl_enable_expermental_sprites && IsServer ) Delete(); return;
 		Transmit = TransmitType.Always;
 	}
@@ -72,4 +83,32 @@ public partial class env_sprite : RenderEntity
 		vb.Draw( SpriteMaterial );
 		SpritePrev = Sprite;
 	}
+
+	/// <summary>
+	/// Enables the entity.
+	/// </summary>
+	[Input]
+	public void ShowSprite()
+	{
+		Enabled = true;
+	}
+
+	/// <summary>
+	/// Disables the entity, so that it would not fire any outputs.
+	/// </summary>
+	[Input]
+	public void HideSprite()
+	{
+		Enabled = false;
+	}
+
+	/// <summary>
+	/// Toggles the enabled state of the entity.
+	/// </summary>
+	[Input]
+	public void ToggleSprite()
+	{
+		Enabled = !Enabled;
+	}
+
 }
