@@ -121,20 +121,42 @@
 						game_keys = 
 						{
 							bonename = ""
-							dimensions = [ 14.2544, 2.8496, 2.85646 ]
-							offset_origin = [ 4.19766, -0.252888, 3.10718 ]
+							dimensions = [ 14.1179, 2.76011, 2.60394 ]
+							offset_origin = [ 0.807072, -3.06338, 1.34399 ]
 							offset_angles = [ 0.0, 0.0, 0.0 ]
 						}
 					},
 					{
 						_class = "GenericGameData"
-						game_class = "ao_proxy_capsule"
+						game_class = "ao_proxy_box"
 						game_keys = 
 						{
 							bonename = ""
-							radius = 1.72539
-							point0 = [ 8.79145, 5.32282, 1.94201 ]
-							point1 = [ 6.02186, -1.78886, 2.36587 ]
+							dimensions = [ 3.59641, 0.671366, 0.87794 ]
+							offset_origin = [ 1.47481, 0.69602, 1.24711 ]
+							offset_angles = [ 0.0, 0.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_box"
+						game_keys = 
+						{
+							bonename = ""
+							dimensions = [ 0.708905, 2.15469, 0.87794 ]
+							offset_origin = [ -0.075517, -0.679809, 1.24711 ]
+							offset_angles = [ 0.0, -9.0, 0.0 ]
+						}
+					},
+					{
+						_class = "GenericGameData"
+						game_class = "ao_proxy_box"
+						game_keys = 
+						{
+							bonename = ""
+							dimensions = [ 3.7462, 7.46684, 2.14117 ]
+							offset_origin = [ 5.44565, 1.13493, 1.08815 ]
+							offset_angles = [ 0.0, -9.0, 0.0 ]
 						}
 					},
 				]
