@@ -235,7 +235,7 @@ public struct NewMoveHelper
 	/// <returns></returns>
 	public bool TryUnstuck()
 	{
-		var tr = TraceFromTo( Position, Position );
+		var tr = Trace.FromTo( Position, Position ).WithoutTags("player").Run();
 		if ( !tr.StartedSolid ) return true;
 
 		return Unstuck();

@@ -112,7 +112,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	/// Specifies an Entity to follow or target.
 	/// </summary>
 	public Entity TargetEntity;
-	public int TargetEntityRel = 0;
+	public int TargetEntityRel = 0; 
 
 	/// <summary>
 	/// Classify an NPC in the relationship matrix.
@@ -571,7 +571,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		var bbox = CollisionBounds;
 		//DebugOverlay.Box( Position, bbox.Mins, bbox.Maxs, Color.Green );
 
-		MoveHelper move = new( Position, Velocity );
+		NewMoveHelper move = new( Position, Velocity, "solid", "playerclip", "passbullets" );
 		move.GroundBounce = GroundBounce;
 		move.WallBounce = WallBounce;
 		move.MaxStandableAngle = 50;
