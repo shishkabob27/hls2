@@ -119,16 +119,18 @@
                 <div class="maincontent" style="padding: 40px;">
                     <text>These settings require administrative permissions to change.</text>
                     <text> </text>
+                    <text>Gamemode*</text>
                     <select @value="bSgameMode" style="width:128px;">
                         <option value="campaign">Campaign</option>
                         <option value="deathmatch">Deathmatch</option>
                         <option value="ctf">Capture the Flag</option>
                     </select>
-                    <text>Time Limit</text>
+                    <text>Time Limit*</text>
                     <SliderScaleEntry min="1" max="60" step="1" mintext="1.00" maxtext="60.0" @value="fCtimeLimit"></SliderScaleEntry>
                     <check class="cEnableBhop" @checked="bCenableBhop">Enable Bunnyhopping</check>
                     <check class="cEnableAutojump" @checked="bCenableAutojump">Auto Bunnyhopping</check>
-                    <button style="width:114px;" onclick="restartGame()">Reset Round</button>
+                    <button style="width:180px;" onclick="restartGame()">Apply and Restart Round</button>
+                    <text>Items marked with * require a round restart</text>
                 </div>
             </tab>
 

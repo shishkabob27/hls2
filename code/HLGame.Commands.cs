@@ -292,9 +292,14 @@
 		ConsoleSystem.Run( "resetgui" );
 	}
 
-	[ConCmd.Admin( "reset_game" )]
+	[ConCmd.Server( "reset_game" )]
 	public static void ResetGame()
 	{
+		if (!ConsoleSystem.Caller.HasPermission("admin"))
+		{
+			Log.Info( "No permission: reset_game" );
+			return;
+		}
 		// Delete everything except the clients and the world
 		var ents = Entity.All.ToList();
 		ents.RemoveAll( e => e is Client );

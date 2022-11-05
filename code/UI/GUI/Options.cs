@@ -182,6 +182,7 @@ public class Options : GUIPanel
 	}
 	public void restartGame()
 	{
+		updateCvars();
 		ConsoleSystem.Run( "reset_game" );
 	}
 }
