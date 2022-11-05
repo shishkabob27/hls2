@@ -114,7 +114,7 @@ public partial class Scientist : NPC
 		}
 
 		// we've been pushed!
-		if ( ply != null && ply.IsValid && ply.Position.Distance( Position ) < 40 && !InScriptedSequence )
+		if ( ply != null && ply.IsValid && ply.Position.Distance( Position ) < 40 && !InScriptedSequence  && Steer.Output.Finished)
 		{
 			Steer.Target = Position + (ply.Position - Position).Normal * -78;
 			Speed = WalkSpeed;
