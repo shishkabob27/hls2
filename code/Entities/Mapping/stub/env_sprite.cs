@@ -1,12 +1,14 @@
-﻿[Library("env_sprite2")]
+﻿[Library("env_sprite")]
 [HammerEntity]
-[Title("env_sprite2"), Category("Effects"), Icon("volume_up")] 
-public partial class env_sprite2 : RenderEntity
+[Title("env_sprite"), Category("Effects"), Icon("volume_up")] 
+public partial class env_sprite : RenderEntity
 {
 	[Property( "model" ), Net]
 	public string Sprite { get; set; } = "sprites/glow04.vmat";
-	public Material SpriteMaterial { get; set; } 
-	public Texture SpriteTex { get; set; } 
+	public string SpriteActual = "";
+
+	public Material SpriteMaterial;
+	public Texture SpriteTex;
 
 	public float SpriteScale { get; set; } = 18f;
 
@@ -18,17 +20,21 @@ public partial class env_sprite2 : RenderEntity
 	public override void Spawn()
 	{
 		base.Spawn();
-		if ( !hl_enable_expermental_sprites ) Delete(); return;
+		//if ( !hl_enable_expermental_sprites && IsServer ) Delete(); return;
 		Transmit = TransmitType.Always;
 	}
 	string SpritePrev;
 	public override void DoRender( SceneObject obj )
 	{
-		if ( !hl_enable_expermental_sprites ) Delete(); return;
+		if ( !hl_enable_expermental_sprites ) return;
 		if ( !Enabled ) return;
-		if (SpriteMaterial == null || Sprite != SpritePrev)
+		if ( SpriteActual == "")
+		{
+			SpriteActual = Sprite;
+		}
+		//if (SpriteMaterial == null || Sprite != SpritePrev)
 		{ 
-			var a = Sprite;
+			var a = SpriteActual;
 			if (!a.Contains( ".png" ) )
 			{
 				if ( a.Contains( ".vmdl" ) ) a = a.Replace( ".vmdl", ".png" );
@@ -40,11 +46,10 @@ public partial class env_sprite2 : RenderEntity
 			} 
 			//Log.Info( a );
 
-			SpriteMaterial = Material.FromShader( "envsprite.vfx" ); //Material.Load( a );
-			//SpriteTex = Texture.Load( FileSystem.Mounted, a );
-			//Log.Info();
-			//SpriteMaterial.OverrideTexture( "Color", SpriteTex );
+			SpriteMaterial = Material.FromShader( "envsprite.vfx" ); //Material.Load( a ); 
+			SpriteTex = Texture.Load( FileSystem.Mounted, a, false);                                    //Log.Info();
 		}
+		SpriteMaterial.OverrideTexture( "Color", SpriteTex );
 		// Allow lights to affect the sprite
 		//Render.SetupLighting( obj );
 		Graphics.SetupLighting( obj );  
