@@ -244,6 +244,71 @@
     "ParentPackage": "facepunch.sandbox",
     "GeneralExtensions": true,
     "TargettedExtensions": true,
-    "ExtensionApiVersion": 1002
+    "ExtensionApiVersion": 1002,
+    "PackageSettings": [
+      {
+        "DisplayType": "Choice",
+        "Choices": [
+          {
+            "Value": "campaign",
+            "Name": "Campaign"
+          },
+          {
+            "Value": "deathmatch",
+            "Name": "Deathmatch"
+          },
+          {
+            "Value": "ctf",
+            "Name": "Capture the Flag (Opposing Force)"
+          }
+        ],
+        "ConVarName": "sv_gamemode",
+        "DisplayName": "Gamemode",
+        "DefaultValue": "campaign",
+        "Description": "",
+        "Group": ""
+      },
+      {
+        "DisplayType": "Choice",
+        "Choices": [
+          {
+            "Value": "easy",
+            "Name": "Easy"
+          },
+          {
+            "Value": "medium",
+            "Name": "Medium"
+          },
+          {
+            "Value": "hard",
+            "Name": "Medium"
+          }
+        ],
+        "ConVarName": "skill",
+        "DisplayName": "Difficulty",
+        "DefaultValue": "easy",
+        "Description": "",
+        "Group": ""
+      },
+      {
+        "DisplayType": "Boolean",
+        "Choices": [],
+        "ConVarName": "sv_enablebunnyhopping",
+        "DisplayName": "Enable Bunnyhopping",
+        "DefaultValue": "true",
+        "Description": "",
+        "Group": ""
+      },
+      {
+        "DisplayType": "Integer",
+        "Choices": [],
+        "ConVarName": "hl_dm_time",
+        "DisplayName": "Time Limit",
+        "DefaultValue": "10",
+        "Description": "",
+        "Group": "",
+        "Maximum": 60
+      }
+    ]
   }
 }
