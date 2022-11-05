@@ -125,6 +125,12 @@
                         <option value="deathmatch">Deathmatch</option>
                         <option value="ctf">Capture the Flag</option>
                     </select>
+                    <text>Difficulty</text>
+                    <select @value="bSskill" style="width:128px;">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
                     <text>Time Limit*</text>
                     <SliderScaleEntry min="1" max="60" step="1" mintext="1.00" maxtext="60.0" @value="fCtimeLimit"></SliderScaleEntry>
                     <check class="cEnableBhop" @checked="bCenableBhop">Enable Bunnyhopping</check>

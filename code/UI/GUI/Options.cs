@@ -30,6 +30,7 @@ public class Options : GUIPanel
 	public string bSsprayIcon { get; set; } = "lambda";
 	public string Shudstyle { get; set; } = "hl1";
 	public string bSgameMode { get; set; } = "campaign";
+	public string bSskill { get; set; } = "campaign";
 
 	public bool bCvrpointer { get; set; }
 
@@ -70,6 +71,7 @@ public class Options : GUIPanel
 		bCenableAutojump = WalkController.sv_autojump;
 		fCtimeLimit = HLGame.hl_dm_time;
 		bSgameMode = HLGame.sv_gamemode;
+		bSskill = HLGame.skill;
 	}
 	public override void Close()
 	{
@@ -118,6 +120,7 @@ public class Options : GUIPanel
 		WalkController.sv_autojump = bCenableAutojump;
 		HLGame.hl_dm_time = ((int)fCtimeLimit);
 		HLGame.sv_gamemode = bSgameMode;
+		HLGame.skill = bSskill;
 
 		FirstPersonCamera.hl_won_viewbob = bCWONWeaponBob;
 		HLGame.hl_fix_ducking_footsteps = bCFixCrouchFootstep;
@@ -150,6 +153,7 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "sv_autojump " + (bCenableAutojump ? 1 : 0) );
 		ConsoleSystem.Run( "hl_dm_time " + ((int)fCtimeLimit) );
 		ConsoleSystem.Run( "sv_gamemode " + bSgameMode );
+		ConsoleSystem.Run( "skill " + bSskill );
 		updtasync();
 
 		/*
