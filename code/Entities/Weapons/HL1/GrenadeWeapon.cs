@@ -116,7 +116,7 @@ partial class GrenadeWeapon : Weapon
 
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.HoldItem ); // TODO this is shit
+		SetHoldType( HLCombat.HoldTypes.HoldItem, anim );
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

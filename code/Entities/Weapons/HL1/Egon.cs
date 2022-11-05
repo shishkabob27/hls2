@@ -131,8 +131,8 @@ partial class Egon : Weapon
         base.AttackPrimary();
     }
     public override void SimulateAnimator( PawnAnimator anim )
-    {
-        anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Egon ); // TODO this is shit
-        anim.SetAnimParameter( "aim_body_weight", 1.0f );
+	{
+		SetHoldType( HLCombat.HoldTypes.Egon, anim );
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
     }
 }

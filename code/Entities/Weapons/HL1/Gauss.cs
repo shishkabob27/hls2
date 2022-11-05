@@ -367,7 +367,7 @@ partial class Gauss : Weapon
 	}
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Gauss ); // TODO this is shit
+		SetHoldType( HLCombat.HoldTypes.Gauss, anim );
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

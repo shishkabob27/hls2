@@ -17,22 +17,44 @@ partial class HLPlayer
 			case "scientist": pm = "models/hl1/player/scientist.vmdl"; break;
 			case "zombie": pm = "models/hl1/player/zombie.vmdl"; break;
 			case "freeman": pm = "freeman"; break;
+			case "citizen": pm = "citizen"; break;
 			default: pm = "models/hl1/player/player.vmdl"; break;
 		}
+
+		if (Clothing != null) Clothing.ClearEntities();
 		if ( pm == "freeman" )
 		{
 			SetModel( "models/hl1/player/player.vmdl" );
+			SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
 			updBDG( "head", 0 );
+		}
+		else if ( pm == "citizen" )
+		{
+			SetModel( "models/citizen/citizen.vmdl" ); 
+			SetAnimGraph( "models/citizen/citizen.vanmgrph" );
+			UpdateClothes( Client );
+			Clothing.DressEntity( this );
 		}
 		else
 		{
 			updBDG( "head", 1 );
+			SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
 			SetModel( pm );
 		}
 		updateColours();
 
-
 	}
+	public ClothingContainer Clothing { get; set; }
+
+	/// <summary>
+	/// Set the clothes to whatever the player is wearing
+	/// </summary>
+	public void UpdateClothes( Client cl )
+	{
+		Clothing ??= new();
+		Clothing.LoadFromClient( cl );
+	}
+
 	async void updBDG( String bdg, int i )
 	{
 

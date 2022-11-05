@@ -93,7 +93,7 @@ partial class Python : Weapon
 	}
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Python ); // TODO this is shit
+		SetHoldType( HLCombat.HoldTypes.Python, anim );
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

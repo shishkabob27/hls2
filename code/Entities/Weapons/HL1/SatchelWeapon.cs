@@ -120,7 +120,7 @@ partial class SatchelWeapon : Weapon
 	}
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Trip ); // TODO this is shit
+		SetHoldType( HLCombat.HoldTypes.Trip, anim );
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

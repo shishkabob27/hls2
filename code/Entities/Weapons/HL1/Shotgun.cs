@@ -175,7 +175,7 @@ partial class Shotgun : Weapon
 
 	public override void SimulateAnimator( PawnAnimator anim )
 	{
-		anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Shotgun ); // TODO this is shit
+		SetHoldType( HLCombat.HoldTypes.Shotgun, anim );
 		anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 

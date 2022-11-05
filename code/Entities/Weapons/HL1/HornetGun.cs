@@ -128,8 +128,8 @@ partial class HornetGun : Weapon
         }
     }
     public override void SimulateAnimator( PawnAnimator anim )
-    {
-        anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Hive ); // TODO this is shit
-        anim.SetAnimParameter( "aim_body_weight", 1.0f );
+	{
+		SetHoldType( HLCombat.HoldTypes.Hive, anim );
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
     }
 }

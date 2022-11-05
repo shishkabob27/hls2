@@ -87,7 +87,7 @@ partial class SnarkWeapon : Weapon
 
     public override void SimulateAnimator( PawnAnimator anim )
     {
-        anim.SetAnimParameter( "holdtype", (int)HLCombat.HoldTypes.Squeak ); // TODO this is shit
-        anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		SetHoldType( HLCombat.HoldTypes.Squeak, anim );
+		anim.SetAnimParameter( "aim_body_weight", 1.0f );
     }
 }

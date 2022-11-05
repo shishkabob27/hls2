@@ -1,4 +1,6 @@
-﻿public partial class Weapon : BaseWeapon, IRespawnableEntity
+﻿using Sandbox;
+
+public partial class Weapon : BaseWeapon, IRespawnableEntity
 {
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
@@ -71,8 +73,69 @@
 		var owner = Owner as HLPlayer;
 		if ( owner == null ) return 0;
 		return owner.AmmoCount( AmmoType );
-	}
+	} 
+	public void SetHoldType(HLCombat.HoldTypes i, PawnAnimator anim)
+	{
+		var owner = Owner as HLPlayer;
+		if ( owner == null ) return;
+		var a = (int)i;
+		if ( owner.GetModelName() == "models/citizen/citizen.vmdl" )
+		{
+			//Log.Info( "hi" );
+			// Replace Half-Life Holdtypes with their citizen equivelents.
+			switch(i)
+			{
+				case HLCombat.HoldTypes.None:
+					a = (int)CitizenAnimationHelper.HoldTypes.None;
+					break;
+				case HLCombat.HoldTypes.Pistol:
+					a = (int)CitizenAnimationHelper.HoldTypes.Pistol;
+					break;
+				case HLCombat.HoldTypes.Python:
+					a = (int)CitizenAnimationHelper.HoldTypes.Pistol;
+					break;
+				case HLCombat.HoldTypes.Rifle:
+					a = (int)CitizenAnimationHelper.HoldTypes.Rifle;
+					break;
+				case HLCombat.HoldTypes.Shotgun:
+					a = (int)CitizenAnimationHelper.HoldTypes.Shotgun;
+					break;
+				case HLCombat.HoldTypes.HoldItem:
+					a = (int)CitizenAnimationHelper.HoldTypes.HoldItem;
+					break;
+				case HLCombat.HoldTypes.Crossbow:
+					a = (int)CitizenAnimationHelper.HoldTypes.Rifle;
+					break;
+				case HLCombat.HoldTypes.Egon:
+					a = (int)CitizenAnimationHelper.HoldTypes.Rifle;
+					break;
+				case HLCombat.HoldTypes.Gauss:
+					a = (int)CitizenAnimationHelper.HoldTypes.Rifle;
+					break;
+				case HLCombat.HoldTypes.Hive:
+					a = (int)CitizenAnimationHelper.HoldTypes.Rifle;
+					break;
+				case HLCombat.HoldTypes.RPG:
+					a = (int)CitizenAnimationHelper.HoldTypes.Rifle;
+					break;
+				case HLCombat.HoldTypes.Squeak:
+					a = (int)CitizenAnimationHelper.HoldTypes.HoldItem;
+					break;
+				case HLCombat.HoldTypes.Trip:
+					a = (int)CitizenAnimationHelper.HoldTypes.HoldItem;
+					break;
+				case HLCombat.HoldTypes.Punch:
+					a = (int)CitizenAnimationHelper.HoldTypes.Punch;
+					break;
+				case HLCombat.HoldTypes.Swing:
+					a = (int)CitizenAnimationHelper.HoldTypes.Punch;
+					break;
+			}
 
+		}
+		anim.SetAnimParameter( "holdtype", a); // TODO this is shit
+
+	}
 	/// <summary>
 	/// Gets the amount of alt ammo in the Holders ammo reserve
 	/// </summary>

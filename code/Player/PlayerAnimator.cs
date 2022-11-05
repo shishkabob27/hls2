@@ -61,7 +61,8 @@ namespace Sandbox
 
 			if ( player != null && player.ActiveChild is BaseCarriable carry )
 			{
-				carry.SimulateAnimator( this );
+				carry.SimulateAnimator( this ); 
+				
 			}
 			else
 			{
