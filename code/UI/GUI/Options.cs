@@ -12,6 +12,7 @@ public class Options : GUIPanel
 	public bool bCragdolls { get; set; }
 	public bool bColdTorch { get; set; }
 	public bool bColdGibs { get; set; }
+	public bool bCforcePhysics { get; set; }
 	public float fChudScale { get; set; }
 	public float fCpmColour1 { get; set; }
 	public float fCpmColour2 { get; set; }
@@ -20,11 +21,15 @@ public class Options : GUIPanel
 	public bool bCFixMysteryViewbob { get; set; }
 	public bool bCFixViewmodelIdle { get; set; }
 	public bool bCWONWeaponBob { get; set; }
+	public bool bCenableBhop { get; set; }
+	public bool bCenableAutojump { get; set; }
+	public float fCtimeLimit { get; set; }
 
 	public string bSplayerModel { get; set; } = "player";
 	public string bSsprayColour { get; set; } = "orange";
 	public string bSsprayIcon { get; set; } = "lambda";
 	public string Shudstyle { get; set; } = "hl1";
+	public string bSgameMode { get; set; } = "campaign";
 
 	public bool bCvrpointer { get; set; }
 
@@ -50,6 +55,7 @@ public class Options : GUIPanel
 		bCragdolls = HLGame.hl_ragdoll;
 		bColdTorch = HLGame.hl_classic_flashlight;
 		bColdGibs = HLGame.hl_classic_gibs;
+		bCforcePhysics = HLGame.sv_force_physics;
 		bColdexplosion = HLGame.hl_classic_explosion;
 		bSsprayIcon = HLGame.hl_spray_icon;
 		bSsprayColour = HLGame.hl_spray_colour;
@@ -60,6 +66,10 @@ public class Options : GUIPanel
 		bCFixMysteryViewbob = FirstPersonCamera.hl_fix_mystery_viewbob_code;
 		bCFixViewmodelIdle = HLGame.hl_viewmodel_idle_fix;
 		bCWONWeaponBob = FirstPersonCamera.hl_won_viewbob;
+		bCenableBhop = WalkController.sv_enablebunnyhopping;
+		bCenableAutojump = WalkController.sv_autojump;
+		fCtimeLimit = HLGame.hl_dm_time;
+		bSgameMode = HLGame.sv_gamemode;
 	}
 	public override void Close()
 	{
@@ -98,11 +108,16 @@ public class Options : GUIPanel
 		HLGame.hl_classic_flashlight = bColdTorch;
 		HLGame.hl_classic_explosion = bColdexplosion;
 		HLGame.hl_classic_gibs = bColdGibs;
+		HLGame.sv_force_physics = bCforcePhysics;
 		HLGame.hl_spray_icon = bSsprayIcon;
 		HLGame.hl_spray_colour = bSsprayColour;
 		HLPlayer.hl_pm = bSplayerModel;
 		HLGame.hl_pm_colour1 = (int)fCpmColour1;
 		HLGame.hl_pm_colour2 = (int)fCpmColour2;
+		WalkController.sv_enablebunnyhopping = bCenableBhop;
+		WalkController.sv_autojump = bCenableAutojump;
+		HLGame.hl_dm_time = ((int)fCtimeLimit);
+		HLGame.sv_gamemode = bSgameMode;
 
 		FirstPersonCamera.hl_won_viewbob = bCWONWeaponBob;
 		HLGame.hl_fix_ducking_footsteps = bCFixCrouchFootstep;
@@ -120,6 +135,7 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_classic_flashlight " + (bColdTorch ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_explosion " + (bColdexplosion ? 1 : 0) );
 		ConsoleSystem.Run( "hl_classic_gibs " + (bColdGibs ? 1 : 0) );
+		ConsoleSystem.Run( "sv_force_physics " + (bCforcePhysics ? 1 : 0) );
 		ConsoleSystem.Run( "hl_spray_icon " + bSsprayIcon );
 		ConsoleSystem.Run( "hl_spray_colour " + bSsprayColour );
 		ConsoleSystem.Run( "hl_pm " + bSplayerModel );
@@ -130,6 +146,10 @@ public class Options : GUIPanel
 		ConsoleSystem.Run( "hl_fix_mystery_viewbob_code " + bCFixMysteryViewbob );
 		ConsoleSystem.Run( "hl_viewmodel_idle_fix " + bCFixViewmodelIdle );
 		ConsoleSystem.Run( "hl_won_viewbob " + bCWONWeaponBob );
+		ConsoleSystem.Run( "sv_enablebunnyhopping " + (bCenableBhop ? 1 : 0) );
+		ConsoleSystem.Run( "sv_autojump " + (bCenableAutojump ? 1 : 0) );
+		ConsoleSystem.Run( "hl_dm_time " + ((int)fCtimeLimit) );
+		ConsoleSystem.Run( "sv_gamemode " + bSgameMode );
 		updtasync();
 
 		/*
@@ -159,5 +179,9 @@ public class Options : GUIPanel
 	{
 		var a = Parent.AddChild<Advanced>();
 		(a as Advanced).MenuOpen = true;
+	}
+	public void restartGame()
+	{
+		ConsoleSystem.Run( "reset_game" );
 	}
 }

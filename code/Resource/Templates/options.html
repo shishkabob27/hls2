@@ -12,6 +12,7 @@
                 <div class="maincontent" style="padding: 40px;">
                     <check class="cragdoll" @checked="bCragdolls">Enable ragdolls</check>
                     <check class="coldgibs" @checked="bColdGibs">Enable classic gibs</check>
+                    <check class="cforcephysics" @checked="bCforcePhysics">Enable Physics Items</check>
                     <check class="cliveupdate" @checked="bCliveupdate">Enable live setting updates</check>
                     <check class="cguiscale" @checked="bCguiscale">Enable GUI rescaling</check>
                     <check class="cpixelfont" @checked="bCpixelfont">Enable GUI classic font.</check>
@@ -103,18 +104,30 @@
                     <check class="cdesktopvrhud">Enable desktop HUD while in VR</check>
                 </div>
             </tab>
-            <tab tabName="tweaks" slot="tab" tabtext="Tweaks">
+            <tab tabName="tweaks" slot="tab" tabtext="Fixes/Tweaks">
                 <div class="maincontent" style="padding: 40px;">
                     <check class="cWonWeaponBob" @checked="bCWONWeaponBob">Enable WON weapon bobbing</check>
                     <check class="crollangle" @checked="bCviewroll">Enable WON viewroll</check>
-                </div>
-            </tab>
-            <tab tabName="fixes" slot="tab" tabtext="Fixes">
-                <div class="maincontent" style="padding: 40px;">
                     <label>Here is a bunch of features that might've been in the original game's code but were either broken or disabled... or both.</label>
                     <check class="cFixCrouchFootstep" @checked="bCFixCrouchFootstep">Fix crouching footsteps</check>
                     <check class="cFixMysteryViewbob" @checked="bCFixMysteryViewbob">Fix mystery viewbob code</check>
                     <check class="cFixViewmodelIdle" @checked="bCFixViewmodelIdle">Fix certain viewmodel idle animations</check>
+                </div>
+            </tab> 
+
+            <tab tabName="host" slot="tab" tabtext="Host">
+                <div class="maincontent" style="padding: 40px;">
+
+                    <select @value="bSgameMode" style="width:128px;">
+                        <option value="campaign">Campaign</option>
+                        <option value="deathmatch">Deathmatch</option>
+                        <option value="ctf">Capture the Flag</option>
+                    </select>
+                    <text>Time Limit</text>
+                    <SliderScaleEntry min="1" max="60" step="1" mintext="1.00" maxtext="60.0" @value="fCtimeLimit"></SliderScaleEntry>
+                    <check class="cEnableBhop" @checked="bCenableBhop">Enable Bunnyhopping</check>
+                    <check class="cEnableAutojump" @checked="bCenableAutojump">Auto Bunnyhopping</check>
+                    <button style="width:114px;" onclick="restartGame()">Reset Round</button>
                 </div>
             </tab>
 
