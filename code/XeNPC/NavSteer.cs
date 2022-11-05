@@ -62,7 +62,7 @@ public class NavSteer
 			if ( ent.Tags.Has( "debris" ) ) continue;
 			if (ent is ModelEntity) objectRadius = ((ent as ModelEntity).CollisionBounds.Size.Length * 1);
 			if (ent is BrushEntity ) objectRadius = ((ent as BrushEntity).CollisionBounds.Size.Length * 1); 
-			if (ent is NPC ) objectRadius = ((ent as NPC).CollisionBounds.Size.Length * 5f); 
+			if (ent is NPC ) objectRadius = ((ent as NPC).CollisionBounds.Size.Length * 3.5f); 
 
 			//draw.WithColor( Color.White.WithAlpha( 1 ) ).Circle( ent.Position, Vector3.Up, objectRadius * 0.5f );
 
