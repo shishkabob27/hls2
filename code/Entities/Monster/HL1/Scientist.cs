@@ -46,7 +46,7 @@ public partial class Scientist : NPC
 		Speed = 70;
 		VoicePitch = SetPitch();
 
-		//SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
+		SetupPhysicsFromAABB(PhysicsMotionType.Keyframed, new Vector3(-16, -16, 0), new Vector3(16, 16, 72));
 		EnableHitboxes = true;
 
 		Tags.Add( "npc", "playerclip" );
@@ -114,7 +114,7 @@ public partial class Scientist : NPC
 		}
 
 		// we've been pushed!
-		if ( ply != null && ply.IsValid && ply.Position.Distance( Position ) < 32 && !InScriptedSequence )
+		if ( ply != null && ply.IsValid && ply.Position.Distance( Position ) < 40 && !InScriptedSequence )
 		{
 			Steer.Target = Position + (ply.Position - Position).Normal * -78;
 			Speed = WalkSpeed;

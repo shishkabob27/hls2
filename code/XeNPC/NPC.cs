@@ -571,7 +571,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		var bbox = CollisionBounds;
 		//DebugOverlay.Box( Position, bbox.Mins, bbox.Maxs, Color.Green );
 
-		NewMoveHelper move = new( Position, Velocity, "solid", "playerclip", "passbullets" );
+		NewMoveHelper move = new( Position, Velocity, "solid", "playerclip", "passbullets", "player" );
 		move.GroundBounce = GroundBounce;
 		move.WallBounce = WallBounce;
 		move.MaxStandableAngle = 50;
