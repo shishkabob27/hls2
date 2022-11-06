@@ -9,25 +9,7 @@ public class ModelDoorSounds
 	/// Sound to play when the door reaches it's fully open position.
 	/// </summary>
 	[JsonPropertyName( "noise2" )]
-	public string FullyOpenSound { get; set; }
-
-	/// <summary>
-	/// Sound to play when the door reaches it's fully closed position.
-	/// </summary>
-	[JsonPropertyName( "fully_closed_sound" )]
-	public string FullyClosedSound { get; set; }
-
-	/// <summary>
-	/// Sound to play when the door starts to open.
-	/// </summary>
-	[JsonPropertyName( "open_sound" ), Title( "Start opening sound" )]
-	public string OpenSound { get; set; }
-
-	/// <summary>
-	/// Sound to play when the door starts to close.
-	/// </summary>
-	[JsonPropertyName( "close_sound" ), Title( "Start closing sound" )]
-	public string CloseSound { get; set; }
+	public string FullyOpenedClosedSound { get; set; }
 
 	/// <summary>
 	/// Sound to play while the door is moving. Typically this should be looping or very long.
@@ -140,40 +122,22 @@ public partial class DoorEntity : KeyframeEntity, IUse
 	[Property] public bool Breakable { get; set; } = false;
 
 	/// <summary>
-	/// Sound to play when the door starts to open.
+	/// Sound to play while the door is moving. Typically this should be looping or very long.
 	/// </summary>
-	[Property( "open_sound", Title = "Start Opening Sound" ), FGDType( "sound" ), Category( "Sounds" )]
-	public string OpenSound { get; set; } = "";
+	[Property( "noise1", Title = "Moving Sound" ), FGDType( "sound" ), Category( "Sounds" )]
+	public string MovingSound { get; set; } = "";
 
 	/// <summary>
-	/// Sound to play when the door reaches it's fully open position.
+	/// Sound to play when the door reaches it's fully open or closed position.
 	/// </summary>
-	[Property( "fully_open_sound", Title = "Fully Open Sound" ), FGDType( "sound" ), Category( "Sounds" )]
-	public string FullyOpenSound { get; set; } = "";
-
-	/// <summary>
-	/// Sound to play when the door starts to close.
-	/// </summary>
-	[Property( "close_sound", Title = "Start Closing Sound" ), FGDType( "sound" ), Category( "Sounds" )]
-	public string CloseSound { get; set; } = "";
-
-	/// <summary>
-	/// Sound to play when the door reaches it's fully closed position.
-	/// </summary>
-	[Property( "noise2", Title = "Fully Closed Sound" ), FGDType( "sound" ), Category( "Sounds" )]
-	public string FullyClosedSound { get; set; } = "";
+	[Property( "noise2", Title = "Fully Opened/Closed Sound" ), FGDType( "sound" ), Category( "Sounds" )]
+	public string FullyOpenedClosedSound { get; set; } = "";
 
 	/// <summary>
 	/// Sound to play when the door is attempted to be opened, but is locked.
 	/// </summary>
 	[Property( "locked_sound", Title = "Locked Sound" ), FGDType( "sound" ), Category( "Sounds" )]
 	public string LockedSound { get; set; } = "";
-
-	/// <summary>
-	/// Sound to play while the door is moving. Typically this should be looping or very long.
-	/// </summary>
-	[Property( "noise1", Title = "Moving Sound" ), FGDType( "sound" ), Category( "Sounds" )]
-	public string MovingSound { get; set; } = "";
 
 	/// <summary>
 	/// Used to override the open/close animation of moving and rotating doors. X axis (input, left to right) is the animation, Y axis (output, bottom to top) is how open the door is at that point in the animation.
@@ -264,10 +228,7 @@ public partial class DoorEntity : KeyframeEntity, IUse
 			ModelDoorSounds sounds = Model.GetData<ModelDoorSounds>();
 
 			if ( string.IsNullOrEmpty( MovingSound ) ) MovingSound = sounds.MovingSound;
-			if ( string.IsNullOrEmpty( CloseSound ) ) CloseSound = sounds.CloseSound;
-			if ( string.IsNullOrEmpty( FullyClosedSound ) ) FullyClosedSound = sounds.FullyClosedSound;
-			if ( string.IsNullOrEmpty( OpenSound ) ) OpenSound = sounds.OpenSound;
-			if ( string.IsNullOrEmpty( FullyOpenSound ) ) FullyOpenSound = sounds.FullyOpenSound;
+			if ( string.IsNullOrEmpty( FullyOpenedClosedSound ) ) FullyOpenedClosedSound = sounds.FullyOpenedClosedSound;
 			if ( string.IsNullOrEmpty( LockedSound ) ) LockedSound = sounds.LockedSound;
 		}
 
@@ -457,7 +418,7 @@ public partial class DoorEntity : KeyframeEntity, IUse
 
 		if ( State == DoorState.Closed )
 		{
-			PlaySound( OpenSound );
+			//PlaySound( OpenSound );
 		}
 
 		if ( State == DoorState.Closed || State == DoorState.Closing ) State = DoorState.Opening;
@@ -485,7 +446,7 @@ public partial class DoorEntity : KeyframeEntity, IUse
 
 		if ( State == DoorState.Open )
 		{
-			PlaySound( CloseSound );
+			//PlaySound( CloseSound );
 		}
 
 		if ( State == DoorState.Open || State == DoorState.Opening ) State = DoorState.Closing;
@@ -618,13 +579,13 @@ public partial class DoorEntity : KeyframeEntity, IUse
 		{
 			_ = OnFullyOpen.Fire( this );
 			State = DoorState.Open;
-			PlaySound( FullyOpenSound );
+			PlaySound( FullyOpenedClosedSound );
 		}
 		else if ( State == DoorState.Closing )
 		{
 			_ = OnFullyClosed.Fire( this );
 			State = DoorState.Closed;
-			PlaySound( FullyClosedSound );
+			PlaySound( FullyOpenedClosedSound );
 		}
 
 		if ( MoveSoundInstance.HasValue )
