@@ -9,22 +9,29 @@ public partial class env_sprite : RenderEntity
 		Starton = 1,
 		PlayOnce = 2,
 	}
-	[Property( "spawnflags", Title = "Spawn Settings" )]
+	[Property( "spawnflags", Title = "Spawn Settings" ), Net]
 	public Flags SpawnSettings { get; set; } = Flags.Starton;
 
 	[Property( "model" ), Net]
 	public string Sprite { get; set; } = "";
 	public string SpriteActual = "";
 
+	[Property( "framerate" ), Net]
+	public float Framerate { get; set; } = 10;
+
 	public Material SpriteMaterial;
 	public Texture SpriteTex;
 
 	public float SpriteScale { get; set; } = 18f;
 
+	[Property( "scale" ), Net]
+	public float SpriteMainScale { get; set; } = 1;
+
 	[Property("rendercolor"), Net]
 	Color SpriteColour { get; set; }
 	[Net]
 	public bool Enabled { get; set; } = false;
+	public bool Animated { get; set; } = false;
 	[ConVar.Replicated]
 	static public bool hl_enable_expermental_sprites { get; set; } = true;
 	public override void Spawn()
@@ -35,17 +42,24 @@ public partial class env_sprite : RenderEntity
 		Transmit = TransmitType.Always;
 	}
 	string SpritePrev;
+	string a;
+	string b;
+	int frame = 1;
+	bool playOnceHasLooped = false;
+	TimeSince SinceFrame;
 	public override void DoRender( SceneObject obj )
 	{
 		if ( !hl_enable_expermental_sprites ) return;
 		if ( !Enabled ) return;
+		if ( playOnceHasLooped ) return;
+
 		if ( SpriteActual == "")
 		{
 			SpriteActual = Sprite;
 		}
-		//if (SpriteMaterial == null || Sprite != SpritePrev)
+		if (!Animated)//if (SpriteMaterial == null || Sprite != SpritePrev)
 		{ 
-			var a = SpriteActual;
+			a = SpriteActual;
 			if (!a.Contains( ".png" ) )
 			{
 				if ( a.Contains( ".vmdl" ) ) a = a.Replace( ".vmdl", ".png" );
@@ -58,9 +72,56 @@ public partial class env_sprite : RenderEntity
 			//Log.Info( a );
 
 			SpriteMaterial = Material.FromShader( "envsprite.vfx" ); //Material.Load( a ); 
-			SpriteTex = Texture.Load( FileSystem.Mounted, a, false);                                    //Log.Info();
+			SpriteTex = Texture.Load( FileSystem.Mounted, a, false);  
+			if (SpriteTex == null && !Animated )
+			{
+				var b = a.Replace( ".png", "001.png" );
+				SpriteTex = Texture.Load( FileSystem.Mounted, b, false );
+				//Log.Info( b );
+				if ( SpriteTex != null )
+				{
+					Animated = true;
+					frame++;
+					SinceFrame = 0;
+				}
+			}//Log.Info();
 		}
-		SpriteMaterial.OverrideTexture( "Color", SpriteTex );
+		if (Animated )
+		{
+
+			b = a.Replace( ".png", frame.ToString( "000" ) + ".png" );
+			SpriteTex = Texture.Load( FileSystem.Mounted, b, false );
+			if ( SpriteTex == null )
+			{
+
+				if ( SpawnSettings.HasFlag( Flags.PlayOnce ) )
+				{
+					playOnceHasLooped = true;
+					Enabled = false;
+					return;
+					frame -= 1;
+
+				} else
+				{
+					frame = 1;
+				}
+				SinceFrame = 0;
+				b = a.Replace( ".png", frame.ToString( "000" ) + ".png" );
+				SpriteTex = Texture.Load( FileSystem.Mounted, b, false );
+				
+			} 
+			if ( SinceFrame > (1 / Framerate) )
+			{
+				if ( !playOnceHasLooped )
+				{
+					frame++;
+					SinceFrame = 0;
+				}
+			}
+		}
+		SpriteMaterial.Set( "Color", SpriteTex );
+		SpriteMaterial.Set( "g_vColorTint", SpriteColour );
+		SpriteMaterial.Set( "g_flTintColor", SpriteColour );
 		// Allow lights to affect the sprite
 		//Render.SetupLighting( obj );
 		Graphics.SetupLighting( obj );  
@@ -76,10 +137,9 @@ public partial class env_sprite : RenderEntity
 		float halfSpriteSize = SpriteScale;
 
 		// Add a single quad to our vertex buffer
-		vb.AddQuad( new Ray( default, normal), w * halfSpriteSize, h * halfSpriteSize );
+		vb.AddQuad( new Ray( default, normal), w * (((SpriteTex == null) ? halfSpriteSize : SpriteTex.Width) * SpriteMainScale), h * (((SpriteTex == null) ? halfSpriteSize : SpriteTex.Height) * SpriteMainScale) );
 
 		// Draw the sprite
-		Graphics.Attributes.Set( "rendercolor", SpriteColour );
 		vb.Draw( SpriteMaterial );
 		SpritePrev = Sprite;
 	}
@@ -91,6 +151,7 @@ public partial class env_sprite : RenderEntity
 	public void ShowSprite()
 	{
 		Enabled = true;
+		SpriteRPC( Enabled );
 	}
 
 	/// <summary>
@@ -100,6 +161,7 @@ public partial class env_sprite : RenderEntity
 	public void HideSprite()
 	{
 		Enabled = false;
+		SpriteRPC( Enabled );
 	}
 
 	/// <summary>
@@ -109,6 +171,17 @@ public partial class env_sprite : RenderEntity
 	public void ToggleSprite()
 	{
 		Enabled = !Enabled;
+		SpriteRPC( Enabled );
 	}
-
+	[ClientRpc]
+	public void SpriteRPC(bool bl)
+	{
+		Enabled = bl;
+		if (Enabled)
+		{
+			frame = 1;
+			SinceFrame = 0;
+			playOnceHasLooped = false;
+		}
+	}
 }

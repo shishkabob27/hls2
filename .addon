@@ -10,8 +10,7 @@
   "ResourcePaths": [
     "/resource/*",
     "/ui/*",
-    "/fonts/*",
-    "/playermodel/*"
+    "/fonts/*"
   ],
   "HasCode": true,
   "CodePath": "/code/",
