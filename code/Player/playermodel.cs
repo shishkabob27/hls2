@@ -8,4 +8,7 @@ public partial class Playermodel : GameResource
 	[ResourceType( "vanmgrph" )]
 	public string Animgraph { get; set; }
 
+	public string BodyGroupName { get; set; } = "";
+	public int BodyGroupValue { get; set; } = 0;
+
 }
