@@ -11,6 +11,7 @@ partial class HLPlayer
 			pm = loadedPM;
 			SetModel( pm.Model );
 			SetAnimGraph( pm.Animgraph );
+			updBDG( pm.BodyGroupName, pm.BodyGroupValue );
 		}
 		else
 		{
