@@ -1,46 +1,32 @@
 partial class HLPlayer 
 {
+	Playermodel pm { get; set; }
 
 	public void SetPlayerModel()
 	{
-		var pm = "";
-		switch ( Client.GetClientData( "hl_pm" ) )
-		{
-			case "player": pm = "models/hl1/player/player.vmdl"; break; // helmet is a different model, it has colour support and this doesn't. I like this better so add it here since yeah
-			case "barney": pm = "models/hl1/player/barney.vmdl"; break;
-			case "gina": pm = "models/hl1/player/gina.vmdl"; break;
-			case "gman": pm = "models/hl1/player/gman.vmdl"; break;
-			case "gordon": pm = "models/hl1/player/gordon.vmdl"; break;
-			case "helmet": pm = "models/hl1/player/helmet.vmdl"; break;
-			case "hgrunt": pm = "models/hl1/player/hgrunt.vmdl"; break;
-			case "robo": pm = "models/hl1/player/robo.vmdl"; break;
-			case "scientist": pm = "models/hl1/player/scientist.vmdl"; break;
-			case "zombie": pm = "models/hl1/player/zombie.vmdl"; break;
-			case "freeman": pm = "freeman"; break;
-			case "citizen": pm = "citizen"; break;
-			default: pm = "models/hl1/player/player.vmdl"; break;
-		}
 
-		if (Clothing != null) Clothing.ClearEntities();
-		if ( pm == "freeman" )
+		var selectedPM = Client.GetClientData( "hl_pm" );
+		if ( ResourceLibrary.TryGet<Playermodel>( $"playermodel/{selectedPM}.pm", out var loadedPM ) )
 		{
-			SetModel( "models/hl1/player/player.vmdl" );
-			SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
-			updBDG( "head", 0 );
-		}
-		else if ( pm == "citizen" )
-		{
-			SetModel( "models/citizen/citizen.vmdl" ); 
-			SetAnimGraph( "models/citizen/citizen.vanmgrph" );
-			UpdateClothes( Client );
-			Clothing.DressEntity( this );
+			pm = loadedPM;
+			SetModel( pm.Model );
+			SetAnimGraph( pm.Animgraph );
 		}
 		else
 		{
-			updBDG( "head", 1 );
+			//Load default pm
+			SetModel( "models/hl1/player/player.vmdl" );
 			SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
-			SetModel( pm );
 		}
+
+		if ( Clothing != null ) Clothing.ClearEntities();
+
+		if ( Client.GetClientData( "hl_pm" ) == "citizen" )
+		{
+			UpdateClothes( Client );
+			Clothing.DressEntity( this );
+		}
+
 		updateColours();
 
 	}
