@@ -25,6 +25,22 @@
 		}
 		Breakables = 
 		{
+			GenericGibs = 
+			[
+				resource:"models/hl1/gib/computer/comp1.vmdl",
+				resource:"models/hl1/gib/computer/comp2.vmdl",
+				resource:"models/hl1/gib/computer/comp3.vmdl",
+				resource:"models/hl1/gib/computer/comp4.vmdl",
+				resource:"models/hl1/gib/computer/comp5.vmdl",
+				resource:"models/hl1/gib/computer/comp6.vmdl",
+				resource:"models/hl1/gib/computer/comp7.vmdl",
+				resource:"models/hl1/gib/computer/comp8.vmdl",
+				resource:"models/hl1/gib/computer/comp9.vmdl",
+				resource:"models/hl1/gib/computer/comp10.vmdl",
+				resource:"models/hl1/gib/computer/comp11.vmdl",
+				resource:"models/hl1/gib/computer/comp12.vmdl",
+				resource:"models/hl1/gib/computer/comp13.vmdl",
+			]
 		}
 	}
 }
