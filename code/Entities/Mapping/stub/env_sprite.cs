@@ -88,7 +88,7 @@ public partial class env_sprite : RenderEntity
 		}
 		if (Animated )
 		{
-
+			// TODO: OPTIMISE ME PLEASE STOP LOADING EVERY FRAME
 			b = a.Replace( ".png", frame.ToString( "000" ) + ".png" );
 			SpriteTex = Texture.Load( FileSystem.Mounted, b, false );
 			if ( SpriteTex == null )
