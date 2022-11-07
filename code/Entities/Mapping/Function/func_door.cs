@@ -456,7 +456,13 @@ public partial class DoorEntity : KeyframeEntity, IUse
 
 		OpenOtherDoors( false, activator );
 	}
-
+	Vector3 LastPosition;
+	[Event.Tick.Server] 
+	void tick()
+	{
+		Velocity = (LastPosition - Position) * -1;
+		LastPosition = Position;
+	}
 	/// <summary>
 	/// Locks the door so it cannot be opened or closed.
 	/// </summary>
