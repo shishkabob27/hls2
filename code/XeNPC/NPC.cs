@@ -343,7 +343,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	{
 		var MyNode = NavMesh.GetClosestPoint( Position );
 		var ThreatNode = NavMesh.GetClosestPoint( fromPos );
-		Steer.Target = NavMesh.GetPointWithinRadius( fromPos, 500, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 300, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 100, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 10, 600 ) ?? fromPos;
+		Steer.Target = NavMesh.GetPointWithinRadius( fromPos, 400, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 300, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 100, 600 ) ?? NavMesh.GetPointWithinRadius( fromPos, 10, 600 ) ?? fromPos;
 		/*
         foreach (var area in NavMesh.GetNavAreas())
         {
