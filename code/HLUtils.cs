@@ -28,6 +28,8 @@ public partial class HLUtils
     {
 		var plys = Client.All.Where( ply => ply.Pawn.Position.Distance( pos ) < range );
 		return plys.Count() > 0;
+		//return true;
+		//return false;
     }
     static public int AmountOf<T>()
     {

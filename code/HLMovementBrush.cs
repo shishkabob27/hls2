@@ -30,10 +30,17 @@
 	{
 		Simulate();
 	}
-
+	TimeSince LastIsInRangeCheck;
+	float RangeCheckDelay = 0.5f;
+	bool LastIsInRange;
 	public void Simulate()
 	{
-		if ( HLUtils.PlayerInRangeOf( Position, 2048 ) == false && !DontSleep )
+		if (LastIsInRangeCheck > RangeCheckDelay )
+		{
+			LastIsInRangeCheck = 0 + Rand.Float(-0.02f, 0.02f); // a bit of randomness so everything doesn't check at the same time
+			LastIsInRange = HLUtils.PlayerInRangeOf( Position, 2048 );
+		}
+		if ( LastIsInRange == false && !DontSleep )
 			return;
 		FindTouching();
 		CalcGroundEnt();

@@ -82,34 +82,43 @@
 			}
 		}
 	}
-
+	 
 	[Event.Tick]
 	void Tick()
 	{
 		if ( ShouldSimulate ) Simulate();
 	}
 
+	TimeSince LastIsInRangeCheck;
+	float RangeCheckDelay = 0.5f;
+	bool LastIsInRange;
 	public void Simulate()
 	{
 
+		if ( LastIsInRangeCheck > RangeCheckDelay )
+		{
+			LastIsInRangeCheck = 0 + Rand.Float( -0.02f, 0.02f ); // a bit of randomness so everything doesn't check at the same time
+			LastIsInRange = HLUtils.PlayerInRangeOf( Entity.Position, 2048 );
+		}
+
 		if ( Entity == null ) return;
-		if ( Entity.Owner is HLPlayer && Entity is Weapon ) return;
-		if ( HLUtils.PlayerInRangeOf( Entity.Position, 2048 ) == false && !DontSleep )
+		if ( !Entity.IsClientOnly && Host.IsClient )
+		{ 
 			return;
-		try
-		{
-			Entity.Velocity += Entity.BaseVelocity;
-			CalcGroundEnt();
-			StartGravity();
-			ApplyFriction( HL1GameMovement.sv_friction * SurfaceFriction );
-			ApplyAngularFriction( HL1GameMovement.sv_friction * SurfaceFriction );
-			Move();
-			AngularMove();
-			Entity.Velocity -= Entity.BaseVelocity;
 		}
-		catch
-		{
-		}
+
+		if ( Entity.Owner is HLPlayer && Entity is Weapon ) return;
+		if ( LastIsInRange == false && !DontSleep )
+			return;
+
+		Entity.Velocity += Entity.BaseVelocity;
+		CalcGroundEnt();
+		StartGravity();
+		ApplyFriction( HL1GameMovement.sv_friction * SurfaceFriction );
+		ApplyAngularFriction( HL1GameMovement.sv_friction * SurfaceFriction );
+		Move();
+		AngularMove();
+		Entity.Velocity -= Entity.BaseVelocity;
 	}
 
 	public void AngularMove()

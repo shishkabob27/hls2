@@ -170,7 +170,8 @@ public partial class scripted_sequence : Entity
 	} 
 	[Event.Tick.Server]
 	void Tick()
-	{ 
+	{
+		if ( SearchRadius != 0 ) return;	
 		EnsureTargetNPC();
 	}
 	bool EnsureTargetNPC()
@@ -197,6 +198,7 @@ public partial class scripted_sequence : Entity
 			{
 				// Check everything
 				TargetNPC = FindByName( TargetEntity ) as NPC;
+				//TargetNPC = NPC.All.Where( x => x.Name == TargetEntity ).First() as NPC;
 			}
 			if ( TargetNPC != null )
 			{
