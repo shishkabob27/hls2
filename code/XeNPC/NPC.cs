@@ -7,6 +7,9 @@ using XeNPC.Debug;
 [Library( "monster_test" ), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
 public partial class NPC : AnimatedEntity, IUse, ICombat
 {
+
+	static new List<NPC> All = new List<NPC>();
+
 	public bool InScriptedSequence = false;
 	public scripted_sequence CurrentScriptedSequence;
 	public bool InPriorityScriptedSequence = false;
@@ -124,6 +127,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	}
 	public override void Spawn()
 	{
+		All.Add( this );
 		if ( spawnflags.HasFlag( Flags.NotInDeathmatch ) && HLGame.GameIsMultiplayer() && IsServer )
 		{
 			Delete();
@@ -266,12 +270,19 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			return;
 		if ( animHelper.VoiceLevel != 0 )
 		{
-			var closestENTs = Entity.All.OfType<ICombat>().OfType<Entity>();
-			var ck = closestENTs.OrderBy( o => (o.Position.Distance( Position )) );
-			var closestENT = ck.First();
+			var closestENTs = Entity.FindInSphere( Position, 256 );///Entity.All.OfType<ICombat>();
+			var ck = closestENTs.OrderBy( o => ((o as Entity).Position.Distance( Position )) );
+			var closestENT = ck.First() as Entity;
 			if (closestENT == this)
 			{
-				closestENT = ck.ElementAt(1);
+				if ( ck.Count() > 0 )
+				{
+					closestENT = ck.ElementAt( 1 ) as Entity;
+				}
+				else
+				{
+					return;
+				}
 			}
 			var a = Rotation.LookAt( closestENT.Position.WithZ( 0 ) - Position.WithZ( 0 ), Vector3.Up ).Yaw();//HLUtils.VecToYaw(closestENT.Position.WithZ(0) - Position.WithZ(0));
 
@@ -349,6 +360,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	/// yellow = cached trace, neither entities have moved so assume it's the same
 	/// </summary>
 	[ConVar.Replicated] public static bool npc_debug_los { get; set; } = false;
+	[ConVar.Replicated] public static bool npc_disable_visability { get; set; } = false;
 
 	/// <summary>
 	/// Process what other NPCs/Players we can see and call ProcessEntity() for each
@@ -356,14 +368,13 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public virtual void See()
 	{
 		if ( IsClient ) return;
+		if ( npc_disable_visability ) return;
 		if ( DontSee ) return;
 		if ( InScriptedSequence && ScriptedSequenceOverrideAi ) return;
 		TargetEntity = null;
 		TargetEntityRel = 0;
 		if ( nextSee <= SeeDelay ) return;
-		nextSee = 0;
-		//return;
-		// todo, trace a cone maybe...
+		nextSee = 0; 
 
 		/*
         var a = Trace.Ray(EyePosition, EyePosition + Rotation.Forward * 2000)
@@ -387,7 +398,16 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		TargetEntity = a.Entity;
 		*/
 		Vector3 delta = new Vector3( entDist, entDist, entDist );
-		var allents = Entity.FindInBox( new BBox( Position - delta, Position + delta ) ).OfType<ICombat>().OrderBy( o => ((o as Entity).Position.Distance( Position )) );
+		List<Entity> allply = new List<Entity>();
+		foreach (var ply in Client.All)
+		{
+			allply.Add( ply.Pawn );
+		}
+		var allents = NPC.All.Concat(allply)// Entity.FindInBox( new BBox( Position - delta, Position + delta ) )
+			.OfType<ICombat>()
+			.OrderBy( o => ((o as Entity).Position.Distance( Position )) ); 
+
+		
 		/*
 		allents.RemoveAll( o =>
 			((o as Entity).Position.Distance( Position )) > entDist || // Remove everything further away than entDist
@@ -399,7 +419,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		foreach ( Entity ent in allents.Take( 16 ) ) // iterate through the first 16 at MOST.
 		{
 			if ( ent == this ) continue;
-			//if ( ent.Position.Distance( Position ) > entDist ) continue; // Ignore everything further away than entDist
+			if ( ent.Position.Distance( Position ) > entDist ) continue; // Ignore everything further away than entDist
 			if ( !InViewCone( ent ) ) continue; // Ignore anything not in our view cone.
 			if ( !EntityShouldBeSeen( ent ) ) continue; // Ignore anything that doesn't want to be seen.
 			var REL = GetRelationship( ent );
@@ -937,5 +957,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			LifeState = LifeState.Dead;
 			//Delete();
 		}
+	}
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
+		All.Remove( this );
 	}
 }
