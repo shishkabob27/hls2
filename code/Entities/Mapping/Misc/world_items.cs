@@ -21,5 +21,6 @@ public class world_items : Entity
 		var b = entityType.Create<Entity>();
 		b.Position = this.Position;
 		b.Rotation = this.Rotation;
+		Delete();
 	}
 }
