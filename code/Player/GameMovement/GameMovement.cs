@@ -110,7 +110,7 @@ public partial class HL1GameMovement : BasePlayerController
 		ReduceTimers();
 		CheckParameters();
 
-		if ( GroundEntity != null && Input.Down( InputButton.Use ) ) Velocity *= sv_movespeedkey;
+		if ( GroundEntity != null && Input.Down( InputButton.Use ) ) Velocity *= 0.3f;
 
 		if ( !Player.CanMove() )
 		{
