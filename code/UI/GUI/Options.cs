@@ -34,6 +34,8 @@ public class Options : GUIPanel
 
 	public bool bCvrpointer { get; set; }
 
+	public DropDown PMDropdown { get; set; }
+
 	public Options()
 	{
 		Style.Left = 0;
@@ -41,6 +43,14 @@ public class Options : GUIPanel
 		Style.Top = 0;
 		Style.Bottom = 0;
 
+		var pm = ResourceLibrary.GetAll<Playermodel>();
+
+		foreach ( Playermodel newpm in pm )
+		{
+			var _ = new Option( newpm.Name, newpm.Name );
+			PMDropdown.Options.Add( _ );
+		}
+		
 		getCvars();
 		Focus();
 	}
