@@ -10,5 +10,6 @@ public partial class Playermodel : GameResource
 
 	public string BodyGroupName { get; set; } = "";
 	public int BodyGroupValue { get; set; } = 0;
+	public bool EnableClothes { get; set; } = false;
 
 }
