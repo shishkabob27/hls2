@@ -655,3 +655,12 @@ IconPanel {
         height: 100%;
     }
 }
+
+.pmimage {
+    width: 164px;
+    height: 200px;
+    position:absolute;
+    right: 32px;
+    top:54px;
+    background-image: url("/ui/playermodel/gordon.png");
+}

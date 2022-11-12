@@ -36,6 +36,8 @@ public class Options : GUIPanel
 
 	public DropDown PMDropdown { get; set; }
 
+	public Panel pmImage { get; set; }
+
 	public Options()
 	{
 		Style.Left = 0;
@@ -104,6 +106,8 @@ public class Options : GUIPanel
 			if ( bCliveupdate ) updateCvars();
 		}
 		SetClass( "active", MenuOpen );
+
+		pmImage.Style.SetBackgroundImage( $"/ui/playermodel/{bSplayerModel}.png" );
 	}
 	bool oldhimdl = false;
 	public void updateCvars()
