@@ -354,10 +354,17 @@
 		{
 			rotationvr();
 
+			var postProcess = Map.Camera.FindOrCreateHook<Sandbox.Effects.ScreenEffects>();
+
 			if ( Health > 0 )
 			{
 				LeftHand.FrameSimulate( cl );
 				RightHand.FrameSimulate( cl );
+				postProcess.Saturation = 1;
+			}
+			else
+			{	
+				postProcess.Saturation = 0;
 			}
 		}
 		else
