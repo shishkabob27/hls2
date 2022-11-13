@@ -18,7 +18,7 @@
 	[Net]
 	public bool IsNoclipping { get; set; } = false;
 
-
+	public bool IsInVR = false;
 	[Net, Local] public VRHandLeft LeftHand { get; set; }
 	[Net, Local] public VRHandRight RightHand { get; set; }
 	[Net]
@@ -154,6 +154,7 @@
 		if ( Client.IsUsingVr )
 		{
 			CreateHands();
+			IsInVR = true;
 		}
 
 		Host.AssertServer();

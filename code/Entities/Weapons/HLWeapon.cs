@@ -212,7 +212,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 		{
 			EnableDrawing = false;
 		}
-		if ( Global.IsRunningInVR )
+		if ( Parent is HLPlayer player && player.IsInVR)
 		{
 			DestroyVRModel();
 		}
