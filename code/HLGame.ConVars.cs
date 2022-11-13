@@ -15,12 +15,8 @@
 			case "campaign":
 				a = false;
 				break;
-			case "deathmatch":
-				a = true;
-				break;
-			case "ctf":
-				a = true;
-				break;
+			case "deathmatch": 
+			case "ctf": 
 			default:
 				a = true;
 				break;
