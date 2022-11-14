@@ -288,7 +288,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			{
 				if ( ck.Count() > 0 )
 				{
-					closestENT = ck.ElementAt( 1 ) as Entity;
+					if ( ck.ElementAt( 0 ) is Entity) 
+						closestENT = ck.ElementAt( 0 ) as Entity;
 				}
 				else
 				{
@@ -359,8 +360,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	Vector3 lastTraceStart = Vector3.Zero;
 	Vector3 lastTraceEnd = Vector3.Zero;
 	TraceResult lastTraceResult;
-	Trace[] LastTraces = new Trace[32];
-	TraceResult[] LastTracesResults = new TraceResult[32];
+	Trace[] LastTraces = new Trace[1024];
+	TraceResult[] LastTracesResults = new TraceResult[1024];
 
 	TimeSince nextSee;
 	float SeeDelay = 0.1f;
@@ -372,6 +373,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	/// </summary>
 	[ConVar.Replicated] public static bool npc_debug_los { get; set; } = false;
 	[ConVar.Replicated] public static bool npc_disable_visability { get; set; } = false;
+	[ConVar.Replicated] public static bool npc_cache_vis { get; set; } = false;
+	[ConVar.Replicated] public static bool npc_scale_vis { get; set; } = true; 
 
 	/// <summary>
 	/// Process what other NPCs/Players we can see and call ProcessEntity() for each
@@ -409,16 +412,19 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		TargetEntity = a.Entity;
 		*/
 		Vector3 delta = new Vector3( entDist, entDist, entDist );
-		List<Entity> allply = new List<Entity>();
+		/*List<Entity> allply = new List<Entity>();
 		foreach (var ply in Client.All)
 		{
 			allply.Add( ply.Pawn );
-		}
-		var allents = NPC.All.Concat(allply)// Entity.FindInBox( new BBox( Position - delta, Position + delta ) )
-			.OfType<ICombat>()
-			.OrderBy( o => ((o as Entity).Position.Distance( Position )) ); 
-
+		} 
 		
+		var allents = NPC.All.Concat(allply)// Entity.FindInBox( new BBox( Position - delta, Position + delta ) )
+		*/
+		var allents = Entity.FindInBox( new BBox( Position - delta, Position + delta ) )
+			.OfType<ICombat>()
+			.OrderBy( o => ((o as Entity).Position.Distance( Position )) );
+
+
 		/*
 		allents.RemoveAll( o =>
 			((o as Entity).Position.Distance( Position )) > entDist || // Remove everything further away than entDist
@@ -427,33 +433,43 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			!EntityShouldBeSeen( (o as Entity) ) // Remove anything that doesn't want to be seen.
 		); */
 		//allents = allents; // sort by closest
-		foreach ( Entity ent in allents.Take( 16 ) ) // iterate through the first 16 at MOST.
+		var count = 100;
+		if ( npc_scale_vis ) count = (0.5f / Time.Delta).CeilToInt(); // if we want we can scale the amount to go through depending on fps. 
+		foreach ( Entity ent in allents.Take(count)) // iterate through the amount specfied
 		{
 			if ( ent == this ) continue;
 			if ( ent.Position.Distance( Position ) > entDist ) continue; // Ignore everything further away than entDist
 			if ( !InViewCone( ent ) ) continue; // Ignore anything not in our view cone.
-			if ( !EntityShouldBeSeen( ent ) ) continue; // Ignore anything that doesn't want to be seen.
+			if ( !EntityShouldBeSeen( ent ) ) continue; // Ignore anything that doesn't want to be seen. 
 			var REL = GetRelationship( ent );
 			if ( REL == 0 ) continue; // Ignore anything that we don't care about.
+			if ( ent.Health <= 0 ) continue; // Ignore anything dead.
 			bool hasdrawn = false;
 			var a = Trace.Ray( EyePosition, ent.EyePosition )
 				.WithoutTags( "monster", "npc", "player" );
 
 			TraceResult b;
-			if ( LastTraces.Contains( a ) )
+			if (npc_cache_vis)
 			{
-				b = LastTracesResults[Array.IndexOf( LastTraces, a )];
-				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Yellow, SeeDelay + Time.Delta, false );
-			}
-			else
+
+				if ( LastTraces.Contains( a ) )
+				{
+					b = LastTracesResults[Array.IndexOf( LastTraces, a )];
+					if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Yellow, SeeDelay + Time.Delta, false );
+				}
+				else
+				{
+					if ( posinarray >= LastTraces.Length ) posinarray = 0;
+					b = a.Run();
+					//Array.Copy( LastTracesResults, 1, LastTracesResults, 0, LastTracesResults.Length - 1 );
+					LastTracesResults[posinarray] = b;
+					//Array.Copy( LastTraces, 1, LastTraces, 0, LastTraces.Length - 1 );
+					LastTraces[posinarray] = a;
+					posinarray++;
+				}
+			} else
 			{
-				if ( posinarray >= LastTraces.Length ) posinarray = 0;
 				b = a.Run();
-				//Array.Copy( LastTracesResults, 1, LastTracesResults, 0, LastTracesResults.Length - 1 );
-				LastTracesResults[posinarray] = b;
-				//Array.Copy( LastTraces, 1, LastTraces, 0, LastTraces.Length - 1 );
-				LastTraces[posinarray] = a;
-				posinarray++;
 			}
 
 
