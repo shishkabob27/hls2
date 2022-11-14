@@ -374,7 +374,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	[ConVar.Replicated] public static bool npc_debug_los { get; set; } = false;
 	[ConVar.Replicated] public static bool npc_disable_visability { get; set; } = false;
 	[ConVar.Replicated] public static bool npc_cache_vis { get; set; } = false;
-	[ConVar.Replicated] public static bool npc_scale_vis { get; set; } = true; 
+	[ConVar.Replicated] public static bool npc_scale_vis { get; set; } = false; 
 
 	/// <summary>
 	/// Process what other NPCs/Players we can see and call ProcessEntity() for each
