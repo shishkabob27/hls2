@@ -360,8 +360,8 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	Vector3 lastTraceStart = Vector3.Zero;
 	Vector3 lastTraceEnd = Vector3.Zero;
 	TraceResult lastTraceResult;
-	Trace[] LastTraces = new Trace[1024];
-	TraceResult[] LastTracesResults = new TraceResult[1024];
+	Trace[] LastTraces = new Trace[256];
+	TraceResult[] LastTracesResults = new TraceResult[256];
 
 	TimeSince nextSee;
 	float SeeDelay = 0.1f;
