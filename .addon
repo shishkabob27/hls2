@@ -179,7 +179,7 @@
       "VR": true,
       "Gamepad": true
     },
-    "ParentPackage": "facepunch.sandbox",
+    "ParentPackage": "",
     "GeneralExtensions": true,
     "TargettedExtensions": true,
     "ExtensionApiVersion": 1002,
@@ -194,10 +194,6 @@
           {
             "Value": "deathmatch",
             "Name": "Deathmatch"
-          },
-          {
-            "Value": "ctf",
-            "Name": "Capture the Flag (Opposing Force)"
           }
         ],
         "ConVarName": "sv_gamemode",
