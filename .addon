@@ -215,7 +215,7 @@
           },
           {
             "Value": "hard",
-            "Name": "Medium"
+            "Name": "Hard"
           }
         ],
         "ConVarName": "skill",
