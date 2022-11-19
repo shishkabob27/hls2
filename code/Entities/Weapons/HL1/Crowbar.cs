@@ -27,7 +27,20 @@ partial class Crowbar : Weapon
 
 	public override bool CanPrimaryAttack()
 	{
-		return base.CanPrimaryAttack();
+		if ( Client.IsUsingVr )
+		{
+			if ( !Owner.IsValid() || (Input.VR.RightHand.AngularVelocity.pitch >= -600) ) return false;
+			//if ( !Owner.IsValid() || !(Input.VR.RightHand.Trigger.Value > 0.2) ) return false;
+		}
+		else
+		{
+			if ( !Owner.IsValid() || !Input.Down( InputButton.PrimaryAttack ) ) return false;
+		}
+
+		var rate = PrimaryRate;
+		if ( rate <= 0 ) return true;
+
+		return TimeSincePrimaryAttack > rate;
 	}
 
 	Entity hitEntity;
