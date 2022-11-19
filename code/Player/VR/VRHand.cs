@@ -7,7 +7,7 @@
 
     public override void Spawn()
     {
-        SetModel(HandType ? "models/vr/hand_left.vmdl" : "models/vr/hand_right.vmdl");
+        SetModel(HandType ? "models/vr/v_hand_hevsuit/v_hand_hevsuit_left.vmdl" : "models/vr/v_hand_hevsuit/v_hand_hevsuit_right.vmdl" );
     }
 
     public override void Simulate(Client cl)

@@ -366,6 +366,18 @@
 			{	
 				postProcess.Saturation = 0;
 			}
+
+			if ( LeftHand != null && RightHand != null )
+			if ( HasHEV )
+			{
+				LeftHand.SetModel( "models/vr/v_hand_hevsuit/v_hand_hevsuit_left.vmdl" );
+				RightHand.SetModel( "models/vr/v_hand_hevsuit/v_hand_hevsuit_right.vmdl" );
+			}
+			else
+			{
+				LeftHand.SetModel( "models/vr/v_hand_labcoat/v_hand_labcoat_left.vmdl" );
+				RightHand.SetModel( "models/vr/v_hand_labcoat/v_hand_labcoat_right.vmdl" );
+			}
 		}
 		else
 		{
