@@ -9,7 +9,7 @@ public static partial class Breakables
 	static internal List<Entity> CurrentGibs = new();
 
 	[ConVar.Server( "gibs_max" )]
-	static public int MaxGibs { get; set; } = 256;
+	static public int MaxGibs { get; set; } = 512;
 
 	public static void Break( Entity ent, Result result = null )
 	{
