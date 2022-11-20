@@ -777,6 +777,12 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 		}
 
 		VRWeaponModel.SetModel( vrmodel );
+
+		if (VRWeaponModel.Model.Name == "models/dev/error.vmdl" )
+		{
+			VRWeaponModel.SetModel( WorldModelPath );
+		}
+
 		VRWeaponModel.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 
 		VRWeaponModel.Tags.Add( "vrweapon" );
