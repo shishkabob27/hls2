@@ -15,4 +15,7 @@ public class PlayerData
 	public float HP { get; set; }
 	public float Armor { get; set; }
 	public bool HEV { get; set; }
+ public Vector3 Pos { get; set; }
+ public Rotation Rot { get; set; }
+ public Vector3 Vel { get; set; }
 }
