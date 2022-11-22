@@ -251,6 +251,17 @@
         "DefaultValue": "false",
         "Description": "",
         "Group": "Bunny Hopping"
+      },
+      {
+        "DisplayType": "Integer",
+        "Choices": [],
+        "ConVarName": "hl_respawn_time",
+        "DisplayName": "Respawn time",
+        "DefaultValue": "1",
+        "Description": "",
+        "Group": "",
+        "Minimum": 1,
+        "Maximum": 30
       }
     ]
   }
