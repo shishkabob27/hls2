@@ -302,7 +302,14 @@
 
 	public void OnKilled( bool corpse = true )
 	{
-		base.OnKilled();
+		HLGame.Current?.OnKilled( this );
+
+		timeSinceDied = 0;
+		LifeState = LifeState.Dead;
+		StopUsing();
+
+		Client?.AddInt( "deaths", 1 );
+
 		DeleteHands();
 		RemoveFlashlight();
 		HasHEV = false;
@@ -401,6 +408,9 @@
 		EyeRotation = a.Rotation;
 		Transform = a;
 	}
+
+	TimeSince timeSinceDied;
+
 	public override void Simulate( Client cl )
 	{
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
@@ -431,7 +441,22 @@
 			IN_RIGHT = Input.Down( InputButton.Right );
 			IN_BACKWARD = Input.Down( InputButton.Back );
 		}
-		base.Simulate( cl );
+
+		if ( LifeState == LifeState.Dead )
+		{
+			if ( timeSinceDied > HLGame.hl_respawn_time && IsServer )
+			{
+				Respawn();
+			}
+
+			return;
+		}
+
+		//UpdatePhysicsHull();
+
+		var controller = GetActiveController();
+		controller?.Simulate( cl, this, GetActiveAnimator() );
+
 		SimulateFlashlight( cl );
 		//
 		// Input requested a weapon switch

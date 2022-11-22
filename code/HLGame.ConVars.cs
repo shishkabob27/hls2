@@ -5,6 +5,7 @@
 	[ConVar.Replicated] public static string skill { get; set; } = "medium";
 	[ConVar.Replicated] public static string sv_gamemode { get; set; } = "campaign";
 	[ConVar.Replicated] public static int hl_dm_time { get; set; } = 10;
+	[ConVar.Replicated] public static int hl_respawn_time { get; set; } = 3;
 	[ConVar.Replicated] public static bool hl_force_multiplayer_gamerules { get; set; } = false;
 	public static bool GameIsMultiplayer()
 	{
