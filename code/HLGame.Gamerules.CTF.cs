@@ -1,10 +1,10 @@
 ﻿public partial class HLGame : Game
 {
 	[Net]
-	public static int ScoreTeamBM { get; set; } = 0;
+	public int ScoreTeamBM { get; set; } = 0;
 
 	[Net]
-	public static int ScoreTeamOF { get; set; } = 0;
+	public int ScoreTeamOF { get; set; } = 0;
 
 	public static void MoveToCTFSpawnpoint( Entity pawn )
 	{
