@@ -1,5 +1,7 @@
 ﻿
 
+using System.Numerics;
+
 public partial class HL1GameMovement : BasePlayerController
 {
 	HLPlayer Player { get; set; }
@@ -160,7 +162,7 @@ public partial class HL1GameMovement : BasePlayerController
 			FullWalkMove();
 		}
 	}
-
+	 
 	public virtual void UpdateViewOffset()
 	{
 		// reset x,y
@@ -211,6 +213,11 @@ public partial class HL1GameMovement : BasePlayerController
 
 	public virtual void StepMove( Vector3 dest )
 	{
+		if ( !HL1GameMovement.sv_use_sbox_movehelper )
+		{
+			StepMove2();
+			return;
+		}
 		var mover = new MoveHelper( Position, Velocity );
 		mover.Trace = SetupBBoxTrace( 0, 0 )
 			.Ignore( Pawn );
@@ -227,6 +234,11 @@ public partial class HL1GameMovement : BasePlayerController
 
 	public virtual void TryPlayerMove()
 	{
+		if ( !HL1GameMovement.sv_use_sbox_movehelper )
+		{
+			Move2();
+			return;
+		}
 		MoveHelper mover = new MoveHelper( Position, Velocity );
 		mover.Trace = SetupBBoxTrace( 0, 0 )
 			.Ignore( Pawn );
