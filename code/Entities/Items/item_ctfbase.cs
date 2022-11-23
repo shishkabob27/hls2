@@ -23,8 +23,8 @@ partial class item_ctfbase : ModelEntity
 		if(player.IsCarryingFlag &&player.team == goal_no){
 			switch (player.team)
 			{
-				case 1: HLGame.ScoreTeamBM += 1; break;
-				case 2: HLGame.ScoreTeamOF += 1; break;
+				case 1: (HLGame.Current as HLGame).ScoreTeamBM += 1; break;
+				case 2: (HLGame.Current as HLGame).ScoreTeamOF += 1; break;
 			}
 			Log.Info(player.Parent.Name+" has scored!");
 		}
