@@ -177,6 +177,7 @@
 			//  and pressing forward and nobody was really using this bounce/reflection feature anyway...
 			if ( numplanes == 1 &&
 				!Player.IsNoclipping &&
+				!Player.IsObserver &&
 				Player.GroundEntity == null )
 			{
 				for ( i = 0; i < numplanes; i++ )
