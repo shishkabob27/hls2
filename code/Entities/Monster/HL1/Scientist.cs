@@ -1,5 +1,7 @@
-﻿[Library( "monster_scientist" ), HammerEntity]
-[EditorModel( "models/hl1/monster/scientist/scientist_01.vmdl" )]
+﻿using Sandbox.Internal;
+
+[Library( "monster_scientist" ), HammerEntity]
+[Model(Model = "models/hl1/monster/scientist/scientist_01.vmdl" )]
 [Title( "Scientist" ), Category( "Monsters" ), Icon( "person" ), MenuCategory( "Black Mesa" )]
 public partial class Scientist : NPC
 {
@@ -15,7 +17,7 @@ public partial class Scientist : NPC
 	[Property]
 	public float Body { get; set; } = -1;
 	[Net]
-	public float VoicePitch { get; set } = 100;
+	public float VoicePitch { get; set; } = 100;
 
 
 	public Scientist()
@@ -40,7 +42,14 @@ public partial class Scientist : NPC
 		{
 			Body = Rand.Int( 0, 3 );
 		}
-		SetModel( SetScientistModel() );
+		foreach ( var models in ScientistMDLList )
+		{
+			if ( Model.ToString() == models )
+			{
+				SetModel( SetScientistModel() );
+			}
+		}
+		
 		SetAnimGraph( NPCAnimGraph );
 		Health = 20;
 		Speed = 70;

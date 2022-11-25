@@ -1,5 +1,5 @@
 [Library("item_suit"), HammerEntity]
-[EditorModel("models/hl1/items/suit.vmdl")]
+[Model]
 [Title("HEV Suit"), Category("Items"), MenuCategory( "Items" )]
 public partial class Suit : ModelEntity
 {
@@ -12,7 +12,7 @@ public partial class Suit : ModelEntity
     {
         base.Spawn();
 
-        SetModel("models/hl1/items/suit.vmdl");
+        //SetModel("models/hl1/items/suit.vmdl");
 
 		var c = Components.GetOrCreate<Movement>();
 

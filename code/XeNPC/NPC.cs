@@ -3,7 +3,7 @@
 using Sandbox;
 using System;
 using XeNPC.Debug;
-
+[Model]
 [Library( "monster_test" ), HammerEntity] // THIS WILL NOT BE AN NPC BUT A BASE THAT EVERY NPC SHOULD DERIVE FROM!!! THIS IS HERE FOR TESTING PURPOSES ONLY!
 public partial class NPC : AnimatedEntity, IUse, ICombat
 {
