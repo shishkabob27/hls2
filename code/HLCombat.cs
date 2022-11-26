@@ -125,7 +125,7 @@ public partial class HLCombat
 	}
 
 	/// <summary>
-	/// 
+	/// Create a skull gib, for humans, gib will gave 5% chance to fly at players face.
 	/// </summary>
 	/// <param name="Position">Position the gib spawns at</param>
 	/// <param name="DMGPos">The position that the gibbing damage was dealt, decides which direction the gib go flying</param>
