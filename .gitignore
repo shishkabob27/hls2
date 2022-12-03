@@ -24,3 +24,4 @@ Properties/launchSettings.json
 *.DS_Store
 *.audiomat_c
 *.pm_c
+*.shader_c

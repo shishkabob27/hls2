@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "complex.vfx"
+	shader "complex.shader"
 
 	//---- Color ----
 	F_TINT_MASK 1

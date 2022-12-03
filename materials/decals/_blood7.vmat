@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "projected_decals.vfx"
+	shader "projected_decals.shader"
 
 	//---- Decal ----
 	F_TRIPLANAR_MAPPING 1

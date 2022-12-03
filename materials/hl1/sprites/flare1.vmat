@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "envsprite.vfx"
+	shader "envsprite.shader"
 
 	//---- Blending ----
 	F_ADDITIVE_BLEND 1

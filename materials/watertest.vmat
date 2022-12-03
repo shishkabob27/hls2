@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "qliquid.vfx"
+	shader "qliquid.shader"
 
 	//---- Rendering ----
 	F_RENDER_BACKFACES 1

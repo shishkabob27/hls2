@@ -71,7 +71,7 @@ public partial class env_sprite : RenderEntity
 			} 
 			//Log.Info( a );
 
-			SpriteMaterial = Material.FromShader( "envsprite.vfx" ); //Material.Load( a ); 
+			SpriteMaterial = Material.FromShader( "envsprite.shader" ); //Material.Load( a ); 
 			SpriteTex = Texture.Load( FileSystem.Mounted, a, false);  
 			if (SpriteTex == null && !Animated )
 			{

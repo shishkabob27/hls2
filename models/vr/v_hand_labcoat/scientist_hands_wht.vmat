@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "skin.vfx"
+	shader "skin.shader"
 
 	//---- Ambient Occlusion ----
 	g_flAmbientOcclusionDirectDiffuse "0.000"

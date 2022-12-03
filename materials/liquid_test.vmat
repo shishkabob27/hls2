@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "water.vfx"
+	shader "water.shader"
 
 	//---- Color ----
 	g_flModelTintAmount "1.000"

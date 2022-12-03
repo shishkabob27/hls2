@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "chrome.vfx"
+	shader "chrome.shader"
 
 	//---- Chrome ----
 	ChromeOffsetX "0.000"

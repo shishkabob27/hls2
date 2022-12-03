@@ -2,7 +2,7 @@
 
 Layer0
 {
-	shader "projected_decals.vfx"
+	shader "projected_decals.shader"
 
 	//---- Ambient Occlusion ----
 	TextureAmbientOcclusion "materials/default/default_ao.tga"
