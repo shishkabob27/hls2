@@ -94,6 +94,11 @@
 	bool LastIsInRange;
 	public void Simulate()
 	{
+		if ( Entity == null ) return;
+		if ( !Entity.IsClientOnly && Host.IsClient )
+		{
+			return;
+		}
 
 		if ( LastIsInRangeCheck > RangeCheckDelay )
 		{
@@ -101,11 +106,6 @@
 			LastIsInRange = HLUtils.PlayerInRangeOf( Entity.Position, 2048 );
 		}
 
-		if ( Entity == null ) return;
-		if ( !Entity.IsClientOnly && Host.IsClient )
-		{ 
-			return;
-		}
 
 		if ( Entity.Owner is HLPlayer && Entity is Weapon ) return;
 		if ( LastIsInRange == false && !DontSleep )
