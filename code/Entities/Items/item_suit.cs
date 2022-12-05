@@ -12,7 +12,7 @@ public partial class Suit : ModelEntity
     {
         base.Spawn();
 
-        //SetModel("models/hl1/items/suit.vmdl");
+        SetModel("models/hl1/items/suit.vmdl");
 
 		var c = Components.GetOrCreate<Movement>();
 
