@@ -49,7 +49,7 @@ public class Options : GUIPanel
 
 		foreach ( Playermodel newpm in pm )
 		{
-			var _ = new Option( newpm.Name, newpm.Name );
+			var _ = new Option( newpm.ResourceName, newpm.ResourceName );
 			PMDropdown.Options.Add( _ );
 		}
 		

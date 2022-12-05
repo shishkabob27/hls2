@@ -103,8 +103,9 @@ partial class Crossbow : Weapon
 		LastViewmodelFov = lerpedViewmodelFov;
 	}
 
-	public override void BuildInput( InputBuilder owner )
+	public override void BuildInput()
 	{
+		var owner = Owner as HLPlayer;
 		if ( Zoomed )
 		{
 			owner.ViewAngles = Angles.Lerp( owner.OriginalViewAngles, owner.ViewAngles, 0.2f );

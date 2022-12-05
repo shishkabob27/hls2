@@ -34,11 +34,10 @@ public class GUIRootPanel : RootPanel
 		if ( Screen.Height > 2650 ) Scale = 2.00f;
 	}
 	[Event.BuildInput]
-	public void ProcessClientInput( InputBuilder input )
+	public void ProcessClientInput()
 	{
-		if ( input.Pressed( InputButton.Menu ) )
+		if ( Input.Pressed( InputButton.Menu ) )
 		{
-
 			ConsoleSystem.Run( "open_options" );
 		}
 	}

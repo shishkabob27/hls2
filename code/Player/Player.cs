@@ -344,14 +344,14 @@
 		}
 	}
 
-	public override void BuildInput( InputBuilder input )
+	public override void BuildInput()
 	{
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 		{
-			input.ViewAngles = input.OriginalViewAngles;
+			ViewAngles = OriginalViewAngles;
 			return;
 		};
-		base.BuildInput( input );
+		base.BuildInput();
 	}
 
 	public override void FrameSimulate( Client cl )
@@ -418,9 +418,9 @@
 
 		punchangle = punchangle.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
 
-		Forward = Input.Forward;
-		Left = Input.Left;
-		Up = Input.Up;
+		Forward = Input.AnalogMove.x;
+		Left = Input.AnalogMove.y;
+		Up = Input.AnalogMove.z;
 		if ( Client.IsUsingVr )
 		{
 			EyeRotation = Input.VR.Head.Rotation;

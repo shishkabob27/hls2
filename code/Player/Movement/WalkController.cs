@@ -371,9 +371,9 @@ public partial class WalkController : BasePlayerController
 
 		if ( ws >= 0 ) mvspeed = mvspeed * PLAYER_DUCKING_MULTIPLIER;
 
-		var ForwardMove = Input.Forward * mvspeed;
-		var SideMove = -Input.Left * mvspeed;
-		var UpMove = Input.Up * mvspeed;
+		var ForwardMove = Input.AnalogMove.x * mvspeed;
+		var SideMove = -Input.AnalogMove.y * mvspeed;
+		var UpMove = Input.AnalogMove.z * mvspeed;
 
 		if ( Client.IsUsingVr )
 		{
@@ -811,7 +811,7 @@ public partial class WalkController : BasePlayerController
 
 	public virtual void CheckLadder()
 	{
-		var wishvel = new Vector3( Input.Forward, Input.Left, 0 );
+		var wishvel = new Vector3( Input.AnalogMove.x, Input.AnalogMove.y, 0 );
 		var a = Input.Rotation;
 		if ( Client.IsUsingVr ) a = Input.VR.Head.Rotation;
 		wishvel *= a.Angles().WithPitch( 0 ).ToRotation();

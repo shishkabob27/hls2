@@ -95,9 +95,9 @@ public partial class HL1GameMovement : BasePlayerController
 
 		if ( GroundEntity != null && Input.Down( InputButton.Run ) ) speed *= sv_movespeedkey;
 
-		ForwardMove = Input.Forward * speed;
-		RightMove = -Input.Left * speed;
-		UpMove = Input.Up * speed;
+		ForwardMove = Input.AnalogMove.x * speed;
+		RightMove = -Input.AnalogMove.y * speed;
+		UpMove = Input.AnalogMove.z * speed;
 
 		if ( Client.IsUsingVr )
 		{
@@ -586,7 +586,7 @@ public partial class HL1GameMovement : BasePlayerController
 				$"\n" +
 
 				$"[MOVEMENT]\n" +
-				$"Direction             {new Vector3( Input.Forward, -Input.Left, Input.Up )}\n" +
+				$"Direction             {new Vector3( Input.AnalogMove.x, -Input.AnalogMove.y, Input.AnalogMove.z )}\n" +
 				$"WishVelocity          {WishVelocity}\n" +
 				$"SurfaceFriction       {Player.SurfaceFriction}\n" +
 				$"MoveType              {Player.MoveType}\n" +

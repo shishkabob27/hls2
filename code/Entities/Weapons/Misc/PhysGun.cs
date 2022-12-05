@@ -404,10 +404,10 @@ partial class PhysGun : Weapon
 		heldRot = localRot * heldRot;
 	}
 
-	public override void BuildInput( InputBuilder owner )
+	public override void BuildInput()
 	{
-		if ( !owner.Down( InputButton.Use ) ||
-			 !owner.Down( InputButton.PrimaryAttack ) ||
+		if ( Input.Down( InputButton.Use) ||
+			 !Input.Down( InputButton.PrimaryAttack ) ||
 			 !GrabbedEntity.IsValid() )
 		{
 			return;
@@ -416,6 +416,7 @@ partial class PhysGun : Weapon
 		//
 		// Lock view angles
 		//
+		var owner = Owner as HLPlayer;
 		owner.ViewAngles = owner.OriginalViewAngles;
 	}
 

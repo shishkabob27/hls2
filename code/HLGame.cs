@@ -154,11 +154,6 @@ public partial class HLGame : Game
 		var scale = Screen.Height / 1080.0f;
 		var screenSize = Screen.Size / scale;
 		var matrix = Matrix.CreateScale( scale );
-
-		using ( Render.Draw2D.MatrixScope( matrix ) )
-		{
-			localPawn.RenderHud( screenSize );
-		}
 	}
 
 	[Event.Entity.PostCleanup]
