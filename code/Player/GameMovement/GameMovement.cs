@@ -95,9 +95,9 @@ public partial class HL1GameMovement : BasePlayerController
 
 		if ( GroundEntity != null && Input.Down( InputButton.Run ) ) speed *= sv_movespeedkey;
 
-		ForwardMove = Input.AnalogMove.x * speed;
-		RightMove = -Input.AnalogMove.y * speed;
-		UpMove = Input.AnalogMove.z * speed; 
+		ForwardMove = Player.InputDirection.x * speed;
+		RightMove = -Player.InputDirection.y * speed;
+		UpMove = Player.InputDirection.z * speed;
 
 		if ( Client.IsUsingVr )
 		{
