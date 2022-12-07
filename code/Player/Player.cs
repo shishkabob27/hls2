@@ -568,6 +568,7 @@
 		if ( best == null ) return;
 
 		ActiveChild = best;
+		ActiveChildInput = best;
 	}
 
 	public override void StartTouch( Entity other )
