@@ -68,6 +68,7 @@ partial class SMG : Weapon
 		// Shoot the bullets
 		//
 		ShootBullet( 0.1f, 1.5f, 5.0f, 3.0f );
+		Rand.SetSeed( Time.Tick );
 		ViewPunch( 0, Rand.Float( -2, 2 ) );
 
 	}
