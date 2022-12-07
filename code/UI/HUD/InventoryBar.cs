@@ -100,8 +100,8 @@ public class InventoryBar : Panel
 		//
 		if ( Input.Down( InputButton.PrimaryAttack ) || Input.VR.RightHand.JoystickPress )
 		{
-			Input.SuppressButton( InputButton.PrimaryAttack );
-			localPlayer.ActiveChild = SelectedWeapon;
+			Input.SuppressButton( InputButton.PrimaryAttack ); 
+			localPlayer.ActiveChildInput = SelectedWeapon;
 			IsOpen = false;
 			CurrentSound.Stop();
 			CurrentSound = Sound.FromScreen( "wpn_select" );
