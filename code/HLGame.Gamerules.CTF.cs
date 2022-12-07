@@ -1,4 +1,4 @@
-﻿public partial class HLGame : Game
+﻿public partial class HLGame : GameManager
 {
 	[Net]
 	public int ScoreTeamBM { get; set; } = 0;

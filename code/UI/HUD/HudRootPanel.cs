@@ -23,7 +23,7 @@ public class HudRootPanel : RootPanel
 		}
 	}
 
-	[Event.BuildInput]
+	[Event.Client.BuildInput]
 	public void ProcessClientInput()
 	{
 		if ( Input.Pressed( InputButton.Zoom ) )

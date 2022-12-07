@@ -45,7 +45,7 @@ public class InventoryBar : Panel
 	/// IClientInput implementation, calls during the client input build.
 	/// You can both read and write to input, to affect what happens down the line.
 	/// </summary>
-	[Event.BuildInput]
+	[Event.Client.BuildInput]
 	public void ProcessClientInput()
 	{
 		if ( HLGame.CurrentState != HLGame.GameStates.Live ) return;
@@ -100,7 +100,7 @@ public class InventoryBar : Panel
 		//
 		if ( Input.Down( InputButton.PrimaryAttack ) || Input.VR.RightHand.JoystickPress )
 		{
-			Input.SuppressButton( InputButton.PrimaryAttack ); 
+			Input.SuppressButton( InputButton.PrimaryAttack );
 			localPlayer.ActiveChildInput = SelectedWeapon;
 			IsOpen = false;
 			CurrentSound.Stop();
@@ -144,7 +144,7 @@ public class InventoryBar : Panel
 
 	}
 
-	int SlotPressInput(int SelectedIndex, List<Weapon> sortedWeapons )
+	int SlotPressInput( int SelectedIndex, List<Weapon> sortedWeapons )
 	{
 		var columninput = -1;
 

@@ -283,8 +283,8 @@
 		suit.DeleteAsync( 0.1f );
 	}
 	public void GiveWeapon( Weapon wep )
-	{ 
-		if (HLGame.sv_force_physics)
+	{
+		if ( HLGame.sv_force_physics )
 		{
 			wep.PhysicsEnabled = false;
 			wep.Position = Position;
@@ -370,21 +370,21 @@
 				postProcess.Saturation = 1;
 			}
 			else
-			{	
+			{
 				postProcess.Saturation = 0;
 			}
 
 			if ( LeftHand != null && RightHand != null )
-			if ( HasHEV )
-			{
-				LeftHand.SetModel( "models/vr/v_hand_hevsuit/v_hand_hevsuit_left.vmdl" );
-				RightHand.SetModel( "models/vr/v_hand_hevsuit/v_hand_hevsuit_right.vmdl" );
-			}
-			else
-			{
-				LeftHand.SetModel( "models/vr/v_hand_labcoat/v_hand_labcoat_left.vmdl" );
-				RightHand.SetModel( "models/vr/v_hand_labcoat/v_hand_labcoat_right.vmdl" );
-			}
+				if ( HasHEV )
+				{
+					LeftHand.SetModel( "models/vr/v_hand_hevsuit/v_hand_hevsuit_left.vmdl" );
+					RightHand.SetModel( "models/vr/v_hand_hevsuit/v_hand_hevsuit_right.vmdl" );
+				}
+				else
+				{
+					LeftHand.SetModel( "models/vr/v_hand_labcoat/v_hand_labcoat_left.vmdl" );
+					RightHand.SetModel( "models/vr/v_hand_labcoat/v_hand_labcoat_right.vmdl" );
+				}
 		}
 		else
 		{
@@ -519,6 +519,7 @@
 				SwitchToBestWeapon();
 			}
 		}
+		SimulateAnimator();
 	}
 
 	void ViewPunchThink()
@@ -645,7 +646,7 @@
 		if ( info.Hitbox.HasTag( "generic" ) )
 			info.Damage *= 1;
 		if ( info.Hitbox.HasTag( "head" ) )
-			info.Damage *= 3; 
+			info.Damage *= 3;
 		if ( info.Hitbox.HasTag( "chest" ) )
 			info.Damage *= 1;
 		if ( info.Hitbox.HasTag( "stomach" ) )

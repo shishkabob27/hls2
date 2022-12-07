@@ -11,7 +11,7 @@
 		public Logo()
 		{
 		}
-		[Event.Frame]
+		[Event.Client.Frame]
 		void frame()
 		{
 			if ( lastFrame <= 1f / FPS ) return;

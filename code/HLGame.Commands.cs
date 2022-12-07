@@ -1,4 +1,4 @@
-﻿public partial class HLGame : Game
+﻿public partial class HLGame : GameManager
 {
 	// TODO: CheatCmd
 	[ConCmd.Admin]
@@ -39,7 +39,7 @@
 			return;
 		}
 
-		ConsoleSystem.Caller.Pawn.EyeRotation = Rotation.From( pitch, yaw, roll );
+		(ConsoleSystem.Caller.Pawn as HLPlayer).EyeRotation = Rotation.From( pitch, yaw, roll );
 	}
 
 	[ConCmd.Server]
@@ -51,7 +51,7 @@
 			return;
 		}
 
-		var ent = ConsoleSystem.Caller.Pawn;
+		var ent = ConsoleSystem.Caller.Pawn as HLPlayer;
 		if ( ent == null )
 		{
 			Log.Warning( "getpos: Player is missing a Pawn entity" );
@@ -67,7 +67,7 @@
 	[ConVar.Client]
 	public static int cl_showpos { get; set; } = 0;
 
-	[Event.Frame]
+	[Event.Client.Frame]
 	static void DrawPos()
 	{
 		if ( cl_showpos == 0 ) return;
@@ -209,11 +209,12 @@
 		if ( sv_classic_noclip )
 		{
 			(ConsoleSystem.Caller.Pawn as HLPlayer).IsNoclipping = !(ConsoleSystem.Caller.Pawn as HLPlayer).IsNoclipping;
-		} else
+		}
+		else
 		{
 			(ConsoleSystem.Caller.Pawn as HLPlayer).DoHLPlayerNoclip( ConsoleSystem.Caller );
 		}
-		
+
 	}
 	[ConCmd.Server( "spawnScientist", Help = "Kills the calling player with generic damage" )]
 	public static void SpawnScientistCommand()
@@ -295,7 +296,7 @@
 	[ConCmd.Server( "reset_game" )]
 	public static void ResetGame()
 	{
-		if (!ConsoleSystem.Caller.HasPermission("admin"))
+		if ( !ConsoleSystem.Caller.HasPermission( "admin" ) )
 		{
 			Log.Info( "No permission: reset_game" );
 			return;

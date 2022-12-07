@@ -1,4 +1,4 @@
-﻿public partial class HLGame : Game
+﻿public partial class HLGame : GameManager
 {
 	public static void MoveToDMSpawnpoint( Entity pawn )
 	{

@@ -10,7 +10,7 @@ global using XeNPC;
 /// This is the heart of the sv_gamemode. It's responsible
 /// for creating the player and stuff.
 /// </summary>
-public partial class HLGame : Game
+public partial class HLGame : GameManager
 {
 	[Net]
 	public HudPanel Hud { get; set; }
@@ -57,7 +57,7 @@ public partial class HLGame : Game
 
 
 		// If we're on an empty map don't create a game but instead put us into the main menu.
-		if ( Global.MapName == "<empty>" && IsServer)
+		if ( Global.MapName == "<empty>" && IsServer )
 		{
 
 			Log.Info( "Map is empty! Loading the Main Menu..." );
