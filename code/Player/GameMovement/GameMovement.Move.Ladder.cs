@@ -38,7 +38,7 @@
 			// otherwise, use the direction player is attempting to move
 			if ( ForwardMove != 0 || RightMove != 0 )
 			{
-				wishdir = Input.Rotation.Forward * ForwardMove + Input.Rotation.Right * RightMove;
+				wishdir = Player.ViewAngles.ToRotation().Forward * ForwardMove + Player.ViewAngles.ToRotation().Right * RightMove;
 				wishdir = wishdir.Normal;
 			}
 			else
@@ -82,7 +82,7 @@
 
 		if ( Input.Down( InputButton.Jump ) )
 		{
-			Player.MoveType = MoveType.MOVETYPE_WALK;
+			//Player.MoveType = MoveType.MOVETYPE_WALK;
 			// player->SetMoveCollide( MOVECOLLIDE_DEFAULT );
 
 			Velocity = pm.Normal * 270;
@@ -91,7 +91,7 @@
 		{
 			if ( forwardSpeed != 0 || rightSpeed != 0 )
 			{
-				var velocity = Input.Rotation.Forward * forwardSpeed;
+				var velocity = Player.ViewAngles.Forward * forwardSpeed;
 				velocity += Right * rightSpeed;
 
 				Vector3 temp = Vector3.Up;

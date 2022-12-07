@@ -161,7 +161,7 @@ public partial class ButtonEntityRot : KeyframeEntity, IUse
 			PositionStart = LocalPosition;
 
 			// Get the direction we want to move in
-			var dir = MoveDir.Direction;
+			var dir = MoveDir.Forward;
 
 			// Open position is the size of the bbox in the direction minus the lip size
 			var boundSize = CollisionBounds.Size;
@@ -326,8 +326,8 @@ public partial class ButtonEntityRot : KeyframeEntity, IUse
 		{
 			DebugOverlay.Text( $"State: {State}\nProgress: {Progress}", WorldSpaceBounds.Center, 10, Color.White );
 
-			var dir_world = MoveDir.Direction;
-			if ( MoveDirIsLocal ) dir_world = Transform.NormalToWorld( MoveDir.Direction );
+			var dir_world = MoveDir.Forward;
+			if ( MoveDirIsLocal ) dir_world = Transform.NormalToWorld( MoveDir.Forward );
 
 			DebugOverlay.Line( Position, Position + dir_world * 100 );
 		}

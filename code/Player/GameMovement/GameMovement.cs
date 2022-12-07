@@ -47,10 +47,10 @@ public partial class HL1GameMovement : BasePlayerController
 	{
 		base.FrameSimulate();
 
-		EyeRotation = Input.Rotation;
 		if ( Player == null )
 			return;
 
+		EyeRotation = Player.ViewAngles.ToRotation();
 		UpdateViewOffset();
 	}
 
@@ -82,10 +82,10 @@ public partial class HL1GameMovement : BasePlayerController
 
 	public virtual void PlayerMove()
 	{
-		EyeRotation = Input.Rotation;
-		Forward = Input.Rotation.Forward;
-		Right = Input.Rotation.Right;
-		Up = Input.Rotation.Up;
+		EyeRotation = (Pawn as HLPlayer).ViewAngles.ToRotation();
+		Forward = (Pawn as HLPlayer).ViewAngles.ToRotation().Forward;
+		Right = (Pawn as HLPlayer).ViewAngles.ToRotation().Right;
+		Up = (Pawn as HLPlayer).ViewAngles.ToRotation().Up;
 
 		var speed = MaxSpeed;
 
@@ -97,7 +97,7 @@ public partial class HL1GameMovement : BasePlayerController
 
 		ForwardMove = Input.AnalogMove.x * speed;
 		RightMove = -Input.AnalogMove.y * speed;
-		UpMove = Input.AnalogMove.z * speed;
+		UpMove = Input.AnalogMove.z * speed; 
 
 		if ( Client.IsUsingVr )
 		{
@@ -589,7 +589,7 @@ public partial class HL1GameMovement : BasePlayerController
 				$"Direction             {new Vector3( Input.AnalogMove.x, -Input.AnalogMove.y, Input.AnalogMove.z )}\n" +
 				$"WishVelocity          {WishVelocity}\n" +
 				$"SurfaceFriction       {Player.SurfaceFriction}\n" +
-				$"MoveType              {Player.MoveType}\n" +
+				$"MoveType              Obsoleted\n" +
 				$"Speed                 {Velocity.Length}\n" +
 				$"MaxSpeed              {MaxSpeed}\n" +
 				$"\n" +

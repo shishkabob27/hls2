@@ -334,14 +334,14 @@
 		// If we are in water jump cycle, don't apply friction
 		//if ( player->m_flWaterJumpTime )
 		//   return;
-
+		var angVelocityAsVector = new Vector3( Entity.AngularVelocity.pitch, Entity.AngularVelocity.yaw, Entity.AngularVelocity.roll );
 		// Not on ground - no friction
 		if ( Entity.GroundEntity == null )
 			return;
 		frictionAmount = frictionAmount + (Friction - 1);
 
 		// Calculate speed
-		var speed = Entity.AngularVelocity.Length;
+		var speed = angVelocityAsVector.Length;
 		if ( speed < 0.1f ) return;
 
 		// Bleed off some speed, but if we have less than the bleed

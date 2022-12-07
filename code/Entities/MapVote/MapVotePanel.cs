@@ -19,24 +19,18 @@ class MapVotePanel : Panel
 
 	public async Task PopulateMaps()
 	{
-		var query = new Package.Query
-		{
-			Type = Package.Type.Map,
-			Order = Package.Order.User,
-			Take = 50,
-		};
-
-		query.Tags.Add( "game:shishkabob.hls2" ); // maybe this should be a "for this game" type of thing instead
+		var query = "game:shishkabob.hls2";
 		if ( HLGame.hl_extended_mapvote )
 		{
-			query.Tags.Add( "game:matt.ttt" );
-			query.Tags.Add( "game:facepunch.dm98" );
-			query.Tags.Add( "game:gman.dm04" );
-			query.Tags.Add( "game:facepunch.boomer" );
+			query += "game:matt.ttt";
+			query += "game:facepunch.dm98";
+			query += "game:gman.dm04";
+			query += "game:facepunch.boomer";
 		}
-		var packages = await query.RunAsync( default );
+		 
+		var packages = await Package.FindAsync( query );
 
-		foreach ( var package in packages )
+		foreach ( var package in packages.Packages )
 		{
 			AddMap( package.FullIdent );
 		}

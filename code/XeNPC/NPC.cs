@@ -154,7 +154,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		EnableHitboxes = true;
 		if ( NPCSurface != null )
 		{
-			PhysicsBody.SetSurface( NPCSurface );
+			PhysicsBody.SurfaceMaterial = NPCSurface;
 		}
 		Speed = 50;
 
@@ -736,7 +736,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		if ( info.Hitbox.HasTag( "leg" ) )
 			info.Damage *= 1;
 
-		switch ( GetHitboxGroup( info.HitboxIndex ) )
+		/*switch ( GetHitboxGroup( info.HitboxIndex ) )
 		{
 			case HITGROUP_GENERIC:
 				break;
@@ -759,7 +759,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				break;
 			default:
 				break;
-		}
+		}*/
 
 		if ( IsServer )
 		{
@@ -936,7 +936,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		ent.UsePhysicsCollision = true;
 		if ( NPCSurface != null && ent.PhysicsBody != null )
 		{
-			ent.PhysicsBody.SetSurface( NPCSurface );
+			ent.PhysicsBody.SurfaceMaterial = NPCSurface;
 		}
 
 		ent.CopyFrom( this );

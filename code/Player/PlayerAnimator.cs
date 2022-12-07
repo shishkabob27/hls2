@@ -18,7 +18,7 @@ namespace Sandbox
 			var forward = Rotation.Forward.Dot(dir);
 			var sideward = Rotation.Right.Dot(dir);
 			var angle = MathF.Atan2(sideward, forward).RadianToDegree().NormalizeDegrees();
-			var idealRotation = Rotation.LookAt(Input.Rotation.Forward.WithZ(0), Vector3.Up);//Rotation.LookAt( Input.Rotation.Forward.WithZ(Input.Rotation.Forward.z.Clamp(-0.01f, 0.01f)), Vector3.Up );
+			var idealRotation = Rotation.LookAt( player.ViewAngles.Forward.WithZ(0), Vector3.Up);//Rotation.LookAt( Input.Rotation.Forward.WithZ(Input.Rotation.Forward.z.Clamp(-0.01f, 0.01f)), Vector3.Up );
 																					  //(Pawn.EyeRotation.Pitch().Clamp(-10, 10))
 		
 			
@@ -42,7 +42,7 @@ namespace Sandbox
 				SetAnimParameter( "voice", Client.TimeSinceLastVoice < 0.5f ? Client.VoiceLevel : 0.0f );
 			}
 
-			Vector3 aimPos = Pawn.EyePosition + Input.Rotation.Forward * 200;
+			Vector3 aimPos = Pawn.EyePosition + player.ViewAngles.Forward * 200;
 			Vector3 lookPos = aimPos;
 			SetAnimParameter("aim_eyes_pitch", Pawn.EyeRotation.Pitch());
 			SetAnimParameter("aim_eyes_yaw", Pawn.EyeRotation.Yaw());
@@ -113,7 +113,7 @@ namespace Sandbox
 				var angle = MathF.Atan2( sideward, forward ).RadianToDegree().NormalizeDegrees();
 
 				SetAnimParameter( "move_direction", angle );
-				SetAnimParameter( "movedir", new Vector3(1, ((sideward / 36)) * -1, 1).EulerAngles.Direction );
+				SetAnimParameter( "movedir", new Vector3(1, ((sideward / 36)) * -1, 1).EulerAngles.Forward );
 				SetAnimParameter( "move_speed", Velocity.Length );
 				SetAnimParameter( "move_groundspeed", Velocity.WithZ( 0 ).Length );
 				SetAnimParameter( "move_y", sideward );

@@ -459,7 +459,7 @@
 		//AngularVelocity = Angles.Zero;
 		base.StartTouch( other );
 
-		if ( (this.PhysicsBody != null && (this.PhysicsBody.GetDominantSurface() == "hl_flesh" || this.PhysicsBody.GetDominantSurface() == "flesh" || this.PhysicsBody.GetDominantSurface() == "flesh_yellow" || this.PhysicsBody.GetDominantSurface() == "hl_flesh_yellow")) )
+		if ( (this.PhysicsBody != null && (this.PhysicsBody.SurfaceMaterial == "hl_flesh" || this.PhysicsBody.SurfaceMaterial == "flesh" || this.PhysicsBody.SurfaceMaterial == "flesh_yellow" || this.PhysicsBody.SurfaceMaterial == "hl_flesh_yellow")) )
 		{
 			if ( BloodColour == NPC.BLOOD_COLOUR_RED )
 			{

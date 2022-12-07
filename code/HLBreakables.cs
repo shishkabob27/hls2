@@ -43,7 +43,7 @@ public static partial class Breakables
 
 		var genericGibsSpawned = false;
 		var breakList = model.GetData<ModelBreakPiece[]>();
-		string surfName = sourcePhysics?.GetDominantSurface();
+		string surfName = sourcePhysics?.SurfaceMaterial;
 		var surface = Surface.FindByName( surfName );
 		if ( surface == null ) surface = Surface.FindByName( "default" );
 		// If model has particles to spawn on break, do not do generic gibs

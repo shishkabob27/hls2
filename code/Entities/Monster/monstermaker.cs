@@ -12,7 +12,7 @@ public class monstermaker : Entity
     [Input]
 	new public void Spawn()
 	{
-        var entityType = TypeLibrary.GetTypeByName<Entity>( monstertype );
+        var entityType = TypeLibrary.GetDescription<Entity>( monstertype ).GetType();
         if ( entityType == null )
 
             if ( !TypeLibrary.Has<SpawnableAttribute>( entityType ) )

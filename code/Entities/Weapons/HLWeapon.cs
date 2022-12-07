@@ -647,7 +647,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 				{
 					//tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2000000 * force) );
 					tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2000000 * force) );
-					if ( tr.Body.GetDominantSurface().Contains("flesh") && tr.Body.GetDominantSurface().Contains( "yellow" ) )
+					if ( tr.Body.SurfaceMaterial.Contains("flesh") && tr.Body.SurfaceMaterial.Contains( "yellow" ) )
 					{
 						var trace = Trace.Ray( BPosition, BPosition + BForward * 512 )
 						.WorldOnly()
@@ -660,7 +660,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 							Decal.Place( decal, trace );
 						}
 					}
-					else if( tr.Body.GetDominantSurface().Contains( "flesh" ) )
+					else if( tr.Body.SurfaceMaterial.Contains( "flesh" ) )
 					{
 						var trace = Trace.Ray( BPosition, BPosition + BForward * 512 )
 						.WorldOnly()

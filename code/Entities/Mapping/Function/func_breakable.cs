@@ -38,7 +38,7 @@ public partial class func_breakable : BrushEntity
 				OnKilled();
 			}
 		}
-		string surfName = PhysicsBody?.GetDominantSurface();
+		string surfName = PhysicsBody?.SurfaceMaterial;
 		var surface = Surface.FindByName( surfName );
 		if ( surface == null ) surface = Surface.FindByName( "default" );
 		surface.GetBounceSound( Position, 2f );

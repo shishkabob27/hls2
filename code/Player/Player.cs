@@ -328,7 +328,7 @@
 
 		if ( corpse )
 		{
-			CreateCorpse( Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, GetHitboxBone( LastDamage.HitboxIndex ), this );
+			CreateCorpse( Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, LastDamage.Hitbox.GetName(), this );
 		}
 
 		Controller = null;
@@ -469,9 +469,9 @@
 			LeftHand.Simulate( cl );
 			RightHand.Simulate( cl );
 		}
-		if ( Input.ActiveChild != null )
+		if ( ActiveChildInput.IsValid() && ActiveChildInput.Owner == this )
 		{
-			ActiveChild = Input.ActiveChild;
+			ActiveChild = ActiveChildInput;
 		}
 
 		if ( LifeState != LifeState.Alive )
@@ -654,7 +654,7 @@
 		if ( info.Hitbox.HasTag( "leg" ) )
 			info.Damage *= 1;
 
-		switch ( GetHitboxGroup( info.HitboxIndex ) )
+		/*switch ( GetHitboxGroup( info.HitboxIndex ) )
 		{
 			case HITGROUP_GENERIC:
 				break;
@@ -677,7 +677,7 @@
 				break;
 			default:
 				break;
-		}
+		}*/
 
 		this.ProceduralHitReaction( info );
 

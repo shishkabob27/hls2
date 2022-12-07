@@ -1,4 +1,6 @@
-﻿[Library]
+﻿using Sandbox;
+
+[Library]
 public partial class WalkController : BasePlayerController
 {
 	/*
@@ -164,7 +166,7 @@ public partial class WalkController : BasePlayerController
 	public override void FrameSimulate()
 	{
 		base.FrameSimulate();
-		EyeRotation = Input.Rotation;
+		EyeRotation = (Pawn as HLPlayer).ViewAngles.ToRotation();
 		if ( Client.IsUsingVr ) EyeRotation = Input.VR.Head.Rotation;
 	}
 	public virtual void StartGravity()
@@ -206,7 +208,7 @@ public partial class WalkController : BasePlayerController
 		UpdateBBox();
 
 		EyeLocalPosition += TraceOffset;
-		EyeRotation = Input.Rotation;
+		EyeRotation = (Pawn as HLPlayer).ViewAngles.ToRotation();
 		if ( Client.IsUsingVr ) EyeRotation = Input.VR.Head.Rotation;
 
 		RestoreGroundPos();
@@ -357,7 +359,7 @@ public partial class WalkController : BasePlayerController
 
 	public void GetWishSpeed()
 	{
-		Rotation a = Input.Rotation;
+		Rotation a = (Pawn as HLPlayer).ViewAngles.ToRotation();
 		if ( Client.IsUsingVr ) a = Input.VR.Head.Rotation;
 		var forward = a.Forward;
 		var right = a.Right;
@@ -812,7 +814,7 @@ public partial class WalkController : BasePlayerController
 	public virtual void CheckLadder()
 	{
 		var wishvel = new Vector3( Input.AnalogMove.x, Input.AnalogMove.y, 0 );
-		var a = Input.Rotation;
+		var a = (Pawn as HLPlayer).ViewAngles.ToRotation();
 		if ( Client.IsUsingVr ) a = Input.VR.Head.Rotation;
 		wishvel *= a.Angles().WithPitch( 0 ).ToRotation();
 		wishvel = wishvel.Normal;

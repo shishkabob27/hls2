@@ -72,7 +72,7 @@ public partial class FadeRenderHook : RenderHook
 		if ( renderStage == Stage.AfterPostProcess )
 		{
 			var a = Material.UI.Basic;
-			a.OverrideTexture( "Texture", Texture.White );
+			a.Set( "Texture", Texture.White );
 			attributes.Set( "Texture", Texture.White );
 			Graphics.DrawQuad( new Rect( 0, 0, Screen.Width, Screen.Height ),
 				a,

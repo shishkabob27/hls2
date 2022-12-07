@@ -189,7 +189,7 @@ public partial class DoorEntity : KeyframeEntity, IUse
 			PositionA = LocalPosition;
 
 			// Get the direction we want to move in
-			var dir = MoveDir.Direction;
+			var dir = MoveDir.Forward;
 
 			// Open position is the size of the bbox in the direction minus the lip size
 			var boundSize = CollisionBounds.Size;
