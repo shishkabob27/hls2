@@ -406,7 +406,7 @@ partial class PhysGun : Weapon
 
 	public override void BuildInput()
 	{
-		if ( Input.Down( InputButton.Use) ||
+		if ( !Input.Down( InputButton.Use) ||
 			 !Input.Down( InputButton.PrimaryAttack ) ||
 			 !GrabbedEntity.IsValid() )
 		{
