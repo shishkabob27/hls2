@@ -448,7 +448,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			if ( REL == 0 ) continue; // Ignore anything that we don't care about.
 			if ( ent.Health <= 0 ) continue; // Ignore anything dead.
 			bool hasdrawn = false;
-			var a = Trace.Ray( EyePosition, ent.EyePosition )
+			var a = Trace.Ray( EyePosition, ent.AimRay.Position )
 				.WithoutTags( "monster", "npc", "player" );
 
 			TraceResult b;
@@ -458,7 +458,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				if ( LastTraces.Contains( a ) )
 				{
 					b = LastTracesResults[Array.IndexOf( LastTraces, a )];
-					if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Yellow, SeeDelay + Time.Delta, false );
+					if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.AimRay.Position, Color.Yellow, SeeDelay + Time.Delta, false );
 				}
 				else
 				{
@@ -478,10 +478,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 			if ( b.Fraction != 1 )
 			{
-				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Red, SeeDelay + Time.Delta, false );
+				if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.AimRay.Position, Color.Red, SeeDelay + Time.Delta, false );
 				continue;
 			}
-			if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.EyePosition, Color.Green, SeeDelay + Time.Delta, false );
+			if ( npc_debug_los && !hasdrawn ) DebugOverlay.Line( b.StartPosition, ent.AimRay.Position, Color.Green, SeeDelay + Time.Delta, false );
 			ProcessEntity( ent, REL );
 		}
 	}

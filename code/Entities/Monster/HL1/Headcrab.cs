@@ -82,14 +82,14 @@ public class Headcrab : NPC
 				gravity = 1;
 
 			// How fast does the headcrab need to travel to reach that height given gravity?
-			float height = (Enemy.EyePosition.z - Position.z);
+			float height = (Enemy.AimRay.Position.z - Position.z);
 			if ( height < 16 )
 				height = 16;
 			float speed2 = (float)Math.Sqrt( 2 * gravity * height );
 			float time = speed2 / gravity;
 
 			// Scale the sideways velocity to get there at the right time
-			vecJumpDir = (Enemy.EyePosition - Position);
+			vecJumpDir = (Enemy.AimRay.Position - Position);
 			vecJumpDir = vecJumpDir * (1.0f / time);
 
 			// Speed to offset gravity at the desired height

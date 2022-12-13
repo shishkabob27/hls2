@@ -6,7 +6,7 @@
 
 
 	[ClientRpc]
-	private void CreateCorpse( Vector3 velocity, DamageFlags damageFlags, Vector3 forcePos, Vector3 force, string hitbox, Entity owner )
+	private void CreateCorpse( Vector3 velocity, Vector3 forcePos, Vector3 force, string hitbox, Entity owner )
 	{
 		var ent = new AnimatedEntity();
 		var c = ent.Components.Create<Movement>();

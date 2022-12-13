@@ -151,7 +151,7 @@
 
 		foreach ( var target in targets )
 		{
-			if ( target.IsWorld || target is Player ) continue;
+			if ( target.IsWorld || target is HLPlayer ) continue;
 
 			Log.Info( $"Removing {target.ToString()}..." );
 			target.Delete();

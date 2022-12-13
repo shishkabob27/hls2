@@ -27,11 +27,11 @@
 	{
 		float distance = 0;
 
-		foreach ( var client in Client.All )
+		foreach ( var client in Game.Clients )
 		{
 			if ( client.Pawn == null ) continue;
 			if ( client.Pawn == pawn ) continue;
-			if ( client.Pawn.LifeState != LifeState.Alive ) continue;
+			if ( (client.Pawn as HLPlayer).LifeState != LifeState.Alive ) continue;
 
 			var spawnDist = (spawnpoint.Position - client.Pawn.Position).Length;
 			distance = MathF.Max( distance, spawnDist );
