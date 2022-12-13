@@ -4,7 +4,7 @@
 {
 	public override void Tick()
 	{
-		SetClass("on", ( Local.Pawn as HLPlayer ).FlashlightEnabled);
-		SetClass( "invisible", !( Local.Pawn as HLPlayer ).HasHEV || ( Local.Pawn as HLPlayer ).Health <= 0 );
+		SetClass("on", (Game.LocalPawn as HLPlayer).FlashlightEnabled);
+		SetClass("invisible", !(Game.LocalPawn as HLPlayer).HasHEV || (Game.LocalPawn as HLPlayer).Health <= 0);
 	}
 }

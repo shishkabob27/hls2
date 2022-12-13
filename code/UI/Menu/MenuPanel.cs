@@ -8,11 +8,5 @@ public class MenuPanel : HudEntity<MenuRootPanel>
 	public MenuPanel()
 	{
 		Current = this;
-
-		if ( IsClient )
-		{
-
-
-		}
 	}
 }

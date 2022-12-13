@@ -10,7 +10,7 @@
 			return;
 		}
 
-		var ent = ConsoleSystem.Caller.Pawn;
+		var ent = ConsoleSystem.Caller.Pawn as HLPlayer;
 		if ( ent == null )
 		{
 			Log.Warning( "setpos: Player is missing a Pawn entity" );
@@ -71,17 +71,17 @@
 	static void DrawPos()
 	{
 		if ( cl_showpos == 0 ) return;
-		if ( !Local.Pawn.IsValid() ) return;
+		if ( !Game.LocalPawn.IsValid() ) return;
 
-		DebugOverlay.ScreenText( $"pos: {Local.Pawn.Position}", Vector2.Zero.WithX( 2 ), 6, Color.White );
-		DebugOverlay.ScreenText( $"ang: {Local.Pawn.Rotation.Angles()}", Vector2.Zero.WithX( 2 ), 7, Color.White );
-		DebugOverlay.ScreenText( $"vel: {Local.Pawn.Velocity.Length:0.##}", Vector2.Zero.WithX( 2 ), 8, Color.White );
+		DebugOverlay.ScreenText( $"pos: {Game.LocalPawn.Position}", Vector2.Zero.WithX( 2 ), 6, Color.White );
+		DebugOverlay.ScreenText( $"ang: {Game.LocalPawn.Rotation.Angles()}", Vector2.Zero.WithX( 2 ), 7, Color.White );
+		DebugOverlay.ScreenText( $"vel: {Game.LocalPawn.Velocity.Length:0.##}", Vector2.Zero.WithX( 2 ), 8, Color.White );
 	}
 
 	[ConCmd.Admin]
 	private static void ent_fire( string targetName, string input, string value = null )
 	{
-		var ply = ConsoleSystem.Caller.Pawn;
+		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
 
 		List<Entity> targets = new();
 		if ( targetName == "!picker" )
@@ -113,7 +113,7 @@
 	[ConCmd.Admin]
 	private static void ent_remove( string targetName = "" )
 	{
-		var ply = ConsoleSystem.Caller.Pawn;
+		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
 
 		List<Entity> targets = new();
 		if ( targetName == "" )
@@ -135,7 +135,7 @@
 
 		foreach ( var target in targets )
 		{
-			if ( target.IsWorld || target is Client ) continue;
+			if ( target.IsWorld || target is IClient ) continue;
 
 			Log.Info( $"Removing {target.ToString()}..." );
 			target.Delete();
@@ -160,7 +160,7 @@
 
 	private static void ToggleDebugFlag( string targetName = "", EntityDebugFlags flag = EntityDebugFlags.Text )
 	{
-		var ply = ConsoleSystem.Caller.Pawn;
+		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
 		List<Entity> targets = new();
 		if ( targetName == "" )
 		{
@@ -256,15 +256,15 @@
 	[ConCmd.Server( "give" )]
 	public static void GiveEntity( string entName )
 	{
-		var owner = ConsoleSystem.Caller.Pawn as Player;
+		var owner = ConsoleSystem.Caller.Pawn as HLPlayer;
 
 		if ( owner == null )
 			return;
 
-		var entityType = TypeLibrary.GetDescription<Entity>( entName ).GetType();
+		var entityType = TypeLibrary.GetType<Entity>( entName ).GetType();
 		if ( entityType == null )
 
-			if ( !TypeLibrary.Has<SpawnableAttribute>( entityType ) )
+			if ( !TypeLibrary.HasAttribute<SpawnableAttribute>( entityType ) )
 				return;
 
 		var ent = TypeLibrary.Create<Entity>( entityType );
@@ -289,7 +289,7 @@
 	[ConCmd.Admin( "respawn_entities" )]
 	public static void RespawnEntities()
 	{
-		Map.Reset( DefaultCleanupFilter );
+		Game.ResetMap( Entity.All.Where( x => x is HLHud || x is HLPlayer ).ToArray() );
 		ConsoleSystem.Run( "resetgui" );
 	}
 
@@ -303,7 +303,7 @@
 		}
 		// Delete everything except the clients and the world
 		var ents = Entity.All.ToList();
-		ents.RemoveAll( e => e is Client );
+		ents.RemoveAll( e => e is IClient );
 		ents.RemoveAll( e => e is WorldEntity );
 		foreach ( Entity ent in ents )
 		{
@@ -311,13 +311,14 @@
 		}
 
 		// Reset the map
-		Map.Reset( DefaultCleanupFilter );
+		//Map.Reset( DefaultCleanupFilter );
+		Game.ResetMap( Entity.All.Where( x => x is HLHud || x is HLPlayer ).ToArray() );
 
 		// Create a brand new game
 		HLGame.Current = new HLGame();
 
 		// Tell our new game that all clients have just joined to set them all back up.
-		foreach ( Client cl in Client.All )
+		foreach ( IClient cl in Game.Clients )
 		{
 			cl.Components.RemoveAll();
 			(HLGame.Current as HLGame).ClientJoined( cl );
@@ -327,15 +328,15 @@
 	[ConCmd.Server( "ent_create" )]
 	public static void SpawnEntity( string entName )
 	{
-		var owner = ConsoleSystem.Caller.Pawn as Player;
+		var owner = ConsoleSystem.Caller.Pawn as HLPlayer;
 
 		if ( owner == null )
 			return;
 
-		var entityType = TypeLibrary.GetDescription<Entity>( entName ).GetType();
+		var entityType = TypeLibrary.GetType<Entity>( entName ).GetType();
 		if ( entityType == null )
 
-			if ( !TypeLibrary.Has<SpawnableAttribute>( entityType ) )
+			if ( !TypeLibrary.HasAttribute<SpawnableAttribute>( entityType ) )
 				return;
 
 		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 2000 )

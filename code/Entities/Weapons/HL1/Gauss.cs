@@ -50,7 +50,7 @@ partial class Gauss : Weapon
 	}
 
 	Particles Beam;
-	public override void Simulate( Client owner )
+	public override void Simulate( IClient owner )
 	{
 		if ( spinSound == null )
 		{
@@ -88,12 +88,12 @@ partial class Gauss : Weapon
 			}
 			if ( dmg < 10 ) return; // wait until we have a bit of charge
 			ViewModelEntity?.SetAnimParameter( "spinning", false );
-			var x = 85 + Rand.Float( 0, 31 );
+			var x = 85 + Game.Random.Float( 0, 31 );
 			PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 
 			GaussLaser( whiteCOLOUR, dmg, player.EyeRotation.Forward, GetFiringPos(), true );
-			Rand.SetSeed( Time.Tick ); // same random seed across client and server
-			PlayAftershock = Time.Now + Rand.Float( 0.3f, 0.8f );
+			Game.SetRandomSeed( Time.Tick ); // same random seed across client and server
+			PlayAftershock = Time.Now + Game.Random.Float( 0.3f, 0.8f );
 			var ZVel = player.Velocity.z;
 			var a = player.Velocity;
 
@@ -129,12 +129,12 @@ partial class Gauss : Weapon
 		{
 			return;
 		}
-		var x = 85 + Rand.Float( 0, 31 );
+		var x = 85 + Game.Random.Float( 0, 31 );
 		PlaySound( "gauss" ).SetPitch( HLUtils.CorrectPitch( x ) );
 		GaussLaser( orangeCOLOUR, 20, player.EyeRotation.Forward, GetFiringPos() );
 
-		Rand.SetSeed( Time.Tick ); // same random seed across client and server
-		PlayAftershock = Time.Now + Rand.Float( 0.3f, 0.8f );
+		Game.SetRandomSeed( Time.Tick ); // same random seed across client and server
+		PlayAftershock = Time.Now + Game.Random.Float( 0.3f, 0.8f );
 		ViewPunch( 0, -2 );
 
 	}
@@ -172,7 +172,7 @@ partial class Gauss : Weapon
 			foreach ( var tr in TraceBullet( vecSrc, vecDest, 2.0f ) )
 			{
 
-				if ( IsServer )
+				if ( Game.IsServer )
 				{
 					tr.Surface.DoHLBulletImpact( tr );
 
@@ -365,9 +365,9 @@ partial class Gauss : Weapon
 		//charge attack here!
 
 	}
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Gauss, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

@@ -1,3 +1,5 @@
+using Sandbox.ModelEditor.Nodes;
+using Sandbox.Utility;
 using System.Text.Json.Serialization;
 /// <summary>
 /// Sounds to be used by ent_door if it does not override sounds.
@@ -329,7 +331,7 @@ public partial class DoorEntity : KeyframeEntity, IUse
 		// When a model is reloaded, all entities get set to NULL model first
 		if ( model.IsError ) return;
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			if ( model.TryGetData( out ModelPropData propInfo ) )
 			{

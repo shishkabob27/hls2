@@ -21,10 +21,10 @@
 			var a = Shake_OFFSET;
 			for ( int i = 0; i < 3; i++ )
 			{
-				a[i] = Rand.Float( Shake_AMPLITUDE * -1, Shake_AMPLITUDE );
+				a[i] = Game.Random.Float( Shake_AMPLITUDE * -1, Shake_AMPLITUDE );
 			}
 			Shake_OFFSET = a;
-			Shake_ANGLE = Rand.Float( Shake_AMPLITUDE * -0.25f, Shake_AMPLITUDE * 0.25f );
+			Shake_ANGLE = Game.Random.Float( Shake_AMPLITUDE * -0.25f, Shake_AMPLITUDE * 0.25f );
 		}
 
 		shakeFraction = (Shake_ENDTIME - Time.Now) / Shake_DURATION;
@@ -55,7 +55,7 @@
 		// Lower the shake amplitute over time
 		Shake_AMPLITUDE -= Shake_AMPLITUDE * (Time.Delta / (Shake_DURATION * Shake_FREQUENCY));
 
-		if ( Global.IsRunningInVR && shakeFraction != 0 )
+		if ( Game.IsRunningInVR && shakeFraction != 0 )
 		{
 			Input.VR.RightHand.TriggerHapticVibration( Shake_DURATION, shakeFrequency, shakeFraction );
 			Input.VR.LeftHand.TriggerHapticVibration( Shake_DURATION, shakeFrequency, shakeFraction );

@@ -36,7 +36,7 @@ public partial class Suit : ModelEntity
 
         OnPlayerTouch.Fire( other );
 
-		if (IsServer)
+		if (Game.IsServer)
 			Delete();
 	}
 }

@@ -10,7 +10,7 @@ public class TeamSelector : Panel
 	}
 
 	public void SelectTeam(string team){
-		var p = Local.Pawn as HLPlayer;
+		var p = Game.LocalPawn as HLPlayer;
 
 		switch (team)
 		{

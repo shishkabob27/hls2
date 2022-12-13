@@ -39,7 +39,7 @@ partial class Hornet : NPC, ICombat
 		NoNav = true;
 		entFOV = 0.9f;
 		Health = 1;
-		if ( Rand.Int( 1, 5 ) <= 2 )
+		if ( Game.Random.Int( 1, 5 ) <= 2 )
 		{
 			Type = HORNET_RED;
 			FlySpeed = FlySpeedRed;
@@ -127,9 +127,9 @@ partial class Hornet : NPC, ICombat
 			{
 				// random pattern only applies to hornets fired by monsters, not players. 
 				var a = Velocity;
-				a.x += Rand.Float( -0.10f, 0.10f );// scramble the flight dir a bit.
-				a.y += Rand.Float( -0.10f, 0.10f );
-				a.z += Rand.Float( -0.10f, 0.10f );
+				a.x += Game.Random.Float( -0.10f, 0.10f );// scramble the flight dir a bit.
+				a.y += Game.Random.Float( -0.10f, 0.10f );
+				a.z += Game.Random.Float( -0.10f, 0.10f );
 				Velocity = a;
 			}
 
@@ -137,7 +137,7 @@ partial class Hornet : NPC, ICombat
 			{
 				case HORNET_RED:
 					Velocity = Velocity * ( FlySpeed * flDelta );// scale the dir by the ( speed * width of turn )
-					StartAttack = Time.Now + Rand.Float( 0.1f, 0.3f );
+					StartAttack = Time.Now + Game.Random.Float( 0.1f, 0.3f );
 					break;
 				case HORNET_ORANGE:
 					Velocity = Velocity * FlySpeed;// do not have to slow down to turn.
@@ -163,7 +163,7 @@ partial class Hornet : NPC, ICombat
 	[Event.Tick.Server]
 	public virtual void Tick2()
 	{
-		if ( !IsServer )
+		if ( !Game.IsServer )
 			return;
 
 		if ( Stuck )

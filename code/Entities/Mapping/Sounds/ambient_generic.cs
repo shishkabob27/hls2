@@ -101,7 +101,7 @@ public partial class SoundEventEntity : Entity
     [Input]
     void Kill()
     {
-        if (IsServer)
+        if (Game.IsServer)
             Delete();
     } 
     public override void Spawn()

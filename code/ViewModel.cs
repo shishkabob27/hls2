@@ -8,7 +8,7 @@
 
 	private void AddCameraEffects( ref CameraSetup camSetup )
 	{
-		if ( Local.Pawn.LifeState == LifeState.Dead )
+		if ( Game.LocalPawn.LifeState == LifeState.Dead )
 			return;
 
 		camSetup.ViewModel.ZNear = 4;

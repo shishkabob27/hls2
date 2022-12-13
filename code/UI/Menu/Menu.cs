@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using Sandbox.UI;
+﻿using Sandbox.UI;
 
 [UseTemplate( "/UI/Menu/Menu.html" )]
 class Menu : BaseMenuScreen
@@ -53,6 +52,6 @@ class Menu : BaseMenuScreen
 	}
 	public void Quit()
 	{
-		Local.Client.Kick();
+		Game.LocalClient.Kick();
 	}
 }

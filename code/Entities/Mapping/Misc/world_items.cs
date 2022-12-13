@@ -16,7 +16,7 @@ public class world_items : Entity
 			case 45: a = "item_suit"; break;
 			default: break;
 		}
-		var entityType = TypeLibrary.GetDescription<Entity>( a );
+		var entityType = TypeLibrary.GetType<Entity>( a );
 		if ( entityType == null ) return;
 		var b = entityType.Create<Entity>();
 		b.Position = this.Position;

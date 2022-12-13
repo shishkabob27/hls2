@@ -23,7 +23,7 @@ public class MenuRootPanel : RootPanel
 		Current = this;
 		AddChild<Menu>();
 
-		if ( Global.MapName != "<empty>" )
+		if ( Game.Server.MapIdent != "<empty>" )
 		{
 			SetClass( "ingame", true );
 		}

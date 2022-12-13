@@ -11,7 +11,7 @@
 
 	public override void Update()
 	{
-		var player = Local.Client;
+		var player = Game.LocalPawn;
 		if ( player == null ) return;
 		if ( player is not HLPlayer ply ) return;
 
@@ -21,16 +21,16 @@
 		Position = FocusPoint + new Vector3( 0f, 0f, 24f );
 		Rotation = ( ply.ViewAngles + new Angles( 0, 0, 80 ) ).ToRotation();
 
-		Viewer = Local.Pawn;
+		Viewer = Game.LocalPawn;
 	}
 
 	public virtual Vector3 GetSpectatePoint()
 	{
-		if ( Local.Pawn is Player player && player.Corpse.IsValid() )
+		if ( Game.LocalPawn is HLPlayer player && player.Corpse.IsValid() )
 		{
 			return player.Corpse.GetBoneTransform( player.Corpse.GetBoneIndex( "bip_01_pelvis" ) ).Position;
 		}
 
-		return Local.Pawn.Position;
+		return Game.LocalPawn.Position;
 	}
 }

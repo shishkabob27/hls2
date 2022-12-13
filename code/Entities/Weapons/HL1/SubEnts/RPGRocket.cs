@@ -15,12 +15,13 @@ partial class RPGRocket : ModelEntity
 	[Event.Tick.Server]
 	public virtual void Tick()
 	{
-		if ( !IsServer )
+		if ( !Game.IsServer )
 			return;
 
 		float Speed = 2000.0f;
 		var velocity = Rotation.Forward * Speed;
-		Rotation = Owner.EyeRotation;
+		
+		Rotation = Rotation.LookAt( Owner.AimRay.Forward );
 
 		var start = Position;
 		var end = start + velocity * Time.Delta;

@@ -1,7 +1,4 @@
-using SandboxEditor;
-using Sandbox;
-using System;
-using System.ComponentModel;
+using Sandbox.Utility;
 using System.Text.Json.Serialization;
 
 	/// <summary>
@@ -356,7 +353,7 @@ using System.Text.Json.Serialization;
 		// When a model is reloaded, all entities get set to NULL model first
 		if (model.IsError) return;
 
-		if (IsServer)
+		if (Game.IsServer)
 		{
 			if (model.TryGetData(out ModelPropData propInfo))
 			{

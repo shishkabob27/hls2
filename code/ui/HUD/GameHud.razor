@@ -11,7 +11,7 @@
 
 	public override void Tick()
 	{
-		var game = Game.Current as HLGame;
+		var game = GameManager.Current as HLGame;
 		var span = TimeSpan.FromSeconds((game.StateTimer * 60).Clamp(0, float.MaxValue));
 		Timer.Text = span.ToString(@"hh\:mm\:ss");
 	}

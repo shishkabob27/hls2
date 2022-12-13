@@ -14,7 +14,7 @@
     }
     public void SpawnRandomWeapon()
     {
-        var rand = Rand.Int( 1, 14 );
+        var rand = Game.Random.Int( 1, 14 );
         Entity a;
         switch ( rand )
         {
@@ -69,7 +69,7 @@
     }
     public void SpawnRandomAmmo()
     {
-        var rand = Rand.Int( 1, 7 );
+        var rand = Game.Random.Int( 1, 7 );
         Entity a;
         switch ( rand )
         {
@@ -103,7 +103,7 @@
     }
     public void SpawnRandomGrenade()
     {
-        var rand = Rand.Int( 1, 4 );
+        var rand = Game.Random.Int( 1, 4 );
         Entity a;
         switch ( rand )
         {

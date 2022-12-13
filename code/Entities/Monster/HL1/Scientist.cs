@@ -1,6 +1,4 @@
-﻿using Sandbox.Internal;
-
-[Library( "monster_scientist" ), HammerEntity]
+﻿[Library( "monster_scientist" ), HammerEntity]
 [EditorModel( "models/hl1/monster/scientist/scientist_01.vmdl" )]
 [Title( "Scientist" ), Category( "Monsters" ), Icon( "person" ), MenuCategory( "Black Mesa" )]
 public partial class Scientist : NPC
@@ -40,7 +38,7 @@ public partial class Scientist : NPC
 		EnableTouch = true;
 		if ( Body > 3 )
 		{
-			Body = Rand.Int( 0, 3 );
+			Body = Game.Random.Int( 0, 3 );
 		}
 		SetModel( SetScientistModel() );
 
@@ -64,7 +62,7 @@ public partial class Scientist : NPC
 			case 1: return "models/hl1/monster/scientist/scientist_02.vmdl";
 			case 2: return "models/hl1/monster/scientist/scientist_03.vmdl";
 			case 3: return "models/hl1/monster/scientist/scientist_04.vmdl";
-			default: return Rand.FromList<string>( ScientistMDLList );
+			default: return Game.Random.FromList<string>( ScientistMDLList );
 		}
 	}
 
@@ -127,7 +125,7 @@ public partial class Scientist : NPC
 	public override void Touch( Entity other )
 	{
 		base.Touch( other );
-		if ( other is DoorEntity && IsServer )
+		if ( other is DoorEntity && Game.IsServer )
 		{
 			(other as DoorEntity).Open();
 		}
@@ -265,10 +263,10 @@ public class ScientistSitting : NPC
 		Health = 20;
 		if ( Body > 3 )
 		{
-			Body = Rand.Int( 0, 3 );
+			Body = Game.Random.Int( 0, 3 );
 		}
 		SetModel( SetScientistModel() );
-		CurrentSequence.Name = Rand.FromList<string>( SittingAnims );
+		CurrentSequence.Name = Game.Random.FromList<string>( SittingAnims );
 		//UseAnimGraph = false;
 		//CollisionBounds.
 		PhysicsEnabled = false;
@@ -287,7 +285,7 @@ public class ScientistSitting : NPC
 			case 1: return "models/hl1/monster/scientist/scientist_02.vmdl";
 			case 2: return "models/hl1/monster/scientist/scientist_03.vmdl";
 			case 3: return "models/hl1/monster/scientist/scientist_04.vmdl";
-			default: return Rand.FromList<string>( ScientistMDLList );
+			default: return Game.Random.FromList<string>( ScientistMDLList );
 		}
 	}
 
@@ -298,7 +296,7 @@ public class ScientistSitting : NPC
 		if ( CurrentSequence.IsFinished == true || CurrentSequence.TimeNormalized == 1.0f || tick > CurrentSequence.Duration / 2 )
 		{
 			tick = 0;
-			CurrentSequence.Name = Rand.FromList<string>( SittingAnims );
+			CurrentSequence.Name = Game.Random.FromList<string>( SittingAnims );
 		}
 	}
 
@@ -341,7 +339,7 @@ public class ScientistDead : NPC
 		Health = 20;
 		if ( Body > 3 )
 		{
-			Body = Rand.Int( 0, 3 );
+			Body = Game.Random.Int( 0, 3 );
 		}
 		SetModel( SetScientistModel() );
 		
@@ -373,7 +371,7 @@ public class ScientistDead : NPC
 			case 1: return "models/hl1/monster/scientist/scientist_02.vmdl";
 			case 2: return "models/hl1/monster/scientist/scientist_03.vmdl";
 			case 3: return "models/hl1/monster/scientist/scientist_04.vmdl";
-			default: return Rand.FromList<string>( ScientistMDLList );
+			default: return Game.Random.FromList<string>( ScientistMDLList );
 		}
 	}
 

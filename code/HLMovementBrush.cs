@@ -37,7 +37,7 @@
 	{
 		if (LastIsInRangeCheck > RangeCheckDelay )
 		{
-			LastIsInRangeCheck = 0 + Rand.Float(-0.02f, 0.02f); // a bit of randomness so everything doesn't check at the same time
+			LastIsInRangeCheck = 0 + Game.Random.Float(-0.02f, 0.02f); // a bit of randomness so everything doesn't check at the same time
 			LastIsInRange = HLUtils.PlayerInRangeOf( Position, 2048 );
 		}
 		if ( LastIsInRange == false && !DontSleep )
@@ -101,7 +101,7 @@
 	}
 	public void ApplyPush( Entity lastTouch, bool push )
 	{
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 		var temp = Velocity;
 		bool playerTouch = false;
 		if ( lastTouch is not HLPlayer ply )

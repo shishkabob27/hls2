@@ -25,7 +25,7 @@ partial class GibWeapon : Weapon
 	public override void AttackPrimary()
 	{
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			HLCombat.CreateGibs( Owner.Position, Owner.Position, 0, new BBox( new Vector3( -16, -16, 0 ), new Vector3( 16, 16, 72 ) ) );
 

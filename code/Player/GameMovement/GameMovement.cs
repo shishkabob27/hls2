@@ -1,5 +1,6 @@
 ﻿
 
+using Sandbox.Utility;
 using System.Numerics;
 
 public partial class HL1GameMovement : BasePlayerController
@@ -574,7 +575,7 @@ public partial class HL1GameMovement : BasePlayerController
 
 	protected virtual void ShowDebugOverlay()
 	{
-		if ( sv_debug_movement && Player.Client.IsListenServerHost && Host.IsServer )
+		if ( sv_debug_movement && Player.Client.IsListenServerHost && Game.IsServer )
 		{
 			DebugOverlay.ScreenText(
 				$"[PLAYER]\n" +

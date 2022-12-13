@@ -4,7 +4,7 @@
 
 <root>
     <IconPanel class="icon"></IconPanel>
-	@Local.Pawn.Health.CeilToInt().Clamp(0,255)
+	@Game.LocalPawn.Health.CeilToInt().Clamp(0,255)
     <IconPanel class="seperator"></IconPanel>
 </root>
 
@@ -13,10 +13,10 @@
 	public override void Tick()
 	{
 		this.Style.Width = 1049 + (Screen.Height / Screen.Width) * -1250;
-		SetClass( "invisible", !( Local.Pawn as HLPlayer ).HasHEV || ( Local.Pawn as HLPlayer ).Health <= 0 );
+		SetClass("invisible", !(Game.LocalPawn as HLPlayer).HasHEV || (Game.LocalPawn as HLPlayer).Health <= 0);
 	}
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( Local.Pawn.Health );
+		return HashCode.Combine(Game.LocalPawn.Health);
 	}
 }

@@ -56,7 +56,7 @@ class MapVotePanel : Panel
 		base.Tick();
 	}
 
-	internal void UpdateFromVotes( IDictionary<Client, string> votes )
+	internal void UpdateFromVotes( IDictionary<IClient, string> votes )
 	{
 		foreach ( var icon in MapIcons )
 			icon.VoteCount = "0";

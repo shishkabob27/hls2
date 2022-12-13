@@ -21,7 +21,7 @@ public partial class env_shooter : Entity
 		for ( int i = 0; i < m_iGibs; i++ )
 		{
 			var gib = new HLGib();
-			gib.AngularVelocity = new Angles( Rand.Float( 100, 300 ), 0, Rand.Float( 100, 200 ) );
+			gib.AngularVelocity = new Angles( Game.Random.Float( 100, 300 ), 0, Game.Random.Float( 100, 200 ) );
 			 
 			gib.Velocity = (Rotation.Forward + (Vector3.Random * m_flVariance)) * m_flVelocity;
 

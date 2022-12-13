@@ -3,7 +3,7 @@
 
 	public override void Activated()
 	{
-		var pawn = Local.Pawn;
+		var pawn = Game.LocalPawn;
 		if ( pawn == null ) return;
 
 		Position = pawn.EyePosition;
@@ -12,7 +12,7 @@
 
 	public override void Update()
 	{
-		var pawn = Local.Pawn as HLPlayer;
+		var pawn = Game.LocalPawn as HLPlayer;
 		if ( pawn == null ) return;
 		Viewer = pawn;
 		if ( pawn.Client.IsUsingVr ) return;

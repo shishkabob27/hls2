@@ -72,7 +72,7 @@ public partial class env_spark : Entity
 		if ( LastSpark > MaxDelay || LastSpark > NextSpark )
 		{
 			SparkOnce();
-			NextSpark = Rand.Float( MaxDelay );
+			NextSpark = Game.Random.Float( MaxDelay );
 		}
 
 	}

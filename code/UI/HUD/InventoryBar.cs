@@ -1,4 +1,5 @@
-﻿using Sandbox.UI;
+﻿using Sandbox.Diagnostics;
+using Sandbox.UI;
 
 /// <summary>
 /// The main inventory panel, top left of the screen.
@@ -26,7 +27,7 @@ public class InventoryBar : Panel
 	public override void Tick()
 	{
 		base.Tick();
-		var player = Local.Pawn as HLPlayer;
+		var player = Game.LocalPawn as HLPlayer;
 		SetClass( "active", IsOpen );
 
 		if ( player == null ) return;
@@ -51,7 +52,7 @@ public class InventoryBar : Panel
 		if ( HLGame.CurrentState != HLGame.GameStates.Live ) return;
 
 		bool wantOpen = IsOpen;
-		var localPlayer = Local.Pawn as HLPlayer;
+		var localPlayer = Game.LocalPawn as HLPlayer;
 
 		if ( !localPlayer.HasHEV ) return;
 

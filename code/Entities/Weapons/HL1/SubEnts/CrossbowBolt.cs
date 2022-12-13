@@ -17,7 +17,7 @@ partial class CrossbowBolt : ModelEntity
 	[Event.Tick.Server]
 	public virtual void Tick()
 	{
-		if ( !IsServer )
+		if ( !Game.IsServer )
 			return;
 
 		if ( Stuck )
@@ -53,7 +53,7 @@ partial class CrossbowBolt : ModelEntity
 													.UsingTraceResult( tr )
 													.WithAttacker( Owner )
 													.WithWeapon( this )
-													.WithFlag( DamageFlags.DoNotGib );
+													.WithTag( DamageFlags.DoNotGib );
 
 				tr.Entity.TakeDamage( damageInfo );
 			}

@@ -232,7 +232,7 @@
 
 			while ( string.IsNullOrWhiteSpace( decalPath ) && surf != null )
 			{
-				decalPath = Rand.FromArray( surf.ImpactEffects.BulletDecal );
+				decalPath = Game.Random.FromArray( surf.ImpactEffects.BulletDecal );
 				surf = surf.GetBaseSurface();
 			}
 
@@ -286,14 +286,14 @@
 				return default;
 			}
 
-			string particleName = Rand.FromArray( surf.ImpactEffects.Bullet );
-			if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( self.ImpactEffects.Regular );
+			string particleName = Game.Random.FromArray( surf.ImpactEffects.Bullet );
+			if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Game.Random.FromArray( self.ImpactEffects.Regular );
 
 
 			while ( string.IsNullOrWhiteSpace( particleName ) && surf != null )
 			{
-				particleName = Rand.FromArray( surf.ImpactEffects.Bullet );
-				if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Rand.FromArray( surf.ImpactEffects.Regular );
+				particleName = Game.Random.FromArray( surf.ImpactEffects.Bullet );
+				if ( string.IsNullOrWhiteSpace( particleName ) ) particleName = Game.Random.FromArray( surf.ImpactEffects.Regular );
 
 				surf = surf.GetBaseSurface();
 			}
@@ -359,10 +359,10 @@
 		public static string GetRandomGib( this Surface self, string texturename = "concrete" )
 		{
 			var surf = ReplaceSurface( self, texturename );
-			string text = Rand.FromArray( surf.Breakables.GenericGibs );
+			string text = Game.Random.FromArray( surf.Breakables.GenericGibs );
 			while ( string.IsNullOrWhiteSpace( text ) && self.GetBaseSurface() != null )
 			{
-				text = Rand.FromArray( self.GetBaseSurface().Breakables.GenericGibs );
+				text = Game.Random.FromArray( self.GetBaseSurface().Breakables.GenericGibs );
 			}
 
 			return text;

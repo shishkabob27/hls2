@@ -69,7 +69,7 @@ public partial class func_water_simple : BrushEntity
 	}
 	public override void ClientSpawn()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 		base.ClientSpawn();
 
 		CreatePhysics();

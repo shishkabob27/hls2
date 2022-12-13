@@ -98,11 +98,11 @@ public partial class HLCombat
 		for ( int i = 0; i < Count; i++ )
 		{
 			var gib = new HLGib();
-			gib.AngularVelocity = new Angles( Rand.Float( 100, 300 ), 0, Rand.Float( 100, 200 ) );
+			gib.AngularVelocity = new Angles( Game.Random.Float( 100, 300 ), 0, Game.Random.Float( 100, 200 ) );
 
 			gib.Velocity = attackDir * -1;
-			gib.Velocity += new Vector3( Rand.Float( -0.25f, 0.25f ), Rand.Float( -0.25f, 0.25f ), Rand.Float( -0.25f, 0.25f ) );
-			gib.Velocity = gib.Velocity * Rand.Float( 300f, 400f );
+			gib.Velocity += new Vector3( Game.Random.Float( -0.25f, 0.25f ), Game.Random.Float( -0.25f, 0.25f ), Game.Random.Float( -0.25f, 0.25f ) );
+			gib.Velocity = gib.Velocity * Game.Random.Float( 300f, 400f );
 
 			if ( Health > -50 )
 			{
@@ -142,7 +142,7 @@ public partial class HLCombat
 		var player = HLUtils.ClosestPlayerTo( Position );
 
 		// 5% chance head will be thrown at player's face.
-		if ( player is HLPlayer && Rand.Float( 0, 100 ) <= 5 )
+		if ( player is HLPlayer && Game.Random.Float( 0, 100 ) <= 5 )
 		{
 			skullGib.Velocity = (((player as HLPlayer).CollisionWorldSpaceCenter + new Vector3( 0, 0, 72 )) - skullGib.CollisionWorldSpaceCenter).Normal * 500;
 			skullGib.Velocity = skullGib.Velocity.WithZ( skullGib.Velocity.z + 100 );
@@ -153,7 +153,7 @@ public partial class HLCombat
 			//skullGib.Velocity = attackDir * -1;
 			//skullGib.Velocity += new Vector3(Rand.Float(-0.25f, 0.25f), Rand.Float(-0.25f, 0.25f), Rand.Float(-0.25f, 0.25f));
 			//skullGib.Velocity = skullGib.Velocity * Rand.Float(300f, 400f);
-			skullGib.Velocity = new Vector3( Rand.Float( -100, 100 ), Rand.Float( -100, 100 ), Rand.Float( 200, 300 ) );
+			skullGib.Velocity = new Vector3( Game.Random.Float( -100, 100 ), Game.Random.Float( -100, 100 ), Game.Random.Float( 200, 300 ) );
 		}
 		if ( Health > -50 )
 		{
@@ -168,7 +168,7 @@ public partial class HLCombat
 			skullGib.Velocity = skullGib.Velocity * 4;
 		}
 
-		skullGib.AngularVelocity = new Angles( Rand.Float( 100, 300 ), 0, Rand.Float( 100, 200 ) );
+		skullGib.AngularVelocity = new Angles( Game.Random.Float( 100, 300 ), 0, Game.Random.Float( 100, 200 ) );
 
 		skullGib.Spawn( "models/hl1/gib/hgib/hgib_skull1.vmdl" );
 	}

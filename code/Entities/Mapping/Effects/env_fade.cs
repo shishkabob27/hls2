@@ -48,7 +48,7 @@ public partial class env_fade : Entity
 		HoldTimeCL = hldt;
 		FadeColourCL = fdCl;
 
-		hook = Map.Camera.FindOrCreateHook<FadeRenderHook>();
+		hook = Camera.Main.FindOrCreateHook<FadeRenderHook>();
 		hook.FadeColour = FadeColourCL.WithAlpha( 1 );
 		hook.TimeCurrentF = 0;
 		hook.DurationF = DurationCL;

@@ -241,7 +241,7 @@ public partial class ButtonEntityRot : KeyframeEntity, IUse
 	[Input]
 	public void Kill()
 	{
-		if ( IsServer ) Delete();
+		if ( Game.IsServer ) Delete();
 	}
 
 	/// <summary>

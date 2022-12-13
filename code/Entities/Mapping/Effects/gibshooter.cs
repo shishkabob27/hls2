@@ -21,11 +21,11 @@ public partial class gibshooter : Entity
 		for ( int i = 0; i < m_iGibs; i++ )
 		{
 			var gib = new HLGib();
-			gib.AngularVelocity = new Angles( Rand.Float( 100, 300 ), 0, Rand.Float( 100, 200 ) );
+			gib.AngularVelocity = new Angles( Game.Random.Float( 100, 300 ), 0, Game.Random.Float( 100, 200 ) );
 
 			gib.Velocity = Rotation.Forward * -1;
-			gib.Velocity += new Vector3( Rand.Float( -0.25f, 0.25f ), Rand.Float( -0.25f, 0.25f ), Rand.Float( -0.25f, 0.25f ) );
-			gib.Velocity = gib.Velocity * Rand.Float( 300f, 400f );
+			gib.Velocity += new Vector3( Game.Random.Float( -0.25f, 0.25f ), Game.Random.Float( -0.25f, 0.25f ), Game.Random.Float( -0.25f, 0.25f ) );
+			gib.Velocity = gib.Velocity * Game.Random.Float( 300f, 400f );
 
 			if ( Health > -50 )
 			{

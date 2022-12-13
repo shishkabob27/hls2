@@ -93,7 +93,7 @@ public partial class HL1GameMovement
 
 		var eyeHeight = GetPlayerViewOffset().z;
 
-		var waterFraction = Player.WaterLevel;
+		var waterFraction = Player.GetWaterLevel();
 		var waterHeight = waterFraction * playerHeight;
 
 		// last water type

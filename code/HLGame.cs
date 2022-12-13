@@ -1,5 +1,5 @@
 ﻿global using Sandbox;
-global using SandboxEditor;
+global using Editor;
 global using System;
 global using System.Collections.Generic;
 global using System.Linq;
@@ -24,7 +24,7 @@ public partial class HLGame : GameManager
 		// Create the HUD entity. This is always broadcast to all clients
 		// and will create the UI panels clientside.
 		//
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			// If we're on an empty map don't create a game but instead put us into the main menu.
 			/*
@@ -37,7 +37,7 @@ public partial class HLGame : GameManager
 			}
 			*/
 			GUI = new HLGUI();
-			if ( Host.IsDedicatedServer )
+			if ( Game.IsDedicatedServer )
 			{
 				sv_gamemode = "deathmatch";
 			}
@@ -57,13 +57,13 @@ public partial class HLGame : GameManager
 
 
 		// If we're on an empty map don't create a game but instead put us into the main menu.
-		if ( Global.MapName == "<empty>" && IsServer )
+		if ( Game.Server.MapIdent == "<empty>" && Game.IsServer )
 		{
 
 			Log.Info( "Map is empty! Loading the Main Menu..." );
 			// Delete everything except the clients and the world
 			var ents = Entity.All.ToList();
-			ents.RemoveAll( e => e is Client );
+			ents.RemoveAll( e => e is IClient );
 			ents.RemoveAll( e => e is WorldEntity );
 			foreach ( Entity ent in ents )
 			{
@@ -71,13 +71,13 @@ public partial class HLGame : GameManager
 			}
 
 			// Reset the map
-			Map.Reset( DefaultCleanupFilter );
+			Game.ResetMap(Entity.All.Where(x => x is HLHud || x is HLPlayer).ToArray());
 
 			// Create a brand new game
 
-			if ( IsServer )
+			if ( Game.IsServer )
 			{
-				if ( Global.MapName != "<empty>" )
+				if ( Game.Server.MapIdent != "<empty>" )
 				{
 					new HLGame();
 					this.Delete();
@@ -98,9 +98,9 @@ public partial class HLGame : GameManager
 	/// The player wants to enable the devcam. Probably shouldn't allow this
 	/// unless you're in a sandbox mode or they're a dev.
 	/// </summary>
-	public override void DoPlayerDevCam( Client client )
+	public override void DoPlayerDevCam( IClient client )
 	{
-		Host.AssertServer();
+		Game.AssertServer();
 
 		if ( !client.HasPermission( "devcam" ) )
 			return;
@@ -125,7 +125,7 @@ public partial class HLGame : GameManager
 		HudRootPanel.Current?.SetClass( "devcamera", enabled );
 	}
 
-	public override void ClientJoined( Client cl )
+	public override void ClientJoined( IClient cl )
 	{
 		base.ClientJoined( cl );
 
@@ -143,7 +143,7 @@ public partial class HLGame : GameManager
 
 	public override void RenderHud()
 	{
-		var localPawn = Local.Pawn as HLPlayer;
+		var localPawn = Game.LocalPawn as HLPlayer;
 		if ( localPawn == null ) return;
 
 		//
@@ -203,7 +203,7 @@ public partial class HLGame : GameManager
 	[ConCmd.Server( "resetplayer", Help = "resets player" )]
 	public static void resetplayer()
 	{
-		foreach ( var client in Client.All )
+		foreach ( var client in Game.Clients )
 		{
 			if ( client.Pawn != null )
 				client.Pawn.Delete();

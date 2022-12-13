@@ -131,7 +131,7 @@ public partial class env_sprite : RenderEntity
 		vb.Init(true);
 
 		// Vertex buffers are in local space, so we need the camera position in local space too
-		var normal = CurrentView.Rotation.Backward;// Transform.PointToLocal( CurrentView.Position ).Normal;
+		var normal = Camera.Rotation.Backward;// Transform.PointToLocal( CurrentView.Position ).Normal;
 		var w = normal.Cross( Vector3.Up ).Normal;
 		var h = normal.Cross( w ).Normal;
 		float halfSpriteSize = SpriteScale;

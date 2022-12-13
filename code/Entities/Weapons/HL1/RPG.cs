@@ -45,7 +45,7 @@ partial class RPG : Weapon
 		// TODO - if zoomed in then instant hit, no travel, 120 damage
 
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			var bolt = new RPGRocket();
 			bolt.Position = GetFiringPos();
@@ -53,7 +53,7 @@ partial class RPG : Weapon
 			bolt.Owner = Owner;
 			bolt.Velocity = GetFiringRotation().Forward * 100;
 		}
-		if ( IsServer && player.AmmoCount( AmmoType.RPG ) == 0 )
+		if ( Game.IsServer && player.AmmoCount( AmmoType.RPG ) == 0 )
 		{
 
 			player.SwitchToBestWeapon();
@@ -61,7 +61,7 @@ partial class RPG : Weapon
 		ViewPunch( 0, -5 );
 	}
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		base.Simulate( cl );
 	}
@@ -71,13 +71,13 @@ partial class RPG : Weapon
 	[ClientRpc]
 	protected override void ShootEffectsRPC()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 	}
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.RPG, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

@@ -2,7 +2,7 @@
 {
 	void AddRoll()
 	{
-		if ( Local.Pawn is not HLPlayer pawn ) return;
+		if ( Game.LocalPawn  is not HLPlayer pawn ) return;
 		Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + CalculateRoll( Rotation, pawn.Velocity, cl_rollangle, cl_rollspeed ) ).ToRotation();
 	}
 

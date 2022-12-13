@@ -115,7 +115,7 @@ public partial class BrushEntity : ModelEntity
 	[Input]
 	public void Kill()
 	{
-		if (IsServer)
+		if (Game.IsServer)
 			Delete();
 	}
 

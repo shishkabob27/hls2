@@ -36,7 +36,7 @@ partial class Egon : Weapon
         return base.CanPrimaryAttack();//Input.Pressed(InputButton.PrimaryAttack);
     }
     Particles Beam;
-    public override void Simulate( Client owner )
+    public override void Simulate( IClient owner )
     {
         if ( !Input.Down( InputButton.PrimaryAttack ) )
         {
@@ -92,9 +92,9 @@ partial class Egon : Weapon
         if ( Time.Now > dmgtime )
         {
             dmgtime = Time.Now + 0.1f;
-            if ( tr.Entity != null && IsServer )
+            if ( tr.Entity != null && Game.IsServer )
             {
-                tr.Entity.TakeDamage( DamageInfo.Generic( 14 ).WithFlag( DamageFlags.AlwaysGib ).WithAttacker( this ) );
+                tr.Entity.TakeDamage( DamageInfo.Generic( 14 ).WithTag( DamageFlags.AlwaysGib ).WithAttacker( this ) );
             }
             if ( HLGame.GameIsMultiplayer() )
             {
@@ -130,9 +130,9 @@ partial class Egon : Weapon
 
         base.AttackPrimary();
     }
-    public override void SimulateAnimator( PawnAnimator anim )
+    public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Egon, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
     }
 }

@@ -3,12 +3,12 @@
 	[ClientRpc]
 	public void OnPlayerDied( HLPlayer player )
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 	}
 
 	[ClientRpc]
 	public void ShowDeathScreen( string attackerName )
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 	}
 }

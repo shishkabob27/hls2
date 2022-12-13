@@ -42,7 +42,7 @@ public partial class HLExplosion
 			force /= 2;
 			var forceDir = (targetPos - position).Normal;
 
-			var damageInfo = DamageInfo.Explosion( position, forceDir * force, dmg )
+			var damageInfo = DamageInfo.FromExplosion( position, forceDir * force, dmg )
 				.WithWeapon( weapon )
 				.WithAttacker( owner );
 
@@ -82,7 +82,7 @@ public partial class HLExplosion
 		if ( sparkshower )
 		{
 			Vector3 offset = new Vector3( 0, 0, 10 );
-			int randSparks = Rand.Int( 1, 3 );
+			int randSparks = Game.Random.Int( 1, 3 );
 			for ( int i = 0; i < randSparks; i++ )
 			{
 				var a = new Sparkshower();

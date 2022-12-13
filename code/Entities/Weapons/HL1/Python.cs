@@ -67,7 +67,7 @@ partial class Python : Weapon
 	protected override void ShootEffectsRPC()
 	{
 
-		Host.AssertClient();
+		Game.AssertClient();
 
 		if ( Client.IsUsingVr )
 		{
@@ -87,13 +87,13 @@ partial class Python : Weapon
 			player.SetAnimParameter( "b_attack", true );
 		}
 	}
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		base.Simulate( cl );
 	}
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Python, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

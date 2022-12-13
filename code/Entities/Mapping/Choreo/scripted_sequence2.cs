@@ -106,7 +106,7 @@ public partial class scripted_sequence2 : Entity
 			return;
 		}
 
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 		if ( TargetNPC != null ) TargetNPC.InScriptedSequence = true;
 		hasStarted = true;
 		ticker = false;

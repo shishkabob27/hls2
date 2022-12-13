@@ -34,7 +34,7 @@
 		"die_backwards1",
 		"die_spin",
 		};
-		ent.CurrentSequence.Name = Rand.FromList<string>( DeathAnimList );
+		ent.CurrentSequence.Name = Game.Random.FromList<string>( DeathAnimList );
 		ent.SetupPhysicsFromModel( PhysicsMotionType.Keyframed, false );
 		c.Friction = 3;
 		ent.Spawn();

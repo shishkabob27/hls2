@@ -6,9 +6,9 @@ class Sparkshower : ModelEntity
 		createSparks();
 		Vector3 a;
 		Vector3 b = new Vector3( Rotation.Angles().yaw, Rotation.Angles().pitch, Rotation.Angles().roll );
-		a = Rand.Float( 200f, 300f ) * b;
-		a.x += Rand.Float( -100f, 100f );
-		a.y += Rand.Float( -100f, 100f );
+		a = Game.Random.Float( 200f, 300f ) * b;
+		a.x += Game.Random.Float( -100f, 100f );
+		a.y += Game.Random.Float( -100f, 100f );
 		if ( a.z >= 0 )
 			a.z += 200;
 		else

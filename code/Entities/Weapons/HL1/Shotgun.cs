@@ -30,7 +30,7 @@ partial class Shotgun : Weapon
 		AmmoClip = 6;
 	}
 
-	public override void Simulate( Client owner )
+	public override void Simulate( IClient owner )
 	{
 		base.Simulate( owner );
 
@@ -117,7 +117,7 @@ partial class Shotgun : Weapon
 	[ClientRpc]
 	protected override void ShootEffectsRPC()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		Particles.Create( "particles/muzflash2.vpcf", EffectEntity, "muzzle" );
 		Particles.Create( "particles/pistol_ejectbrass.vpcf", EffectEntity, "ejection_point" );
@@ -128,7 +128,7 @@ partial class Shotgun : Weapon
 	[ClientRpc]
 	protected virtual void DoubleShootEffects()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		Particles.Create( "particles/muzflash2.vpcf", EffectEntity, "muzzle" );
 
@@ -173,10 +173,10 @@ partial class Shotgun : Weapon
 		ViewModelEntity?.SetAnimParameter( "reload_finished", true );
 	}
 
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Shotgun, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 
 }

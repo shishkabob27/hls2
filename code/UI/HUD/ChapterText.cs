@@ -10,7 +10,7 @@ public class ChapterText : Panel
     public ChapterText()
     {
         OutroTime = 0;
-        var mapname = Global.MapName.Replace("#local","");
+        var mapname = Game.Server.MapIdent.Replace("#local","");
         var translated = "";
         switch ( mapname )
         {

@@ -40,7 +40,7 @@ public partial class func_pushable : HLMovementBrush
     {
         LastAttacker = info.Attacker;
         LastAttackerWeapon = info.Weapon;
-        if (IsServer && Health > 0f && LifeState == LifeState.Alive)
+        if (Game.IsServer && Health > 0f && LifeState == LifeState.Alive)
         {
             Health -= info.Damage;
             if (Health <= 0f)

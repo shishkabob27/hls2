@@ -95,14 +95,14 @@
 	public void Simulate()
 	{
 		if ( Entity == null ) return;
-		if ( !Entity.IsClientOnly && Host.IsClient )
+		if ( !Entity.IsClientOnly && Game.IsClient )
 		{
 			return;
 		}
 
 		if ( LastIsInRangeCheck > RangeCheckDelay )
 		{
-			LastIsInRangeCheck = 0 + Rand.Float( -0.02f, 0.02f ); // a bit of randomness so everything doesn't check at the same time
+			LastIsInRangeCheck = 0 + Game.Random.Float( -0.02f, 0.02f ); // a bit of randomness so everything doesn't check at the same time
 			LastIsInRange = HLUtils.PlayerInRangeOf( Entity.Position, 2048 );
 		}
 

@@ -1,4 +1,6 @@
 ﻿
+using static Sandbox.Event;
+
 public partial class HLPlayer
 {
 	TimeSince TimeSinceFootShuffle = 60;
@@ -32,12 +34,12 @@ public partial class HLPlayer
 		SetAnimParameter( "b_grounded", GroundEntity != null || noclip || sitting );
 		SetAnimParameter( "b_noclip", noclip );
 		SetAnimParameter( "b_sit", sitting );
-		SetAnimParameter( "b_swim", WaterLevel > 0.5f && !sitting );
+		SetAnimParameter( "b_swim", player.GetWaterLevel() > 0.5f && !sitting );
 
 
-		if ( Host.IsClient && Client.IsValid() )
+		if ( Game.IsClient && Client.IsValid() )
 		{
-			SetAnimParameter( "voice", Client.TimeSinceLastVoice < 0.5f ? Client.VoiceLevel : 0.0f );
+			SetAnimParameter( "voice", Client.Voice.LastHeard < 0.5f ? Client.Voice.CurrentLevel : 0.0f );
 		}
 
 		Vector3 aimPos = EyePosition + player.ViewAngles.Forward * 200;

@@ -13,7 +13,7 @@ public class VRVitals : WorldPanel
 	{
 		base.Tick();
 
-		if (Local.Pawn is HLPlayer player && player.Health >=1)
+		if (Game.LocalPawn is HLPlayer player && player.Health >=1)
 		{
 			Transform = player.LeftHand.Transform;
 

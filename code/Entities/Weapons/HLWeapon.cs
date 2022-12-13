@@ -74,7 +74,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 		if ( owner == null ) return 0;
 		return owner.AmmoCount( AmmoType );
 	} 
-	public void SetHoldType(HLCombat.HoldTypes i, PawnAnimator anim)
+	public void SetHoldType(HLCombat.HoldTypes i, CitizenAnimationHelper anim)
 	{
 		var owner = Owner as HLPlayer;
 		if ( owner == null ) return;
@@ -133,7 +133,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 			}
 
 		}
-		anim.SetAnimParameter( "holdtype", a); // TODO this is shit
+		//anim.SetAnimParameter( "holdtype", a); // TODO this is shit
 
 	}
 	/// <summary>
@@ -156,7 +156,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 
 		EnableDrawing = true;
 
-		if ( ent is Player player )
+		if ( ent is HLPlayer player )
 		{
 			var animator = player.GetActiveAnimator();
 			if ( animator != null )
@@ -216,7 +216,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 		{
 			DestroyVRModel();
 		}
-		if ( IsClient )
+		if ( Game.IsClient )
 		{
 			DestroyViewModel();
 			DestroyHudElements();			
@@ -305,7 +305,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 
 		//StartReloadEffects();
 	}
-	public override void Simulate( Client owner )
+	public override void Simulate( IClient owner )
 	{
 		ViewModelEntity?.SetAnimParameter( "doidle", HLGame.hl_viewmodel_idle_fix );
 
@@ -489,14 +489,14 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 	protected virtual void ShootEffects( To to )
 	{
 		ShootEffectsBoth();
-		if ( IsServer )
+		if ( Game.IsServer )
 			ShootEffectsSV();
 		ShootEffectsRPC( to );
 	}
 	protected virtual void ShootEffects()
 	{
 		ShootEffectsBoth();
-		if ( IsServer )
+		if ( Game.IsServer )
 			ShootEffectsSV();
 		ShootEffectsRPC();
 	}
@@ -512,7 +512,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 	protected virtual void ShootEffectsRPC()
 	{
 
-		Host.AssertClient();
+		Game.AssertClient();
 
 		if ( Client.IsUsingVr )
 		{
@@ -540,7 +540,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 	public virtual Vector3 GetFiringPos()
 	{
 		if ( Client.IsUsingVr ) return (Vector3)VRWeaponModel.GetAttachment( "muzzle" )?.Position;
-		return Owner.EyePosition;
+		return (Owner as HLPlayer).EyePosition;
 	}
 	/// <summary>
 	/// This gets the rotation of where the weapon should fire a bullet
@@ -601,7 +601,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 	/// </summary>
 	public virtual void ShootBullet( float spread, float force, float damage, float bulletSize, int bulletCount = 1, bool tracer = true )
 	{
-		var player = Local.Pawn as HLPlayer;
+		var player = Game.LocalPawn as HLPlayer;
 
 		if ( Client.IsUsingVr )
 		{
@@ -611,7 +611,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 		//
 		// Seed rand using the tick, so bullet cones match on client and server
 		//
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 		for ( int i = 0; i < bulletCount; i++ )
 		{
 			var BForward = GetFiringRotation().Forward;
@@ -634,7 +634,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 					CreateTracerEffect( tr.EndPosition );
 				}
 
-				if ( !IsServer ) continue;
+				if ( !Game.IsServer ) continue;
 				if ( !tr.Entity.IsValid() ) continue;
 
 				var damageInfo = DamageInfo.FromBullet( tr.EndPosition, BForward * (100 * force), damage )
@@ -750,7 +750,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 	public void CreateVRModel()
 	{
 
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 		VRWeaponModel = new AnimatedEntity();
 		VRWeaponModel.Position = Position;
 		VRWeaponModel.Owner = Owner;
@@ -793,7 +793,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 
 	public void DestroyVRModel()
 	{
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 		VRWeaponModel?.Delete();
 		VRWeaponModel = null;
 	}
@@ -825,7 +825,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 
 	public override void CreateHudElements()
 	{
-		if ( Local.Hud == null ) return;
+		if ( Game.RootPanel == null ) return;
 	}
 
 	public virtual bool IsUsable()

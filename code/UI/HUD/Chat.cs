@@ -1,3 +1,4 @@
+using Sandbox.Diagnostics;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
 
@@ -82,7 +83,7 @@ public partial class Chat : Panel
 		Current?.AddEntry( name, message, avatar, lobbyState );
 
 		// Only log clientside if we're not the listen server host
-		if ( !Global.IsListenServer )
+		if ( !Game.IsListenServer )
 		{
 			Log.Info( $"{name}: {message}" );
 		}
@@ -104,6 +105,6 @@ public partial class Chat : Panel
 			return;
 
 		Log.Info( $"{ConsoleSystem.Caller.Name}: {message}" );
-		AddChatEntry( To.Everyone, ConsoleSystem.Caller.Name, message, $"avatar:{ConsoleSystem.Caller.PlayerId}" );
+		AddChatEntry( To.Everyone, ConsoleSystem.Caller.Name, message, $"avatar:{ConsoleSystem.Caller.SteamId}" );
 	}
 }

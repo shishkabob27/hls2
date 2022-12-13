@@ -89,7 +89,7 @@ public class Snark : NPC
 		}
 		if ( (Die - Time.Now <= 0.5) && (Die - Time.Now >= 0.3) )
 		{
-			Sound.FromEntity( "sqk_die", this ).SetPitch( (float)Math.Sqrt( (100 + Rand.Float( 0, 64 )) / 100 ) );
+			Sound.FromEntity( "sqk_die", this ).SetPitch( (float)Math.Sqrt( (100 + Game.Random.Float( 0, 64 )) / 100 ) );
 		}
 
 		if ( Time.Now < NextHunt ) return;
@@ -103,16 +103,16 @@ public class Snark : NPC
 			if ( AngularVelocity == Angles.Zero )
 			{
 				var a = AngularVelocity;
-				a.pitch = Rand.Float( -100, 100 );
-				a.roll = Rand.Float( -100, 100 );
+				a.pitch = Game.Random.Float( -100, 100 );
+				a.roll = Game.Random.Float( -100, 100 );
 				AngularVelocity = a;
 			}
 		}
 		if ( (Position - posPrev).Length < 1.0 )
 		{
 			var a = Velocity;
-			a.x = Rand.Float( -100, 100 );
-			a.y = Rand.Float( -100, 100 );
+			a.x = Game.Random.Float( -100, 100 );
+			a.y = Game.Random.Float( -100, 100 );
 			//Velocity = a;
 		}
 
@@ -153,7 +153,7 @@ public class Snark : NPC
 	}
 	void Bounce( Entity other )
 	{
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 		Owner = null;
 		NextHunt = Time.Now - 1;
 		NextHunt2 = Time.Now - 1;

@@ -145,7 +145,7 @@ public partial class HL1GameMovement
 			return;
 		}
 
-		if ( oldGround == null && Pawn.WaterLevel == 0 )
+		if ( oldGround == null && Pawn.GetWaterLevel() == 0 )
 		{
 			Velocity -= BaseVelocity;
 			return;

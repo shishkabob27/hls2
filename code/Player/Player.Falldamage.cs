@@ -12,14 +12,14 @@
 
 	void FallDamageThink()
 	{
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 		var FallSpeed = -prevVel.z;
 		if ( GroundEntity != null && FallSpeed >= PLAYER_FALL_PUNCH_THRESHHOLD )
 		{
 			float fvol = 0;
 			var b = punchangle;
 
-			if ( WaterEntity != null || WaterLevel > 0 )
+			if ( /*WaterEntity != null ||*/ this.GetWaterLevel() > 0 )
 			{
 
 			}
@@ -45,7 +45,7 @@
 					var a = new DamageInfo
 					{
 						Damage = flFallDamage,
-						Flags = DamageFlags.Fall,
+						Tags = DamageFlags.Fall,
 					};
 					TakeDamage( a );
 					fvol = 1;

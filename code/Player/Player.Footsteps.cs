@@ -4,7 +4,7 @@ partial class HLPlayer
 	bool StepLeft;
 	void FootstepSounds()
 	{
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 
 		float velrun;
 		float velwalk;

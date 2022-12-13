@@ -46,9 +46,9 @@ partial class PhysGun : Weapon
 		SetModel( "weapons/rust_pistol/rust_pistol.vmdl" );
 	}
 
-	public override void Simulate( Client client )
+	public override void Simulate( IClient client )
 	{
-		if ( Owner is not Player owner ) return;
+		if ( Owner is not HLPlayer owner ) return;
 
 		var eyePos = owner.EyePosition;
 		var eyeDir = owner.EyeRotation.Forward;
@@ -72,7 +72,7 @@ partial class PhysGun : Weapon
 
 		BeamActive = grabEnabled;
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			using ( Prediction.Off() )
 			{
@@ -184,7 +184,7 @@ partial class PhysGun : Weapon
 
 		GrabbedEntity = rootEnt;
 		GrabbedEntity.Tags.Add( GrabbedTag );
-		GrabbedEntity.Tags.Add( $"{GrabbedTag}{Client.PlayerId}" );
+		GrabbedEntity.Tags.Add( $"{GrabbedTag}{Client.SteamId}" );
 
 		GrabbedPos = body.Transform.PointToLocal( tr.EndPosition );
 		GrabbedBone = body.GroupIndex;
@@ -227,7 +227,7 @@ partial class PhysGun : Weapon
 
 	private void Activate()
 	{
-		if ( !IsServer )
+		if ( !Game.IsServer )
 		{
 			return;
 		}
@@ -235,7 +235,7 @@ partial class PhysGun : Weapon
 
 	private void Deactivate()
 	{
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			GrabEnd();
 		}
@@ -298,7 +298,7 @@ partial class PhysGun : Weapon
 		if ( GrabbedEntity.IsValid() )
 		{
 			GrabbedEntity.Tags.Remove( GrabbedTag );
-			GrabbedEntity.Tags.Remove( $"{GrabbedTag}{Client.PlayerId}" );
+			GrabbedEntity.Tags.Remove( $"{GrabbedTag}{Client.SteamId}" );
 			GrabbedEntity = null;
 		}
 
@@ -309,13 +309,13 @@ partial class PhysGun : Weapon
 	[Event.Physics.PreStep]
 	public void OnPrePhysicsStep()
 	{
-		if ( !IsServer )
+		if ( !Game.IsServer )
 			return;
 
 		if ( !heldBody.IsValid() )
 			return;
 
-		if ( GrabbedEntity is Player || GrabbedEntity is NPC || GrabbedEntity is HLMovementBrush || GrabbedEntity is HLGib || (GrabbedEntity.Components.TryGet<Movement>( out _ ) && !HLGame.sv_force_physics) )
+		if ( GrabbedEntity is HLPlayer || GrabbedEntity is NPC || GrabbedEntity is HLMovementBrush || GrabbedEntity is HLGib || (GrabbedEntity.Components.TryGet<Movement>( out _ ) && !HLGame.sv_force_physics) )
 			return;
 
 		var velocity = heldBody.Velocity;
@@ -431,7 +431,7 @@ partial class PhysGun : Weapon
 	Vector3 lastBeamPos;
 	ModelEntity lastGrabbedEntity;
 
-	[Event.Frame]
+	[Event.Client.Frame]
 	public void OnFrame()
 	{
 		UpdateEffects();
@@ -450,7 +450,7 @@ partial class PhysGun : Weapon
 		{
 			foreach ( var child in lastGrabbedEntity.Children.OfType<ModelEntity>() )
 			{
-				if ( child is Player )
+				if ( child is HLPlayer )
 					continue;
 
 				if ( child.Components.TryGet<Glow>( out var childglow ) )
@@ -526,7 +526,7 @@ partial class PhysGun : Weapon
 
 				foreach ( var child in lastGrabbedEntity.Children.OfType<ModelEntity>() )
 				{
-					if ( child is Player )
+					if ( child is HLPlayer )
 						continue;
 
 					glow = child.Components.GetOrCreate<Glow>();

@@ -37,7 +37,7 @@ public class Ammo : Panel
 		AmmoIcon1.SetClass( "invisible", true );
 		AmmoIcon2.SetClass( "invisible", true );
 
-		var player = Local.Pawn as HLPlayer;
+		var player = Game.LocalPawn as HLPlayer;
 		if ( player == null ) return;
 		if ( !player.HasHEV ) return;
 

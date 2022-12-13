@@ -60,10 +60,10 @@ partial class GrenadeWeapon : Weapon
 
 		PlaySound( "dm.grenade_throw" );
 
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 
 
-		if ( IsServer )
+		if ( Game.IsServer )
 			using ( Prediction.Off() )
 			{
 
@@ -106,7 +106,7 @@ partial class GrenadeWeapon : Weapon
 
 		player.SetAnimParameter( "attack", true );
 
-		if ( IsServer && player.AmmoCount( AmmoType.Grenade ) == 0 )
+		if ( Game.IsServer && player.AmmoCount( AmmoType.Grenade ) == 0 )
 		{
 
 			player.SwitchToBestWeapon();
@@ -114,9 +114,9 @@ partial class GrenadeWeapon : Weapon
 
 	}
 
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.HoldItem, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

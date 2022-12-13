@@ -10,7 +10,7 @@
         SetModel(HandType ? "models/vr/v_hand_hevsuit/v_hand_hevsuit_left.vmdl" : "models/vr/v_hand_hevsuit/v_hand_hevsuit_right.vmdl" );
     }
 
-    public override void Simulate(Client cl)
+    public override void Simulate( IClient cl )
     {
         base.Simulate(cl);
 

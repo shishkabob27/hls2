@@ -1,10 +1,4 @@
-﻿using Sandbox;
-using SandboxEditor;
-using System;
-using System.Collections.Generic;
-using System.Linq;  
-
-[Library( "logic_case" )]
+﻿[Library( "logic_case" )]
 [HammerEntity]
 [VisGroup( VisGroup.Logic )]
 [EditorSprite( "editor/logic_case.vmat" )]
@@ -67,8 +61,8 @@ public partial class logic_case : Entity
 		};
 
 		var CasesList = new List<Tuple<Output, string>>( Cases );
-		var a = Rand.Int(1,16);
-		var b = CasesList.OrderBy( x => Rand.Float( 0, 1000 ));
+		var a = Game.Random.Int(1,16);
+		var b = CasesList.OrderBy( x => Game.Random.Float( 0, 1000 ));
 		foreach ( var Outcase in b)
 		{
 			if (Outcase.Item2 != "")
@@ -110,8 +104,8 @@ public partial class logic_case : Entity
 		if (Shuffled.Count == 0)
 		{
 			Shuffled = new List<Tuple<Output, string>>( Cases );
-			var a = Rand.Int( 1, 16 );
-			Shuffled = Shuffled.OrderBy( x => Rand.Float( 0, 1000 ) ).ToList();
+			var a = Game.Random.Int( 1, 16 );
+			Shuffled = Shuffled.OrderBy( x => Game.Random.Float( 0, 1000 ) ).ToList();
 		}
 		foreach ( var Outcase in Shuffled)
 		{

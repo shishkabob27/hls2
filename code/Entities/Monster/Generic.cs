@@ -41,24 +41,24 @@ public partial class GenericMonster : NPC
 		if ( rendermode == 5 )
 		{
 			//Position += new Vector3( Rand.Float( -0.3f, 0.3f ), Rand.Float( -0.3f, 0.3f ), Rand.Float( -0.3f, 0.3f ) );
-			if ( Rand.Int( 0, 49 ) == 0 )
+			if ( Game.Random.Int( 0, 49 ) == 0 )
 			{
 				var a = Position;
-				int axis = Rand.Int( 0, 1 );
+				int axis = Game.Random.Int( 0, 1 );
 				if ( axis == 1 ) // Choose between x & z
 					axis = 2;
-				a[axis] = a[axis] * Rand.Float( 1, 1.484f );
+				a[axis] = a[axis] * Game.Random.Float( 1, 1.484f );
 				Position = a;
 			}
-			else if ( Rand.Int( 0, 49 ) == 0 )
+			else if ( Game.Random.Int( 0, 49 ) == 0 )
 			{
 				var a = Position;
 				float offset;
-				int axis = Rand.Int( 0, 1 );
+				int axis = Game.Random.Int( 0, 1 );
 				if ( axis == 1 ) // Choose between x & z
 					axis = 2;
-				offset = Rand.Int( -10, 10 );
-				a[Rand.Int( 0, 2 )] += offset;
+				offset = Game.Random.Int( -10, 10 );
+				a[Game.Random.Int( 0, 2 )] += offset;
 				Position = a;
 			}
 		}
@@ -69,14 +69,14 @@ public partial class GenericMonster : NPC
 		if ( rendermode == 5 )
 		{
 			var tmp = Position;
-			tmp -= Map.Camera.Position;
-			var dist = tmp.Dot( Map.Camera.Rotation.Forward );// DotProduct( tmp, RI.refdef.forward );
+			tmp -= Camera.Main.Position;
+			var dist = tmp.Dot( Camera.Main.Rotation.Forward );// DotProduct( tmp, RI.refdef.forward );
 
 			var blend = 180.0f;
 			var renderAmt = 180.0f;
 			if ( dist <= 100 ) blend = renderAmt;
 			else blend = (int)((1.0f - (dist - 100) * (1.0f / 400.0f)) * renderAmt);
-			blend += Rand.Int( -32, 31 );
+			blend += Game.Random.Int( -32, 31 );
 
 			RenderColor = RenderColor.WithAlpha( blend / 255.0f );
 		}

@@ -14,7 +14,7 @@
 	{
 		base.Tick();
 
-		var p = Local.Pawn as HLPlayer;
+		var p = Game.LocalPawn as HLPlayer;
 		if (p == null) return;
 		if (!p.HasHEV) return;
 

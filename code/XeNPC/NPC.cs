@@ -31,6 +31,9 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public int BloodColour = BLOOD_COLOUR_RED;
 	Color MyDebugColour = Color.Random;
 
+	public Vector3 EyePosition;
+	public Rotation EyeRotation;
+
 	[Flags]
 	public enum Flags
 	{
@@ -128,7 +131,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public override void Spawn()
 	{
 		All.Add( this );
-		if ( spawnflags.HasFlag( Flags.NotInDeathmatch ) && HLGame.GameIsMultiplayer() && IsServer )
+		if ( spawnflags.HasFlag( Flags.NotInDeathmatch ) && HLGame.GameIsMultiplayer() && Game.IsServer )
 		{
 			Delete();
 		}
@@ -189,7 +192,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	{
 		if ( LastIsInRangeCheck > RangeCheckDelay )
 		{
-			LastIsInRangeCheck = 0 + Rand.Float( -0.02f, 0.02f ); // a bit of randomness so everything doesn't check at the same time
+			LastIsInRangeCheck = 0 + Game.Random.Float( -0.02f, 0.02f ); // a bit of randomness so everything doesn't check at the same time
 			LastIsInRange = HLUtils.PlayerInRangeOf( Position, SleepDist );
 		}
 
@@ -270,7 +273,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		//Log.Info();//SoundFile.Load("sounds/hl1/scientist/alright.wav"));
 		if ( CurrentSound.Finished != true )
 		{
-			animHelper.VoiceLevel = Rand.Float();
+			animHelper.VoiceLevel = Game.Random.Float();
 			// It's not possible to get the sound volume for animating the mouths so i'll just randomise a float for now,.
 		}
 		else
@@ -381,7 +384,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	/// </summary>
 	public virtual void See()
 	{
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 		if ( npc_disable_visability ) return;
 		if ( DontSee ) return;
 		if ( InScriptedSequence && ScriptedSequenceOverrideAi ) return;
@@ -761,7 +764,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				break;
 		}*/
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			Health -= info.Damage;
 			if ( Health <= 0f )
@@ -770,7 +773,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				{
 					OnKilled();
 					LifeState = LifeState.Dead;
-					if ( info.Flags.HasFlag( DamageFlags.AlwaysGib ) )
+					if ( info.HasTag( DamageFlags.AlwaysGib ) )
 					{
 						HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, BloodColour );
 						Delete();
@@ -790,7 +793,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			LifeState = LifeState.Dead;
 			//Delete();
 		}
-		if ( Health < -20 && !info.Flags.HasFlag( DamageFlags.DoNotGib ) )
+		if ( Health < -20 && !info.HasTag( DamageFlags.DoNotGib ) )
 		{
 			HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, BloodColour );
 			Delete();
@@ -815,7 +818,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	/// <param name="pitch"></param>
 	public void SpeakSound( string sound, float pitch = 100 )
 	{
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			using ( Prediction.Off() )
 			{
@@ -832,7 +835,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	{
 		//CurrentSound.Stop();
 		CurrentSound = PlaySound( sound ).SetPitch( HLUtils.CorrectPitch( pitch ) );
-		Log.Info( $"IsClient: {IsClient} IsServer: {IsServer}" );
+		Log.Info( $"IsClient: {Game.IsClient} IsServer: {Game.IsServer}" );
 	}
 
 	public override void OnKilled()
@@ -846,7 +849,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			//Delete();
 		}
 
-		if ( LastDamage.Flags.HasFlag( DamageFlags.Blast ) )
+		if ( LastDamage.HasTag( DamageFlags.Blast ) )
 		{
 
 		}
@@ -901,14 +904,14 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 	public new void SetAnimGraph( string name )
 	{
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			base.SetAnimGraph( name );
 		}
 	}
 	public override void OnAnimEventGeneric( string name, int intData, float floatData, Vector3 vectorData, string stringData )
 	{
-		if ( stringData == "ragdoll" && IsServer && HLGame.hl_ragdoll )
+		if ( stringData == "ragdoll" && Game.IsServer && HLGame.hl_ragdoll )
 		{
 			Ragdoll(Vector3.Zero);
 		}

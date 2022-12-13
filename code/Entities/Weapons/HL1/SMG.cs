@@ -68,8 +68,8 @@ partial class SMG : Weapon
 		// Shoot the bullets
 		//
 		ShootBullet( 0.1f, 1.5f, 5.0f, 3.0f );
-		Rand.SetSeed( Time.Tick );
-		ViewPunch( 0, Rand.Float( -2, 2 ) );
+		Game.SetRandomSeed( Time.Tick );
+		ViewPunch( 0, Game.Random.Float( -2, 2 ) );
 
 	}
 
@@ -91,14 +91,14 @@ partial class SMG : Weapon
 
 		PlaySound( "glauncher" );
 
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 
 		ViewPunch( 0, -10 );
 
 		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
 		ViewModelEntity?.SetAnimParameter( "fire_grenade", true );
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			var grenade = new SMGGrenade
 			{
@@ -118,7 +118,7 @@ partial class SMG : Weapon
 	[ClientRpc]
 	protected override void ShootEffectsRPC()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		if ( Client.IsUsingVr )
 		{
@@ -140,10 +140,10 @@ partial class SMG : Weapon
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 	}
 
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Rifle, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 
 }

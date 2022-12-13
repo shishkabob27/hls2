@@ -130,7 +130,7 @@ public class BaseMenuScreen : Panel
 	{
 		if ( ConsoleSystem.Caller.IsListenServerHost )
 		{
-			Global.ChangeLevel( MAP );
+			Game.ChangeLevel( MAP );
 		}
 	}
 }

@@ -13,9 +13,9 @@ public class HudPanel : HudEntity<HudRootPanel>
 	{
 		Current = this;
 
-		if ( IsClient )
+		if ( Game.IsClient )
 		{
-			if ( Global.IsRunningInVR )
+			if ( Game.IsRunningInVR )
 			{
 				// Use a world panel - we're in VR
 				_ = new VRVitals();

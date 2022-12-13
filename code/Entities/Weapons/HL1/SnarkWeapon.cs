@@ -47,10 +47,10 @@ partial class SnarkWeapon : Weapon
 
         PlaySound( "dm.grenade_throw" );
 
-        Rand.SetSeed( Time.Tick );
+        Game.SetRandomSeed( Time.Tick );
 
 
-        if ( IsServer )
+        if ( Game.IsServer )
             using ( Prediction.Off() )
             {
                 var snark = new Snark
@@ -74,10 +74,10 @@ partial class SnarkWeapon : Weapon
 
         player.SetAnimParameter( "attack", true );
 
-        if ( IsClient )
+        if ( Game.IsClient )
             ViewModelEntity.SetAnimParameter( "attack", true );
 
-        if ( IsServer && player.AmmoCount( AmmoType.Snark ) == 0 )
+        if ( Game.IsServer && player.AmmoCount( AmmoType.Snark ) == 0 )
         {
 
             player.SwitchToBestWeapon();
@@ -85,9 +85,9 @@ partial class SnarkWeapon : Weapon
 
     }
 
-    public override void SimulateAnimator( PawnAnimator anim )
+    public override void SimulateAnimator( CitizenAnimationHelper anim )
     {
 		SetHoldType( HLCombat.HoldTypes.Squeak, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
     }
 }

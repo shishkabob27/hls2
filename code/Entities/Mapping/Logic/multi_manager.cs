@@ -1,14 +1,13 @@
-using SandboxEditor;
-	/// <summary>
-	/// A logic entity that allows to do a multitude of logic operations with Map I/O.<br/>
-	/// <br/>
-	/// TODO: This is a stop-gap solution and may be removed in the future in favor of "map blueprints" or node based Map I/O.
-	/// </summary>
-	[Library( "multi_manager" )]
-	[HammerEntity]
-	[VisGroup( VisGroup.Logic )]
-	[EditorSprite( "editor/multi_manager.vmat" )]
-	[Title( "Logic Entity" ), Category( "Logic" ), Icon( "calculate" )] 
+/// <summary>
+/// A logic entity that allows to do a multitude of logic operations with Map I/O.<br/>
+/// <br/>
+/// TODO: This is a stop-gap solution and may be removed in the future in favor of "map blueprints" or node based Map I/O.
+/// </summary>
+[Library( "multi_manager" )]
+[HammerEntity]
+[VisGroup( VisGroup.Logic )]
+[EditorSprite( "editor/multi_manager.vmat" )]
+[Title( "Logic Entity" ), Category( "Logic" ), Icon( "calculate" )] 
 public partial class LogicEntity : Entity
 	{
 
@@ -66,7 +65,7 @@ public partial class LogicEntity : Entity
 		[Input]
 		public void Kill()
 		{
-			if (IsServer)
+			if (Game.IsServer)
 				Delete();
 		}
 

@@ -4,21 +4,21 @@
 
 <root>
 	<panel class="iconcontainer">
-		<IconPanel style="height: @(100 - (Local.Pawn as HLPlayer).Armour)" class="iconempty"></IconPanel>
-		<IconPanel style="height: @((Local.Pawn as HLPlayer).Armour)" class="iconfull"></IconPanel>
+		<IconPanel style="height: @(100 - (Game.LocalPawn as HLPlayer).Armour)" class="iconempty"></IconPanel>
+		<IconPanel style="height: @((Game.LocalPawn as HLPlayer).Armour)" class="iconfull"></IconPanel>
 	</panel>
     
-	@((Local.Pawn as HLPlayer).Armour.CeilToInt())
+	@((Game.LocalPawn as HLPlayer).Armour.CeilToInt())
 </root>
 
 @code
 { 
 	public override void Tick()
 	{ 
-		SetClass( "invisible", !( Local.Pawn as HLPlayer ).HasHEV || ( Local.Pawn as HLPlayer ).Health <= 0 );
+		SetClass("invisible", !(Game.LocalPawn as HLPlayer).HasHEV || (Game.LocalPawn as HLPlayer).Health <= 0);
 	}
 	protected override int BuildHash()
 	{
-		return HashCode.Combine( ( Local.Pawn as HLPlayer ).Armour );
+		return HashCode.Combine( ( Game.LocalPawn as HLPlayer ).Armour );
 	}
 }

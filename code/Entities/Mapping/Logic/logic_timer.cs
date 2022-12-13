@@ -57,7 +57,7 @@ public partial class logic_timer : Entity
 	[Input]
 	public void Kill()
 	{
-		if(IsServer) Delete();
+		if(Game.IsServer) Delete();
 	}
 
 

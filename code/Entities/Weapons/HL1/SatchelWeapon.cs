@@ -54,7 +54,7 @@ partial class SatchelWeapon : Weapon
 			{
 				try
 				{
-					if ( IsServer )
+					if ( Game.IsServer )
 						using ( Prediction.Off() )
 						{
 							satchel.Explode();
@@ -85,10 +85,10 @@ partial class SatchelWeapon : Weapon
 
 		PlaySound( "dm.grenade_throw" );
 
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 
 
-		if ( IsServer )
+		if ( Game.IsServer )
 			using ( Prediction.Off() )
 			{
 				var satchel = new Satchel
@@ -112,15 +112,15 @@ partial class SatchelWeapon : Weapon
 
 		player.SetAnimParameter( "attack", true );
 
-		if ( IsServer && player.AmmoCount( AmmoType.Satchel ) == 0 )
+		if ( Game.IsServer && player.AmmoCount( AmmoType.Satchel ) == 0 )
 		{
 
 			//player.SwitchToBestWeapon();
 		}
 	}
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Trip, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

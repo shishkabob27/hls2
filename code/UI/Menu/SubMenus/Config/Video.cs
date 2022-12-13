@@ -71,7 +71,7 @@ class Video : BaseMenuScreen
 
 		if ( oldhimdl != bChimodels )
 		{
-			if ( Local.Pawn is not HLPlayer pl ) return;
+			if ( Game.LocalPawn is not HLPlayer pl ) return;
 
 			if ( pl.ActiveChild is not Weapon wp ) return;
 			wp.ActiveStart( pl );

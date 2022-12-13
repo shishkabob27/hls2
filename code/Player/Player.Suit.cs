@@ -116,7 +116,7 @@
 		if ( iNoRepeatTime != null )
 		{
 			if ( iempty < 0 )
-				iempty = Rand.Int( 0, CSUITNOREPEAT - 1 ); // pick random slot to take over
+				iempty = Game.Random.Int( 0, CSUITNOREPEAT - 1 ); // pick random slot to take over
 			SuitNoRepeat[iempty] = name;
 			SuitNoRepeatTime[iempty] = iNoRepeatTime + Time.Now;
 		}
@@ -216,12 +216,12 @@
 		// DMG_SHOCK
 		 
 
-			if ( dmg.Flags.HasFlag(DamageFlags.Blunt) )
+			if ( dmg.HasTag(DamageFlags.Blunt) )
 			{
 				if ( fmajor )
 					SetSuitUpdate( "HEV_DMG4", 0, SUIT_NEXT_IN_30SEC );    // minor fracture
 			}
-			if ( (dmg.Flags.HasFlag( DamageFlags.Fall ) | dmg.Flags.HasFlag( DamageFlags.Crush )) )
+			if ( (dmg.HasTag( DamageFlags.Fall ) | dmg.HasTag( DamageFlags.Crush )) )
 			{
 				if ( fmajor )
 					SetSuitUpdate( "HEV_DMG5", 0, SUIT_NEXT_IN_30SEC );    // major fracture
@@ -229,7 +229,7 @@
 					SetSuitUpdate( "HEV_DMG4", 0, SUIT_NEXT_IN_30SEC );    // minor fracture
 			}
 
-			if ( dmg.Flags.HasFlag( DamageFlags.Bullet ) )
+			if ( dmg.HasTag( DamageFlags.Bullet ) )
 			{
 				if ( LastDamage.Damage > 5 )
 					SetSuitUpdate( "HEV_DMG6", 0, SUIT_NEXT_IN_30SEC );    // blood loss detected
@@ -237,7 +237,7 @@
 																				//	SetSuitUpdate("!HEV_DMG0", FALSE, SUIT_NEXT_IN_30SEC);	// minor laceration
 			}
 
-			if ( dmg.Flags.HasFlag( DamageFlags.Slash ) )
+			if ( dmg.HasTag( DamageFlags.Slash ) )
 			{
 				if ( fmajor )
 					SetSuitUpdate( "HEV_DMG1", 0, SUIT_NEXT_IN_30SEC );    // major laceration
@@ -245,32 +245,32 @@
 					SetSuitUpdate( "HEV_DMG0", 0, SUIT_NEXT_IN_30SEC );    // minor laceration
 			}
 
-			if ( dmg.Flags.HasFlag( DamageFlags.Sonic ) )
+			if ( dmg.HasTag( DamageFlags.Sonic ) )
 			{
 				if ( fmajor )
 					SetSuitUpdate( "HEV_DMG2", 0, SUIT_NEXT_IN_1MIN ); // internal bleeding
 			}
 
-			if ( (dmg.Flags.HasFlag( DamageFlags.Poison ) | dmg.Flags.HasFlag( DamageFlags.Paralyze )) )
+			if ( (dmg.HasTag( DamageFlags.Poison ) | dmg.HasTag( DamageFlags.Paralyze )) )
 			{
 				SetSuitUpdate( "HEV_DMG3", 0, SUIT_NEXT_IN_1MIN ); // blood toxins detected
 			}
 
-			if ( dmg.Flags.HasFlag( DamageFlags.Acid ) )
+			if ( dmg.HasTag( DamageFlags.Acid ) )
 			{
 				SetSuitUpdate( "HEV_DET1", 0, SUIT_NEXT_IN_1MIN ); // hazardous chemicals detected
 			}
 
-			if ( dmg.Flags.HasFlag( DamageFlags.NerveGas ) )
+			if ( dmg.HasTag( DamageFlags.NerveGas ) )
 			{
 				SetSuitUpdate( "HEV_DET0", 0, SUIT_NEXT_IN_1MIN ); // biohazard detected
 			}
 
-			if ( dmg.Flags.HasFlag( DamageFlags.Radiation ) )
+			if ( dmg.HasTag( DamageFlags.Radiation ) )
 			{
 				SetSuitUpdate( "HEV_DET2", 0, SUIT_NEXT_IN_1MIN ); // radiation detected
 			}
-			if ( dmg.Flags.HasFlag( DamageFlags.Shock ) )
+			if ( dmg.HasTag( DamageFlags.Shock ) )
 			{
 			}
 
@@ -295,16 +295,16 @@
 				SetSuitUpdate( "HEV_HLTH2", 0, SUIT_NEXT_IN_10MIN );   // health critical
 
 			// give critical health warnings
-			if ( !(Rand.Int( 0, 3 ) == 0) && healthPrev < 50 )
+			if ( !(Game.Random.Int( 0, 3 ) == 0) && healthPrev < 50 )
 				SetSuitUpdate( "HEV_DMG7", 0, SUIT_NEXT_IN_5MIN ); //seek medical attention
 		}
 
 		// if we're taking time based damage, warn about its continuing effects
-		if ( dmg.Flags.HasFlag( DamageFlags.Burn ) && healthPrev < 75 )
+		if ( dmg.HasTag( DamageFlags.Burn ) && healthPrev < 75 )
 		{
 			if ( Health < 50 )
 			{
-				if ( Rand.Int( 0, 3 ) != 0 )
+				if ( Game.Random.Int( 0, 3 ) != 0 )
 					SetSuitUpdate( "HEV_DMG7", 0, SUIT_NEXT_IN_5MIN ); //seek medical attention
 			}
 			else

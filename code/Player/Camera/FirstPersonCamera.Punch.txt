@@ -2,7 +2,7 @@
 {
 	void AddPunch()
 	{
-		if ( Local.Pawn is not HLPlayer pawn ) return;
+		if ( Game.LocalPawn is not HLPlayer pawn ) return;
 		// Apply punchangles
 		Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + pawn.punchangle.z ).ToRotation();
 		Rotation = Rotation.Angles().WithPitch( Rotation.Angles().pitch + pawn.punchangle.x ).ToRotation();

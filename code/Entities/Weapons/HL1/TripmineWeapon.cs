@@ -56,7 +56,7 @@ partial class TripmineWeapon : Weapon
 		// woosh sound
 		// screen shake
 
-		Rand.SetSeed( Time.Tick );
+		Game.SetRandomSeed( Time.Tick );
 
 		var tr = Trace.Ray( GetFiringPos(), GetFiringPos() + GetFiringRotation().Forward * 150 )
 				.Ignore( Owner )
@@ -68,7 +68,7 @@ partial class TripmineWeapon : Weapon
 		if ( !tr.Entity.IsWorld )
 			return;
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			var grenade = new Tripmine
 			{
@@ -80,7 +80,7 @@ partial class TripmineWeapon : Weapon
 			_ = grenade.Arm( 2.5f );
 		}
 
-		if ( IsServer && player.AmmoCount( AmmoType.Tripmine ) == 0 )
+		if ( Game.IsServer && player.AmmoCount( AmmoType.Tripmine ) == 0 )
 		{
 			player.SwitchToBestWeapon();
 		}
@@ -89,14 +89,14 @@ partial class TripmineWeapon : Weapon
 	[ClientRpc]
 	protected override void ShootEffectsRPC()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		ViewModelEntity?.SetAnimParameter( "attack", true );
 	}
 
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Trip, anim ); 
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

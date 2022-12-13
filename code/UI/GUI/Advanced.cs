@@ -24,7 +24,7 @@ public class Advanced : GUIPanel
         SetClass("active", MenuOpen);
     }
 
-	[Event.BuildInput]
+	[Event.Client.BuildInput]
 	public void ProcessClientInput()
 	{
 		if (Input.Pressed(InputButton.Menu))

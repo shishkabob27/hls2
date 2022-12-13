@@ -4,10 +4,10 @@
 	{
 		public static void PositionAtCrosshair( this Panel panel )
 		{
-			panel.PositionAtCrosshair( Local.Pawn );
+			panel.PositionAtCrosshair( Game.LocalPawn as HLPlayer );
 		}
 
-		public static void PositionAtCrosshair( this Panel panel, Entity player )
+		public static void PositionAtCrosshair( this Panel panel, HLPlayer player )
 		{
 			if ( !player.IsValid() ) return;
 

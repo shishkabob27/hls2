@@ -34,7 +34,7 @@ public partial class HealthKit : ModelEntity, IRespawnableEntity
 
 		Sound.FromWorld( "dm.item_health", Position );
 		ItemRespawn.Taken( this );
-		if (IsServer)
+		if (Game.IsServer)
 			Delete();
 	}
 }

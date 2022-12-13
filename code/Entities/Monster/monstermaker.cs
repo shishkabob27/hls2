@@ -1,7 +1,7 @@
 ﻿[Library("monstermaker"), HammerEntity]
 [EditorSprite( "editor/npc_maker.vmat" )]
 [Title("monstermaker"), Category("Monsters"), Icon("person")]
-public class monstermaker : Entity
+public class MonsterMaker : Entity
 {
     //stub
 
@@ -12,10 +12,10 @@ public class monstermaker : Entity
     [Input]
 	new public void Spawn()
 	{
-        var entityType = TypeLibrary.GetDescription<Entity>( monstertype ).GetType();
+        var entityType = TypeLibrary.GetType<Entity>( monstertype ).GetType();
         if ( entityType == null )
 
-            if ( !TypeLibrary.Has<SpawnableAttribute>( entityType ) )
+            if ( !TypeLibrary.HasAttribute<SpawnableAttribute>( entityType ) )
                 return;
 
         var ent = TypeLibrary.Create<Entity>( entityType );

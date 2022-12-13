@@ -45,10 +45,10 @@ class InventoryIcon : Panel
 	{
 		base.Tick();
 
-		if ( !Weapon.IsValid() || Weapon.Owner != Local.Pawn )
+		if ( !Weapon.IsValid() || Weapon.Owner != Game.LocalPawn )
 			Delete( true );
 
-		if ( Local.Pawn is HLPlayer ply && ply.MaxAmmo( Weapon.AmmoType ) != 0 )
+		if ( Game.LocalPawn is HLPlayer ply && ply.MaxAmmo( Weapon.AmmoType ) != 0 )
 		{
 			float a = ((float)ply.AmmoCount( Weapon.AmmoType ) / (float)ply.MaxAmmo( Weapon.AmmoType ));
 			float b = 1 - ((float)ply.AmmoCount( Weapon.AmmoType ) / (float)ply.MaxAmmo( Weapon.AmmoType ));

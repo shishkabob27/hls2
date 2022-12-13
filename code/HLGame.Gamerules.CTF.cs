@@ -31,7 +31,7 @@
 	{
 		float distance = 0;
 
-		foreach ( var client in Client.All )
+		foreach ( var client in Game.Clients)
 		{
 			if ( client.Pawn == null ) continue;
 			if ( client.Pawn == pawn ) continue;

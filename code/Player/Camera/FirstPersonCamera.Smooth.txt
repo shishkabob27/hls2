@@ -8,7 +8,7 @@
 	float lasttime;
 	void StairSmooth(Vector3 simorg)
 	{
-		if ( Local.Pawn is not HLPlayer pawn ) return;
+		if ( Game.LocalPawn is not HLPlayer pawn ) return;
 
 		if ( cl_stepsmooth > 0 && pawn.GroundEntity != null && simorg[2] - oldz > 0 )
 		{
@@ -52,7 +52,7 @@
 
 	void VSmoothing( Vector3 simorg )
 	{
-		if ( Local.Pawn is not HLPlayer pawn ) return;
+		if ( Game.LocalPawn is not HLPlayer pawn ) return;
 		Vector3 delta2;
 
 		//VectorSubtract( pparams->simorg, lastorg, delta );

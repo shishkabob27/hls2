@@ -8,7 +8,7 @@
 	new protected virtual void TickPlayerUse()
 	{
 		// This is serverside only
-		if ( !Host.IsServer ) return;
+		if ( !Game.IsServer ) return;
 
 		// Turn prediction off
 		using ( Prediction.Off() )

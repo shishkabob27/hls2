@@ -7,7 +7,7 @@
 
 	[Net, Predicted]
 	public Entity Light { get; private set; }
-	[Event.Frame]
+	[Event.Client.Frame]
 	void flashlightframe()
 	{
 		if ( Light.IsValid() )
@@ -42,7 +42,7 @@
 				Light.Rotation = Input.VR.Head.Rotation;
 			}
 
-			if ( Light is SpotLightEntity && Local.Pawn is HLPlayer Ply )
+			if ( Light is SpotLightEntity && Game.LocalPawn is HLPlayer Ply )
 			{
 				try
 				{
@@ -53,7 +53,7 @@
 			}
 		}
 	}
-	public void SimulateFlashlight( Client cl )
+	public void SimulateFlashlight( IClient cl )
 	{
 		if ( Light.IsValid() )
 		{
@@ -92,12 +92,12 @@
 
 			PlaySound( "flashlight1" );
 
-			if ( Light.IsValid() == false && FlashlightEnabled && IsServer )
+			if ( Light.IsValid() == false && FlashlightEnabled && Game.IsServer )
 			{
 				NewFlashlight();
 			}
 
-			if ( Light.IsValid() == true && !FlashlightEnabled && IsServer )
+			if ( Light.IsValid() == true && !FlashlightEnabled && Game.IsServer )
 			{
 				RemoveFlashlight();
 			}

@@ -44,7 +44,7 @@
 		StateTimer = mapVote.VoteTimeLeft;
 		await WaitStateTimer();
 
-		Global.ChangeLevel( mapVote.WinningMap );
+		Game.ChangeLevel( mapVote.WinningMap );
 	}
 
 	private bool HasEnoughPlayers()
@@ -57,7 +57,7 @@
 
 	private void FreshStart()
 	{
-		foreach ( var cl in Client.All )
+		foreach ( var cl in Game.Clients )
 		{
 			cl.SetInt( "kills", 0 );
 			cl.SetInt( "deaths", 0 );

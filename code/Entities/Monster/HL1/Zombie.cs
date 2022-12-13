@@ -29,7 +29,7 @@ internal class Zombie : NPC
     public override void Think()
     {
 
-        int r = Rand.Int( 50 );
+        int r = Game.Random.Int( 50 );
         if ( LifeState != LifeState.Alive ) return;
         if ( r == 10 && TimeSinceLastSound > 5 )
         {
@@ -87,7 +87,7 @@ internal class Zombie : NPC
     }
     public override void OnAnimEventGeneric( string name, int intData, float floatData, Vector3 vectorData, string stringData )
     {
-        if ( stringData == "claw" && IsServer )
+        if ( stringData == "claw" && Game.IsServer )
         {
             foreach ( var tr in TraceBullet( EyePosition, EyePosition + Rotation.Forward * 70, 1 ) )
             {

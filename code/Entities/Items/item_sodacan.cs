@@ -40,8 +40,8 @@ public partial class item_sodacan : ModelEntity
 			case 3: SetMaterialGroup(4); break;
 			case 4: SetMaterialGroup(5); break;
 			case 5: SetMaterialGroup(6); break;
-			case 6: SetMaterialGroup(Rand.Int(1,6)); break;
-			default: SetMaterialGroup(Rand.Int(1,6)); break;
+			case 6: SetMaterialGroup(Game.Random.Int(1,6)); break;
+			default: SetMaterialGroup(Game.Random.Int(1,6)); break;
 		}
 	}
 
@@ -57,7 +57,7 @@ public partial class item_sodacan : ModelEntity
 
 		player.Health = newhealth;
 
-		if (IsServer)
+		if (Game.IsServer)
 			Delete();
 	}
 }

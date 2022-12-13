@@ -95,7 +95,7 @@ partial class Pistol : Weapon
 	[ClientRpc]
 	protected override void ShootEffectsRPC()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		if ( Client.IsUsingVr )
 		{

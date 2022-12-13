@@ -58,7 +58,7 @@ partial class Crossbow : Weapon
 
 		ViewPunch( 0, -2 );
 
-		if ( IsServer )
+		if ( Game.IsServer )
 		{
 			var bolt = new CrossbowBolt();
 			bolt.Position = GetFiringPos();
@@ -68,7 +68,7 @@ partial class Crossbow : Weapon
 		}
 	}
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		base.Simulate( cl );
 
@@ -78,14 +78,12 @@ partial class Crossbow : Weapon
 		}
 	}
 
-	public override void PostCameraSetup( ref CameraSetup camSetup )
+	public void PostCameraSetup()
 	{
-		base.PostCameraSetup( ref camSetup );
-
-		float targetFov = camSetup.FieldOfView;
-		float targetViewmodelFov = camSetup.ViewModel.FieldOfView;
-		LastFov = LastFov ?? camSetup.FieldOfView;
-		LastViewmodelFov = LastViewmodelFov ?? camSetup.ViewModel.FieldOfView;
+		float targetFov = Camera.FieldOfView;
+		float targetViewmodelFov = Camera.ViewModel.FieldOfView;
+		LastFov = LastFov ?? Camera.FieldOfView;
+		LastViewmodelFov = LastViewmodelFov ?? Camera.ViewModel.FieldOfView;
 
 		if ( Zoomed )
 		{
@@ -96,8 +94,8 @@ partial class Crossbow : Weapon
 		float lerpedFov = LastFov.Value.LerpTo( targetFov, Time.Delta * 24.0f );
 		float lerpedViewmodelFov = LastViewmodelFov.Value.LerpTo( targetViewmodelFov, Time.Delta * 24.0f );
 
-		camSetup.FieldOfView = targetFov;
-		camSetup.ViewModel.FieldOfView = targetViewmodelFov;
+		Camera.FieldOfView = targetFov;
+		Camera.ViewModel.FieldOfView = targetViewmodelFov;
 
 		LastFov = lerpedFov;
 		LastViewmodelFov = lerpedViewmodelFov;
@@ -115,13 +113,13 @@ partial class Crossbow : Weapon
 	[ClientRpc]
 	protected override void ShootEffectsRPC()
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 	}
-	public override void SimulateAnimator( PawnAnimator anim )
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Crossbow, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
 	}
 }

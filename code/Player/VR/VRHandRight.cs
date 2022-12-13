@@ -7,12 +7,12 @@
 		Transmit = TransmitType.Always;
     }
 
-    public override void Simulate(Client cl)
+    public override void Simulate(IClient cl)
     {
         base.Simulate(cl);
         Transform = Input.VR.RightHand.Transform;
     }
-    public override void FrameSimulate(Client cl)
+    public override void FrameSimulate(IClient cl)
     {
         base.FrameSimulate(cl);
         Transform = Input.VR.RightHand.Transform;

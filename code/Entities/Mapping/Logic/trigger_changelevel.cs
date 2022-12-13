@@ -27,7 +27,7 @@ public partial class ChangeLevelTrigger : BaseTrigger
 	[Input]
 	protected void ChangeLevel()
 	{
-		Global.ChangeLevel(Map);
+		Game.ChangeLevel(Map);
 	}
 
 	/// <summary>
@@ -39,6 +39,6 @@ public partial class ChangeLevelTrigger : BaseTrigger
 	{
 		OnTrigger.Fire( other );
 
-		Global.ChangeLevel(Map);
+		Game.ChangeLevel(Map);
 	}
 }

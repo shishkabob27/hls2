@@ -29,7 +29,7 @@ partial class HornetGun : Weapon
         Model = WorldModel;
         AmmoClip = 0;
     }
-    public override void Simulate( Client owner )
+    public override void Simulate( IClient owner )
     {
         base.Simulate( owner );
         if ( Owner is not HLPlayer player ) return;
@@ -62,7 +62,7 @@ partial class HornetGun : Weapon
 
         var vecSrc = GetFiringPos() + GetFiringRotation().Forward * 16 + GetFiringRotation().Right * 8 + GetFiringRotation().Up * -12;
         ViewModelEntity?.SetAnimParameter( "fire", true );
-        if ( IsServer )
+        if ( Game.IsServer )
         {
             var hornet = new Hornet();
             hornet.Position = vecSrc;
@@ -70,7 +70,7 @@ partial class HornetGun : Weapon
             hornet.Owner = Owner;
             hornet.Velocity = GetFiringRotation().Forward * 300;
         }
-        ViewPunch( 0, Rand.Float( -2, 2 ) );
+        ViewPunch( 0, Game.Random.Float( -2, 2 ) );
     }
 
     public override void AttackSecondary()
@@ -117,7 +117,7 @@ partial class HornetGun : Weapon
         }
 
         ViewModelEntity?.SetAnimParameter( "fire", true );
-        if ( IsServer )
+        if ( Game.IsServer )
         {
             var hornet = new Hornet();
             hornet.Position = vecSrc;
@@ -127,9 +127,9 @@ partial class HornetGun : Weapon
             hornet.Dart = true;
         }
     }
-    public override void SimulateAnimator( PawnAnimator anim )
+    public override void SimulateAnimator( CitizenAnimationHelper anim )
 	{
 		SetHoldType( HLCombat.HoldTypes.Hive, anim );
-		anim.SetAnimParameter( "aim_body_weight", 1.0f );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
     }
 }

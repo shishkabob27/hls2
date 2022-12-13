@@ -14,8 +14,8 @@
 	bool hasCountedFading = false;
 
 	public Angles RotAngles = Angles.Zero;
-	public Angles SleepAngles = new Angles( 270, Rand.Float( 0, 360 ), 90 );
-	public Angles AltSleepAngles = new Angles( 0, Rand.Float( 0, 360 ), 0 );
+	public Angles SleepAngles = new Angles( 270, Game.Random.Float( 0, 360 ), 90 );
+	public Angles AltSleepAngles = new Angles( 0, Game.Random.Float( 0, 360 ), 0 );
 	Entity SleepGroundEntity;
 	Vector3 prevTickPos;
 	PhysicsGroup phys;
@@ -58,7 +58,7 @@
 	public HLGib()
 	{
 
-		alpha = Rand.Float( 1.1f, 2.0f );
+		alpha = Game.Random.Float( 1.1f, 2.0f );
 	}
 
 	public void Spawn( string ModelName )
@@ -71,11 +71,11 @@
 	{
 		if ( Colour == 0 )
 		{
-			SetModel( Rand.FromList<string>( HGibList ) );
+			SetModel( Game.Random.FromList<string>( HGibList ) );
 		}
 		else
 		{
-			SetModel( Rand.FromList<string>( AGibList ) );
+			SetModel( Game.Random.FromList<string>( AGibList ) );
 		}
 		Initialise();
 		_ = FadeOut( 30 );
@@ -84,7 +84,7 @@
 	public override void Spawn()
 	{
 
-		SetModel( Rand.FromList<string>( HGibList ) );
+		SetModel( Game.Random.FromList<string>( HGibList ) );
 		Initialise();
 		_ = FadeOut( 30 );
 
@@ -131,7 +131,7 @@
 		phys = SetupPhysicsFromModel( PhysicsMotionType.Keyframed, false );
 		isInit = true;
 		HLCombat.GibCount += 1;
-		Velocity += new Vector3( Rand.Int( -1, 1 ), Rand.Int( -1, 1 ), Rand.Int( -1, 1 ) );
+		Velocity += new Vector3( Game.Random.Int( -1, 1 ), Game.Random.Int( -1, 1 ), Game.Random.Int( -1, 1 ) );
 		EnableHitboxes = true;
 		Transmit = TransmitType.Always;
 		this.Tags.Add( "debris" );

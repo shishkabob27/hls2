@@ -1,6 +1,4 @@
-﻿using Sandbox.Internal;
-
-public partial class HLUtils
+﻿public partial class HLUtils
 {
     static public HLPlayer FindPlayerInBox(Vector3 Position, int AreaSize)
     {
@@ -20,13 +18,13 @@ public partial class HLUtils
     
     static public HLPlayer ClosestPlayerTo(Vector3 pos)
     {
-        var plys = Client.All.OrderBy(o => (o.Pawn.Position.Distance(pos)));
+        var plys = Game.Clients.OrderBy(o => (o.Pawn.Position.Distance(pos)));
         return plys.First().Pawn as HLPlayer;
     }
     
     static public bool PlayerInRangeOf(Vector3 pos, float range = 1024)
     {
-		var plys = Client.All.Where( ply => ply.Pawn.Position.Distance( pos ) < range );
+		var plys = Game.Clients.Where( ply => ply.Pawn.Position.Distance( pos ) < range );
 		return plys.Count() > 0;
 		//return true;
 		//return false;

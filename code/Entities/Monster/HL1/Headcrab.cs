@@ -33,7 +33,7 @@ public class Headcrab : NPC
 		{
 			if ( ent != Enemy && Time.Now > NextAlertSound )
 			{
-				NextAlertSound = Time.Now + Rand.Int( 2, 4 );
+				NextAlertSound = Time.Now + Game.Random.Int( 2, 4 );
 				PlaySound( "hc_alert" );
 			}
 			Enemy = ent;
@@ -59,7 +59,7 @@ public class Headcrab : NPC
 	{
 		if ( Time.Now > NextIdleSound )
 		{
-			NextIdleSound = Time.Now + Rand.Int( 2, 4 );
+			NextIdleSound = Time.Now + Game.Random.Int( 2, 4 );
 			PlaySound( "hc_idle" );
 		}
 		base.Think();

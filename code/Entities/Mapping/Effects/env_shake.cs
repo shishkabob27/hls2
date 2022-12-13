@@ -26,7 +26,7 @@ public partial class env_shake : Entity
 	[Input]
 	void StartShake()
 	{
-		var a = Client.All.Where( ply => ply.Pawn.Position.Distance( Position ) < EffectRadius * 2 );
+		var a = Game.Clients.Where( ply => ply.Pawn.Position.Distance( Position ) < EffectRadius * 2 );
 		ShakeRPC( To.Multiple( a ) );
 
 	}
@@ -41,7 +41,7 @@ public partial class env_shake : Entity
 	void ShakeRPC()
 	{
 
-		if ( Local.Pawn is not HLPlayer ply ) return;
+		if ( Game.LocalPawn is not HLPlayer ply ) return;
 		if ( ply.CameraMode is not FirstPersonCamera plycam ) return;
 
 		plycam.Shake_AMPLITUDE = Math.Max( Amplitude, plycam.Shake_AMPLITUDE ); // avoid setting this lower if there is a stronger shake already active
@@ -53,7 +53,7 @@ public partial class env_shake : Entity
 	void StopShakeRPC()
 	{
 
-		if ( Local.Pawn is not HLPlayer ply ) return;
+		if ( Game.LocalPawn is not HLPlayer ply ) return;
 		if ( ply.CameraMode is not FirstPersonCamera plycam ) return;
 
 		plycam.Shake_NEXTSHAKE = 0;

@@ -51,7 +51,7 @@ public partial class SoundscapeRadiusEntity : Entity
 	/// </summary>
 	public bool TestPosition( Vector3 position )
 	{
-		Host.AssertClient();
+		Game.AssertClient();
 
 		if ( !Enabled )
 			return false;

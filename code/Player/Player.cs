@@ -88,7 +88,7 @@
 	{
 		return true;
 	}
-	public void DoHLPlayerNoclip( Client player )
+	public void DoHLPlayerNoclip( IClient player )
 	{
 		//if (!player.HasPermission("noclip"))
 		//return;
@@ -157,12 +157,12 @@
 			IsInVR = true;
 		}
 
-		Host.AssertServer();
+		Game.AssertServer();
 
 		LifeState = LifeState.Alive;
 		Health = 100;
 		Velocity = Vector3.Zero;
-		WaterLevel = 0;
+		//WaterLevel = 0;
 
 		CreateHull();
 
@@ -209,13 +209,13 @@
 		//give all weapons, should auto update no matter what.
 		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
 		var weptype = typeof( Weapon );
-		var weptypes = TypeLibrary.GetDescriptions( weptype );
+		var weptypes = TypeLibrary.GetTypes( weptype );
 		foreach ( var weapontype in weptypes )
 		{
 			ply.GiveWeapon( weapontype.Create<Weapon>() );
 		}
 		var ammtype = typeof( BaseAmmo );
-		var ammtypes = TypeLibrary.GetDescriptions( ammtype );
+		var ammtypes = TypeLibrary.GetTypes( ammtype );
 		foreach ( var ammotype in ammtypes )
 		{
 			var ent = ammotype.Create<ModelEntity>();
@@ -328,7 +328,7 @@
 
 		if ( corpse )
 		{
-			CreateCorpse( Velocity, LastDamage.Flags, LastDamage.Position, LastDamage.Force, LastDamage.Hitbox.GetName(), this );
+			CreateCorpse( Velocity, LastDamage.Tags, LastDamage.Position, LastDamage.Force, LastDamage.Hitbox.GetName(), this );
 		}
 
 		Controller = null;
@@ -354,14 +354,14 @@
 		base.BuildInput();
 	}
 
-	public override void FrameSimulate( Client cl )
+	public override void FrameSimulate( IClient cl )
 	{
 
 		if ( Client.IsUsingVr )
 		{
 			rotationvr();
 
-			var postProcess = Map.Camera.FindOrCreateHook<Sandbox.Effects.ScreenEffects>();
+			var postProcess = Camera.Main.FindOrCreateHook<Sandbox.Effects.ScreenEffects>();
 
 			if ( Health > 0 )
 			{
@@ -411,7 +411,7 @@
 
 	TimeSince timeSinceDied;
 
-	public override void Simulate( Client cl )
+	public override void Simulate( IClient cl )
 	{
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 			return;
@@ -444,7 +444,7 @@
 
 		if ( LifeState == LifeState.Dead )
 		{
-			if ( timeSinceDied > HLGame.hl_respawn_time && IsServer )
+			if ( timeSinceDied > HLGame.hl_respawn_time && Game.IsServer )
 			{
 				Respawn();
 			}
@@ -576,7 +576,7 @@
 	{
 		if ( timeSinceDropped < 1 ) return;
 
-		if ( IsClient ) return;
+		if ( Game.IsClient ) return;
 
 		if ( other is TouchTrigger )
 		{
@@ -689,7 +689,7 @@
 		var flBonus = ARMOUR_BONUS;
 		var flRatio = ARMOUR_RATIO;
 
-		if ( info.Flags.HasFlag( DamageFlags.Blast ) && HLGame.GameIsMultiplayer() )
+		if ( info.HasTag( DamageFlags.Blast ) && HLGame.GameIsMultiplayer() )
 		{
 			// blasts damage armour more.
 			flBonus *= 2;
@@ -697,7 +697,7 @@
 
 
 		// Armour. 
-		if ( !info.Flags.HasFlag( DamageFlags.Fall ) && !info.Flags.HasFlag( DamageFlags.Drown ) ) // armour doesn't protect against fall or drown damage!
+		if ( !info.HasTag( DamageFlags.Fall ) && !info.HasTag( DamageFlags.Drown ) ) // armour doesn't protect against fall or drown damage!
 		{
 			float flNew = info.Damage * flRatio;
 
@@ -719,7 +719,7 @@
 			info.Damage = flNew;
 		}
 
-		if ( info.Flags.HasFlag( DamageFlags.Blast ) )
+		if ( info.HasTag( DamageFlags.Blast ) )
 		{
 			Deafen( To.Single( Client ), info.Damage.LerpInverse( 0, 60 ) );
 		}
@@ -731,13 +731,13 @@
 			if ( Health <= 0 )
 			{
 
-				if ( Health < -20 && !info.Flags.HasFlag( DamageFlags.DoNotGib ) )
+				if ( Health < -20 && !info.HasTag( DamageFlags.DoNotGib ) )
 				{
 					HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, Position, Health, this.CollisionBounds, 0 );
 					docorpse = false;
 				}
 
-				if ( info.Flags.HasFlag( DamageFlags.AlwaysGib ) && docorpse )
+				if ( info.HasTag( DamageFlags.AlwaysGib ) && docorpse )
 				{
 					HLCombat.CreateGibs( this.CollisionWorldSpaceCenter, info.Position, Health, this.CollisionBounds, 0 );
 					docorpse = false;
@@ -804,7 +804,7 @@
 	[ConCmd.Client]
 	public static void InflictDamage()
 	{
-		if ( Local.Pawn is HLPlayer ply )
+		if ( Game.LocalPawn is HLPlayer ply )
 		{
 			ply.TookDamage( ply.Position + ply.EyeRotation.Forward * 100.0f );
 		}
@@ -825,7 +825,7 @@
 		if ( LifeState != LifeState.Alive )
 			return;
 
-		if ( !IsServer )
+		if ( !Game.IsServer )
 			return;
 
 		if ( timeSinceLastFootstep < 0.20f )
@@ -860,7 +860,7 @@
 		if ( LifeState != LifeState.Alive )
 			return;
 
-		if ( !IsServer )
+		if ( !Game.IsServer )
 			return;
 
 
