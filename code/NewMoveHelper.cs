@@ -92,7 +92,7 @@ public struct NewMoveHelper
 		HitWall = false;
 		HitFloor = false;
 
-		using var moveplanes = new VelocityClipPlanes( Velocity );
+		using var moveplanes = new NewVelocityClipPlanes( Velocity );
 
 		for ( int bump = 0; bump < moveplanes.Max; bump++ )
 		{
