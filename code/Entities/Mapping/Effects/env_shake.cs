@@ -42,24 +42,26 @@ public partial class env_shake : Entity
 	{
 
 		if ( Game.LocalPawn is not HLPlayer ply ) return;
-		if ( ply.CameraMode is not FirstPersonCamera plycam ) return;
+		/*if ( ply.CameraMode is not FirstPersonCamera plycam ) return;
 
 		plycam.Shake_AMPLITUDE = Math.Max( Amplitude, plycam.Shake_AMPLITUDE ); // avoid setting this lower if there is a stronger shake already active
 		plycam.Shake_DURATION = Math.Max( Duration, plycam.Shake_DURATION ); // avoid setting this lower if there is a stronger shake already active
 		plycam.Shake_FREQUENCY = Math.Max( Frequency, plycam.Shake_FREQUENCY ); // avoid setting this lower if there is a stronger shake already active
 		plycam.Shake_ENDTIME = Time.Now + Math.Max( plycam.Shake_DURATION, 0.01f );
+		*/
 	}
 	[ClientRpc]
 	void StopShakeRPC()
 	{
 
 		if ( Game.LocalPawn is not HLPlayer ply ) return;
-		if ( ply.CameraMode is not FirstPersonCamera plycam ) return;
+		/*if ( ply.CameraMode is not FirstPersonCamera plycam ) return;
 
 		plycam.Shake_NEXTSHAKE = 0;
 		plycam.Shake_AMPLITUDE = 0;
 		plycam.Shake_DURATION = 0;
 		plycam.Shake_FREQUENCY = 0;
 		plycam.Shake_ENDTIME = 0;
+		*/
 	}
 }

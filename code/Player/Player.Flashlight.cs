@@ -46,7 +46,7 @@
 			{
 				try
 				{
-					(Light as SpotLightEntity).EnableViewmodelRendering = (Ply.CameraMode is FirstPersonCamera && !Client.Components.Get<DevCamera>( true ).Enabled); // Do not viewmodel render in third person
+					(Light as SpotLightEntity).EnableViewmodelRendering = (!Ply.ThirdPerson && !Client.Components.Get<DevCamera>( true ).Enabled); // Do not viewmodel render in third person
 
 				}
 				catch { }

@@ -73,14 +73,15 @@
 	public bool IsCarryingFlag { get; set; } = false;
 
 	[Net, Predicted]
+	public bool ThirdPerson { get; set; }
+
+	[Net, Predicted]
 	public Vector3 punchangle { get; set; } = Vector3.Zero;
 
 	public Vector3 punchanglecl = Vector3.Zero;
 
 	public HLPlayer()
 	{
-
-
 		Inventory = new HLInventory( this );
 	}
 
@@ -120,9 +121,9 @@
 
 		Controller = new HL1GameMovement();
 
-		Animator = new HLPlayerAnimator();
+		//Animator = new HLPlayerAnimator();
 
-		CameraMode = new FirstPersonCamera();
+		//CameraMode = new FirstPersonCamera();
 
 
 		EnableAllCollisions = true;
@@ -328,12 +329,12 @@
 
 		if ( corpse )
 		{
-			CreateCorpse( Velocity, LastDamage.Tags, LastDamage.Position, LastDamage.Force, LastDamage.Hitbox.GetName(), this );
+			CreateCorpse( Velocity, LastDamage.Position, LastDamage.Force, LastDamage.Hitbox.GetName(), this );
 		}
 
 		Controller = null;
 
-		CameraMode = new DeadCamera();
+		//CameraMode = new DeadCamera();
 
 		EnableAllCollisions = false;
 		EnableDrawing = false;
@@ -356,6 +357,7 @@
 
 	public override void FrameSimulate( IClient cl )
 	{
+		UpdateCamera();
 
 		if ( Client.IsUsingVr )
 		{
@@ -454,8 +456,8 @@
 
 		//UpdatePhysicsHull();
 
-		var controller = GetActiveController();
-		controller?.Simulate( cl, this, GetActiveAnimator() );
+		//var controller = GetActiveController();
+		//controller?.Simulate( cl, this, GetActiveAnimator() );
 
 		SimulateFlashlight( cl );
 		//
@@ -479,16 +481,9 @@
 
 		TickPlayerUse();
 
-		if ( Input.Pressed( InputButton.View ) && !Client.IsUsingVr )
+		if ( Input.Pressed( InputButton.View ) )
 		{
-			if ( CameraMode is ThirdPersonCamera )
-			{
-				CameraMode = new FirstPersonCamera();
-			}
-			else
-			{
-				CameraMode = new ThirdPersonCamera();
-			}
+			ThirdPerson = !ThirdPerson;
 		}
 
 		SimulateActiveChild( cl, ActiveChild );
@@ -520,43 +515,6 @@
 			}
 		}
 		SimulateAnimator();
-	}
-
-	void ViewPunchThink()
-	{
-		//float len;
-		//len = punchangle.Length;
-		//Log.Info( "1: " + len );
-		//len -= ( 10.0f + len * 0.5f ) * 0f;
-		//Log.Info( "2: " + len );
-		//len = Math.Max( len, 0.0f );
-		//Log.Info( "3: " + len );
-		//punchangle = punchangle.LerpTo( Vector3.Zero, Time.Delta );
-
-	}
-	/*
-	float VectorNormalize( Vector3 v )
-	{
-		float length, ilength;
-
-		length = v.x * v.x + v.y * v.y + v.z * v.z;
-		length = (float)Math.Sqrt( length );        // FIXME
-
-		if ( length > 0 )
-		{
-			ilength = 1 / length;
-			v[0] *= ilength;
-			v[1] *= ilength;
-			v[2] *= ilength;
-		}
-
-		return length;
-
-	}
-	*/
-	new public void Deafen( float strength )
-	{
-		//Audio.SetEffect("flashbang", strength, velocity: 20.0f, fadeOut: 4.0f * strength);
 	}
 
 	public void SwitchToBestWeapon()
@@ -591,30 +549,6 @@
 		}
 
 		Inventory?.Add( other, Inventory.Active == null );
-	}
-
-	public override void PostCameraSetup( ref CameraSetup setup )
-	{
-		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
-			return;
-
-		base.PostCameraSetup( ref setup );
-
-		setup.ZNear = 1;
-		setup.ZFar = 25000;
-
-		if ( setup.Viewer != null && !Client.IsUsingVr )
-		{
-			AddCameraEffects( ref setup );
-		}
-	}
-
-	private void AddCameraEffects( ref CameraSetup setup )
-	{
-		if ( Client.IsUsingVr ) return;
-		if ( Health <= 0 ) return;
-		var speed = Velocity.WithZ( 0 ).Length.LerpInverse( 0, 2 );
-		var up = setup.Rotation.Up;
 	}
 
 	const float ARMOUR_RATIO = 0.2f;

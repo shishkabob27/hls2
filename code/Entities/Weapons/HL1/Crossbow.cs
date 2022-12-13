@@ -81,24 +81,24 @@ partial class Crossbow : Weapon
 	public void PostCameraSetup()
 	{
 		float targetFov = Camera.FieldOfView;
-		float targetViewmodelFov = Camera.ViewModel.FieldOfView;
+		//float targetViewmodelFov = Camera.ViewModel.FieldOfView;
 		LastFov = LastFov ?? Camera.FieldOfView;
-		LastViewmodelFov = LastViewmodelFov ?? Camera.ViewModel.FieldOfView;
+		//LastViewmodelFov = LastViewmodelFov ?? Camera.ViewModel.FieldOfView;
 
 		if ( Zoomed )
 		{
 			targetFov = 20.0f;
-			targetViewmodelFov = 20.0f;
+			//targetViewmodelFov = 20.0f;
 		}
 
 		float lerpedFov = LastFov.Value.LerpTo( targetFov, Time.Delta * 24.0f );
-		float lerpedViewmodelFov = LastViewmodelFov.Value.LerpTo( targetViewmodelFov, Time.Delta * 24.0f );
+		//float lerpedViewmodelFov = LastViewmodelFov.Value.LerpTo( targetViewmodelFov, Time.Delta * 24.0f );
 
 		Camera.FieldOfView = targetFov;
-		Camera.ViewModel.FieldOfView = targetViewmodelFov;
+		//Camera.ViewModel.FieldOfView = targetViewmodelFov;
 
 		LastFov = lerpedFov;
-		LastViewmodelFov = lerpedViewmodelFov;
+		//LastViewmodelFov = lerpedViewmodelFov;
 	}
 
 	public override void BuildInput()

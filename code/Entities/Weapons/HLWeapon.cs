@@ -823,6 +823,14 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 		}
 	}
 
+	public virtual void UpdateViewmodelCamera()
+	{
+		if ( ViewModelEntity is HLViewModel hlv )
+		{
+			hlv.UpdateCamera();
+		}
+	}
+
 	public override void CreateHudElements()
 	{
 		if ( Game.RootPanel == null ) return;
