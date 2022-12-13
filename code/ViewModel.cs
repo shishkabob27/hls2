@@ -1,17 +1,22 @@
 ﻿partial class HLViewModel : BaseViewModel
 {
 
-	public override void PostCameraSetup( ref CameraSetup camSetup )
+	public override void PlaceViewmodel()
 	{
-		AddCameraEffects( ref camSetup );
+		// nothing
 	}
 
-	private void AddCameraEffects( ref CameraSetup camSetup )
+	public void UpdateCamera()
 	{
+		var rotationDistance = Rotation.Distance( Camera.Rotation );
+
+		Position = Camera.Position;
+		Rotation = Rotation.Lerp( Rotation, Camera.Rotation, RealTime.Delta * rotationDistance * 1.1f );
+
+		Camera.ZNear = 4;
+
 		if ( Game.LocalPawn.LifeState == LifeState.Dead )
 			return;
-
-		camSetup.ViewModel.ZNear = 4;
 
 		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
 			return;
