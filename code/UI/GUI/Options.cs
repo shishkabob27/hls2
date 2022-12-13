@@ -76,9 +76,9 @@ public class Options : GUIPanel
 		fCpmColour1 = HLGame.hl_pm_colour1;
 		fCpmColour2 = HLGame.hl_pm_colour2;
 		bCFixCrouchFootstep = HLGame.hl_fix_ducking_footsteps;
-		bCFixMysteryViewbob = FirstPersonCamera.hl_fix_mystery_viewbob_code;
+		//bCFixMysteryViewbob = FirstPersonCamera.hl_fix_mystery_viewbob_code;
 		bCFixViewmodelIdle = HLGame.hl_viewmodel_idle_fix;
-		bCWONWeaponBob = FirstPersonCamera.hl_won_viewbob;
+		//bCWONWeaponBob = FirstPersonCamera.hl_won_viewbob;
 		bCenableBhop = WalkController.sv_enablebunnyhopping;
 		bCenableAutojump = WalkController.sv_autojump;
 		fCtimeLimit = HLGame.hl_dm_time;
@@ -136,9 +136,9 @@ public class Options : GUIPanel
 		HLGame.sv_gamemode = bSgameMode;
 		HLGame.skill = bSskill;
 
-		FirstPersonCamera.hl_won_viewbob = bCWONWeaponBob;
+		//FirstPersonCamera.hl_won_viewbob = bCWONWeaponBob;
 		HLGame.hl_fix_ducking_footsteps = bCFixCrouchFootstep;
-		FirstPersonCamera.hl_fix_mystery_viewbob_code = bCFixMysteryViewbob;
+		//FirstPersonCamera.hl_fix_mystery_viewbob_code = bCFixMysteryViewbob;
 		HLGame.hl_viewmodel_idle_fix = bCFixViewmodelIdle;
 
 		ConsoleSystem.Run( "hl_viewroll " + bCviewroll );

@@ -102,8 +102,8 @@ public partial class HLGame : GameManager
 	{
 		Game.AssertServer();
 
-		if ( !client.HasPermission( "devcam" ) )
-			return;
+		//if ( !client.HasPermission( "devcam" ) ) 
+		//	return;
 
 		var camera = client.Components.Get<DevCamera>( true );
 

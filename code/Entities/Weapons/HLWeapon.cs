@@ -156,14 +156,14 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 
 		EnableDrawing = true;
 
-		if ( ent is HLPlayer player )
+		/*if ( ent is HLPlayer player )
 		{
 			var animator = player.GetActiveAnimator();
 			if ( animator != null )
 			{
 				SimulateAnimator( animator );
 			}
-		}
+		}*/
 
 		//
 		// If we're the local player (clientside) create viewmodel

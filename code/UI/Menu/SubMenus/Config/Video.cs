@@ -39,7 +39,7 @@ class Video : BaseMenuScreen
 		bColdTorch = HLGame.hl_classic_flashlight;
 		bColdGibs = HLGame.hl_classic_gibs;
 		bColdexplosion = HLGame.hl_classic_explosion;
-		bCWONWeaponBob = FirstPersonCamera.hl_won_viewbob;
+		//bCWONWeaponBob = FirstPersonCamera.hl_won_viewbob;
 		fChudScale = HLGame.hl_hud_scale;
 	}
 

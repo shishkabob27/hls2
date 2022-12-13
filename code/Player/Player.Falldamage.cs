@@ -45,7 +45,7 @@
 					var a = new DamageInfo
 					{
 						Damage = flFallDamage,
-						Tags = DamageFlags.Fall,
+						//Tags = DamageFlags.Fall
 					};
 					TakeDamage( a );
 					fvol = 1;

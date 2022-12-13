@@ -17,11 +17,11 @@
 		return me;
 	}
 
-	[ConCmd.Server]
+	/*[ConCmd.Server]
 	static void sentenceplay(string ply)
 	{
 		Sentence.Play( ply, ConsoleSystem.Caller.Pawn );
-	}
+	}*/
 
 	int countMax { get; set; } = 1;
 	int count { get; set; } = 1;
