@@ -73,7 +73,7 @@
 	public bool IsCarryingFlag { get; set; } = false;
 
 	[Net, Predicted]
-	public bool ThirdPerson { get; set; }
+	public bool ThirdPerson { get; set; } = false;
 
 	[Net, Predicted]
 	public Vector3 punchangle { get; set; } = Vector3.Zero;
@@ -122,9 +122,6 @@
 		Controller = new HL1GameMovement();
 
 		//Animator = new HLPlayerAnimator();
-
-		//CameraMode = new FirstPersonCamera();
-
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
@@ -456,8 +453,8 @@
 
 		//UpdatePhysicsHull();
 
-		//var controller = GetActiveController();
-		//controller?.Simulate( cl, this, GetActiveAnimator() );
+		var controller = GetActiveController();
+		controller?.Simulate( cl, this );
 
 		SimulateFlashlight( cl );
 		//
