@@ -8,7 +8,6 @@
 		if ( LifeState == LifeState.Dead )
 		{
 			DeadCameraSimulate();
-			Log.Info( "DEADCAMERA" );
 			return;
 		}
 
@@ -28,6 +27,14 @@
 		Camera.Rotation = ViewAngles.ToRotation();
 		Camera.Position = EyePosition;
 		Camera.FirstPersonViewer = this;
+		// View Bob
+		AddViewBob();
+		// View Roll 
+		//AddRoll();
+		// Punch Angles
+		//AddPunch();
+		// env_shake and other shaky things
+		V_CalcShake();
 
 		if ( ActiveChild is Weapon weapon )
 		{
@@ -65,8 +72,9 @@
 	void DeadCameraSimulate()
 	{
 		Camera.FirstPersonViewer = this;
-		Camera.Position = Position + new Vector3( 0f, 0f, 24f );
+		Camera.Position = Position;//+ new Vector3( 0f, 0f, 24f );
 		Camera.Rotation = (ViewAngles + new Angles( 0, 0, 80 )).ToRotation();
+		Log.Info( "DEADCAMERA" );
 	}
 
 }

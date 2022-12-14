@@ -111,11 +111,7 @@
 	public override void Respawn()
 	{
 
-
-		//SetModel("models/citizen/citizen.vmdl");
-
 		SetPlayerModel();
-
 
 		SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
 
@@ -160,7 +156,7 @@
 		LifeState = LifeState.Alive;
 		Health = 100;
 		Velocity = Vector3.Zero;
-		//WaterLevel = 0;
+		this.ClearWaterLevel();
 
 		CreateHull();
 
@@ -331,8 +327,6 @@
 
 		Controller = null;
 
-		//CameraMode = new DeadCamera();
-
 		EnableAllCollisions = false;
 		EnableDrawing = false;
 
@@ -354,8 +348,7 @@
 
 	public override void FrameSimulate( IClient cl )
 	{
-		UpdateCamera();
-
+		
 		if ( Client.IsUsingVr )
 		{
 			rotationvr();
@@ -391,6 +384,9 @@
 			base.FrameSimulate( cl );
 
 		}
+
+		UpdateCamera();
+
 	}
 
 	public Rotation vrrotate { get; set; }
