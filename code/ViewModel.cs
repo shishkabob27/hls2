@@ -3,7 +3,7 @@
 
 	public override void PlaceViewmodel()
 	{
-		// nothing
+
 	}
 
 	public void UpdateCamera()
@@ -14,11 +14,6 @@
 		Rotation = Rotation.Lerp( Rotation, Camera.Rotation, RealTime.Delta * rotationDistance * 1.1f );
 
 		Camera.ZNear = 4;
-
-		if ( Game.LocalPawn.LifeState == LifeState.Dead )
-			return;
-
-		if ( HLGame.CurrentState == HLGame.GameStates.GameEnd )
-			return;
+		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 90f );
 	}
 }

@@ -551,7 +551,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 		if ( Client.IsUsingVr ) return (Rotation)VRWeaponModel.GetAttachment( "muzzle" )?.Rotation;
 
 		if ( Owner is not HLPlayer player ) return Rotation.LookAt( Owner.AimRay.Forward );
-		var rot = player.EyeRotation;
+		var rot = player.ViewAngles.ToRotation();
 		rot = rot.Angles().WithRoll( rot.Angles().roll + player.punchangle.z ).ToRotation();
 		rot = rot.Angles().WithPitch( rot.Angles().pitch + player.punchangle.x ).ToRotation();
 		rot = rot.Angles().WithYaw( rot.Angles().yaw + player.punchangle.y ).ToRotation();

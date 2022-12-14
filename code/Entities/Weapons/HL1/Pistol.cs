@@ -116,5 +116,9 @@ partial class Pistol : Weapon
 
 		ViewModelEntity?.SetAnimParameter( "fire", true );
 	}
-
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
+	{
+		SetHoldType( HLCombat.HoldTypes.Pistol, anim );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
+	}
 }
