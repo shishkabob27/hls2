@@ -19,9 +19,9 @@ namespace Sandbox
 		/// </summary>
 		public void WithLookAt( Vector3 look, float eyesWeight = 1.0f, float headWeight = 1.0f, float bodyWeight = 1.0f )
 		{
-			//Owner.SetAnimLookAt( "aim_eyes", look );
-			//Owner.SetAnimLookAt( "aim_head", look );
-			//Owner.SetAnimLookAt( "aim_body", look );
+			Owner.SetAnimLookAt( "aim_eyes", Owner.AimRay.Position, look );
+			Owner.SetAnimLookAt( "aim_head", Owner.AimRay.Position, look );
+			Owner.SetAnimLookAt( "aim_body", Owner.AimRay.Position, look );
 
 			Owner.SetAnimParameter( "aim_eyes_weight", eyesWeight );
 			Owner.SetAnimParameter( "aim_head_weight", headWeight );
