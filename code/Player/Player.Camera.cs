@@ -2,8 +2,15 @@
 {
 	private void UpdateCamera()
 	{
-		Camera.Rotation = ViewAngles.ToRotation();
+		
 		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( Game.Preferences.FieldOfView );
+
+		if ( LifeState == LifeState.Dead )
+		{
+			DeadCameraSimulate();
+			Log.Info( "DEADCAMERA" );
+			return;
+		}
 
 		if ( ThirdPerson )
 		{
@@ -18,6 +25,7 @@
 
 	void FirstPersonCameraSimulate()
 	{
+		Camera.Rotation = ViewAngles.ToRotation();
 		Camera.Position = EyePosition;
 		Camera.FirstPersonViewer = this;
 
@@ -32,10 +40,11 @@
 
 	void ThirdPersonCameraSimulate()
 	{
+		Camera.Rotation = ViewAngles.ToRotation();
 		Camera.FirstPersonViewer = null;
 
 		Vector3 targetPos;
-		var center = Position + Vector3.Up * 64;
+		var center = this.Position + Vector3.Up * 64;
 
 		var pos = center;
 		var rot = Rotation.FromAxis( Vector3.Up, -16 ) * Camera.Rotation;
@@ -51,6 +60,13 @@
 			.Run();
 
 		Camera.Position = tr.EndPosition;
+	}
+
+	void DeadCameraSimulate()
+	{
+		Camera.FirstPersonViewer = this;
+		Camera.Position = Position + new Vector3( 0f, 0f, 24f );
+		Camera.Rotation = (ViewAngles + new Angles( 0, 0, 80 )).ToRotation();
 	}
 
 }
