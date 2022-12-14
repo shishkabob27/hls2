@@ -72,9 +72,8 @@
 	void DeadCameraSimulate()
 	{
 		Camera.FirstPersonViewer = this;
-		Camera.Position = Position;//+ new Vector3( 0f, 0f, 24f );
+		Camera.Position = Position + new Vector3( 0f, 0f, 24f );
 		Camera.Rotation = (ViewAngles + new Angles( 0, 0, 80 )).ToRotation();
-		Log.Info( "DEADCAMERA" );
 	}
 
 }
