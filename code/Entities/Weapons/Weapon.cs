@@ -133,7 +133,7 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 			}
 
 		}
-		//anim.SetAnimParameter( "holdtype", a); // TODO this is shit
+		owner.SetAnimParameter( "holdtype", a); // TODO this is shit
 
 	}
 	/// <summary>
