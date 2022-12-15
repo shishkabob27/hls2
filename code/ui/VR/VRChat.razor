@@ -1,11 +1,10 @@
-﻿using Sandbox;
-using Sandbox.UI;
+﻿@using Sandbox.UI;
+@inherits WorldPanel;
 
-public class VRChat : WorldPanel
+@code
 {
 	public VRChat()
 	{
-		//SetTemplate("/resource/templates/VR/vitals.html");
 		AddChild<ChatBox>();
 		SetClass("is-vr", true);
 	}

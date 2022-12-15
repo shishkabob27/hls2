@@ -1,11 +1,16 @@
-﻿using Sandbox;
-using Sandbox.UI;
+﻿@using Sandbox.UI;
+@inherits WorldPanel;
 
-public class VRVitals : WorldPanel
+<link href="/Resource/Styles/VR.scss" rel="stylesheet">
+<root style="display: flex; flex-direction:column;">
+        <HealthHud></HealthHud>
+        <ArmourHud></ArmourHud>
+</root>
+
+@code
 {
 	public VRVitals()
 	{
-		SetTemplate("/resource/templates/VR/vitals.html");
 		SetClass("is-vr", true);
 	}
 
@@ -13,7 +18,7 @@ public class VRVitals : WorldPanel
 	{
 		base.Tick();
 
-		if (Game.LocalPawn is HLPlayer player && player.Health >=1)
+		if (Game.LocalPawn is HLPlayer player && player.Health >= 1)
 		{
 			Transform = player.LeftHand.Transform;
 

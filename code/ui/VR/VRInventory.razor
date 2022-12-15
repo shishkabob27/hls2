@@ -1,11 +1,15 @@
-﻿using Sandbox;
-using Sandbox.UI;
+﻿@using Sandbox.UI;
+@inherits WorldPanel;
 
-public class VRInventory : WorldPanel
+<link href="/Resource/Styles/VR.scss" rel="stylesheet">
+<root>
+    <InventoryBar></InventoryBar>
+</root>
+
+@code
 {
 	public VRInventory()
 	{
-		SetTemplate("/resource/templates/VR/inventory.html");
 		SetClass("is-vr", true);
 	}
 

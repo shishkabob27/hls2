@@ -1,7 +1,12 @@
-﻿using Sandbox;
-using Sandbox.UI;
+﻿@using Sandbox.UI;
+@inherits WorldPanel;
 
-public class VRAmmo : WorldPanel
+<link href="/Resource/Styles/VR.scss" rel="stylesheet">
+<root>
+	<Ammo></Ammo>
+</root>
+
+@code
 {
 	public VRAmmo()
 	{
