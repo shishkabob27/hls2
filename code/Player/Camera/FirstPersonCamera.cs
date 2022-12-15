@@ -36,11 +36,8 @@
 
 	Vector3 VectorMA( Vector3 va, float scale, Vector3 vb )
 	{
-		Vector3 vc = Vector3.Zero;
-		vc[0] = va[0] + scale * vb[0];
-		vc[1] = va[1] + scale * vb[1];
-		vc[2] = va[2] + scale * vb[2];
-		return vc;
+		// Is there already function for this? I can't remember what this is called for the life of me.
+		return va + scale * vb;
 	}
 
 }
