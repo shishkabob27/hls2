@@ -14,8 +14,9 @@
 
 				wep.ViewModelEntity.Position = Position;
 				wep.ViewModelEntity.Rotation = Rotation;
+				Camera.Main.SetViewModelCamera( Camera.FieldOfView, 4 );
 			}
-			AddViewmodelBob(wep.ViewModelEntity);
+			AddViewmodelBob( wep.ViewModelEntity );
 		}
 	}
 }

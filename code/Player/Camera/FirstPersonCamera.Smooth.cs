@@ -6,7 +6,7 @@
 
 	static float oldz = 0;
 	float lasttime;
-	void StairSmooth(Vector3 simorg)
+	void StairSmooth( Vector3 simorg )
 	{
 		if ( Game.LocalPawn is not HLPlayer pawn ) return;
 
@@ -46,7 +46,7 @@
 	}
 
 	const int ORIGIN_BACKUP = 64;
-	const int ORIGIN_MASK = (ORIGIN_BACKUP - 1);
+	const int ORIGIN_MASK = ( ORIGIN_BACKUP - 1 );
 
 	Vector3 lastorg = Vector3.Zero;
 
@@ -96,13 +96,13 @@
 				float dt;
 				Vector3 neworg = Vector3.Zero;
 
-				dt = ViewInterp.OriginTime[(foundidx + 1) & ORIGIN_MASK] - ViewInterp.OriginTime[foundidx & ORIGIN_MASK];
+				dt = ViewInterp.OriginTime[( foundidx + 1 ) & ORIGIN_MASK] - ViewInterp.OriginTime[foundidx & ORIGIN_MASK];
 				if ( dt > 0.0 )
 				{
-					frac = (t - ViewInterp.OriginTime[foundidx & ORIGIN_MASK]) / dt;
+					frac = ( t - ViewInterp.OriginTime[foundidx & ORIGIN_MASK] ) / dt;
 					frac = Math.Min( 1.0f, frac );
 					//VectorSubtract( ViewInterp.Origins[(foundidx + 1) & ORIGIN_MASK], ViewInterp.Origins[foundidx & ORIGIN_MASK], delta );
-					delta = ViewInterp.Origins[(foundidx + 1) & ORIGIN_MASK] - ViewInterp.Origins[foundidx & ORIGIN_MASK];
+					delta = ViewInterp.Origins[( foundidx + 1 ) & ORIGIN_MASK] - ViewInterp.Origins[foundidx & ORIGIN_MASK];
 					neworg = VectorMA( ViewInterp.Origins[foundidx & ORIGIN_MASK], frac, delta );
 
 					// Dont interpolate large changes
@@ -153,7 +153,7 @@ public static class ViewInterp
 
 
 	const int ORIGIN_BACKUP = 64;
-	const int ORIGIN_MASK = (ORIGIN_BACKUP - 1);
+	const int ORIGIN_MASK = ( ORIGIN_BACKUP - 1 );
 	public static Vector3[] Origins = new Vector3[ORIGIN_BACKUP];
 	public static float[] OriginTime = new float[ORIGIN_BACKUP];
 

@@ -2,13 +2,6 @@
 {
 	Vector3 FocusPoint;
 
-	public override void Activated()
-	{
-		base.Activated();
-
-		FocusPoint = CurrentView.Position;
-	}
-
 	public override void Update()
 	{
 		var player = Game.LocalPawn;
@@ -21,7 +14,7 @@
 		Position = FocusPoint + new Vector3( 0f, 0f, 24f );
 		Rotation = ( ply.ViewAngles + new Angles( 0, 0, 80 ) ).ToRotation();
 
-		Viewer = Game.LocalPawn;
+		//Viewer = Game.LocalPawn;
 	}
 
 	public virtual Vector3 GetSpectatePoint()

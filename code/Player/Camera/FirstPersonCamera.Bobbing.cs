@@ -20,7 +20,7 @@
 		Position = a;
 	}
 
-	void AddViewmodelBob(BaseViewModel ViewModelEntity )
+	void AddViewmodelBob( BaseViewModel ViewModelEntity )
 	{
 		// Weapon bobbing
 		if ( ViewModelEntity is HLViewModel )
@@ -62,7 +62,7 @@
 	float V_CalcBob()
 	{
 		Vector3 vel;
-		if ( Local.Pawn is not HLPlayer player ) return 0;
+		if ( Game.LocalPawn is not HLPlayer player ) return 0;
 
 		if ( player.GroundEntity == null || Time.Now == lasttimebob )
 		{
@@ -73,7 +73,7 @@
 		lasttimebob = Time.Now;
 
 		bobtime += Time.Delta;
-		bobcycle = (float)(bobtime - (int)(bobtime / cl_bobcycle) * cl_bobcycle);
+		bobcycle = (float)( bobtime - (int)( bobtime / cl_bobcycle ) * cl_bobcycle );
 		bobcycle /= cl_bobcycle;
 
 		if ( bobcycle < cl_bobup )
@@ -82,7 +82,7 @@
 		}
 		else
 		{
-			bobcycle = (float)Math.PI + (float)Math.PI * (bobcycle - cl_bobup) / (1.0f - cl_bobup);
+			bobcycle = (float)Math.PI + (float)Math.PI * ( bobcycle - cl_bobup ) / ( 1.0f - cl_bobup );
 		}
 
 		// bob is proportional to simulated velocity in the xy plane

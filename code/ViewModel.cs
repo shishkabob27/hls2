@@ -3,15 +3,11 @@
 
 	public override void PlaceViewmodel()
 	{
-
+		// Handled by the camera now
 	}
 
 	public void UpdateCamera()
 	{
-		Position = Camera.Position;
-		Rotation = Camera.Rotation;
-
-		Camera.ZNear = 4;
-		Camera.FieldOfView = Screen.CreateVerticalFieldOfView( 90f );
+		// Handled by the camera now 
 	}
 }

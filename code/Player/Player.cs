@@ -1,7 +1,7 @@
 ﻿public partial class HLPlayer : Player, ICombat
 {
 	TimeSince timeSinceDropped = 0;
-
+	[Net] public CameraMode CameraMode { get; set; }
 	[Net] public float SurfaceFriction { get; set; } = 1;
 
 	public bool InWater => WaterLevelType >= WaterLevelType.Feet;
@@ -116,7 +116,7 @@
 		SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
 
 		Controller = new HL1GameMovement();
-
+		CameraMode = new FirstPersonCamera();
 		//Animator = new HLPlayerAnimator();
 
 		EnableAllCollisions = true;
@@ -296,6 +296,7 @@
 
 	public void OnKilled( bool corpse = true )
 	{
+		CameraMode = new DeadCamera();
 		HLGame.Current?.OnKilled( this );
 
 		timeSinceDied = 0;
@@ -388,7 +389,7 @@
 
 		}
 
-		UpdateCamera();
+		CameraMode.Update();
 
 	}
 
@@ -477,9 +478,16 @@
 
 		TickPlayerUse();
 
-		if ( Input.Pressed( InputButton.View ) )
+		if ( Input.Pressed( InputButton.View ) && !Client.IsUsingVr )
 		{
-			ThirdPerson = !ThirdPerson;
+			if ( CameraMode is ThirdPersonCamera )
+			{
+				CameraMode = new FirstPersonCamera();
+			}
+			else
+			{
+				CameraMode = new ThirdPersonCamera();
+			}
 		}
 
 		SimulateActiveChild( cl, ActiveChild );

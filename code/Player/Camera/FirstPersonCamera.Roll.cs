@@ -1,9 +1,9 @@
-﻿public partial class HLPlayer
+﻿partial class FirstPersonCamera
 {
 	void AddRoll()
 	{
 		if ( Game.LocalPawn is not HLPlayer pawn ) return;
-		Camera.Rotation = Rotation.Angles().WithRoll( Camera.Rotation.Angles().roll + CalculateRoll( Camera.Rotation, pawn.Velocity, cl_rollangle, cl_rollspeed ) ).ToRotation();
+		Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + CalculateRoll( Rotation, pawn.Velocity, cl_rollangle, cl_rollspeed ) ).ToRotation();
 	}
 
 	public virtual float CalculateRoll( Rotation angles, Vector3 velocity, float rollangle, float rollspeed )
@@ -37,5 +37,6 @@
 
 		return side * sign;
 	}
+
 
 }

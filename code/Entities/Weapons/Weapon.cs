@@ -1,6 +1,4 @@
-﻿using Sandbox;
-
-public partial class Weapon : BaseCarriable, IRespawnableEntity
+﻿public partial class Weapon : BaseCarriable, IRespawnableEntity
 {
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
@@ -73,8 +71,8 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 		var owner = Owner as HLPlayer;
 		if ( owner == null ) return 0;
 		return owner.AmmoCount( AmmoType );
-	} 
-	public void SetHoldType(HLCombat.HoldTypes i, CitizenAnimationHelper anim)
+	}
+	public void SetHoldType( HLCombat.HoldTypes i, CitizenAnimationHelper anim )
 	{
 		var owner = Owner as HLPlayer;
 		if ( owner == null ) return;
@@ -83,7 +81,7 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 		{
 			//Log.Info( "hi" );
 			// Replace Half-Life Holdtypes with their citizen equivelents.
-			switch(i)
+			switch ( i )
 			{
 				case HLCombat.HoldTypes.None:
 					a = (int)CitizenAnimationHelper.HoldTypes.None;
@@ -133,7 +131,7 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 			}
 
 		}
-		owner.SetAnimParameter( "holdtype", a); // TODO this is shit
+		owner.SetAnimParameter( "holdtype", a ); // TODO this is shit
 
 	}
 	/// <summary>
@@ -212,14 +210,14 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 		{
 			EnableDrawing = false;
 		}
-		if ( Parent is HLPlayer player && player.IsInVR)
+		if ( Parent is HLPlayer player && player.IsInVR )
 		{
 			DestroyVRModel();
 		}
 		if ( Game.IsClient )
 		{
 			DestroyViewModel();
-			DestroyHudElements();			
+			DestroyHudElements();
 		}
 
 	}
@@ -228,7 +226,7 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 	{
 		base.Spawn();
 		Tags.Add( "item" );
-		Model = Model.Load(WorldModelPath);
+		Model = Model.Load( WorldModelPath );
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
 
 		EnableTouch = false;
@@ -642,11 +640,11 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 					.WithWeapon( this );
 
 				tr.Entity.TakeDamage( damageInfo );
-				if (tr.Entity is ModelEntity md && tr.Body != null)
+				if ( tr.Entity is ModelEntity md && tr.Body != null )
 				{
 					//tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2000000 * force) );
 					tr.Body.ApplyForceAt( tr.EndPosition, BForward * (2000000 * force) );
-					if ( tr.Body.SurfaceMaterial.Contains("flesh") && tr.Body.SurfaceMaterial.Contains( "yellow" ) )
+					if ( tr.Body.SurfaceMaterial.Contains( "flesh" ) && tr.Body.SurfaceMaterial.Contains( "yellow" ) )
 					{
 						var trace = Trace.Ray( BPosition, BPosition + BForward * 512 )
 						.WorldOnly()
@@ -659,7 +657,7 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 							Decal.Place( decal, trace );
 						}
 					}
-					else if( tr.Body.SurfaceMaterial.Contains( "flesh" ) )
+					else if ( tr.Body.SurfaceMaterial.Contains( "flesh" ) )
 					{
 						var trace = Trace.Ray( BPosition, BPosition + BForward * 512 )
 						.WorldOnly()
@@ -777,7 +775,7 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 
 		VRWeaponModel.SetModel( vrmodel );
 
-		if (VRWeaponModel.Model.Name == "models/dev/error.vmdl" )
+		if ( VRWeaponModel.Model.Name == "models/dev/error.vmdl" )
 		{
 			VRWeaponModel.SetModel( WorldModelPath );
 		}
@@ -822,14 +820,6 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 		}
 	}
 
-	public virtual void UpdateViewmodelCamera()
-	{
-		if ( ViewModelEntity is HLViewModel hlv )
-		{
-			hlv.UpdateCamera();
-		}
-	}
-
 	public override void CreateHudElements()
 	{
 		if ( Game.RootPanel == null ) return;
@@ -855,7 +845,7 @@ public partial class Weapon : BaseCarriable, IRespawnableEntity
 	public override void OnCarryDrop( Entity dropper )
 	{
 		base.OnCarryDrop( dropper );
-		Model = Model.Load(WorldModelPath);
+		Model = Model.Load( WorldModelPath );
 		Rotation = new();
 
 		if ( PickupTrigger.IsValid() )

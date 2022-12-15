@@ -1,4 +1,4 @@
-﻿public partial class HLPlayer
+﻿partial class FirstPersonCamera
 {
 	public float Shake_ENDTIME { get; set; } = 0;
 	public float Shake_DURATION { get; set; } = 0;
@@ -12,12 +12,12 @@
 		float shakeFraction;
 		float shakeFrequency;
 
-		if ( (Time.Now > Shake_ENDTIME) || Shake_AMPLITUDE <= 0 || Shake_FREQUENCY <= 0 || Shake_ENDTIME <= 0 )
+		if ( ( Time.Now > Shake_ENDTIME ) || Shake_AMPLITUDE <= 0 || Shake_FREQUENCY <= 0 || Shake_ENDTIME <= 0 )
 			return;
 
 		if ( Time.Now > Shake_NEXTSHAKE )
 		{
-			Shake_NEXTSHAKE = Time.Now + (1.0f / Shake_FREQUENCY);
+			Shake_NEXTSHAKE = Time.Now + ( 1.0f / Shake_FREQUENCY );
 			var a = Shake_OFFSET;
 			for ( int i = 0; i < 3; i++ )
 			{
@@ -27,12 +27,12 @@
 			Shake_ANGLE = Game.Random.Float( Shake_AMPLITUDE * -0.25f, Shake_AMPLITUDE * 0.25f );
 		}
 
-		shakeFraction = (Shake_ENDTIME - Time.Now) / Shake_DURATION;
+		shakeFraction = ( Shake_ENDTIME - Time.Now ) / Shake_DURATION;
 
 		// Ramp up
 		if ( shakeFraction != 0 )
 		{
-			shakeFrequency = (Shake_FREQUENCY / shakeFraction);
+			shakeFrequency = ( Shake_FREQUENCY / shakeFraction );
 		}
 		else
 		{
@@ -49,11 +49,11 @@
 		shakeFraction *= MathF.Sin( angle );//Time.Now * shakeFrequency
 
 		// Apply
-		Camera.Position += Shake_OFFSET * shakeFraction;
-		Camera.Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + Shake_ANGLE * shakeFraction ).ToRotation();
+		Position += Shake_OFFSET * shakeFraction;
+		Rotation = Rotation.Angles().WithRoll( Rotation.Angles().roll + Shake_ANGLE * shakeFraction ).ToRotation();
 
 		// Lower the shake amplitute over time
-		Shake_AMPLITUDE -= Shake_AMPLITUDE * (Time.Delta / (Shake_DURATION * Shake_FREQUENCY));
+		Shake_AMPLITUDE -= Shake_AMPLITUDE * ( Time.Delta / ( Shake_DURATION * Shake_FREQUENCY ) );
 
 		if ( Game.IsRunningInVR && shakeFraction != 0 )
 		{
