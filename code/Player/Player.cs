@@ -348,7 +348,10 @@
 
 	public override void FrameSimulate( IClient cl )
 	{
-		
+
+		DebugOverlay.ScreenText( "Unfinished 'Pain Day' fixup build - Lots of things broken", 0, 0 );
+		DebugOverlay.ScreenText( "Branch: origin/fuckyoufacepunch, NOT MASTER!!!!", 1, 0 );
+
 		if ( Client.IsUsingVr )
 		{
 			rotationvr();
