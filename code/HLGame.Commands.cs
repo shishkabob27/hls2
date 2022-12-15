@@ -268,7 +268,7 @@
 				return;
 
 		var ent = TypeLibrary.Create<Entity>( entityType );
-		if ( ent is BaseCarriable && owner.Inventory != null )
+		if ( ent is Weapon && owner.Inventory != null )
 		{
 			if ( owner.Inventory.Add( ent, true ) )
 				return;

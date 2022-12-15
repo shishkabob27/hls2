@@ -1,6 +1,6 @@
 ﻿using Sandbox;
 
-public partial class Weapon : BaseWeapon, IRespawnableEntity
+public partial class Weapon : BaseCarriable, IRespawnableEntity
 {
 	[ConVar.Replicated] public static bool hl_sfmmode { get; set; } = false;
 
@@ -226,9 +226,8 @@ public partial class Weapon : BaseWeapon, IRespawnableEntity
 
 	public override void Spawn()
 	{
-
-
 		base.Spawn();
+		Tags.Add( "item" );
 		Model = Model.Load(WorldModelPath);
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
 
