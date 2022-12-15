@@ -1,0 +1,29 @@
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.UI.Construct;
+
+@namespace Sandbox
+
+<root>
+	@if ( PlayerId > 0 )
+	{
+		<div class="avatar">
+			<img src="avatar:@PlayerId" />
+		</div>
+	}
+	<div class="header">
+		<label class="name">@Name</label>
+	</div>
+
+	<div class="main">
+		<label class="msg">@Message</label>
+	</div>
+</root>
+
+@code
+{
+	public string Name { get; set; }
+	public string Message { get; set; }
+	public long PlayerId { get; set; }
+	public TimeSince Lifetime { get; init; } = 0;
+}

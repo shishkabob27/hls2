@@ -1,102 +1,136 @@
-﻿chat
-{
-	position: absolute;
-	bottom: 200px;
-	left: 32px;
-	z-index: 100;
-	flex-direction: column;
-	width: 500px;
-	font-family: 'Trebuchet MS';
-	font-size: 16px;
+﻿iconpanel {
+	font-family: "Material Icons";
+}
 
-	textentry
-	{
-		//background-color: black;
-		opacity: 0;
-		color: rgb(255, 201, 22);
-		padding: 15px;
-		//background-color: rgba( black, 0.5 );
-		font-size: 16px;
+$rounding: 4px;
+
+Chat {
+	position: absolute;
+	bottom: -16px;
+	left: 32px;
+	z-index: 1001;
+	flex-direction: column;
+	width: 505px;
+	max-height: 435px;
+	font-family: Poppins;
+	font-size: 16px;
+	pointer-events: none;
+	transition: all 0.1s ease, border 0s ease;
+	padding: 18px;
+
+	textentry {
+		transition: opacity 0.1s ease;
 		flex-shrink: 0;
-		flex-grow: 0;
-		width: 100%;
+		min-height: 44px;
+		opacity: 0;
+		background-color: rgba( #090d10, 0.9 );
+		border-radius: $rounding;
+		margin-bottom: 28px;
+		selection-color: red;
 	}
 
-	.chat_canvas
-	{
+	.placeholder {
+		color: #c0cee7;
+	}
+
+	.content-label {
+		margin-left: 16px;
+	}
+
+	.placeholder, .content-label {
+		color: darken( #c0cee7, 20% );
+		font-size: 14px;
+		font-family: Poppins;
+		font-weight: 400;
+		text-shadow: 2px 2px 1px rgba( black, 0.1 );
+		margin-top: 11px;
+	}
+
+	.canvas {
 		flex-direction: column;
 		align-items: flex-start;
-	}
+		overflow: scroll;
 
-	&.open
-	{
-		textentry
-		{
+		ChatRow {
+			max-width: 100%;
+			color: white;
 			opacity: 1;
-			//backdrop-filter: blur( 10px );
+			flex-shrink: 0;
+			background-color: rgba( #090d10, 0.9 );
+			padding: 4px 10px;
+			border-radius: $rounding;
+			transition: opacity 0.15s ease;
+			margin-bottom: 6px;
+
+			.header {
+				flex-shrink: 0;
+				flex-grow: 0;
+				padding-left: 4px;
+				margin-top: 3px;
+				font-weight: 700;
+				font-size: 16px;
+				color: $blue;
+				padding-right: 8px;
+				text-shadow: 2px 2px 1px rgba( black, 0.3 );
+			}
+
+			.msg {
+				margin-top: 3px;
+				color: #c0cee7;
+				font-size: 16px;
+				text-shadow: 2px 2px 1px rgba( black, 0.1 );
+			}
+
+			&.info {
+				.header, .msg {
+					color: darken( #c0cee7, 20% );
+				}
+			}
+
+			img {
+				flex-shrink: 0;
+				height: 30px;
+				width: 30px;
+				border-radius: 100px;
+			}
+
+			&.noname {
+				.name {
+					display: none;
+				}
+			}
+
+			&.is-lobby, &.friend {
+				.name {
+					color: #849a74;
+				}
+			}
+
+			&.stale {
+				transition: opacity 1s ease;
+				opacity: 0;
+			}
 		}
 	}
-}
 
-chatent
-{
-	//background-color: rgba( black, 0.7 );
-	color: rgb(255, 201, 22);
-	transition: all 0.1s ease-out;
-	opacity: 1;
-	max-height: 200px;
-	flex-shrink: 0;
-	flex-grow: 0;
-	padding: 12px;
-	padding-left: 45px;
-	min-height: 18px;
-	max-width: 100%;
-	//backdrop-filter: blur( 5px );
+	&.open {
+		pointer-events: all;
+		backdrop-filter-blur: 20px;
+		background-image: linear-gradient( to top, rgba( #1b1b35, 0.9 ), rgba( #1c1c38, 0.85 ), rgba( #1c1c38, 0.8 ) 80%, rgba( #1c1c38, 0.5 ) );
+		bottom: 0;
+		border-radius: $rounding $rounding 0 0;
 
+		textentry {
+			opacity: 1;
+			width: 100%;
+			cursor: text;
+		}
 
-	&:outro
-	{
-		opacity: 0;
-		transition: all 0.1s linear;
-	}
-
-	image
-	{
-		width: 32px;
-		height: 32px;
-		min-height: 32px;
-		border-radius: 100px;
-		position: absolute;
-		left: 0px;
-		top: 5px;
-	}
-
-	.message
-	{
-		color: rgb(255, 201, 22);
-		font-size: 16px;
-		flex-grow: 1;
-	}
-
-	&.noname .name
-	{
-		display: none;
-	}
-
-	&.noavatar image
-	{
-		display: none;
-	}
-
-	&.is-lobby
-	{
-		.name
-		{
-			color: #ff80f5;
+		.canvas {
+			ChatRow {
+				transition: opacity 0.1s ease;
+				opacity: 1;
+			}
 		}
 	}
-}
-
-.label{
-	text-shadow: 0px 2px 0px black;
 }
