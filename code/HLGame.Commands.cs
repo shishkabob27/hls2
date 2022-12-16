@@ -23,7 +23,6 @@
 		// TODO: Leave any vehicles? Check if stuck in world?
 	}
 
-
 	[ConCmd.Admin]
 	public static void setang( float pitch, float yaw, float roll )
 	{
