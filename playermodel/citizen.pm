@@ -4,5 +4,8 @@
 	{
 		Model = resource:"models/citizen/citizen.vmdl"
 		Animgraph = resource:"models/citizen/citizen.vanmgrph"
+		BodyGroupName = ""
+		BodyGroupValue = 0
+		EnableCitizenClothes = true
 	}
 }

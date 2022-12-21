@@ -2,7 +2,7 @@
 {
 
 
-	public HLInventory( Player player ) : base( player )
+	public HLInventory( HLPlayer player ) : base( player )
 	{
 
 	}

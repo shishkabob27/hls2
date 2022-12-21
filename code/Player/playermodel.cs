@@ -1,4 +1,4 @@
-﻿[GameResource( "Playermodel", "pm", "" )]
+﻿[GameResource( "Playermodel", "pm", "" , Icon = "emoji_people" )]
 public partial class Playermodel : GameResource
 {
 
@@ -10,6 +10,6 @@ public partial class Playermodel : GameResource
 
 	public string BodyGroupName { get; set; } = "";
 	public int BodyGroupValue { get; set; } = 0;
-	public bool EnableClothes { get; set; } = false;
+	public bool EnableCitizenClothes { get; set; } = false;
 
 }

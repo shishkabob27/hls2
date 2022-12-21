@@ -476,7 +476,7 @@ partial class PhysGun : Weapon
 
 	protected virtual void UpdateEffects()
 	{
-		var owner = Owner as Player;
+		var owner = Owner as HLPlayer;
 
 		if ( owner == null || !BeamActive || owner.ActiveChild != this )
 		{
