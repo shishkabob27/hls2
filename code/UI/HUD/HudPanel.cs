@@ -18,6 +18,7 @@ public class HudPanel : HudEntity<HudRootPanel>
 			if ( Game.IsRunningInVR )
 			{
 				// Use a world panel - we're in VR
+				StyleSheet.FromFile( "/Resource/Styles/VR.scss" );
 				_ = new VRVitals();
 				_ = new VRAmmo();
 				_ = new VRInventory();
