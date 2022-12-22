@@ -14,36 +14,5 @@
 		background-repeat: no-repeat;
 		background-position-x: center;
 		background-position-y: center;
-
-		//Opposing Force
-
-		&.weapon_grapple {
-			background-image: url("/ui/op4/crosshairs/crosshair9.png");
-		}
-
-		&.weapon_eagle {
-			background-image: url("/ui/op4/crosshairs/crosshair1.png");
-		}
-
-		&.weapon_m249 {
-			background-image: url("/ui/op4/crosshairs/crosshair2.png");
-		}
-
-		&.weapon_displacer {
-			background-image: url("/ui/op4/crosshairs/crosshair3.png");
-		}
-
-		&.weapon_sniperrifle {
-			background-image: url("/ui/op4/crosshairs/crosshair7.png");
-		}
-
-		&.weapon_sporelauncher {
-			background-image: url("/ui/op4/crosshairs/crosshair5.png");
-		}
-
-		&.weapon_shockrifle {
-			background-image: url("/ui/op4/crosshairs/crosshair4.png");
-		}
-
 	}
 }
