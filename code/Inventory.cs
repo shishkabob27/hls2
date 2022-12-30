@@ -36,7 +36,7 @@
 				if ( notices && taken > 0 )
 				{
 					Sound.FromWorld( "dm.pickup_ammo", ent.Position );
-					PickupFeed.OnPickup( To.Single( player ), $"+{taken} {ammoType2}" );
+					PickupFeed.OnPickupAmmo( To.Single( player ), $"{ammoType2}", taken );
 				}
 			}
 		}
@@ -55,7 +55,7 @@
 				if ( notices && taken > 0 )
 				{
 					Sound.FromWorld( "dm.pickup_ammo", ent.Position );
-					PickupFeed.OnPickup( To.Single( player ), $"+{taken} {ammoType}" );
+					PickupFeed.OnPickupAmmo( To.Single( player ), $"{ammoType}", taken );
 				}
 			}
 

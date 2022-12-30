@@ -86,7 +86,7 @@ public partial class Battery : ModelEntity, IRespawnableEntity
 		player.Armour = newhealth;
 
 		Sound.FromWorld( "dm_item_battery", Position );
-		PickupFeed.OnPickup( To.Single( player ), $"+15 Armour" );
+		PickupFeed.OnPickupItem( To.Single( player ), "ui/pickup/item_battery.png" );
 
 		ItemRespawn.Taken( this );
 		if (Game.IsServer)

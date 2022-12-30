@@ -65,4 +65,98 @@ pickupfeed {
 			}
 		}
 	}
+
+	.entryIcon {
+		opacity: 1;
+		height: 44px;
+		overflow: hidden;
+		justify-content: flex-end;
+		align-items: center;
+		background-size: contain;
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-image-tint: rgb(255, 206, 108);
+		margin-bottom: 5px;
+		//
+		// Pseudo class set for the last frame of its life
+		// (and keeps the panel alive until transition ends)
+		//
+		&:outro {
+			opacity: 0;
+			transition: all 1.0s linear;
+		}
+
+		label {
+			white-space: nowrap;
+			color: #fa0;
+			width: 100%;
+			text-align: right;
+			margin-right: 8px;
+		}
+		//
+		// Pseudo class set for the first time of its life
+		//
+		&:intro {
+			height: 0px;
+			padding: 0px 16px;
+			opacity: 0;
+			color: white;
+		}
+	}
+
+	.entryAmmo {
+		opacity: 1;
+		height: 50px;
+		justify-content: flex-end;
+		align-items: center;
+		font-size: 18px;
+		font-family: "Trebuchet MS";
+		background-size: contain;
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-image-tint: rgb(255, 206, 108);
+		margin-bottom: 5px;
+		//
+		// Pseudo class set for the last frame of its life
+		// (and keeps the panel alive until transition ends)
+		//
+		&:outro {
+			opacity: 0;
+			transition: all 1.0s linear;
+		}
+
+		label {
+			white-space: nowrap;
+			color: #fa0;
+			width: 100%;
+			text-align: right;
+			margin-right: 8px;
+		}
+
+		.icon {
+			width: 48px;
+			height: 24px;
+			background-size: contain;
+			background-position: right center;
+			background-repeat: no-repeat;
+			background-image-tint: rgb(255, 206, 108);
+		}
+		//
+		// Pseudo class set for the first time of its life
+		//
+		&:intro {
+			height: 0px;
+			padding: 0px 16px;
+			opacity: 0;
+			color: white;
+
+			.icon {
+				background-image-tint: #fff;
+			}
+
+			label {
+				color: #fff;
+			}
+		}
+	}
 }
