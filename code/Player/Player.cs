@@ -297,8 +297,8 @@
 	public override void FrameSimulate( IClient cl )
 	{
 		// If this is a branch version uncomment these and add branch info to make it easier to differentiate versions that might've been uploaded to asset.party 
-		DebugOverlay.ScreenText( "Unfinished 'Pain Day' fixup build - Lots of things broken", 0, 0 );
-		DebugOverlay.ScreenText( "Branch: origin/fuckyoufacepunch, NOT MASTER!!!!", 1, 0 );
+		//DebugOverlay.ScreenText( "Unfinished 'Pain Day' fixup build - Lots of things broken", 0, 0 );
+		//DebugOverlay.ScreenText( "Branch: origin/fuckyoufacepunch, NOT MASTER!!!!", 1, 0 );
 
 		if ( Client.IsUsingVr )
 		{
