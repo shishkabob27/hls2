@@ -99,7 +99,6 @@ public partial class env_sprite : RenderEntity
 					playOnceHasLooped = true;
 					Enabled = false;
 					return;
-					frame -= 1;
 
 				} else
 				{

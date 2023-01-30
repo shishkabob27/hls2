@@ -92,7 +92,7 @@
 		//float flSpeedBoostPerc = (!pMoveData->m_bIsSprinting && !player->m_Local.m_bDucked) ? 0.5f : 0.1f;
 		float flSpeedBoostPerc = (!Input.Down(InputButton.Run) && !IsDucking) ? 0.5f : 0.1f;
 		float flSpeedAddition = MathF.Abs( ForwardMove * flSpeedBoostPerc );
-		float flMaxSpeed = sv_maxspeed + (sv_maxspeed * flSpeedBoostPerc);
+		float flMaxSpeed = MaxSpeed + (MaxSpeed * flSpeedBoostPerc);
 		float flNewSpeed = (flSpeedAddition + Velocity.Length);
 
 		// If we're over the maximum, we want to only boost as much as will get us to the goal speed

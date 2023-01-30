@@ -35,7 +35,7 @@ public partial class BaseAmmo : ModelEntity, IRespawnableEntity
 			return;
 
 		Sound.FromWorld( "dm.pickup_ammo", Position );
-		PickupFeed.OnPickup( To.Single( player ), $"+{ammoTaken} {AmmoType}" );
+		PickupFeed.OnPickupAmmo( To.Single( player ), $"{AmmoType}", ammoTaken );
 
 		ItemRespawn.Taken( this );
 		Delete();

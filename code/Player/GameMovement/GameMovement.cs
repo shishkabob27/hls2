@@ -115,13 +115,6 @@ public partial class HL1GameMovement : BasePlayerController
 
 		if ( GroundEntity != null && Input.Down( InputButton.Use ) ) Velocity *= 0.3f;
 
-		if ( !Player.CanMove() )
-		{
-			ForwardMove = 0;
-			RightMove = 0;
-			UpMove = 0;
-		}
-
 		// Decrease velocity if we move vertically too quickly.
 		if ( Velocity.z > 250 )
 		{

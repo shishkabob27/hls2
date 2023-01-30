@@ -33,6 +33,8 @@ public partial class HealthKit : ModelEntity, IRespawnableEntity
 		pl.Health = newhealth;
 
 		Sound.FromWorld( "dm.item_health", Position );
+		PickupFeed.OnPickupItem( To.Single( pl ), "ui/pickup/item_healthkit.png" );
+
 		ItemRespawn.Taken( this );
 		if (Game.IsServer)
 			Delete();

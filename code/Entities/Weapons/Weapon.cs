@@ -832,6 +832,11 @@
 		return AvailableAmmo() > 0;
 	}
 
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
+	{
+		SetHoldType( HLCombat.HoldTypes.Pistol, anim );
+	}
+
 	public override void OnCarryStart( Entity carrier )
 	{
 		base.OnCarryStart( carrier );

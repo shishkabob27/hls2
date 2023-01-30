@@ -347,13 +347,13 @@ partial class PhysGun : Weapon
 			return;
 
 		}
-		if ( GrabbedEntity is Player || GrabbedEntity is NPC || GrabbedEntity is func_train || GrabbedEntity is func_wall || GrabbedEntity is HLMovementBrush || GrabbedEntity is HLGib || (GrabbedEntity.Components.TryGet<Movement>( out _ ) && !HLGame.sv_force_physics) )
+		if ( GrabbedEntity is HLPlayer || GrabbedEntity is NPC || GrabbedEntity is func_train || GrabbedEntity is func_wall || GrabbedEntity is HLMovementBrush || GrabbedEntity is HLGib || (GrabbedEntity.Components.TryGet<Movement>( out _ ) && !HLGame.sv_force_physics) )
 		{
 			var velocity = GrabbedEntity.Velocity;
 			Vector3.SmoothDamp( GrabbedEntity.Position, holdPos, ref velocity, 0.075f, Time.Delta );
 			GrabbedEntity.Velocity = velocity;
 			GrabbedEntity.GroundEntity = null;
-			if ( GrabbedEntity is Player || GrabbedEntity is NPC )
+			if ( GrabbedEntity is HLPlayer || GrabbedEntity is NPC )
 			{
 				//holdRot = holdRot.Angles().WithPitch( 0 ).WithRoll( 0 ).ToRotation();
 			}
@@ -468,9 +468,15 @@ partial class PhysGun : Weapon
 		}
 	}
 
+	public override void SimulateAnimator( CitizenAnimationHelper anim )
+	{
+		SetHoldType( HLCombat.HoldTypes.Pistol, anim );
+		//anim.SetAnimParameter( "aim_body_weight", 1.0f );
+	}
+
 	protected virtual void UpdateEffects()
 	{
-		var owner = Owner as Player;
+		var owner = Owner as HLPlayer;
 
 		if ( owner == null || !BeamActive || owner.ActiveChild != this )
 		{

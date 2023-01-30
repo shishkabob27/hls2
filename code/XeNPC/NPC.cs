@@ -780,7 +780,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 					}
 					else if ( HLGame.hl_ragdoll )
 					{
-						Ragdoll( info.Force );
+						Ragdoll( Velocity, info.Position, info.Force, info.BoneIndex );
 					}
 					//Delete();
 				}
@@ -913,7 +913,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	{
 		if ( stringData == "ragdoll" && Game.IsServer && HLGame.hl_ragdoll )
 		{
-			Ragdoll(Vector3.Zero);
+			Ragdoll( Vector3.Zero, Vector3.Zero, Vector3.Zero, 0 );
 		}
 		base.OnAnimEventGeneric( name, intData, floatData, vectorData, stringData );
 	}
@@ -923,36 +923,44 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	[Input]
 	public void Ragdoll()
 	{
-		Ragdoll(Vector3.Zero);
+		Ragdoll(Vector3.Zero, Vector3.Zero, Vector3.Zero, 0);
 	}
 
 	/// <summary>
 	/// Turn into a ragdoll
 	/// </summary>
-	public void Ragdoll(Vector3 force, PhysicsBody bdy = null)
+	public void Ragdoll( Vector3 velocity, Vector3 forcePos, Vector3 force, int bone )
 	{
 		var ent = new ModelEntity();
-		ent.SetModel( this.Model.Name );
-		ent.SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 		ent.Position = Position;
 		ent.Rotation = Rotation;
+		ent.Scale = Scale;
 		ent.UsePhysicsCollision = true;
-		if ( NPCSurface != null && ent.PhysicsBody != null )
-		{
-			ent.PhysicsBody.SurfaceMaterial = NPCSurface;
-		}
-
-		ent.CopyFrom( this );
+		ent.EnableAllCollisions = true;
+		ent.SetModel( GetModelName() );
 		ent.CopyBonesFrom( this );
-		ent.SetRagdollVelocityFrom( this );
-		if (bdy == null)
-		{
+		ent.CopyBodyGroups( this );
+		ent.CopyMaterialGroup( this );
+		ent.CopyMaterialOverrides( this );
+		ent.TakeDecalsFrom( this );
+		ent.SurroundingBoundsMode = SurroundingBoundsType.Physics;
+		ent.RenderColor = RenderColor;
+		ent.PhysicsGroup.Velocity = velocity;
+		ent.PhysicsEnabled = true;
+		//ent.Tags.Clear();
+		//ent.Tags.Add( "debris" );
 
-			ent.PhysicsGroup.AddVelocity( force );
-		} else
+		PhysicsBody body = bone > 0 ? ent.GetBonePhysicsBody( bone ) : null;
+
+		if ( body != null )
 		{
-			bdy.ApplyForceAt(LastDamage.Position, force );
+			body.ApplyImpulseAt( forcePos, force * body.Mass );
 		}
+		else
+		{
+			ent.PhysicsGroup.ApplyImpulse( force );
+		}
+
 		this.Delete();
 	}
 

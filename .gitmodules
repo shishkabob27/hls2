@@ -1,0 +1,3 @@
+[submodule "code/ui/XGUI"]
+	path = code/ui/XGUI
+	url = https://github.com/Xenthio/XGUI

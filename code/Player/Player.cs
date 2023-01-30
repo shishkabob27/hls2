@@ -45,10 +45,6 @@
 	//[Net]
 	public bool IN_BACKWARD { get; set; } = false;
 
-	public float Forward { get; set; }
-	public float Left { get; set; }
-	public float Up { get; set; }
-
 	[Net]
 	public bool IN_USE { get; set; } = false;
 
@@ -85,10 +81,6 @@
 		Inventory = new HLInventory( this );
 	}
 
-	public bool CanMove()
-	{
-		return true;
-	}
 	public void DoHLPlayerNoclip( IClient player )
 	{
 		//if (!player.HasPermission("noclip"))
@@ -110,14 +102,12 @@
 	}
 	public override void Respawn()
 	{
-
 		SetPlayerModel();
 
 		SetAnimGraph( "animgraphs/hl1/player.vanmgrph" );
 
 		Controller = new HL1GameMovement();
 		CameraMode = new FirstPersonCamera();
-		//Animator = new HLPlayerAnimator();
 
 		EnableAllCollisions = true;
 		EnableDrawing = true;
@@ -130,10 +120,6 @@
 
 		Inventory.DeleteContents();
 
-		SupressPickupNotices = false;
-		Health = 100;
-		Armour = 0;
-
 		if ( HLGame.GameIsMultiplayer() )
 		{
 			HasHEV = true;
@@ -141,8 +127,14 @@
 			Inventory.Add( new Crowbar() );
 			Inventory.Add( new Pistol() );
 
+
 			GiveAmmo( AmmoType.Pistol, 68 );
 		}
+
+
+		SupressPickupNotices = false;
+		Health = 100;
+		Armour = 0;
 
 		Tags.Add( "player" );
 		if ( Client.IsUsingVr )
@@ -165,7 +157,7 @@
 			case "campagin": HLGame.MoveToSpawnpoint( this ); break;
 			case "deathmatch": HLGame.MoveToDMSpawnpoint( this ); break;
 			case "ctf": HLGame.MoveToCTFSpawnpoint( this ); break;
-			default: HLGame.MoveToDMSpawnpoint( this ); break;
+			default: HLGame.MoveToSpawnpoint( this ); break;
 		}
 
 		ResetInterpolation();
@@ -178,7 +170,7 @@
 	[ConCmd.Client]
 	public static void ChangeTeam()
 	{
-		var _ = new TeamSelector();
+		(HLGame.Current as HLGame).Hud.RootPanel.AddChild<TeamSelector>();
 	}
 
 	private void CreateHands()
@@ -231,51 +223,6 @@
 		suit.DeleteAsync( 0.1f );
 	}
 
-	[ConCmd.Server]
-	public static void GiveAll()
-	{
-		var ply = ConsoleSystem.Caller.Pawn as HLPlayer;
-
-
-
-		ply.GiveWeapon( new Crowbar() );
-		ply.GiveWeapon( new Pistol() );
-		ply.GiveWeapon( new Python() );
-		ply.GiveWeapon( new Shotgun() );
-		ply.GiveWeapon( new SMG() );
-		ply.GiveWeapon( new RPG() );
-		ply.GiveWeapon( new Crossbow() );
-		ply.GiveWeapon( new GrenadeWeapon() );
-		ply.GiveWeapon( new TripmineWeapon() );
-		ply.GiveWeapon( new Gauss() );
-		ply.GiveWeapon( new Egon() );
-		ply.GiveWeapon( new HornetGun() );
-		ply.GiveWeapon( new SnarkWeapon() );
-		ply.GiveWeapon( new SatchelWeapon() );
-
-		ply.GiveAmmo( AmmoType.Pistol, 17 );
-		ply.GiveAmmo( AmmoType.Python, 6 );
-		ply.GiveAmmo( AmmoType.Buckshot, 12 );
-		ply.GiveAmmo( AmmoType.Crossbow, 5 );
-		//ply.GiveAmmo( AmmoType.Grenade, 1000 );
-		ply.GiveAmmo( AmmoType.Pistol, 20 );
-		ply.GiveAmmo( AmmoType.SMGGrenade, 3 );
-		ply.GiveAmmo( AmmoType.RPG, 1 );
-		//ply.GiveAmmo( AmmoType.Tripmine, 1000 );
-		//ply.GiveAmmo( AmmoType.Satchel, 1000 );
-		ply.GiveAmmo( AmmoType.Uranium, 5 );
-		//ply.GiveAmmo( AmmoType.Snark, 1000 );
-
-		var battery = new Battery();
-		battery.Position = ConsoleSystem.Caller.Pawn.Position;
-		battery.Spawn();
-		battery.DeleteAsync( 0.1f );
-
-		var suit = new Suit();
-		suit.Position = ConsoleSystem.Caller.Pawn.Position;
-		suit.Spawn();
-		suit.DeleteAsync( 0.1f );
-	}
 	public void GiveWeapon( Weapon wep )
 	{
 		if ( HLGame.sv_force_physics )
@@ -417,29 +364,20 @@
 
 		punchangle = punchangle.Approach( 0, Time.Delta * 14.3f ); // was Delta * 10, 14.3 matches hl1 the most
 
-		Forward = Input.AnalogMove.x;
-		Left = Input.AnalogMove.y;
-		Up = Input.AnalogMove.z;
 		if ( Client.IsUsingVr )
 		{
 			EyeRotation = Input.VR.Head.Rotation;
-
-			//offsetsomehowidk = (Input.VR.Head.Position.WithZ(Position.z) - Position.WithZ(Position.z));  
-			IN_USE = Input.Down( InputButton.Use );
 			IN_FORWARD = Input.VR.RightHand.Joystick.Delta.x > 0;
-			IN_LEFT = Input.Down( InputButton.Left );
-			IN_RIGHT = Input.Down( InputButton.Right );
-			IN_BACKWARD = Input.Down( InputButton.Back );
-
 		}
 		else
 		{
-			IN_USE = Input.Down( InputButton.Use );
 			IN_FORWARD = Input.Down( InputButton.Forward );
-			IN_LEFT = Input.Down( InputButton.Left );
-			IN_RIGHT = Input.Down( InputButton.Right );
-			IN_BACKWARD = Input.Down( InputButton.Back );
 		}
+
+		IN_USE = Input.Down( InputButton.Use );
+		IN_LEFT = Input.Down( InputButton.Left );
+		IN_RIGHT = Input.Down( InputButton.Right );
+		IN_BACKWARD = Input.Down( InputButton.Back );
 
 		if ( LifeState == LifeState.Dead )
 		{
@@ -457,9 +395,6 @@
 		controller?.Simulate( cl, this );
 
 		SimulateFlashlight( cl );
-		//
-		// Input requested a weapon switch
-		//
 
 		FallDamageThink();
 
@@ -562,17 +497,6 @@
 	float healthPrev = 100;
 
 	DamageInfo LastDamage;
-
-	const int HITGROUP_GENERIC = 0;
-	const int HITGROUP_HEAD = 1;
-	const int HITGROUP_CHEST = 2;
-	const int HITGROUP_STOMACH = 3;
-	const int HITGROUP_LEFTARM = 4;
-	const int HITGROUP_RIGHTARM = 5;
-	const int HITGROUP_LEFTLEG = 6;
-	const int HITGROUP_RIGHTLEG = 7;
-	const int HITGROUP_GEAR = 10;
-	const int HITGROUP_SPECIAL = 11;
 
 	public override void TakeDamage( DamageInfo info )
 	{

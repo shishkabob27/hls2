@@ -21,7 +21,7 @@ partial class SatchelWeapon : Weapon
 	public override int ClipSize => -1;
 
 	[Net]
-	List<Satchel> CurrentSatchels { get; set; } = new();
+	IList<Satchel> CurrentSatchels { get; set; } = new();
 	public override void Spawn()
 	{
 		base.Spawn();

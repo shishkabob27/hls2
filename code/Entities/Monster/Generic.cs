@@ -29,7 +29,7 @@ public partial class GenericMonster : NPC
 
 	}
 	Vector3 b;
-	float c = -1;
+
 	[Event.Tick.Server]
 	public void Ticker()
 	{
