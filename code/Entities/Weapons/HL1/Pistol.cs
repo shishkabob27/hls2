@@ -59,7 +59,7 @@ partial class Pistol : Weapon
 		//
 		ShootBullet( 0.05f, 1, 8.0f, 2.0f );
 
-		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
+		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
 		ViewPunch( 0, -2 );
 	}
 
@@ -88,7 +88,7 @@ partial class Pistol : Weapon
 		//
 		ShootBullet( 0.4f, 1.5f, 8.0f, 3.0f );
 
-		( Owner as AnimatedEntity ).SetAnimParameter( "b_attack", true );
+		(Owner as AnimatedEntity).SetAnimParameter( "b_attack", true );
 		ViewPunch( 0, -2 );
 	}
 
