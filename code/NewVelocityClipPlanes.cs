@@ -1,5 +1,5 @@
-﻿using System;
-using System.Buffers;
+﻿using System.Buffers;
+
 
 /// <summary>
 /// Used to store a list of planes that an object is going to hit, and then
@@ -29,10 +29,6 @@ public struct NewVelocityClipPlanes : IDisposable
 		BumpVelocity = originalVelocity;
 		Planes = ArrayPool<Vector3>.Shared.Rent( max );
 		Count = 0;
-	}
-
-	public NewVelocityClipPlanes( Vector3 velocity ) : this()
-	{
 	}
 
 	/// <summary>
