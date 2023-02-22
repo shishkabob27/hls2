@@ -203,4 +203,24 @@ public class Options : GUIPanel
 		updateCvars();
 		ConsoleSystem.Run( "reset_game" );
 	}
+	public void spawnScientist()
+	{
+		ConsoleSystem.Run( "spawnScientist" );
+	}
+	public void spawnBarney()
+	{
+		ConsoleSystem.Run( "spawnBarney" );
+	}
+	public void spawnHeadcrab()
+	{
+		ConsoleSystem.Run( "spawnHeadcrab" );
+	}
+	public void spawnGman()
+	{
+		ConsoleSystem.Run( "spawnGman" );
+	}
+	public void spawnZombie()
+	{
+		ConsoleSystem.Run( "spawnZombie" );
+	}
 }
