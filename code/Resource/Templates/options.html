@@ -10,31 +10,31 @@
         <tabcontrol>
             <tab tabName="general" slot="tab" tabtext="General">
                 <div class="maincontent" style="padding: 40px;">
-                    <check class="cragdoll" @checked="bCragdolls">Enable ragdolls</check>
-                    <check class="coldgibs" @checked="bColdGibs">Enable classic gibs</check>
-                    <check class="cforcephysics" @checked="bCforcePhysics">Enable Physics Items</check>
-                    <check class="cliveupdate" @checked="bCliveupdate">Enable live setting updates</check>
-                    <check class="cguiscale" @checked="bCguiscale">Enable GUI rescaling</check>
-                    <check class="cpixelfont" @checked="bCpixelfont">Enable GUI classic font.</check>
+                    <checkbox class="cragdoll" @checked="bCragdolls">Enable ragdolls</checkbox>
+                    <checkbox class="coldgibs" @checked="bColdGibs">Enable classic gibs</checkbox>
+                    <checkbox class="cforcephysics" @checked="bCforcePhysics">Enable Physics Items</checkbox>
+                    <checkbox class="cliveupdate" @checked="bCliveupdate">Enable live setting updates</checkbox>
+                    <checkbox class="cguiscale" @checked="bCguiscale">Enable GUI rescaling</checkbox>
+                    <checkbox class="cpixelfont" @checked="bCpixelfont">Enable GUI classic font.</checkbox>
                     <button style="width:114px;" onclick="openTestdialog()">Open Test Dialog</button>
                 </div>
             </tab>
 
             <tab tabName="video" slot="tab" tabtext="Video">
                 <div class="maincontent" style="padding: 40px;">
-                    <check class="coldtorch" @checked="bColdTorch">Enable classic Torch</check>
-                    <check class="coldexplosion" @checked="bColdexplosion">Enable classic explosion effect</check>
-                    <check class="chimodel" @checked="bChimodels">#GameUI_HDModels</check>
-                    <check class="clowviolence">Enable Low Violence</check>
-                    <check class="csubtitle" @checked="bCsubtitle">Enable Subtitles</check>
+                    <checkbox class="coldtorch" @checked="bColdTorch">Enable classic Torch</checkbox>
+                    <checkbox class="coldexplosion" @checked="bColdexplosion">Enable classic explosion effect</checkbox>
+                    <checkbox class="chimodel" @checked="bChimodels">#GameUI_HDModels</checkbox>
+                    <checkbox class="clowviolence">Enable Low Violence</checkbox>
+                    <checkbox class="csubtitle" @checked="bCsubtitle">Enable Subtitles</checkbox>
                     <text>Hud Scale</text>
-                    <SliderScaleEntry min="0" max="5" step="0" mintext="Auto" maxtext="5.00" @value="fChudScale"></SliderScaleEntry>
+                    <SliderEntry min="0" max="5" step="0" mintext="Auto" maxtext="5.00" @value="fChudScale"></SliderEntry>
                 </div>
             </tab>
 
             <tab tabName="audio" slot="tab" tabtext="Audio">
                 <div class="maincontent" style="padding: 40px;">
-                    <check class="chiaudio">Enable HD audio</check>
+                    <checkbox class="chiaudio">Enable HD audio</checkbox>
                 </div>
             </tab>
 
@@ -72,10 +72,10 @@
                     </select>
 
                     <text>#GameUI_PrimaryColour</text>
-                    <SliderScaleEntry min="0" max="360" step="1" mintext="0.00" maxtext="360" @value="fCpmColour1"></SliderScaleEntry>
+                    <SliderEntry min="0" max="360" step="1" mintext="0.00" maxtext="360" @value="fCpmColour1"></SliderEntry>
 
                     <text>#GameUI_SecondaryColour</text>
-                    <SliderScaleEntry min="0" max="360" step="1" mintext="0.00" maxtext="360" @value="fCpmColour2"></SliderScaleEntry>
+                    <SliderEntry min="0" max="360" step="1" mintext="0.00" maxtext="360" @value="fCpmColour2"></SliderEntry>
                 </div>
 
                 <Panel @ref="pmImage" class="pmimage"></Panel>
@@ -84,23 +84,23 @@
 
             <tab tabName="vr" slot="tab" tabtext="VR">
                 <div class="maincontent" style="padding: 40px;">
-                    <check class="cvrpointer" @checked="bCvrpointer">Enable VR Pointer</check>
+                    <checkbox class="cvrpointer" @checked="bCvrpointer">Enable VR Pointer</checkbox>
                     <text>Movement direction</text>
                     <select @value="ZIndex" style="width:128px;">
                         <option value="0">Head</option>
                         <option value="1">Hand</option>
                     </select>
-                    <check class="cdesktopvrhud">Enable desktop HUD while in VR</check>
+                    <checkbox class="cdesktopvrhud">Enable desktop HUD while in VR</checkbox>
                 </div>
             </tab>
             <tab tabName="tweaks" slot="tab" tabtext="Fixes/Tweaks">
                 <div class="maincontent" style="padding: 40px;">
-                    <check class="cWonWeaponBob" @checked="bCWONWeaponBob">Enable WON weapon bobbing</check>
-                    <check class="crollangle" @checked="bCviewroll">Enable WON viewroll</check>
+                    <checkbox class="cWonWeaponBob" @checked="bCWONWeaponBob">Enable WON weapon bobbing</checkbox>
+                    <checkbox class="crollangle" @checked="bCviewroll">Enable WON viewroll</checkbox>
                     <label>Here is a bunch of features that might've been in the original game's code but were either broken or disabled... or both.</label>
-                    <check class="cFixCrouchFootstep" @checked="bCFixCrouchFootstep">Fix crouching footsteps</check>
-                    <check class="cFixMysteryViewbob" @checked="bCFixMysteryViewbob">Fix mystery viewbob code</check>
-                    <check class="cFixViewmodelIdle" @checked="bCFixViewmodelIdle">Fix certain viewmodel idle animations</check>
+                    <checkbox class="cFixCrouchFootstep" @checked="bCFixCrouchFootstep">Fix crouching footsteps</checkbox>
+                    <checkbox class="cFixMysteryViewbob" @checked="bCFixMysteryViewbob">Fix mystery viewbob code</checkbox>
+                    <checkbox class="cFixViewmodelIdle" @checked="bCFixViewmodelIdle">Fix certain viewmodel idle animations</checkbox>
                 </div>
             </tab>
 
@@ -122,8 +122,8 @@
                     </select>
                     <text>Time Limit*</text>
                     <SliderScaleEntry min="1" max="60" step="1" mintext="1.00" maxtext="60.0" @value="fCtimeLimit"></SliderScaleEntry>
-                    <check class="cEnableBhop" @checked="bCenableBhop">Enable Bunnyhopping</check>
-                    <check class="cEnableAutojump" @checked="bCenableAutojump">Auto Bunnyhopping</check>
+                    <checkbox class="cEnableBhop" @checked="bCenableBhop">Enable Bunnyhopping</checkbox>
+                    <checkbox class="cEnableAutojump" @checked="bCenableAutojump">Auto Bunnyhopping</checkbox>
                     <button style="width:180px;" onclick="restartGame()">Apply and Restart Round</button>
                     <text>Items marked with * require a round restart</text>
                 </div>
