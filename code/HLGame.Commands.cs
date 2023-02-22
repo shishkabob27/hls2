@@ -216,80 +216,6 @@
 		}
 
 	}
-	[ConCmd.Client( "spawnScientist", Help = "Spawns A Scientist" )]
-	public static void SpawnScientistCommand()
-	{
-		var sci = new Scientist();
-		var owner = ConsoleSystem.Caller.Pawn as Player;
-		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 200 )
-			.UseHitboxes()
-			.Ignore( owner )
-			.Size( 2 )
-			.Run();
-		sci.Position = tr.EndPosition;
-		sci.Spawn();
-		Log.Info( "Did it!" );
-	}
-
-	[ConCmd.Client( "spawnBarney", Help = "Spawns A Barney" )]
-	public static void SpawnBarneyCommand()
-	{
-		var sci = new Barney();
-		var owner = ConsoleSystem.Caller.Pawn as Player;
-		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 200 )
-			.UseHitboxes()
-			.Ignore( owner )
-			.Size( 2 )
-			.Run();
-		sci.Position = tr.EndPosition;
-		sci.Spawn();
-		Log.Info( "Did it!" );
-	}
-
-	[ConCmd.Client( "spawnGman", Help = "Spawns A Gman" )]
-	public static void SpawnGarryCommand()
-	{
-		var sci = new Gman();
-		var owner = ConsoleSystem.Caller.Pawn as Player;
-		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 200 )
-			.UseHitboxes()
-			.Ignore( owner )
-			.Size( 2 )
-			.Run();
-		sci.Position = tr.EndPosition;
-		sci.Spawn();
-		Log.Info( "Did it!" );
-	}
-
-	[ConCmd.Client( "spawnHeadcrab", Help = "Spawns A Headcrab" )]
-	public static void SpawnHeadcrabCommand()
-	{
-		var sci = new Headcrab();
-		var owner = ConsoleSystem.Caller.Pawn as Player;
-		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 200 )
-			.UseHitboxes()
-			.Ignore( owner )
-			.Size( 2 )
-			.Run();
-		sci.Position = tr.EndPosition;
-		sci.Spawn();
-		Log.Info( "Did it!" );
-	}
-
-	[ConCmd.Client( "spawnZombie", Help = "Spawns A Headcrab Zombie" )]
-	public static void SpawnHeadcrabZombieCommand()
-	{
-		var sci = new Zombie();
-		var owner = ConsoleSystem.Caller.Pawn as Player;
-		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 200 )
-			.UseHitboxes()
-			.Ignore( owner )
-			.Size( 2 )
-			.Run();
-		sci.Position = tr.EndPosition;
-		sci.Spawn();
-		Log.Info( "Did it!" );
-	}
 
 	/// <summary>
 	/// Kills the calling player with generic damage
@@ -396,16 +322,15 @@
 	[ConCmd.Server( "ent_create" )]
 	public static void SpawnEntity( string entName )
 	{
-		var owner = ConsoleSystem.Caller.Pawn as Player;
+		var owner = ConsoleSystem.Caller.Pawn as HLPlayer;
 
 		if ( owner == null )
 			return;
 
 		var entityType = TypeLibrary.GetType<Entity>( entName )?.TargetType;
-		if ( entityType == null )
-			return;
 
-		if ( !TypeLibrary.HasAttribute<SpawnableAttribute>( entityType ) )
+		Log.Info( entityType );
+		if ( entityType == null )
 			return;
 
 		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 200 )
@@ -415,7 +340,7 @@
 			.Run();
 
 		var ent = TypeLibrary.Create<Entity>( entityType );
-		if ( ent is BaseCarriable && owner.Inventory != null )
+		if ( ent is Weapon && owner.Inventory != null )
 		{
 			if ( owner.Inventory.Add( ent, true ) )
 				return;
