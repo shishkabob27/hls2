@@ -1,6 +1,6 @@
-﻿[Library("env_sprite")]
+﻿[Library( "env_sprite" )]
 [HammerEntity]
-[Title("env_sprite"), Category("Effects"), Icon("volume_up")] 
+[Title( "env_sprite" ), Category( "Effects" ), Icon( "volume_up" )]
 public partial class env_sprite : RenderEntity
 {
 	[Flags]
@@ -27,7 +27,7 @@ public partial class env_sprite : RenderEntity
 	[Property( "scale" ), Net]
 	public float SpriteMainScale { get; set; } = 1;
 
-	[Property("rendercolor"), Net]
+	[Property( "rendercolor" ), Net]
 	Color SpriteColour { get; set; }
 	[Net]
 	public bool Enabled { get; set; } = false;
@@ -53,27 +53,29 @@ public partial class env_sprite : RenderEntity
 		if ( !Enabled ) return;
 		if ( playOnceHasLooped ) return;
 
-		if ( SpriteActual == "")
+		if ( SpriteActual == "" )
 		{
 			SpriteActual = Sprite;
 		}
-		if (!Animated)//if (SpriteMaterial == null || Sprite != SpritePrev)
-		{ 
+		if ( !Animated )//if (SpriteMaterial == null || Sprite != SpritePrev)
+		{
 			a = SpriteActual;
-			if (!a.Contains( ".png" ) )
+			if ( !a.Contains( ".png" ) )
 			{
 				if ( a.Contains( ".vmdl" ) ) a = a.Replace( ".vmdl", ".png" );
 				if ( a.Contains( ".vmat" ) ) a = a.Replace( ".vmat", ".png" );
 			}
 			if ( !a.Contains( "materials/" ) )
-			{
-				a = a.Replace( "sprites/", "materials/hl1/sprites/" );
-			} 
-			//Log.Info( a );
+				/*
+				{
+					a = a.Replace( "sprites/", "materials/hl1/sprites/" );
+				} 
+				*/
+				//Log.Info( a );
 
-			SpriteMaterial = Material.FromShader( "envsprite.shader" ); //Material.Load( a ); 
-			SpriteTex = Texture.Load( FileSystem.Mounted, a, false);  
-			if (SpriteTex == null && !Animated )
+				SpriteMaterial = Material.FromShader( "envsprite.shader" ); //Material.Load( a ); 
+			SpriteTex = Texture.Load( FileSystem.Mounted, a, false );
+			if ( SpriteTex == null && !Animated )
 			{
 				var b = a.Replace( ".png", "001.png" );
 				SpriteTex = Texture.Load( FileSystem.Mounted, b, false );
@@ -86,7 +88,7 @@ public partial class env_sprite : RenderEntity
 				}
 			}//Log.Info();
 		}
-		if (Animated )
+		if ( Animated )
 		{
 			// TODO: OPTIMISE ME PLEASE STOP LOADING EVERY FRAME
 			b = a.Replace( ".png", frame.ToString( "000" ) + ".png" );
@@ -100,15 +102,16 @@ public partial class env_sprite : RenderEntity
 					Enabled = false;
 					return;
 
-				} else
+				}
+				else
 				{
 					frame = 1;
 				}
 				SinceFrame = 0;
 				b = a.Replace( ".png", frame.ToString( "000" ) + ".png" );
 				SpriteTex = Texture.Load( FileSystem.Mounted, b, false );
-				
-			} 
+
+			}
 			if ( SinceFrame > (1 / Framerate) )
 			{
 				if ( !playOnceHasLooped )
@@ -123,11 +126,11 @@ public partial class env_sprite : RenderEntity
 		SpriteMaterial.Set( "g_flTintColor", SpriteColour );
 		// Allow lights to affect the sprite
 		//Render.SetupLighting( obj );
-		Graphics.SetupLighting( obj );  
+		Graphics.SetupLighting( obj );
 
 		// Create the vertex buffer for the sprite
 		var vb = new VertexBuffer();
-		vb.Init(true);
+		vb.Init( true );
 
 		// Vertex buffers are in local space, so we need the camera position in local space too
 		var normal = Camera.Rotation.Backward;// Transform.PointToLocal( CurrentView.Position ).Normal;
@@ -136,7 +139,7 @@ public partial class env_sprite : RenderEntity
 		float halfSpriteSize = SpriteScale;
 
 		// Add a single quad to our vertex buffer
-		vb.AddQuad( new Ray( default, normal), w * (((SpriteTex == null) ? halfSpriteSize : SpriteTex.Width) * SpriteMainScale), h * (((SpriteTex == null) ? halfSpriteSize : SpriteTex.Height) * SpriteMainScale) );
+		vb.AddQuad( new Ray( default, normal ), w * (((SpriteTex == null) ? halfSpriteSize : SpriteTex.Width) * SpriteMainScale), h * (((SpriteTex == null) ? halfSpriteSize : SpriteTex.Height) * SpriteMainScale) );
 
 		// Draw the sprite
 		vb.Draw( SpriteMaterial );
@@ -173,10 +176,10 @@ public partial class env_sprite : RenderEntity
 		SpriteRPC( Enabled );
 	}
 	[ClientRpc]
-	public void SpriteRPC(bool bl)
+	public void SpriteRPC( bool bl )
 	{
 		Enabled = bl;
-		if (Enabled)
+		if ( Enabled )
 		{
 			frame = 1;
 			SinceFrame = 0;

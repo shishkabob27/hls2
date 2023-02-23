@@ -479,7 +479,8 @@ public partial class HL1GameMovement : BasePlayerController
 		var newGround = tr.Entity;
 		var oldGround = GroundEntity;
 
-		var vecBaseVelocity = BaseVelocity;
+		//var vecBaseVelocity = BaseVelocity;
+		var vecBaseVelocity = Vector3.Zero;
 
 		if ( oldGround == null && newGround != null )
 		{
