@@ -1,7 +1,6 @@
 ﻿
 
 using Sandbox.Utility;
-using System.Numerics;
 
 public partial class HL1GameMovement : BasePlayerController
 {
@@ -77,8 +76,9 @@ public partial class HL1GameMovement : BasePlayerController
 			return;
 
 		MaxSpeed = sv_maxspeed;
-
+		RestoreGroundPos();
 		PlayerMove();
+		SaveGroundPos();
 	}
 
 	public virtual void PlayerMove()
@@ -156,7 +156,7 @@ public partial class HL1GameMovement : BasePlayerController
 			FullWalkMove();
 		}
 	}
-	 
+
 	public virtual void UpdateViewOffset()
 	{
 		// reset x,y
@@ -479,7 +479,7 @@ public partial class HL1GameMovement : BasePlayerController
 		var newGround = tr.Entity;
 		var oldGround = GroundEntity;
 
-		var vecBaseVelocity = Vector3.Zero;
+		var vecBaseVelocity = BaseVelocity;
 
 		if ( oldGround == null && newGround != null )
 		{

@@ -7,6 +7,7 @@ public partial class func_tracktrain : BrushEntity
 	[Property( "target" ), FGDType( "target_destination" )]
 	public EntityTarget Target { get; set; } //= "";
 	public float speed = 0;
+	public Vector3 TrainVelocity;
 
 	path_track prevcheck;
 	bool prevcheckfailed = false;
@@ -27,8 +28,8 @@ public partial class func_tracktrain : BrushEntity
 		try
 		{
 			// this was so we don't cnstantly check unless we know anything as changed.
-			if (a == null)// && !(a == prevcheck && prevcheckfailed))
-			{ 
+			if ( a == null )// && !(a == prevcheck && prevcheckfailed))
+			{
 				a = Target.GetTarget() as path_track;
 
 				/*prevcheck = Target;
@@ -47,12 +48,12 @@ public partial class func_tracktrain : BrushEntity
 			if ( speed != 0 )
 			{
 
-				Velocity = (((Position - a.Position).Normal * speed)) * -1;
-				Position += Velocity * Time.Delta;
+				TrainVelocity = (((Position - a.Position).Normal * speed)) * -1;
+				Position += TrainVelocity * Time.Delta;
 				if ( OrientationType != 0 ) Rotation = Rotation.Lerp( Rotation, Rotation.LookAt( Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 2.4f );
 				foreach ( var child in Children )
 				{
-					child.Velocity = Velocity;
+					//child.Velocity = TrainVelocity;
 					//child.Position += child.Velocity;
 					//if ( OrientationType != 0 ) child.Rotation = Rotation.Lerp( child.Rotation, Rotation.LookAt( child.Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
 				}
@@ -61,10 +62,10 @@ public partial class func_tracktrain : BrushEntity
 			{
 
 				a.OnPass.Fire( this );
-				Velocity = Vector3.Zero;
+				TrainVelocity = Vector3.Zero;
 				foreach ( var child in Children )
 				{
-					child.Velocity = Vector3.Zero;
+					//child.Velocity = Vector3.Zero;
 					//child.Position += child.Velocity;
 					//if ( OrientationType != 0 ) child.Rotation = Rotation.Lerp( child.Rotation, Rotation.LookAt( child.Position.WithZ( 0 ) - a.Position.WithZ( 0 ), Vector3.Up ), Time.Delta * 5 );
 				}
