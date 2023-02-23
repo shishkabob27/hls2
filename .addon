@@ -11,7 +11,7 @@
     "/resource/*",
     "/ui/*",
     "/fonts/*",
-    "/sprites/*"
+    "/materials/hl1/sprites/*"
   ],
   "HasCode": true,
   "CodePath": "/code/",

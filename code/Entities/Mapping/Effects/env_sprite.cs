@@ -66,14 +66,12 @@ public partial class env_sprite : RenderEntity
 				if ( a.Contains( ".vmat" ) ) a = a.Replace( ".vmat", ".png" );
 			}
 			if ( !a.Contains( "materials/" ) )
-				/*
-				{
-					a = a.Replace( "sprites/", "materials/hl1/sprites/" );
-				} 
-				*/
-				//Log.Info( a );
+			{
+				a = a.Replace( "sprites/", "materials/hl1/sprites/" );
+			}
+			//Log.Info( a );
 
-				SpriteMaterial = Material.FromShader( "envsprite.shader" ); //Material.Load( a ); 
+			SpriteMaterial = Material.FromShader( "envsprite.shader" ); //Material.Load( a ); 
 			SpriteTex = Texture.Load( FileSystem.Mounted, a, false );
 			if ( SpriteTex == null && !Animated )
 			{
