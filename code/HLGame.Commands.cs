@@ -216,13 +216,7 @@
 		}
 
 	}
-	[ConCmd.Server( "spawnScientist", Help = "Kills the calling player with generic damage" )]
-	public static void SpawnScientistCommand()
-	{
-		var sci = new Scientist();
-		sci.Position = ConsoleSystem.Caller.Pawn.Position;
-		sci.Spawn();
-	}
+
 	/// <summary>
 	/// Kills the calling player with generic damage
 	/// </summary>
@@ -333,19 +327,24 @@
 		if ( owner == null )
 			return;
 
-		var entityType = TypeLibrary.GetType<Entity>( entName ).GetType();
+		var entityType = TypeLibrary.GetType<Entity>( entName )?.TargetType;
+
+		Log.Info( entityType );
 		if ( entityType == null )
+			return;
 
-			if ( !TypeLibrary.HasAttribute<SpawnableAttribute>( entityType ) )
-				return;
-
-		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 2000 )
+		var tr = Trace.Ray( owner.EyePosition, owner.EyePosition + owner.EyeRotation.Forward * 200 )
 			.UseHitboxes()
 			.Ignore( owner )
 			.Size( 2 )
 			.Run();
 
 		var ent = TypeLibrary.Create<Entity>( entityType );
+		if ( ent is Weapon && owner.Inventory != null )
+		{
+			if ( owner.Inventory.Add( ent, true ) )
+				return;
+		}
 
 		ent.Position = tr.EndPosition;
 		ent.Rotation = Rotation.From( new Angles( 0, owner.EyeRotation.Angles().yaw, 0 ) );

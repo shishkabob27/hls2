@@ -3,7 +3,7 @@
     public override Input.VrHand InputHand => Input.VR.RightHand;
     public override void Spawn()
     {
-        SetModel("models/vr/hand_right.vmdl");
+        SetModel( "models/vr/v_hand_hevsuit/v_hand_hevsuit_right.vmdl" );
 		Transmit = TransmitType.Always;
     }
 
