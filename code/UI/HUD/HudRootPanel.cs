@@ -26,7 +26,7 @@ public class HudRootPanel : RootPanel
 	[Event.Client.BuildInput]
 	public void ProcessClientInput()
 	{
-		if ( Input.Pressed( InputButton.Zoom ) )
+		if ( Input.Pressed( "Menu" ) )
 		{
 
 			ConsoleSystem.Run( "menu" );

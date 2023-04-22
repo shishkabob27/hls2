@@ -372,7 +372,7 @@
 	/// <returns></returns>
 	public virtual bool CanReload()
 	{
-		if ( !Owner.IsValid() || !Input.Down( InputButton.Reload ) ) return false;
+		if ( !Owner.IsValid() || !Input.Down( "Reload" ) ) return false;
 
 		return true;
 	}
@@ -435,7 +435,7 @@
 		}
 		else
 		{
-			if ( !Owner.IsValid() || !Input.Down( InputButton.PrimaryAttack ) ) return false;
+			if ( !Owner.IsValid() || !Input.Down( "PrimaryAttack" ) ) return false;
 		}
 
 		var rate = PrimaryRate;
@@ -465,7 +465,7 @@
 		}
 		else
 		{
-			if ( !Owner.IsValid() || !Input.Down( InputButton.SecondaryAttack ) ) return false;
+			if ( !Owner.IsValid() || !Input.Down( "SecondaryAttack" ) ) return false;
 		}
 
 

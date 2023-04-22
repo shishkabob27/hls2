@@ -34,7 +34,7 @@ partial class Shotgun : Weapon
 	{
 		base.Simulate( owner );
 
-		if ( IsReloading && ( Input.Pressed( InputButton.PrimaryAttack ) || Input.Pressed( InputButton.SecondaryAttack ) ) )
+		if ( IsReloading && ( Input.Pressed( "PrimaryAttack" ) || Input.Pressed( "SecondaryAttack" ) ) )
 		{
 			StopReloading = true;
 		}

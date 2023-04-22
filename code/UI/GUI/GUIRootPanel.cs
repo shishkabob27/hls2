@@ -36,7 +36,7 @@ public class GUIRootPanel : RootPanel
 	[Event.Client.BuildInput]
 	public void ProcessClientInput()
 	{
-		if ( Input.Pressed( InputButton.Menu ) )
+		if ( Input.Pressed( "Options" ) )
 		{
 			ConsoleSystem.Run( "open_options" );
 		}

@@ -38,7 +38,7 @@ partial class Egon : Weapon
     Particles Beam;
     public override void Simulate( IClient owner )
     {
-        if ( !Input.Down( InputButton.PrimaryAttack ) )
+        if ( !Input.Down( "PrimaryAttack" ) )
         {
             if ( Beam != null )
             {

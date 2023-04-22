@@ -35,7 +35,7 @@ partial class TripmineWeapon : Weapon
 		if ( Client.IsUsingVr ) prevVRtrig = Input.VR.RightHand.Trigger;
 		if ( Client.IsUsingVr ) return a;
 
-		return Input.Released( InputButton.PrimaryAttack );
+		return Input.Released( "PrimaryAttack" );
 	}
 
 	public override void AttackPrimary()

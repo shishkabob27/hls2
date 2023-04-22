@@ -15,13 +15,14 @@
   ],
   "HasCode": true,
   "CodePath": "/code/",
+  "PackageReferences": [],
+  "EditorReferences": null,
   "Metadata": {
     "MaxPlayers": 24,
     "MinPlayers": 1,
     "GameNetworkType": "Multiplayer",
     "MapSelect": "Unrestricted",
     "MapList": [
-      "\u003Cempty\u003E",
       "shishkabob.hls2_t0",
       "shishkabob.hls2_c1p0",
       "shishkabob.hls2_c2p0",
@@ -268,6 +269,188 @@
     "Summary": "Half-Life recreated in Source 2.",
     "Description": "-WORK IN PROGRESS-\n\nHalf-Life recreated in Source 2. Including Deathmatch and (experimental) OpForce CTF.\n\nDeveloped by:\nshishkabob\nXenthio\nTheBoxTrot\nIanSource2\nbabyherc1000\nHUNcamper\n\nReport bugs or request features: github.com/shishkabob27/hls2/issues\n\nHalf-Life Resized Maps by:\nSergey \u0022Mr. Lazy\u0022 Fetisov\nTheMostUpset\nMaestra F\u00E9nix\n\nUse the command \u0022GiveAll\u0022 to get the base weapons and ammo, use \u0022GiveEverything\u0022 to give ALL the weapons, including debug and experimental ones. \n\nMaps are being worked on.\nMost entities haven\u2019t been implemented yet.",
     "Public": true,
-    "CsProjName": ""
+    "CsProjName": "",
+    "InputSettings": {
+      "Actions": [
+        {
+          "Name": "Forward",
+          "KeyboardCode": "W",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Backward",
+          "KeyboardCode": "S",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Left",
+          "KeyboardCode": "A",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Right",
+          "KeyboardCode": "D",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Jump",
+          "KeyboardCode": "space",
+          "GamepadCode": "A",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Run",
+          "KeyboardCode": "shift",
+          "GamepadCode": "LeftJoystickButton",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Walk",
+          "KeyboardCode": "alt",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "Duck",
+          "KeyboardCode": "ctrl",
+          "GamepadCode": "B",
+          "GroupName": "Movement"
+        },
+        {
+          "Name": "PrimaryFire",
+          "KeyboardCode": "mouse1",
+          "GamepadCode": "RightTrigger",
+          "GroupName": "Actions"
+        },
+        {
+          "Name": "SecondaryAttack",
+          "KeyboardCode": "mouse2",
+          "GamepadCode": "LeftTrigger",
+          "GroupName": "Actions"
+        },
+        {
+          "Name": "Reload",
+          "KeyboardCode": "r",
+          "GamepadCode": "X",
+          "GroupName": "Actions"
+        },
+        {
+          "Name": "Use",
+          "KeyboardCode": "e",
+          "GamepadCode": "Y",
+          "GroupName": "Actions"
+        },
+        {
+          "Name": "Slot1",
+          "KeyboardCode": "1",
+          "GamepadCode": "DpadWest",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot2",
+          "KeyboardCode": "2",
+          "GamepadCode": "DpadEast",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot3",
+          "KeyboardCode": "3",
+          "GamepadCode": "DpadSouth",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot4",
+          "KeyboardCode": "4",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot5",
+          "KeyboardCode": "5",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot6",
+          "KeyboardCode": "6",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot7",
+          "KeyboardCode": "7",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot8",
+          "KeyboardCode": "8",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot9",
+          "KeyboardCode": "9",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "Slot0",
+          "KeyboardCode": "0",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "SlotPrev",
+          "KeyboardCode": "mouse4",
+          "GamepadCode": "SwitchLeftBumper",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "SlotNext",
+          "KeyboardCode": "mouse5",
+          "GamepadCode": "SwitchRightBumper",
+          "GroupName": "Inventory"
+        },
+        {
+          "Name": "View",
+          "KeyboardCode": "C",
+          "GamepadCode": "RightJoystickButton",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Voice",
+          "KeyboardCode": "v",
+          "GamepadCode": "RightJoystickButton",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Drop",
+          "KeyboardCode": "g",
+          "GamepadCode": "RightJoystickButton",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Flashlight",
+          "KeyboardCode": "f",
+          "GamepadCode": "DpadNorth",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Score",
+          "KeyboardCode": "tab",
+          "GamepadCode": "SwitchLeftMenu",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Menu",
+          "KeyboardCode": "M",
+          "GamepadCode": "SwitchRightMenu",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Chat",
+          "KeyboardCode": "enter",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Options",
+          "KeyboardCode": "Q",
+          "GroupName": "Other"
+        }
+      ]
+    }
   }
 }

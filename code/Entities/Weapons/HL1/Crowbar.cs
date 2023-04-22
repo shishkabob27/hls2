@@ -34,7 +34,7 @@ partial class Crowbar : Weapon
 		}
 		else
 		{
-			if ( !Owner.IsValid() || !Input.Down( InputButton.PrimaryAttack ) ) return false;
+			if ( !Owner.IsValid() || !Input.Down( "PrimaryAttack" ) ) return false;
 		}
 
 		var rate = PrimaryRate;

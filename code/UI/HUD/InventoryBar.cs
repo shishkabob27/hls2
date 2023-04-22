@@ -59,25 +59,25 @@ public class InventoryBar : Panel
 		// If we're not open, maybe this input has something that will 
 		// make us want to start being open?
 		wantOpen = wantOpen || Input.MouseWheel != 0;
-		wantOpen = wantOpen || Input.Pressed( InputButton.SlotNext ) || Input.VR.RightHand.Joystick.Value.y < -0.5;
-		wantOpen = wantOpen || Input.Pressed( InputButton.SlotPrev ) || Input.VR.RightHand.Joystick.Value.y > 0.5;
-		wantOpen = wantOpen || Input.Pressed( InputButton.Slot1 );
-		wantOpen = wantOpen || Input.Pressed( InputButton.Slot2 );
-		wantOpen = wantOpen || Input.Pressed( InputButton.Slot3 );
-		wantOpen = wantOpen || Input.Pressed( InputButton.Slot4 );
-		wantOpen = wantOpen || Input.Pressed( InputButton.Slot5 );
-		wantOpen = wantOpen || Input.Pressed( InputButton.Slot6 );
-		wantOpen = wantOpen || Input.Pressed( InputButton.Slot7 );
+		wantOpen = wantOpen || Input.Pressed( "SlotNext" ) || Input.VR.RightHand.Joystick.Value.y < -0.5;
+		wantOpen = wantOpen || Input.Pressed( "SlotPrev" ) || Input.VR.RightHand.Joystick.Value.y > 0.5;
+		wantOpen = wantOpen || Input.Pressed( "Slot1" );
+		wantOpen = wantOpen || Input.Pressed( "Slot2" );
+		wantOpen = wantOpen || Input.Pressed( "Slot3" );
+		wantOpen = wantOpen || Input.Pressed( "Slot4" );
+		wantOpen = wantOpen || Input.Pressed( "Slot5" );
+		wantOpen = wantOpen || Input.Pressed( "Slot6" );
+		wantOpen = wantOpen || Input.Pressed( "Slot7" );
 
 		bool wantOpen2 = IsOpen;
 
-		wantOpen2 = wantOpen2 || Input.Pressed( InputButton.Slot1 );
-		wantOpen2 = wantOpen2 || Input.Pressed( InputButton.Slot2 );
-		wantOpen2 = wantOpen2 || Input.Pressed( InputButton.Slot3 );
-		wantOpen2 = wantOpen2 || Input.Pressed( InputButton.Slot4 );
-		wantOpen2 = wantOpen2 || Input.Pressed( InputButton.Slot5 );
-		wantOpen2 = wantOpen2 || Input.Pressed( InputButton.Slot6 );
-		wantOpen2 = wantOpen2 || Input.Pressed( InputButton.Slot7 );
+		wantOpen2 = wantOpen2 || Input.Pressed( "Slot1" );
+		wantOpen2 = wantOpen2 || Input.Pressed( "Slot2" );
+		wantOpen2 = wantOpen2 || Input.Pressed( "Slot3" );
+		wantOpen2 = wantOpen2 || Input.Pressed( "Slot4" );
+		wantOpen2 = wantOpen2 || Input.Pressed( "Slot5" );
+		wantOpen2 = wantOpen2 || Input.Pressed( "Slot6" );
+		wantOpen2 = wantOpen2 || Input.Pressed( "Slot7" );
 
 		if ( Weapons.Count == 0 )
 		{
@@ -99,7 +99,7 @@ public class InventoryBar : Panel
 		//
 		// Fire pressed when we're open - select the weapon and close.
 		//
-		if ( Input.Down( InputButton.PrimaryAttack ) || Input.VR.RightHand.JoystickPress )
+		if ( Input.Down( "PrimaryAttack" ) || Input.VR.RightHand.JoystickPress )
 		{
 			Input.SuppressButton( InputButton.PrimaryAttack );
 			localPlayer.ActiveChildInput = SelectedWeapon;
@@ -118,12 +118,12 @@ public class InventoryBar : Panel
 		// forward if mouse wheel was pressed
 		SelectedIndex -= Input.MouseWheel;
 
-		if ( Input.Pressed( InputButton.SlotNext ) || (Input.VR.RightHand.Joystick.Value.y < -0.5 && SinceSelectedWeapon > 3) )
+		if ( Input.Pressed( "SlotNext" ) || (Input.VR.RightHand.Joystick.Value.y < -0.5 && SinceSelectedWeapon > 3) )
 		{
 			SinceSelectedWeapon = 0;
 			SelectedIndex++;
 		}
-		if ( Input.Pressed( InputButton.SlotPrev ) || (Input.VR.RightHand.Joystick.Value.y > 0.5 && SinceSelectedWeapon > 3) )
+		if ( Input.Pressed( "SlotPrev" ) || (Input.VR.RightHand.Joystick.Value.y > 0.5 && SinceSelectedWeapon > 3) )
 		{
 			SinceSelectedWeapon = 0;
 			SelectedIndex--;
@@ -149,13 +149,13 @@ public class InventoryBar : Panel
 	{
 		var columninput = -1;
 
-		if ( Input.Pressed( InputButton.Slot1 ) ) columninput = 0;
-		if ( Input.Pressed( InputButton.Slot2 ) ) columninput = 1;
-		if ( Input.Pressed( InputButton.Slot3 ) ) columninput = 2;
-		if ( Input.Pressed( InputButton.Slot4 ) ) columninput = 3;
-		if ( Input.Pressed( InputButton.Slot5 ) ) columninput = 4;
-		if ( Input.Pressed( InputButton.Slot6 ) ) columninput = 5;
-		if ( Input.Pressed( InputButton.Slot7 ) ) columninput = 6;
+		if ( Input.Pressed( "Slot1" ) ) columninput = 0;
+		if ( Input.Pressed( "Slot2" ) ) columninput = 1;
+		if ( Input.Pressed( "Slot3" ) ) columninput = 2;
+		if ( Input.Pressed( "Slot4" ) ) columninput = 3;
+		if ( Input.Pressed( "Slot5" ) ) columninput = 4;
+		if ( Input.Pressed( "Slot6" ) ) columninput = 5;
+		if ( Input.Pressed( "Slot7" ) ) columninput = 6;
 
 		if ( columninput == -1 ) return SelectedIndex;
 
