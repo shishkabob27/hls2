@@ -99,7 +99,7 @@ public class InventoryBar : Panel
 		//
 		// Fire pressed when we're open - select the weapon and close.
 		//
-		if ( Input.Down( "PrimaryAttack" ) || Input.VR.RightHand.JoystickPress )
+		if ( Input.Down( "attack1" ) || Input.VR.RightHand.JoystickPress )
 		{
 			Input.SuppressButton( InputButton.PrimaryAttack );
 			localPlayer.ActiveChildInput = SelectedWeapon;

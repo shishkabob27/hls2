@@ -316,13 +316,13 @@
           "GroupName": "Movement"
         },
         {
-          "Name": "PrimaryFire",
+          "Name": "Attack1",
           "KeyboardCode": "mouse1",
           "GamepadCode": "RightTrigger",
           "GroupName": "Actions"
         },
         {
-          "Name": "SecondaryAttack",
+          "Name": "Attack2",
           "KeyboardCode": "mouse2",
           "GamepadCode": "LeftTrigger",
           "GroupName": "Actions"
@@ -436,7 +436,7 @@
         },
         {
           "Name": "Menu",
-          "KeyboardCode": "M",
+          "KeyboardCode": "Q",
           "GamepadCode": "SwitchRightMenu",
           "GroupName": "Other"
         },
@@ -447,7 +447,7 @@
         },
         {
           "Name": "Options",
-          "KeyboardCode": "Q",
+          "KeyboardCode": "M",
           "GroupName": "Other"
         }
       ]

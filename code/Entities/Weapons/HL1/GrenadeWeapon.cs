@@ -37,7 +37,7 @@ partial class GrenadeWeapon : Weapon
 		if ( Client.IsUsingVr ) prevVRtrig = Input.VR.RightHand.Trigger;
 		if ( Client.IsUsingVr ) return a;
 
-		return Input.Released( "PrimaryAttack" );
+		return Input.Released( "attack1" );
 	}
 
 	public override void AttackPrimary()

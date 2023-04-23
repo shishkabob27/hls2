@@ -40,7 +40,7 @@ public partial class Chat : Panel
 	{
 		base.Tick();
 
-		if ( Sandbox.Input.Pressed( InputButton.Chat ) )
+		if ( Sandbox.Input.Pressed( "Chat" ) )
 		{
 			Open();
 		}

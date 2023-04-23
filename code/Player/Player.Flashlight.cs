@@ -86,7 +86,7 @@
 				Light.Rotation = Input.VR.Head.Rotation;
 			}
 		}
-		if ( Input.Pressed( InputButton.Flashlight ) && HasHEV )
+		if ( Input.Pressed( "Flashlight" ) && HasHEV )
 		{
 			FlashlightEnabled = !FlashlightEnabled;
 

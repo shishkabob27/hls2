@@ -5,7 +5,7 @@
 
 	public virtual bool WishJump()
 	{
-		return (sv_autojump) ? Input.Down( InputButton.Jump ) | Input.VR.RightHand.ButtonA.IsPressed : Input.Pressed( InputButton.Jump ) | Input.VR.RightHand.ButtonA.WasPressed;
+		return (sv_autojump) ? Input.Down( "Jump" ) | Input.VR.RightHand.ButtonA.IsPressed : Input.Pressed( "Jump" ) | Input.VR.RightHand.ButtonA.WasPressed;
 	}
 
 	public virtual bool CanJump()
@@ -90,7 +90,7 @@
 		// to not accumulate over time.
 		var forward = Rotation.Forward.WithZ( 0 ).Normal;
 		//float flSpeedBoostPerc = (!pMoveData->m_bIsSprinting && !player->m_Local.m_bDucked) ? 0.5f : 0.1f;
-		float flSpeedBoostPerc = (!Input.Down(InputButton.Run) && !IsDucking) ? 0.5f : 0.1f;
+		float flSpeedBoostPerc = (!Input.Down("Run") && !IsDucking) ? 0.5f : 0.1f;
 		float flSpeedAddition = MathF.Abs( ForwardMove * flSpeedBoostPerc );
 		float flMaxSpeed = MaxSpeed + (MaxSpeed * flSpeedBoostPerc);
 		float flNewSpeed = (flSpeedAddition + Velocity.Length);

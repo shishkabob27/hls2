@@ -294,7 +294,7 @@ public partial class WalkController : BasePlayerController
 
 		Duck.PreTick();
 
-		if ( GroundEntity != null && Input.Down( InputButton.Use ) ) Velocity *= 0.3f;
+		if ( GroundEntity != null && Input.Down( "Use" ) ) Velocity *= 0.3f;
 
 
 		bool bStayOnGround = false;
@@ -368,8 +368,8 @@ public partial class WalkController : BasePlayerController
 
 		var mvspeed = sv_defaultspeed; //0.0f;
 		var ws = Duck.GetWishSpeed();
-		if ( Input.Down( InputButton.Walk ) ) mvspeed = sv_sprintspeed;
-		if ( Input.Down( InputButton.Run ) ) mvspeed = sv_walkspeed;
+		if ( Input.Down( "Walk" ) ) mvspeed = sv_sprintspeed;
+		if ( Input.Down( "Run" ) ) mvspeed = sv_walkspeed;
 
 		if ( ws >= 0 ) mvspeed = mvspeed * PLAYER_DUCKING_MULTIPLIER;
 
@@ -821,7 +821,7 @@ public partial class WalkController : BasePlayerController
 
 		if ( IsTouchingLadder )
 		{
-			if ( Input.Pressed( InputButton.Jump ) )
+			if ( Input.Pressed( "Jump" ) )
 			{
 				Velocity = LadderNormal * 100.0f;
 				IsTouchingLadder = false;

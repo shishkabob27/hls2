@@ -94,7 +94,7 @@ public partial class HL1GameMovement : BasePlayerController
 
 
 
-		if ( GroundEntity != null && Input.Down( InputButton.Run ) ) speed *= sv_movespeedkey;
+		if ( GroundEntity != null && Input.Down( "Run" ) ) speed *= sv_movespeedkey;
 
 		ForwardMove = Player.InputDirection.x * speed;
 		RightMove = -Player.InputDirection.y * speed;
@@ -113,7 +113,7 @@ public partial class HL1GameMovement : BasePlayerController
 		ReduceTimers();
 		CheckParameters();
 
-		if ( GroundEntity != null && Input.Down( InputButton.Use ) ) Velocity *= 0.3f;
+		if ( GroundEntity != null && Input.Down( "Use" ) ) Velocity *= 0.3f;
 
 		// Decrease velocity if we move vertically too quickly.
 		if ( Velocity.z > 250 )

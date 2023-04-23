@@ -435,7 +435,7 @@
 		}
 		else
 		{
-			if ( !Owner.IsValid() || !Input.Down( "PrimaryAttack" ) ) return false;
+			if ( !Owner.IsValid() || !Input.Down( "attack1" ) ) return false;
 		}
 
 		var rate = PrimaryRate;
@@ -465,7 +465,7 @@
 		}
 		else
 		{
-			if ( !Owner.IsValid() || !Input.Down( "SecondaryAttack" ) ) return false;
+			if ( !Owner.IsValid() || !Input.Down( "attack2" ) ) return false;
 		}
 
 

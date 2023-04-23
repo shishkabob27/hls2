@@ -133,7 +133,7 @@ public partial class HL1GameMovement
 		WishVelocity = Forward * ForwardMove + Right * RightMove;
 
 		// if we have the jump key down, move us up as well
-		if ( Input.Down( InputButton.Jump ) )
+		if ( Input.Down( "Jump" ) )
 		{
 			WishVelocity = WishVelocity.WithZ( WishVelocity.z + MaxSpeed );
 		}

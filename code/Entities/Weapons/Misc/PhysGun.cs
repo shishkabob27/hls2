@@ -54,7 +54,7 @@ partial class PhysGun : Weapon
 		var eyeDir = owner.EyeRotation.Forward;
 		var eyeRot = Rotation.From( new Angles( 0.0f, owner.EyeRotation.Yaw(), 0.0f ) );
 
-		if ( Input.Pressed( "PrimaryAttack" ) )
+		if ( Input.Pressed( "attack1" ) )
 		{
 			(Owner as AnimatedEntity)?.SetAnimParameter( "b_attack", true );
 
@@ -62,8 +62,8 @@ partial class PhysGun : Weapon
 				grabbing = true;
 		}
 
-		bool grabEnabled = grabbing && Input.Down( "PrimaryAttack" );
-		bool wantsToFreeze = Input.Pressed( "SecondaryAttack" );
+		bool grabEnabled = grabbing && Input.Down( "attack1" );
+		bool wantsToFreeze = Input.Pressed( "attack2" );
 
 		if ( GrabbedEntity.IsValid() && wantsToFreeze )
 		{
@@ -407,7 +407,7 @@ partial class PhysGun : Weapon
 	public override void BuildInput()
 	{
 		if ( !Input.Down( "Use" ) ||
-			 !Input.Down( "PrimaryAttack" ) ||
+			 !Input.Down( "attack1" ) ||
 			 !GrabbedEntity.IsValid() )
 		{
 			return;

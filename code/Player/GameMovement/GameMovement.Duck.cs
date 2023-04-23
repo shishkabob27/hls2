@@ -19,7 +19,7 @@ partial class HL1GameMovement
 		{
 			return Input.VR.Head.Position.z - Position.z <= HLGame.hl_vr_crouch_height;
 		}
-		return Input.Down( InputButton.Duck ) || Input.VR.RightHand.ButtonB;
+		return Input.Down( "Duck" ) || Input.VR.RightHand.ButtonB;
 	}
 
 	public virtual void SimulateDucking()

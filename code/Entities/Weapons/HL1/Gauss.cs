@@ -75,7 +75,7 @@ partial class Gauss : Weapon
 
 		var owner2 = Owner as HLPlayer;
 
-		if ( (!(Input.Down( "SecondaryAttack" )) && spinning) || ((player.AmmoCount( AmmoType.Uranium ) <= 0) && spinning) || (!EnableDrawing && spinning) )
+		if ( (!(Input.Down( "attack2" )) && spinning) || ((player.AmmoCount( AmmoType.Uranium ) <= 0) && spinning) || (!EnableDrawing && spinning) )
 		{
 			var dmg = 200.0f;
 			if ( Time.Now - startspin > GetFullChargeTime() )

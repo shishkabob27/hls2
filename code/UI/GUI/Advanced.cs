@@ -27,7 +27,7 @@ public class Advanced : GUIPanel
 	[Event.Client.BuildInput]
 	public void ProcessClientInput()
 	{
-		if (Input.Pressed(InputButton.Menu))
+		if (Input.Pressed("Menu"))
         {
             Style.Left = (Screen.Width / 2) - (Box.Rect.Width / 2);
             Style.Top = (Screen.Height / 2) - (Box.Rect.Height / 2); 

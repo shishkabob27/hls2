@@ -72,7 +72,7 @@ partial class Crossbow : Weapon
 	{
 		base.Simulate( cl );
 
-		if ( Input.Pressed( "SecondaryAttack" ) )
+		if ( Input.Pressed( "attack2" ) )
 		{
 			Zoomed = !Zoomed;
 		}

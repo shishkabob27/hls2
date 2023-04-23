@@ -347,7 +347,7 @@
 
 		TickPlayerUse();
 
-		if ( Input.Pressed( InputButton.View ) && !Client.IsUsingVr )
+		if ( Input.Pressed( "View" ) && !Client.IsUsingVr )
 		{
 			if ( CameraMode is ThirdPersonCamera )
 			{
@@ -371,7 +371,7 @@
 		}
 		FootstepSounds();
 		SimulateSuit();
-		if ( Input.Pressed( InputButton.Drop ) )
+		if ( Input.Pressed( "Drop" ) )
 		{
 			var dropped = Inventory.DropActive();
 			if ( dropped != null )

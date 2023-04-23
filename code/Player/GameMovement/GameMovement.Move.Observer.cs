@@ -102,7 +102,7 @@ public partial class HL1GameMovement
 		// Copy movement amounts
 
 		float factor = sv_spectator_speed;
-		if ( Input.Down( InputButton.Run ) )
+		if ( Input.Down( "Run" ) )
 		{
 			factor /= 2.0f;
 		}
