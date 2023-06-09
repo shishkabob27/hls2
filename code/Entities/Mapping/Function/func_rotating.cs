@@ -26,7 +26,7 @@ public partial class func_rotating : KeyframeEntity
 	public float MaxSpeed { get; set; } = 100;
 	public float Speed { get; set; } = 0;
 	// stub
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	void Tick()
 	{
 		var a = Rotation.From( 0, 1, 0 );

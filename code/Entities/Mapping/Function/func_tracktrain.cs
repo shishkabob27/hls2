@@ -21,7 +21,7 @@ public partial class func_tracktrain : BrushEntity
 		base.Spawn();
 	}
 	path_track a;
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void tick()
 	{
 		if ( speed == 0 ) return;

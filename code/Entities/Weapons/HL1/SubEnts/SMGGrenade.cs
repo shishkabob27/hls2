@@ -10,7 +10,7 @@
 		SetupPhysicsFromModel( PhysicsMotionType.Dynamic );
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void Simulate()
 	{
 		var trace = Trace.Ray( Position, Position )

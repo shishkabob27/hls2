@@ -153,7 +153,7 @@ public partial class SoundEventEntity : Entity
         PlayingSound = default;
     }
 	bool HasStartedPlaying = false;
-    [Event.Tick.Server]
+    [GameEvent.Tick.Server]
     void tick()
     {
 		if (!HasStartedPlaying) return;

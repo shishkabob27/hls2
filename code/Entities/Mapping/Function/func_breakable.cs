@@ -16,7 +16,7 @@ public partial class func_breakable : BrushEntity
 		}
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void Tick()
 	{
 		if ( Health <= 0 && !Invincible )
