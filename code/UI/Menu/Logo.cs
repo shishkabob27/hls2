@@ -1,4 +1,4 @@
-﻿namespace Sandbox.UI
+namespace Sandbox.UI
 {
 	[Library( "logo" )]
 	public class Logo : Panel

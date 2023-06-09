@@ -7,7 +7,7 @@
 
 	[Net, Predicted]
 	public Entity Light { get; private set; }
-	[Event.Client.Frame]
+	[GameEvent.Client.Frame]
 	void flashlightframe()
 	{
 		if ( Light.IsValid() )

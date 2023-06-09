@@ -9,9 +9,9 @@ class Menu : BaseMenuScreen
 		BaseButtonClick();
 	}
 
-	public void Resume( Panel p )
+	public async void Resume( Panel p )
 	{
-		Parent.Delete();
+		await BaseButtonClickUp( p );
 	}
 
 	public async void NewGame( Panel p )

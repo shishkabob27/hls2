@@ -4,8 +4,6 @@ public class MenuRootPanel : RootPanel, Sandbox.Menu.IGameMenuPanel
 {
 	public static MenuRootPanel Current;
 
-
-
 	[Event.Tick.Client]
 	void MenuTick()
 	{
