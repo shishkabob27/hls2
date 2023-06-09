@@ -67,7 +67,7 @@
 	[ConVar.Client]
 	public static int cl_showpos { get; set; } = 0;
 
-	[Event.Client.Frame]
+	[GameEvent.Client.Frame]
 	static void DrawPos()
 	{
 		if ( cl_showpos == 0 ) return;

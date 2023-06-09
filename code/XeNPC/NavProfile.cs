@@ -82,7 +82,7 @@ public static class Profile
 			Root = new Entry();
 		}
 
-		[Event.Tick]
+		[GameEvent.Tick]
 		static void Frame()
 		{
 			if (timeSince >= 0.5f)

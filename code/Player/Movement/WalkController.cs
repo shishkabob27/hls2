@@ -259,7 +259,7 @@ public partial class WalkController : BasePlayerController
 
 		// if ( underwater ) do underwater movement
 
-		if ( (sv_autojump || Swimming) ? Input.Down( InputButton.Jump ) | Input.VR.RightHand.ButtonA.IsPressed : Input.Pressed( InputButton.Jump ) | Input.VR.RightHand.ButtonA.WasPressed )
+		if ( (sv_autojump || Swimming) ? Input.Down( "Jump" ) | Input.VR.RightHand.ButtonA.IsPressed : Input.Pressed( "Jump" ) | Input.VR.RightHand.ButtonA.WasPressed )
 		{
 			CheckJumpButton();
 		}

@@ -160,7 +160,7 @@ partial class Hornet : NPC, ICombat
 		}
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public virtual void Tick2()
 	{
 		if ( !Game.IsServer )

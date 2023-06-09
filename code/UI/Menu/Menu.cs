@@ -9,9 +9,9 @@ class Menu : BaseMenuScreen
 		BaseButtonClick();
 	}
 
-	public void Resume( Panel p )
+	public async void Resume( Panel p )
 	{
-		Parent.Delete();
+		await BaseButtonClickUp( p );
 	}
 
 	public async void NewGame( Panel p )
@@ -22,7 +22,8 @@ class Menu : BaseMenuScreen
 	}
 	public void HazardCourse( Panel p )
 	{
-		ConsoleSystem.Run( "chnglvlad " + GameInfo.trainmap );
+		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Hazard Course)", GameInfo.trainmap );
+		Game.Menu.HideMenu();
 	}
 	public async void Config( Panel p )
 	{
@@ -52,6 +53,6 @@ class Menu : BaseMenuScreen
 	}
 	public void Quit()
 	{
-		Game.LocalClient.Kick();
+		Game.Menu.Close();
 	}
 }

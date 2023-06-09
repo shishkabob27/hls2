@@ -1,4 +1,4 @@
-﻿namespace Sandbox.UI
+namespace Sandbox.UI
 {
 	[Library( "logo" )]
 	public class Logo : Panel
@@ -11,7 +11,7 @@
 		public Logo()
 		{
 		}
-		[Event.Client.Frame]
+		[GameEvent.Client.Frame]
 		void frame()
 		{
 			if ( lastFrame <= 1f / FPS ) return;

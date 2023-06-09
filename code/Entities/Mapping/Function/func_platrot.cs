@@ -26,7 +26,7 @@ public partial class func_platrot : KeyframeEntity
 
 	Angles prevAngles;
 	Vector3 prevPos;
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	void Tick()
 	{
 		AngularVelocity = prevAngles - Rotation.Angles();

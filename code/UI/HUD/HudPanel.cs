@@ -27,8 +27,8 @@ public class HudPanel : HudEntity<HudRootPanel>
 			else
 			{
 				// Just display the HUD on-screen
-				StyleSheet.FromFile( "/resource/styles/hud.scss" );
-				RootPanel.SetTemplate( "/resource/templates/hud.html" );
+				StyleSheet.FromFile( "/Resource/styles/hud.scss" );
+				RootPanel.SetTemplate( "/Resource/templates/hud.html" );
 
 				RootPanel.AddChild<DamageIndicator>();
 				RootPanel.AddChild<Crosshair>();

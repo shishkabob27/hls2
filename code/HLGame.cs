@@ -156,7 +156,7 @@ public partial class HLGame : GameManager
 		var matrix = Matrix.CreateScale( scale );
 	}
 
-	[Event.Entity.PostCleanup]
+	[GameEvent.Entity.PostCleanup]
 	void onclean()
 	{
 		HLCombat.GibCount = 0;

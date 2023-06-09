@@ -111,7 +111,7 @@ partial class func_recharge : KeyframeEntity, IUse
 		}
 	}
 
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	private void Tick()
 	{
 		if ( TimeSinceUsed >= ChargerResetTime && ChargerPower <= 0 )

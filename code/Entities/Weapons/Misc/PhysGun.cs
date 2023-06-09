@@ -306,7 +306,7 @@ partial class PhysGun : Weapon
 		grabbing = false;
 	}
 
-	[Event.Physics.PreStep]
+	[GameEvent.Physics.PreStep]
 	public void OnPrePhysicsStep()
 	{
 		if ( !Game.IsServer )
@@ -431,7 +431,7 @@ partial class PhysGun : Weapon
 	Vector3 lastBeamPos;
 	ModelEntity lastGrabbedEntity;
 
-	[Event.Client.Frame]
+	[GameEvent.Client.Frame]
 	public void OnFrame()
 	{
 		UpdateEffects();

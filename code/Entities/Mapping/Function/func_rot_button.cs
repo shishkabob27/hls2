@@ -287,7 +287,7 @@ public partial class ButtonEntityRot : KeyframeEntity, IUse
 	protected Output OnOut { get; set; }
 
 	float lastThinkTime = 0;
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	void Think()
 	{
 		// Decay for momentary type

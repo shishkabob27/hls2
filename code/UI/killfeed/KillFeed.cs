@@ -15,7 +15,7 @@ namespace Sandbox.UI
 		{
 			Current = this;
 
-			StyleSheet.Load( "/ui/killfeed/KillFeed.scss" );
+			StyleSheet.Load( "/UI/killfeed/KillFeed.scss" );
 		}
 
 		public virtual Panel AddEntry( long lsteamid, string left, long rsteamid, string right, string method )

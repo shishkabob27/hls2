@@ -1,6 +1,6 @@
 using Sandbox.UI;
 
-[UseTemplate( "/resource/templates/options.html" )]
+[UseTemplate( "/Resource/templates/options.html" )]
 public class GUIPanel : Panel
 {
     public int ZIndex { get; set; } = 0;
@@ -12,7 +12,7 @@ public class GUIPanel : Panel
 
     public GUIPanel()
     {
-        StyleSheet.Load( "/resource/styles/GUI.scss" );
+        StyleSheet.Load( "/Resource/styles/GUI.scss" );
         Style.FontFamily = "Tahoma";
         Style.Left = 0;
         Style.Right = 0;
@@ -49,7 +49,7 @@ public class GUIPanel : Panel
         }
         Style.Dirty();
     }
-    [Event.PreRender]
+    [GameEvent.PreRender]
     void draw()
     {
         Style.Left = Position.x / ( Parent as GUIRootPanel ).Scale;

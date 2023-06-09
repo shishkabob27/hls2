@@ -68,19 +68,19 @@
 		float climbSpeed = ClimbSpeed;
 
 		float forwardSpeed = 0, rightSpeed = 0;
-		if ( Input.Down( InputButton.Back ) )
+		if ( Input.Down( "Backward" ) )
 			forwardSpeed -= climbSpeed;
 
-		if ( Input.Down( InputButton.Forward ) )
+		if ( Input.Down( "Forward" ) )
 			forwardSpeed += climbSpeed;
 
-		if ( Input.Down( InputButton.Left ) )
+		if ( Input.Down( "Left" ) )
 			rightSpeed -= climbSpeed;
 
-		if ( Input.Down( InputButton.Right ) )
+		if ( Input.Down( "Right" ) )
 			rightSpeed += climbSpeed;
 
-		if ( Input.Down( InputButton.Jump ) )
+		if ( Input.Down( "Jump" ) )
 		{
 			//Player.MoveType = MoveType.MOVETYPE_WALK;
 			// player->SetMoveCollide( MOVECOLLIDE_DEFAULT );

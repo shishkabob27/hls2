@@ -1,6 +1,6 @@
 ﻿using Sandbox.UI;
 
-[UseTemplate( "/resource/templates/ingamemenu.html" )]
+[UseTemplate( "/Resource/templates/ingamemenu.html" )]
 public class GUIRootPanel : RootPanel
 {
 	public bool MenuOpen;
@@ -11,7 +11,7 @@ public class GUIRootPanel : RootPanel
 	{
 		AcceptsFocus = true;
 		Current = this;
-		StyleSheet.Load( "resource/styles/GUI.scss" );
+		StyleSheet.Load( "/Resource/styles/GUI.scss" );
 		Style.ZIndex = 100;
 		Focus();
 	}
@@ -33,7 +33,7 @@ public class GUIRootPanel : RootPanel
 		if ( Screen.Width > 1920 ) Scale = 1.50f;
 		if ( Screen.Height > 2650 ) Scale = 2.00f;
 	}
-	[Event.Client.BuildInput]
+	[GameEvent.Client.BuildInput]
 	public void ProcessClientInput()
 	{
 		if ( Input.Pressed( "Options" ) )

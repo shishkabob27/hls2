@@ -1,6 +1,6 @@
 using Sandbox.UI;
 
-[UseTemplate( "/resource/templates/options.html" )]
+[UseTemplate( "/Resource/templates/options.html" )]
 public class Options : GUIPanel
 {
 	public bool bCviewroll { get; set; } = false;
