@@ -1,8 +1,6 @@
 ﻿using Sandbox.UI;
 
-
-
-public class MenuRootPanel : RootPanel
+public class MenuRootPanel : RootPanel, Sandbox.Menu.IGameMenuPanel
 {
 	public static MenuRootPanel Current;
 
