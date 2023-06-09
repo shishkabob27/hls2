@@ -177,7 +177,7 @@
 		catch { }
 	}
 
-	[Event.Entity.PostCleanup]
+	[GameEvent.Entity.PostCleanup]
 	public void OnMapCleanupEvent()
 	{
 		RemoveFlashlight();

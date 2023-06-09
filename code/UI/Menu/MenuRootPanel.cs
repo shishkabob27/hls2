@@ -4,7 +4,7 @@ public class MenuRootPanel : RootPanel, Sandbox.Menu.IGameMenuPanel
 {
 	public static MenuRootPanel Current;
 
-	[Event.Tick.Client]
+	[GameEvent.Tick.Client]
 	void MenuTick()
 	{
 		SetClass( "WantsNewButton", HLGame.hl_menu_newer_buttons );

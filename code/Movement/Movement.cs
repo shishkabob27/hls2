@@ -83,7 +83,7 @@
 		}
 	}
 	 
-	[Event.Tick]
+	[GameEvent.Tick]
 	void Tick()
 	{
 		if ( ShouldSimulate ) Simulate();

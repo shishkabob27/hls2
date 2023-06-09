@@ -3,7 +3,7 @@ using Sandbox.UI;
 using Sandbox.UI.Construct;
 using System;
 
-[UseTemplate("/resource/templates/test.html")]
+[UseTemplate("/Resource/templates/test.html")]
 public class Advanced : GUIPanel
 {
 
@@ -24,7 +24,7 @@ public class Advanced : GUIPanel
         SetClass("active", MenuOpen);
     }
 
-	[Event.Client.BuildInput]
+	[GameEvent.Client.BuildInput]
 	public void ProcessClientInput()
 	{
 		if (Input.Pressed("Menu"))

@@ -305,13 +305,13 @@
 		}
 		else
 		{
-			IN_FORWARD = Input.Down( InputButton.Forward );
+			IN_FORWARD = Input.Down( "Forward" );
 		}
 
-		IN_USE = Input.Down( InputButton.Use );
-		IN_LEFT = Input.Down( InputButton.Left );
-		IN_RIGHT = Input.Down( InputButton.Right );
-		IN_BACKWARD = Input.Down( InputButton.Back );
+		IN_USE = Input.Down( "Use" );
+		IN_LEFT = Input.Down( "Left" );
+		IN_RIGHT = Input.Down( "Right" );
+		IN_BACKWARD = Input.Down( "Backward" );
 
 		if ( LifeState == LifeState.Dead )
 		{

@@ -57,7 +57,7 @@ public partial class LogicAuto : Entity
 	/// <summary>
 	/// Fired after all map entities have spawned, even if it is disabled.
 	/// </summary>
-	[Event.Entity.PostSpawn]
+	[GameEvent.Entity.PostSpawn]
 	public void OnMapSpawnEvent()
 	{
 		if ( !Enabled ) return;
@@ -65,7 +65,7 @@ public partial class LogicAuto : Entity
 		OnMapSpawn.Fire( this );
 		Enabled = false;
 	}
-	[Event.Entity.PostCleanup]
+	[GameEvent.Entity.PostCleanup]
     public void OnMapCleanupEvent()
     {
         //Log.Info("Deactivating logic auto by " + activator);

@@ -63,7 +63,7 @@ public partial class GenericMonster : NPC
 			}
 		}
 	}
-	[Event.PreRender]
+	[GameEvent.PreRender]
 	public void Render()
 	{
 		if ( rendermode == 5 )

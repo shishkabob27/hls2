@@ -11,7 +11,7 @@ namespace Sandbox.UI
 		public Logo()
 		{
 		}
-		[Event.Client.Frame]
+		[GameEvent.Client.Frame]
 		void frame()
 		{
 			if ( lastFrame <= 1f / FPS ) return;

@@ -252,7 +252,7 @@ public partial class HL1GameMovement
 		}
 
 		// Was jump button pressed?
-		if ( Input.Down( InputButton.Jump ) )
+		if ( Input.Down( "Jump" ) )
 		{
 			CheckJumpButton();
 		}

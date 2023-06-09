@@ -306,7 +306,7 @@ partial class PhysGun : Weapon
 		grabbing = false;
 	}
 
-	[Event.Physics.PreStep]
+	[GameEvent.Physics.PreStep]
 	public void OnPrePhysicsStep()
 	{
 		if ( !Game.IsServer )

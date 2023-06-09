@@ -23,7 +23,7 @@ public class HudRootPanel : RootPanel
 		}
 	}
 
-	[Event.Client.BuildInput]
+	[GameEvent.Client.BuildInput]
 	public void ProcessClientInput()
 	{
 		if ( Input.Pressed( "Menu" ) )

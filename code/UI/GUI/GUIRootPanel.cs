@@ -33,7 +33,7 @@ public class GUIRootPanel : RootPanel
 		if ( Screen.Width > 1920 ) Scale = 1.50f;
 		if ( Screen.Height > 2650 ) Scale = 2.00f;
 	}
-	[Event.Client.BuildInput]
+	[GameEvent.Client.BuildInput]
 	public void ProcessClientInput()
 	{
 		if ( Input.Pressed( "Options" ) )

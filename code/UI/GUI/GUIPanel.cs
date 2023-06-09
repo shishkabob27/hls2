@@ -49,7 +49,7 @@ public class GUIPanel : Panel
         }
         Style.Dirty();
     }
-    [Event.PreRender]
+    [GameEvent.PreRender]
     void draw()
     {
         Style.Left = Position.x / ( Parent as GUIRootPanel ).Scale;
