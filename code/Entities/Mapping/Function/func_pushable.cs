@@ -27,7 +27,7 @@ public partial class func_pushable : HLMovementBrush
         }
     }
 
-    [Event.Tick.Server]
+    [GameEvent.Tick.Server]
     public void Tick()
     {
         if (Health <= 0 && !Invincible)

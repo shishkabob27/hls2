@@ -163,7 +163,7 @@ partial class LegacyChargerStation : KeyframeEntity, IUse
         }
     }
 
-    [Event.Tick.Server]
+    [GameEvent.Tick.Server]
     private void Tick()
     {
         if ( TimeSinceUsed >= ChargerResetTime && ChargerPower <= 0 )

@@ -273,7 +273,7 @@ public partial class scripted_sequence2 : Entity
 	bool preactionplayed = false;
 	bool startonspawncheckdone = false;
 	float timesince = -1;
-	[Event.Tick.Server]
+	[GameEvent.Tick.Server]
 	public void Tick()
 	{
 		if ( TargetNPC is NPC && TargetNPC.IsValid() && TargetNPC.Velocity.AlmostEqual( this.Position ) )

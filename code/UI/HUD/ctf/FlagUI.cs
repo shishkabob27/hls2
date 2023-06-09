@@ -9,7 +9,7 @@ public class FlagUI : Panel
 
 	public FlagUI()
     {
-        SetTemplate("/resource/templates/flag.html");
+        SetTemplate( "/Resource/templates/flag.html" );
 	}
 
 }

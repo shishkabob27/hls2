@@ -1,7 +1,7 @@
 using Sandbox.UI;
 using Sandbox.UI.Construct;
 
-[UseTemplate( "/resource/templates/teamselect.html" )]
+[UseTemplate( "/Resource/templates/teamselect.html" )]
 public class TeamSelector : Panel
 {
     
