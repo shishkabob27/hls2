@@ -65,7 +65,7 @@ public partial class env_spark : Entity
 		Active = !Active;
 	}
 
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	void Tick()
 	{
 		if ( !Active ) return;

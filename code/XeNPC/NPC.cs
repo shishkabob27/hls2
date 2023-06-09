@@ -187,7 +187,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	float RangeCheckDelay = 0.5f;
 	bool LastIsInRange;
 
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	public void Tick()
 	{
 		if ( LastIsInRangeCheck > RangeCheckDelay )

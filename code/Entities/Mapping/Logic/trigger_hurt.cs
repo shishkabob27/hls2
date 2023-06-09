@@ -52,7 +52,7 @@ public partial class HurtVolumeEntity : BaseTrigger
 	/// <summary>
 	/// Called every server tick to deal damage to touching entities.
 	/// </summary>
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	protected virtual void DealDamagePerTick2()
 	{
 		ActivationTags = "";

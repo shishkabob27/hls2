@@ -7,8 +7,12 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "Resources": "resource/*\nui/*\nfonts/*\nmaterials/hl1/sprites/*",
-  "MenuResources": null,
+  "ResourcePaths": [
+    "/resource/*",
+    "/ui/*",
+    "/fonts/*",
+    "/materials/hl1/sprites/*"
+  ],
   "HasCode": true,
   "CodePath": "/code/",
   "PackageReferences": [],
@@ -447,7 +451,6 @@
           "GroupName": "Other"
         }
       ]
-    },
-    "HttpAllowList": null
+    }
   }
 }

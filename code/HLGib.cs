@@ -180,7 +180,7 @@
 	}
 
 	int sleepytime = 0;
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	public void Think()
 	{
 		if ( HLCombat.GibCount < 0 )
@@ -510,7 +510,7 @@
 	}
 }
 /*
-[GameEvent.Tick.Server]
+[Event.Tick.Server]
 public void Think()
 {
 

@@ -459,7 +459,7 @@ public partial class DoorEntity : KeyframeEntity, IUse
 		OpenOtherDoors( false, activator );
 	}
 	Vector3 LastPosition;
-	[GameEvent.Tick.Server] 
+	[Event.Tick.Server] 
 	void tick()
 	{
 		Velocity = (LastPosition - Position) * -1;

@@ -25,7 +25,7 @@
 
 	int countMax { get; set; } = 1;
 	int count { get; set; } = 1;
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	void CheckIfDone()
 	{
 		if ( ResourceLibrary.TryGet<SoundEvent>( "sounds/hl1/SENTENCES/" + SoundName + ".sound", out var soundas ) )

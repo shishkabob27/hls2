@@ -103,7 +103,7 @@ public partial class env_laser : Entity
 			TurnOff();
 		}
 	}
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	void UpdateBeam()
 	{
 		if ( Beam != null )

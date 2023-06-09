@@ -168,7 +168,7 @@ public partial class scripted_sequence : Entity
 	{ 
 		EnsureTargetNPC();   
 	} 
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	void Tick()
 	{
 		if ( SearchRadius != 0 ) return;	

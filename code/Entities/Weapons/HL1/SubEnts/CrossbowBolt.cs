@@ -14,7 +14,7 @@ partial class CrossbowBolt : ModelEntity
 	}
 
 
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	public virtual void Tick()
 	{
 		if ( !Game.IsServer )

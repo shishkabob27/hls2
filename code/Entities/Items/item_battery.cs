@@ -60,7 +60,7 @@ public partial class Battery : ModelEntity, IRespawnableEntity
 
 		Tags.Add("weapon");
 	}
-	//[GameEvent.Tick.Server] 
+	//[Event.Tick.Server] 
 	/*void tick()
 	{
 		if (isSetup)

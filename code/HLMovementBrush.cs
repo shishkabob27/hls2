@@ -25,7 +25,7 @@
 		EnableTouch = true;
 		Tags.Add( "funcpush", "solid", "playerclip" );
 	}
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	void Tick()
 	{
 		Simulate();

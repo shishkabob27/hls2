@@ -119,7 +119,7 @@ public class Snark : NPC
 		RotAngles.yaw = Rotation.LookAt( Velocity, new Vector3( 0, 0, 1 ) ).Yaw();
 		posPrev = Position;
 	}
-	[GameEvent.Tick.Server]
+	[Event.Tick.Server]
 	public void tick2()
 	{
 		RotAngles += AngularVelocity * Time.Delta;
