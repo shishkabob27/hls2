@@ -1,6 +1,6 @@
 "Layer0"
 {
-	"shader"		"chrome.shader_c"
+	"shader"		"shaders/chrome.shader_c"
 	"ChromeOffsetX"		"0.000000"
 	"ChromeOffsetY"		"0.000000"
 	"g_flModelTintAmount"		"1.000000"

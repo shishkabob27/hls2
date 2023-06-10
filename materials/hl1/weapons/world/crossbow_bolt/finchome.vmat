@@ -1,6 +1,6 @@
 "Layer0"
 {
-	"shader"		"chrome.shader_c"
+	"shader"		"shaders/chrome.shader_c"
 	"g_flModelTintAmount"		"1.000000"
 	"g_vColorTint"		"[1.000000 1.000000 1.000000 0.000000]"
 	"g_flFadeExponent"		"1.000000"

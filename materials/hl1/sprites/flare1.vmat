@@ -1,38 +1,23 @@
-// THIS FILE IS AUTO-GENERATED
-
-Layer0
+"Layer0"
 {
-	shader "envsprite.shader"
-
-	//---- Blending ----
-	F_ADDITIVE_BLEND 1
-
-	//---- Color ----
-	g_flModelTintAmount "1.000"
-	g_vColorTint "[1.000000 1.000000 1.000000 0.000000]"
-
-	//---- Fade ----
-	g_flFadeExponent "1.000"
-
-	//---- Material ----
-	g_flTintColor "[1.000000 1.000000 1.000000 0.000000]"
-	TextureColor "materials/hl1/sprites/flare1.png"
-	TextureTintMask "materials/default/default.tga"
-
-	//---- Texture Coordinates ----
-	g_nScaleTexCoordUByModelScaleAxis "0"
-	g_nScaleTexCoordVByModelScaleAxis "0"
-	g_vTexCoordOffset "[0.000 0.000]"
-	g_vTexCoordScale "[1.000 1.000]"
-	g_vTexCoordScrollSpeed "[0.000 0.000]"
-
-	Attributes
+	"shader"		"shaders/envsprite.shader_c"
+	"F_ADDITIVE_BLEND"		"1"
+	"g_flModelTintAmount"		"1.000000"
+	"g_vColorTint"		"[1.000000 1.000000 1.000000 0.000000]"
+	"g_flFadeExponent"		"1.000000"
+	"g_flTintColor"		"[1.000000 1.000000 1.000000 0.000000]"
+	"TextureColor"		"materials/hl1/sprites/flare1.png"
+	"TextureTintMask"		"materials/default/default.tga"
+	"g_nScaleTexCoordUByModelScaleAxis"		"0"
+	"g_nScaleTexCoordVByModelScaleAxis"		"0"
+	"g_vTexCoordOffset"		"[0.000 0.000]"
+	"g_vTexCoordScale"		"[1.000 1.000]"
+	"g_vTexCoordScrollSpeed"		"[0.000 0.000]"
+	"Attributes"
 	{
-		rendercolor ""
 	}
-
-	DynamicParams
+	"DynamicParams"
 	{
-		g_flTintColor "rendercolor"
+		"g_flTintColor"		"rendercolor"
 	}
 }
