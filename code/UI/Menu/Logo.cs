@@ -11,7 +11,11 @@ namespace Sandbox.UI
 		public Logo()
 		{
 		}
-		[GameEvent.Client.Frame]
+		public override void Tick()
+		{
+			base.Tick();
+			frame();
+		}
 		void frame()
 		{
 			if ( lastFrame <= 1f / FPS ) return;
