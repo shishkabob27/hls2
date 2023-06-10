@@ -85,15 +85,16 @@ PS
     float WaveSpeed < UiType( Slider ); Default1(1.0); Range( 0.0f, 8.0f ); UiGroup( "Wave,10/20" ); >;
     float WaveAlpha < UiType( Slider ); Default1(1.0); Range( 0.0f, 1.0f ); UiGroup( "Color,10/20" ); >;
 
-    CreateTexture2D( WaveTexMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
+
+	CreateInputTexture2D( WaveTexMapInput, Srgb, 8, "", "_color",  "Wave,10/20", Default3( 1, 1, 1) );
+	CreateTexture2D( WaveTexMap )  < Channel( RGB,  Box( WaveTexMapInput ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); >; 
 	TextureAttribute( WaveTexMap, WaveTexMap );
 
 
 	float4 MainPs( PixelInput i ) : SV_Target0
 	{
-		ShadingModelValveStandard sm;
 
-		Material m = GatherMaterial( i );
+		Material m = Material::From( i );
 		float2 inputUV = i.vTextureCoords.xy;
 		
 
@@ -110,7 +111,7 @@ PS
 		float4 wave = Tex2D( WaveTexMap, uv.xy );
 
 		m.Albedo.rgb = wave.rgb; 
-		float4 p = FinalizePixelMaterial( i, m, sm );
+		float4 p = ShadingModelStandard::Shade( i, m );
 		p.a = WaveAlpha;
 		return p;
 	}

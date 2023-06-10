@@ -72,19 +72,19 @@ PS
 	// Main
 	//
 
-float ChromeOffsetX < UiType( Slider ); Default1(0.0); Range( 0.0f, 8.0f ); UiGroup( "Chrome,10/20" ); >;
-float ChromeOffsetY < UiType( Slider ); Default1(0.0); Range( 0.0f, 8.0f ); UiGroup( "Chrome,10/20" ); >;
+float ChromeOffsetX < UiType( Slider ); Default(0.0); Range( 0.0f, 8.0f ); UiGroup( "Chrome,10/20" ); >;
+float ChromeOffsetY < UiType( Slider ); Default(0.0); Range( 0.0f, 8.0f ); UiGroup( "Chrome,10/20" ); >;
 		
 		
 
-	//CreateInputTexture2D( ChromeMapTexture, Srgb, 8, "", "",  "Shader Vars,10/10", Default3( 1, 1, 1) );
-    CreateTexture2D( ChromeMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
+	CreateInputTexture2D( ChromeMapTexture, Srgb, 8, "", "_color",  "Shader Vars,10/10", Default3( 1, 1, 1) );
+	CreateTexture2D( ChromeMap )  < Channel( RGB,  Box( ChromeMapTexture ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); >;
+    //CreateTexture2D( ChromeMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
 	TextureAttribute( ChromeMap, ChromeMap );
 
 	float4 MainPs( PixelInput i ) : SV_Target0
-	{
-		ShadingModelValveStandard sm;
-		Material m = GatherMaterial( i );
+	{ 
+		Material m = Material::From( i );
 
 		float3 vPositionWs = i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz;
 		float3 vCameraToPositionDirWs = CalculateCameraToPositionDirWs( vPositionWs.xyz );
@@ -110,7 +110,7 @@ float ChromeOffsetY < UiType( Slider ); Default1(0.0); Range( 0.0f, 8.0f ); UiGr
 		float4 chrome = Tex2D( ChromeMap, reflectUV.xy );
 
 		m.Albedo.rgb = chrome.rgb; 
-		float4 p = FinalizePixelMaterial( i, m, sm );
+		float4 p = ShadingModelStandard::Shade( i, m );
 		return p;
 	}
 }
