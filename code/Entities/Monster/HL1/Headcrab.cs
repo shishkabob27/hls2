@@ -11,6 +11,9 @@ public class Headcrab : NPC
 	{
 		base.Spawn();
 		Health = 20;
+		Speed = 50f;
+		WalkSpeed = 50f;
+		RunSpeed = 50f;
 		NPCAnimGraph = "animgraphs/hl1/monster/headcrab.vanmgrph";
 		SetAnimGraph( NPCAnimGraph );
 		SetModel( "models/hl1/monster/headcrab.vmdl" );

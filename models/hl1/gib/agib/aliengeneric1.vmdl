@@ -45,9 +45,24 @@
 					},
 				]
 			},
+			{
+				_class = "PhysicsShapeList"
+				children = 
+				[
+					{
+						_class = "PhysicsShapeCapsule"
+						parent_bone = "sphere01"
+						surface_prop = "default"
+						collision_tags = "solid"
+						radius = 10.290759
+						point0 = [ -13.322541, 0.0, 0.0 ]
+						point1 = [ 2.0, 0.0, 0.0 ]
+					},
+				]
+			},
 		]
-		model_archetype = ""
-		primary_associated_entity = ""
+		model_archetype = "physics_prop_model"
+		primary_associated_entity = "prop_physics"
 		anim_graph_name = ""
 		base_model_name = ""
 	}

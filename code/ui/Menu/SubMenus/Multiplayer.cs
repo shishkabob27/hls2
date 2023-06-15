@@ -20,4 +20,9 @@ class Multiplayer : BaseMenuScreen
 		var a = Parent.AddChild<Menu>();
 		BaseButtonClickDown( p, a, true, "Multiplayer" );
 	}
+	/// <summary>
+	/// show list of games
+	/// </summary>
+	public void InternetGames()
+	{Log.Info( Game.Menu.QueryLobbiesAsync()); }
 }
