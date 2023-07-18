@@ -76,9 +76,8 @@ float ChromeOffsetX < UiType( Slider ); Default(0.0); Range( 0.0f, 8.0f ); UiGro
 float ChromeOffsetY < UiType( Slider ); Default(0.0); Range( 0.0f, 8.0f ); UiGroup( "Chrome,10/20" ); >;
 		
 		
-
-	CreateInputTexture2D( ChromeMapTexture, Srgb, 8, "", "_color",  "Shader Vars,10/10", Default3( 1, 1, 1) );
-	CreateTexture2D( ChromeMap )  < Channel( RGB,  Box( ChromeMapTexture ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); >;
+ 
+	CreateTexture2D( ChromeMap )  < Channel( RGB,  Box( TextureColor ), Srgb ); OutputFormat( BC7 ); SrgbRead( true ); >;
     //CreateTexture2D( ChromeMap ) < COLOR_TEXTURE_CHANNELS; OutputFormat( BC7 ); SrgbRead( true ); >;
 	TextureAttribute( ChromeMap, ChromeMap );
 
