@@ -1,24 +1,23 @@
-"Layer0"
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
 {
-	"shader"		"shaders/chrome.shader_c"
-	"ChromeOffsetX"		"0.000000"
-	"ChromeOffsetY"		"0.000000"
-	"g_flModelTintAmount"		"1.000000"
-	"g_vColorTint"		"[1.000000 1.000000 1.000000 0.000000]"
-	"g_flFadeExponent"		"1.000000"
-	"g_bFogEnabled"		"1"
-	"g_flDirectionalLightmapMinZ"		"0.050000"
-	"g_flDirectionalLightmapStrength"		"1.000000"
-	"TextureAmbientOcclusion"		"materials/default/default_ao.tga"
-	"TextureBlendMask"		"materials/default/default_blend.tga"
-	"TextureColor"		"materials/hl1/weapons/vr/glock/chrome_black.png"
-	"TextureMetalness"		"[0.700000 0.700000 0.700000 0.000000]"
-	"TextureNormal"		"materials/default/default_normal.tga"
-	"TextureRoughness"		"[0.300000 0.300000 0.300000 0.000000]"
-	"TextureTintMask"		"materials/default/default.tga"
-	"g_nScaleTexCoordUByModelScaleAxis"		"0"
-	"g_nScaleTexCoordVByModelScaleAxis"		"0"
-	"g_vTexCoordOffset"		"[0.000 0.000]"
-	"g_vTexCoordScale"		"[1.000 1.000]"
-	"g_vTexCoordScrollSpeed"		"[0.000 0.000]"
+	shader "shaders/chrome.shader"
+
+	//---- Chrome ----
+	ChromeOffsetX "0.000"
+	ChromeOffsetY "0.000"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+
+	//---- Material ----
+	TextureAmbientOcclusion "materials/default/default_ao.tga"
+	TextureBlendMask "materials/default/default_blend.tga"
+	TextureColor "materials/hl1/weapons/vr/glock/chrome_black.png"
+	TextureMetalness "[0.700000 0.700000 0.700000 0.000000]"
+	TextureNormal "materials/default/default_normal.tga"
+	TextureRoughness "[0.300000 0.300000 0.300000 0.000000]"
+	TextureTintMask "materials/default/default.tga"
+	TextureTranslucency "materials/default/default_trans.tga"
 }
