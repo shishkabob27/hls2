@@ -267,6 +267,7 @@
     "Description": "-WORK IN PROGRESS-\n\nHalf-Life recreated in Source 2. Including Deathmatch and (experimental) OpForce CTF.\n\nDeveloped by:\nshishkabob\nXenthio\nTheBoxTrot\nIanSource2\nbabyherc1000\nHUNcamper\n\nReport bugs or request features: github.com/shishkabob27/hls2/issues\n\nHalf-Life Resized Maps by:\nSergey \u0022Mr. Lazy\u0022 Fetisov\nTheMostUpset\nMaestra F\u00E9nix\n\nUse the command \u0022GiveAll\u0022 to get the base weapons and ammo, use \u0022GiveEverything\u0022 to give ALL the weapons, including debug and experimental ones. \n\nMaps are being worked on.\nMost entities haven\u2019t been implemented yet.",
     "Public": true,
     "CsProjName": "",
-    "HttpAllowList": null
+    "HttpAllowList": null,
+    "TickRate": 50
   }
 }

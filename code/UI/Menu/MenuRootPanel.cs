@@ -19,7 +19,7 @@ public class MenuRootPanel : RootPanel, Sandbox.Menu.IGameMenuPanel
 		Current = this;
 		AddChild<Menu>();
 
-		if ( Game.Server.MapIdent != "<empty>" )
+		if ( Game.Menu.Lobby != null )
 		{
 			SetClass( "ingame", true );
 		}
