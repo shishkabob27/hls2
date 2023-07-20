@@ -1,0 +1,19 @@
+@using System
+@using Sandbox;
+@using Sandbox.MenuSystem;
+@using Sandbox.UI;
+@namespace Sandbox.UI.GameMenu
+
+<root style="flex-direction: column;">
+
+    <section class="inset" style="flex-direction: column; flex-grow: 1; flex-shrink: 1;">
+        <ServerListPanel @ref="ServerPanel" ShowGame=@false FilterByGame=shishkabob.hls2></ServerListPanel>
+    </section>
+
+</root>
+
+
+@code
+{
+    public ServerListPanel ServerPanel;
+}

@@ -8,6 +8,13 @@ class Multiplayer : BaseMenuScreen
 		BaseButtonClick();
 	}
 
+	public async void InternetGames( Panel p )
+	{
+		await BaseButtonClickUp( p );
+		Parent.AddChild<InternetGames>();
+		Delete();
+	}
+
 	public async void Customize( Panel p )
 	{
 		await BaseButtonClickUp( p );
@@ -20,9 +27,4 @@ class Multiplayer : BaseMenuScreen
 		var a = Parent.AddChild<Menu>();
 		BaseButtonClickDown( p, a, true, "Multiplayer" );
 	}
-	/// <summary>
-	/// show list of games
-	/// </summary>
-	public void InternetGames()
-	{Log.Info( Game.Menu.QueryLobbiesAsync()); }
 }
