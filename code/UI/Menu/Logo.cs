@@ -3,7 +3,7 @@ namespace Sandbox.UI
 	[Library( "logo" )]
 	public class Logo : Panel
 	{
-		public string logost = "/ui/logo/";
+		public string logost = "/ui/menu/logo/";
 		int curframe = 1;
 		int maxframes = 110;
 		float FPS = 24;
