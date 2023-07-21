@@ -1,33 +1,42 @@
 using Sandbox.UI;
 using Sandbox.UI.Construct;
 
-public class Subtitle : Panel
+public partial class Subtitle : Panel
 {
-
-	public Panel SubBackground;
-	public Label SubText;
-
+	public static Subtitle Current;
 
 	public Subtitle()
 	{
-
-		SubBackground = Add.Panel("subbackground");
-		SubText = Add.Label("");
-
-		SubBackground.AddChild(SubText);	
+		Current = this;
 	}
 
-	public void DisplaySubtitle(string SentenceName)
+	[ClientRpc]
+	public static void DisplaySubtitle( string SentenceName )
     {
-		if (HLGame.cc_subtitles >= 1)
-		{
-			SubText.Text = "#" + SentenceName;
-			SubBackground.Style.Opacity = 100;
-		}
+		if (HLGame.cc_subtitles == 0)
+			return;
+		Current?.AddSubtitle( SentenceName );
 	}
 
-	public override void Tick()
+	private async Task AddSubtitle( string SentenceName )
 	{
-        base.Tick();
+		var panel = Current.Add.Label( "#" + SentenceName, SentenceName );
+		if (panel.Text == SentenceName)
+		{
+			panel.Delete();
+			return;
+		}
+
+		var sound = Sound.FromScreen( SentenceName );
+		sound.SetVolume( 0f );
+		await Task.DelayRealtime( 100 );
+
+		while ( sound.IsPlaying )
+		{
+			await Task.DelayRealtime( 100 );
+		}
+
+		panel.Delete();
+
 	}
 }

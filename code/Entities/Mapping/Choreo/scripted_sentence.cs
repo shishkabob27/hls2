@@ -37,7 +37,9 @@ public partial class scripted_sentence : Entity
             OnBeginSentence.Fire(this);
             Speaker.SpeakSound(name);
             OnEndSentence.Fire(this);
-        }
+
+			Subtitle.DisplaySubtitle( To.Everyone, name);
+		}
         else
         {
             Log.Error($"[HLS2] The sentence {name} cannot be found, perhaps it hasn't been added yet.");
