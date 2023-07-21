@@ -1,0 +1,40 @@
+﻿@using System
+@using Sandbox;
+@using Sandbox.UI;
+@using Sandbox.Menu;﻿
+@attribute [StyleSheet("LoadingPanel.scss")]
+@inherits RootPanel
+@implements Sandbox.Menu.ILoadingScreenPanel
+﻿
+<root class="loadingpanel">
+
+    <div class="title">LOADING</div>
+    <div class="subtitle">@Progress.Title</div>
+
+    @if (Progress.Fraction > 0)
+    {
+        <div class="progress">
+            <div class="bar" style="width: @(Progress.Percent)%;"></div>
+            <div class="text-left">@(Progress.Percent.ToString("0") )%</div>
+            <div class="text-right"><span>@(Progress.Mbps.ToString("0"))</span><span class="unit">Mbps</span></div>
+        </div>
+    }
+
+    <div class="controls">
+        <div class="button" onclick="@Game.Menu.CancelLoading">
+            Cancel
+        </div>
+    </div>
+
+</root>
+
+@code
+{
+    public LoadingProgress Progress;
+
+    public void OnLoadingProgress( LoadingProgress progress )
+    {
+        Progress = progress;
+        StateHasChanged();
+    }
+}
