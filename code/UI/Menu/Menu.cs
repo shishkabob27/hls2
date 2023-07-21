@@ -11,7 +11,7 @@ class Menu : BaseMenuScreen
 
 	public async void Resume( Panel p )
 	{
-		await BaseButtonClickUp( p );
+		Game.Menu.HideMenu();
 	}
 
 	public async void NewGame( Panel p )

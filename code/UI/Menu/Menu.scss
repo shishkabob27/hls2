@@ -525,8 +525,8 @@ serverlist {
     background-color: black;
     border: 4px solid #444444;
 
-    .header{
-        height:40px;
+    .header {
+        height: 40px;
     }
 
     serverrow {
@@ -534,12 +534,17 @@ serverlist {
         min-width: 100%;
         width: 100%;
 
-        .title {
-           
+        > .title {
+            padding: 0px;
+
+            label {
+                padding: 0px;
+                font-size: 13px;
+            }
         }
 
         label {
-            font-size: 14px;
+            font-size: 16px;
             color: #f19c00;
             padding-left: 8px;
             padding-right: 8px;
