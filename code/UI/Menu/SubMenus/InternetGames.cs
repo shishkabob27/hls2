@@ -13,11 +13,11 @@ class InternetGames : BaseMenuScreen
 		AddChild( serverList );
 	}
 
-	public void Done( Panel p )
+	public async void CreateGame( Panel p )
 	{
+		await BaseButtonClickUp( p );
+		Parent.AddChild<CreateGame>();
 		Delete();
-		var a = Parent.AddChild<Multiplayer>();
-		BaseButtonClickDown( p, a, true, "Internet games" );
 	}
 
 	public void ServerRefresh()
@@ -25,4 +25,13 @@ class InternetGames : BaseMenuScreen
 		var list = serverList as ServerList;
 		list.ServerPanel.Refresh();
 	}
+
+	public void Done( Panel p )
+	{
+		Delete();
+		var a = Parent.AddChild<Multiplayer>();
+		BaseButtonClickDown( p, a, true, "Internet games" );
+	}
+
+	
 }
