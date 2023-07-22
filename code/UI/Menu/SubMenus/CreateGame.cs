@@ -30,9 +30,9 @@ class CreateGame : BaseMenuScreen
 			return;
 
 		var gamemode = cCampaign ? "Campaign" : "Deathmatch";
-		var name = $"Half-Life {gamemode}";
-
+		
 		var lobby = await Game.Menu.CreateLobbyAsync(iMaxPlayers);
+		var name = $"{lobby.Owner}'s Half-Life {gamemode} server";
 		lobby.Title = name;
 		lobby.Map = sMap;
 		lobby.ConVars.Add( "sv_gamemode", gamemode.ToLower() );
