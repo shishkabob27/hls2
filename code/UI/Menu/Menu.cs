@@ -23,6 +23,7 @@ class Menu : BaseMenuScreen
 	public void HazardCourse( Panel p )
 	{
 		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Hazard Course)", GameInfo.trainmap );
+		Game.Menu.Lobby.Public = false;
 		Game.Menu.HideMenu();
 	}
 	public async void Config( Panel p )
