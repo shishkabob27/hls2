@@ -26,21 +26,18 @@ public partial class HLGame : GameManager
 		//
 		if ( Game.IsServer )
 		{
-			// If we're on an empty map don't create a game but instead put us into the main menu.
-			/*
-			if ( Global.MapName == "<empty>" )
-			{
-				Log.Info( "Map is empty! Loading the Main Menu..." );
-				new MenuGame();
-				this.Delete();
-				return;
-			}
-			*/
-			GUI = new HLGUI();
-			if ( Game.IsDedicatedServer )
+			//Temp fix because setting lobby convars dont seem to work
+			if ( Game.Server.ServerTitle.ToLower().Contains( "deathmatch" ) )
 			{
 				sv_gamemode = "deathmatch";
 			}
+			else
+			{
+				sv_gamemode = "campaign";
+			}
+
+			GUI = new HLGUI();
+
 			if ( sv_gamemode == "deathmatch" || sv_gamemode == "ctf" )
 			{
 				_ = GameLoopAsync();
@@ -54,42 +51,6 @@ public partial class HLGame : GameManager
 	public override void PostLevelLoaded()
 	{
 		base.PostLevelLoaded();
-
-
-		// If we're on an empty map don't create a game but instead put us into the main menu.
-		if ( Game.Server.MapIdent == "<empty>" && Game.IsServer )
-		{
-
-			Log.Info( "Map is empty! Loading the Main Menu..." );
-			// Delete everything except the clients and the world
-			var ents = Entity.All.ToList();
-			ents.RemoveAll( e => e is IClient );
-			ents.RemoveAll( e => e is WorldEntity );
-			foreach ( Entity ent in ents )
-			{
-				ent.Delete();
-			}
-
-			// Reset the map
-			Game.ResetMap(Entity.All.Where(x => x is HLHud || x is HLPlayer).ToArray());
-
-			// Create a brand new game
-
-			if ( Game.IsServer )
-			{
-				if ( Game.Server.MapIdent != "<empty>" )
-				{
-					new HLGame();
-					this.Delete();
-					return;
-				}
-
-				GUI = new HLGUI();
-				Menu = new MenuPanel();
-			}
-
-			return;
-		}
 
 		ItemRespawn.Init();
 	}
