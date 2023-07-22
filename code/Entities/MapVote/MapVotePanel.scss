@@ -25,6 +25,7 @@ mapvotepanel > .inner
 mapvotepanel > .inner > .header
 {
     flex-direction: row;
+    height:128px;
 
     .left
     {
@@ -63,6 +64,8 @@ mapvotepanel > .inner > .header
 mapvotepanel > .inner > .body
 {
     flex-grow: 1;
-    margin: 50px;
+    margin: 0px 50px;
     flex-wrap: wrap;
+    overflow:scroll;
+    justify-content:center;
 }

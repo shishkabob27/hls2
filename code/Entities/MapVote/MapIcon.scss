@@ -9,10 +9,12 @@ mapicon
     background-size: cover;
     aspect-ratio: 1;
     width: 400px;
+    height: 400px;
     cursor: pointer;
     opacity: 0.7;
     color: $yellow;
     text-shadow: 0px 0px 2px $yellow;
+    transition: transform 0.2s ease-in-out;
 
     &:hover
     {

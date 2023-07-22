@@ -19,7 +19,7 @@ class MapVotePanel : Panel
 
 	public async Task PopulateMaps()
 	{
-		var query = "game:shishkabob.hls2";
+		var query = "game:shishkabob.hls2 type:map";
 		if ( HLGame.hl_extended_mapvote )
 		{
 			query += "game:matt.ttt";
