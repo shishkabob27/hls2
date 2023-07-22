@@ -271,7 +271,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 
 
 		//Log.Info();//SoundFile.Load("sounds/hl1/scientist/alright.wav"));
-		if ( CurrentSound.Finished != true )
+		if ( CurrentSound.IsPlaying == true )
 		{
 			animHelper.VoiceLevel = Game.Random.Float();
 			// It's not possible to get the sound volume for animating the mouths so i'll just randomise a float for now,.
