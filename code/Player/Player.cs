@@ -122,9 +122,9 @@
 			HasHEV = true;
 
 			Inventory.Add( new Crowbar() );
-			Inventory.Add( new Pistol() );
-
-
+			var pistol = new Pistol();
+			Inventory.Add( pistol );
+			ActiveChildInput = pistol;
 			GiveAmmo( AmmoType.Pistol, 68 );
 		}
 
