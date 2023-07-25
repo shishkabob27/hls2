@@ -44,7 +44,7 @@
 			Delete();
 			return;
 		}
-		if (ThisSound.Finished)
+		if (!ThisSound.IsPlaying)
 		{
 			switch ( Type )
 			{

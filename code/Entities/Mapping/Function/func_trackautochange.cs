@@ -34,8 +34,8 @@ public partial class func_trackautochange : BrushEntity
 	float ogTrainRotation = 0;
 	public Vector3 ogTrainPos;
 
-
 	public Vector3 TrainVelocity;
+
 	[GameEvent.Tick.Server]
 	public void tick()
 	{
@@ -54,11 +54,18 @@ public partial class func_trackautochange : BrushEntity
 		train.GetTarget().Position = ogTrainPos + (new Vector3(0, 0, Position.z - ogPos.z));
 		train.GetTarget().Rotation = Rotation.FromYaw(ogTrainRotation + (rotation * progress));
 
-		
 
-		if (Position.z.AlmostEqual( newpos.z , 1  ))
+
+		if (Position.z.AlmostEqual( newpos.z , 2  ))
 		{
 			ShouldMove = false;
+
+			Position = newpos;
+			Rotation = Rotation.FromYaw(ogRotation + rotation);
+
+			train.GetTarget().Position = ogTrainPos + (new Vector3(0, 0, height));
+			train.GetTarget().Rotation = Rotation.FromYaw(ogTrainRotation + rotation);
+
 			(train.GetTarget() as func_tracktrain).Target = bottomtrack;
 			(train.GetTarget() as func_tracktrain).StartForward();
 		}
@@ -68,11 +75,12 @@ public partial class func_trackautochange : BrushEntity
 	[Input]
 	public void Trigger()
 	{
-		ShouldMove = true;
 		ogRotation = Rotation.Yaw();
 		ogPos = Position;
 
 		ogTrainRotation = train.GetTarget().Rotation.Yaw();
 		ogTrainPos = train.GetTarget().Position;
+
+		ShouldMove = true;
 	}
 }   

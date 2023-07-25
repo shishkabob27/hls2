@@ -6,6 +6,7 @@ public partial class func_tracktrain : BrushEntity
 	Vector3 PrevPos;
 	[Property( "target" ), FGDType( "target_destination" )]
 	public EntityTarget Target { get; set; } //= "";
+
 	public float speed = 0;
 	public Vector3 TrainVelocity;
 
@@ -15,6 +16,9 @@ public partial class func_tracktrain : BrushEntity
 
 	[Property( "orientationtype" )]
 	public float OrientationType { get; set; } = 1;
+
+	protected Output OnStart { get; set; }
+
 	public override void Spawn()
 	{
 		Tags.Clear();
@@ -87,6 +91,8 @@ public partial class func_tracktrain : BrushEntity
 	[Input]
 	public void StartForward()
 	{
+		OnStart.Fire( this );
+
 		speed = 20;
 		try
 		{
@@ -101,6 +107,20 @@ public partial class func_tracktrain : BrushEntity
 
 		}
 	}
+
+	[Input]
+	public void Stop()
+	{
+		speed = 0;
+	}
+
+	[Input]	
+	public void Resume()
+	{
+		StartForward();
+	}
+
+
 	/// <summary>
 	/// Enables the entity.
 	/// </summary>

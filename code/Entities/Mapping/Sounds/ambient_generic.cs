@@ -158,7 +158,7 @@ public partial class SoundEventEntity : Entity
     {
 		if (!HasStartedPlaying) return;
 		if ( SpawnSettings.HasFlag( Flags.IsNOTLooped ) ) return;
-		if ( PlayingSound.Finished == true )
+		if ( PlayingSound.IsPlaying == false )
         {
             PlayingSound = default;
             OnStartSound();
