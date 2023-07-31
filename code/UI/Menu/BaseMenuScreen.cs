@@ -121,7 +121,7 @@ public class BaseMenuScreen : Panel
 		if ( doanim )
 		{
 			CoolAnimation( p );
-			await GameTask.DelaySeconds( 0.2f );
+			await Task.DelaySeconds( 0.2f );
 		}
 	}
 
