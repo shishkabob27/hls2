@@ -283,7 +283,7 @@
       {
         "Name": "Untitled Config",
         "GameIdent": "shishkabob.hls2#local",
-        "MapName": "shishkabob.hls2_c2p0",
+        "MapName": "campiagn/hls2_c2p0/hls2_c2p0.vmap",
         "MaxPlayers": 1,
         "GameSettings": {},
         "Addons": "",
