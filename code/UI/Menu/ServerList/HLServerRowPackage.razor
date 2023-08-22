@@ -1,0 +1,38 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading
+@using Sandbox.Services;
+
+@if (Ident == "<empty>")
+    return;
+
+<root>
+
+	<column>
+	@if (Package != null)
+	{
+		<div class="title">@Package.Title</div>
+		<div class="org">by @Package.Org.Title</div>
+	}
+	else
+	{
+		<div class="title">@Ident</div>
+	}
+	</column>
+
+</root>
+
+@code
+{
+    public string Ident;
+    public Package Package;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        if (!Package.TryParseIdent(Ident, out var parts))
+            return;
+
+		Package = await Package.FetchAsync(Ident, true);
+	}
+}

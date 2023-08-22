@@ -1,0 +1,155 @@
+
+$primary: white !default;
+
+.server-list
+{
+	flex-direction: column;
+
+	.canvas
+	{
+		flex-direction: column;
+		overflow: scroll;
+		height: 100%;
+		flex-shrink: 1;
+	}
+
+	.no-server-notice
+	{
+		flex-direction: column;
+		align-items: center;
+		opacity: 0.6;
+		font-size: 20px;
+		font-weight: bold;
+
+		i
+		{
+			font-size: 200px;
+			margin: 30px;
+		}
+	}
+}
+
+.loading-status
+{
+	align-items: center;
+}
+
+.server-list HLServerRow
+{
+	flex-direction: row;
+	cursor: pointer;
+	font-size: 17px;
+	background-color: rgba( white, 0.01 );
+	margin-bottom: 1px;
+	align-items: center;
+	opacity: 0.6;
+	flex-shrink: 0;
+
+	> .title
+	{
+		flex-grow: 1;
+		font-size: 20px;
+		font-family: "Poppins";
+		font-weight: bold;
+		padding: 10px;
+		text-overflow: ellipsis;
+	}
+
+	> *
+	{
+		min-width: 100px;
+		white-space: nowrap;
+
+		&:last-child
+		{
+			margin-right: 0px;
+		}
+	}
+
+	> .ping, > .players
+	{
+		flex-shrink: 0;
+		flex-grow: 0;
+		width: 70px;
+		max-width: 70px;
+		min-width: 70px;
+		justify-content: flex-end;
+		padding: 10px;
+	}
+
+	.players
+	{
+		margin-left: 30px;
+	}
+
+	&:hover
+	{
+		opacity: 1;
+	}
+}
+
+.server-list > .header
+{
+	flex-shrink: 0;
+
+	> .ping, > .players
+	{
+		width: 70px;
+		max-width: 70px;
+		min-width: 70px;
+		flex-shrink: 0;
+		flex-grow: 0;
+		padding: 10px;
+		justify-content: center;
+		white-space: nowrap;
+		opacity: 0.5;
+		cursor: pointer;
+
+		&:hover
+		{
+			opacity: 1;
+		}
+
+		&:active
+		{
+			background-color: white;
+		}
+	}
+}
+
+.server-list > .header .title
+{
+	font-size: 20px;
+}
+
+HLServerRowPackage
+{
+	width: 200px;
+	overflow: hidden;
+	padding: 10px;
+	align-items: center;
+
+	.title
+	{
+		font-size: 14px;
+	}
+
+	.org
+	{
+		font-size: 14px;
+		opacity: 0.3;
+	}
+
+	.icon
+	{
+		width: 32px;
+		height: 32px;
+		flex-grow: 0;
+		flex-shrink: 0;
+		background-position: center;
+		background-size: cover;
+		border-radius: 100px;
+		margin-right: 5px;
+		background-color: $primary;
+	}
+}

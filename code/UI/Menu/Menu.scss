@@ -515,7 +515,7 @@ MenuRootPanel {
     }
 }
 
-serverlist {
+.server-list {
     position: absolute;
     right: 64px;
     left: 512px;
@@ -529,13 +529,13 @@ serverlist {
         height: 40px;
     }
 
-    serverrow {
+    hlserverrow {
         height: 40px;
+        min-height:40px;
         min-width: 100%;
         width: 100%;
 
         > .title {
-            padding: 0px;
 
             label {
                 padding: 0px;
@@ -557,7 +557,7 @@ serverlist {
     }
 }
 
-serverrowpackage{
+hlserverrowpackage{
     
     column{
         .title{

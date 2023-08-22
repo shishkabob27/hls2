@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 [UseTemplate( "/UI/Menu/SubMenus/InternetGames.html" )]
 class InternetGames : BaseMenuScreen
 {
-	public Panel serverList { get; set; }
+	public HLServerListPanel serverList { get; set; }
 
 	public InternetGames()
 	{
-		serverList = new ServerList();
+		serverList = new HLServerListPanel();
 		AddChild( serverList );
 	}
 
@@ -22,8 +22,7 @@ class InternetGames : BaseMenuScreen
 
 	public void ServerRefresh()
 	{
-		var list = serverList as ServerList;
-		list.ServerPanel.Refresh();
+		serverList.Refresh();
 	}
 
 	public void Done( Panel p )

@@ -1,0 +1,185 @@
+﻿@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading;
+@using Sandbox.Services;
+@attribute [StyleSheet]
+
+<root class="server-list">
+
+    <div class="header">
+
+        <div class="grow"></div>
+        <div class="players" @onclick=@( () => Sort( "players", true ) )>
+            <i class="title">people</i>
+            @if (order == "players")
+            {
+                <i>@(orderDesc ? "arrow_drop_down" : "arrow_drop_up")</i>
+            }
+
+        </div>
+        <div class="ping" @onclick=@( () => Sort( "ping", false ) )>
+
+            <i class="title">settings_ethernet</i>
+
+            @if (order == "ping")
+            {
+                <i>@(orderDesc ? "arrow_drop_down" : "arrow_drop_up")</i>
+            }
+
+        </div>
+    </div>
+
+    @if( list == null || ( list.IsQuerying && !list.Any() ) )
+    {
+        <LoaderFullScreen></LoaderFullScreen>
+    }
+    else if ( !list.Where( x => TestFilter( x ) ).Any() )
+    {
+        <div class="no-server-notice">
+            <span>No servers found</span>
+        </div>
+    }
+    else
+    {
+        <div class="canvas">
+        @foreach (var server in list.Where( x => TestFilter( x ) ).OrderBy( GetOrder ) )
+        {
+            <HLServerRow OnSelected="@OnSelected" ShowGame=@ShowGame Server=@server></HLServerRow>
+        }
+        </div>
+    }
+</root>
+
+@code
+{
+    public bool ShowGame { get; set; } = false;
+    public Action<ServerList.Entry> OnSelected { get; set; }
+
+    public string FilterByGame { get; set; }
+
+    ServerList list;
+
+    bool orderDesc = true;
+    string order = "players";
+
+
+    string _textFilter = null;
+
+    public string TextFilter
+    {
+        get => _textFilter;
+        set
+        {
+            if (_textFilter == value) return;
+
+            _textFilter = value;
+            StateHasChanged();
+        }
+    }
+
+    bool _showEmpty = true;
+    public bool ShowEmpty
+    {
+        get => _showEmpty;
+        set
+        {
+            if (_showEmpty == value) return;
+
+            _showEmpty = value;
+            StateHasChanged();
+        }
+    }
+
+    bool _showFull = true;
+    public bool ShowFull
+    {
+        get => _showFull;
+        set
+        {
+            if (_showFull == value) return;
+
+            _showFull = value;
+            StateHasChanged();
+        }
+    }
+
+    protected override void OnParametersSet()
+    {
+        var game = FilterByGame?.Split('#')[0] ?? "";
+        Log.Info($"Filtering By Game '{game}'");
+
+        list?.Dispose();
+        list = new ServerList();
+
+        list.AddFilter("gametagsand", $"game:shishkabob.hls2");
+
+        _ = Refresh();
+    }
+
+    void Sort( string sortOrder, bool defaultDesc )
+    {
+        if (order == sortOrder)
+        {
+            orderDesc = !orderDesc;
+            return;
+        }
+
+        orderDesc = defaultDesc;
+        order = sortOrder;
+    }
+
+    int GetOrder(ServerList.Entry server )
+    {
+        if (order == "players")
+        {
+            if (orderDesc) return -server.Players;
+            return server.Players;
+        }
+
+        //        if ( order == "ping" )
+        {
+            if (orderDesc) return -server.Ping;
+            return server.Ping;
+        }
+    }
+
+    public async Task Refresh()
+    {
+        if (list.IsQuerying)
+            return;
+
+
+
+        list.Query();
+
+        while ( list.IsQuerying )
+        {
+            await Task.Delay(100);
+            StateHasChanged();
+        }
+
+        StateHasChanged();
+    }
+
+    bool TestFilter( ServerList.Entry server )
+    {
+        if ( !string.IsNullOrWhiteSpace( TextFilter ) )
+        {
+            bool hasTextMatch = false;
+
+            hasTextMatch = hasTextMatch || server.Name.Contains(TextFilter, StringComparison.OrdinalIgnoreCase);
+
+            if (!hasTextMatch)
+                return false;
+        }
+
+        if (server.Players == 0 && ShowEmpty == false)
+            return false;
+
+        if (server.Players >= server.MaxPlayers && ShowFull == false)
+            return false;
+
+        return true;
+    }
+}

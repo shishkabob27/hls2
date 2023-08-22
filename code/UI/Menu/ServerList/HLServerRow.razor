@@ -1,0 +1,56 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading;
+@using Sandbox.Services;
+
+<root class="flex-row" @onclick=@OnServerClicked>
+
+	@if (ShowGame)
+	{
+		<HLServerRowPackage class="game with-no-shrink" Ident=@Server.Game></HLServerRowPackage>
+	}
+    <div class="title">@Server.Name</div>
+
+	<HLServerRowPackage class="map with-no-shrink" Ident=@Server.Map></HLServerRowPackage>
+
+	<div class="players">@Server.Players / @Server.MaxPlayers</div>
+	<div class="ping">@Server.Ping</div>
+
+</root>
+
+@code
+{
+    public bool ShowGame = true;
+    public ServerList.Entry Server;
+    public Action<ServerList.Entry> OnSelected { get; set; }
+
+    public void Refresh()
+    {
+
+    }
+
+    void OnServerClicked( PanelEvent e )
+    {
+        if ( OnSelected is not null )
+        {
+            OnSelected.Invoke( Server );
+            return;
+        }
+
+        if ( Game.Menu != null )
+        {
+            Game.Menu.ConnectToServer( Server.SteamId );
+            return;
+        }
+        
+        if ( !Game.IsClient )
+        {
+            ConsoleSystem.Run($"connect {Server.SteamId}");
+            return;
+        }
+
+        Log.Warning( $"Couldn't join server from the client context." );
+
+	}
+}
