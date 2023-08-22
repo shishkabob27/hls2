@@ -7,7 +7,7 @@
 <root style="flex-direction: column;">
 
     <section class="inset" style="flex-direction: column; flex-grow: 1; flex-shrink: 1;">
-        <ServerListPanel @ref="ServerPanel" ShowGame=@false FilterByGame=shishkabob.hls2></ServerListPanel>
+        <HLServerListPanel @ref="TheServerPanel" ShowGame=@false FilterByGame=shishkabob.hls2></HLServerListPanel>
     </section>
 
 </root>
@@ -15,5 +15,5 @@
 
 @code
 {
-    public ServerListPanel ServerPanel;
+    public HLServerListPanel TheServerPanel;
 }

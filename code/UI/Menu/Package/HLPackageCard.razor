@@ -1,0 +1,152 @@
+﻿@using Sandbox;
+@using Sandbox.UI;
+@namespace Sandbox.UI
+@attribute [StyleSheet]
+
+<root class="card card-vertical card-package @FavouriteClass @RatingClass">
+
+    <div class="card-image" onclick=@OnCardClicked style="background-image: url( @BackgroundImage )">
+
+        @if ( Decorated )
+        {
+            if (Package.Public == false)
+            {
+                <div class="card-decorator-hidden" tooltip="This is hidden from the public">Hidden</div>
+            }
+            if (Package.Interaction.FirstUsed == null)
+            {
+                <div class="card-decorator-unplayed" tooltip="You have never played this">Unplayed</div>
+            }
+            else if (Package.Updated > Package.Interaction.LastUsed)
+            {
+                <div class="card-decorator-updated" tooltip="This has been updated since you played it">Updated</div>
+            }
+
+            if ( Package.Usage.UsersNow > 0 )
+            {
+                <div class="card-decorator-users" tooltip="This many users are playing now">
+                    <i>sports_esports</i>
+                    <span> @Package.Usage.UsersNow.KiloFormat() </span>
+                </div>
+            }
+        }
+
+        <div class="hover-overlay">
+            @if ( Package.VideoThumb != null )
+            {
+                <div class="thumb-video" style="background-image: url( @Package.VideoThumb )"></div>
+            }
+            else
+            {
+                <i>@HoverIcon</i>
+            }
+        </div>
+
+    </div>
+    
+    <div class="package-card-body"> 
+
+        <div class="org-image">
+            <div class="img" style="background-image: url( @Package.Org.Thumb )"></div>
+        </div>
+
+        <div class="body-content">
+
+            <div class="nowrap title" @onclick=@( () => Game.Overlay.ShowPackageModal( Package.FullIdent ) )>@Package.Title</div>
+            <div class="orgrow">
+                <label class="orgname">@Package.Org.Title</label>
+                <label>•</label>
+                <label class="updated">@UpdatedString()</label>
+            </div>
+
+            <div class="body-meta">
+
+                <div><i>person</i> @Package.Usage.Total.Users.KiloFormat()</div>
+                <div class="favourite"><i>favorite</i> @Package.Favourited.KiloFormat()</div>
+
+                @if (Package.Interaction.Used)
+                {
+                    <div tooltip="Amount of hours you've played"><i>alarm</i> @FormatHoursPlayed()</div>
+                }
+
+            </div>
+
+        </div>
+
+    </div>
+
+</root>
+
+@code
+{
+    public Package Package { get; set; }
+
+    /// <summary>
+    /// Called when the icon part of the card is pressed
+    /// </summary>
+    public System.Action OnLaunch { get; set; }
+
+
+    public string HoverIcon { get; set; } = "play_arrow";
+
+    public bool Decorated { get; set; } = true;
+
+    public string BackgroundImage => Package.Thumb;
+
+    string FavouriteClass => Package.Interaction.Favourite ? "is-favourite" : "";
+    string RatingClass
+    {
+        get
+        {
+            if (Package.Interaction.Rating == null) return "";
+            if (Package.Interaction.Rating == 0) return "is-rated-up";
+            if (Package.Interaction.Rating == 1) return "is-rated-down";
+
+            return "";
+        }
+    }
+
+    public string FormatHoursPlayed()
+    {
+        double minutes = Package.Interaction.Seconds / 60.0;
+
+        if ( minutes < 60 )
+            return minutes.ToString("0m");
+
+        double hours = Package.Interaction.Seconds / 60.0 / 60.0;
+
+        if (hours > 10)
+            return hours.ToString("0h");
+
+        return hours.ToString("0.#h");
+    }
+
+    public string UpdatedString()
+    {
+		return Package.Updated.LocalDateTime.ToRelativeTimeString();
+    }
+
+    void OnCardClicked()
+    {
+        OnLaunch?.Invoke();
+    }
+
+    [Event("package.update.users")]
+    public void UpdateUsers( string ident, long value )
+    {
+        if (ident != Package.FullIdent) return;
+
+        var u = Package.Usage;
+        u.UsersNow = value;
+        Package.Usage = u;
+        StateHasChanged();
+    }
+
+    [Event("package.update.favourites")]
+    public void UpdateFaves(string ident, long value)
+    {
+        if (ident != Package.FullIdent) return;
+        Package.Favourited = (int) value;
+        StateHasChanged();
+    }
+}

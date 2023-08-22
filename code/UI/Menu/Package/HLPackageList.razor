@@ -1,0 +1,84 @@
+@using System;
+@using Sandbox;
+@using Sandbox.UI;
+@using System.Threading
+
+@attribute [StyleSheet]
+
+<root class="package-list">
+
+    @if ( ShowFilters )
+    {
+        <HLPackageFilters Result=@Result Query=@Query OnChange=@OnQueryUpdated></HLPackageFilters>
+    }
+
+    @if ( FoundPackages == null )
+    {
+        //<LoaderFullScreen></LoaderFullScreen>
+    }
+    else if (FoundPackages.Length == 0 )
+    {
+        <div class="loading-status">Nothing Found</div>
+    }
+    else
+    {
+        @foreach ( var package in FoundPackages )
+        {
+            if ( package == null ) continue;
+            <HLPackageCard OnLaunch=@(() => OnSelected?.Invoke( package ) ) Package=@package></HLPackageCard>
+        }
+    }
+    
+</root>
+
+@code
+{
+    public string Query { get; set; }
+    public int Take { get; set; } = 100;
+    public int Skip { get; set; }
+    public bool ShowFilters { get; set; } = false;
+
+    public System.Action<Package> OnSelected { get; set; }
+    public System.Action<Package.FindResult> OnResult { get; set; }
+
+    public Package[] FoundPackages{ get; set; }
+
+    Package.FindResult Result;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        FoundPackages = null;
+
+        Query ??= "";
+
+
+
+        await RunQuery();
+    }
+
+    async Task RunQuery()
+    {
+        var query = Query;
+
+        Result = await Package.FindAsync(Query, Take, Skip);
+
+        if ( query != Query )
+            return;
+
+        if (Result != null)
+        {
+            OnResult?.Invoke(Result);
+
+            FoundPackages = Result.Packages;
+        }
+
+        StateHasChanged();
+    }
+
+    void OnQueryUpdated( string newQuery )
+    {
+        Query = newQuery;
+
+        RunQuery();
+    }
+}

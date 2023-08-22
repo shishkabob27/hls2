@@ -32,7 +32,7 @@
 
     @if( list == null || ( list.IsQuerying && !list.Any() ) )
     {
-        <LoaderFullScreen></LoaderFullScreen>
+        //<LoaderFullScreen></LoaderFullScreen>
     }
     else if ( !list.Where( x => TestFilter( x ) ).Any() )
     {

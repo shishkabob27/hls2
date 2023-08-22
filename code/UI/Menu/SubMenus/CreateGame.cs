@@ -11,12 +11,12 @@ class CreateGame : BaseMenuScreen
 	public bool cCampaign { get; set; } = true;
 	public bool cDeathmatch { get; set; } = false;
 
-	public PackageList mapList { get; set; }
+	public HLPackageList mapList { get; set; }
 	public Button MapName { get; set; }
 
 	public CreateGame()
 	{
-		mapList = ChildrenOfType<PackageList>().First();
+		mapList = ChildrenOfType<HLPackageList>().First();
 	}
 
 	public void ChangeMap()
