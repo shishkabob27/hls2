@@ -286,15 +286,22 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			return;
 		if ( animHelper.VoiceLevel != 0 )
 		{
-			var closestENTs = Entity.FindInSphere( Position, 256 );///Entity.All.OfType<ICombat>();
-			var ck = closestENTs.OrderBy( o => ((o as Entity).Position.Distance( Position )) );
-			var closestENT = ck.First() as Entity;
+			var closestENTs = FindInSphere( Position, 256 );///Entity.All.OfType<ICombat>();
+			var ck = closestENTs.OrderBy( o => (Position.Distance( Position )) );
+			var closestENT = ck.First();
 
 			if ( SentenceListener == null)
 			{
 				closestENTs = FindInSphere( Position, 256 ).OfType<HLPlayer>();
-				ck = closestENTs.OrderBy( o => ((o as Entity).Position.Distance( Position )) );
-				closestENT = ck.First() as HLPlayer;
+				ck = closestENTs.OrderBy( o => (Position.Distance( Position )) );
+				if ( ck.Count() == 0 )
+				{
+					closestENT = null;
+				}
+				else
+				{
+					closestENT = ck.First();
+				}
 			}
 			else
 			{
