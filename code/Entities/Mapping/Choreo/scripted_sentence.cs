@@ -41,8 +41,6 @@ public partial class scripted_sentence : Entity
             Speaker.SpeakSound(name);
 			Speaker.SentenceListener = Listener;
             OnEndSentence.Fire(this);
-
-			Subtitle.DisplaySubtitle( To.Everyone, name);
 		}
         else
         {

@@ -166,6 +166,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/idle1.smd"
 						start_frame = -1
 						end_frame = -1
@@ -201,6 +202,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/walk.smd"
 						start_frame = -1
 						end_frame = -1
@@ -238,6 +240,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/assassinated.smd"
 						start_frame = -1
 						end_frame = -1
@@ -273,6 +276,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barnaclecrunch.smd"
 						start_frame = -1
 						end_frame = -1
@@ -308,6 +312,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/beat_grunt.smd"
 						start_frame = -1
 						end_frame = -1
@@ -343,6 +348,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/beat_gruntidle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -380,6 +386,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/diebackward.smd"
 						start_frame = -1
 						end_frame = -1
@@ -417,6 +424,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/diecrump.smd"
 						start_frame = -1
 						end_frame = -1
@@ -454,6 +462,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/dieforward.smd"
 						start_frame = -1
 						end_frame = -1
@@ -491,6 +500,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/diegutshot.smd"
 						start_frame = -1
 						end_frame = -1
@@ -528,6 +538,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/diesimple.smd"
 						start_frame = -1
 						end_frame = -1
@@ -565,6 +576,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/dieviolent.smd"
 						start_frame = -1
 						end_frame = -1
@@ -600,6 +612,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/run.smd"
 						start_frame = -1
 						end_frame = -1
@@ -621,6 +634,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/3way_headturn_neutral.smd"
 						start_frame = -1
 						end_frame = -1
@@ -642,6 +656,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/almost.smd"
 						start_frame = -1
 						end_frame = -1
@@ -663,6 +678,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/almostidle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -684,6 +700,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barn_wave.smd"
 						start_frame = -1
 						end_frame = -1
@@ -705,6 +722,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barnaclechew.smd"
 						start_frame = -1
 						end_frame = -1
@@ -726,6 +744,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barnaclehit.smd"
 						start_frame = -1
 						end_frame = -1
@@ -747,6 +766,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barnaclepull.smd"
 						start_frame = -1
 						end_frame = -1
@@ -768,6 +788,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barney_dragvent.smd"
 						start_frame = -1
 						end_frame = -1
@@ -789,6 +810,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barneyfall.smd"
 						start_frame = -1
 						end_frame = -1
@@ -810,6 +832,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barneyfallidle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -831,6 +854,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/barny_lipsync_neutral.smd"
 						start_frame = -1
 						end_frame = -1
@@ -852,6 +876,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/buttonpush.smd"
 						start_frame = -1
 						end_frame = -1
@@ -873,6 +898,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/c1a3_bidle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -894,6 +920,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/c1a3_emerge.smd"
 						start_frame = -1
 						end_frame = -1
@@ -915,6 +942,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/c1a3_emergeidle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -936,6 +964,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/c1a3_ventb.smd"
 						start_frame = -1
 						end_frame = -1
@@ -957,6 +986,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/c3a2_draw.smd"
 						start_frame = -1
 						end_frame = -1
@@ -978,6 +1008,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/cower_stand.smd"
 						start_frame = -1
 						end_frame = -1
@@ -999,6 +1030,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/cprbarney.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1020,6 +1052,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/cprbarneyrevive.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1041,6 +1074,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/disarm.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1062,6 +1096,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/draw.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1083,6 +1118,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/dying_barney.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1104,6 +1140,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/dying_barneyidle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1125,6 +1162,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/dying_friend.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1146,6 +1184,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/dying_friendidle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1167,6 +1206,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/fall_loop.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1210,6 +1250,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/fence.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1231,6 +1272,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/flashlight.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1252,6 +1294,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/haulbarney.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1273,6 +1316,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/idle2.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1294,6 +1338,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/idle3.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1315,6 +1360,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/idle4.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1387,6 +1433,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/intropush.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1408,6 +1455,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/laflinch.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1429,6 +1477,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/laser_bottom.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1450,6 +1499,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/laser_top.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1471,6 +1521,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/laseridle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1492,6 +1543,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/llflinch.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1513,6 +1565,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/locked_door.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1534,6 +1587,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/lying_on_back.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1555,6 +1609,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/lying_on_side.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1576,6 +1631,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/lying_on_stomach.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1597,6 +1653,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/mouth_close.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1618,6 +1675,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/mouth_open.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1639,6 +1697,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/neck_center.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1660,6 +1719,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/neck_left.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1681,6 +1741,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/neck_right.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1702,6 +1763,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/pepsipush.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1723,6 +1785,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/pepsiswing.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1744,6 +1807,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/raflinch.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1765,6 +1829,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/ragdoll.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1786,6 +1851,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/relaxstand.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1807,6 +1873,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/reload.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1828,6 +1895,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/retina.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1849,6 +1917,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/rlflinch.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1870,6 +1939,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/shootgun.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1891,6 +1961,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/shootgun_2.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1912,6 +1983,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/shootgun2.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1933,6 +2005,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/shootgun2_2.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1954,6 +2027,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/sit1.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1975,6 +2049,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/smlflinch.smd"
 						start_frame = -1
 						end_frame = -1
@@ -1996,6 +2071,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/standing_idle.smd"
 						start_frame = -1
 						end_frame = -1
@@ -2017,6 +2093,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/stuffed_in_vent.smd"
 						start_frame = -1
 						end_frame = -1
@@ -2038,6 +2115,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/trackswitch.smd"
 						start_frame = -1
 						end_frame = -1
@@ -2059,6 +2137,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/turnleft.smd"
 						start_frame = -1
 						end_frame = -1
@@ -2080,6 +2159,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/turnright.smd"
 						start_frame = -1
 						end_frame = -1
@@ -2101,6 +2181,7 @@
 						hidden = false
 						anim_markup_ordered = false
 						disable_compression = false
+						enable_scale = false
 						source_filename = "models/hl1decomp/barney/barney_anims/unlatch.smd"
 						start_frame = -1
 						end_frame = -1

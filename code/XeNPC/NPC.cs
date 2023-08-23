@@ -849,6 +849,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			{
 				CurrentSound.Stop();
 				CurrentSound = PlaySound( sound ).SetPitch( HLUtils.CorrectPitch( pitch ) );
+				Subtitle.DisplaySubtitle( To.Everyone, sound );
 			}
 			//SpeakSoundcl(sound, pitch);
 		}

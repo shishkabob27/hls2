@@ -23,13 +23,4 @@ public class HudRootPanel : RootPanel
 		}
 	}
 
-	[GameEvent.Client.BuildInput]
-	public void ProcessClientInput()
-	{
-		if ( Input.Pressed( "Menu" ) )
-		{
-
-			ConsoleSystem.Run( "menu" );
-		}
-	}
 }
