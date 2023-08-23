@@ -182,6 +182,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 	public HLAnimationHelper animHelper;
 	float neck = 0.0f;
 	float neck2 = 0.0f;
+	public Entity SentenceListener;
 
 	TimeSince LastIsInRangeCheck;
 	float RangeCheckDelay = 0.5f;
@@ -279,6 +280,7 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 		else
 		{
 			animHelper.VoiceLevel = 0;
+			SentenceListener = null;
 		}
 		if ( LifeState == LifeState.Dead )
 			return;
@@ -287,6 +289,18 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 			var closestENTs = Entity.FindInSphere( Position, 256 );///Entity.All.OfType<ICombat>();
 			var ck = closestENTs.OrderBy( o => ((o as Entity).Position.Distance( Position )) );
 			var closestENT = ck.First() as Entity;
+
+			if ( SentenceListener == null)
+			{
+				closestENTs = FindInSphere( Position, 256 ).OfType<HLPlayer>();
+				ck = closestENTs.OrderBy( o => ((o as Entity).Position.Distance( Position )) );
+				closestENT = ck.First() as HLPlayer;
+			}
+			else
+			{
+				closestENT = SentenceListener;
+			}
+			
 			if (closestENT == this)
 			{
 				if ( ck.Count() > 0 )
@@ -298,6 +312,10 @@ public partial class NPC : AnimatedEntity, IUse, ICombat
 				{
 					return;
 				}
+			}
+			else if (closestENT == null)
+			{
+				return;
 			}
 			var a = Rotation.LookAt( closestENT.Position.WithZ( 0 ) - Position.WithZ( 0 ), Vector3.Up ).Yaw();//HLUtils.VecToYaw(closestENT.Position.WithZ(0) - Position.WithZ(0));
 

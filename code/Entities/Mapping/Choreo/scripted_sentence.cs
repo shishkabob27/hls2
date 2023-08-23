@@ -16,7 +16,10 @@ public partial class scripted_sentence : Entity
     [Property("sentence")]
     public string SentenceName { get; set; } = "null";
 
-    protected Output OnEndSentence { get; set; }
+	[Property( "listener" ), FGDType( "target_destination" )]
+	public Entity  Listener { get; set; }
+
+	protected Output OnEndSentence { get; set; }
     protected Output OnBeginSentence { get; set; }
     
     [Input]
@@ -36,6 +39,7 @@ public partial class scripted_sentence : Entity
         {
             OnBeginSentence.Fire(this);
             Speaker.SpeakSound(name);
+			Speaker.SentenceListener = Listener;
             OnEndSentence.Fire(this);
 
 			Subtitle.DisplaySubtitle( To.Everyone, name);
