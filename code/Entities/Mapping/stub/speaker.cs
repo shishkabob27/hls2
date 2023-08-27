@@ -105,11 +105,8 @@ public class speaker : Entity
 		{
 			var word = sentence.Split( " " )[0];
 			Log.Info( word );
-			
-			if ( word == "" )
-				break;
 
-			sentence = sentence.Remove( 0, word.Length + 1 );
+			sentence = sentence.Remove( 0, word.Length ).TrimStart();
 
 			var soundpath = $"sounds/hl1/vox/{word}.sound";
 
@@ -118,14 +115,16 @@ public class speaker : Entity
 			if( ResourceLibrary.TryGet( soundpath, out SoundEvent sound ))
 			{
 				var soundword = Sound.FromEntity( To.Everyone, soundpath, this ).SetVolume( 1.0f ).SetPitch( 1.0f );
-				await Task.DelayRealtime( 100 );
+				await Task.DelayRealtime( 50 );
 				while ( soundword.IsPlaying )
 				{
-					await Task.DelayRealtime( 1000 );
+					await Task.DelayRealtime( 50 );
 				}
+				await Task.DelayRealtime( 100 );
+
 			}
 
-			
+
 
 		};
 
