@@ -27,8 +27,14 @@ public class HudPanel : HudEntity<HudRootPanel>
 			else
 			{
 				// Just display the HUD on-screen
-				StyleSheet.FromFile( "/Resource/styles/hud.scss" );
-				RootPanel.SetTemplate( "/Resource/templates/hud.html" );
+				RootPanel.StyleSheet.Load( "/Resource/Styles/hud.scss" );
+
+				var bottomLeftPanel = RootPanel.AddChild<Panel>( "bottom-left" );
+				bottomLeftPanel.AddChild<HealthHud>();
+				bottomLeftPanel.AddChild<ArmourHud>();
+
+				var bottomRightPanel = RootPanel.AddChild<Panel>( "bottom-right" );
+				bottomRightPanel.AddChild<Ammo>();
 
 				RootPanel.AddChild<DamageIndicator>();
 				RootPanel.AddChild<Crosshair>();

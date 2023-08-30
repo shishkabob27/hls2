@@ -21,7 +21,7 @@
             <label class="sub">Start a new game.</label>
         </div>
         <div>
-            <button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => HazardCourse(e.This))>#Menu_Training</button>
+            <button onmousedown=@BaseButtonClick onclick=@HazardCourse>#Menu_Training</button>
             <label class="sub">Learn how to play Half-Life.</label>
         </div>
         <div>
@@ -65,7 +65,7 @@
 		Parent.AddChild<NewGame>();
 		Delete();
 	}
-	public void HazardCourse( Panel p )
+	public void HazardCourse()
 	{
 		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Hazard Course)", GameInfo.trainmap );
 		Game.Menu.Lobby.Public = false;

@@ -7,7 +7,7 @@
   "Schema": 1,
   "HasAssets": true,
   "AssetsPath": "",
-  "Resources": "ui/*\nshaders/*",
+  "Resources": "ui/*\nshaders/*\nresource/*",
   "MenuResources": "ui/*\nresource/*\nsounds/menu/*",
   "HasCode": true,
   "CodePath": "/code/",

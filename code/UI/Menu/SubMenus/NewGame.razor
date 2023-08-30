@@ -5,15 +5,15 @@
 	<label class="titlescreen">New game</label>
 	<div class="controlsscreen">
 		<div>
-			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Easy(e.This))>Easy</button>
+			<button onmousedown=@BaseButtonClick onclick=@Easy>Easy</button>
 			<label class="sub">Play Half-Life on the 'easy' skill setting.</label>
 		</div>
 		<div>
-			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Medium(e.This))>Medium</button>
+			<button onmousedown=@BaseButtonClick onclick=@Medium>Medium</button>
 			<label class="sub">Play Half-Life on the 'medium' skill setting.</label>
 		</div>
 		<div>
-			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Difficult(e.This))>Difficult</button>
+			<button onmousedown=@BaseButtonClick onclick=@Difficult>Difficult</button>
 			<label class="sub">Play Half-Life on the 'difficult' skill setting.</label>
 		</div>
 		<div>
@@ -25,21 +25,21 @@
 
 @code{
 
-	public void Easy( Panel p )
+	public void Easy()
 	{
 		ConsoleSystem.Run( "skill 0" );
 		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Easy)", GameInfo.startmap );
 		Game.Menu.Lobby.Public = false;
 		Game.Menu.HideMenu();
 	}
-	public void Medium( Panel p )
+	public void Medium()
 	{
 		ConsoleSystem.Run( "skill 1" );
 		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Medium)", GameInfo.startmap );
 		Game.Menu.Lobby.Public = false;
 		Game.Menu.HideMenu();
 	}
-	public void Difficult( Panel p )
+	public void Difficult()
 	{
 		ConsoleSystem.Run( "skill 2" );
 		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Difficult)", GameInfo.startmap );
