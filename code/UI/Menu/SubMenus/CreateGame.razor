@@ -1,0 +1,89 @@
+﻿@using Sandbox.UI
+@using Sandbox.UI.GameMenu
+@inherits BaseMenuScreen
+
+<root class="rootscreen">
+	<label class="titlescreen">Create game</label>
+	<div class="controlsscreen">
+
+		<div>
+            <button @ref=MapName onmousedown=@BaseButtonClick onclick=@ChangeMap>Map: @displayMap</button>
+		</div>
+
+        <div>
+            <button onmousedown=@BaseButtonClick onclick=@ChangeGamemode>Gamemode: @sGamemode</button>
+        </div>
+
+		<div style="flex-direction: column; width:128px;">
+			<label class="sub" style="margin-top: 0; margin-bottom: 8px;">Max Players</label>
+			<SliderScaleEntry @ref=MaxPlayersSlider min="1" max="64" step="1" mintext="1" maxtext="64" @Value=@iMaxPlayers></SliderScaleEntry>
+		</div>
+
+		<span style="height:32px;"></span>
+
+		<div>
+			<button onmousedown=@BaseButtonClick onclick=@StartServerAsync>Start</button>
+		</div>
+
+		<div>
+			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Done(e.This))>Done</button>
+		</div>
+	</div>
+
+	<HLPackageList @ref=mapList Query="type:map sort:popular" ShowFilters=@true take=50></HLPackageList>
+
+</root>
+
+@code {
+
+    public string sMap { get; set; }
+    public string displayMap = "None";
+    public int iMaxPlayers { get; set; } = 1;
+    public bool cGamemode { get; set; } = true;
+    public string sGamemode { get; set; } = "Campaign";
+
+    public HLPackageList mapList { get; set; }
+    public Button MapName { get; set; }
+    public Label MapNameLabel { get; set; }
+    public SliderScaleEntry MaxPlayersSlider { get; set; }
+
+    public void ChangeMap()
+    {
+        mapList.SetClass( "open", true );
+    }
+
+    public async Task StartServerAsync()
+    {
+        if ( sMap == null )
+            return;
+
+        var gamemode = cGamemode ? "Campaign" : "Deathmatch";
+
+        Game.Menu.StartServerAsync( MaxPlayersSlider.Value.CeilToInt(), $"{Game.UserName}'s Half-Life {gamemode} server", sMap );
+    }
+
+    public void ChangeGamemode()
+    {
+        sGamemode = cGamemode ? "Deathmatch" : "Campaign";
+        cGamemode = !cGamemode;
+	}
+
+	public override void Tick()
+	{
+		base.Tick();
+		mapList.OnSelected = ( map ) =>
+		{
+			sMap = map.FullIdent;
+            displayMap = map.Title;
+			mapList.SetClass( "open", false );
+		};
+	}
+
+	public void Done( Panel p )
+	{
+		Delete();
+		var a = Parent.AddChild<InternetGames>();
+		BaseButtonClickDown( p, a, true, "Create game" );
+	}
+
+}

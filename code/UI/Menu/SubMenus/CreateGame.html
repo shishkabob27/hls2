@@ -4,7 +4,7 @@
 	 <div class="controlsscreen">
 
 		 <div>
-			 <button @ref="MapName" onmousedown="BaseButtonClick()" onclick="ChangeMap(this)">Map: None</button>
+			 <button @ref="MapName" onmousedown=@BaseButtonClick onclick="ChangeMap(this)">Map: None</button>
 		 </div>
 
 		 <div style="flex-direction: column; width:128px;">
@@ -23,11 +23,11 @@
 		 </div>
 
 		 <div>
-			 <button onmousedown="BaseButtonClick()" onclick="StartServerAsync(this)">Start</button>
+			 <button onmousedown=@BaseButtonClick onclick="StartServerAsync(this)">Start</button>
 		 </div>
 
 		 <div>
-			 <button onmousedown="BaseButtonClick()" onclick="Done(this)">Done</button>
+			 <button onmousedown=@BaseButtonClick onclick="Done(this)">Done</button>
 		 </div>
 	 </div>
 

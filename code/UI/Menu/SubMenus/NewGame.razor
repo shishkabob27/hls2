@@ -1,0 +1,55 @@
+﻿@using Sandbox.UI
+@inherits BaseMenuScreen
+
+<root class="rootscreen"> 
+	<label class="titlescreen">New game</label>
+	<div class="controlsscreen">
+		<div>
+			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Easy(e.This))>Easy</button>
+			<label class="sub">Play Half-Life on the 'easy' skill setting.</label>
+		</div>
+		<div>
+			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Medium(e.This))>Medium</button>
+			<label class="sub">Play Half-Life on the 'medium' skill setting.</label>
+		</div>
+		<div>
+			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Difficult(e.This))>Difficult</button>
+			<label class="sub">Play Half-Life on the 'difficult' skill setting.</label>
+		</div>
+		<div>
+			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Cancel(e.This))>Cancel</button>
+			<label class="sub">Go back to the Main Menu.</label>
+		</div>
+	</div>
+</root>
+
+@code{
+
+	public void Easy( Panel p )
+	{
+		ConsoleSystem.Run( "skill 0" );
+		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Easy)", GameInfo.startmap );
+		Game.Menu.Lobby.Public = false;
+		Game.Menu.HideMenu();
+	}
+	public void Medium( Panel p )
+	{
+		ConsoleSystem.Run( "skill 1" );
+		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Medium)", GameInfo.startmap );
+		Game.Menu.Lobby.Public = false;
+		Game.Menu.HideMenu();
+	}
+	public void Difficult( Panel p )
+	{
+		ConsoleSystem.Run( "skill 2" );
+		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Difficult)", GameInfo.startmap );
+		Game.Menu.Lobby.Public = false;
+		Game.Menu.HideMenu();
+	}
+	public void Cancel( Panel p )
+	{
+		Delete();
+		var a = Parent.AddChild<Menu>();
+		BaseButtonClickDown( p, a, true, "New game" );
+	}
+}

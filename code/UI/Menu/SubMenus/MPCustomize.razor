@@ -1,9 +1,11 @@
-﻿﻿<link href="/UI/Menu/Menu.scss" rel="stylesheet" >
+﻿@using Sandbox.UI
+@inherits BaseMenuScreen
+
 <root class="rootscreen"> 
 	<label class="titlescreen">Customize</label>
 	<div class="controlsscreen">
 		<div>
-			<button onmousedown="ClickDown()"onclick="Done(this)">Done</button>
+            <button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Done(e.This))>Done</button>
 		</div>
 	</div>
 
@@ -39,3 +41,12 @@
 		</div>
 	</div>
 </root>
+
+@code{
+	public void Done( Panel p )
+	{
+		Delete();
+		var a = Parent.AddChild<Multiplayer>();
+		BaseButtonClickDown( p, a, true, "Customize" );
+	}
+}

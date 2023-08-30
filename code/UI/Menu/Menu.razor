@@ -1,0 +1,87 @@
+﻿@using Sandbox.UI
+@inherits BaseMenuScreen
+
+﻿
+<root class="root">
+    <div class="drawer">
+        <!-- todo replace with proper saving options that don't reset every time you open and close the menu -->
+        <check onchecked.console="hl_menu_newer_buttons 1" onunchecked.console="hl_menu_newer_buttons 0">Alternative colours.</check>
+        <check onchecked.console="hl_menu_lock_res 1" onunchecked.console="hl_menu_lock_res 0">Always 640x480.</check>
+        <check onchecked.console="hl_menu_fourbythree 1" onunchecked.console="hl_menu_fourbythree 0">Always 4:3.</check>
+    </div>
+    
+    <logo class="img"></logo>
+    <div class="controls">
+        <div class="enableingame">
+            <button onmousedown=@BaseButtonClick onclick=@Game.Menu.HideMenu>#Menu_Resume</button>
+            <label class="sub">Return to game.</label>
+        </div>
+        <div>
+            <button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => NewGame(e.This))>#Menu_NewGame</button>
+            <label class="sub">Start a new game.</label>
+        </div>
+        <div>
+            <button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => HazardCourse(e.This))>#Menu_Training</button>
+            <label class="sub">Learn how to play Half-Life.</label>
+        </div>
+        <div>
+            <button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Config(e.This))>#Menu_Config</button>
+            <label class="sub">Change game settings, configure controls.</label>
+        </div>
+        <div>
+            <button onmousedown=@BaseButtonClick onclick="">#Menu_LoadGame</button>
+            <label class="sub">Load a previously saved game.</label>
+        </div>
+        <div>
+            <button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Multiplayer(e.This))>#Menu_Multiplayer</button>
+            <label class="sub">Search for Half-Life servers, chat with other players, configure character.</label>
+        </div>
+        <div>
+            <button onmousedown=@BaseButtonClick onclick="">Custom game</button>
+            <label class="sub">Select a custom game, search the Internet for custom games.</label>
+        </div>
+        <div class="disableingame">
+            <button onmousedown=@BaseButtonClick onclick="">View Readme.txt</button>
+            <label class="sub">View the Readme.txt file.</label>
+        </div>
+        <div>
+            <button onmousedown=@BaseButtonClick onclick="">Previews</button>
+            <label class="sub">View product previews, including Team Fortress.</label>
+        </div>
+        <div>
+            <button onmousedown=@BaseButtonClick onclick=@Game.Menu.Close>#Menu_Quit</button>
+            <label class="sub">Quit playing Half-Life.</label>
+        </div>
+    </div>
+</root>
+
+@code{
+
+    public bool checkAltButtonColour { get; set; } = false;
+
+    public async void NewGame( Panel p )
+    {
+        await BaseButtonClickUp( p );
+		Parent.AddChild<NewGame>();
+		Delete();
+	}
+	public void HazardCourse( Panel p )
+	{
+		Game.Menu.StartServerAsync( 1, "Half-Life Campaign (Hazard Course)", GameInfo.trainmap );
+		Game.Menu.Lobby.Public = false;
+		Game.Menu.HideMenu();
+	}
+	public async void Config( Panel p )
+	{
+        /* config doesn't work
+		await BaseButtonClickUp( p );
+		Parent.AddChild<Config>();
+		Delete();*/
+	}
+	public async void Multiplayer( Panel p )
+	{
+		await BaseButtonClickUp( p );
+		Parent.AddChild<Multiplayer>();
+		Delete();
+	}
+}

@@ -1,0 +1,51 @@
+﻿@using Sandbox.UI
+@using Sandbox.UI.GameMenu;
+@inherits BaseMenuScreen
+
+ <root class="rootscreen">
+	 <label class="titlescreen">Internet games</label>
+	 <div class="controlsscreen">
+		 <div>
+			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => CreateGame(e.This))>Create game</button>
+		 </div>
+		 <div>
+			<button onmousedown=@BaseButtonClick onclick=@ServerRefresh>Refresh</button>
+		 </div>
+		 <div>
+			<button onmousedown=@BaseButtonClick onclick=@(( PanelEvent e ) => Done(e.This))>Done</button>
+		 </div>
+	 </div>
+
+ </root>
+
+ @code{
+
+	public HLServerList serverList { get; set; }
+
+	public InternetGames()
+	{
+		serverList = new HLServerList();
+		AddChild( serverList );
+	}
+
+	public async void CreateGame( Panel p )
+	{
+		await BaseButtonClickUp( p );
+		Parent.AddChild<CreateGame>();
+		Delete();
+	}
+
+	public void ServerRefresh()
+	{
+		serverList.TheServerPanel.Refresh();
+	}
+
+	public void Done( Panel p )
+	{
+		Delete();
+		var a = Parent.AddChild<Multiplayer>();
+		BaseButtonClickDown( p, a, true, "Internet games" );
+	}
+
+	
+}

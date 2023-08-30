@@ -1,5 +1,5 @@
 ﻿using Sandbox.UI;
-[UseTemplate( "/UI/Menu/NewGame.html" )]
+
 public class BaseMenuScreen : Panel
 {
 	Sound CurrentSound;
